@@ -538,10 +538,9 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(RankItem));
   CellVector_descriptor_ = file->message_type(19);
-  static const int CellVector_offsets_[3] = {
+  static const int CellVector_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CellVector, cellid_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CellVector, vectorx_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CellVector, vectory_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CellVector, angle_),
   };
   CellVector_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -612,15 +611,13 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Food));
   Cell_descriptor_ = file->message_type(23);
-  static const int Cell_offsets_[12] = {
+  static const int Cell_offsets_[10] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Cell, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Cell, x_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Cell, y_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Cell, weight_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Cell, radius_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Cell, speed_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Cell, vectorx_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Cell, vectory_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Cell, angle_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Cell, fromid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Cell, mergeid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Cell, status_),
@@ -1481,81 +1478,80 @@ void protobuf_AddDesc_game_2eproto() {
     "ion\030\005 \001(\005\"\'\n\tMapEntity\022\013\n\003key\030\001 \002(\t\022\r\n\005v"
     "alue\030\002 \002(\t\"U\n\010RankItem\022\014\n\004rank\030\001 \002(\005\022\033\n\010"
     "userInfo\030\002 \001(\0132\t.UserInfo\022\016\n\006weight\030\003 \001("
-    "\005\022\016\n\006reward\030\004 \001(\005\">\n\nCellVector\022\016\n\006cellI"
-    "d\030\001 \002(\005\022\017\n\007vectorX\030\002 \002(\002\022\017\n\007vectorY\030\003 \002("
-    "\002\"9\n\026PlayerOperationRequest\022\037\n\ncellVecto"
-    "r\030\001 \003(\0132\013.CellVector\"\310\001\n\010UserInfo\022\013\n\003uid"
-    "\030\001 \002(\005\022\014\n\004skin\030\002 \001(\005\022\020\n\010nickname\030\003 \001(\t\022\017"
-    "\n\007account\030\004 \001(\t\022%\n\rultimateSkill\030\005 \001(\0132\016"
-    ".UltimateSkill\022\014\n\004gold\030\006 \001(\005\022\017\n\007stamina\030"
-    "\007 \001(\005\022\022\n\nmaxStamina\030\010 \001(\005\022\021\n\tcountdown\030\t"
-    " \001(\005\022\021\n\tprivilege\030\n \001(\005\"6\n\004Food\022\n\n\002id\030\001 "
-    "\002(\005\022\014\n\004skin\030\002 \001(\005\022\t\n\001x\030\003 \001(\002\022\t\n\001y\030\004 \001(\002\""
-    "\312\001\n\004Cell\022\n\n\002id\030\001 \002(\005\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001"
-    "(\002\022\016\n\006weight\030\004 \001(\005\022\016\n\006radius\030\005 \001(\002\022\r\n\005sp"
-    "eed\030\006 \001(\002\022\017\n\007vectorX\030\007 \001(\002\022\017\n\007vectorY\030\010 "
-    "\001(\002\022\016\n\006fromId\030\t \001(\005\022\017\n\007mergeId\030\n \001(\005\022\016\n\006"
-    "status\030\013 \001(\005\022\036\n\013magnetFoods\030\014 \003(\0132\t.Food"
-    "Area\"\310\001\n\006Player\022\033\n\010userInfo\030\001 \002(\0132\t.User"
-    "Info\022\016\n\006weight\030\002 \001(\005\022\024\n\005cells\030\003 \003(\0132\005.Ce"
-    "ll\022\016\n\006status\030\004 \001(\005\022\035\n\025ultimateSkillProgr"
-    "ess\030\005 \001(\002\022#\n\020beKilledUserInfo\030\006 \001(\0132\t.Us"
-    "erInfo\022\'\n\016superRenewInfo\030\007 \001(\0132\017.SuperRe"
-    "newInfo\"\?\n\016SuperRenewInfo\022\014\n\004gold\030\001 \001(\005\022"
-    "\016\n\006weight\030\002 \001(\005\022\017\n\007percent\030\003 \001(\005\"\301\001\n\010Roo"
-    "mInfo\022\r\n\005width\030\001 \002(\005\022\016\n\006height\030\002 \002(\005\022\022\n\n"
-    "remainTime\030\003 \001(\005\022\022\n\nfoodRadius\030\004 \001(\005\022\030\n\007"
-    "players\030\005 \003(\0132\007.Player\022\034\n\tfoodAreas\030\006 \003("
-    "\0132\t.FoodArea\022\034\n\trankItems\030\007 \003(\0132\t.RankIt"
-    "em\022\030\n\007asylums\030\010 \003(\0132\007.Asylum\"2\n\021GameStat"
-    "eResponse\022\r\n\005state\030\001 \002(\005\022\016\n\006roomId\030\002 \001(\t"
-    "\"\"\n\020GameReadyRequest\022\016\n\006roomId\030\001 \001(\t\"3\n\032"
-    "UltimateSkillChooseRequest\022\025\n\rultimateSk"
-    "ill\030\001 \001(\005\"\035\n\033UltimateSkillChooseResponse"
-    "\"$\n\024PlayerRenewalRequest\022\014\n\004type\030\001 \001(\005\"\027"
-    "\n\025PlayerRenewalResponse\"H\n\006Asylum\022\n\n\002id\030"
-    "\001 \002(\005\022\014\n\004skin\030\002 \001(\005\022\t\n\001x\030\003 \001(\002\022\t\n\001y\030\004 \001("
-    "\002\022\016\n\006radius\030\005 \001(\002\"%\n\004Prop\022\n\n\002id\030\001 \002(\005\022\021\n"
-    "\tremainDay\030\002 \002(\005\"\?\n\020BackpackResponse\022\024\n\005"
-    "skins\030\001 \003(\0132\005.Prop\022\025\n\006skills\030\002 \003(\0132\005.Pro"
-    "p\"\203\001\n\017SkinMerchandise\022\n\n\002id\030\001 \002(\t\022\014\n\004nam"
-    "e\030\002 \002(\t\022\016\n\006propId\030\003 \002(\005\022\r\n\005price\030\004 \002(\005\022\025"
-    "\n\ravailableDays\030\005 \002(\005\022\023\n\013description\030\006 \001"
-    "(\t\022\013\n\003tag\030\007 \001(\005\"\207\001\n\020SkillMerchandise\022\n\n\002"
-    "id\030\001 \002(\t\022\014\n\004name\030\002 \002(\t\022\016\n\006propId\030\003 \002(\005\022\r"
-    "\n\005price\030\004 \002(\005\022\025\n\ravailableDays\030\005 \002(\005\022\023\n\013"
-    "description\030\006 \001(\t\022\016\n\006foodId\030\007 \001(\005\"s\n\027Sho"
-    "pMerchandiseResponse\022*\n\020skinMerchandises"
-    "\030\001 \003(\0132\020.SkinMerchandise\022,\n\021skillMerchan"
-    "dises\030\002 \003(\0132\021.SkillMerchandise\"\030\n\nBuyReq"
-    "uest\022\n\n\002id\030\001 \002(\t\"2\n\023UserChangedResponse\022"
-    "\033\n\010userInfo\030\001 \002(\0132\t.UserInfo\"/\n\020UserInfo"
-    "Response\022\033\n\010userInfo\030\001 \002(\0132\t.UserInfo\"+\n"
-    "\rUltimateSkill\022\n\n\002id\030\001 \002(\005\022\016\n\006foodId\030\002 \001"
-    "(\005\"e\n\021PrivilegeResponse\022\014\n\004type\030\001 \002(\005\022\017\n"
-    "\007stamina\030\002 \001(\005\022\021\n\tcountdown\030\003 \001(\005\022\036\n\npri"
-    "vileges\030\004 \003(\0132\n.Privilege\"\200\001\n\tPrivilege\022"
-    "\n\n\002id\030\001 \002(\t\022\014\n\004name\030\002 \002(\t\022\014\n\004type\030\003 \002(\005\022"
-    "\020\n\010orgPrice\030\004 \001(\005\022\r\n\005price\030\005 \002(\005\022\014\n\004gold"
-    "\030\006 \001(\005\022\014\n\004icon\030\007 \001(\005\022\016\n\006poster\030\010 \001(\t\")\n\024"
-    "AuthorizationRequest\022\021\n\tuserPayId\030\001 \002(\t\""
-    "4\n\025AuthorizationResponse\022\033\n\010userInfo\030\001 \002"
-    "(\0132\t.UserInfo\"0\n\017PayOrderRequest\022\014\n\004type"
-    "\030\001 \002(\t\022\017\n\007goodsId\030\002 \002(\t\"S\n\020PayOrderRespo"
-    "nse\022\017\n\007orderId\030\001 \002(\t\022\r\n\005price\030\002 \002(\005\022\037\n\no"
-    "rderParam\030\003 \002(\0132\013.OrderParam\"\177\n\nOrderPar"
-    "am\022\014\n\004name\030\001 \001(\t\022\023\n\013unicomFeeId\030\002 \001(\t\022\027\n"
-    "\017unicomProductId\030\003 \001(\t\022\020\n\010aliFeeId\030\004 \001(\t"
-    "\022\023\n\013weixinFeeId\030\005 \001(\t\022\016\n\006notify\030\006 \001(\010\"F\n"
-    "\020PayResultRequest\022\014\n\004type\030\001 \002(\t\022\017\n\007order"
-    "Id\030\002 \002(\t\022\023\n\013orderStatus\030\003 \002(\t\"V\n\021PayResu"
-    "ltResponse\022\017\n\007orderId\030\001 \002(\t\022\023\n\013orderStat"
-    "us\030\002 \002(\t\022\033\n\010userInfo\030\003 \001(\0132\t.UserInfo\"2\n"
-    "\023GoldCoinListRequest\022\014\n\004page\030\001 \002(\005\022\r\n\005li"
-    "mit\030\002 \002(\005\"3\n\024GoldCoinListResponse\022\033\n\010gol"
-    "dCoin\030\001 \003(\0132\t.GoldCoin\"S\n\010GoldCoin\022\n\n\002id"
-    "\030\001 \002(\t\022\016\n\006canBuy\030\002 \002(\010\022\014\n\004gold\030\003 \001(\005\022\r\n\005"
-    "price\030\004 \001(\005\022\016\n\006poster\030\006 \001(\t", 5867);
+    "\005\022\016\n\006reward\030\004 \001(\005\"+\n\nCellVector\022\016\n\006cellI"
+    "d\030\001 \002(\005\022\r\n\005angle\030\002 \001(\005\"9\n\026PlayerOperatio"
+    "nRequest\022\037\n\ncellVector\030\001 \003(\0132\013.CellVecto"
+    "r\"\310\001\n\010UserInfo\022\013\n\003uid\030\001 \002(\005\022\014\n\004skin\030\002 \001("
+    "\005\022\020\n\010nickname\030\003 \001(\t\022\017\n\007account\030\004 \001(\t\022%\n\r"
+    "ultimateSkill\030\005 \001(\0132\016.UltimateSkill\022\014\n\004g"
+    "old\030\006 \001(\005\022\017\n\007stamina\030\007 \001(\005\022\022\n\nmaxStamina"
+    "\030\010 \001(\005\022\021\n\tcountdown\030\t \001(\005\022\021\n\tprivilege\030\n"
+    " \001(\005\"6\n\004Food\022\n\n\002id\030\001 \002(\005\022\014\n\004skin\030\002 \001(\005\022\t"
+    "\n\001x\030\003 \001(\005\022\t\n\001y\030\004 \001(\005\"\247\001\n\004Cell\022\n\n\002id\030\001 \002("
+    "\005\022\t\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005\022\016\n\006radius\030\004 \001(\005\022"
+    "\r\n\005speed\030\005 \001(\005\022\r\n\005angle\030\006 \001(\005\022\016\n\006fromId\030"
+    "\007 \001(\005\022\017\n\007mergeId\030\010 \001(\005\022\016\n\006status\030\t \001(\005\022\036"
+    "\n\013magnetFoods\030\n \003(\0132\t.FoodArea\"\310\001\n\006Playe"
+    "r\022\033\n\010userInfo\030\001 \002(\0132\t.UserInfo\022\016\n\006weight"
+    "\030\002 \001(\005\022\024\n\005cells\030\003 \003(\0132\005.Cell\022\016\n\006status\030\004"
+    " \001(\005\022\035\n\025ultimateSkillProgress\030\005 \001(\002\022#\n\020b"
+    "eKilledUserInfo\030\006 \001(\0132\t.UserInfo\022\'\n\016supe"
+    "rRenewInfo\030\007 \001(\0132\017.SuperRenewInfo\"\?\n\016Sup"
+    "erRenewInfo\022\014\n\004gold\030\001 \001(\005\022\016\n\006weight\030\002 \001("
+    "\005\022\017\n\007percent\030\003 \001(\005\"\301\001\n\010RoomInfo\022\r\n\005width"
+    "\030\001 \002(\005\022\016\n\006height\030\002 \002(\005\022\022\n\nremainTime\030\003 \001"
+    "(\005\022\022\n\nfoodRadius\030\004 \001(\005\022\030\n\007players\030\005 \003(\0132"
+    "\007.Player\022\034\n\tfoodAreas\030\006 \003(\0132\t.FoodArea\022\034"
+    "\n\trankItems\030\007 \003(\0132\t.RankItem\022\030\n\007asylums\030"
+    "\010 \003(\0132\007.Asylum\"2\n\021GameStateResponse\022\r\n\005s"
+    "tate\030\001 \002(\005\022\016\n\006roomId\030\002 \001(\t\"\"\n\020GameReadyR"
+    "equest\022\016\n\006roomId\030\001 \001(\t\"3\n\032UltimateSkillC"
+    "hooseRequest\022\025\n\rultimateSkill\030\001 \001(\005\"\035\n\033U"
+    "ltimateSkillChooseResponse\"$\n\024PlayerRene"
+    "walRequest\022\014\n\004type\030\001 \001(\005\"\027\n\025PlayerRenewa"
+    "lResponse\"H\n\006Asylum\022\n\n\002id\030\001 \002(\005\022\014\n\004skin\030"
+    "\002 \001(\005\022\t\n\001x\030\003 \001(\002\022\t\n\001y\030\004 \001(\002\022\016\n\006radius\030\005 "
+    "\001(\002\"%\n\004Prop\022\n\n\002id\030\001 \002(\005\022\021\n\tremainDay\030\002 \002"
+    "(\005\"\?\n\020BackpackResponse\022\024\n\005skins\030\001 \003(\0132\005."
+    "Prop\022\025\n\006skills\030\002 \003(\0132\005.Prop\"\203\001\n\017SkinMerc"
+    "handise\022\n\n\002id\030\001 \002(\t\022\014\n\004name\030\002 \002(\t\022\016\n\006pro"
+    "pId\030\003 \002(\005\022\r\n\005price\030\004 \002(\005\022\025\n\ravailableDay"
+    "s\030\005 \002(\005\022\023\n\013description\030\006 \001(\t\022\013\n\003tag\030\007 \001("
+    "\005\"\207\001\n\020SkillMerchandise\022\n\n\002id\030\001 \002(\t\022\014\n\004na"
+    "me\030\002 \002(\t\022\016\n\006propId\030\003 \002(\005\022\r\n\005price\030\004 \002(\005\022"
+    "\025\n\ravailableDays\030\005 \002(\005\022\023\n\013description\030\006 "
+    "\001(\t\022\016\n\006foodId\030\007 \001(\005\"s\n\027ShopMerchandiseRe"
+    "sponse\022*\n\020skinMerchandises\030\001 \003(\0132\020.SkinM"
+    "erchandise\022,\n\021skillMerchandises\030\002 \003(\0132\021."
+    "SkillMerchandise\"\030\n\nBuyRequest\022\n\n\002id\030\001 \002"
+    "(\t\"2\n\023UserChangedResponse\022\033\n\010userInfo\030\001 "
+    "\002(\0132\t.UserInfo\"/\n\020UserInfoResponse\022\033\n\010us"
+    "erInfo\030\001 \002(\0132\t.UserInfo\"+\n\rUltimateSkill"
+    "\022\n\n\002id\030\001 \002(\005\022\016\n\006foodId\030\002 \001(\005\"e\n\021Privileg"
+    "eResponse\022\014\n\004type\030\001 \002(\005\022\017\n\007stamina\030\002 \001(\005"
+    "\022\021\n\tcountdown\030\003 \001(\005\022\036\n\nprivileges\030\004 \003(\0132"
+    "\n.Privilege\"\200\001\n\tPrivilege\022\n\n\002id\030\001 \002(\t\022\014\n"
+    "\004name\030\002 \002(\t\022\014\n\004type\030\003 \002(\005\022\020\n\010orgPrice\030\004 "
+    "\001(\005\022\r\n\005price\030\005 \002(\005\022\014\n\004gold\030\006 \001(\005\022\014\n\004icon"
+    "\030\007 \001(\005\022\016\n\006poster\030\010 \001(\t\")\n\024AuthorizationR"
+    "equest\022\021\n\tuserPayId\030\001 \002(\t\"4\n\025Authorizati"
+    "onResponse\022\033\n\010userInfo\030\001 \002(\0132\t.UserInfo\""
+    "0\n\017PayOrderRequest\022\014\n\004type\030\001 \002(\t\022\017\n\007good"
+    "sId\030\002 \002(\t\"S\n\020PayOrderResponse\022\017\n\007orderId"
+    "\030\001 \002(\t\022\r\n\005price\030\002 \002(\005\022\037\n\norderParam\030\003 \002("
+    "\0132\013.OrderParam\"\177\n\nOrderParam\022\014\n\004name\030\001 \001"
+    "(\t\022\023\n\013unicomFeeId\030\002 \001(\t\022\027\n\017unicomProduct"
+    "Id\030\003 \001(\t\022\020\n\010aliFeeId\030\004 \001(\t\022\023\n\013weixinFeeI"
+    "d\030\005 \001(\t\022\016\n\006notify\030\006 \001(\010\"F\n\020PayResultRequ"
+    "est\022\014\n\004type\030\001 \002(\t\022\017\n\007orderId\030\002 \002(\t\022\023\n\013or"
+    "derStatus\030\003 \002(\t\"V\n\021PayResultResponse\022\017\n\007"
+    "orderId\030\001 \002(\t\022\023\n\013orderStatus\030\002 \002(\t\022\033\n\010us"
+    "erInfo\030\003 \001(\0132\t.UserInfo\"2\n\023GoldCoinListR"
+    "equest\022\014\n\004page\030\001 \002(\005\022\r\n\005limit\030\002 \002(\005\"3\n\024G"
+    "oldCoinListResponse\022\033\n\010goldCoin\030\001 \003(\0132\t."
+    "GoldCoin\"S\n\010GoldCoin\022\n\n\002id\030\001 \002(\t\022\016\n\006canB"
+    "uy\030\002 \002(\010\022\014\n\004gold\030\003 \001(\005\022\r\n\005price\030\004 \001(\005\022\016\n"
+    "\006poster\030\006 \001(\t", 5813);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "game.proto", &protobuf_RegisterTypes);
   MessageInfo::default_instance_ = new MessageInfo();
@@ -8739,8 +8735,7 @@ void RankItem::Swap(RankItem* other) {
 
 #ifndef _MSC_VER
 const int CellVector::kCellIdFieldNumber;
-const int CellVector::kVectorXFieldNumber;
-const int CellVector::kVectorYFieldNumber;
+const int CellVector::kAngleFieldNumber;
 #endif  // !_MSC_VER
 
 CellVector::CellVector()
@@ -8762,8 +8757,7 @@ CellVector::CellVector(const CellVector& from)
 void CellVector::SharedCtor() {
   _cached_size_ = 0;
   cellid_ = 0;
-  vectorx_ = 0;
-  vectory_ = 0;
+  angle_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -8809,7 +8803,7 @@ void CellVector::Clear() {
     ::memset(&first, 0, n);                                \
   } while (0)
 
-  ZR_(cellid_, vectory_);
+  ZR_(cellid_, angle_);
 
 #undef OFFSET_OF_FIELD_
 #undef ZR_
@@ -8838,33 +8832,18 @@ bool CellVector::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(21)) goto parse_vectorX;
+        if (input->ExpectTag(16)) goto parse_angle;
         break;
       }
 
-      // required float vectorX = 2;
+      // optional int32 angle = 2;
       case 2: {
-        if (tag == 21) {
-         parse_vectorX:
+        if (tag == 16) {
+         parse_angle:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &vectorx_)));
-          set_has_vectorx();
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(29)) goto parse_vectorY;
-        break;
-      }
-
-      // required float vectorY = 3;
-      case 3: {
-        if (tag == 29) {
-         parse_vectorY:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &vectory_)));
-          set_has_vectory();
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &angle_)));
+          set_has_angle();
         } else {
           goto handle_unusual;
         }
@@ -8902,14 +8881,9 @@ void CellVector::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->cellid(), output);
   }
 
-  // required float vectorX = 2;
-  if (has_vectorx()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(2, this->vectorx(), output);
-  }
-
-  // required float vectorY = 3;
-  if (has_vectory()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(3, this->vectory(), output);
+  // optional int32 angle = 2;
+  if (has_angle()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->angle(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -8927,14 +8901,9 @@ void CellVector::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->cellid(), target);
   }
 
-  // required float vectorX = 2;
-  if (has_vectorx()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(2, this->vectorx(), target);
-  }
-
-  // required float vectorY = 3;
-  if (has_vectory()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(3, this->vectory(), target);
+  // optional int32 angle = 2;
+  if (has_angle()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->angle(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -8956,14 +8925,11 @@ int CellVector::ByteSize() const {
           this->cellid());
     }
 
-    // required float vectorX = 2;
-    if (has_vectorx()) {
-      total_size += 1 + 4;
-    }
-
-    // required float vectorY = 3;
-    if (has_vectory()) {
-      total_size += 1 + 4;
+    // optional int32 angle = 2;
+    if (has_angle()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->angle());
     }
 
   }
@@ -8996,11 +8962,8 @@ void CellVector::MergeFrom(const CellVector& from) {
     if (from.has_cellid()) {
       set_cellid(from.cellid());
     }
-    if (from.has_vectorx()) {
-      set_vectorx(from.vectorx());
-    }
-    if (from.has_vectory()) {
-      set_vectory(from.vectory());
+    if (from.has_angle()) {
+      set_angle(from.angle());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -9019,7 +8982,7 @@ void CellVector::CopyFrom(const CellVector& from) {
 }
 
 bool CellVector::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
   return true;
 }
@@ -9027,8 +8990,7 @@ bool CellVector::IsInitialized() const {
 void CellVector::Swap(CellVector* other) {
   if (other != this) {
     std::swap(cellid_, other->cellid_);
-    std::swap(vectorx_, other->vectorx_);
-    std::swap(vectory_, other->vectory_);
+    std::swap(angle_, other->angle_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -10023,31 +9985,31 @@ bool Food::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(29)) goto parse_x;
+        if (input->ExpectTag(24)) goto parse_x;
         break;
       }
 
-      // optional float x = 3;
+      // optional int32 x = 3;
       case 3: {
-        if (tag == 29) {
+        if (tag == 24) {
          parse_x:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &x_)));
           set_has_x();
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(37)) goto parse_y;
+        if (input->ExpectTag(32)) goto parse_y;
         break;
       }
 
-      // optional float y = 4;
+      // optional int32 y = 4;
       case 4: {
-        if (tag == 37) {
+        if (tag == 32) {
          parse_y:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &y_)));
           set_has_y();
         } else {
@@ -10092,14 +10054,14 @@ void Food::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->skin(), output);
   }
 
-  // optional float x = 3;
+  // optional int32 x = 3;
   if (has_x()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(3, this->x(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->x(), output);
   }
 
-  // optional float y = 4;
+  // optional int32 y = 4;
   if (has_y()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->y(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->y(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -10122,14 +10084,14 @@ void Food::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->skin(), target);
   }
 
-  // optional float x = 3;
+  // optional int32 x = 3;
   if (has_x()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(3, this->x(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->x(), target);
   }
 
-  // optional float y = 4;
+  // optional int32 y = 4;
   if (has_y()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->y(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->y(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -10158,14 +10120,18 @@ int Food::ByteSize() const {
           this->skin());
     }
 
-    // optional float x = 3;
+    // optional int32 x = 3;
     if (has_x()) {
-      total_size += 1 + 4;
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->x());
     }
 
-    // optional float y = 4;
+    // optional int32 y = 4;
     if (has_y()) {
-      total_size += 1 + 4;
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->y());
     }
 
   }
@@ -10256,11 +10222,9 @@ void Food::Swap(Food* other) {
 const int Cell::kIdFieldNumber;
 const int Cell::kXFieldNumber;
 const int Cell::kYFieldNumber;
-const int Cell::kWeightFieldNumber;
 const int Cell::kRadiusFieldNumber;
 const int Cell::kSpeedFieldNumber;
-const int Cell::kVectorXFieldNumber;
-const int Cell::kVectorYFieldNumber;
+const int Cell::kAngleFieldNumber;
 const int Cell::kFromIdFieldNumber;
 const int Cell::kMergeIdFieldNumber;
 const int Cell::kStatusFieldNumber;
@@ -10288,11 +10252,9 @@ void Cell::SharedCtor() {
   id_ = 0;
   x_ = 0;
   y_ = 0;
-  weight_ = 0;
   radius_ = 0;
   speed_ = 0;
-  vectorx_ = 0;
-  vectory_ = 0;
+  angle_ = 0;
   fromid_ = 0;
   mergeid_ = 0;
   status_ = 0;
@@ -10342,12 +10304,9 @@ void Cell::Clear() {
   } while (0)
 
   if (_has_bits_[0 / 32] & 255) {
-    ZR_(id_, vectory_);
+    ZR_(id_, mergeid_);
   }
-  if (_has_bits_[8 / 32] & 1792) {
-    ZR_(fromid_, mergeid_);
-    status_ = 0;
-  }
+  status_ = 0;
 
 #undef OFFSET_OF_FIELD_
 #undef ZR_
@@ -10377,118 +10336,88 @@ bool Cell::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(21)) goto parse_x;
+        if (input->ExpectTag(16)) goto parse_x;
         break;
       }
 
-      // optional float x = 2;
+      // optional int32 x = 2;
       case 2: {
-        if (tag == 21) {
+        if (tag == 16) {
          parse_x:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &x_)));
           set_has_x();
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(29)) goto parse_y;
+        if (input->ExpectTag(24)) goto parse_y;
         break;
       }
 
-      // optional float y = 3;
+      // optional int32 y = 3;
       case 3: {
-        if (tag == 29) {
+        if (tag == 24) {
          parse_y:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &y_)));
           set_has_y();
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(32)) goto parse_weight;
+        if (input->ExpectTag(32)) goto parse_radius;
         break;
       }
 
-      // optional int32 weight = 4;
+      // optional int32 radius = 4;
       case 4: {
         if (tag == 32) {
-         parse_weight:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &weight_)));
-          set_has_weight();
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(45)) goto parse_radius;
-        break;
-      }
-
-      // optional float radius = 5;
-      case 5: {
-        if (tag == 45) {
          parse_radius:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &radius_)));
           set_has_radius();
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(53)) goto parse_speed;
+        if (input->ExpectTag(40)) goto parse_speed;
         break;
       }
 
-      // optional float speed = 6;
-      case 6: {
-        if (tag == 53) {
+      // optional int32 speed = 5;
+      case 5: {
+        if (tag == 40) {
          parse_speed:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &speed_)));
           set_has_speed();
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(61)) goto parse_vectorX;
+        if (input->ExpectTag(48)) goto parse_angle;
         break;
       }
 
-      // optional float vectorX = 7;
+      // optional int32 angle = 6;
+      case 6: {
+        if (tag == 48) {
+         parse_angle:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &angle_)));
+          set_has_angle();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(56)) goto parse_fromId;
+        break;
+      }
+
+      // optional int32 fromId = 7;
       case 7: {
-        if (tag == 61) {
-         parse_vectorX:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &vectorx_)));
-          set_has_vectorx();
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(69)) goto parse_vectorY;
-        break;
-      }
-
-      // optional float vectorY = 8;
-      case 8: {
-        if (tag == 69) {
-         parse_vectorY:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &vectory_)));
-          set_has_vectory();
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(72)) goto parse_fromId;
-        break;
-      }
-
-      // optional int32 fromId = 9;
-      case 9: {
-        if (tag == 72) {
+        if (tag == 56) {
          parse_fromId:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -10497,13 +10426,13 @@ bool Cell::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(80)) goto parse_mergeId;
+        if (input->ExpectTag(64)) goto parse_mergeId;
         break;
       }
 
-      // optional int32 mergeId = 10;
-      case 10: {
-        if (tag == 80) {
+      // optional int32 mergeId = 8;
+      case 8: {
+        if (tag == 64) {
          parse_mergeId:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -10512,13 +10441,13 @@ bool Cell::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(88)) goto parse_status;
+        if (input->ExpectTag(72)) goto parse_status;
         break;
       }
 
-      // optional int32 status = 11;
-      case 11: {
-        if (tag == 88) {
+      // optional int32 status = 9;
+      case 9: {
+        if (tag == 72) {
          parse_status:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -10527,20 +10456,20 @@ bool Cell::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(98)) goto parse_magnetFoods;
+        if (input->ExpectTag(82)) goto parse_magnetFoods;
         break;
       }
 
-      // repeated .FoodArea magnetFoods = 12;
-      case 12: {
-        if (tag == 98) {
+      // repeated .FoodArea magnetFoods = 10;
+      case 10: {
+        if (tag == 82) {
          parse_magnetFoods:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                 input, add_magnetfoods()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(98)) goto parse_magnetFoods;
+        if (input->ExpectTag(82)) goto parse_magnetFoods;
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -10575,60 +10504,50 @@ void Cell::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->id(), output);
   }
 
-  // optional float x = 2;
+  // optional int32 x = 2;
   if (has_x()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(2, this->x(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->x(), output);
   }
 
-  // optional float y = 3;
+  // optional int32 y = 3;
   if (has_y()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(3, this->y(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->y(), output);
   }
 
-  // optional int32 weight = 4;
-  if (has_weight()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->weight(), output);
-  }
-
-  // optional float radius = 5;
+  // optional int32 radius = 4;
   if (has_radius()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(5, this->radius(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->radius(), output);
   }
 
-  // optional float speed = 6;
+  // optional int32 speed = 5;
   if (has_speed()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(6, this->speed(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->speed(), output);
   }
 
-  // optional float vectorX = 7;
-  if (has_vectorx()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(7, this->vectorx(), output);
+  // optional int32 angle = 6;
+  if (has_angle()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->angle(), output);
   }
 
-  // optional float vectorY = 8;
-  if (has_vectory()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(8, this->vectory(), output);
-  }
-
-  // optional int32 fromId = 9;
+  // optional int32 fromId = 7;
   if (has_fromid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(9, this->fromid(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->fromid(), output);
   }
 
-  // optional int32 mergeId = 10;
+  // optional int32 mergeId = 8;
   if (has_mergeid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(10, this->mergeid(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->mergeid(), output);
   }
 
-  // optional int32 status = 11;
+  // optional int32 status = 9;
   if (has_status()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(11, this->status(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(9, this->status(), output);
   }
 
-  // repeated .FoodArea magnetFoods = 12;
+  // repeated .FoodArea magnetFoods = 10;
   for (int i = 0; i < this->magnetfoods_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      12, this->magnetfoods(i), output);
+      10, this->magnetfoods(i), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -10646,61 +10565,51 @@ void Cell::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->id(), target);
   }
 
-  // optional float x = 2;
+  // optional int32 x = 2;
   if (has_x()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(2, this->x(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->x(), target);
   }
 
-  // optional float y = 3;
+  // optional int32 y = 3;
   if (has_y()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(3, this->y(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->y(), target);
   }
 
-  // optional int32 weight = 4;
-  if (has_weight()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->weight(), target);
-  }
-
-  // optional float radius = 5;
+  // optional int32 radius = 4;
   if (has_radius()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(5, this->radius(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->radius(), target);
   }
 
-  // optional float speed = 6;
+  // optional int32 speed = 5;
   if (has_speed()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(6, this->speed(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->speed(), target);
   }
 
-  // optional float vectorX = 7;
-  if (has_vectorx()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(7, this->vectorx(), target);
+  // optional int32 angle = 6;
+  if (has_angle()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->angle(), target);
   }
 
-  // optional float vectorY = 8;
-  if (has_vectory()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(8, this->vectory(), target);
-  }
-
-  // optional int32 fromId = 9;
+  // optional int32 fromId = 7;
   if (has_fromid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(9, this->fromid(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->fromid(), target);
   }
 
-  // optional int32 mergeId = 10;
+  // optional int32 mergeId = 8;
   if (has_mergeid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(10, this->mergeid(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->mergeid(), target);
   }
 
-  // optional int32 status = 11;
+  // optional int32 status = 9;
   if (has_status()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(11, this->status(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(9, this->status(), target);
   }
 
-  // repeated .FoodArea magnetFoods = 12;
+  // repeated .FoodArea magnetFoods = 10;
   for (int i = 0; i < this->magnetfoods_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        12, this->magnetfoods(i), target);
+        10, this->magnetfoods(i), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -10722,60 +10631,58 @@ int Cell::ByteSize() const {
           this->id());
     }
 
-    // optional float x = 2;
+    // optional int32 x = 2;
     if (has_x()) {
-      total_size += 1 + 4;
-    }
-
-    // optional float y = 3;
-    if (has_y()) {
-      total_size += 1 + 4;
-    }
-
-    // optional int32 weight = 4;
-    if (has_weight()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->weight());
+          this->x());
     }
 
-    // optional float radius = 5;
+    // optional int32 y = 3;
+    if (has_y()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->y());
+    }
+
+    // optional int32 radius = 4;
     if (has_radius()) {
-      total_size += 1 + 4;
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->radius());
     }
 
-    // optional float speed = 6;
+    // optional int32 speed = 5;
     if (has_speed()) {
-      total_size += 1 + 4;
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->speed());
     }
 
-    // optional float vectorX = 7;
-    if (has_vectorx()) {
-      total_size += 1 + 4;
+    // optional int32 angle = 6;
+    if (has_angle()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->angle());
     }
 
-    // optional float vectorY = 8;
-    if (has_vectory()) {
-      total_size += 1 + 4;
-    }
-
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    // optional int32 fromId = 9;
+    // optional int32 fromId = 7;
     if (has_fromid()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->fromid());
     }
 
-    // optional int32 mergeId = 10;
+    // optional int32 mergeId = 8;
     if (has_mergeid()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->mergeid());
     }
 
-    // optional int32 status = 11;
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional int32 status = 9;
     if (has_status()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
@@ -10783,7 +10690,7 @@ int Cell::ByteSize() const {
     }
 
   }
-  // repeated .FoodArea magnetFoods = 12;
+  // repeated .FoodArea magnetFoods = 10;
   total_size += 1 * this->magnetfoods_size();
   for (int i = 0; i < this->magnetfoods_size(); i++) {
     total_size +=
@@ -10827,29 +10734,23 @@ void Cell::MergeFrom(const Cell& from) {
     if (from.has_y()) {
       set_y(from.y());
     }
-    if (from.has_weight()) {
-      set_weight(from.weight());
-    }
     if (from.has_radius()) {
       set_radius(from.radius());
     }
     if (from.has_speed()) {
       set_speed(from.speed());
     }
-    if (from.has_vectorx()) {
-      set_vectorx(from.vectorx());
+    if (from.has_angle()) {
+      set_angle(from.angle());
     }
-    if (from.has_vectory()) {
-      set_vectory(from.vectory());
-    }
-  }
-  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_fromid()) {
       set_fromid(from.fromid());
     }
     if (from.has_mergeid()) {
       set_mergeid(from.mergeid());
     }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_status()) {
       set_status(from.status());
     }
@@ -10881,11 +10782,9 @@ void Cell::Swap(Cell* other) {
     std::swap(id_, other->id_);
     std::swap(x_, other->x_);
     std::swap(y_, other->y_);
-    std::swap(weight_, other->weight_);
     std::swap(radius_, other->radius_);
     std::swap(speed_, other->speed_);
-    std::swap(vectorx_, other->vectorx_);
-    std::swap(vectory_, other->vectory_);
+    std::swap(angle_, other->angle_);
     std::swap(fromid_, other->fromid_);
     std::swap(mergeid_, other->mergeid_);
     std::swap(status_, other->status_);
