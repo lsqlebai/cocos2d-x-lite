@@ -20,7 +20,6 @@ LOCAL_SRC_FILES := ../auto/jsb_cocos2dx_extension_auto.cpp \
                    ../auto/jsb_creator_auto.cpp \
                    ../auto/js_bindings_chipmunk_auto_classes.cpp \
                    ../auto/js_bindings_chipmunk_functions.cpp \
-		   ../auto/iflytek_auto.cpp \
                    ../manual/ScriptingCore.cpp \
                    ../manual/cocos2d_specifics.cpp \
                    ../manual/js_manual_conversions.cpp \
@@ -51,8 +50,13 @@ LOCAL_SRC_FILES := ../auto/jsb_cocos2dx_extension_auto.cpp \
                    ../manual/spine/jsb_cocos2dx_spine_manual.cpp \
                    ../manual/dragonbones/jsb_cocos2dx_dragonbones_manual.cpp \
                    ../manual/ui/jsb_cocos2dx_ui_manual.cpp \
-                   ../manual/platform/android/CCJavascriptJavaBridge.cpp
-
+                   ../manual/platform/android/CCJavascriptJavaBridge.cpp \
+				   ../manual/iflytek/CallbackManager.cpp \
+				   ../manual/iflytek/md5.c \
+				   ../manual/iflytek/ProxyDownloader.cpp \
+				   ../manual/platform/android/pay/PayListener.cpp \
+				   ../manual/platform/android/JS_Binder.cpp 
+				   
 LOCAL_CFLAGS := -DCOCOS2D_JAVASCRIPT -DASIO_STANDALONE
 
 LOCAL_EXPORT_CFLAGS := -DCOCOS2D_JAVASCRIPT

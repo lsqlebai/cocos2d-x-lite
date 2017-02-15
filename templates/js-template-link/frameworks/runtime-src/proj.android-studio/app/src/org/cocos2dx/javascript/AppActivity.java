@@ -37,6 +37,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 
+import com.iflytek.unipay.PayComponent;
+import com.iflytek.unipay.js.CocoActivityHelper;
+
 public class AppActivity extends Cocos2dxActivity {
 
     private static AppActivity app = null;
@@ -46,6 +49,8 @@ public class AppActivity extends Cocos2dxActivity {
         super.onCreate(savedInstanceState);
         app = this;
         SDKWrapper.getInstance().init(this);
+        CocoActivityHelper.setActivity(this);
+        PayComponent.getInstance().init(this);
     }
 	
     @Override

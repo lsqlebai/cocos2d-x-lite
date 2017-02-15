@@ -18,7 +18,10 @@ jni/Java_org_cocos2dx_lib_Cocos2dxBitmap.cpp \
 jni/Java_org_cocos2dx_lib_Cocos2dxHelper.cpp \
 jni/Java_org_cocos2dx_lib_Cocos2dxRenderer.cpp \
 jni/JniHelper.cpp \
-jni/TouchesJni.cpp
+jni/TouchesJni.cpp \
+pay/PayBinder.cpp
+
+LOCAL_STATIC_LIBRARIES := libjscocos2d
 
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)
 

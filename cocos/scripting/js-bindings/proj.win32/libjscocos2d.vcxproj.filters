@@ -36,6 +36,9 @@
     <Filter Include="manual\dragonbones">
       <UniqueIdentifier>{36372247-74fd-4169-8120-06c8c0596530}</UniqueIdentifier>
     </Filter>
+    <Filter Include="manual\iflytek">
+      <UniqueIdentifier>{0bce99a5-39a7-4899-8ab0-aa2589a11367}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\auto\jsb_cocos2dx_auto.cpp">
@@ -145,6 +148,15 @@
     </ClCompile>
     <ClCompile Include="..\manual\dragonbones\jsb_cocos2dx_dragonbones_manual.cpp">
       <Filter>manual\dragonbones</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\iflytek\CallbackManager.cpp">
+      <Filter>manual\iflytek</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\iflytek\ProxyDownloader.cpp">
+      <Filter>manual\iflytek</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\iflytek\md5.c">
+      <Filter>manual\iflytek</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -276,6 +288,18 @@
     </ClInclude>
     <ClInclude Include="..\manual\dragonbones\jsb_cocos2dx_dragonbones_manual.h">
       <Filter>manual\dragonbones</Filter>
+    </ClInclude>
+    <ClInclude Include="JSBinder.h">
+      <Filter>auto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\CallbackManager.h">
+      <Filter>manual\iflytek</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\ProxyDownloader.h">
+      <Filter>manual\iflytek</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\md5.h">
+      <Filter>manual\iflytek</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
