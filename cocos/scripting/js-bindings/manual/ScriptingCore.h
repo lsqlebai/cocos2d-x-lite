@@ -39,8 +39,9 @@
 
 #include <assert.h>
 #include <memory>
+#include <chrono>
 
-#define ENGINE_VERSION "Cocos2d-JS v3.13"
+#define ENGINE_VERSION "Cocos2d-JS v3.14"
 
 void js_log(const char *format, ...);
 
@@ -90,6 +91,8 @@ private:
     JSObject *_finalizing;
     
     ScriptingCore();
+
+	std::chrono::steady_clock::time_point _engineStartTime;
 public:
     ~ScriptingCore();
 
@@ -352,6 +355,11 @@ public:
     void cleanAllScript();
 
     /**@~english
+     * Gets the time that the ScriptingCore was initalized
+     */
+    std::chrono::steady_clock::time_point getEngineStartTime() const;
+    
+    /**@~english
      * Initialize everything, including the js context, js global object etc.
      */
     void start();
@@ -529,13 +537,21 @@ public:
      * Calls the Garbage Collector
      */
     virtual void garbageCollect() override;
-    
+
+    /**
+     * Sets the js object that is being finalizing in the script engine, internal use only, please do not call this function
+     */
     void setFinalizing (JSObject *finalizing) {_finalizing = finalizing;};
+
+    /**
+     * Gets the js object that is being finalizing in the script engine
+     */
     JSObject *getFinalizing () {return _finalizing;};
 
 private:
     void string_report(JS::HandleValue val);
     void initRegister();
+    void clearGlobalMaps();
 
 public:
     int handleNodeEvent(void* data);
@@ -565,9 +581,8 @@ bool jsb_get_reserved_slot(JSObject *obj, uint32_t idx, jsval& ret);
 template <class T>
 js_type_class_t *jsb_register_class(JSContext *cx, JSClass *jsClass, JS::HandleObject proto, JS::HandleObject parentProto)
 {
-    TypeTest<T> t;
     js_type_class_t *p = nullptr;
-    std::string typeName = t.s_name();
+    std::string typeName = TypeTest<T>::s_name();
     if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
     {
         JS::RootedObject protoRoot(cx, proto);
@@ -651,7 +666,7 @@ JSObject* jsb_ref_get_or_create_jsobject(JSContext *cx, cocos2d::Ref *ref, js_ty
  * If it can't find it, it will create a new one associating it to Ref
  * Call this function for objects that might return an already existing copy when you create them. For example, `Animation3D::create()`;
  */
-JSObject* jsb_ref_autoreleased_get_or_create_jsobject(JSContext *cx, cocos2d::Ref *ref, js_type_class_t *typeClass, const char* debug);
+JSObject* jsb_ref_autoreleased_get_or_create_jsobject(JSContext *cx, cocos2d::Ref *ref, js_type_class_t *typeClass, const char* debug=nullptr);
 
 /**
  * It will try to get the associated JSObjct for the native object.
@@ -659,7 +674,7 @@ JSObject* jsb_ref_autoreleased_get_or_create_jsobject(JSContext *cx, cocos2d::Re
  * The reference created from JSObject to native object is weak because it won't retain it.
  * The behavior is exactly the same with 'jsb_ref_get_or_create_jsobject' when CC_ENABLE_GC_FOR_NATIVE_OBJECTS deactivated.
  */
-CC_JS_DLL JSObject* jsb_get_or_create_weak_jsobject(JSContext *cx, void *native, js_type_class_t *typeClass, const char* debug);
+CC_JS_DLL JSObject* jsb_get_or_create_weak_jsobject(JSContext *cx, void *native, js_type_class_t *typeClass, const char* debug=nullptr);
 
 /**
  * Register finalize hook and its owner as an entry in _js_hook_owner_map,
