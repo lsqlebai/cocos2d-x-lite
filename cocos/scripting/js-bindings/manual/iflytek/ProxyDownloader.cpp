@@ -157,9 +157,11 @@ bool js_download(JSContext *cx, uint32_t argc, jsval *vp)
 	JSB_PRECONDITION2(ok, cx, false, "js_download : Error processing arguments");
 
 	JS::RootedObject callback(cx, args.get(2).toObjectOrNull());
+	
 	__JSDownloaderDelegator* delegate;
 	delegate = new JSDownloaderDelegatorEx(cx, obj, url, proxy, callback);
-	
+	delegate->autorelease();
+
 	delegate->downloadAsync();
 	args.rval().setUndefined();
 	return true;
