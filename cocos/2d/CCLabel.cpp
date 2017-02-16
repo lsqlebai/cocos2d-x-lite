@@ -441,6 +441,7 @@ void Label::reset()
     CC_SAFE_RELEASE_NULL(_shadowNode);
     Node::removeAllChildrenWithCleanup(true);
     CC_SAFE_RELEASE_NULL(_reusedLetter);
+    
     _letters.clear();
     _batchNodes.clear();
     _lettersInfo.clear();
@@ -785,6 +786,9 @@ bool Label::alignText()
 {
     if (_fontAtlas == nullptr || _utf16Text.empty())
     {
+        if(_overflow == Overflow::NONE) {
+            setContentSize(Size::ZERO);
+        }
         return true;
     }
 
@@ -1206,9 +1210,12 @@ void Label::disableEffect(LabelEffect effect)
             _italicsEnabled = false;
             break;
         case cocos2d::LabelEffect::BOLD:
-            _boldEnabled = false;
-            _additionalKerning -= 1;
-            disableEffect(LabelEffect::SHADOW);
+            if (_boldEnabled)
+            {
+                _boldEnabled = false;
+                _additionalKerning -= 1;
+                disableEffect(LabelEffect::SHADOW);
+            }
             break;
         case cocos2d::LabelEffect::UNDERLINE:
             if (_underlineNode) {

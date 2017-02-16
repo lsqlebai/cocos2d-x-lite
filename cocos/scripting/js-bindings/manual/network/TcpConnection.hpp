@@ -1,4 +1,4 @@
-//
+﻿//
 //  TcpConnection.hpp
 //
 //  Created by SULEI on 17/1/19.
@@ -7,7 +7,7 @@
 
 #ifndef TCP_CONNECTION_HPP
 #define TCP_CONNECTION_HPP
-
+ 
 #include <iostream>
 #include <istream>
 #include <ostream>

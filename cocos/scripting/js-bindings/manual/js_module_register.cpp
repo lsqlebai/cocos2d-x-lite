@@ -39,7 +39,10 @@
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
 #include "scripting/js-bindings/manual/platform/ios/JavaScriptObjCBridge.h"
 #endif
-#include "scripting/js-bindings/auto/iflytek_auto.hpp"
+//add by shiqi Luo
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+#include "scripting/js-bindings/manual/platform/android/pay/PayListener.hpp"
+#endif
 
 USING_NS_CC;
 int js_module_register()
@@ -113,7 +116,10 @@ int js_module_register()
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
     sc->addRegisterCallback(JavaScriptObjCBridge::_js_register);
 #endif
-	sc->addRegisterCallback(register_all_custom);
+//add by shiqi Luo
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+	sc->addRegisterCallback(register_all_pay_listener);
+#endif
     return 1;
 }
 

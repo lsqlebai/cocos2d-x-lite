@@ -11,7 +11,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\auto\iflytek_auto.cpp" />
     <ClCompile Include="..\auto\jsb_cocos2dx_auto.cpp" />
     <ClCompile Include="..\auto\jsb_cocos2dx_audioengine_auto.cpp" />
     <ClCompile Include="..\auto\jsb_cocos2dx_builder_auto.cpp" />
@@ -32,6 +31,9 @@
     <ClCompile Include="..\manual\component\CCComponentJS.cpp" />
     <ClCompile Include="..\manual\dragonbones\jsb_cocos2dx_dragonbones_manual.cpp" />
     <ClCompile Include="..\manual\extension\jsb_cocos2dx_extension_manual.cpp" />
+    <ClCompile Include="..\manual\iflytek\CallbackManager.cpp" />
+    <ClCompile Include="..\manual\iflytek\md5.c" />
+    <ClCompile Include="..\manual\iflytek\ProxyDownloader.cpp" />
     <ClCompile Include="..\manual\jsb_event_dispatcher_manual.cpp" />
     <ClCompile Include="..\manual\jsb_opengl_functions.cpp" />
     <ClCompile Include="..\manual\jsb_opengl_manual.cpp" />
@@ -53,7 +55,6 @@
     <ClCompile Include="..\manual\ui\jsb_cocos2dx_ui_manual.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\auto\iflytek_auto.hpp" />
     <ClInclude Include="..\auto\jsb_cocos2dx_auto.hpp" />
     <ClInclude Include="..\auto\jsb_cocos2dx_audioengine_auto.hpp" />
     <ClInclude Include="..\auto\jsb_cocos2dx_builder_auto.hpp" />
@@ -77,6 +78,9 @@
     <ClInclude Include="..\manual\component\CCComponentJS.h" />
     <ClInclude Include="..\manual\dragonbones\jsb_cocos2dx_dragonbones_manual.h" />
     <ClInclude Include="..\manual\extension\jsb_cocos2dx_extension_manual.h" />
+    <ClInclude Include="..\manual\iflytek\CallbackManager.h" />
+    <ClInclude Include="..\manual\iflytek\md5.h" />
+    <ClInclude Include="..\manual\iflytek\ProxyDownloader.h" />
     <ClInclude Include="..\manual\jsb_event_dispatcher_manual.h" />
     <ClInclude Include="..\manual\jsb_helper.h" />
     <ClInclude Include="..\manual\jsb_opengl_functions.h" />
@@ -449,6 +453,7 @@
     <ClInclude Include="..\manual\spidermonkey_specifics.h" />
     <ClInclude Include="..\manual\spine\jsb_cocos2dx_spine_manual.h" />
     <ClInclude Include="..\manual\ui\jsb_cocos2dx_ui_manual.h" />
+    <ClInclude Include="JSBinder.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\2d\libcocos2d.vcxproj">
