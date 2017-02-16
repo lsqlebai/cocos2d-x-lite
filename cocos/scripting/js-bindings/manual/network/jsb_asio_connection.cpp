@@ -225,10 +225,12 @@ void js_cocos2dx_AsioConnection_finalize(JSFreeOp *fop, JSObject *obj) {
 	JS::RootedObject jsObj(cx, obj);
 	js_proxy_t *proxy = jsb_get_js_proxy(jsObj);
 	TcpConnection* cobj = (TcpConnection *)(proxy ? proxy->ptr : NULL);
-
-	auto ref = cobj->getRefPtr();
-	CC_SAFE_DELETE(ref);
-	CC_SAFE_DELETE(cobj);
+	if (cobj)
+	{
+		auto ref = cobj->getRefPtr();
+		CC_SAFE_DELETE(ref);
+		CC_SAFE_DELETE(cobj);
+	}
 }
 
 
