@@ -863,9 +863,10 @@ __JSDownloaderDelegator::~__JSDownloaderDelegator()
     {
         js_remove_object_root(target);
     }
-
-    _downloader->onTaskError = (nullptr);
-    _downloader->onDataTaskSuccess = (nullptr);
+	if (_downloader != nullptr) {
+		_downloader->onTaskError = (nullptr);
+		_downloader->onDataTaskSuccess = (nullptr);
+	}
 }
 
 __JSDownloaderDelegator *__JSDownloaderDelegator::create(JSContext *cx, JS::HandleObject obj, const std::string &url, JS::HandleObject callback)
