@@ -27,6 +27,10 @@
 #include "scripting/js-bindings/manual/cocos2d_specifics.hpp"
 #include "scripting/js-bindings/auto/jsb_cocos2dx_auto.hpp"
 #include <thread>
+
+//add by shiqi luo
+#include "iflytek/ProxyDownloader.h"
+
 #include <chrono>
 
 #include "base/CCDirector.h"
@@ -1057,6 +1061,9 @@ void register_all_cocos2dx_extension_manual(JSContext* cx, JS::HandleObject glob
     JS_DefineFunction(cx, tmpObj, "create", js_cocos2dx_CCTableView_create, 3, JSPROP_READONLY | JSPROP_PERMANENT);
 
     JS_DefineFunction(cx, jsbObj, "loadRemoteImg", js_load_remote_image, 2, JSPROP_READONLY | JSPROP_PERMANENT);
+
+	//add by shiqi luo
+	JS_DefineFunction(cx, jsbObj, "downloadFile", js_download, 3, JSPROP_READONLY | JSPROP_PERMANENT);
 
     JS::RootedObject performance(cx);
     get_or_create_js_obj(cx, global, "performance", &performance);

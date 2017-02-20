@@ -44,18 +44,27 @@ LOCAL_SRC_FILES := ../auto/jsb_cocos2dx_extension_auto.cpp \
                    ../manual/localstorage/js_bindings_system_registration.cpp \
                    ../manual/network/jsb_socketio.cpp \
                    ../manual/network/jsb_websocket.cpp \
+				   ../manual/network/jsb_asio_connection.cpp \
+				   ../manual/network/TcpConnection.cpp \
+				   ../manual/network/RSAUtil.cpp \
                    ../manual/network/XMLHTTPRequest.cpp \
                    ../manual/network/js_network_manual.cpp \
                    ../manual/spine/jsb_cocos2dx_spine_manual.cpp \
                    ../manual/dragonbones/jsb_cocos2dx_dragonbones_manual.cpp \
                    ../manual/ui/jsb_cocos2dx_ui_manual.cpp \
-                   ../manual/platform/android/CCJavascriptJavaBridge.cpp
-
-LOCAL_CFLAGS := -DCOCOS2D_JAVASCRIPT
+                   ../manual/platform/android/CCJavascriptJavaBridge.cpp \
+				   ../manual/iflytek/CallbackManager.cpp \
+				   ../manual/iflytek/md5.c \
+				   ../manual/iflytek/ProxyDownloader.cpp \
+				   ../manual/platform/android/pay/PayListener.cpp \
+				   ../manual/platform/android/JS_Binder.cpp 
+				   
+LOCAL_CFLAGS := -DCOCOS2D_JAVASCRIPT -DASIO_STANDALONE
 
 LOCAL_EXPORT_CFLAGS := -DCOCOS2D_JAVASCRIPT
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../manual \
+					$(LOCAL_PATH)/../manual/network/boost \
                     $(LOCAL_PATH)/../manual/cocostudio \
                     $(LOCAL_PATH)/../manual/spine \
                     $(LOCAL_PATH)/../manual/platform/android \
@@ -76,7 +85,7 @@ LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/../manual \
                            $(LOCAL_PATH)/../auto \
                            $(LOCAL_PATH)/../../../audio/include
 
-LOCAL_EXPORT_LDLIBS := -lz
+LOCAL_EXPORT_LDLIBS := -lz -lcrypto -lssl 
 
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos2d_js_android_static
 

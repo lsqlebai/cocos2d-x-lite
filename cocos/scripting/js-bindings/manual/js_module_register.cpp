@@ -21,6 +21,7 @@
 #include "scripting/js-bindings/manual/network/XMLHTTPRequest.h"
 #include "scripting/js-bindings/manual/network/jsb_websocket.h"
 #include "scripting/js-bindings/manual/network/jsb_socketio.h"
+#include "scripting/js-bindings/manual/network/jsb_asio_connection.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 #include "scripting/js-bindings/auto/jsb_cocos2dx_experimental_video_auto.hpp"
@@ -37,6 +38,10 @@
 #include "scripting/js-bindings/manual/platform/android/CCJavascriptJavaBridge.h"
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
 #include "scripting/js-bindings/manual/platform/ios/JavaScriptObjCBridge.h"
+#endif
+//add by shiqi Luo
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+#include "scripting/js-bindings/manual/platform/android/pay/PayListener.hpp"
 #endif
 
 USING_NS_CC;
@@ -87,6 +92,8 @@ int js_module_register()
     sc->addRegisterCallback(register_jsb_socketio);
     // Downloader
     sc->addRegisterCallback(register_all_cocos2dx_network);
+
+    sc->addRegisterCallback(register_jsb_asio_connection);
     
 #if CC_USE_3D_PHYSICS && CC_ENABLE_BULLET_INTEGRATION
     // Physics 3d can be commented out to reduce the package
@@ -109,6 +116,10 @@ int js_module_register()
     sc->addRegisterCallback(JavascriptJavaBridge::_js_register);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
     sc->addRegisterCallback(JavaScriptObjCBridge::_js_register);
+#endif
+//add by shiqi Luo
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+	sc->addRegisterCallback(register_all_pay_listener);
 #endif
     return 1;
 }

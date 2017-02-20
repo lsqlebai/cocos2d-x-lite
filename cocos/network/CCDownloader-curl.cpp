@@ -337,6 +337,13 @@ namespace cocos2d { namespace network {
             // set url
             curl_easy_setopt(handle, CURLOPT_URL, task.requestURL.c_str());
 
+			//add by shiqi luo
+			if (!task.proxy.empty()) {
+				//curl_easy_setopt(handle, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+				curl_easy_setopt(handle, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5);
+				curl_easy_setopt(handle, CURLOPT_PROXY, task.proxy.c_str());
+			}
+
             // set write func
             if (forContent)
             {

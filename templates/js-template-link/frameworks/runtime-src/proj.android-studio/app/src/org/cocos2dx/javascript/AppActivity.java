@@ -1,3 +1,4 @@
+
 /****************************************************************************
 Copyright (c) 2015 Chukong Technologies Inc.
  
@@ -26,6 +27,7 @@ package org.cocos2dx.javascript;
 import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
+// For JS and JAVA reflection test, you can delete it if it's your own project
 import android.os.Bundle;
 import org.cocos2dx.javascript.SDKWrapper;
 
@@ -33,12 +35,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 
+import com.iflytek.unipay.PayComponent;
+import com.iflytek.unipay.js.CocoActivityHelper;
+
 public class AppActivity extends Cocos2dxActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SDKWrapper.getInstance().init(this);
+        CocoActivityHelper.setActivity(this);
+        PayComponent.getInstance().init(this);
     }
 	
     @Override
