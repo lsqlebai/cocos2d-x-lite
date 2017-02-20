@@ -21,7 +21,10 @@
 #include "scripting/js-bindings/manual/network/XMLHTTPRequest.h"
 #include "scripting/js-bindings/manual/network/jsb_websocket.h"
 #include "scripting/js-bindings/manual/network/jsb_socketio.h"
+
+// update by sulei, add support asio¡¢ziphelper
 #include "scripting/js-bindings/manual/network/jsb_asio_connection.h"
+#include "scripting/js-bindings/manual/iflytek/ZipHelper.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 #include "scripting/js-bindings/auto/jsb_cocos2dx_experimental_video_auto.hpp"
@@ -94,7 +97,8 @@ int js_module_register()
     sc->addRegisterCallback(register_all_cocos2dx_network);
 
     sc->addRegisterCallback(register_jsb_asio_connection);
-    
+	sc->addRegisterCallback(register_jsb_zip_helper);
+	
 #if CC_USE_3D_PHYSICS && CC_ENABLE_BULLET_INTEGRATION
     // Physics 3d can be commented out to reduce the package
     sc->addRegisterCallback(register_all_cocos2dx_physics3d);
