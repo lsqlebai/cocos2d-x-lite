@@ -29,7 +29,7 @@ class ZipHelper {
 
 public:
 
-	typedef std::function<void(bool)> UnzipCallback;
+	typedef std::function<void(bool, string, string)> UnzipCallback;
 
 	/**
 	 * 异步解压
@@ -39,7 +39,7 @@ public:
 		std::thread t([=]()
 		{
 			bool result = unzipFile(inputFilePath, outFilePathOrDirPath, password);
-			callback(result);
+			callback(result, inputFilePath, outFilePathOrDirPath);
 		});
 		t.detach();
 	}
@@ -323,7 +323,7 @@ bool js_cocos2dx_extension_ZipHelper_unzipFileAsyn(JSContext *cx, uint32_t argc,
 				}
 			}
 
-			cobj->unzipFileAsyn(inputFile, outputFileDir, password, [=](bool unzipResult)
+			cobj->unzipFileAsyn(inputFile, outputFileDir, password, [=](bool unzipResult, string input, string output)
 			{
 				Director::getInstance()->getScheduler()->performFunctionInCocosThread([=]()
 				{
@@ -334,12 +334,25 @@ bool js_cocos2dx_extension_ZipHelper_unzipFileAsyn(JSContext *cx, uint32_t argc,
 
 					JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
 
-
 					// 回调
+					JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
+					JS::RootedObject jsobj(cx, JS_NewObject(cx, NULL, JS::NullPtr(), JS::NullPtr()));
+
 					JS::RootedValue resultJS(cx);
 					resultJS = BOOLEAN_TO_JSVAL(unzipResult);
-					
-					JS::RootedValue args(cx, resultJS);
+					JS_SetProperty(cx, jsobj, "result", resultJS);
+
+
+					JS::RootedValue inputJS(cx);
+					inputJS = c_string_to_jsval(cx, input.c_str());
+					JS_SetProperty(cx, jsobj, "inputFilePath", inputJS);
+
+					JS::RootedValue outputJS(cx);
+					outputJS = c_string_to_jsval(cx, output.c_str());
+					JS_SetProperty(cx, jsobj, "outputFilePath", outputJS);
+
+					JS::RootedValue args(cx, OBJECT_TO_JSVAL(jsobj));
+
 					ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(cobj->_JSDelegate.ref()), "onUnzipResult", 1, args.address());
 				});
 			});
