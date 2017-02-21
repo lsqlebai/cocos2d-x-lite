@@ -35,6 +35,7 @@
     <ClCompile Include="..\manual\iflytek\CallbackManager.cpp" />
     <ClCompile Include="..\manual\iflytek\md5.c" />
     <ClCompile Include="..\manual\iflytek\ProxyDownloader.cpp" />
+    <ClCompile Include="..\manual\iflytek\ZipHelper.cpp" />
     <ClCompile Include="..\manual\jsb_event_dispatcher_manual.cpp" />
     <ClCompile Include="..\manual\jsb_opengl_functions.cpp" />
     <ClCompile Include="..\manual\jsb_opengl_manual.cpp" />
@@ -84,6 +85,7 @@
     <ClInclude Include="..\manual\iflytek\CallbackManager.h" />
     <ClInclude Include="..\manual\iflytek\md5.h" />
     <ClInclude Include="..\manual\iflytek\ProxyDownloader.h" />
+    <ClInclude Include="..\manual\iflytek\ZipHelper.h" />
     <ClInclude Include="..\manual\jsb_event_dispatcher_manual.h" />
     <ClInclude Include="..\manual\jsb_helper.h" />
     <ClInclude Include="..\manual\jsb_opengl_functions.h" />
