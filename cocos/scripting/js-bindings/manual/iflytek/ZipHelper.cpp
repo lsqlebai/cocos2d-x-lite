@@ -28,6 +28,25 @@ using namespace std;
 class ZipHelper {
 
 public:
+
+	typedef std::function<void(bool)> UnzipCallback;
+
+	/**
+	 * 异步解压
+	 */
+	static void unzipFileAsyn(const string& inputFilePath, const string& outFilePathOrDirPath, const string& password, UnzipCallback callback)
+	{
+		std::thread t([=]()
+		{
+			bool result = unzipFile(inputFilePath, outFilePathOrDirPath, password);
+			callback(result);
+		});
+		t.detach();
+	}
+
+	/**
+	 *  同步解压
+	 */
 	static bool unzipFile(const string& inputFilePath, const string& outFilePathOrDirPath, const string& password = "")
 	{
 		auto unzFile = cocos2d::unzOpen(inputFilePath.c_str());
@@ -160,9 +179,14 @@ public:
 		return success;
 
 	}
-private:
 
+	void setJSDelegate(JS::HandleObject pJSDelegate)
+	{
+		_JSDelegate.ref() = pJSDelegate;
+	}
+public:
 
+	mozilla::Maybe<JS::PersistentRootedObject> _JSDelegate;
 };
 
 
@@ -190,7 +214,7 @@ bool js_cocos2dx_extension_ZipHelper_constructor(JSContext *cx, uint32_t argc, j
 
 	js_proxy_t *p = jsb_new_proxy(cobj, obj);
 	JS::AddNamedObjectRoot(cx, &p->obj, "ZipHelper");
-
+	cobj->setJSDelegate(obj);
 	args.rval().set(OBJECT_TO_JSVAL(obj));
 	return true;
 }
@@ -256,6 +280,85 @@ bool js_cocos2dx_extension_ZipHelper_unzipFile(JSContext *cx, uint32_t argc, jsv
 	return true;
 }
 
+
+bool js_cocos2dx_extension_ZipHelper_unzipFileAsyn(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	CCLOG("ZipHelper_unzipFile");
+
+	JS::CallArgs argv = JS::CallArgsFromVp(argc, vp);
+	JS::RootedObject jsObj(cx, argv.thisv().toObjectOrNull());
+
+	js_proxy_t *proxy = jsb_get_js_proxy(jsObj);
+	ZipHelper* cobj = (ZipHelper *)(proxy ? proxy->ptr : NULL);
+
+	JSB_PRECONDITION2(cobj, cx, false, "Invalid Native Object");
+
+	if (argc >= 2)
+	{
+		if (argv[0].isString() && argv[1].isString())
+		{
+
+			std::string inputFile;
+			jsval_to_std_string(cx, argv[0], &inputFile);
+
+			std::string outputFileDir;
+			jsval_to_std_string(cx, argv[1], &outputFileDir);
+			if (inputFile.empty() || outputFileDir.empty())
+			{
+				JS_ReportError(cx, "wrong inputFile or outputFileDir");
+				return false;
+			}
+
+			std::string password;
+			if (argc == 3)
+			{
+				if (argv[2].isString())
+				{
+					jsval_to_std_string(cx, argv[2], &password);
+				}
+				else
+				{
+					JS_ReportError(cx, "wrong arg 3, must be String type");
+					return false;
+				}
+			}
+
+			cobj->unzipFileAsyn(inputFile, outputFileDir, password, [=](bool unzipResult)
+			{
+				Director::getInstance()->getScheduler()->performFunctionInCocosThread([=]()
+				{
+
+					
+					if (cocos2d::Director::getInstance() == nullptr || cocos2d::ScriptEngineManager::getInstance() == nullptr)
+						return;
+
+					JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
+
+
+					// 回调
+					JS::RootedValue resultJS(cx);
+					resultJS = BOOLEAN_TO_JSVAL(unzipResult);
+					
+					JS::RootedValue args(cx, resultJS);
+					ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(cobj->_JSDelegate.ref()), "onUnzipResult", 1, args.address());
+				});
+			});
+		}
+		else
+		{
+			JS_ReportError(cx, "wrong inputFile or outputFileDir");
+			return false;
+		}
+	}
+	else
+	{
+		JS_ReportError(cx, "wrong number of arguments: %d, need more than %d", argc, 2);
+		return false;
+	}
+
+	return true;
+}
+
 void register_jsb_zip_helper(JSContext *cx, JS::HandleObject global)
 {
 	js_cocos2dx_ziphelper_class = (JSClass *)calloc(1, sizeof(JSClass));
@@ -276,6 +379,8 @@ void register_jsb_zip_helper(JSContext *cx, JS::HandleObject global)
 
 	static JSFunctionSpec funcs[] = {
 		JS_FN("unzipFile", js_cocos2dx_extension_ZipHelper_unzipFile, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("unzipFileAsyn", js_cocos2dx_extension_ZipHelper_unzipFileAsyn, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		
 		JS_FS_END
 	};
 
