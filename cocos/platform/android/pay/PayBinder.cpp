@@ -11,12 +11,14 @@
 
 extern "C"
 {
-	JNIEXPORT void Java_com_iflytek_unipay_js_PayCallBack_payCallback(JNIEnv *env, jobject thiz, jstring type) {
+	JNIEXPORT void Java_com_iflytek_unipay_js_PayCallBack_payCallback(JNIEnv *env, jobject thiz, jstring type, jstring result) {
 		const char* typeStr = env->GetStringUTFChars(type, NULL);
+		const char* resultStr = env->GetStringUTFChars(result, NULL);
 
-		LOGD("type = %s", typeStr);
-		JSBinder::callJS("PayListener", typeStr);
+		LOGD("type = %s, result = %s", typeStr, resultStr);
+		JSBinder::callJS(typeStr, resultStr);
 		env->ReleaseStringUTFChars(type, typeStr);
+		env->ReleaseStringUTFChars(result, resultStr);
 		
 	}
 }

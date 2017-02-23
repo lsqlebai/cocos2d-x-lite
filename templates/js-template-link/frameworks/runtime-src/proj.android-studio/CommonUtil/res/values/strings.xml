@@ -1,0 +1,5 @@
+<resources>
+
+    <string name="app_name">CommonUtil</string>
+    <string name="response_fail">咪咕有点忙</string>
+</resources>

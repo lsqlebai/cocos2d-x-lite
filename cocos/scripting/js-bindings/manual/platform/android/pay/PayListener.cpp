@@ -1,5 +1,5 @@
 #include "PayListener.hpp"
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 #include "scripting/js-bindings/manual/cocos2d_specifics.hpp"
 #include"scripting/js-bindings/manual/iflytek/CallbackManager.h"
 
@@ -33,16 +33,20 @@ JSObject *jsb_PayListener_prototype;
 
 bool js_PayListener_addListener(JSContext *cx, uint32_t argc, jsval *vp)
 {
-	if (argc == 2) {
+	if (argc == 3) {
 		JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-		JS::RootedObject* obj = new JS::RootedObject(cx, args.get(0).toObjectOrNull());
-		
+		std::string type;
+		bool ok = jsval_to_std_string(cx, args.get(0), &type);
+		JSB_PRECONDITION2(ok, cx, false, "Error processing arguments");
+
+		JS::RootedObject* obj = new JS::RootedObject(cx, args.get(1).toObjectOrNull());
 		std::string callbackName;
+
 		do {
-			bool ok = jsval_to_std_string(cx, args.get(1), &callbackName);
+			bool ok = jsval_to_std_string(cx, args.get(2), &callbackName);
 			JSB_PRECONDITION2(ok, cx, false, "Error processing arguments");
 		} while (0);
-		CallbackManager::getInstance()->addListener("PayListener", obj, callbackName);
+		CallbackManager::getInstance()->addListener(type, obj, callbackName);
 		return true;
 	}
 	JS_ReportError(cx, "Wrong number of arguments");

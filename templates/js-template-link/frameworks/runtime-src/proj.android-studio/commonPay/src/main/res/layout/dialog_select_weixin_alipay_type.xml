@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/fhd_1140"
+    android:layout_height="@dimen/fhd_760" >
+    <RelativeLayout
+        android:layout_width="@dimen/fhd_1140"
+        android:layout_height="@dimen/fhd_1140"
+        android:layout_centerInParent="true"
+        android:background="@drawable/bg">
+        <TextView
+            android:id="@+id/online_dialog_title_view"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/fhd_75"
+            android:textSize="@dimen/fhd_54"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/fhd_36"
+            android:text="请选择支付方式"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/fhd_100"
+            android:layout_marginTop="@dimen/fhd_120"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/online_dialog_cancel_btn"
+                android:layout_width="@dimen/fhd_450"
+                android:layout_height="@dimen/fhd_580"
+                android:background="@drawable/weixin_btn" />
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="@dimen/fhd_6"-->
+                <!--android:text="微信扫码支付"-->
+                <!--android:textColor="#ffffff"-->
+                <!--android:textSize="16dp" />-->
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/fhd_100"
+            android:layout_marginTop="@dimen/fhd_120"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/online_dialog_confirm_btn"
+                android:layout_width="@dimen/fhd_450"
+                android:layout_height="@dimen/fhd_580"
+                android:background="@drawable/zhifubao_btn" />
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="6dp"-->
+                <!--android:text="支付宝扫码支付"-->
+                <!--android:textColor="#ffffff"-->
+                <!--android:textSize="16dp" />-->
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>
