@@ -6,15 +6,23 @@ import com.loopj.android.http.BinaryHttpResponseHandler;
 import com.loopj.android.http.FileAsyncHttpResponseHandler;
 import com.loopj.android.http.RequestHandle;
 
-import cz.msebera.android.httpclient.Header;
-import cz.msebera.android.httpclient.message.BasicHeader;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+
+import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.message.BasicHeader;
+import cz.msebera.android.httpclient.params.BasicHttpParams;
+import cz.msebera.android.httpclient.params.HttpParams;
 
 class DataTaskHandler extends BinaryHttpResponseHandler {
     int _id;
@@ -69,19 +77,22 @@ class HeadTaskHandler extends AsyncHttpResponseHandler {
     String _host;
     String _url;
     String _path;
+    //add by shiqi Luo
+    String _proxy;
     private Cocos2dxDownloader _downloader;
 
     void LogD(String msg) {
         android.util.Log.d("Cocos2dxDownloader", msg);
     }
 
-    public HeadTaskHandler(Cocos2dxDownloader downloader, int id, String host, String url, String path) {
+    public HeadTaskHandler(Cocos2dxDownloader downloader, int id, String host, String url, String path, String proxy) {
         super();
         _downloader = downloader;
         _id = id;
         _host = host;
         _url = url;
         _path = path;
+        _proxy = proxy;
     }
 
     @Override
@@ -95,7 +106,7 @@ class HeadTaskHandler extends AsyncHttpResponseHandler {
             }
         }
         Cocos2dxDownloader.setResumingSupport(_host, acceptRanges);
-        Cocos2dxDownloader.createTask(_downloader, _id, _url, _path);
+        Cocos2dxDownloader.createTask(_downloader, _id, _url, _path, _proxy);
     }
 
     @Override
@@ -276,10 +287,25 @@ public class Cocos2dxDownloader {
         return downloader;
     }
 
-    public static void createTask(final Cocos2dxDownloader downloader, int id_, String url_, String path_) {
+    //add proxy by Shiqi Luo
+    public static void createTask(final Cocos2dxDownloader downloader, int id_, String url_, String path_, String proxy_) {
         final int id = id_;
         final String url = url_;
         final String path = path_;
+        //add by Shiqi Luo for Proxy
+        final String proxy = proxy_;
+        if (proxy_.length() > 0) {
+            String[] host_port= proxy_.split(":");
+            if (host_port.length == 2) {
+                String host = host_port[0];
+                int port = Integer.parseInt(host_port[1]);
+                downloader._httpClient.setProxy(host, port);
+            }
+        } else {
+            HttpParams httpParams = downloader._httpClient.getHttpClient().getParams();
+            httpParams.removeParameter("http.route.default-proxy");
+        }
+
 
         Runnable taskRunnable = new Runnable() {
             @Override
@@ -302,6 +328,9 @@ public class Cocos2dxDownloader {
                     catch (URISyntaxException e) {
                         break;
                     }
+                    if (domain == null) {
+                        break;
+                    }
                     final String host = domain.startsWith("www.") ? domain.substring(4) : domain;
                     Boolean supportResuming = false;
                     Boolean requestHeader = true;
@@ -311,7 +340,7 @@ public class Cocos2dxDownloader {
                     }
 
                     if (requestHeader) {
-                        task.handler = new HeadTaskHandler(downloader, id, host, url, path);
+                        task.handler = new HeadTaskHandler(downloader, id, host, url, path, proxy);
                         task.handle = downloader._httpClient.head(Cocos2dxHelper.getActivity(), url, null, null, task.handler);
                         break;
                     }
