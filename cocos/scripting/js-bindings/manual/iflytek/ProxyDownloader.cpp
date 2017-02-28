@@ -10,7 +10,7 @@
 extern "C" {
 #include "md5.h"
 }
-
+#include "DownloaderManager.h"
 USING_NS_CC;
 
 JSDownloaderDelegatorEx::JSDownloaderDelegatorEx(
@@ -99,16 +99,19 @@ void JSDownloaderDelegatorEx::onSuccess(const std::string& path)
 	});
 }
 
-
 void JSDownloaderDelegatorEx::startDownload() {
 	std::string downloadPath = getDownloadPath(_url);
 
 	if (FileUtils::getInstance()->isFileExist(downloadPath)) {
 		onSuccess(downloadPath);
 	}
+	
 	else {
+		if (!DownloaderManager::getInstance()->addTask(_url, this)) {
+			return;
+		}
 		_downloader = std::make_shared<cocos2d::network::Downloader>();
-
+		
 		_downloader->onTaskError = [this](const cocos2d::network::DownloadTask& task,
 			int errorCode,
 			int errorCodeInternal,
@@ -117,6 +120,7 @@ void JSDownloaderDelegatorEx::startDownload() {
 			CCLOG("JSDownloaderDelegatorEx:download: %s fails: %s", _url.c_str() , errorStr.c_str());
 			FileUtils::getInstance()->removeFile(task.storagePath);
 			this->onError();
+			DownloaderManager::getInstance()->allOnError(_url);
 		};
 
 		_downloader->onFileTaskSuccess = [this](const cocos2d::network::DownloadTask& task)
@@ -125,10 +129,13 @@ void JSDownloaderDelegatorEx::startDownload() {
 			if (task.storagePath.empty())
 			{
 				this->onError();
+				DownloaderManager::getInstance()->allOnError(_url);
 			}
 			else
 			{
-				this->onSuccess(task.storagePath); 
+				this->onSuccess(task.storagePath);
+				DownloaderManager::getInstance()->allOnSuccess(_url, task.storagePath);
+
 			}
 		};
 		

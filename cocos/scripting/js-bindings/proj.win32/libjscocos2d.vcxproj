@@ -33,6 +33,7 @@
     <ClCompile Include="..\manual\dragonbones\jsb_cocos2dx_dragonbones_manual.cpp" />
     <ClCompile Include="..\manual\extension\jsb_cocos2dx_extension_manual.cpp" />
     <ClCompile Include="..\manual\iflytek\CallbackManager.cpp" />
+    <ClCompile Include="..\manual\iflytek\DownloaderManager.cpp" />
     <ClCompile Include="..\manual\iflytek\md5.c" />
     <ClCompile Include="..\manual\iflytek\ProxyDownloader.cpp" />
     <ClCompile Include="..\manual\iflytek\ZipHelper.cpp" />
@@ -83,6 +84,7 @@
     <ClInclude Include="..\manual\dragonbones\jsb_cocos2dx_dragonbones_manual.h" />
     <ClInclude Include="..\manual\extension\jsb_cocos2dx_extension_manual.h" />
     <ClInclude Include="..\manual\iflytek\CallbackManager.h" />
+    <ClInclude Include="..\manual\iflytek\DownloaderManager.h" />
     <ClInclude Include="..\manual\iflytek\md5.h" />
     <ClInclude Include="..\manual\iflytek\ProxyDownloader.h" />
     <ClInclude Include="..\manual\iflytek\ZipHelper.h" />

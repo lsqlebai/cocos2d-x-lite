@@ -103,6 +103,24 @@ public class Cocos2dxHelper {
         ((Cocos2dxActivity)sActivity).runOnGLThread(r);
     }
 
+    //add by shiqi Luo for box
+    public static File getDiskCacheDir(Context context, String uniqueName) {
+        // Check if media is mounted or storage is built-in, if so, try and use external cache dir
+        // otherwise use internal cache dir
+        String cachePath;
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()) || !Environment.isExternalStorageRemovable()) {
+            File cacheDir = context.getExternalFilesDir(null);
+            if (cacheDir != null) {
+                cachePath = context.getExternalFilesDir(null).getPath();
+            } else {
+                cachePath = context.getFilesDir().getPath();
+            }
+        } else {
+            cachePath = context.getFilesDir().getPath();
+        }
+        return new File(cachePath + File.separator + uniqueName);
+    }
+
     private static boolean sInited = false;
     public static void init(final Activity activity) {
         sActivity = activity;
@@ -143,7 +161,8 @@ public class Cocos2dxHelper {
             final ApplicationInfo applicationInfo = activity.getApplicationInfo();
             
             Cocos2dxHelper.sPackageName = applicationInfo.packageName;
-            Cocos2dxHelper.sFileDirectory = activity.getFilesDir().getAbsolutePath();
+            //modified by shiqi Luo for box
+            Cocos2dxHelper.sFileDirectory = getDiskCacheDir(activity, "download").getPath();
             
             Cocos2dxHelper.nativeSetApkPath(Cocos2dxHelper.getAssetsPath());
     
