@@ -1,7 +1,10 @@
 ﻿#include "DownloaderManager.h"
 
 #include "cocos2d.h"
-
+#include "extensions/assets-manager/AssetsManagerEx.h"
+#include "scripting/js-bindings/manual/ScriptingCore.h"
+#include "scripting/js-bindings/manual/cocos2d_specifics.hpp"
+#include "scripting/js-bindings/auto/jsb_cocos2dx_auto.hpp"
 USING_NS_CC;
 
 DownloaderManager::DownloaderManager(){

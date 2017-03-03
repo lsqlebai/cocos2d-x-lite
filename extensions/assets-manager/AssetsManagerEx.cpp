@@ -35,6 +35,7 @@
 #endif
 #include "base/CCAsyncTaskPool.h"
 
+
 NS_CC_EXT_BEGIN
 
 #define VERSION_FILENAME        "version.manifest"
@@ -537,7 +538,7 @@ void AssetsManagerEx::downloadVersion()
     {
         _updateState = State::DOWNLOADING_VERSION;
         // Download version file asynchronously
-        _downloader->createDownloadFileTask(versionUrl, _tempVersionPath, VERSION_ID);
+        _downloader->createDownloadFileTask(versionUrl, _tempVersionPath, VERSION_ID, getGlobalProxy());
     }
     // No version file found
     else
@@ -605,7 +606,7 @@ void AssetsManagerEx::downloadManifest()
     {
         _updateState = State::DOWNLOADING_MANIFEST;
         // Download version file asynchronously
-        _downloader->createDownloadFileTask(manifestUrl, _tempManifestPath, MANIFEST_ID);
+		_downloader->createDownloadFileTask(manifestUrl, _tempManifestPath, MANIFEST_ID, getGlobalProxy());
     }
     // No manifest file found
     else
@@ -1152,7 +1153,7 @@ void AssetsManagerEx::queueDowload()
         _currConcurrentTask++;
         DownloadUnit& unit = _downloadUnits[key];
         _fileUtils->createDirectory(basename(unit.storagePath));
-        _downloader->createDownloadFileTask(unit.srcUrl, unit.storagePath, unit.customId);
+		_downloader->createDownloadFileTask(unit.srcUrl, unit.storagePath, unit.customId, getGlobalProxy());
         
         _tempManifest->setAssetDownloadState(key, Manifest::DownloadState::DOWNLOADING);
     }
@@ -1179,6 +1180,16 @@ void AssetsManagerEx::onDownloadUnitsFinished()
     {
         updateSucceed();
     }
+}
+
+//add by shiqi luo
+std::string AssetsManagerEx::_proxy = "";
+std::string AssetsManagerEx::getGlobalProxy() {
+	return AssetsManagerEx::_proxy;
+}
+
+void AssetsManagerEx::setGlobalProxy(std::string& proxy) {
+	AssetsManagerEx::_proxy = proxy;
 }
 
 NS_CC_EXT_END

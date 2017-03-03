@@ -30,6 +30,8 @@
 
 //add by shiqi luo
 #include "iflytek/ProxyDownloader.h"
+#include "extensions/assets-manager/AssetsManagerEx.h"
+
 
 #include <chrono>
 
@@ -1018,6 +1020,24 @@ bool js_performance_now(JSContext *cx, uint32_t argc, jsval *vp)
 	return true;
 }
 
+//add byshiqi luo
+// jsb.setGlobalProxy(proxy)
+bool js_set_global_proxy(JSContext *cx, uint32_t argc, jsval *vp) {
+	JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+	JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+	if (argc != 1) {
+		JS_ReportError(cx, "js_download : wrong number of arguments");
+		return false;
+	}
+
+	std::string proxy;
+	bool ok = jsval_to_std_string(cx, args.get(0), &proxy);
+	JSB_PRECONDITION2(ok, cx, false, "js_set_global_proxy : Error processing arguments");
+
+	AssetsManagerEx::setGlobalProxy(proxy);
+	return true;
+}
+
 extern JSObject* jsb_cocos2d_extension_ScrollView_prototype;
 extern JSObject* jsb_cocos2d_extension_TableView_prototype;
 extern JSObject* jsb_cocos2d_extension_Control_prototype;
@@ -1065,6 +1085,8 @@ void register_all_cocos2dx_extension_manual(JSContext* cx, JS::HandleObject glob
 
 	//add by shiqi luo
 	JS_DefineFunction(cx, jsbObj, "downloadFile", js_download, 3, JSPROP_READONLY | JSPROP_PERMANENT);
+	//add by shiqi luo
+	JS_DefineFunction(cx, jsbObj, "setGlobalProxy", js_set_global_proxy, 1, JSPROP_READONLY | JSPROP_PERMANENT);
 
     JS::RootedObject performance(cx);
     get_or_create_js_obj(cx, global, "performance", &performance);

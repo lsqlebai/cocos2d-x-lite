@@ -144,7 +144,6 @@ void JSDownloaderDelegatorEx::startDownload() {
 	}
 }
 
-
 // jsb.downloadFile(url, proxy, function(succeed, result) {})
 bool js_download(JSContext *cx, uint32_t argc, jsval *vp)
 {
