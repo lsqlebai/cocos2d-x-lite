@@ -744,7 +744,6 @@ bool js_cocos2dx_extension_EventListenerAssetsManagerEx_init(JSContext *cx, uint
                     if (!succeed && JS_IsExceptionPending(cx)) {
                         JS_ReportPendingException(cx);
                     }
-                    removeJSObject(cx, larg0);
                 };
                 arg1 = lambda;
             }
@@ -804,7 +803,6 @@ bool js_cocos2dx_extension_EventListenerAssetsManagerEx_create(JSContext *cx, ui
                     if (!succeed && JS_IsExceptionPending(cx)) {
                         JS_ReportPendingException(cx);
                     }
-                    removeJSObject(cx, larg0);
                 };
                 arg1 = lambda;
             }
