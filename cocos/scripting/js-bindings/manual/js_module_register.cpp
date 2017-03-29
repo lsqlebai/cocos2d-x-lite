@@ -25,6 +25,9 @@
 // update by sulei, add support asio¡¢ziphelper
 #include "scripting/js-bindings/manual/network/jsb_asio_connection.h"
 #include "scripting/js-bindings/manual/iflytek/ZipHelper.h"
+#include "scripting/js-bindings/manual/iflytek/gameLoG/jsb_GameLogic.h"
+
+
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 #include "scripting/js-bindings/auto/jsb_cocos2dx_experimental_video_auto.hpp"
@@ -98,6 +101,8 @@ int js_module_register()
 
     sc->addRegisterCallback(register_jsb_asio_connection);
 	sc->addRegisterCallback(register_jsb_zip_helper);
+
+	sc->addRegisterCallback(register_jsb_game_logic_native);
 	
 #if CC_USE_3D_PHYSICS && CC_ENABLE_BULLET_INTEGRATION
     // Physics 3d can be commented out to reduce the package
