@@ -148,6 +148,49 @@ bool js_cocos2dx_gamelogic_removeNode(JSContext *cx, uint32_t argc, jsval *vp)
 	return true;
 }
 
+bool js_cocos2dx_gamelogic_addOrRemoveFood(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	CCLOG("gamelogic addOrRemoveFood");
+	JS::CallArgs argv = JS::CallArgsFromVp(argc, vp);
+	JS::RootedObject obj(cx, argv.thisv().toObjectOrNull());
+
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	GameLogic* cobj = (GameLogic*)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2(cobj, cx, false, "Invalid Native Object");
+	CCLOG("gamelogic addOrRemoveFood argc:%d", argc);
+
+	if (argc == 2)
+	{
+		bool isAdd = argv[0].toBoolean(); // 是否是新增食物
+
+
+		std::string foodsStr;
+		jsval_to_std_string(cx, argv[1], &foodsStr);
+
+		Vector<FoodArea*> foodAreas;
+		bool parseOk = true;
+		parseOk &= GameLogic::parseJsonToFoodAreas(foodsStr, foodAreas);
+
+		if (!parseOk) // 解析数据失败，无需继续处理
+		{
+			CCLOGERROR("js_cocos2dx_gamelogic_addOrRemoveFood foodAreas data error");
+			return false;
+		}
+		if (!foodAreas.empty())
+		{
+			cobj->addOrRemoveFood(isAdd, foodAreas); // 处理食物变化
+		}
+		
+	}
+	else
+	{
+		JS_ReportError(cx, "js_cocos2dx_gamelogic_addOrRemoveFood wrong params count");
+		return false;
+	}
+
+	argv.rval().setUndefined();
+	return true;
+}
 
 bool js_cocos2dx_gamelogic_initFoodLayer(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -157,69 +200,55 @@ bool js_cocos2dx_gamelogic_initFoodLayer(JSContext *cx, uint32_t argc, jsval *vp
 	JS::CallArgs argv = JS::CallArgsFromVp(argc, vp);
 	JS::RootedObject obj(cx, argv.thisv().toObjectOrNull());
 
-	CCLOG("gamelogic initFoodLayer argc:%d", argc);
-	
-
-	bool isObj = argv[0].isObject();
-	CCLOG("gamelogic isObj:%d", isObj);
-
-	JSObject* objj = argv[0].toObjectOrNull();
-	JS::RootedObject jsobj1(cx, argv[0].toObjectOrNull());
-
-	js_proxy_t *proxy1 = jsb_get_js_proxy(jsobj1);
-	Node* cobj1 = (Node*)(proxy1 ? proxy1->ptr : NULL);
-	cocos2d::Vector<Texture2D*> textures = TextureCache::getInstance()->getAllTextures();
-	if (cobj1)
-	{	
-		LayerColor* child = LayerColor::create(Color4B::BLACK, 500, 500);
-
-		Texture2D* tex = textures.at(0);
-		SpriteFrame* spFrame= SpriteFrame::createWithTexture(tex, Rect(0,0,600,600));
-		auto child2 = Sprite::createWithTexture(tex);
-		child2->setAnchorPoint(Vec2(0, 0));
-
-		child->setAnchorPoint(Vec2(0, 0));
-		
-		//cobj1->addChild(child2);
-		
-
-		//cobj1->addChild(child);
-
-		JSObject* objFood = argv[1].toObjectOrNull();
-		JS::RootedObject jsobjFood(cx, objFood);
-
-		js_proxy_t *proxyFood = jsb_get_js_proxy(jsobjFood);
-		Node* cobjFood = (Node*)(proxyFood ? proxyFood->ptr : NULL);
-
-		auto* cobj2Food = (SpriteFrame*)(proxyFood ? proxyFood->ptr : NULL);
-
-		for (int i = 0; i < 2000; ++i)
-		{
-			auto sp = Sprite::createWithSpriteFrame(cobj2Food);
-			
-			sp->setPosition(CCRANDOM_0_1() * 1920, CCRANDOM_0_1() * 1080);
-			cobj1->addChild(sp);
-		}
-		
-	}
-	
-
-
-
-	auto tt = SpriteFrameCache::getInstance();
-
-	//CCLOG("gamelogic jsObj:%p", &isObj);
-
-
-	
-	
-
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	GameLogic* cobj = (GameLogic *)(proxy ? proxy->ptr : NULL);
+	GameLogic* cobj = (GameLogic*)(proxy ? proxy->ptr : NULL);
 
 	JSB_PRECONDITION2(cobj, cx, false, "Invalid Native Object");
 
-	//cobj->disconnect();
+	CCLOG("gamelogic initFoodLayer argc:%d", argc);
+	
+	
+	if (argc == 4)
+	{
+		
+		JS::RootedObject foodLayerJObj(cx, argv[0].toObjectOrNull());
+		js_proxy_t *proxyFoodLayer = jsb_get_js_proxy(foodLayerJObj);
+		Node* foodLayer = (Node*)(proxyFoodLayer ? proxyFoodLayer->ptr : NULL); // 获取食物图层
+
+		JSB_PRECONDITION2(foodLayer, cx, false, "js_cocos2dx_gamelogic_initFoodLayer : Error processing arguments, foodLayer error");
+		
+		
+		bool ok = true;
+		cocos2d::Vector<SpriteFrame*> foodSkins;
+		ok &= jsval_to_ccvector(cx, argv.get(1), &foodSkins);
+
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_gamelogic_initFoodLayer : Error processing arguments, foodSkins error");
+		
+		
+		std::string foodsStr;
+		jsval_to_std_string(cx, argv[2], &foodsStr);
+
+		Vector<FoodArea*> foodAreas;
+		bool parseOk = true;
+		parseOk &= GameLogic::parseJsonToFoodAreas(foodsStr, foodAreas);
+		
+		if (!parseOk) // 解析数据失败，无需继续处理
+		{
+			CCLOGERROR("js_cocos2dx_gamelogic_initFoodLayer foodAreas data error");
+			return false;
+		}
+		
+		int32_t foodRadius = argv[3].toInt32(); // 食物初始化半径
+		
+
+		// 初始化食物图层
+		cobj->initFoodLayer(foodLayer, foodSkins, foodAreas, foodRadius);
+	}
+	else
+	{
+		JS_ReportError(cx, "js_cocos2dx_gamelogic_initFoodLayer wrong params count");
+		return false;
+	}
 
 	argv.rval().setUndefined();
 	return true;
@@ -290,6 +319,7 @@ void register_jsb_game_logic_native(JSContext* cx, JS::HandleObject global)
 		JS_FN("initFoodLayer", js_cocos2dx_gamelogic_initFoodLayer, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("addNode", js_cocos2dx_gamelogic_addNode, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("removeNode", js_cocos2dx_gamelogic_removeNode, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("addOrRemoveFood", js_cocos2dx_gamelogic_addOrRemoveFood, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		
 
 		JS_FS_END

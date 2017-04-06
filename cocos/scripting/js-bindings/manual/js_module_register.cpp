@@ -26,6 +26,8 @@
 #include "scripting/js-bindings/manual/network/jsb_asio_connection.h"
 #include "scripting/js-bindings/manual/iflytek/ZipHelper.h"
 #include "scripting/js-bindings/manual/iflytek/gameLoG/jsb_GameLogic.h"
+//#include "scripting/js-bindings/manual/iflytek/jsb_ThreadNative.h"
+
 
 
 
@@ -99,10 +101,13 @@ int js_module_register()
     // Downloader
     sc->addRegisterCallback(register_all_cocos2dx_network);
 
+	// update by sulei
     sc->addRegisterCallback(register_jsb_asio_connection);
 	sc->addRegisterCallback(register_jsb_zip_helper);
 
 	sc->addRegisterCallback(register_jsb_game_logic_native);
+	//sc->addRegisterCallback(register_jsb_thread_native);
+	
 	
 #if CC_USE_3D_PHYSICS && CC_ENABLE_BULLET_INTEGRATION
     // Physics 3d can be commented out to reduce the package
