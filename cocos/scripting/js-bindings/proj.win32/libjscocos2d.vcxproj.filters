@@ -39,6 +39,9 @@
     <Filter Include="manual\iflytek">
       <UniqueIdentifier>{0bce99a5-39a7-4899-8ab0-aa2589a11367}</UniqueIdentifier>
     </Filter>
+    <Filter Include="manual\iflytek\gameLoG">
+      <UniqueIdentifier>{dc76755f-4fff-455a-95db-3008f9274fdf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\auto\jsb_cocos2dx_auto.cpp">
@@ -177,6 +180,15 @@
       <Filter>manual\iflytek</Filter>
     </ClCompile>
     <ClCompile Include="..\manual\iflytek\DownloaderManager.cpp">
+      <Filter>manual\iflytek</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\iflytek\gameLoG\GameLogic.cpp">
+      <Filter>manual\iflytek\gameLoG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\iflytek\gameLoG\jsb_GameLogic.cpp">
+      <Filter>manual\iflytek\gameLoG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\iflytek\jsb_ThreadNative.cpp">
       <Filter>manual\iflytek</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1388,6 +1400,15 @@
       <Filter>manual\iflytek</Filter>
     </ClInclude>
     <ClInclude Include="..\manual\iflytek\DownloaderManager.h">
+      <Filter>manual\iflytek</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\gameLoG\GameLogic.h">
+      <Filter>manual\iflytek\gameLoG</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\gameLoG\jsb_GameLogic.h">
+      <Filter>manual\iflytek\gameLoG</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\jsb_ThreadNative.h">
       <Filter>manual\iflytek</Filter>
     </ClInclude>
   </ItemGroup>
