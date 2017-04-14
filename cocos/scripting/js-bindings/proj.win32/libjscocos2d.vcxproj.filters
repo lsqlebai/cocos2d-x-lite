@@ -161,13 +161,7 @@
     <ClCompile Include="..\manual\iflytek\md5.c">
       <Filter>manual\iflytek</Filter>
     </ClCompile>
-    <ClCompile Include="..\manual\network\RSAUtil.cpp">
-      <Filter>manual\network</Filter>
-    </ClCompile>
     <ClCompile Include="..\manual\network\js_network_manual.cpp">
-      <Filter>manual\network</Filter>
-    </ClCompile>
-    <ClCompile Include="..\manual\network\TcpConnection.cpp">
       <Filter>manual\network</Filter>
     </ClCompile>
     <ClCompile Include="..\manual\network\jsb_asio_connection.cpp">
