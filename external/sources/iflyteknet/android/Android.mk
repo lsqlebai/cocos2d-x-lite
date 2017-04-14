@@ -6,7 +6,11 @@ LOCAL_MODULE := iflyteknet_shared
 LOCAL_MODULE_FILENAME := libiflyteknet
    
 LOCAL_SRC_FILES := 	../src/iflytek/net/TcpConnection.cpp \
-					../src/iflytek/net/RSAUtil.cpp					  
+					../src/iflytek/net/RSAUtil.cpp	\
+					../src/iflytek/net/game.pb.cc	\
+					../src/iflytek/net/json_format.cc
+					
+					
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../src/

@@ -53,8 +53,9 @@ public:
      * 接收数据回调,收到的数据已经进行分包
      * @param data 接收到的数据
      * @param dataLen 接收到的数据长度
+	 * @param jsonStr 解析后的json字符串，需要setEnableDecodeProto(true)开启解析，否则该值永远为""
      */
-    typedef std::function<void(void*, std::size_t)> ReceiveCallback;
+    typedef std::function<void(void*, std::size_t, string)> ReceiveCallback;
     
     /**
      * 连接断开回调，主动断开或者网络异常断开都会触发
@@ -71,6 +72,11 @@ public:
 	void setEnableCrypt(const bool& isEnableCrypt);
 
 	/**
+	 * 设置是否启用解析proto数据成json字符串
+	 */
+	void setEnableDecodeProto(const bool& isDecodeProto);
+
+	/**
 	 * 设置代理服务器ip和port
 	 */
 	void setProxy(string proxyHost, int proxyPort);
@@ -81,8 +87,6 @@ public:
      * @param port 端口
      */
     void asynConnect(string host, int port, ConnectCallback callback);
-
-	
     
     /**
      * 断开已建立的连接
@@ -146,6 +150,7 @@ private:
 
 	void* _refPtr;
 	bool _isEnableCrypt;
+	bool _isEnableDecodeProto;
 
 	string _proxyHost;
 	int _proxyPort;

@@ -8,31 +8,8 @@
 #include "TcpConnection.hpp"
 #include "RSAUtil.h"
 
-#define IS_ENABLE_CRYPT 0 // 是否启用加解密
-
-//#define publicKey "-----BEGIN PUBLIC KEY-----\n"\
-//"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCs4aZCiedZwJ5m8uQrq7+EYlEI\n"\
-//"cFsPgxIR8m7hcGAnnfcC17/uKGWZa3PsJ2nL8emOmSaIwqUyGezpK6alhqukYmIJ\n"\
-//"cMW8gZyK1nLfu1mnY6Fu/ceBWbk2/TkNFQjWpeZfHsqfMs9YE7OvQ2pAdCOx4ZkX\n"\
-//"sWv42lXEc3Cbv2HJSQIDAQAB\n"\
-//"-----END PUBLIC KEY-----\n"
-//
-//#define privateKey "-----BEGIN RSA PRIVATE KEY-----\n"\
-//"MIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBAKzhpkKJ51nAnmby\n"\
-//"5Curv4RiUQhwWw+DEhHybuFwYCed9wLXv+4oZZlrc+wnacvx6Y6ZJojCpTIZ7Okr\n"\
-//"pqWGq6RiYglwxbyBnIrWct+7WadjoW79x4FZuTb9OQ0VCNal5l8eyp8yz1gTs69D\n"\
-//"akB0I7HhmRexa/jaVcRzcJu/YclJAgMBAAECgYBsAc3NZDqVaDGOP9EtN2+/VW0q\n"\
-//"yIcbedegPsXnMj3ggl//9qqCL9rJrsgNkdIXCFvSKvxYFMMAOhI42nySjUBNvAut\n"\
-//"W1P/Pp4M0gTm6v/fNUFxFVmIOKRzaSO8DDeik/KcFX57dpWBpKVkOFe/5c9py1D/\n"\
-//"VMFepbspR6Yv6XKYAQJBANJu1LTPJe31d1BWSlhfPut2K7TTiE8bbwH43VW5Ys5m\n"\
-//"x7095kXagsWpa09t9u+rS78Jd3CEmLngdqRQRHHa+HECQQDSUS8WlxW1yGr1JO5S\n"\
-//"beOvfI4SXYd7yAW4euCEQ6fKKShJeWipn7+iB2iue8kVIZFI6JgdSRencxv42JDT\n"\
-//"3QpZAkAYNCs/CLyCHEO299XhSENCbfsk91esUal4/pjmrUYSG3xJ5f7AdhuohI4V\n"\
-//"Or62Xmt986bLSFUQvCKpT5ovxlHhAkAxCEpRGvItykbdVjnVr9boP8Kjl3iRrCVh\n"\
-//"SAx16YwBvqyszIhRG3RC4zVNkIBl08iaVde45CSGnniEAIFrU1opAkBK2kBMngku\n"\
-//"v4VQ09nFhijKs38fPzyU4q3c9d4uBUxfKwtacxfBAi3WpUzfcEzTyFs1+q8/PfDq\n"\
-//"RDMoJnkRiocO\n"\
-//"-----END RSA PRIVATE KEY-----\n"
+#include "game.pb.h"
+#include "json_format.h"
 
 
 #define publicKey "-----BEGIN PUBLIC KEY-----\n"\
@@ -42,22 +19,22 @@
 	"twb+Xpw3inl1KoMQmwIDAQAB\n"\
 	"-----END PUBLIC KEY-----\n"
 
-#define privateKey "-----BEGIN RSA PRIVATE KEY-----\n"\
-	"MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAKsgDC1gIKyA+vrB\n"\
-	"qLyRfx608JmU7V1LhSomiEXAMDV13fNtXwFYI0U+yD06tbmofy/OnVijv5Pf8MT9\n"\
-	"j4W0eb5/k2i3H1yk0F8j5kO5NfaAKyhJZPLyeP2Z2fqhaGnXfrtBsUzu1AGorcSw\n"\
-	"O6jWcb4orfa3Bv5enDeKeXUqgxCbAgMBAAECgYEAgrh9dOActYnlr03mZv3CHKPd\n"\
-	"s4SHeiApflRm/tlcOkpqnPyseWtprgjSj6tcjJGBbvSnT8Huo7iKxQBo9Zsy76ke\n"\
-	"sblxLR9DlRSLmQFSrillBV0dPrt5+Cq95HsHCqEpwXcEUnHqiuRnRtDaPyeU1Pmq\n"\
-	"CW7hWqSxFy4/0q1dRxkCQQDgNtkAxyU/03AqBU9ab3RVHKb/xQb/XqXpnC+hVqc0\n"\
-	"nQ84rHyutQVW8Br1UDTEZbj9VWMzQY+3rWa/7qBrWOyXAkEAw2J/vz9wNX6sQ5Oz\n"\
-	"hT8O31gqw/lBnQSHqQKweLdJsxg6/wCfhF3bl8KLmwQUi4ZRe0QGO5GiZAyFWWEY\n"\
-	"NXzInQJBAKa2AWoDqN2pQBfudM9AWdZDBKTegdJ1NJXbjMrAnHiRY1T3Y4mfjUXU\n"\
-	"J6dJKMLzA7ZRu/3LfKnM475IFr1alCcCQB9cNPLmZMVBUrb6Awt1BpcUmLCh1kU0\n"\
-	"j+2xr8+AY8TqM7XwTKo7Ql7GbA/yhLWsVnG5hmKTSoRSeijRa8hSAgUCQQCYg0UY\n"\
-	"D2Ccg1BH8zXuNOVOWOMIK1J8qldoi+DP8AI+6dV9lXLXG3ly+Nyusi2LXnnZpNIo\n"\
-	"D7HqWVo2mDSc4lbE\n"\
-	"-----END RSA PRIVATE KEY-----\n"
+//#define privateKey "-----BEGIN RSA PRIVATE KEY-----\n"\
+//	"MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAKsgDC1gIKyA+vrB\n"\
+//	"qLyRfx608JmU7V1LhSomiEXAMDV13fNtXwFYI0U+yD06tbmofy/OnVijv5Pf8MT9\n"\
+//	"j4W0eb5/k2i3H1yk0F8j5kO5NfaAKyhJZPLyeP2Z2fqhaGnXfrtBsUzu1AGorcSw\n"\
+//	"O6jWcb4orfa3Bv5enDeKeXUqgxCbAgMBAAECgYEAgrh9dOActYnlr03mZv3CHKPd\n"\
+//	"s4SHeiApflRm/tlcOkpqnPyseWtprgjSj6tcjJGBbvSnT8Huo7iKxQBo9Zsy76ke\n"\
+//	"sblxLR9DlRSLmQFSrillBV0dPrt5+Cq95HsHCqEpwXcEUnHqiuRnRtDaPyeU1Pmq\n"\
+//	"CW7hWqSxFy4/0q1dRxkCQQDgNtkAxyU/03AqBU9ab3RVHKb/xQb/XqXpnC+hVqc0\n"\
+//	"nQ84rHyutQVW8Br1UDTEZbj9VWMzQY+3rWa/7qBrWOyXAkEAw2J/vz9wNX6sQ5Oz\n"\
+//	"hT8O31gqw/lBnQSHqQKweLdJsxg6/wCfhF3bl8KLmwQUi4ZRe0QGO5GiZAyFWWEY\n"\
+//	"NXzInQJBAKa2AWoDqN2pQBfudM9AWdZDBKTegdJ1NJXbjMrAnHiRY1T3Y4mfjUXU\n"\
+//	"J6dJKMLzA7ZRu/3LfKnM475IFr1alCcCQB9cNPLmZMVBUrb6Awt1BpcUmLCh1kU0\n"\
+//	"j+2xr8+AY8TqM7XwTKo7Ql7GbA/yhLWsVnG5hmKTSoRSeijRa8hSAgUCQQCYg0UY\n"\
+//	"D2Ccg1BH8zXuNOVOWOMIK1J8qldoi+DP8AI+6dV9lXLXG3ly+Nyusi2LXnnZpNIo\n"\
+//	"D7HqWVo2mDSc4lbE\n"\
+//	"-----END RSA PRIVATE KEY-----\n"
 
 TcpConnection::TcpConnection():_socket(_ioService)
 {
@@ -66,6 +43,7 @@ TcpConnection::TcpConnection():_socket(_ioService)
     _thread = nullptr;
 	_refPtr = nullptr;
 	_isEnableCrypt = true;
+	_isEnableDecodeProto = true;
 	_proxyPort = 0;
 }
 
@@ -74,11 +52,22 @@ TcpConnection::~TcpConnection()
     doDisconnect();
 }
 
+
+void parseMessage(::google::protobuf::Message* msg, void* data, int32_t len)
+{
+	msg->ParseFromArray(data, len);
+}
+
 void TcpConnection::setEnableCrypt(const bool& isEnableCrypt)
 {
 #ifdef COCOS2D_DEBUG // 调试模式的包，允许使用非加密模式
 	this->_isEnableCrypt = isEnableCrypt;
 #endif
+}
+
+void TcpConnection::setEnableDecodeProto(const bool& isDecodeProto)
+{
+	this->_isEnableDecodeProto = isDecodeProto;
 }
 
 void TcpConnection::setProxy(string proxyHost, int proxyPort)
@@ -318,7 +307,26 @@ void TcpConnection::doReadBody(std::shared_ptr<ReceiveMsg> receiveMsg)
 									 if (_receiveCallback)
 									 {
 
-										 _receiveCallback(decrypted, decrypted_length); // 派发消息
+										 string jsonStr = "";
+										 if (_isEnableDecodeProto) // 解析proto
+										 {
+											 if (decrypted_length > 0)
+											 {
+												 try
+												 {
+													 MessageInfo* msg = new MessageInfo();
+
+													 parseMessage(msg, decrypted, decrypted_length);
+													 jsonStr = google::protobuf::JsonFormat::Utf8DebugJsonString(*msg);
+													 delete msg;
+												 }
+												 catch (...)
+												 {
+												 }
+											 }
+										 }
+										 
+										 _receiveCallback(decrypted, decrypted_length, jsonStr); // 派发消息
 									 }
 									 delete[] decrypted;
 								 }
@@ -327,13 +335,29 @@ void TcpConnection::doReadBody(std::shared_ptr<ReceiveMsg> receiveMsg)
 									 std::cerr << "Decrypt data failed" << endl;
 								 }
 							 }
-							 
 							 else
 							 {
-
 								 if (_receiveCallback)
 								 {
-									 _receiveCallback(msgData, bodyLen); // 派发消息
+									 string jsonStr = "";
+									 if (_isEnableDecodeProto) // 解析proto
+									 {
+										 if (bodyLen > 0)
+										 {
+											 try
+											 {
+												 MessageInfo* msg = new MessageInfo();
+
+												 parseMessage(msg, msgData, bodyLen);
+												 jsonStr = google::protobuf::JsonFormat::Utf8DebugJsonString(*msg);
+												 delete msg;
+											 }
+											 catch (...)
+											 {
+											 }
+										 }
+									 }
+									 _receiveCallback(msgData, bodyLen, jsonStr); // 派发消息
 								 }
 							 }
 							
@@ -344,8 +368,6 @@ void TcpConnection::doReadBody(std::shared_ptr<ReceiveMsg> receiveMsg)
                             //     std::cout << msgData[i]<< std::endl;
                             // }
                             //std::cout << "over" << std::endl;
-                             
-                             
                              loopRead();
                          }
                          else
