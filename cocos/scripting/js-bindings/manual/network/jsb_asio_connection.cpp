@@ -355,6 +355,7 @@ bool js_cocos2dx_extension_AsioConnection_isConnected(JSContext *cx, uint32_t ar
 	return true;
 }
 
+
 bool js_cocos2dx_extension_AsioConnection_isConnecting(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	CCLOG("ASIO isConnecting");
@@ -368,6 +369,23 @@ bool js_cocos2dx_extension_AsioConnection_isConnecting(JSContext *cx, uint32_t a
 	JSB_PRECONDITION2(cobj, cx, false, "Invalid Native Object");
 
 	argv.rval().set(BOOLEAN_TO_JSVAL(cobj->isConnecting()));
+
+	return true;
+}
+
+bool js_cocos2dx_extension_AsioConnection_getVersion(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	CCLOG("ASIO getVersion");
+
+	JS::CallArgs argv = JS::CallArgsFromVp(argc, vp);
+	JS::RootedObject obj(cx, argv.thisv().toObjectOrNull());
+
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	TcpConnection* cobj = (TcpConnection *)(proxy ? proxy->ptr : NULL);
+
+	JSB_PRECONDITION2(cobj, cx, false, "Invalid Native Object");
+
+	argv.rval().set(INT_TO_JSVAL(TcpConnection::getVersion()));
 
 	return true;
 }
@@ -819,6 +837,7 @@ void register_jsb_asio_connection(JSContext *cx, JS::HandleObject global)
 		JS_FN("setEnableCrypt", js_cocos2dx_extension_AsioConnection_setEnableCrypt, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setEnableDecodeProto", js_cocos2dx_extension_AsioConnection_setEnableDecodeProto, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setProxy", js_cocos2dx_extension_AsioConnection_setProxy, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getVersion", js_cocos2dx_extension_AsioConnection_getVersion, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		
         JS_FS_END
     };

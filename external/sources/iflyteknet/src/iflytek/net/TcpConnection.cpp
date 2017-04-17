@@ -19,6 +19,13 @@
 	"twb+Xpw3inl1KoMQmwIDAQAB\n"\
 	"-----END PUBLIC KEY-----\n"
 
+#define IFLYTEK_NET_VERSION 1 // 通信库版本号
+
+int32_t TcpConnection::getVersion()
+{
+	return IFLYTEK_NET_VERSION;
+}
+
 //#define privateKey "-----BEGIN RSA PRIVATE KEY-----\n"\
 //	"MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAKsgDC1gIKyA+vrB\n"\
 //	"qLyRfx608JmU7V1LhSomiEXAMDV13fNtXwFYI0U+yD06tbmofy/OnVijv5Pf8MT9\n"\

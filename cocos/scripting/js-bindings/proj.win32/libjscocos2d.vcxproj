@@ -484,6 +484,10 @@
     <ProjectReference Include="..\..\..\editor-support\spine\proj.win32\libSpine.vcxproj">
       <Project>{b7c2a162-dec9-4418-972e-240ab3cbfcae}</Project>
     </ProjectReference>
+    <ProjectReference Include="D:\cocos2d-x-3.4\projects\Landlord\cocos2d\external\custom\protobuf\vsprojects\libprotobuf.vcxproj">
+      <Project>{3e283f37-a4ed-41b7-a3e6-a2d89d131a30}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\manual\network\boost\asio\detail\impl\buffer_sequence_adapter.ipp" />
