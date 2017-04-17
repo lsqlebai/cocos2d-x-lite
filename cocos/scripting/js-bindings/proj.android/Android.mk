@@ -2,6 +2,12 @@ LOCAL_PATH := $(call my-dir)
 #==============================================================
 include $(CLEAR_VARS)
 
+#添加预编译的网络通信库
+include $(CLEAR_VARS)
+LOCAL_MODULE := libiflyteknet
+LOCAL_SRC_FILES := $(LOCAL_PATH)/../../../../external/sources/iflyteknet/android/libs/$(TARGET_ARCH_ABI)/libiflyteknet.so
+include $(PREBUILT_SHARED_LIBRARY)
+
 LOCAL_MODULE := cocos2d_js_static
 LOCAL_MODULE_FILENAME := libjscocos2d
 
@@ -45,8 +51,6 @@ LOCAL_SRC_FILES := ../auto/jsb_cocos2dx_extension_auto.cpp \
                    ../manual/network/jsb_socketio.cpp \
                    ../manual/network/jsb_websocket.cpp \
 				   ../manual/network/jsb_asio_connection.cpp \
-				   ../manual/network/TcpConnection.cpp \
-				   ../manual/network/RSAUtil.cpp \
                    ../manual/network/XMLHTTPRequest.cpp \
                    ../manual/network/js_network_manual.cpp \
                    ../manual/spine/jsb_cocos2dx_spine_manual.cpp \
@@ -63,6 +67,8 @@ LOCAL_SRC_FILES := ../auto/jsb_cocos2dx_extension_auto.cpp \
 				   
 LOCAL_CFLAGS := -DCOCOS2D_JAVASCRIPT -DASIO_STANDALONE
 
+				   #../manual/iflytek/proto/game.pb.cc \
+				   #../manual/iflytek/proto/json_format.cc \
 LOCAL_EXPORT_CFLAGS := -DCOCOS2D_JAVASCRIPT
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../manual \
@@ -80,16 +86,24 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/../manual \
                     $(LOCAL_PATH)/../../../editor-support/spine \
                     $(LOCAL_PATH)/../../../editor-support/cocosbuilder \
                     $(LOCAL_PATH)/../../../editor-support/cocostudio \
-                    $(LOCAL_PATH)/../../../editor-support/creator
-
+                    $(LOCAL_PATH)/../../../editor-support/creator \
+					$(LOCAL_PATH)/../../../../external/sources/iflyteknet/src \
+					$(LOCAL_PATH)/../../../../external/sources/iflyteknet/src/boost
 
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/../manual \
                            $(LOCAL_PATH)/../auto \
                            $(LOCAL_PATH)/../../../audio/include
 
-LOCAL_EXPORT_LDLIBS := -lz -lcrypto -lssl 
+#LOCAL_EXPORT_LDLIBS := -lz -lcrypto -lssl 
+LOCAL_EXPORT_LDLIBS := -lz
 
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos2d_js_android_static
+
+#依赖网络通信库编译
+LOCAL_SHARED_LIBRARIES += libiflyteknet
+
+#导入proto库
+#LOCAL_WHOLE_STATIC_LIBRARIES += protobuf_static
 
 LOCAL_STATIC_LIBRARIES := cocos2dx_static
 LOCAL_STATIC_LIBRARIES += spidermonkey_static
@@ -97,3 +111,5 @@ LOCAL_STATIC_LIBRARIES += spidermonkey_static
 include $(BUILD_STATIC_LIBRARY)
 #==============================================================
 $(call import-module,cocos)
+
+#$(call import-module,sources/protobuf/src)
