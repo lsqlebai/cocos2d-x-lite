@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.iflytek.musicnb">
+    package="com.iflytek.leagueofglutton">
 
     <uses-permission android:name="android.permission.RECEIVE_SMS"/>
 
     <application
-        android:name="com.iflytek.musicnb.MainApplication"
+        android:name=".MainApplication"
         android:allowBackup="true"
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
@@ -15,7 +15,7 @@
 
 
         <activity
-            android:name="com.iflytek.musicnb.AppActivity"
+            android:name=".AppActivity"
             android:screenOrientation="landscape"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"

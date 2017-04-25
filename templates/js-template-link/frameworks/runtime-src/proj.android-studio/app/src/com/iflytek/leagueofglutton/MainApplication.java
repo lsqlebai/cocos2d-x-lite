@@ -1,4 +1,4 @@
-package com.iflytek.musicnb;
+package com.iflytek.leagueofglutton;
 
 import android.content.Context;
 

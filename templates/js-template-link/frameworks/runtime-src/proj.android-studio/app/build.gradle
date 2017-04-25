@@ -10,7 +10,7 @@ android {
     buildToolsVersion "25.0.0"
 
     defaultConfig {
-        applicationId "com.iflytek.musicnb"
+        applicationId "com.iflytek.leagueofglutton"
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 140
@@ -29,19 +29,15 @@ android {
             assets.srcDir "assets"
         }
         tmall {
-            res.srcDirs = ['channel/common/res']
             manifest.srcFile 'channel/common/AndroidManifest.xml'
-
         }
 
         unicom {
             manifest.srcFile 'channel/unicom/AndroidManifest.xml'
-            res.srcDirs = ['channel/unicom/res']
         }
 
         xiaowo {
             manifest.srcFile 'channel/xiaowo/AndroidManifest.xml'
-            res.srcDirs = ['channel/common/res']
         }
 
     }
@@ -77,10 +73,20 @@ android {
             }
         }
     }
+//    dexOptions {
+//        incremental false
+//    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':libcocos2dx')
     compile project(':CommonUtil')
     compile project(':unipay')

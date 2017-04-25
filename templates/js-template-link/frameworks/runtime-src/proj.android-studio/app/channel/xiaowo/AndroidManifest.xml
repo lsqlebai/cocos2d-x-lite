@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.iflytek.musicnb">
+    package="com.iflytek.leagueofglutton">
 
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
-        android:name="com.iflytek.musicnb.MainApplication"
+        android:name=".MainApplication"
         android:allowBackup="true"
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
@@ -16,7 +16,7 @@
         <!--这里value填写游戏的mainactivity-->
         <meta-data
             android:name="Game_Main_Activity_Name"
-            android:value="com.iflytek.musicnb.AppActivity" />
+            android:value=".AppActivity" />
         <!-- 这里的value填写小沃分配给cp的appid-->
         <meta-data
             android:name="com.wocheng.appid"
@@ -35,7 +35,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.iflytek.musicnb.AppActivity"
+            android:name=".AppActivity"
             android:screenOrientation="landscape"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
