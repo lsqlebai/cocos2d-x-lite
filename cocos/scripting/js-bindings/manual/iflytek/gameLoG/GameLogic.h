@@ -9,22 +9,22 @@ using namespace std;
 /************************************************************************/
 /* 食物对象                                                                     */
 /************************************************************************/
-class Food : public Ref
+class FoodObj : public Ref
 {
 public:
 	int32_t id; // 食物id
 	int32_t skin; // 食物皮肤下标
 	float x;  // 食物在地图中的x坐标
 	float y; // 食物在地图中的y坐标
-	CREATE_FUNC(Food);
+	CREATE_FUNC(FoodObj);
 	bool init(){ return true; }
-	Food();
+	FoodObj();
 };
 
 /************************************************************************/
 /* 食物区域对象                                                                     */
 /************************************************************************/
-class FoodArea : public Ref
+class FoodAreaObj : public Ref
 {
 public:
 	int32_t areaId; // 食物区域id
@@ -32,10 +32,10 @@ public:
 	int32_t y; // 食物区域y，锚点(0,0)
 	int32_t width; // 食物区域宽度
 	int32_t height; // 食物区域高度
-	Vector<Food*> foods; // 食物集合
-	CREATE_FUNC(FoodArea);
+	Vector<FoodObj*> foods; // 食物集合
+	CREATE_FUNC(FoodAreaObj);
 	bool init(){ return true; }
-	FoodArea();
+	FoodAreaObj();
 };
 
 /************************************************************************/
@@ -52,23 +52,38 @@ public:
 	 * @param jsonData json数据
 	 * @param outData 解析后的食物区域数据
 	 */
-	static bool parseJsonToFoodAreas(const string& jsonData,Vector<FoodArea*>& outData);
+	static bool parseJsonToFoodAreas(const string& jsonData,Vector<FoodAreaObj*>& outData);
 
 	/**
 	 * 初始化食物管理器
 	 * @param foodLayer 食物图层
+	 * @param foodAnimLayer 食物动画图层
 	 * @param foodSkins 食物皮肤集合
 	 * @param foodAreas 食物区域集合
 	 * @param foodRadius 食物初始化半径
 	 */
-	void initFoodLayer(Node* foodLayer, const Vector<SpriteFrame*>& foodSkins, const Vector<FoodArea*> &foodAreas, const int32_t& foodRadius);
+	void initFoodLayer(Node* foodLayer, Node* foodAnimLayer, const Vector<SpriteFrame*>& foodSkins, const Vector<FoodAreaObj*> &foodAreas, const int32_t& foodRadius);
+
+	/**
+	 * 释放食物图层
+	 */
+	void releaseFoodLayer();
 
 	/**
 	* 添加或删除食物
 	* @param isAdd 是否添加食物
 	* @param foodAreas 变化的食物
 	*/
-	void addOrRemoveFood(const bool& isAdd, const Vector<FoodArea*> &foodAreas);
+	void addOrRemoveFood(const bool& isAdd, const Vector<FoodAreaObj*> &foodAreas);
+
+	/**
+	 * 删除时候并且附带动画
+	 * @param foodAreas
+	 * @param animDuration 动画时间
+	 * @param targetX 动画飞向的x
+	 * @param targetY 动画飞向的y
+	 */
+	void removeFoodWithAnim(const Vector<FoodAreaObj*> &foodAreas, const float& animDuration, const float& targetX, const float& targetY);
 	
 private:
 
@@ -80,10 +95,22 @@ private:
 	 */
 	SpriteFrame* getFoodSkinByIndex(const int32_t& index);
 
+	void _initSprite();
+
+	Sprite* _getSprite();
+
+	void _putSprite(Sprite* sp);
+
+	void _clearSprite();
+	
 	
 private:
 	Node* _foodLayer; // 食物图层
+	Node* _foodAnimLayer; // 食物动画图层
 	Vector<SpriteFrame*> _foodSkins; // 食物皮肤集合
 	int32_t _foodRadius;
+
+	Vector<Sprite*> _foodSpriteVector; // 当前精灵缓存池
 	
+	Vector<Sprite*> _allfoodSpriteVector; // 所有精灵缓存池，用于保存引用计数
 };

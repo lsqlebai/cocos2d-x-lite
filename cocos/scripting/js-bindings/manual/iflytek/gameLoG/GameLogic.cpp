@@ -17,7 +17,7 @@ GameLogic::~GameLogic()
 
 }
 
-bool GameLogic::parseJsonToFoodAreas(const string& jsonData, Vector<FoodArea*>& outData)
+bool GameLogic::parseJsonToFoodAreas(const string& jsonData, Vector<FoodAreaObj*>& outData)
 {
 	rapidjson::Document doc;
 	const char* json = jsonData.c_str();
@@ -30,7 +30,7 @@ bool GameLogic::parseJsonToFoodAreas(const string& jsonData, Vector<FoodArea*>& 
 			for (int i = 0; i < doc.Size(); ++i)
 			{
 				rapidjson::Value& curValue = doc[i];
-				FoodArea* foodArea = FoodArea::create();
+				FoodAreaObj* foodArea = FoodAreaObj::create();
 				if (curValue.HasMember("areaId") && curValue["areaId"].IsNumber())
 				{
 					int32_t value = curValue["areaId"].GetInt();
@@ -65,7 +65,7 @@ bool GameLogic::parseJsonToFoodAreas(const string& jsonData, Vector<FoodArea*>& 
 						for (int j = 0; j < foods.Size(); ++j)
 						{
 							rapidjson::Value& curFood = foods[j];
-							Food* food = Food::create();
+							FoodObj* food = FoodObj::create();
 							
 							if (curFood.HasMember("id") && curFood["id"].IsNumber())
 							{
@@ -103,22 +103,36 @@ bool GameLogic::parseJsonToFoodAreas(const string& jsonData, Vector<FoodArea*>& 
 	return true;
 }
 
-void GameLogic::initFoodLayer(Node* foodLayer, const Vector<SpriteFrame*>& foodSkins, const Vector<FoodArea*> &foodAreas, const int32_t& foodRadius)
+void GameLogic::initFoodLayer(Node* foodLayer, Node* foodAnimLayer, const Vector<SpriteFrame*>& foodSkins, const Vector<FoodAreaObj*> &foodAreas, const int32_t& foodRadius)
 {
 	this->_foodLayer = foodLayer;
+	this->_foodAnimLayer = foodAnimLayer;
 	this->_foodRadius = foodRadius;
 	_foodSkins.clear();
 	_foodSkins.pushBack(foodSkins); // 保存所有食物皮肤
 
+	_initSprite(); // 初始化缓存池
+
 	addOrRemoveFood(true, foodAreas);
 }
 
-void GameLogic::addOrRemoveFood(const bool& isAdd, const Vector<FoodArea*> &foodAreas)
+
+
+void GameLogic::releaseFoodLayer()
+{
+	if (this->_foodLayer)
+	{
+		this->_foodLayer->removeAllChildren();
+	}
+	_clearSprite();
+	_foodSkins.clear();	
+}
+
+void GameLogic::addOrRemoveFood(const bool& isAdd, const Vector<FoodAreaObj*> &foodAreas)
 {
 
 	if (isAdd) // 新增食物
 	{
-
 		float foodScale = -1;
 			
 		auto addFoodAreas = foodAreas; // 新增的食物
@@ -137,9 +151,13 @@ void GameLogic::addOrRemoveFood(const bool& isAdd, const Vector<FoodArea*> &food
 					for (int j = 0, sizeJ = curFoods.size(); j <sizeJ; ++j)
 					{
 						auto curFoodInfo = curFoods.at(j);
+						
+						
 
 						auto foodSpriteFrame = this->getFoodSkinByIndex(curFoodInfo->skin);
-						auto foodNode = Sprite::createWithSpriteFrame(foodSpriteFrame); // 创建食物
+						//auto foodNode = Sprite::createWithSpriteFrame(foodSpriteFrame); // 创建食物
+						auto foodNode = _getSprite();
+						foodNode->setSpriteFrame(foodSpriteFrame);
 
 						if (foodScale <= 0)
 						{
@@ -150,6 +168,7 @@ void GameLogic::addOrRemoveFood(const bool& isAdd, const Vector<FoodArea*> &food
 						foodNode->setScale(foodScale);
 						
 						foodNode->setTag(curFoodInfo->id);
+
 						curFoodLayer->addChild(foodNode);
 						foodNode->setPosition(Vec2(curFoodInfo->x, curFoodInfo->y)); // 放置到地图中
 					}
@@ -177,13 +196,52 @@ void GameLogic::addOrRemoveFood(const bool& isAdd, const Vector<FoodArea*> &food
 						if (food)
 						{
 							food->removeFromParent(); // 移除指定食物对象
+							_putSprite((Sprite*)food); // 放到缓存池
 						}
+						//curFoodLayer->removeChildByTag(curFoodInfo->id);
 					}
 				}
 			}
 		}
 	}
 
+}
+
+void GameLogic::removeFoodWithAnim(const Vector<FoodAreaObj*> &foodAreas, const float& animDuration, const float& targetX, const float& targetY)
+{
+	auto minusFoodAreas = foodAreas; // 减少的食物
+	for (int i = 0, sizeI = minusFoodAreas.size(); i < sizeI; ++i)
+	{
+		auto curFoodArea = minusFoodAreas.at(i);
+		auto curFoods = curFoodArea->foods;
+
+		if (!curFoods.empty())
+		{
+			
+			auto curFoodLayer = this->_foodLayer;
+			if (curFoodLayer)
+			{
+				for (int j = 0, sizeJ = curFoods.size(); j < sizeJ; ++j) {
+					auto curFoodInfo = curFoods.at(j);
+					auto food = curFoodLayer->getChildByTag(curFoodInfo->id); // 查找待清理的食物
+					if (food)
+					{
+						food->removeFromParent(); // 移除指定食物对象
+
+						this->_foodAnimLayer->addChild(food); // 添加到动画图层
+						Action* action = Sequence::create(EaseCircleActionIn::create(MoveTo::create(animDuration, Vec2(targetX, targetY))),
+							CallFunc::create([food, this]()
+						{
+							food->removeFromParent();
+							_putSprite((Sprite*)food); // 放到缓存池
+						}),
+							nullptr);
+						food->runAction(action);
+					}
+				}
+			}
+		}
+	}
 }
 
 cocos2d::SpriteFrame* GameLogic::getFoodSkinByIndex(const int32_t& index)
@@ -200,12 +258,54 @@ cocos2d::SpriteFrame* GameLogic::getFoodSkinByIndex(const int32_t& index)
 	return nullptr;
 }
 
-Food::Food() :id(0), skin(0), x(0), y(0)
+
+
+void GameLogic::_initSprite()
+{
+	for (int i = 0; i < 1500; ++i)
+	{
+		auto sp = Sprite::create();
+		_foodSpriteVector.pushBack(sp);
+		_allfoodSpriteVector.pushBack(sp);
+	}
+}
+
+cocos2d::Sprite* GameLogic::_getSprite()
+{
+	Sprite* result = nullptr;
+	if (!_foodSpriteVector.empty())
+	{
+		result = _foodSpriteVector.back();
+		_foodSpriteVector.popBack();
+		result->stopAllActions();
+	}
+	 else 
+	 {
+		 result = Sprite::create();
+		 _allfoodSpriteVector.pushBack(result);
+	 }
+
+	return result;
+}
+
+void GameLogic::_putSprite(Sprite* sp)
+{
+	_foodSpriteVector.pushBack(sp);
+
+}
+
+void GameLogic::_clearSprite()
+{
+	_foodSpriteVector.clear();
+	_allfoodSpriteVector.clear();
+}
+
+FoodObj::FoodObj() :id(0), skin(0), x(0), y(0)
 {
 	
 }
 
-FoodArea::FoodArea() : areaId(0), x(0), y(0), width(0), height(0)
+FoodAreaObj::FoodAreaObj() : areaId(0), x(0), y(0), width(0), height(0)
 {
 
 }
