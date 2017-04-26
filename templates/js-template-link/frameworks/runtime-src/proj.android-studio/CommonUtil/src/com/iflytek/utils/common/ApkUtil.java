@@ -27,4 +27,57 @@ public class ApkUtil {
 
         context.startActivity(intent);
     }
+	
+	private static Context sContext;
+	
+	public static void init(Context context)
+	{
+		sContext = context;
+	}
+	
+	
+	/**
+	 * 重启app
+	 * 
+	 * @param context
+	 * @param delayTime
+	 *            延迟时间，单位：毫秒
+	 */
+	public static void restartApp() {
+		restartApp(0);
+	}
+	
+	/**
+	 * 重启app
+	 * 
+	 * @param context
+	 * @param delayTime
+	 *            延迟时间，单位：毫秒
+	 */
+	public static void restartApp(long delayTime) {
+		Context ctx = sContext;
+		Intent mStartActivity = IchangApplication
+				.getInstance()
+				.getPackageManager()
+				.getLaunchIntentForPackage(
+						IchangApplication.getInstance().getPackageName());
+		mStartActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		mStartActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+			mStartActivity.addFlags(0x8000); // 相当于Intent.FLAG_ACTIVITY_CLEAR_TASK
+		int mPendingIntentId = 123456;
+		PendingIntent mPendingIntent = PendingIntent.getActivity(ctx,
+				mPendingIntentId, mStartActivity,
+				PendingIntent.FLAG_CANCEL_CURRENT);
+		AlarmManager mgr = (AlarmManager) ctx
+				.getSystemService(Context.ALARM_SERVICE);
+		mgr.set(AlarmManager.RTC, System.currentTimeMillis() + delayTime,
+				mPendingIntent);
+
+		if (ctx instanceof Activity) {
+			((Activity) ctx).moveTaskToBack(true); // 切换到后台
+		}
+		 android.os.Process.killProcess(android.os.Process.myPid());
+		System.exit(0);
+	}
 }
