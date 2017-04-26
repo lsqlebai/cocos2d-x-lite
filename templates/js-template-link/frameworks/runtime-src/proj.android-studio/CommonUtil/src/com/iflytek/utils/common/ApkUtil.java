@@ -1,8 +1,12 @@
 package com.iflytek.utils.common;
 
+import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 
 import com.iflytek.app.BaseApplication;
 
@@ -56,11 +60,10 @@ public class ApkUtil {
 	 */
 	public static void restartApp(long delayTime) {
 		Context ctx = sContext;
-		Intent mStartActivity = IchangApplication
-				.getInstance()
+		Intent mStartActivity = ctx
 				.getPackageManager()
 				.getLaunchIntentForPackage(
-						IchangApplication.getInstance().getPackageName());
+						ctx.getPackageName());
 		mStartActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		mStartActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
