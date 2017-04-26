@@ -34,6 +34,12 @@ typedef std::deque<std::shared_ptr<SendMsg>> SendMsgQueue; // 消息发送队列
 class TcpConnection
 {
 public:
+
+	/**
+	* 获取通信库版本号
+	*/
+	static int32_t getVersion();
+
     
     /**
      * 建立连接结果回调
@@ -65,6 +71,8 @@ public:
     
     TcpConnection();
     ~TcpConnection();
+
+	
 
 	/**
 	 * 设置是否启用加解密

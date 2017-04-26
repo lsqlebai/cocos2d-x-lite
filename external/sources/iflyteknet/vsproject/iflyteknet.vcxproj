@@ -26,6 +26,10 @@
     <ProjectReference Include="..\..\protobuf\vsprojects\libprotobuf.vcxproj">
       <Project>{3e283f37-a4ed-41b7-a3e6-a2d89d131a30}</Project>
     </ProjectReference>
+    <ProjectReference Include="D:\cocos2d-x-3.4\projects\Landlord\cocos2d\external\custom\protobuf\vsprojects\libprotobuf.vcxproj">
+      <Project>{3e283f37-a4ed-41b7-a3e6-a2d89d131a30}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C357A797-42B0-47DE-83C5-C3FED2E62983}</ProjectGuid>
