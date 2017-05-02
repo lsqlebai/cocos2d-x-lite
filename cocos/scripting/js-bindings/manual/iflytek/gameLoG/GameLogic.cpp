@@ -103,15 +103,36 @@ bool GameLogic::parseJsonToFoodAreas(const string& jsonData, Vector<FoodAreaObj*
 	return true;
 }
 
-void GameLogic::initFoodLayer(Node* foodLayer, Node* foodAnimLayer, const Vector<SpriteFrame*>& foodSkins, const Vector<FoodAreaObj*> &foodAreas, const int32_t& foodRadius)
+void GameLogic::initFoodLayer(Node* foodLayer, Node* foodAnimLayer, const Vector<SpriteFrame*>& foodSkins, const Vector<FoodAreaObj*> &foodAreas, const int32_t& foodRadius, const int32_t& foodPreCount)
 {
+	
 	this->_foodLayer = foodLayer;
+
+	for (int i = 0, sizeI = foodAreas.size(); i < sizeI; ++i)
+	{
+		auto curFoodArea = foodAreas.at(i);
+		Node* curFoodAreaLayer = Node::create(); // 生成当前食物区域图层
+		curFoodAreaLayer->setTag(curFoodArea->areaId);
+		curFoodAreaLayer->setAnchorPoint(Vec2(0,0));
+		this->_foodLayer->addChild(curFoodAreaLayer); // 添加食物区域
+
+		FoodAreaObj* obj = FoodAreaObj::create();
+		obj->areaId = curFoodArea->areaId;
+		obj->x = curFoodArea->x;
+		obj->y = curFoodArea->y;
+		obj->width = curFoodArea->width;
+		obj->height = curFoodArea->height;
+		obj->rect.setRect(obj->x, obj->y, obj->width, obj->height);
+
+		_foodAreaRectVector.pushBack(obj); // 保存食物区域对象
+	}
+
 	this->_foodAnimLayer = foodAnimLayer;
 	this->_foodRadius = foodRadius;
 	_foodSkins.clear();
 	_foodSkins.pushBack(foodSkins); // 保存所有食物皮肤
 
-	_initSprite(); // 初始化缓存池
+	_initSprite(foodPreCount); // 初始化缓存池
 
 	addOrRemoveFood(true, foodAreas);
 }
@@ -130,7 +151,6 @@ void GameLogic::releaseFoodLayer()
 
 void GameLogic::addOrRemoveFood(const bool& isAdd, const Vector<FoodAreaObj*> &foodAreas)
 {
-
 	if (isAdd) // 新增食物
 	{
 		float foodScale = -1;
@@ -144,8 +164,8 @@ void GameLogic::addOrRemoveFood(const bool& isAdd, const Vector<FoodAreaObj*> &f
 			if (!curFoods.empty())
 			{
 				
-				//auto curFoodLayer = this->_foodLayer->getChildByTag(curFoodArea->areaId); // 查找当前区域所在图层
-				auto curFoodLayer = this->_foodLayer;
+				auto curFoodLayer = this->_foodLayer->getChildByTag(curFoodArea->areaId); // 查找当前区域所在图层
+				//auto curFoodLayer = this->_foodLayer;
 				if (curFoodLayer)
 				{
 					for (int j = 0, sizeJ = curFoods.size(); j <sizeJ; ++j)
@@ -186,8 +206,8 @@ void GameLogic::addOrRemoveFood(const bool& isAdd, const Vector<FoodAreaObj*> &f
 
 			if (!curFoods.empty())
 			{
-				//auto curFoodLayer = this->_foodLayer->getChildByTag(curFoodArea->areaId); // 查找待清理的食物区域
-				auto curFoodLayer = this->_foodLayer;
+				auto curFoodLayer = this->_foodLayer->getChildByTag(curFoodArea->areaId); // 查找待清理的食物区域
+				//auto curFoodLayer = this->_foodLayer;
 				if (curFoodLayer)
 				{
 					for (int j = 0, sizeJ=curFoods.size(); j < sizeJ; ++j) {
@@ -218,7 +238,8 @@ void GameLogic::removeFoodWithAnim(const Vector<FoodAreaObj*> &foodAreas, const 
 		if (!curFoods.empty())
 		{
 			
-			auto curFoodLayer = this->_foodLayer;
+			auto curFoodLayer = this->_foodLayer->getChildByTag(curFoodArea->areaId); // 查找待清理的食物区域
+			//auto curFoodLayer = this->_foodLayer;
 			if (curFoodLayer)
 			{
 				for (int j = 0, sizeJ = curFoods.size(); j < sizeJ; ++j) {
@@ -244,6 +265,32 @@ void GameLogic::removeFoodWithAnim(const Vector<FoodAreaObj*> &foodAreas, const 
 	}
 }
 
+void GameLogic::updateFoodArea(const int32_t& visibleRectX, const int32_t& visibleRectY, const int32_t& visibleRectWidth, const int32_t& visibleRectHeight)
+{
+
+	int count = 0;
+	Rect visibleRect = Rect(visibleRectX, visibleRectY, visibleRectWidth, visibleRectHeight);
+	for (int i = 0, sizeI = _foodAreaRectVector.size(); i < sizeI; ++i)
+	{
+		FoodAreaObj* obj = _foodAreaRectVector.at(i);
+		
+		auto layer = this->_foodLayer->getChildByTag(obj->areaId);
+
+		if (layer)
+		{
+			if (visibleRect.intersectsRect(obj->rect)) // 可见
+			{
+				layer->setVisible(true);
+				count++;
+			}
+			else // 不可见
+			{
+				layer->setVisible(false);
+			}
+		}
+	}
+}
+
 cocos2d::SpriteFrame* GameLogic::getFoodSkinByIndex(const int32_t& index)
 {
 	if (index >= 0 && index < this->_foodSkins.size())
@@ -260,9 +307,9 @@ cocos2d::SpriteFrame* GameLogic::getFoodSkinByIndex(const int32_t& index)
 
 
 
-void GameLogic::_initSprite()
+void GameLogic::_initSprite(const int32_t& count)
 {
-	for (int i = 0; i < 1500; ++i)
+	for (int i = 0; i < count; ++i)
 	{
 		auto sp = Sprite::create();
 		_foodSpriteVector.pushBack(sp);
@@ -284,7 +331,7 @@ cocos2d::Sprite* GameLogic::_getSprite()
 		 result = Sprite::create();
 		 _allfoodSpriteVector.pushBack(result);
 	 }
-
+	//CCLOG("food get count:%d, all:%d", _foodSpriteVector.size(), _allfoodSpriteVector.size());
 	return result;
 }
 
@@ -292,6 +339,7 @@ void GameLogic::_putSprite(Sprite* sp)
 {
 	_foodSpriteVector.pushBack(sp);
 
+	//CCLOG("food put count:%d, all:%d", _foodSpriteVector.size(), _allfoodSpriteVector.size());
 }
 
 void GameLogic::_clearSprite()

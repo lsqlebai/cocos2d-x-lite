@@ -32,11 +32,16 @@ public:
 	int32_t y; // 食物区域y，锚点(0,0)
 	int32_t width; // 食物区域宽度
 	int32_t height; // 食物区域高度
+
+	Rect rect; // 食物矩形区域
 	Vector<FoodObj*> foods; // 食物集合
 	CREATE_FUNC(FoodAreaObj);
 	bool init(){ return true; }
 	FoodAreaObj();
+
+
 };
+
 
 /************************************************************************/
 /* 吃货大联盟底层逻辑处理器                                                                     */
@@ -61,8 +66,9 @@ public:
 	 * @param foodSkins 食物皮肤集合
 	 * @param foodAreas 食物区域集合
 	 * @param foodRadius 食物初始化半径
+	 * @param foodPreCount 预制食物总数
 	 */
-	void initFoodLayer(Node* foodLayer, Node* foodAnimLayer, const Vector<SpriteFrame*>& foodSkins, const Vector<FoodAreaObj*> &foodAreas, const int32_t& foodRadius);
+	void initFoodLayer(Node* foodLayer, Node* foodAnimLayer, const Vector<SpriteFrame*>& foodSkins, const Vector<FoodAreaObj*> &foodAreas, const int32_t& foodRadius, const int32_t& foodPreCount);
 
 	/**
 	 * 释放食物图层
@@ -85,6 +91,10 @@ public:
 	 */
 	void removeFoodWithAnim(const Vector<FoodAreaObj*> &foodAreas, const float& animDuration, const float& targetX, const float& targetY);
 	
+	/**
+	 * 更新食物可视区域
+	 */
+	void updateFoodArea(const int32_t& visibleRectX, const int32_t& visibleRectY, const int32_t& visibleRectWidth, const int32_t& visibleRectHeight);
 private:
 
 
@@ -95,7 +105,7 @@ private:
 	 */
 	SpriteFrame* getFoodSkinByIndex(const int32_t& index);
 
-	void _initSprite();
+	void _initSprite(const int32_t& count);
 
 	Sprite* _getSprite();
 
@@ -103,6 +113,8 @@ private:
 
 	void _clearSprite();
 	
+protected:
+	Vector<FoodAreaObj*> _foodAreaRectVector;
 	
 private:
 	Node* _foodLayer; // 食物图层
