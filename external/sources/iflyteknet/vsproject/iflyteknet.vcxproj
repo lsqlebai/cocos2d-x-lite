@@ -11,14 +11,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\iflytek\net\game.pb.cc" />
-    <ClCompile Include="..\src\iflytek\net\json_format.cc" />
     <ClCompile Include="..\src\iflytek\net\RSAUtil.cpp" />
     <ClCompile Include="..\src\iflytek\net\TcpConnection.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\iflytek\net\game.pb.h" />
-    <ClInclude Include="..\src\iflytek\net\json_format.h" />
     <ClInclude Include="..\src\iflytek\net\RSAUtil.h" />
     <ClInclude Include="..\src\iflytek\net\TcpConnection.hpp" />
   </ItemGroup>

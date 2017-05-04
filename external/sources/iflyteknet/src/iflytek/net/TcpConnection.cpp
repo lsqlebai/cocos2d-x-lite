@@ -8,8 +8,8 @@
 #include "TcpConnection.hpp"
 #include "RSAUtil.h"
 
-#include "game.pb.h"
-#include "json_format.h"
+//#include "game.pb.h"
+//#include "json_format.h"
 
 
 #define publicKey "-----BEGIN PUBLIC KEY-----\n"\
@@ -65,10 +65,10 @@ TcpConnection::~TcpConnection()
 }
 
 
-void parseMessage(::google::protobuf::Message* msg, void* data, int32_t len)
-{
-	msg->ParseFromArray(data, len);
-}
+//void parseMessage(::google::protobuf::Message* msg, void* data, int32_t len)
+//{
+//	msg->ParseFromArray(data, len);
+//}
 
 void TcpConnection::setEnableCrypt(const bool& isEnableCrypt)
 {
@@ -320,23 +320,23 @@ void TcpConnection::doReadBody(std::shared_ptr<ReceiveMsg> receiveMsg)
 									 {
 
 										 string jsonStr = "";
-										 if (_isEnableDecodeProto) // 解析proto
-										 {
-											 if (decrypted_length > 0)
-											 {
-												 try
-												 {
-													 MessageInfo* msg = new MessageInfo();
+										 //if (_isEnableDecodeProto) // 解析proto
+										 //{
+											// if (decrypted_length > 0)
+											// {
+											//	 try
+											//	 {
+											//		 MessageInfo* msg = new MessageInfo();
 
-													 parseMessage(msg, decrypted, decrypted_length);
-													 jsonStr = google::protobuf::JsonFormat::Utf8DebugJsonString(*msg);
-													 delete msg;
-												 }
-												 catch (...)
-												 {
-												 }
-											 }
-										 }
+											//		 parseMessage(msg, decrypted, decrypted_length);
+											//		 jsonStr = google::protobuf::JsonFormat::Utf8DebugJsonString(*msg);
+											//		 delete msg;
+											//	 }
+											//	 catch (...)
+											//	 {
+											//	 }
+											// }
+										 //}
 										 
 										 _receiveCallback(decrypted, decrypted_length, jsonStr); // 派发消息
 									 }
@@ -352,23 +352,23 @@ void TcpConnection::doReadBody(std::shared_ptr<ReceiveMsg> receiveMsg)
 								 if (_receiveCallback)
 								 {
 									 string jsonStr = "";
-									 if (_isEnableDecodeProto) // 解析proto
-									 {
-										 if (bodyLen > 0)
-										 {
-											 try
-											 {
-												 MessageInfo* msg = new MessageInfo();
+									 //if (_isEnableDecodeProto) // 解析proto
+									 //{
+										// if (bodyLen > 0)
+										// {
+										//	 try
+										//	 {
+										//		 MessageInfo* msg = new MessageInfo();
 
-												 parseMessage(msg, msgData, bodyLen);
-												 jsonStr = google::protobuf::JsonFormat::Utf8DebugJsonString(*msg);
-												 delete msg;
-											 }
-											 catch (...)
-											 {
-											 }
-										 }
-									 }
+										//		 parseMessage(msg, msgData, bodyLen);
+										//		 jsonStr = google::protobuf::JsonFormat::Utf8DebugJsonString(*msg);
+										//		 delete msg;
+										//	 }
+										//	 catch (...)
+										//	 {
+										//	 }
+										// }
+									 //}
 									 _receiveCallback(msgData, bodyLen, jsonStr); // 派发消息
 								 }
 							 }
