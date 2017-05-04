@@ -6,6 +6,17 @@
 USING_NS_CC;
 using namespace std;
 
+
+class PropIdStartOffset
+{
+public:
+	static const int FOOD_START = 100000; // 食物起始偏移量
+	static const int ASYLUM_START = 200000;// 障碍物起始偏移量
+	static const int SKIN_START = 300000; // 角色皮肤起始偏移量
+	static const int SKILL_START = 400000;
+};
+
+
 /************************************************************************/
 /* 食物对象                                                                     */
 /************************************************************************/
@@ -120,6 +131,7 @@ private:
 	Node* _foodLayer; // 食物图层
 	Node* _foodAnimLayer; // 食物动画图层
 	Vector<SpriteFrame*> _foodSkins; // 食物皮肤集合
+	
 	int32_t _foodRadius;
 
 	Vector<Sprite*> _foodSpriteVector; // 当前精灵缓存池

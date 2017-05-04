@@ -296,6 +296,31 @@ bool js_cocos2dx_gamelogic_releaseFoodLayer(JSContext *cx, uint32_t argc, jsval 
 	return true;
 }
 
+bool jsval_to_vector_string(JSContext* cx, JS::HandleValue v, vector<std::string>* ret)
+{
+	JS::RootedObject jsobj(cx);
+
+	bool ok = v.isObject() && JS_ValueToObject(cx, v, &jsobj);
+	JSB_PRECONDITION3(ok, cx, false, "Error converting value to object");
+	JSB_PRECONDITION3(jsobj && JS_IsArrayObject(cx, jsobj), cx, false, "Object must be an array");
+
+	uint32_t len = 0;
+	JS_GetArrayLength(cx, jsobj, &len);
+
+	for (uint32_t i = 0; i < len; i++)
+	{
+		JS::RootedValue value(cx);
+		if (JS_GetElement(cx, jsobj, i, &value))
+		{
+			std::string data;
+			jsval_to_std_string(cx, value, &data);
+			ret->push_back(data);
+		}
+	}
+
+	return true;
+}
+
 bool js_cocos2dx_gamelogic_initFoodLayer(JSContext *cx, uint32_t argc, jsval *vp)
 {
 
@@ -331,10 +356,9 @@ bool js_cocos2dx_gamelogic_initFoodLayer(JSContext *cx, uint32_t argc, jsval *vp
 		bool ok = true;
 		cocos2d::Vector<SpriteFrame*> foodSkins;
 		ok &= jsval_to_ccvector(cx, argv.get(2), &foodSkins);
-
 		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_gamelogic_initFoodLayer : Error processing arguments, foodSkins error");
-		
-		
+
+
 		std::string foodsStr;
 		jsval_to_std_string(cx, argv[3], &foodsStr);
 

@@ -30,6 +30,7 @@ import android.os.Bundle;
 import com.iflytek.unipay.PayComponent;
 import com.iflytek.unipay.js.CocoActivityHelper;
 import com.iflytek.utils.common.ApkUtil;
+import com.iflytek.utils.common.FileUtil;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
@@ -48,12 +49,35 @@ import java.nio.channels.FileChannel;
 
 public class AppActivity extends Cocos2dxActivity {
 
+    boolean isAppUpgrade = false; // 程序是否发生过升级
+
+    private static final String KEY_APP_VERSION_CODE = "KEY_APP_VERSION_CODE";
+    private void initInfo()
+    {
+        SharedPreferences sp = getPreferences(MODE_PRIVATE);
+        int preCode = sp.getInt(KEY_APP_VERSION_CODE, -1);
+        int curCode = ApkUtil.getAppVersionCode();
+        if(preCode == -1)
+        {
+            sp.edit().putInt(KEY_APP_VERSION_CODE, curCode).commit(); // 保存当前程序版本号
+        }
+        else
+        {
+           if(preCode != curCode)
+           {
+               isAppUpgrade = true; // 程序发生过升级
+               sp.edit().putInt(KEY_APP_VERSION_CODE, curCode).commit(); // 保存当前程序版本号
+           }
+        }
+        System.out.println("isAppUpgrade:" + isAppUpgrade);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
         ApkUtil.init(this);
+        initInfo();
+        super.onCreate(savedInstanceState);
 
         CocoActivityHelper.setActivity(this);
         PayComponent.getInstance().init(this);
@@ -99,6 +123,18 @@ public class AppActivity extends Cocos2dxActivity {
      */
     private void copyNewLib()
     {
+        if(isAppUpgrade)
+        {
+
+            // 程序发生过升级，把之前热更新数据全部清空
+            File fileDir =  new File(getExternalFilesDir("download").getAbsolutePath());
+            if(fileDir.exists())
+            {
+                FileUtil.Delete(fileDir);
+            }
+            return;
+        }
+
         File libCopyDirFile = new File(getExternalFilesDir("download").getAbsolutePath() + "/libCopyDir");
         if(libCopyDirFile.exists() && libCopyDirFile.isFile())
         {
@@ -132,7 +168,6 @@ public class AppActivity extends Cocos2dxActivity {
                             {
                                 copyFile(soFile, dstFile);
                                 sp.edit().putLong(key, soFile.lastModified()).commit(); // 保存本次拷贝库的时间
-
                             }
                         }
                     }

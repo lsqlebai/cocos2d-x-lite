@@ -5,6 +5,9 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
 
@@ -43,9 +46,6 @@ public class ApkUtil {
 	/**
 	 * 重启app
 	 * 
-	 * @param context
-	 * @param delayTime
-	 *            延迟时间，单位：毫秒
 	 */
 	public static void restartApp() {
 		restartApp(0);
@@ -54,7 +54,6 @@ public class ApkUtil {
 	/**
 	 * 重启app
 	 * 
-	 * @param context
 	 * @param delayTime
 	 *            延迟时间，单位：毫秒
 	 */
@@ -82,5 +81,60 @@ public class ApkUtil {
 		}
 		 android.os.Process.killProcess(android.os.Process.myPid());
 		System.exit(0);
+	}
+
+	/**
+	 * 是否是平板设备
+	 * @return
+     */
+	public static boolean isPad() {
+		Context context = sContext;
+		return (context.getResources().getConfiguration().screenLayout
+				& Configuration.SCREENLAYOUT_SIZE_MASK)
+				>= Configuration.SCREENLAYOUT_SIZE_LARGE;
+	}
+
+	/**
+	 * 设备是否支持多点触摸
+	 * @return
+     */
+	public static boolean isSupportMultiTouch() {
+		Context context = sContext;
+		PackageManager pm = context.getPackageManager();
+		boolean isSupportMultiTouch = pm.hasSystemFeature(PackageManager.FEATURE_TOUCHSCREEN_MULTITOUCH);
+		return isSupportMultiTouch;
+	}
+
+	public static String getAppVersionName()
+	{
+		try
+		{
+			// 获取packagemanager的实例
+			PackageManager packageManager = sContext.getPackageManager();
+			// getPackageName()是你当前类的包名，0代表是获取版本信息
+			PackageInfo packInfo = packageManager.getPackageInfo(sContext.getPackageName(),0);
+			String version = packInfo.versionName;
+			return version;
+		}catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return "";
+	}
+
+	public static int getAppVersionCode()
+	{
+		try
+		{
+			// 获取packagemanager的实例
+			PackageManager packageManager = sContext.getPackageManager();
+			// getPackageName()是你当前类的包名，0代表是获取版本信息
+			PackageInfo packInfo = packageManager.getPackageInfo(sContext.getPackageName(),0);
+			return packInfo.versionCode;
+		}catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return 0;
 	}
 }

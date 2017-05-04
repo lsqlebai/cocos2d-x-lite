@@ -73,7 +73,7 @@ bool GameLogic::parseJsonToFoodAreas(const string& jsonData, Vector<FoodAreaObj*
 								int32_t value = curFood["id"].GetInt();
 								food->id = value;
 							}
-							if (curFood.HasMember("skin") && curFood["skin"].IsNumber())
+							if (curFood.HasMember("skin") && curFood["skin"].IsInt())
 							{
 								int32_t value = curFood["skin"].GetInt();
 								food->skin = value;
@@ -173,8 +173,8 @@ void GameLogic::addOrRemoveFood(const bool& isAdd, const Vector<FoodAreaObj*> &f
 						auto curFoodInfo = curFoods.at(j);
 						
 						
-
-						auto foodSpriteFrame = this->getFoodSkinByIndex(curFoodInfo->skin);
+						
+						auto foodSpriteFrame = this->getFoodSkinByIndex(curFoodInfo->skin - PropIdStartOffset::FOOD_START);
 						//auto foodNode = Sprite::createWithSpriteFrame(foodSpriteFrame); // 创建食物
 						auto foodNode = _getSprite();
 						foodNode->setSpriteFrame(foodSpriteFrame);
@@ -304,7 +304,6 @@ cocos2d::SpriteFrame* GameLogic::getFoodSkinByIndex(const int32_t& index)
 	}
 	return nullptr;
 }
-
 
 
 void GameLogic::_initSprite(const int32_t& count)
