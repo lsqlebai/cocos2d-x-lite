@@ -1,0 +1,14 @@
+[
+  {
+  	"flavor":"tmall",
+  	"server":"http://172.16.4.124:8000/remote-assets/tmall/"
+  },
+  {
+  	"flavor":"unicom",
+  	"server":"http://172.16.4.124:8000/remote-assets/unicom/"
+  },
+  {
+  	"flavor":"xiaowo",
+  	"server":"http://172.16.4.124:8000/remote-assets/xiaowo/"
+  }
+]

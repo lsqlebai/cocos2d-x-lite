@@ -31,17 +31,19 @@ android {
         tmall {
             res.srcDirs = ['channel/common/res']
             manifest.srcFile 'channel/common/AndroidManifest.xml'
-
+            assets.srcDirs = ['../hotupdate_manifests/tmall']
         }
 
         unicom {
             manifest.srcFile 'channel/unicom/AndroidManifest.xml'
             res.srcDirs = ['channel/unicom/res']
+            assets.srcDirs = ['../hotupdate_manifests/unicom']
         }
 
         xiaowo {
             manifest.srcFile 'channel/xiaowo/AndroidManifest.xml'
             res.srcDirs = ['channel/common/res']
+            assets.srcDirs = ['../hotupdate_manifests/xiaowo']
         }
 
     }
@@ -57,7 +59,6 @@ android {
         }
     }
     signingConfigs {
-
         release {
             if (project.hasProperty("RELEASE_STORE_FILE")) {
                 storeFile file(RELEASE_STORE_FILE)
@@ -85,11 +86,7 @@ dependencies {
     compile project(':CommonUtil')
     compile project(':unipay')
     compile project(path: ':unipayforjs')
-
     tmallCompile project(':commonPay')
-
     unicomCompile project(':unicomPay')
-
     xiaowoCompile project(':xiaowoPay')
-
 }
