@@ -31,19 +31,19 @@ android {
         tmall {
             res.srcDirs = ['channel/common/res']
             manifest.srcFile 'channel/common/AndroidManifest.xml'
-            assets.srcDirs = ['../hotupdate_manifests/tmall']
+            assets.srcDirs = ['../channels_resources/tmall']
         }
 
         unicom {
             manifest.srcFile 'channel/unicom/AndroidManifest.xml'
             res.srcDirs = ['channel/unicom/res']
-            assets.srcDirs = ['../hotupdate_manifests/unicom']
+            assets.srcDirs = ['../channels_resources/unicom']
         }
 
         xiaowo {
             manifest.srcFile 'channel/xiaowo/AndroidManifest.xml'
             res.srcDirs = ['channel/common/res']
-            assets.srcDirs = ['../hotupdate_manifests/xiaowo']
+            assets.srcDirs = ['../channels_resources/xiaowo']
         }
 
     }
