@@ -434,7 +434,7 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
                     | SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                     | SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
                     | SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
-                    | SYSTEM_UI_FLAG_IMMERSIVE_STICKY};
+                    };
             Cocos2dxReflectionHelper.<Void>invokeInstanceMethod(getWindow().getDecorView(),
                     "setSystemUiVisibility",
                     new Class[]{Integer.TYPE},
