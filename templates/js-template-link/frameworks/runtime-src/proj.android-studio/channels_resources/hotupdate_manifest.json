@@ -1,10 +1,10 @@
 [
   {
   	"flavor":"main",
-  	"server":"http://172.16.4.198:8080/MusicNB/hotupdate/default"
+  	"server":"http://172.16.4.124:8000/default/"
   },
   {
   	"flavor":"unicom",
-  	"server":"http://172.16.4.124:8000/MusicNB/hotupdate/unicom/"
+  	"server":"http://172.16.4.124:8000/unicom/"
   }
 ]
