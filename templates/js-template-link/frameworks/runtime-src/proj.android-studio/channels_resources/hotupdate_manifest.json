@@ -1,14 +1,10 @@
 [
   {
-  	"flavor":"tmall",
-  	"server":"http://172.16.4.124:8000/remote-assets/tmall/"
+  	"flavor":"main",
+  	"server":"http://172.16.4.198:8080/MusicNB/hotupdate/default"
   },
   {
   	"flavor":"unicom",
-  	"server":"http://172.16.4.124:8000/remote-assets/unicom/"
-  },
-  {
-  	"flavor":"xiaowo",
-  	"server":"http://172.16.4.124:8000/remote-assets/xiaowo/"
+  	"server":"http://172.16.4.124:8000/MusicNB/hotupdate/unicom/"
   }
 ]
