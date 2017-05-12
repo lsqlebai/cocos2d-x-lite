@@ -1,10 +1,10 @@
 [
   {
   	"flavor":"main",
-  	"server":"http://172.16.4.124:8000/default/"
+  	"server":"http://172.16.4.198/client/mg/musicnb/remote-assets/default/"
   },
   {
   	"flavor":"unicom",
-  	"server":"http://172.16.4.124:8000/unicom/"
+  	"server":"http://172.16.4.198/client/mg/musicnb/remote-assets/unicom/"
   }
 ]
