@@ -604,6 +604,29 @@ using namespace std::chrono;
 //}
 
 
+void parseJsonToJsonObj(const string& jsonStr, JS::RootedObject* jsobj)
+{
+
+	JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
+	//JS::RootedObject jsobj(cx, JS_NewObject(cx, NULL, JS::NullPtr(), JS::NullPtr()));
+
+	
+	//JS::RootedValue value(cx);
+	//JS_GetProperty(cx, *jsobj, "code", value);
+
+	/*if (curValue.IsObject())
+	{
+	for (auto iter = curValue.MemberBegin(); iter != curValue.MemberEnd(); ++iter)
+	{
+	auto key = (iter->name).GetString();
+	auto value = (iter->value).GetType();
+	CCLOG("key:%s", key);
+	CCLOG("value:");
+	}
+	}*/
+}
+
+
 /**
 * 获取时间,单位毫秒
 */
@@ -719,6 +742,9 @@ bool js_cocos2dx_extension_AsioConnection_constructor(JSContext *cx, uint32_t ar
 
 				if (cocos2d::Director::getInstance() == nullptr || cocos2d::ScriptEngineManager::getInstance() == nullptr)
 					return;
+
+
+
 
 				JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
 

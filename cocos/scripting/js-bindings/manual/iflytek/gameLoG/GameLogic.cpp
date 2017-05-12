@@ -25,11 +25,14 @@ bool GameLogic::parseJsonToFoodAreas(const string& jsonData, Vector<FoodAreaObj*
 	if (!doc.HasParseError())
 	{
 
+		
+
 		if (doc.IsArray())
 		{
 			for (int i = 0; i < doc.Size(); ++i)
 			{
 				rapidjson::Value& curValue = doc[i];
+
 				FoodAreaObj* foodArea = FoodAreaObj::create();
 				if (curValue.HasMember("areaId") && curValue["areaId"].IsNumber())
 				{

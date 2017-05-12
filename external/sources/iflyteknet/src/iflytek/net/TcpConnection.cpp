@@ -494,6 +494,8 @@ void TcpConnection::asynConnect(string host, int port, ConnectCallback callback)
 
 												auto sendSize2 = asio::write(_socket, asio::buffer(buffer, 10));
 
+
+
 												if (sendSize2 <= 0) // 发送失败
 												{
 													break;
