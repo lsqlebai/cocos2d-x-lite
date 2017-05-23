@@ -2,17 +2,21 @@ import org.apache.tools.ant.taskdefs.condition.Os
 
 apply plugin: 'com.android.application'
 
+repositories {
+    flatDir {
+        dirs 'libs' //this way we can find the .aar file in libs folder
+    }
+}
 android {
-    compileSdkVersion 22
+    compileSdkVersion 23
     buildToolsVersion "25.0.0"
 
     defaultConfig {
-        applicationId "org.cocos2dx.hellojavascript"
-        minSdkVersion 10
-        targetSdkVersion PROP_TARGET_SDK_VERSION
-        versionCode 1
-        versionName "1.0"
-
+        applicationId "com.iflytek.leagueofglutton"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 140
+        versionName "1.4.0"
         externalNativeBuild {
             ndkBuild {
                 if (!project.hasProperty("PROP_NDK_MODE") || PROP_NDK_MODE.compareTo('none') != 0) {
@@ -40,13 +44,39 @@ android {
         }
     }
 
-    sourceSets.main {
-        java.srcDir "src"
-        res.srcDir "res"
-        jniLibs.srcDir "libs"
-        manifest.srcFile "AndroidManifest.xml"
-    }
+    sourceSets{
+        main {
+            java.srcDir "src"
+            res.srcDir "res"
+            jniLibs.srcDir "libs"
+            manifest.srcFile "AndroidManifest.xml"
+            assets.srcDir "assets"
+        }
+        tmall {
+            manifest.srcFile 'channel/common/AndroidManifest.xml'
+        }
 
+        unicom {
+            manifest.srcFile 'channel/unicom/AndroidManifest.xml'
+        }
+
+        xiaowo {
+            manifest.srcFile 'channel/xiaowo/AndroidManifest.xml'
+        }
+
+    }
+    productFlavors {
+        tmall {
+
+        }
+        unicom {
+
+        }
+        xiaowo {
+
+        }
+    }
+    
     externalNativeBuild {
         ndkBuild {
             if (!project.hasProperty("PROP_NDK_MODE") || PROP_NDK_MODE.compareTo('none') != 0) {
@@ -55,7 +85,6 @@ android {
             }
         }
     }
-
     signingConfigs {
 
        release {
@@ -133,6 +162,16 @@ tasks.withType(JavaCompile) {
 } 
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':libcocos2dx')
+    compile project(':CommonUtil')
+    compile project(':unipay')
+    compile project(path: ':unipayforjs')
+
+    tmallCompile project(':commonPay')
+
+    unicomCompile project(':unicomPay')
+
+    xiaowoCompile project(':xiaowoPay')
+
 }

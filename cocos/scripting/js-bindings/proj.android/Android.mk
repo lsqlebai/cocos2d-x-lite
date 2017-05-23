@@ -2,6 +2,12 @@ LOCAL_PATH := $(call my-dir)
 #==============================================================
 include $(CLEAR_VARS)
 
+#ÃÌº”‘§±‡“ÎµƒÕ¯¬ÁÕ®–≈ø‚
+include $(CLEAR_VARS)
+LOCAL_MODULE := libiflyteknet
+LOCAL_SRC_FILES := $(LOCAL_PATH)/../../../../external/sources/iflyteknet/android/libs/$(TARGET_ARCH_ABI)/libiflyteknet.so
+include $(PREBUILT_SHARED_LIBRARY)
+
 LOCAL_MODULE := cocos2d_js_static
 LOCAL_MODULE_FILENAME := libjscocos2d
 
@@ -47,18 +53,29 @@ LOCAL_SRC_FILES := ../auto/jsb_cocos2dx_extension_auto.cpp \
                    ../manual/localstorage/js_bindings_system_registration.cpp \
                    ../manual/network/jsb_socketio.cpp \
                    ../manual/network/jsb_websocket.cpp \
+				   ../manual/network/jsb_asio_connection.cpp \
                    ../manual/network/XMLHTTPRequest.cpp \
                    ../manual/network/js_network_manual.cpp \
                    ../manual/spine/jsb_cocos2dx_spine_manual.cpp \
                    ../manual/dragonbones/jsb_cocos2dx_dragonbones_manual.cpp \
                    ../manual/ui/jsb_cocos2dx_ui_manual.cpp \
-                   ../manual/platform/android/CCJavascriptJavaBridge.cpp
+                   ../manual/platform/android/CCJavascriptJavaBridge.cpp \
+				   ../manual/iflytek/CallbackManager.cpp \
+				   ../manual/iflytek/md5.c \
+				   ../manual/iflytek/DownloaderManager.cpp \
+				   ../manual/iflytek/ProxyDownloader.cpp \
+				   ../manual/iflytek/ZipHelper.cpp \
+				   ../manual/platform/android/pay/PayListener.cpp \
+				   ../manual/platform/android/JS_Binder.cpp  \
+				   
+LOCAL_CFLAGS := -DCOCOS2D_JAVASCRIPT -DASIO_STANDALONE
 
-LOCAL_CFLAGS := -DCOCOS2D_JAVASCRIPT
-
+				   #../manual/iflytek/proto/game.pb.cc \
+				   #../manual/iflytek/proto/json_format.cc \
 LOCAL_EXPORT_CFLAGS := -DCOCOS2D_JAVASCRIPT
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../manual \
+					$(LOCAL_PATH)/../manual/network/boost \
                     $(LOCAL_PATH)/../manual/cocostudio \
                     $(LOCAL_PATH)/../manual/spine \
                     $(LOCAL_PATH)/../manual/platform/android \
@@ -72,14 +89,24 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/../manual \
                     $(LOCAL_PATH)/../../../editor-support/spine \
                     $(LOCAL_PATH)/../../../editor-support/cocosbuilder \
                     $(LOCAL_PATH)/../../../editor-support/cocostudio \
-                    $(LOCAL_PATH)/../../../editor-support/creator
-
+                    $(LOCAL_PATH)/../../../editor-support/creator \
+					$(LOCAL_PATH)/../../../../external/sources/iflyteknet/src \
+					$(LOCAL_PATH)/../../../../external/sources/iflyteknet/src/boost
 
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/../manual \
                            $(LOCAL_PATH)/../auto \
                            $(LOCAL_PATH)/../../../audio/include
 
+#LOCAL_EXPORT_LDLIBS := -lz -lcrypto -lssl 
 LOCAL_EXPORT_LDLIBS := -lz
+
+LOCAL_WHOLE_STATIC_LIBRARIES := cocos2d_js_android_static
+
+#“¿¿µÕ¯¬ÁÕ®–≈ø‚±‡“Î
+LOCAL_SHARED_LIBRARIES += libiflyteknet
+
+#µº»Îprotoø‚
+#LOCAL_WHOLE_STATIC_LIBRARIES += protobuf_static
 
 LOCAL_STATIC_LIBRARIES := cocos2dx_static
 LOCAL_STATIC_LIBRARIES += spidermonkey_static

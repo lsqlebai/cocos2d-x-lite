@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.iflytek.leagueofglutton">
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:name=".MainApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/icon"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!--这里value填写游戏的mainactivity-->
+        <meta-data
+            android:name="Game_Main_Activity_Name"
+            android:value=".AppActivity" />
+        <!-- 这里的value填写小沃分配给cp的appid-->
+        <meta-data
+            android:name="com.wocheng.appid"
+            android:value="16c4e7c041d1fd3f" />
+
+        <meta-data
+            android:name="com.wocheng.channelid"
+            android:value="vocheng" />
+        <activity
+            android:name="com.vcheng.app.VCGameSplashActivity"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AppActivity"
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
+    </application>
+
+</manifest>

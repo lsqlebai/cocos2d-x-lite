@@ -25,6 +25,11 @@
 #include "scripting/js-bindings/auto/jsb_box2d_auto.hpp"
 #include "scripting/js-bindings/manual/box2d/js_bindings_box2d_manual.h"
 #include "scripting/js-bindings/manual/creator/js_bindings_creator_manual.h"
+// update by sulei, add support asio¡¢ziphelper
+#include "scripting/js-bindings/manual/network/jsb_asio_connection.h"
+#include "scripting/js-bindings/manual/iflytek/ZipHelper.h"
+//#include "scripting/js-bindings/manual/iflytek/gameLoG/jsb_GameLogic.h"
+//#include "scripting/js-bindings/manual/iflytek/jsb_ThreadNative.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 #include "scripting/js-bindings/auto/jsb_cocos2dx_experimental_video_auto.hpp"
@@ -41,6 +46,10 @@
 #include "scripting/js-bindings/manual/platform/android/CCJavascriptJavaBridge.h"
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
 #include "scripting/js-bindings/manual/platform/ios/JavaScriptObjCBridge.h"
+#endif
+//add by shiqi Luo
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+#include "scripting/js-bindings/manual/platform/android/pay/PayListener.hpp"
 #endif
 
 USING_NS_CC;
@@ -91,7 +100,15 @@ int js_module_register()
     sc->addRegisterCallback(register_jsb_socketio);
     // Downloader
     sc->addRegisterCallback(register_all_cocos2dx_network);
-    
+
+	// update by sulei
+    sc->addRegisterCallback(register_jsb_asio_connection);
+	sc->addRegisterCallback(register_jsb_zip_helper);
+
+	//sc->addRegisterCallback(register_jsb_game_logic_native);
+	//sc->addRegisterCallback(register_jsb_thread_native);
+	
+	
 #if CC_USE_3D_PHYSICS && CC_ENABLE_BULLET_INTEGRATION
     // Physics 3d can be commented out to reduce the package
     sc->addRegisterCallback(register_all_cocos2dx_physics3d);
@@ -113,6 +130,10 @@ int js_module_register()
     sc->addRegisterCallback(JavascriptJavaBridge::_js_register);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
     sc->addRegisterCallback(JavaScriptObjCBridge::_js_register);
+#endif
+//add by shiqi Luo
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+	sc->addRegisterCallback(register_all_pay_listener);
 #endif
     return 1;
 }
