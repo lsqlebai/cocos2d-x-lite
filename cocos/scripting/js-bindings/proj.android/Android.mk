@@ -65,6 +65,8 @@ LOCAL_SRC_FILES := ../auto/jsb_cocos2dx_extension_auto.cpp \
 				   ../manual/iflytek/DownloaderManager.cpp \
 				   ../manual/iflytek/ProxyDownloader.cpp \
 				   ../manual/iflytek/ZipHelper.cpp \
+				   ../manual/iflytek/gameLoG/jsb_GameLogic.cpp \
+				   ../manual/iflytek/gameLoG/GameLogic.cpp \
 				   ../manual/platform/android/pay/PayListener.cpp \
 				   ../manual/platform/android/JS_Binder.cpp  \
 				   

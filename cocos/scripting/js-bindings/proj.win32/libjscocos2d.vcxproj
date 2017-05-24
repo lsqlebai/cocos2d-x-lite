@@ -35,6 +35,14 @@
     <ClCompile Include="..\manual\creator\js_bindings_creator_manual.cpp" />
     <ClCompile Include="..\manual\dragonbones\jsb_cocos2dx_dragonbones_manual.cpp" />
     <ClCompile Include="..\manual\extension\jsb_cocos2dx_extension_manual.cpp" />
+    <ClCompile Include="..\manual\iflytek\CallbackManager.cpp" />
+    <ClCompile Include="..\manual\iflytek\DownloaderManager.cpp" />
+    <ClCompile Include="..\manual\iflytek\gameLoG\GameLogic.cpp" />
+    <ClCompile Include="..\manual\iflytek\gameLoG\jsb_GameLogic.cpp" />
+    <ClCompile Include="..\manual\iflytek\jsb_ThreadNative.cpp" />
+    <ClCompile Include="..\manual\iflytek\md5.c" />
+    <ClCompile Include="..\manual\iflytek\ProxyDownloader.cpp" />
+    <ClCompile Include="..\manual\iflytek\ZipHelper.cpp" />
     <ClCompile Include="..\manual\jsb_event_dispatcher_manual.cpp" />
     <ClCompile Include="..\manual\jsb_opengl_functions.cpp" />
     <ClCompile Include="..\manual\jsb_opengl_manual.cpp" />
@@ -45,6 +53,7 @@
     <ClCompile Include="..\manual\js_module_register.cpp" />
     <ClCompile Include="..\manual\localstorage\js_bindings_system_functions.cpp" />
     <ClCompile Include="..\manual\localstorage\js_bindings_system_registration.cpp" />
+    <ClCompile Include="..\manual\network\jsb_asio_connection.cpp" />
     <ClCompile Include="..\manual\network\jsb_socketio.cpp" />
     <ClCompile Include="..\manual\network\jsb_websocket.cpp" />
     <ClCompile Include="..\manual\network\js_network_manual.cpp" />
@@ -81,6 +90,14 @@
     <ClInclude Include="..\manual\creator\js_bindings_creator_manual.h" />
     <ClInclude Include="..\manual\dragonbones\jsb_cocos2dx_dragonbones_manual.h" />
     <ClInclude Include="..\manual\extension\jsb_cocos2dx_extension_manual.h" />
+    <ClInclude Include="..\manual\iflytek\CallbackManager.h" />
+    <ClInclude Include="..\manual\iflytek\DownloaderManager.h" />
+    <ClInclude Include="..\manual\iflytek\gameLoG\GameLogic.h" />
+    <ClInclude Include="..\manual\iflytek\gameLoG\jsb_GameLogic.h" />
+    <ClInclude Include="..\manual\iflytek\jsb_ThreadNative.h" />
+    <ClInclude Include="..\manual\iflytek\md5.h" />
+    <ClInclude Include="..\manual\iflytek\ProxyDownloader.h" />
+    <ClInclude Include="..\manual\iflytek\ZipHelper.h" />
     <ClInclude Include="..\manual\jsb_event_dispatcher_manual.h" />
     <ClInclude Include="..\manual\jsb_helper.h" />
     <ClInclude Include="..\manual\jsb_opengl_functions.h" />
@@ -94,6 +111,7 @@
     <ClInclude Include="..\manual\localstorage\js_bindings_system_functions.h" />
     <ClInclude Include="..\manual\localstorage\js_bindings_system_functions_registration.h" />
     <ClInclude Include="..\manual\localstorage\js_bindings_system_registration.h" />
+    <ClInclude Include="..\manual\network\jsb_asio_connection.h" />
     <ClInclude Include="..\manual\network\jsb_socketio.h" />
     <ClInclude Include="..\manual\network\jsb_websocket.h" />
     <ClInclude Include="..\manual\network\js_network_manual.h" />
@@ -104,6 +122,12 @@
     <ClInclude Include="..\manual\ui\jsb_cocos2dx_ui_manual.h" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\external\sources\iflyteknet\vsproject\iflyteknet.vcxproj">
+      <Project>{c357a797-42b0-47de-83c5-c3fed2e62983}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\external\sources\protobuf\vsprojects\libprotobuf.vcxproj">
+      <Project>{3e283f37-a4ed-41b7-a3e6-a2d89d131a30}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\2d\libcocos2d.vcxproj">
       <Project>{98a51ba8-fc3a-415b-ac8f-8c7bd464e93e}</Project>
     </ProjectReference>
@@ -176,8 +200,8 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_LIB;COCOS2D_DEBUG=1;XP_WIN;JS_HAVE___INTN;JS_INTPTR_TYPE=int;COCOS2D_JAVASCRIPT=1;CC_ENABLE_CHIPMUNK_INTEGRATION=1;_CRT_SECURE_NO_WARNINGS;_USRJSSTATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)..;$(EngineRoot);$(EngineRoot)cocos\editor-support;$(ProjectDir)..\auto;$(ProjectDir)..\manual;$(EngineRoot)external\win32\include\spidermonkey;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_LIB;COCOS2D_DEBUG=1;XP_WIN;JS_HAVE___INTN;JS_INTPTR_TYPE=int;COCOS2D_JAVASCRIPT=1;CC_ENABLE_CHIPMUNK_INTEGRATION=1;_CRT_SECURE_NO_WARNINGS;_USRJSSTATIC;ASIO_STANDALONE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)..;$(EngineRoot);$(EngineRoot)cocos\editor-support;$(ProjectDir)..\auto;$(ProjectDir)..\manual;$(EngineRoot)external\win32\include\spidermonkey;$(EngineRoot)external\sources\;$(EngineRoot)external\sources\iflyteknet\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4068;4101;4800;4251;4244;4099;4083;4700;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>

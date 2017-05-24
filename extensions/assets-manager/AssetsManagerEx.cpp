@@ -1343,7 +1343,9 @@ void AssetsManagerEx::queueDowload()
         _currConcurrentTask++;
         DownloadUnit& unit = _downloadUnits[key];
         _fileUtils->createDirectory(basename(unit.storagePath));
-        _downloader->createDownloadFileTask(unit.srcUrl, unit.storagePath, unit.customId);
+		
+        //add by shiqi luo
+		_downloader->createDownloadFileTask(unit.srcUrl, unit.storagePath, unit.customId, getGlobalProxy());
         
         _tempManifest->setAssetDownloadState(key, Manifest::DownloadState::DOWNLOADING);
     }
@@ -1370,6 +1372,16 @@ void AssetsManagerEx::onDownloadUnitsFinished()
     {
         updateSucceed();
     }
+}
+
+//add by shiqi luo
+std::string AssetsManagerEx::_proxy = "";
+std::string AssetsManagerEx::getGlobalProxy() {
+	return AssetsManagerEx::_proxy;
+}
+
+void AssetsManagerEx::setGlobalProxy(std::string& proxy) {
+	AssetsManagerEx::_proxy = proxy;
 }
 
 NS_CC_EXT_END

@@ -36,6 +36,12 @@
     <Filter Include="manual\dragonbones">
       <UniqueIdentifier>{36372247-74fd-4169-8120-06c8c0596530}</UniqueIdentifier>
     </Filter>
+    <Filter Include="manual\iflytek">
+      <UniqueIdentifier>{8abb825a-1a42-4b77-a7d6-9638e3290e39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="manual\iflytek\gameLoG">
+      <UniqueIdentifier>{db631623-1e93-4e39-8fdc-1f65a0308ce1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\auto\jsb_cocos2dx_auto.cpp">
@@ -160,6 +166,33 @@
     </ClCompile>
     <ClCompile Include="..\manual\creator\js_bindings_creator_manual.cpp">
       <Filter>manual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\iflytek\CallbackManager.cpp">
+      <Filter>manual\iflytek</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\iflytek\DownloaderManager.cpp">
+      <Filter>manual\iflytek</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\iflytek\jsb_ThreadNative.cpp">
+      <Filter>manual\iflytek</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\iflytek\md5.c">
+      <Filter>manual\iflytek</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\iflytek\ProxyDownloader.cpp">
+      <Filter>manual\iflytek</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\iflytek\ZipHelper.cpp">
+      <Filter>manual\iflytek</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\iflytek\gameLoG\GameLogic.cpp">
+      <Filter>manual\iflytek\gameLoG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\iflytek\gameLoG\jsb_GameLogic.cpp">
+      <Filter>manual\iflytek\gameLoG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\network\jsb_asio_connection.cpp">
+      <Filter>manual\network</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -306,6 +339,33 @@
     </ClInclude>
     <ClInclude Include="..\manual\creator\js_bindings_creator_manual.h">
       <Filter>manual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\CallbackManager.h">
+      <Filter>manual\iflytek</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\DownloaderManager.h">
+      <Filter>manual\iflytek</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\jsb_ThreadNative.h">
+      <Filter>manual\iflytek</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\md5.h">
+      <Filter>manual\iflytek</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\ProxyDownloader.h">
+      <Filter>manual\iflytek</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\ZipHelper.h">
+      <Filter>manual\iflytek</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\gameLoG\GameLogic.h">
+      <Filter>manual\iflytek\gameLoG</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\gameLoG\jsb_GameLogic.h">
+      <Filter>manual\iflytek\gameLoG</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\network\jsb_asio_connection.h">
+      <Filter>manual\network</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

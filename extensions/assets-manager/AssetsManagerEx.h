@@ -388,6 +388,12 @@ private:
     
     //! Marker for whether the assets manager is inited
     bool _inited;
+	//add by Shiqi Luo
+	static std::string _proxy;
+public:
+	
+	static void setGlobalProxy(std::string& proxy);
+	static std::string getGlobalProxy();
 };
 
 NS_CC_EXT_END
