@@ -136,6 +136,8 @@ project.properties
 # Ignore prebuilt libraries folder
 /external/*
 !/external/config.json
+!/external/sources/iflyteknet/
+!/external/sources/protobuf/
 /templates/lua-template-runtime/runtime
 /v*-deps-*.zip
 /v*-lua-runtime-*.zip
