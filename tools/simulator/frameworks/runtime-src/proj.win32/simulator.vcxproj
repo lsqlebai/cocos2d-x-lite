@@ -72,7 +72,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\Classes;$(ProjectDir)..\Classes\runtime;$(ProjectDir)..\Classes\ide-support;$(EngineRoot)cocos\base;$(EngineRoot)external\win32-specific\zlib\include;$(EngineRoot)cocos\scripting\js-bindings\auto;$(EngineRoot)cocos\scripting\js-bindings\manual;$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\win32\include;$(EngineRoot)external\win32\include\chipmunk;$(EngineRoot)external\win32\include\curl;$(EngineRoot)external\win32\include\glfw3;$(EngineRoot)external\win32\include\spidermonkey;$(EngineRoot)tools\simulator\libsimulator\lib;$(EngineRoot)tools\simulator\libsimulator\lib\protobuf-lite;$(EngineRoot)extensions;$(EngineRoot);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\Classes;$(ProjectDir)..\Classes\runtime;$(ProjectDir)..\Classes\ide-support;$(EngineRoot)cocos\base;$(EngineRoot)external\win32-specific\zlib\include;$(EngineRoot)cocos\scripting\js-bindings\auto;$(EngineRoot)cocos\scripting\js-bindings\manual;$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\win32\include;$(EngineRoot)external\win32\include\chipmunk;$(EngineRoot)external\win32\include\curl;$(EngineRoot)external\win32\include\glfw3;$(EngineRoot)external\win32\include\spidermonkey;$(EngineRoot)tools\simulator\libsimulator\lib;$(EngineRoot)extensions;$(EngineRoot);$(EngineRoot)\external\sources\protobuf\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -94,7 +94,7 @@
       <AdditionalLibraryDirectories>$(OutDir);$(EngineRoot)external\win32\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>libcurl_imp.lib;websockets.lib;mozjs-33.lib;libSpine.lib;libDragonBones.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ProgramDatabaseFile>$(ProjectDir)../../../runtime/win32/$(TargetName).pdb</ProgramDatabaseFile>
-      <OutputFile>$(ProjectDir)../../../runtime/win32/$(TargetName)$(TargetExt)</OutputFile>
+      <OutputFile>$(SolutionDir)$(Configuration).win32/$(TargetName)$(TargetExt)</OutputFile>
       <IgnoreSpecificDefaultLibraries>libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
     <ResourceCompile>

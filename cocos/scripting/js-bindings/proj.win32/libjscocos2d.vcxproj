@@ -123,10 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\external\sources\iflyteknet\vsproject\iflyteknet.vcxproj">
-      <Project>{c357a797-42b0-47de-83c5-c3fed2e62983}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\external\sources\protobuf\vsprojects\libprotobuf.vcxproj">
-      <Project>{3e283f37-a4ed-41b7-a3e6-a2d89d131a30}</Project>
+      <Project>{eb660074-226a-4123-8b55-77c993b6dc54}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\2d\libcocos2d.vcxproj">
       <Project>{98a51ba8-fc3a-415b-ac8f-8c7bd464e93e}</Project>

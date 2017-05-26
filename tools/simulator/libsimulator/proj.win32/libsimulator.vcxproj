@@ -67,7 +67,7 @@
       <PreprocessorDefinitions>WIN32;_WINDOWS;STRICT;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS_DEBUG;COCOS2D_DEBUG=1;GLFW_EXPOSE_NATIVE_WIN32;GLFW_EXPOSE_NATIVE_WGL;%(PreprocessorDefinitions);_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_USRLIBSIMSTATIC</PreprocessorDefinitions>
       <SDLCheck>
       </SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\lib\protobuf-lite;$(ProjectDir)..\lib;$(EngineRoot)external\win32-specific\zlib\include;$(EngineRoot)cocos\scripting\lua-bindings\auto;$(EngineRoot)cocos\scripting\lua-bindings\manual;$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\lua\lua;$(EngineRoot)external\lua\tolua;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)external\curl\include\win32;$(EngineRoot)extensions;$(EngineRoot);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\lib;$(EngineRoot)external\win32-specific\zlib\include;$(EngineRoot)cocos\scripting\lua-bindings\auto;$(EngineRoot)cocos\scripting\lua-bindings\manual;$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\lua\lua;$(EngineRoot)external\lua\tolua;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)external\curl\include\win32;$(EngineRoot)extensions;$(EngineRoot);$(EngineRoot)\external\sources\protobuf\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -176,6 +176,11 @@
     <ClCompile Include="..\lib\runtime\VisibleRect.cpp" />
     <ClCompile Include="Runtime_win32.cpp" />
     <ClCompile Include="stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\external\sources\protobuf\vsprojects\libprotobuf.vcxproj">
+      <Project>{3e283f37-a4ed-41b7-a3e6-a2d89d131a30}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

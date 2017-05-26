@@ -17,7 +17,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libDragonBones", "..\..\..\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libBox2D", "..\..\..\..\..\external\sources\Box2D\proj.win32\libBox2D.vcxproj", "{EB7E5610-C178-49C9-8B4C-1C283E616ED9}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "iflyteknet", "..\..\..\..\..\external\sources\iflyteknet\vsproject\iflyteknet.vcxproj", "{C357A797-42B0-47DE-83C5-C3FED2E62983}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "iflyteknet", "..\..\..\..\..\external\sources\iflyteknet\vsproject\iflyteknet.vcxproj", "{EB660074-226A-4123-8B55-77C993B6DC54}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libprotobuf", "..\..\..\..\..\external\sources\protobuf\vsprojects\libprotobuf.vcxproj", "{3E283F37-A4ED-41B7-A3E6-A2D89D131A30}"
 EndProject
@@ -55,10 +55,10 @@ Global
 		{EB7E5610-C178-49C9-8B4C-1C283E616ED9}.Debug|Win32.Build.0 = Debug|Win32
 		{EB7E5610-C178-49C9-8B4C-1C283E616ED9}.Release|Win32.ActiveCfg = Release|Win32
 		{EB7E5610-C178-49C9-8B4C-1C283E616ED9}.Release|Win32.Build.0 = Release|Win32
-		{C357A797-42B0-47DE-83C5-C3FED2E62983}.Debug|Win32.ActiveCfg = Debug|Win32
-		{C357A797-42B0-47DE-83C5-C3FED2E62983}.Debug|Win32.Build.0 = Debug|Win32
-		{C357A797-42B0-47DE-83C5-C3FED2E62983}.Release|Win32.ActiveCfg = Release|Win32
-		{C357A797-42B0-47DE-83C5-C3FED2E62983}.Release|Win32.Build.0 = Release|Win32
+		{EB660074-226A-4123-8B55-77C993B6DC54}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EB660074-226A-4123-8B55-77C993B6DC54}.Debug|Win32.Build.0 = Debug|Win32
+		{EB660074-226A-4123-8B55-77C993B6DC54}.Release|Win32.ActiveCfg = Release|Win32
+		{EB660074-226A-4123-8B55-77C993B6DC54}.Release|Win32.Build.0 = Release|Win32
 		{3E283F37-A4ED-41B7-A3E6-A2D89D131A30}.Debug|Win32.ActiveCfg = Debug|Win32
 		{3E283F37-A4ED-41B7-A3E6-A2D89D131A30}.Debug|Win32.Build.0 = Debug|Win32
 		{3E283F37-A4ED-41B7-A3E6-A2D89D131A30}.Release|Win32.ActiveCfg = Release|Win32
