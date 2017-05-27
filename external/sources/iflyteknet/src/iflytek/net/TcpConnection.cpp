@@ -19,7 +19,7 @@
 	"twb+Xpw3inl1KoMQmwIDAQAB\n"\
 	"-----END PUBLIC KEY-----\n"
 
-#define IFLYTEK_NET_VERSION 4 // 通信库版本号
+#define IFLYTEK_NET_VERSION 5 // 通信库版本号
 
 void testFun()
 {
@@ -191,11 +191,13 @@ void TcpConnection::asynSend(void* data, std::size_t len, SendCallback sendCallb
 void TcpConnection::doSend()
 {
 	
+	try
+	{
 		asio::async_write(_socket,
 			asio::buffer((*_sendMsgQueue.front()).data(), (*_sendMsgQueue.front()).length()),
 			[this](std::error_code ec, std::size_t length)
 		{
-			
+
 			SendMsg msg = *_sendMsgQueue.front();
 
 			if (!ec)
@@ -225,6 +227,14 @@ void TcpConnection::doSend()
 				//doDisconnect();
 			}
 		});
+	}
+	catch (...)
+	{
+		//std::cout << "asynwrite data error" << std::endl;
+		// 网络异常
+	}
+
+		
 	
 
 
@@ -232,62 +242,83 @@ void TcpConnection::doSend()
 
 void TcpConnection::doReadHeader()
 {
-    ReceiveMsg* msg = new ReceiveMsg();
+   
     
-    static int RECEIVE_LEN = 1;
-    std::shared_ptr<ReceiveMsg> msgPtr(msg);
-    asio::async_read(_socket,
-                     asio::buffer((*msgPtr).data(), RECEIVE_LEN),
-                     [this, msgPtr](std::error_code ec, std::size_t len/*length*/)
-                     {
-                         
-                         if (!ec)
-                         {
-                             std::size_t curDataLen = RECEIVE_LEN;
-                             
-                             bool cond = true;
-                             
-                             do
-                             {
-								 //std::cout << "receive header curDataLen:" << curDataLen << std::endl;
-                                 int result = (*msgPtr).decodeHeader(curDataLen);
-                                 if(result == 1) // 继续解析头
-                                 {
-                                     if(curDataLen>=MAX_HEADER_LENGTH) // 未解析到头，丢掉包
-                                     {
-                                         cond = false;
-                                     }
-                                     
-                                     std::size_t recLen = asio::read(_socket, asio::buffer((*msgPtr).data() + curDataLen, RECEIVE_LEN));
-                                     if(recLen>0)
-                                     {
-                                        curDataLen += recLen;
-                                        continue;
-                                     }
-                                     else
-                                     {
-                                         cond = false;
-                                         //doDisconnect();
-                                     }
-                                 }
-                                 else if(result == 0) // 解析成功，开始接收body
-                                 {
-                                     cond = false;
-                                     doReadBody(msgPtr);
-                                 }
-                                 else // 头解析失败，丢掉这个包，重新接收新包
-                                 {
-                                     cond = false;
-                                     loopRead();
-                                 }
-                                 
-                             }while(cond);
-                         }
-                         else
-                         {
-                             doDisconnect();
-                         }
-                     });
+	try
+	{
+		ReceiveMsg* msg = new ReceiveMsg();
+		static int RECEIVE_LEN = 1;
+		std::shared_ptr<ReceiveMsg> msgPtr(msg);
+		asio::async_read(_socket,
+			asio::buffer((*msgPtr).data(), RECEIVE_LEN),
+			[this, msgPtr](std::error_code ec, std::size_t len/*length*/)
+		{
+
+			if (!ec)
+			{
+				std::size_t curDataLen = RECEIVE_LEN;
+
+				bool cond = true;
+
+				do
+				{
+					//std::cout << "receive header curDataLen:" << curDataLen << std::endl;
+					int result = (*msgPtr).decodeHeader(curDataLen);
+					if (result == 1) // 继续解析头
+					{
+						if (curDataLen >= MAX_HEADER_LENGTH) // 未解析到头，丢掉包
+						{
+							cond = false;
+						}
+
+						std::size_t recLen = 0;
+						try
+						{
+							recLen = asio::read(_socket, asio::buffer((*msgPtr).data() + curDataLen, RECEIVE_LEN));
+						}
+						catch (...)
+						{
+							//std::cout << "read data error" << std::endl;
+							// 网络异常
+						}
+
+						if (recLen > 0)
+						{
+							curDataLen += recLen;
+							continue;
+						}
+						else
+						{
+							cond = false;
+							//doDisconnect();
+						}
+					}
+					else if (result == 0) // 解析成功，开始接收body
+					{
+						cond = false;
+						doReadBody(msgPtr);
+					}
+					else // 头解析失败，丢掉这个包，重新接收新包
+					{
+						cond = false;
+						loopRead();
+					}
+
+				} while (cond);
+			}
+			else
+			{
+				doDisconnect();
+			}
+		});
+	}
+	catch (...)
+	{
+		//std::cout << "asynread data error" << std::endl;
+		// 网络异常
+	}
+
+    
 }
 
 void TcpConnection::doReadBody(std::shared_ptr<ReceiveMsg> receiveMsg)
@@ -451,7 +482,18 @@ void TcpConnection::asynConnect(string host, int port, ConnectCallback callback)
 											{
 
 												int8_t buffer2[4] = { 0x05, 0x02, 0x00, 0x02 };
-												size_t sendSize = asio::write(_socket, asio::buffer(buffer2, 4)); // 询问服务器是否支持代理
+
+												size_t sendSize = 0;
+												try
+												{
+													sendSize = asio::write(_socket, asio::buffer(buffer2, 4)); // 询问服务器是否支持代理
+												}
+												catch (...)
+												{
+													//std::cout << "write data error" << std::endl;
+													// 网络异常
+												}
+												
 
 												if (sendSize <= 0) // 发送失败
 												{
@@ -459,7 +501,17 @@ void TcpConnection::asynConnect(string host, int port, ConnectCallback callback)
 												}
 
 												int8_t recData[2];
-												size_t rs = asio::read(_socket, asio::buffer(recData, 2));
+												size_t rs = 0;
+												try
+												{
+													rs = asio::read(_socket, asio::buffer(recData, 2));
+												}
+												catch (...)
+												{
+													//std::cout << "read data error" << std::endl;
+													// 网络异常
+												}
+												
 
 												if (recData[1] != 0) // 服务器不支持代理，无法建立连接
 												{
@@ -492,9 +544,17 @@ void TcpConnection::asynConnect(string host, int port, ConnectCallback callback)
 												memcpy(buffer + 4, ipBuffer, 4);
 												memcpy(buffer + 8, portBuffer, 2);
 
-												auto sendSize2 = asio::write(_socket, asio::buffer(buffer, 10));
-
-
+												auto sendSize2 = 2;
+												try
+												{
+													sendSize2 = asio::write(_socket, asio::buffer(buffer, 10));
+												}
+												catch (...)
+												{
+													//std::cout << "write data error" << std::endl;
+													// 网络异常
+												}
+												
 
 												if (sendSize2 <= 0) // 发送失败
 												{
@@ -502,7 +562,17 @@ void TcpConnection::asynConnect(string host, int port, ConnectCallback callback)
 												}
 
 												int8_t recData2[10];
-												size_t rs2 = asio::read(_socket, asio::buffer(recData2, 10));
+												size_t rs2 = 0;
+												try
+												{
+													rs2 = asio::read(_socket, asio::buffer(recData2, 10));
+												}
+												catch (...)
+												{
+													//std::cout << "read data error" << std::endl;
+													// 网络异常
+												}
+												
 
 												if (recData2[1] != 0) // 代理服务器连接目标服务器失败
 												{
@@ -617,4 +687,3 @@ void TcpConnection::setRefPtr(void* refPtr)
 {
 	this->_refPtr = refPtr;
 }
-
