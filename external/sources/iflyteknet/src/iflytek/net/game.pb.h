@@ -3045,12 +3045,12 @@ class Player : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 status() const;
   inline void set_status(::google::protobuf::int32 value);
 
-  // optional float ultimateSkillProgress = 5;
+  // optional int32 ultimateSkillProgress = 5;
   inline bool has_ultimateskillprogress() const;
   inline void clear_ultimateskillprogress();
   static const int kUltimateSkillProgressFieldNumber = 5;
-  inline float ultimateskillprogress() const;
-  inline void set_ultimateskillprogress(float value);
+  inline ::google::protobuf::int32 ultimateskillprogress() const;
+  inline void set_ultimateskillprogress(::google::protobuf::int32 value);
 
   // optional .UserInfo beKilledUserInfo = 6;
   inline bool has_bekilleduserinfo() const;
@@ -3095,7 +3095,7 @@ class Player : public ::google::protobuf::Message {
   ::google::protobuf::int32 status_;
   ::UserInfo* bekilleduserinfo_;
   ::SuperRenewInfo* superrenewinfo_;
-  float ultimateskillprogress_;
+  ::google::protobuf::int32 ultimateskillprogress_;
   friend void  protobuf_AddDesc_game_2eproto();
   friend void protobuf_AssignDesc_game_2eproto();
   friend void protobuf_ShutdownFile_game_2eproto();
@@ -10154,7 +10154,7 @@ inline void Player::set_status(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:Player.status)
 }
 
-// optional float ultimateSkillProgress = 5;
+// optional int32 ultimateSkillProgress = 5;
 inline bool Player::has_ultimateskillprogress() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
@@ -10168,11 +10168,11 @@ inline void Player::clear_ultimateskillprogress() {
   ultimateskillprogress_ = 0;
   clear_has_ultimateskillprogress();
 }
-inline float Player::ultimateskillprogress() const {
+inline ::google::protobuf::int32 Player::ultimateskillprogress() const {
   // @@protoc_insertion_point(field_get:Player.ultimateSkillProgress)
   return ultimateskillprogress_;
 }
-inline void Player::set_ultimateskillprogress(float value) {
+inline void Player::set_ultimateskillprogress(::google::protobuf::int32 value) {
   set_has_ultimateskillprogress();
   ultimateskillprogress_ = value;
   // @@protoc_insertion_point(field_set:Player.ultimateSkillProgress)

@@ -10,7 +10,7 @@
 
 #include "game.pb.h"
 #include "json_format.h"
-
+#include "zlib.h"
 
 #define publicKey "-----BEGIN PUBLIC KEY-----\n"\
 	"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrIAwtYCCsgPr6wai8kX8etPCZ\n"\
@@ -21,10 +21,248 @@
 
 #define IFLYTEK_NET_VERSION 5 // 通信库版本号
 
-void testFun()
-{
-	
-}
+//#pragma comment(lib, "libzlib.lib") 
+
+
+//int testFun(int8_t* d, size_t len)
+//{
+//	//char text[] = "zlib compress and uncompress test\nturingo@163.com\n2012-11-05\n";
+//	//uLong tlen = strlen(text) + 1;  /* 需要把字符串的结束符'\0'也一并处理 */
+//
+//	int8_t* text = d;
+//	uLong tlen = len + 1;  /* 需要把字符串的结束符'\0'也一并处理 */
+//	Bytef* buf = NULL;
+//	uLong blen;
+//
+//	/* 计算缓冲区大小，并为其分配内存 */
+//	blen = compressBound(tlen); /* 压缩后的长度是不会超过blen的 */
+//	if ((buf = (Bytef*)malloc(sizeof(char)* blen)) == NULL)
+//	{
+//		printf("no enough memory!\n");
+//		return -1;
+//	}
+//
+//	/* 压缩 */
+//	if (compress2(buf, &blen, (Bytef*)text, tlen, 9) != Z_OK)
+//	{
+//		printf("compress failed!\n");
+//		return -1;
+//	}
+//
+//
+//	/* 解压缩 */
+//	if (uncompress((Bytef*)text, &tlen, buf, blen) != Z_OK)
+//	{
+//		printf("uncompress failed!\n");
+//		return -1;
+//	}
+//
+//	/* 打印结果，并释放内存 */
+//	printf("%s", text);
+//	if (buf != NULL)
+//	{
+//		free(buf);
+//		buf = NULL;
+//	}
+//
+//	return 0;
+//}
+//
+//#include "Compression.h"
+//#include "zlib_wrapper.h"
+//
+//
+//#define CHUNK_LEN 256
+//
+//static z_stream inflate_stream;
+//
+//static bool isInited = false;
+//static int tInit()
+//{
+//	if (!isInited)
+//	{
+//		inflate_stream.zalloc = Z_NULL;
+//		inflate_stream.zfree = Z_NULL;
+//		inflate_stream.opaque = Z_NULL;
+//
+//		int ret = inflateInit2_(&inflate_stream, -15, ZLIB_VERSION, sizeof(z_stream));
+//		//inflateInit(&inflate_stream)
+//		if (ret != Z_OK)
+//		{
+//			return 1;
+//		}
+//		isInited = true;
+//	}
+//}
+//
+//static bool do_decompression(const char *buf, int len)
+//{
+//	tInit();
+//	z_stream *zs = &inflate_stream;
+//	char outbuf[1024 * 5];
+//
+//	zs->next_in = (Bytef *)buf;
+//	zs->avail_in = len;
+//
+//	while (1)
+//	{
+//		int ret;
+//
+//		zs->next_out = (Bytef *)outbuf;
+//		zs->avail_out = sizeof (outbuf);
+//
+//		ret = inflate(zs, Z_SYNC_FLUSH);
+//		if (ret != Z_OK && ret != Z_STREAM_END)
+//		{
+//			printf("inflate returned %d: %s\n",
+//				ret, zs->msg ? zs->msg : "<no-error>");
+//			return FALSE;
+//		}
+//
+//		if (ret == Z_STREAM_END)
+//		{
+//			printf("Reached end of stream\n");
+//			inflateReset(zs);
+//		}
+//
+//		if (zs->avail_in == 0)
+//			break;
+//	}
+//
+//	return TRUE;
+//}
+//
+//
+//StlVecUnChar zTest(int8_t* d, size_t len)
+//{
+//
+//	StlVecUnChar inData;
+//	StlVecUnChar outData;
+//	StlVecUnChar outData2;
+//
+//	//{
+//	//	const char* s = "你好";
+//	//	int len2 = strlen(s);
+//	//	for (int i = 0; i < len2; ++i)
+//	//	{
+//	//		inData.push_back((signed char)s[i]);
+//	//	}
+//	//	Compression ci(true);
+//	//	ci.Init();
+//	//	int r = ci.Deflate(inData, outData);
+//
+//	//}
+//
+//	
+//	for (int i = 0; i < len; ++i)
+//	{
+//		inData.push_back(d[i]);
+//	}
+//	static Compression* ci = new Compression(true, false, true);
+//	//ci->Init();
+//	int r = ci->doCompress((Bytef*)d, len, outData);
+//
+//
+//	//Compression cd(false);
+//	//cd.Init();
+//	//int rr = cd.Inflate(outData, outData2);
+//
+//	return outData;
+//}
+//
+//StlVecUnChar unzTest(int8_t* d, size_t len)
+//{
+//
+//	
+//	//std::vector<char> outDatat;
+//
+//	//bool bbb = unzip_buffer((char*)d, (unsigned int)len, outDatat);
+//
+//	//int8_t* text = (int8_t*)malloc(sizeof(char)* len * 50);
+//
+//	//uLong tlen = 0;
+//
+//	///* 解压缩 */
+//
+//	//int result = uncompress((Bytef*)text, &tlen, (Bytef*)d, len);
+//	//if (result != Z_OK)
+//	//{
+//	//	printf("uncompress failed!\n");
+//	//}
+//
+//
+//	StlVecUnChar inData;
+//	StlVecUnChar outData;
+//	StlVecUnChar outData2;
+//	StlVecUnChar outData3;
+//
+//	for (int i = 0; i < len; ++i)
+//	{
+//		inData.push_back((signed char)d[i]);
+//	}
+//
+//
+//	
+//	//Compression ci(true);
+//	//ci.Init();
+//	//int r = ci.Deflate(inData, outData2);
+//
+//	//Compression cdtest(false);
+//	//cdtest.Init();
+//	//int rrtest = cdtest.Inflate(outData2, outData3);
+//
+//
+//	//do_decompression((const char*)d, len);
+//
+//	static Compression* cd = new Compression(false, false, true);
+//	//cd->Init();
+//	int rr = cd->doUncompress((Bytef*)d, len, outData);
+//
+//	//char a[50] = "Hello World!";
+//	//char b[50];
+//	//char c[50];
+//
+//	//// deflate
+//	//// zlib struct
+//	//z_stream defstream;
+//	//defstream.zalloc = Z_NULL;
+//	//defstream.zfree = Z_NULL;
+//	//defstream.opaque = Z_NULL;
+//	//defstream.avail_in = (uInt)sizeof(a); // size of input
+//	//defstream.next_in = (Bytef *)a; // input char array
+//	//defstream.avail_out = (uInt)sizeof(b); // size of output
+//	//defstream.next_out = (Bytef *)b; // output char array
+//
+//	//deflateInit(&defstream, Z_DEFAULT_COMPRESSION);
+//	//deflate(&defstream, Z_FINISH);
+//	//deflateEnd(&defstream);
+//
+//	//printf("Deflate:\n%lu\n%s\n", strlen(b), b);
+//
+//	//// inflate
+//	//// zlib struct
+//	//z_stream infstream;
+//	//infstream.zalloc = Z_NULL;
+//	//infstream.zfree = Z_NULL;
+//	//infstream.opaque = Z_NULL;
+//	//infstream.avail_in = (uInt)sizeof(b); // size of input
+//	//infstream.next_in = (Bytef *)b; // input char array
+//	//infstream.avail_out = (uInt)sizeof(c); // size of output
+//	//infstream.next_out = (Bytef *)c; // output char array
+//
+//	//inflateInit(&infstream);
+//	//inflate(&infstream, Z_NO_FLUSH);
+//	//inflateEnd(&infstream);
+//
+//	//printf("Inflate:\n%lu\n%s\n", strlen(c), c);
+//
+//
+//
+//
+//
+//
+//	return outData;
+//}
 
 int32_t TcpConnection::getVersion()
 {
@@ -48,7 +286,7 @@ int32_t TcpConnection::getVersion()
 //	"D7HqWVo2mDSc4lbE\n"\
 //	"-----END RSA PRIVATE KEY-----\n"
 
-TcpConnection::TcpConnection():_socket(_ioService)
+TcpConnection::TcpConnection() :_socket(_ioService), _compress(true, false, true), _uncompress(false, false, true)
 {
     _isConnected = false;
     _isConnecting = false;
@@ -57,6 +295,8 @@ TcpConnection::TcpConnection():_socket(_ioService)
 	_isEnableCrypt = true;
 	_isEnableDecodeProto = true;
 	_proxyPort = 0;
+
+	
 }
 
 TcpConnection::~TcpConnection()
@@ -175,7 +415,62 @@ void TcpConnection::asynSend(void* data, std::size_t len, SendCallback sendCallb
 		}
 		else
 		{
-			msg->setBody(data, len);
+
+			std::vector<Bytef> outData;
+			this->_compress.doCompress((Bytef*)data, len, outData); // 进行数据压缩
+
+
+			auto sendData = new int8_t[outData.size()];
+			for (int i = 0; i < outData.size(); ++i)
+			{
+				sendData[i] = outData[i];
+			}
+			msg->setBody(sendData, outData.size());
+		
+
+			//auto result = zTest((int8_t*)data, len);
+
+			//auto sendData = new int8_t[result.size()];
+
+			//for (int i = 0; i < result.size(); ++i)
+			//{
+			//	sendData[i] = result[i];
+			//}
+
+			////auto unResult =  unzTest(sendData, result.size());
+
+			//static Compression* cdc = new Compression(false, false, true);
+			//
+
+			//std::vector<Bytef> unResult;
+			//int rr = cdc->doUncompress((Bytef*)sendData, result.size(), unResult);
+
+			//int unzlen = unResult.size();
+			//if (unzlen <= 0)
+			//{
+			//	printf("errorxxxxxxxxx");
+			//}
+			//else
+			//{
+			//	MessageInfo* msg = new MessageInfo();
+			//	auto unzData = new int8_t[unResult.size()];
+			//	for (int i = 0; i < unResult.size(); ++i)
+			//	{
+			//		unzData[i] = unResult[i];
+			//	}
+
+			//	parseMessage(msg, unzData, unResult.size());
+			//	auto jsonStr = google::protobuf::JsonFormat::Utf8DebugJsonString(*msg);
+			//	if (jsonStr.length() <= 2)
+			//	{
+			//		printf("errorxxxxxxxxx  yyyyy");
+			//	}
+			//	delete msg;
+			//}
+			//msg->setBody(sendData, result.size());
+
+			//msg->setBody(data, len);
+
 			bool writeInProgress = !_sendMsgQueue.empty();
 			_sendMsgQueue.push_back(msgPtr);
 			if (!writeInProgress)
@@ -193,6 +488,7 @@ void TcpConnection::doSend()
 	
 	try
 	{
+		
 		asio::async_write(_socket,
 			asio::buffer((*_sendMsgQueue.front()).data(), (*_sendMsgQueue.front()).length()),
 			[this](std::error_code ec, std::size_t length)
@@ -389,18 +685,55 @@ void TcpConnection::doReadBody(std::shared_ptr<ReceiveMsg> receiveMsg)
 										 {
 											 try
 											 {
-												 MessageInfo* msg = new MessageInfo();
 
-												 parseMessage(msg, msgData, bodyLen);
-												 jsonStr = google::protobuf::JsonFormat::Utf8DebugJsonString(*msg);
-												 delete msg;
+												 /* {
+													  MessageInfo* msg = new MessageInfo();
+													  parseMessage(msg, msgData, bodyLen);
+													  jsonStr = google::protobuf::JsonFormat::Utf8DebugJsonString(*msg);
+													  delete msg;
+													  }*/
+
+												 {
+													 MessageInfo* msg = new MessageInfo();
+													 std::vector<Bytef> outData;
+													 _uncompress.doUncompress((Bytef*)msgData, bodyLen, outData); // 进行数据解压
+
+
+													 int8_t* finalData = new int8_t[outData.size()];
+													 int finalDataLen = outData.size();
+													 for (int i = 0; i < outData.size(); ++i)
+													 {
+														 finalData[i] = outData.at(i);
+													 }
+
+													 parseMessage(msg, finalData, finalDataLen);
+													 jsonStr = google::protobuf::JsonFormat::Utf8DebugJsonString(*msg);
+
+													 if (jsonStr.length() <= 2)
+													 {
+														 int j = 2l;
+													 }
+
+
+													 msgData = (int8_t*)finalData;
+													 bodyLen = finalDataLen;
+													 
+													 delete msg;
+												 }
+												
+
 											 }
 											 catch (...)
 											 {
+
 											 }
 										 }
 									 }
-									 _receiveCallback(msgData, bodyLen, jsonStr); // 派发消息
+
+									 
+									_receiveCallback(msgData, bodyLen, jsonStr); // 派发消息
+
+									 delete[] msgData;
 								 }
 							 }
 							
@@ -461,6 +794,9 @@ void TcpConnection::asynConnect(string host, int port, ConnectCallback callback)
 			endpoint_iterator = resolver.resolve({ host, portStr });
 		}
         
+		this->_compress.reset();
+		this->_uncompress.reset();
+
         asio::async_connect(_socket, endpoint_iterator,
                             [=](std::error_code ec, tcp::resolver::iterator it)
                             {

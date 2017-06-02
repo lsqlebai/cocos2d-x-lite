@@ -1494,7 +1494,7 @@ void protobuf_AddDesc_game_2eproto() {
     "\n\013magnetFoods\030\n \003(\0132\t.FoodArea\"\310\001\n\006Playe"
     "r\022\033\n\010userInfo\030\001 \002(\0132\t.UserInfo\022\016\n\006weight"
     "\030\002 \001(\005\022\024\n\005cells\030\003 \003(\0132\005.Cell\022\016\n\006status\030\004"
-    " \001(\005\022\035\n\025ultimateSkillProgress\030\005 \001(\002\022#\n\020b"
+    " \001(\005\022\035\n\025ultimateSkillProgress\030\005 \001(\005\022#\n\020b"
     "eKilledUserInfo\030\006 \001(\0132\t.UserInfo\022\'\n\016supe"
     "rRenewInfo\030\007 \001(\0132\017.SuperRenewInfo\"\?\n\016Sup"
     "erRenewInfo\022\014\n\004gold\030\001 \001(\005\022\016\n\006weight\030\002 \001("
@@ -10975,16 +10975,16 @@ bool Player::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(45)) goto parse_ultimateSkillProgress;
+        if (input->ExpectTag(40)) goto parse_ultimateSkillProgress;
         break;
       }
 
-      // optional float ultimateSkillProgress = 5;
+      // optional int32 ultimateSkillProgress = 5;
       case 5: {
-        if (tag == 45) {
+        if (tag == 40) {
          parse_ultimateSkillProgress:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &ultimateskillprogress_)));
           set_has_ultimateskillprogress();
         } else {
@@ -11067,9 +11067,9 @@ void Player::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->status(), output);
   }
 
-  // optional float ultimateSkillProgress = 5;
+  // optional int32 ultimateSkillProgress = 5;
   if (has_ultimateskillprogress()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(5, this->ultimateskillprogress(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->ultimateskillprogress(), output);
   }
 
   // optional .UserInfo beKilledUserInfo = 6;
@@ -11118,9 +11118,9 @@ void Player::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->status(), target);
   }
 
-  // optional float ultimateSkillProgress = 5;
+  // optional int32 ultimateSkillProgress = 5;
   if (has_ultimateskillprogress()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(5, this->ultimateskillprogress(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->ultimateskillprogress(), target);
   }
 
   // optional .UserInfo beKilledUserInfo = 6;
@@ -11170,9 +11170,11 @@ int Player::ByteSize() const {
           this->status());
     }
 
-    // optional float ultimateSkillProgress = 5;
+    // optional int32 ultimateSkillProgress = 5;
     if (has_ultimateskillprogress()) {
-      total_size += 1 + 4;
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->ultimateskillprogress());
     }
 
     // optional .UserInfo beKilledUserInfo = 6;

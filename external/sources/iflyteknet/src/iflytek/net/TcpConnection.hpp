@@ -19,6 +19,8 @@
 #include <memory>
 #include "boost/asio.hpp"
 
+#include "Compression.h"
+
 using namespace std;
 using asio::ip::tcp;
 
@@ -27,7 +29,7 @@ class ReceiveMsg;
 
 #define MAX_HEADER_LENGTH 5 // 数据头最大字节数
 typedef std::deque<std::shared_ptr<SendMsg>> SendMsgQueue; // 消息发送队列
-
+int testFun(int8_t* d, size_t len);
 /**
  * Tcp长连接
  */
@@ -177,6 +179,9 @@ private:
     thread* _thread; // 通信线程
     
     SendMsgQueue _sendMsgQueue; // 消息发送队列
+
+	Compression _compress;
+	Compression _uncompress;
 };
 
 

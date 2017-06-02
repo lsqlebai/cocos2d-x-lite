@@ -11,16 +11,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\iflytek\net\Compression.cpp" />
     <ClCompile Include="..\src\iflytek\net\game.pb.cc" />
     <ClCompile Include="..\src\iflytek\net\json_format.cc" />
     <ClCompile Include="..\src\iflytek\net\RSAUtil.cpp" />
     <ClCompile Include="..\src\iflytek\net\TcpConnection.cpp" />
+    <ClCompile Include="..\src\iflytek\net\zlib_wrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\iflytek\net\Compression.h" />
     <ClInclude Include="..\src\iflytek\net\game.pb.h" />
     <ClInclude Include="..\src\iflytek\net\json_format.h" />
     <ClInclude Include="..\src\iflytek\net\RSAUtil.h" />
     <ClInclude Include="..\src\iflytek\net\TcpConnection.hpp" />
+    <ClInclude Include="..\src\iflytek\net\zlib_wrapper.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\protobuf\vsprojects\libprotobuf.vcxproj">
@@ -65,7 +69,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../src;$(OPENSSL_ROOT)\include;../../protobuf/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../src;$(OPENSSL_ROOT)\include;../../protobuf/src;../../../win32/include/zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>ASIO_STANDALONE;_CRT_SECURE_NO_WARNINGS;COCOS2D_DEBUG;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>

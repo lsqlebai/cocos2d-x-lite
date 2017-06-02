@@ -33,6 +33,12 @@
     <ClCompile Include="..\src\iflytek\net\json_format.cc">
       <Filter>iflytek\net</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\iflytek\net\Compression.cpp">
+      <Filter>iflytek\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\iflytek\net\zlib_wrapper.cpp">
+      <Filter>iflytek\net</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\iflytek\net\RSAUtil.h">
@@ -45,6 +51,12 @@
       <Filter>iflytek\net</Filter>
     </ClInclude>
     <ClInclude Include="..\src\iflytek\net\json_format.h">
+      <Filter>iflytek\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\iflytek\net\Compression.h">
+      <Filter>iflytek\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\iflytek\net\zlib_wrapper.h">
       <Filter>iflytek\net</Filter>
     </ClInclude>
   </ItemGroup>
