@@ -47,8 +47,8 @@ public:
 	int doUncompress(const Bytef* inData, const int& inDataLen, std::vector<Bytef>& outData);
 	void reset();
 
-    int Deflate(const StlVecUnChar &inStr, StlVecUnChar &outStr);
-    int Inflate(const StlVecUnChar &inStr, StlVecUnChar &outStr);
+    //int Deflate(const StlVecUnChar &inStr, StlVecUnChar &outStr);
+    //int Inflate(const StlVecUnChar &inStr, StlVecUnChar &outStr);
 
 private:
 	int Init();
