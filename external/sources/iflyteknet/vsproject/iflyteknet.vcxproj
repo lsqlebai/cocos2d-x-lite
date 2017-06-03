@@ -16,7 +16,6 @@
     <ClCompile Include="..\src\iflytek\net\json_format.cc" />
     <ClCompile Include="..\src\iflytek\net\RSAUtil.cpp" />
     <ClCompile Include="..\src\iflytek\net\TcpConnection.cpp" />
-    <ClCompile Include="..\src\iflytek\net\zlib_wrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\iflytek\net\Compression.h" />
@@ -24,7 +23,6 @@
     <ClInclude Include="..\src\iflytek\net\json_format.h" />
     <ClInclude Include="..\src\iflytek\net\RSAUtil.h" />
     <ClInclude Include="..\src\iflytek\net\TcpConnection.hpp" />
-    <ClInclude Include="..\src\iflytek\net\zlib_wrapper.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\protobuf\vsprojects\libprotobuf.vcxproj">
@@ -63,7 +61,10 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration).win32\</OutDir>
+    <IntDir>$(Configuration).win32\</IntDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>

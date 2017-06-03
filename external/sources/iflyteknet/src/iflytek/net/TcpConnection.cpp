@@ -20,6 +20,7 @@
 	"-----END PUBLIC KEY-----\n"
 
 #define IFLYTEK_NET_VERSION 5 // 通信库版本号
+#define USE_ZLIB 0 // 是否启用zlib进行数据压缩
 
 //#pragma comment(lib, "libzlib.lib") 
 
@@ -416,17 +417,23 @@ void TcpConnection::asynSend(void* data, std::size_t len, SendCallback sendCallb
 		else
 		{
 
-			std::vector<Bytef> outData;
-			this->_compress.doCompress((Bytef*)data, len, outData); // 进行数据压缩
-
-
-			auto sendData = new int8_t[outData.size()];
-			for (int i = 0; i < outData.size(); ++i)
+			if (USE_ZLIB)
 			{
-				sendData[i] = outData[i];
+				std::vector<Bytef> outData;
+				this->_compress.doCompress((Bytef*)data, len, outData); // 进行数据压缩
+
+
+				auto sendData = new int8_t[outData.size()];
+				for (int i = 0; i < outData.size(); ++i)
+				{
+					sendData[i] = outData[i];
+				}
+				msg->setBody(sendData, outData.size());
 			}
-			msg->setBody(sendData, outData.size());
-		
+			else
+			{
+				msg->setBody(data, len);
+			}
 
 			//auto result = zTest((int8_t*)data, len);
 
@@ -631,6 +638,7 @@ void TcpConnection::doReadBody(std::shared_ptr<ReceiveMsg> receiveMsg)
                              
                              //std::cout << "receive len:" << bodyLen << std::endl;
 
+							 bool isNeedReleaseData = false; // 是否需要释放msgData
 
 							 if (_isEnableCrypt)
 							 {
@@ -686,13 +694,7 @@ void TcpConnection::doReadBody(std::shared_ptr<ReceiveMsg> receiveMsg)
 											 try
 											 {
 
-												 /* {
-													  MessageInfo* msg = new MessageInfo();
-													  parseMessage(msg, msgData, bodyLen);
-													  jsonStr = google::protobuf::JsonFormat::Utf8DebugJsonString(*msg);
-													  delete msg;
-													  }*/
-
+												 if (USE_ZLIB)
 												 {
 													 MessageInfo* msg = new MessageInfo();
 													 std::vector<Bytef> outData;
@@ -718,10 +720,21 @@ void TcpConnection::doReadBody(std::shared_ptr<ReceiveMsg> receiveMsg)
 													 msgData = (int8_t*)finalData;
 													 bodyLen = finalDataLen;
 													 
+													 isNeedReleaseData = true; // 需要手动释放msgData
+
 													 delete msg;
 												 }
-												
+												 else
 
+												 {
+													 {
+														 MessageInfo* msg = new MessageInfo();
+														 parseMessage(msg, msgData, bodyLen);
+														 
+														 jsonStr = google::protobuf::JsonFormat::Utf8DebugJsonString(*msg);
+														 delete msg;
+													 }
+												 }
 											 }
 											 catch (...)
 											 {
@@ -729,11 +742,13 @@ void TcpConnection::doReadBody(std::shared_ptr<ReceiveMsg> receiveMsg)
 											 }
 										 }
 									 }
-
 									 
 									_receiveCallback(msgData, bodyLen, jsonStr); // 派发消息
 
-									 delete[] msgData;
+									if (isNeedReleaseData)
+									{
+										delete[] msgData;
+									}
 								 }
 							 }
 							
