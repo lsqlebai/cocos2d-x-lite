@@ -739,49 +739,32 @@ bool js_cocos2dx_extension_AsioConnection_constructor(JSContext *cx, uint32_t ar
 
 			runOnCocosThread([cobj, tempData, dataLen, jsonStr]()
 			{
-
+				static bool test = true;
+				if (!test)
+				{
+					return;
+				}
 				if (cocos2d::Director::getInstance() == nullptr || cocos2d::ScriptEngineManager::getInstance() == nullptr)
 					return;
-
-
-
 
 				JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
 
 					JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
-				auto abc = JS_NewObject(cx, NULL, JS::NullPtr(), JS::NullPtr());
-				JS::RootedObject jsobj(cx, abc);
+				auto obj = JS_NewObject(cx, NULL, JS::NullPtr(), JS::NullPtr());
+				JS::RootedObject jsobj(cx, obj);
 				jsval args = OBJECT_TO_JSVAL(jsobj);
 
 				// data is binary
-				JS::RootedObject buffer(cx, JS_NewArrayBuffer(cx, dataLen));
+				/*	JS::RootedObject buffer(cx, JS_NewArrayBuffer(cx, dataLen));
 
-				if (dataLen > 0)
-				{
+					if (dataLen > 0)
+					{
 					uint8_t* bufdata = JS_GetArrayBufferData(buffer);
 					memcpy((void*)bufdata, tempData, dataLen);
-
-					
-					
-					/*if (dataLen >= 1000)
-					{
-						FILE* file = fopen("d:/test.data", "wb");
-						fwrite(tempData, dataLen, 1, file);
-						fclose(file);
-					}*/
-
-					/*FILE* file = fopen("d:/test.data", "rb");
-
-					fseek(file, 0, SEEK_END);
-					int32_t len = ftell(file);
-					fseek(file, 0, SEEK_SET);
-					char* data = new char[len];
-					fread(data, len,1, file);
-					fclose(file);*/
-				}
-				JS::RootedValue dataVal(cx);
-				dataVal = OBJECT_TO_JSVAL(buffer);
-				JS_SetProperty(cx, jsobj, "data", dataVal);
+					}
+					JS::RootedValue dataVal(cx);
+					dataVal = OBJECT_TO_JSVAL(buffer);
+					JS_SetProperty(cx, jsobj, "data", dataVal);*/
 
 				
 				JS::RootedValue errorMsgJS(cx);
