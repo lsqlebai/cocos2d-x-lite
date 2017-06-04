@@ -624,7 +624,7 @@ void TcpConnection::doReadHeader()
     
 }
 
-void TcpConnection::doReadBody(std::shared_ptr<ReceiveMsg> receiveMsg)
+void TcpConnection::doReadBody(const std::shared_ptr<ReceiveMsg>& receiveMsg)
 {
     asio::async_read(_socket,
                      asio::buffer((*receiveMsg).receiveBody(), (*receiveMsg).receiveBodyLength()),

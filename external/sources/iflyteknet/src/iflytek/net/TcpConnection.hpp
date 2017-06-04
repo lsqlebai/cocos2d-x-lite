@@ -137,7 +137,7 @@ private:
 
     void loopRead();
     void doReadHeader();
-    void doReadBody(std::shared_ptr<ReceiveMsg> receiveMsg);
+    void doReadBody(const std::shared_ptr<ReceiveMsg>& receiveMsg);
     void doSend();
     void doDisconnect(const bool& isPrivate = true);
 
