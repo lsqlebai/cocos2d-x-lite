@@ -717,8 +717,8 @@ bool js_cocos2dx_extension_AsioConnection_constructor(JSContext *cx, uint32_t ar
 			//CCLOG("ASIO onMessage dataLen:%d", dataLen);
 
 
-			uint8_t* tempData = new uint8_t[dataLen];
-			memcpy(tempData, data, dataLen);
+			/*uint8_t* tempData = new uint8_t[dataLen];
+			memcpy(tempData, data, dataLen);*/
 
 			//string jsonStr = "";
 			//// ½âÎöproto
@@ -737,7 +737,7 @@ bool js_cocos2dx_extension_AsioConnection_constructor(JSContext *cx, uint32_t ar
 			//}
 			
 
-			runOnCocosThread([cobj, tempData, dataLen, jsonStr]()
+			runOnCocosThread([cobj, dataLen, jsonStr]()
 			{
 				static bool test = true;
 				if (!test)
@@ -773,7 +773,7 @@ bool js_cocos2dx_extension_AsioConnection_constructor(JSContext *cx, uint32_t ar
 
 				ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(((JSB_AsioConnection*)cobj->getRefPtr())->_JSDelegate.ref()), "onMessage", 1, &args);
 
-				delete[] tempData;
+				//delete[] tempData;
 			});
 		});
 
