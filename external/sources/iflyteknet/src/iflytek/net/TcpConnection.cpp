@@ -638,8 +638,6 @@ void TcpConnection::doReadBody(const std::shared_ptr<ReceiveMsg>& receiveMsg)
                              
                              //std::cout << "receive len:" << bodyLen << std::endl;
 
-							 bool isNeedReleaseData = false; // 是否需要释放msgData
-
 							 if (_isEnableCrypt)
 							 {
 
@@ -697,17 +695,22 @@ void TcpConnection::doReadBody(const std::shared_ptr<ReceiveMsg>& receiveMsg)
 												 if (USE_ZLIB)
 												 {
 													 MessageInfo* msg = new MessageInfo();
+
+
 													 std::vector<Bytef> outData;
 													 _uncompress.doUncompress((Bytef*)msgData, bodyLen, outData); // 进行数据解压
 
 
-													 int8_t* finalData = new int8_t[outData.size()];
+													 std::unique_ptr<int8_t[]> p(new int8_t[outData.size()]);
+
+													 // int8_t* finalData = new int8_t[outData.size()];
+													 auto finalData = p.get();
 													 int finalDataLen = outData.size();
 													 for (int i = 0; i < finalDataLen; ++i)
 													 {
 														 finalData[i] = outData.at(i);
 													 }
-
+													 
 													 parseMessage(msg, finalData, finalDataLen);
 													 jsonStr = google::protobuf::JsonFormat::Utf8DebugJsonString(*msg);
 
@@ -715,8 +718,6 @@ void TcpConnection::doReadBody(const std::shared_ptr<ReceiveMsg>& receiveMsg)
 													 msgData = (int8_t*)finalData;
 													 bodyLen = finalDataLen;
 													 
-													 isNeedReleaseData = true; // 需要手动释放msgData
-
 													 delete msg;
 												 }
 												 else
@@ -739,10 +740,7 @@ void TcpConnection::doReadBody(const std::shared_ptr<ReceiveMsg>& receiveMsg)
 									 
 									_receiveCallback(msgData, bodyLen, jsonStr); // 派发消息
 
-									if (isNeedReleaseData)
-									{
-										delete[] msgData;
-									}
+									
 								 }
 							 }
 							

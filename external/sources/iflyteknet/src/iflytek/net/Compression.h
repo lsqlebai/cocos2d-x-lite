@@ -14,7 +14,7 @@
 #include <vector>
 
 #define COMPRESSION_LEVEL Z_DEFAULT_COMPRESSION
-#define COMPRESSION_BUFFER_SIZE 16384
+#define COMPRESSION_BUFFER_SIZE 16384 * 10
 
 typedef std::vector<Bytef> StlVecUnChar;
 
