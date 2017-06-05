@@ -772,12 +772,26 @@ class RegisterRequest : public ::google::protobuf::Message {
   inline ::std::string* release_userpayid();
   inline void set_allocated_userpayid(::std::string* userpayid);
 
+  // optional string device = 3;
+  inline bool has_device() const;
+  inline void clear_device();
+  static const int kDeviceFieldNumber = 3;
+  inline const ::std::string& device() const;
+  inline void set_device(const ::std::string& value);
+  inline void set_device(const char* value);
+  inline void set_device(const char* value, size_t size);
+  inline ::std::string* mutable_device();
+  inline ::std::string* release_device();
+  inline void set_allocated_device(::std::string* device);
+
   // @@protoc_insertion_point(class_scope:RegisterRequest)
  private:
   inline void set_has_mac();
   inline void clear_has_mac();
   inline void set_has_userpayid();
   inline void clear_has_userpayid();
+  inline void set_has_device();
+  inline void clear_has_device();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -785,6 +799,7 @@ class RegisterRequest : public ::google::protobuf::Message {
   mutable int _cached_size_;
   ::std::string* mac_;
   ::std::string* userpayid_;
+  ::std::string* device_;
   friend void  protobuf_AddDesc_game_2eproto();
   friend void protobuf_AssignDesc_game_2eproto();
   friend void protobuf_ShutdownFile_game_2eproto();
@@ -2384,36 +2399,26 @@ class CellVector : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 cellid() const;
   inline void set_cellid(::google::protobuf::int32 value);
 
-  // required float vectorX = 2;
-  inline bool has_vectorx() const;
-  inline void clear_vectorx();
-  static const int kVectorXFieldNumber = 2;
-  inline float vectorx() const;
-  inline void set_vectorx(float value);
-
-  // required float vectorY = 3;
-  inline bool has_vectory() const;
-  inline void clear_vectory();
-  static const int kVectorYFieldNumber = 3;
-  inline float vectory() const;
-  inline void set_vectory(float value);
+  // optional int32 angle = 2;
+  inline bool has_angle() const;
+  inline void clear_angle();
+  static const int kAngleFieldNumber = 2;
+  inline ::google::protobuf::int32 angle() const;
+  inline void set_angle(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:CellVector)
  private:
   inline void set_has_cellid();
   inline void clear_has_cellid();
-  inline void set_has_vectorx();
-  inline void clear_has_vectorx();
-  inline void set_has_vectory();
-  inline void clear_has_vectory();
+  inline void set_has_angle();
+  inline void clear_has_angle();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::google::protobuf::int32 cellid_;
-  float vectorx_;
-  float vectory_;
+  ::google::protobuf::int32 angle_;
   friend void  protobuf_AddDesc_game_2eproto();
   friend void protobuf_AssignDesc_game_2eproto();
   friend void protobuf_ShutdownFile_game_2eproto();
@@ -2753,19 +2758,19 @@ class Food : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 skin() const;
   inline void set_skin(::google::protobuf::int32 value);
 
-  // optional float x = 3;
+  // optional int32 x = 3;
   inline bool has_x() const;
   inline void clear_x();
   static const int kXFieldNumber = 3;
-  inline float x() const;
-  inline void set_x(float value);
+  inline ::google::protobuf::int32 x() const;
+  inline void set_x(::google::protobuf::int32 value);
 
-  // optional float y = 4;
+  // optional int32 y = 4;
   inline bool has_y() const;
   inline void clear_y();
   static const int kYFieldNumber = 4;
-  inline float y() const;
-  inline void set_y(float value);
+  inline ::google::protobuf::int32 y() const;
+  inline void set_y(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:Food)
  private:
@@ -2784,8 +2789,8 @@ class Food : public ::google::protobuf::Message {
   mutable int _cached_size_;
   ::google::protobuf::int32 id_;
   ::google::protobuf::int32 skin_;
-  float x_;
-  float y_;
+  ::google::protobuf::int32 x_;
+  ::google::protobuf::int32 y_;
   friend void  protobuf_AddDesc_game_2eproto();
   friend void protobuf_AssignDesc_game_2eproto();
   friend void protobuf_ShutdownFile_game_2eproto();
@@ -2855,80 +2860,66 @@ class Cell : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 id() const;
   inline void set_id(::google::protobuf::int32 value);
 
-  // optional float x = 2;
+  // optional int32 x = 2;
   inline bool has_x() const;
   inline void clear_x();
   static const int kXFieldNumber = 2;
-  inline float x() const;
-  inline void set_x(float value);
+  inline ::google::protobuf::int32 x() const;
+  inline void set_x(::google::protobuf::int32 value);
 
-  // optional float y = 3;
+  // optional int32 y = 3;
   inline bool has_y() const;
   inline void clear_y();
   static const int kYFieldNumber = 3;
-  inline float y() const;
-  inline void set_y(float value);
+  inline ::google::protobuf::int32 y() const;
+  inline void set_y(::google::protobuf::int32 value);
 
-  // optional int32 weight = 4;
-  inline bool has_weight() const;
-  inline void clear_weight();
-  static const int kWeightFieldNumber = 4;
-  inline ::google::protobuf::int32 weight() const;
-  inline void set_weight(::google::protobuf::int32 value);
-
-  // optional float radius = 5;
+  // optional int32 radius = 4;
   inline bool has_radius() const;
   inline void clear_radius();
-  static const int kRadiusFieldNumber = 5;
-  inline float radius() const;
-  inline void set_radius(float value);
+  static const int kRadiusFieldNumber = 4;
+  inline ::google::protobuf::int32 radius() const;
+  inline void set_radius(::google::protobuf::int32 value);
 
-  // optional float speed = 6;
+  // optional int32 speed = 5;
   inline bool has_speed() const;
   inline void clear_speed();
-  static const int kSpeedFieldNumber = 6;
-  inline float speed() const;
-  inline void set_speed(float value);
+  static const int kSpeedFieldNumber = 5;
+  inline ::google::protobuf::int32 speed() const;
+  inline void set_speed(::google::protobuf::int32 value);
 
-  // optional float vectorX = 7;
-  inline bool has_vectorx() const;
-  inline void clear_vectorx();
-  static const int kVectorXFieldNumber = 7;
-  inline float vectorx() const;
-  inline void set_vectorx(float value);
+  // optional int32 angle = 6;
+  inline bool has_angle() const;
+  inline void clear_angle();
+  static const int kAngleFieldNumber = 6;
+  inline ::google::protobuf::int32 angle() const;
+  inline void set_angle(::google::protobuf::int32 value);
 
-  // optional float vectorY = 8;
-  inline bool has_vectory() const;
-  inline void clear_vectory();
-  static const int kVectorYFieldNumber = 8;
-  inline float vectory() const;
-  inline void set_vectory(float value);
-
-  // optional int32 fromId = 9;
+  // optional int32 fromId = 7;
   inline bool has_fromid() const;
   inline void clear_fromid();
-  static const int kFromIdFieldNumber = 9;
+  static const int kFromIdFieldNumber = 7;
   inline ::google::protobuf::int32 fromid() const;
   inline void set_fromid(::google::protobuf::int32 value);
 
-  // optional int32 mergeId = 10;
+  // optional int32 mergeId = 8;
   inline bool has_mergeid() const;
   inline void clear_mergeid();
-  static const int kMergeIdFieldNumber = 10;
+  static const int kMergeIdFieldNumber = 8;
   inline ::google::protobuf::int32 mergeid() const;
   inline void set_mergeid(::google::protobuf::int32 value);
 
-  // optional int32 status = 11;
+  // optional int32 status = 9;
   inline bool has_status() const;
   inline void clear_status();
-  static const int kStatusFieldNumber = 11;
+  static const int kStatusFieldNumber = 9;
   inline ::google::protobuf::int32 status() const;
   inline void set_status(::google::protobuf::int32 value);
 
-  // repeated .FoodArea magnetFoods = 12;
+  // repeated .FoodArea magnetFoods = 10;
   inline int magnetfoods_size() const;
   inline void clear_magnetfoods();
-  static const int kMagnetFoodsFieldNumber = 12;
+  static const int kMagnetFoodsFieldNumber = 10;
   inline const ::FoodArea& magnetfoods(int index) const;
   inline ::FoodArea* mutable_magnetfoods(int index);
   inline ::FoodArea* add_magnetfoods();
@@ -2945,16 +2936,12 @@ class Cell : public ::google::protobuf::Message {
   inline void clear_has_x();
   inline void set_has_y();
   inline void clear_has_y();
-  inline void set_has_weight();
-  inline void clear_has_weight();
   inline void set_has_radius();
   inline void clear_has_radius();
   inline void set_has_speed();
   inline void clear_has_speed();
-  inline void set_has_vectorx();
-  inline void clear_has_vectorx();
-  inline void set_has_vectory();
-  inline void clear_has_vectory();
+  inline void set_has_angle();
+  inline void clear_has_angle();
   inline void set_has_fromid();
   inline void clear_has_fromid();
   inline void set_has_mergeid();
@@ -2967,13 +2954,11 @@ class Cell : public ::google::protobuf::Message {
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::google::protobuf::int32 id_;
-  float x_;
-  float y_;
-  ::google::protobuf::int32 weight_;
-  float radius_;
-  float speed_;
-  float vectorx_;
-  float vectory_;
+  ::google::protobuf::int32 x_;
+  ::google::protobuf::int32 y_;
+  ::google::protobuf::int32 radius_;
+  ::google::protobuf::int32 speed_;
+  ::google::protobuf::int32 angle_;
   ::google::protobuf::int32 fromid_;
   ::google::protobuf::int32 mergeid_;
   ::google::protobuf::RepeatedPtrField< ::FoodArea > magnetfoods_;
@@ -3075,12 +3060,12 @@ class Player : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 status() const;
   inline void set_status(::google::protobuf::int32 value);
 
-  // optional float ultimateSkillProgress = 5;
+  // optional int32 ultimateSkillProgress = 5;
   inline bool has_ultimateskillprogress() const;
   inline void clear_ultimateskillprogress();
   static const int kUltimateSkillProgressFieldNumber = 5;
-  inline float ultimateskillprogress() const;
-  inline void set_ultimateskillprogress(float value);
+  inline ::google::protobuf::int32 ultimateskillprogress() const;
+  inline void set_ultimateskillprogress(::google::protobuf::int32 value);
 
   // optional .UserInfo beKilledUserInfo = 6;
   inline bool has_bekilleduserinfo() const;
@@ -3125,7 +3110,7 @@ class Player : public ::google::protobuf::Message {
   ::google::protobuf::int32 status_;
   ::UserInfo* bekilleduserinfo_;
   ::SuperRenewInfo* superrenewinfo_;
-  float ultimateskillprogress_;
+  ::google::protobuf::int32 ultimateskillprogress_;
   friend void  protobuf_AddDesc_game_2eproto();
   friend void protobuf_AssignDesc_game_2eproto();
   friend void protobuf_ShutdownFile_game_2eproto();
@@ -4289,6 +4274,13 @@ class SkinMerchandise : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 tag() const;
   inline void set_tag(::google::protobuf::int32 value);
 
+  // optional int32 type = 8;
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 8;
+  inline ::google::protobuf::int32 type() const;
+  inline void set_type(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:SkinMerchandise)
  private:
   inline void set_has_id();
@@ -4305,6 +4297,8 @@ class SkinMerchandise : public ::google::protobuf::Message {
   inline void clear_has_description();
   inline void set_has_tag();
   inline void clear_has_tag();
+  inline void set_has_type();
+  inline void clear_has_type();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -4317,6 +4311,7 @@ class SkinMerchandise : public ::google::protobuf::Message {
   ::std::string* description_;
   ::google::protobuf::int32 availabledays_;
   ::google::protobuf::int32 tag_;
+  ::google::protobuf::int32 type_;
   friend void  protobuf_AddDesc_game_2eproto();
   friend void protobuf_AssignDesc_game_2eproto();
   friend void protobuf_ShutdownFile_game_2eproto();
@@ -4443,6 +4438,13 @@ class SkillMerchandise : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 foodid() const;
   inline void set_foodid(::google::protobuf::int32 value);
 
+  // required int32 type = 8;
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 8;
+  inline ::google::protobuf::int32 type() const;
+  inline void set_type(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:SkillMerchandise)
  private:
   inline void set_has_id();
@@ -4459,6 +4461,8 @@ class SkillMerchandise : public ::google::protobuf::Message {
   inline void clear_has_description();
   inline void set_has_foodid();
   inline void clear_has_foodid();
+  inline void set_has_type();
+  inline void clear_has_type();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -4471,6 +4475,7 @@ class SkillMerchandise : public ::google::protobuf::Message {
   ::std::string* description_;
   ::google::protobuf::int32 availabledays_;
   ::google::protobuf::int32 foodid_;
+  ::google::protobuf::int32 type_;
   friend void  protobuf_AddDesc_game_2eproto();
   friend void protobuf_AssignDesc_game_2eproto();
   friend void protobuf_ShutdownFile_game_2eproto();
@@ -8018,6 +8023,82 @@ inline void RegisterRequest::set_allocated_userpayid(::std::string* userpayid) {
   // @@protoc_insertion_point(field_set_allocated:RegisterRequest.userPayId)
 }
 
+// optional string device = 3;
+inline bool RegisterRequest::has_device() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void RegisterRequest::set_has_device() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void RegisterRequest::clear_has_device() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void RegisterRequest::clear_device() {
+  if (device_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    device_->clear();
+  }
+  clear_has_device();
+}
+inline const ::std::string& RegisterRequest::device() const {
+  // @@protoc_insertion_point(field_get:RegisterRequest.device)
+  return *device_;
+}
+inline void RegisterRequest::set_device(const ::std::string& value) {
+  set_has_device();
+  if (device_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    device_ = new ::std::string;
+  }
+  device_->assign(value);
+  // @@protoc_insertion_point(field_set:RegisterRequest.device)
+}
+inline void RegisterRequest::set_device(const char* value) {
+  set_has_device();
+  if (device_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    device_ = new ::std::string;
+  }
+  device_->assign(value);
+  // @@protoc_insertion_point(field_set_char:RegisterRequest.device)
+}
+inline void RegisterRequest::set_device(const char* value, size_t size) {
+  set_has_device();
+  if (device_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    device_ = new ::std::string;
+  }
+  device_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:RegisterRequest.device)
+}
+inline ::std::string* RegisterRequest::mutable_device() {
+  set_has_device();
+  if (device_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    device_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:RegisterRequest.device)
+  return device_;
+}
+inline ::std::string* RegisterRequest::release_device() {
+  clear_has_device();
+  if (device_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = device_;
+    device_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void RegisterRequest::set_allocated_device(::std::string* device) {
+  if (device_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete device_;
+  }
+  if (device) {
+    set_has_device();
+    device_ = device;
+  } else {
+    clear_has_device();
+    device_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:RegisterRequest.device)
+}
+
 // -------------------------------------------------------------------
 
 // RegisterResponse
@@ -9288,52 +9369,28 @@ inline void CellVector::set_cellid(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:CellVector.cellId)
 }
 
-// required float vectorX = 2;
-inline bool CellVector::has_vectorx() const {
+// optional int32 angle = 2;
+inline bool CellVector::has_angle() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void CellVector::set_has_vectorx() {
+inline void CellVector::set_has_angle() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void CellVector::clear_has_vectorx() {
+inline void CellVector::clear_has_angle() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void CellVector::clear_vectorx() {
-  vectorx_ = 0;
-  clear_has_vectorx();
+inline void CellVector::clear_angle() {
+  angle_ = 0;
+  clear_has_angle();
 }
-inline float CellVector::vectorx() const {
-  // @@protoc_insertion_point(field_get:CellVector.vectorX)
-  return vectorx_;
+inline ::google::protobuf::int32 CellVector::angle() const {
+  // @@protoc_insertion_point(field_get:CellVector.angle)
+  return angle_;
 }
-inline void CellVector::set_vectorx(float value) {
-  set_has_vectorx();
-  vectorx_ = value;
-  // @@protoc_insertion_point(field_set:CellVector.vectorX)
-}
-
-// required float vectorY = 3;
-inline bool CellVector::has_vectory() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void CellVector::set_has_vectory() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void CellVector::clear_has_vectory() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void CellVector::clear_vectory() {
-  vectory_ = 0;
-  clear_has_vectory();
-}
-inline float CellVector::vectory() const {
-  // @@protoc_insertion_point(field_get:CellVector.vectorY)
-  return vectory_;
-}
-inline void CellVector::set_vectory(float value) {
-  set_has_vectory();
-  vectory_ = value;
-  // @@protoc_insertion_point(field_set:CellVector.vectorY)
+inline void CellVector::set_angle(::google::protobuf::int32 value) {
+  set_has_angle();
+  angle_ = value;
+  // @@protoc_insertion_point(field_set:CellVector.angle)
 }
 
 // -------------------------------------------------------------------
@@ -9787,7 +9844,7 @@ inline void Food::set_skin(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:Food.skin)
 }
 
-// optional float x = 3;
+// optional int32 x = 3;
 inline bool Food::has_x() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -9801,17 +9858,17 @@ inline void Food::clear_x() {
   x_ = 0;
   clear_has_x();
 }
-inline float Food::x() const {
+inline ::google::protobuf::int32 Food::x() const {
   // @@protoc_insertion_point(field_get:Food.x)
   return x_;
 }
-inline void Food::set_x(float value) {
+inline void Food::set_x(::google::protobuf::int32 value) {
   set_has_x();
   x_ = value;
   // @@protoc_insertion_point(field_set:Food.x)
 }
 
-// optional float y = 4;
+// optional int32 y = 4;
 inline bool Food::has_y() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -9825,11 +9882,11 @@ inline void Food::clear_y() {
   y_ = 0;
   clear_has_y();
 }
-inline float Food::y() const {
+inline ::google::protobuf::int32 Food::y() const {
   // @@protoc_insertion_point(field_get:Food.y)
   return y_;
 }
-inline void Food::set_y(float value) {
+inline void Food::set_y(::google::protobuf::int32 value) {
   set_has_y();
   y_ = value;
   // @@protoc_insertion_point(field_set:Food.y)
@@ -9863,7 +9920,7 @@ inline void Cell::set_id(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:Cell.id)
 }
 
-// optional float x = 2;
+// optional int32 x = 2;
 inline bool Cell::has_x() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -9877,17 +9934,17 @@ inline void Cell::clear_x() {
   x_ = 0;
   clear_has_x();
 }
-inline float Cell::x() const {
+inline ::google::protobuf::int32 Cell::x() const {
   // @@protoc_insertion_point(field_get:Cell.x)
   return x_;
 }
-inline void Cell::set_x(float value) {
+inline void Cell::set_x(::google::protobuf::int32 value) {
   set_has_x();
   x_ = value;
   // @@protoc_insertion_point(field_set:Cell.x)
 }
 
-// optional float y = 3;
+// optional int32 y = 3;
 inline bool Cell::has_y() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -9901,145 +9958,97 @@ inline void Cell::clear_y() {
   y_ = 0;
   clear_has_y();
 }
-inline float Cell::y() const {
+inline ::google::protobuf::int32 Cell::y() const {
   // @@protoc_insertion_point(field_get:Cell.y)
   return y_;
 }
-inline void Cell::set_y(float value) {
+inline void Cell::set_y(::google::protobuf::int32 value) {
   set_has_y();
   y_ = value;
   // @@protoc_insertion_point(field_set:Cell.y)
 }
 
-// optional int32 weight = 4;
-inline bool Cell::has_weight() const {
+// optional int32 radius = 4;
+inline bool Cell::has_radius() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void Cell::set_has_weight() {
+inline void Cell::set_has_radius() {
   _has_bits_[0] |= 0x00000008u;
 }
-inline void Cell::clear_has_weight() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void Cell::clear_weight() {
-  weight_ = 0;
-  clear_has_weight();
-}
-inline ::google::protobuf::int32 Cell::weight() const {
-  // @@protoc_insertion_point(field_get:Cell.weight)
-  return weight_;
-}
-inline void Cell::set_weight(::google::protobuf::int32 value) {
-  set_has_weight();
-  weight_ = value;
-  // @@protoc_insertion_point(field_set:Cell.weight)
-}
-
-// optional float radius = 5;
-inline bool Cell::has_radius() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
-inline void Cell::set_has_radius() {
-  _has_bits_[0] |= 0x00000010u;
-}
 inline void Cell::clear_has_radius() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void Cell::clear_radius() {
   radius_ = 0;
   clear_has_radius();
 }
-inline float Cell::radius() const {
+inline ::google::protobuf::int32 Cell::radius() const {
   // @@protoc_insertion_point(field_get:Cell.radius)
   return radius_;
 }
-inline void Cell::set_radius(float value) {
+inline void Cell::set_radius(::google::protobuf::int32 value) {
   set_has_radius();
   radius_ = value;
   // @@protoc_insertion_point(field_set:Cell.radius)
 }
 
-// optional float speed = 6;
+// optional int32 speed = 5;
 inline bool Cell::has_speed() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void Cell::set_has_speed() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void Cell::clear_has_speed() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void Cell::clear_speed() {
   speed_ = 0;
   clear_has_speed();
 }
-inline float Cell::speed() const {
+inline ::google::protobuf::int32 Cell::speed() const {
   // @@protoc_insertion_point(field_get:Cell.speed)
   return speed_;
 }
-inline void Cell::set_speed(float value) {
+inline void Cell::set_speed(::google::protobuf::int32 value) {
   set_has_speed();
   speed_ = value;
   // @@protoc_insertion_point(field_set:Cell.speed)
 }
 
-// optional float vectorX = 7;
-inline bool Cell::has_vectorx() const {
+// optional int32 angle = 6;
+inline bool Cell::has_angle() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void Cell::set_has_angle() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void Cell::clear_has_angle() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void Cell::clear_angle() {
+  angle_ = 0;
+  clear_has_angle();
+}
+inline ::google::protobuf::int32 Cell::angle() const {
+  // @@protoc_insertion_point(field_get:Cell.angle)
+  return angle_;
+}
+inline void Cell::set_angle(::google::protobuf::int32 value) {
+  set_has_angle();
+  angle_ = value;
+  // @@protoc_insertion_point(field_set:Cell.angle)
+}
+
+// optional int32 fromId = 7;
+inline bool Cell::has_fromid() const {
   return (_has_bits_[0] & 0x00000040u) != 0;
 }
-inline void Cell::set_has_vectorx() {
+inline void Cell::set_has_fromid() {
   _has_bits_[0] |= 0x00000040u;
 }
-inline void Cell::clear_has_vectorx() {
-  _has_bits_[0] &= ~0x00000040u;
-}
-inline void Cell::clear_vectorx() {
-  vectorx_ = 0;
-  clear_has_vectorx();
-}
-inline float Cell::vectorx() const {
-  // @@protoc_insertion_point(field_get:Cell.vectorX)
-  return vectorx_;
-}
-inline void Cell::set_vectorx(float value) {
-  set_has_vectorx();
-  vectorx_ = value;
-  // @@protoc_insertion_point(field_set:Cell.vectorX)
-}
-
-// optional float vectorY = 8;
-inline bool Cell::has_vectory() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
-}
-inline void Cell::set_has_vectory() {
-  _has_bits_[0] |= 0x00000080u;
-}
-inline void Cell::clear_has_vectory() {
-  _has_bits_[0] &= ~0x00000080u;
-}
-inline void Cell::clear_vectory() {
-  vectory_ = 0;
-  clear_has_vectory();
-}
-inline float Cell::vectory() const {
-  // @@protoc_insertion_point(field_get:Cell.vectorY)
-  return vectory_;
-}
-inline void Cell::set_vectory(float value) {
-  set_has_vectory();
-  vectory_ = value;
-  // @@protoc_insertion_point(field_set:Cell.vectorY)
-}
-
-// optional int32 fromId = 9;
-inline bool Cell::has_fromid() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
-}
-inline void Cell::set_has_fromid() {
-  _has_bits_[0] |= 0x00000100u;
-}
 inline void Cell::clear_has_fromid() {
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void Cell::clear_fromid() {
   fromid_ = 0;
@@ -10055,15 +10064,15 @@ inline void Cell::set_fromid(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:Cell.fromId)
 }
 
-// optional int32 mergeId = 10;
+// optional int32 mergeId = 8;
 inline bool Cell::has_mergeid() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void Cell::set_has_mergeid() {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000080u;
 }
 inline void Cell::clear_has_mergeid() {
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void Cell::clear_mergeid() {
   mergeid_ = 0;
@@ -10079,15 +10088,15 @@ inline void Cell::set_mergeid(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:Cell.mergeId)
 }
 
-// optional int32 status = 11;
+// optional int32 status = 9;
 inline bool Cell::has_status() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void Cell::set_has_status() {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000100u;
 }
 inline void Cell::clear_has_status() {
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void Cell::clear_status() {
   status_ = 0;
@@ -10103,7 +10112,7 @@ inline void Cell::set_status(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:Cell.status)
 }
 
-// repeated .FoodArea magnetFoods = 12;
+// repeated .FoodArea magnetFoods = 10;
 inline int Cell::magnetfoods_size() const {
   return magnetfoods_.size();
 }
@@ -10256,7 +10265,7 @@ inline void Player::set_status(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:Player.status)
 }
 
-// optional float ultimateSkillProgress = 5;
+// optional int32 ultimateSkillProgress = 5;
 inline bool Player::has_ultimateskillprogress() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
@@ -10270,11 +10279,11 @@ inline void Player::clear_ultimateskillprogress() {
   ultimateskillprogress_ = 0;
   clear_has_ultimateskillprogress();
 }
-inline float Player::ultimateskillprogress() const {
+inline ::google::protobuf::int32 Player::ultimateskillprogress() const {
   // @@protoc_insertion_point(field_get:Player.ultimateSkillProgress)
   return ultimateskillprogress_;
 }
-inline void Player::set_ultimateskillprogress(float value) {
+inline void Player::set_ultimateskillprogress(::google::protobuf::int32 value) {
   set_has_ultimateskillprogress();
   ultimateskillprogress_ = value;
   // @@protoc_insertion_point(field_set:Player.ultimateSkillProgress)
@@ -11474,6 +11483,30 @@ inline void SkinMerchandise::set_tag(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:SkinMerchandise.tag)
 }
 
+// optional int32 type = 8;
+inline bool SkinMerchandise::has_type() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void SkinMerchandise::set_has_type() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void SkinMerchandise::clear_has_type() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void SkinMerchandise::clear_type() {
+  type_ = 0;
+  clear_has_type();
+}
+inline ::google::protobuf::int32 SkinMerchandise::type() const {
+  // @@protoc_insertion_point(field_get:SkinMerchandise.type)
+  return type_;
+}
+inline void SkinMerchandise::set_type(::google::protobuf::int32 value) {
+  set_has_type();
+  type_ = value;
+  // @@protoc_insertion_point(field_set:SkinMerchandise.type)
+}
+
 // -------------------------------------------------------------------
 
 // SkillMerchandise
@@ -11800,6 +11833,30 @@ inline void SkillMerchandise::set_foodid(::google::protobuf::int32 value) {
   set_has_foodid();
   foodid_ = value;
   // @@protoc_insertion_point(field_set:SkillMerchandise.foodId)
+}
+
+// required int32 type = 8;
+inline bool SkillMerchandise::has_type() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void SkillMerchandise::set_has_type() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void SkillMerchandise::clear_has_type() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void SkillMerchandise::clear_type() {
+  type_ = 0;
+  clear_has_type();
+}
+inline ::google::protobuf::int32 SkillMerchandise::type() const {
+  // @@protoc_insertion_point(field_get:SkillMerchandise.type)
+  return type_;
+}
+inline void SkillMerchandise::set_type(::google::protobuf::int32 value) {
+  set_has_type();
+  type_ = value;
+  // @@protoc_insertion_point(field_set:SkillMerchandise.type)
 }
 
 // -------------------------------------------------------------------

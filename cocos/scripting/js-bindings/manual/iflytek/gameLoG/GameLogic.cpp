@@ -251,10 +251,13 @@ void GameLogic::removeFoodWithAnim(const Vector<FoodAreaObj*> &foodAreas, const 
 					auto food = curFoodLayer->getChildByTag(curFoodInfo->id); // 查找待清理的食物
 					if (food)
 					{
-						food->removeFromParent(); // 移除指定食物对象
+						
 
 						if (curFoodLayer->isVisible())
 						{
+
+							food->removeFromParent(); // 移除指定食物对象
+							
 							this->_foodAnimLayer->addChild(food); // 添加到动画图层
 							Action* action = Sequence::create(EaseCircleActionIn::create(MoveTo::create(animDuration, Vec2(targetX, targetY))),
 								CallFunc::create([food, this]()
@@ -267,6 +270,8 @@ void GameLogic::removeFoodWithAnim(const Vector<FoodAreaObj*> &foodAreas, const 
 						}
 						 else
 						 {
+							 food->removeFromParent(); // 移除指定食物对象
+							 _putSprite((Sprite*)food); // 放到缓存池
 						 }
 					}
 				}

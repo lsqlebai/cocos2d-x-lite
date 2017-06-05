@@ -19,8 +19,8 @@
 	"twb+Xpw3inl1KoMQmwIDAQAB\n"\
 	"-----END PUBLIC KEY-----\n"
 
-#define IFLYTEK_NET_VERSION 5 // 通信库版本号
-#define USE_ZLIB 0 // 是否启用zlib进行数据压缩
+#define IFLYTEK_NET_VERSION 9 // 通信库版本号
+#define USE_ZLIB 1 // 是否启用zlib进行数据压缩
 
 //#pragma comment(lib, "libzlib.lib") 
 
@@ -703,18 +703,13 @@ void TcpConnection::doReadBody(const std::shared_ptr<ReceiveMsg>& receiveMsg)
 
 													 int8_t* finalData = new int8_t[outData.size()];
 													 int finalDataLen = outData.size();
-													 for (int i = 0; i < outData.size(); ++i)
+													 for (int i = 0; i < finalDataLen; ++i)
 													 {
 														 finalData[i] = outData.at(i);
 													 }
 
 													 parseMessage(msg, finalData, finalDataLen);
 													 jsonStr = google::protobuf::JsonFormat::Utf8DebugJsonString(*msg);
-
-													 if (jsonStr.length() <= 2)
-													 {
-														 int j = 2l;
-													 }
 
 
 													 msgData = (int8_t*)finalData;
@@ -725,7 +720,6 @@ void TcpConnection::doReadBody(const std::shared_ptr<ReceiveMsg>& receiveMsg)
 													 delete msg;
 												 }
 												 else
-
 												 {
 													 {
 														 MessageInfo* msg = new MessageInfo();
