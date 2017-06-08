@@ -72,23 +72,18 @@ public class UniPay {
 
         @Override
         public void onSuccess(Map<String, Object> map) {
-            ToastUtil.toastOnTV("订单成功，正在处理请稍等");
             PayCallBack.payCallback("Pay", "success");
         }
 
         @Override
         public void onFailed(Map<String, Object> map) {
-            ToastUtil.toastOnTV("订单失败");
             PayCallBack.payCallback("Pay", "fail");
         }
 
         @Override
         public void onCancel(Map<String, Object> map) {
-            ToastUtil.toastOnTV("订单取消");
             PayCallBack.payCallback("Pay", "cancel");
         }
-
-
     }
 
 }

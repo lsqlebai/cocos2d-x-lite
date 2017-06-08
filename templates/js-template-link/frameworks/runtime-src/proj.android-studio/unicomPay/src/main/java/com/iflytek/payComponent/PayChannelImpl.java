@@ -17,8 +17,11 @@ import com.iflytek.unipay.UnityOrder;
  */
 
 public class PayChannelImpl extends BasePayChannel {
-    private static final String APP_ID = "kdxfyylft";// 需要向iflytek申请
+    //private static final String APP_ID = "kdxfyylft";// 需要向iflytek申请
+    //private static final String APP_KEY = "kdxfjf"; // 需要向iflytek申请
+	private static final String APP_ID = "kdxfchdzz";// 需要向iflytek申请
     private static final String APP_KEY = "kdxfjf"; // 需要向iflytek申请
+	
     final String proxy = "http://202.99.114.74:58005";
 
     @Override

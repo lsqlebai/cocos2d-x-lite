@@ -35,6 +35,7 @@ class MessageInfo;
 class Basic;
 class RegisterRequest;
 class RegisterResponse;
+class RenewMerchandise;
 class SignReward;
 class SkinChooseRequest;
 class NickNameRandomRespone;
@@ -890,12 +891,23 @@ class RegisterResponse : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::SignReward >*
       mutable_signrewards();
 
+  // optional .RenewMerchandise renewMerchandise = 4;
+  inline bool has_renewmerchandise() const;
+  inline void clear_renewmerchandise();
+  static const int kRenewMerchandiseFieldNumber = 4;
+  inline const ::RenewMerchandise& renewmerchandise() const;
+  inline ::RenewMerchandise* mutable_renewmerchandise();
+  inline ::RenewMerchandise* release_renewmerchandise();
+  inline void set_allocated_renewmerchandise(::RenewMerchandise* renewmerchandise);
+
   // @@protoc_insertion_point(class_scope:RegisterResponse)
  private:
   inline void set_has_userinfo();
   inline void clear_has_userinfo();
   inline void set_has_propoverdue();
   inline void clear_has_propoverdue();
+  inline void set_has_renewmerchandise();
+  inline void clear_has_renewmerchandise();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -903,6 +915,7 @@ class RegisterResponse : public ::google::protobuf::Message {
   mutable int _cached_size_;
   ::UserInfo* userinfo_;
   ::google::protobuf::RepeatedPtrField< ::SignReward > signrewards_;
+  ::RenewMerchandise* renewmerchandise_;
   ::google::protobuf::int32 propoverdue_;
   friend void  protobuf_AddDesc_game_2eproto();
   friend void protobuf_AssignDesc_game_2eproto();
@@ -910,6 +923,110 @@ class RegisterResponse : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static RegisterResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class RenewMerchandise : public ::google::protobuf::Message {
+ public:
+  RenewMerchandise();
+  virtual ~RenewMerchandise();
+
+  RenewMerchandise(const RenewMerchandise& from);
+
+  inline RenewMerchandise& operator=(const RenewMerchandise& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const RenewMerchandise& default_instance();
+
+  void Swap(RenewMerchandise* other);
+
+  // implements Message ----------------------------------------------
+
+  RenewMerchandise* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const RenewMerchandise& from);
+  void MergeFrom(const RenewMerchandise& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string id = 1;
+  inline bool has_id() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 1;
+  inline const ::std::string& id() const;
+  inline void set_id(const ::std::string& value);
+  inline void set_id(const char* value);
+  inline void set_id(const char* value, size_t size);
+  inline ::std::string* mutable_id();
+  inline ::std::string* release_id();
+  inline void set_allocated_id(::std::string* id);
+
+  // optional int32 gold = 2;
+  inline bool has_gold() const;
+  inline void clear_gold();
+  static const int kGoldFieldNumber = 2;
+  inline ::google::protobuf::int32 gold() const;
+  inline void set_gold(::google::protobuf::int32 value);
+
+  // optional int32 price = 3;
+  inline bool has_price() const;
+  inline void clear_price();
+  static const int kPriceFieldNumber = 3;
+  inline ::google::protobuf::int32 price() const;
+  inline void set_price(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:RenewMerchandise)
+ private:
+  inline void set_has_id();
+  inline void clear_has_id();
+  inline void set_has_gold();
+  inline void clear_has_gold();
+  inline void set_has_price();
+  inline void clear_has_price();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* id_;
+  ::google::protobuf::int32 gold_;
+  ::google::protobuf::int32 price_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static RenewMerchandise* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -8196,6 +8313,175 @@ inline ::google::protobuf::RepeatedPtrField< ::SignReward >*
 RegisterResponse::mutable_signrewards() {
   // @@protoc_insertion_point(field_mutable_list:RegisterResponse.signRewards)
   return &signrewards_;
+}
+
+// optional .RenewMerchandise renewMerchandise = 4;
+inline bool RegisterResponse::has_renewmerchandise() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void RegisterResponse::set_has_renewmerchandise() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void RegisterResponse::clear_has_renewmerchandise() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void RegisterResponse::clear_renewmerchandise() {
+  if (renewmerchandise_ != NULL) renewmerchandise_->::RenewMerchandise::Clear();
+  clear_has_renewmerchandise();
+}
+inline const ::RenewMerchandise& RegisterResponse::renewmerchandise() const {
+  // @@protoc_insertion_point(field_get:RegisterResponse.renewMerchandise)
+  return renewmerchandise_ != NULL ? *renewmerchandise_ : *default_instance_->renewmerchandise_;
+}
+inline ::RenewMerchandise* RegisterResponse::mutable_renewmerchandise() {
+  set_has_renewmerchandise();
+  if (renewmerchandise_ == NULL) renewmerchandise_ = new ::RenewMerchandise;
+  // @@protoc_insertion_point(field_mutable:RegisterResponse.renewMerchandise)
+  return renewmerchandise_;
+}
+inline ::RenewMerchandise* RegisterResponse::release_renewmerchandise() {
+  clear_has_renewmerchandise();
+  ::RenewMerchandise* temp = renewmerchandise_;
+  renewmerchandise_ = NULL;
+  return temp;
+}
+inline void RegisterResponse::set_allocated_renewmerchandise(::RenewMerchandise* renewmerchandise) {
+  delete renewmerchandise_;
+  renewmerchandise_ = renewmerchandise;
+  if (renewmerchandise) {
+    set_has_renewmerchandise();
+  } else {
+    clear_has_renewmerchandise();
+  }
+  // @@protoc_insertion_point(field_set_allocated:RegisterResponse.renewMerchandise)
+}
+
+// -------------------------------------------------------------------
+
+// RenewMerchandise
+
+// required string id = 1;
+inline bool RenewMerchandise::has_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void RenewMerchandise::set_has_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void RenewMerchandise::clear_has_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void RenewMerchandise::clear_id() {
+  if (id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    id_->clear();
+  }
+  clear_has_id();
+}
+inline const ::std::string& RenewMerchandise::id() const {
+  // @@protoc_insertion_point(field_get:RenewMerchandise.id)
+  return *id_;
+}
+inline void RenewMerchandise::set_id(const ::std::string& value) {
+  set_has_id();
+  if (id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    id_ = new ::std::string;
+  }
+  id_->assign(value);
+  // @@protoc_insertion_point(field_set:RenewMerchandise.id)
+}
+inline void RenewMerchandise::set_id(const char* value) {
+  set_has_id();
+  if (id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    id_ = new ::std::string;
+  }
+  id_->assign(value);
+  // @@protoc_insertion_point(field_set_char:RenewMerchandise.id)
+}
+inline void RenewMerchandise::set_id(const char* value, size_t size) {
+  set_has_id();
+  if (id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    id_ = new ::std::string;
+  }
+  id_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:RenewMerchandise.id)
+}
+inline ::std::string* RenewMerchandise::mutable_id() {
+  set_has_id();
+  if (id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    id_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:RenewMerchandise.id)
+  return id_;
+}
+inline ::std::string* RenewMerchandise::release_id() {
+  clear_has_id();
+  if (id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = id_;
+    id_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void RenewMerchandise::set_allocated_id(::std::string* id) {
+  if (id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete id_;
+  }
+  if (id) {
+    set_has_id();
+    id_ = id;
+  } else {
+    clear_has_id();
+    id_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:RenewMerchandise.id)
+}
+
+// optional int32 gold = 2;
+inline bool RenewMerchandise::has_gold() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void RenewMerchandise::set_has_gold() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void RenewMerchandise::clear_has_gold() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void RenewMerchandise::clear_gold() {
+  gold_ = 0;
+  clear_has_gold();
+}
+inline ::google::protobuf::int32 RenewMerchandise::gold() const {
+  // @@protoc_insertion_point(field_get:RenewMerchandise.gold)
+  return gold_;
+}
+inline void RenewMerchandise::set_gold(::google::protobuf::int32 value) {
+  set_has_gold();
+  gold_ = value;
+  // @@protoc_insertion_point(field_set:RenewMerchandise.gold)
+}
+
+// optional int32 price = 3;
+inline bool RenewMerchandise::has_price() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void RenewMerchandise::set_has_price() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void RenewMerchandise::clear_has_price() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void RenewMerchandise::clear_price() {
+  price_ = 0;
+  clear_has_price();
+}
+inline ::google::protobuf::int32 RenewMerchandise::price() const {
+  // @@protoc_insertion_point(field_get:RenewMerchandise.price)
+  return price_;
+}
+inline void RenewMerchandise::set_price(::google::protobuf::int32 value) {
+  set_has_price();
+  price_ = value;
+  // @@protoc_insertion_point(field_set:RenewMerchandise.price)
 }
 
 // -------------------------------------------------------------------
