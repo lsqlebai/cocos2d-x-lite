@@ -13,8 +13,8 @@ android {
         applicationId "com.iflytek.leagueofglutton"
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 140
-        versionName "1.4.0"
+        versionCode 10000
+        versionName "1.0.0"
     }
     lintOptions {
         abortOnError false
@@ -55,12 +55,10 @@ android {
     signingConfigs {
 
         release {
-            if (project.hasProperty("RELEASE_STORE_FILE")) {
-                storeFile file(RELEASE_STORE_FILE)
-                storePassword RELEASE_STORE_PASSWORD
-                keyAlias RELEASE_KEY_ALIAS
-                keyPassword RELEASE_KEY_PASSWORD
-            }
+                storeFile file('musicnb.keystore')
+                storePassword 'iflytek_musicnb_2016'
+                keyAlias 'iflytek_musicnb'
+                keyPassword 'iflytek_musicnb_2016'
         }
     }
 
@@ -68,9 +66,9 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            if (project.hasProperty("RELEASE_STORE_FILE")) {
+            //if (project.hasProperty("RELEASE_STORE_FILE")) {
                 signingConfig signingConfigs.release
-            }
+            //}
         }
     }
 //    dexOptions {
