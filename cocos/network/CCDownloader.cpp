@@ -127,6 +127,31 @@ namespace cocos2d { namespace network {
     {
         DLLOG("Destruct Downloader %p", this);
     }
+    
+    std::shared_ptr<const DownloadTask> Downloader::createDownloadDataTaskWithProxy(const std::string& srcUrl, const std::string& identifier/* = ""*/, const std::string& proxy)
+    {
+        DownloadTask *task_ = new (std::nothrow) DownloadTask();
+        std::shared_ptr<const DownloadTask> task(task_);
+        do
+        {
+            task_->requestURL    = srcUrl;
+            task_->identifier    = identifier;
+			//add by shiqi Luo
+			task_->proxy         = proxy;
+            if (0 == srcUrl.length())
+            {
+                if (onTaskError)
+                {
+                    onTaskError(*task, DownloadTask::ERROR_INVALID_PARAMS, 0, "URL or is empty.");
+                }
+                task.reset();
+                break;
+            }
+            task_->_coTask.reset(_impl->createCoTask(task));
+        } while (0);
+
+        return task;
+    }
 
     std::shared_ptr<const DownloadTask> Downloader::createDownloadDataTask(const std::string& srcUrl, const std::string& identifier/* = ""*/)
     {
