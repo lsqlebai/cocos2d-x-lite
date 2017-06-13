@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<uses-permission android:name="android.permission.WRITE_APN_SETTINGS" />
 
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -26,16 +27,17 @@
         <meta-data android:name="android.app.lib_name"
                    android:value="cocos2djs" />
 
-        <!--计费配置，每个应用需要配置不同的UBPAppKey和UBPAppSecret-->
+        <!--计费配置，吃货联盟 每个应用需要配置不同的UBPAppKey和UBPAppSecret-->
         <meta-data
             android:name="UBPAppKey"
-            android:value="661eae54846111e6ae2256b6b6499611" />
+            android:value="a83ac67e0b9e4b138e009ed32dbe61b8" />
         <!--android:value="6cac7caae73a4322addd6494fd8b09e1" />-->
         <meta-data
             android:name="UBPAppSecret"
-            android:value="26142a22b4eb4b0b83683ab9199ac510" />
+            android:value="e0e81f5a856d42ea9f834dc7dbc1609e" />
         <!--android:value="d4b2f35d37da4ebdbcdf02b89dca7062" />-->
-
+        <meta-data android:name="IflytekAppId" android:value="7pom" />
+        <meta-data android:name="IflytekChannelId" android:value="9k9a" />
     </application>
     
 

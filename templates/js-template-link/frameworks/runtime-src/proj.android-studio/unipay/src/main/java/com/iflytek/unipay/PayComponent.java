@@ -99,7 +99,7 @@ public class PayComponent implements IPayComponent {
                 }
                 Logger.log().d("userId:" + userId);
                 if (payInitCallBack != null) {
-                    payInitCallBack.onSuccess();
+                    payInitCallBack.onSuccess(map);
                 }
             }
 
@@ -108,7 +108,7 @@ public class PayComponent implements IPayComponent {
                 Logger.log().e("init Failed:" + map);
                 payStatus = false;
                 if (payInitCallBack != null) {
-                    payInitCallBack.onFailed();
+                    payInitCallBack.onFailed(map);
                 }
             }
         });
