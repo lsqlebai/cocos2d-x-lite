@@ -166,7 +166,6 @@ void JSDownloaderDelegatorEx::startDownloadData()
 	{
 		CCLOG("JSDownloaderDelegatorEx:download: %s fails: %s", _url.c_str() , errorStr.c_str());
 		this->onError();
-		DownloaderManager::getInstance()->allOnError(_url);
 	};
 
 	_downloader->onDataTaskSuccess = [this](const cocos2d::network::DownloadTask& task,
@@ -176,7 +175,6 @@ void JSDownloaderDelegatorEx::startDownloadData()
 		std::string char_data(p, data.size());
 		//CCLOG("JSDownloaderDelegatorEx:download data: [%s]", char_data.c_str());
 		this->onSuccess(char_data.c_str());
-		DownloaderManager::getInstance()->allOnSuccess(_url, char_data.c_str());
 	
 	};
 
