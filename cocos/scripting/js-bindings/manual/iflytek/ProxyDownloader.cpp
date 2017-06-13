@@ -111,7 +111,7 @@ void JSDownloaderDelegatorEx::onSuccess(const std::string& path)
 		valArr[0] = BOOLEAN_TO_JSVAL(true);
 		valArr[1] = std_string_to_jsval(_cx, path);
 
-		JS::RootedValue callback(_cx, OBJECT_TO_JSVAL(_jsProgressCallBack));
+		JS::RootedValue callback(_cx, OBJECT_TO_JSVAL(_jsCallback));
 		if (!callback.isNull())
 		{
 			JS::RootedValue retval(_cx);
