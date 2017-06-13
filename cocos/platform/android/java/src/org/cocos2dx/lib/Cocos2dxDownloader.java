@@ -5,6 +5,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.BinaryHttpResponseHandler;
 import com.loopj.android.http.FileAsyncHttpResponseHandler;
 import com.loopj.android.http.RequestHandle;
+import com.loopj.android.http.RequestParams;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,7 +22,6 @@ import java.util.Queue;
 
 import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.message.BasicHeader;
-import cz.msebera.android.httpclient.params.BasicHttpParams;
 import cz.msebera.android.httpclient.params.HttpParams;
 
 class DataTaskHandler extends BinaryHttpResponseHandler {
@@ -314,6 +314,10 @@ public class Cocos2dxDownloader {
                 if (0 == path.length()) {
                     // data task
                     task.handler = new DataTaskHandler(downloader, id);
+
+
+                    // update by sulei
+                    downloader._httpClient.setURLEncodingEnabled(false); // 不开启encode，由调用层自行encode，保持平台一致性
                     task.handle = downloader._httpClient.get(Cocos2dxHelper.getActivity(), url, task.handler);
                 }
 
