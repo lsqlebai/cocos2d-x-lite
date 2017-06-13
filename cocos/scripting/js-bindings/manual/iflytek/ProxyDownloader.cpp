@@ -21,11 +21,33 @@ JSDownloaderDelegatorEx::JSDownloaderDelegatorEx(
 	JS::HandleObject callback)
 	: __JSDownloaderDelegator(cx, obj, url, callback)
 	, _proxy(proxy)
-	
+	, _jsProgressCallBack(nullptr)
 {
 
 }
 
+void JSDownloaderDelegatorEx::setProgressCallback(JS::HandleObject callback) {
+	_jsProgressCallBack = callback;
+
+	JS::RootedValue target(_cx, OBJECT_TO_JSVAL(_jsProgressCallBack));
+	if (!target.isNullOrUndefined())
+	{
+		js_add_object_root(target);
+	}
+}
+
+JSDownloaderDelegatorEx::~JSDownloaderDelegatorEx()
+{
+	JS::RootedValue target(_cx, OBJECT_TO_JSVAL(_jsProgressCallBack));
+	if (!target.isNullOrUndefined())
+	{
+		js_remove_object_root(target);
+	}
+	if (_downloader != nullptr) {
+		_downloader->onTaskProgress = (nullptr);
+		_downloader->onFileTaskSuccess = (nullptr);
+	}
+}
 #define MD5_BUFFER_LENGTH 16
 void MD5(void* input, int inputLength, unsigned char* output)
 {
@@ -89,13 +111,35 @@ void JSDownloaderDelegatorEx::onSuccess(const std::string& path)
 		valArr[0] = BOOLEAN_TO_JSVAL(true);
 		valArr[1] = std_string_to_jsval(_cx, path);
 
-		JS::RootedValue callback(_cx, OBJECT_TO_JSVAL(_jsCallback));
+		JS::RootedValue callback(_cx, OBJECT_TO_JSVAL(_jsProgressCallBack));
 		if (!callback.isNull())
 		{
 			JS::RootedValue retval(_cx);
 			JS_CallFunctionValue(_cx, global, callback, JS::HandleValueArray::fromMarkedLocation(2, valArr), &retval);
 		}
 		release();
+	});
+}
+
+
+void JSDownloaderDelegatorEx::onProgress(int64_t totalBytesReceived, int64_t totalBytesExpected)
+{
+	Director::getInstance()->getScheduler()->performFunctionInCocosThread([this, totalBytesReceived, totalBytesExpected]
+	{
+		JS::RootedObject global(_cx, ScriptingCore::getInstance()->getGlobalObject());
+		JSAutoCompartment ac(_cx, global);
+
+		jsval valArr[2];
+
+		valArr[0] = INT_TO_JSVAL((int32_t)totalBytesReceived);
+		valArr[1] = INT_TO_JSVAL((int32_t)totalBytesExpected);
+
+		JS::RootedValue callback(_cx, OBJECT_TO_JSVAL(this->_jsProgressCallBack));
+		if (!callback.isNullOrUndefined())
+		{
+			JS::RootedValue retval(_cx);
+			JS_CallFunctionValue(_cx, global, callback, JS::HandleValueArray::fromMarkedLocation(2, valArr), &retval);
+		}
 	});
 }
 
@@ -123,6 +167,15 @@ void JSDownloaderDelegatorEx::startDownload() {
 			DownloaderManager::getInstance()->allOnError(_url);
 		};
 
+		_downloader->onTaskProgress = [this](const cocos2d::network::DownloadTask& task,
+			int64_t bytesReceived,
+			int64_t totalBytesReceived,
+			int64_t totalBytesExpected)
+		{
+			if (this->_jsProgressCallBack != nullptr)
+				this->onProgress(totalBytesReceived, totalBytesExpected);
+
+		};
 		_downloader->onFileTaskSuccess = [this](const cocos2d::network::DownloadTask& task)
 		{
 
@@ -139,17 +192,18 @@ void JSDownloaderDelegatorEx::startDownload() {
 			}
 		};
 		
-
 		_downloader->createDownloadFileTask(_url, downloadPath, "", _proxy);
 	}
 }
 
-// jsb.downloadFile(url, proxy, function(succeed, result) {})
+
+
+// jsb.downloadFile(url, proxy, function(succeed, result) {} fuction(totalBytesReceived, totalBytesExpected) {})
 bool js_download(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
 	JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-	if (argc != 3) {
+	if (argc != 3 && argc != 4) {
 		JS_ReportError(cx, "js_download : wrong number of arguments");
 		return false;
 	}
@@ -163,11 +217,14 @@ bool js_download(JSContext *cx, uint32_t argc, jsval *vp)
 	JSB_PRECONDITION2(ok, cx, false, "js_download : Error processing arguments");
 
 	JS::RootedObject callback(cx, args.get(2).toObjectOrNull());
-	
-	__JSDownloaderDelegator* delegate;
+	JSDownloaderDelegatorEx* delegate;
 	delegate = new JSDownloaderDelegatorEx(cx, obj, url, proxy, callback);
-	delegate->autorelease();
+	if (argc == 4) {
+		JS::RootedObject progressCallback(cx, args.get(3).toObjectOrNull());
+		delegate->setProgressCallback(progressCallback);
+	}
 
+	delegate->autorelease();
 	delegate->downloadAsync();
 	args.rval().setUndefined();
 	return true;

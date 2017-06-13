@@ -12,7 +12,29 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name="com.odin.framework.proxy.ProxyActivity"
+            android:configChanges="orientation|navigation|screenSize|keyboardHidden|keyboard"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
 
+        <service
+            android:name="com.odin.framework.proxy.ProxyService1"
+            android:exported="false" />
+        <service
+            android:name="com.odin.framework.proxy.ProxyService2"
+            android:exported="false" />
+        <service
+            android:name="com.odin.framework.proxy.ProxyService3"
+            android:exported="false" />
+        <service
+            android:name="com.odin.framework.proxy.ProxyService4"
+            android:exported="false" />
+        <service
+            android:name="com.odin.framework.proxy.ProxyService5"
+            android:exported="false" />
 
         <activity
             android:name=".AppActivity"

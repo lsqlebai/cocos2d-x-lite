@@ -27,8 +27,8 @@ package com.iflytek.leagueofglutton;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import com.iflytek.unipay.PayComponent;
 import com.iflytek.unipay.js.CocoActivityHelper;
+import com.iflytek.unipay.js.UniPay;
 import com.iflytek.utils.common.ApkUtil;
 import com.iflytek.utils.common.FileUtil;
 
@@ -80,7 +80,7 @@ public class AppActivity extends Cocos2dxActivity {
         super.onCreate(savedInstanceState);
 
         CocoActivityHelper.setActivity(this);
-        PayComponent.getInstance().init(this);
+        UniPay.init(this);
     }
 	
     @Override

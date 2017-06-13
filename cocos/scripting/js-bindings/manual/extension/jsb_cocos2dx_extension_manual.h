@@ -39,7 +39,7 @@ public:
 
 protected:
     __JSDownloaderDelegator(JSContext *cx, JS::HandleObject obj, const std::string &url, JS::HandleObject callback);
-    ~__JSDownloaderDelegator();
+	virtual ~__JSDownloaderDelegator();
 //modified by shiqi luo
     virtual void startDownload();
 //modified by shiqi luo

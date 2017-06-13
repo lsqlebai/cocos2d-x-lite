@@ -1,5 +1,6 @@
 package com.iflytek.unipay.js;
 
+import android.app.Activity;
 import android.os.Handler;
 import android.os.Looper;
 
@@ -9,11 +10,12 @@ import com.iflytek.unipay.AuthCallBack;
 import com.iflytek.unipay.AuthComponent;
 import com.iflytek.unipay.AuthResultEntity;
 import com.iflytek.unipay.PayComponent;
+import com.iflytek.unipay.PayInitCallBack;
 import com.iflytek.unipay.UnicomVipOrder;
 import com.iflytek.unipay.UnityOrder;
-import com.iflytek.utils.common.ToastUtil;
 
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Created by lsq on 2017/1/22.
@@ -64,9 +66,47 @@ public class UniPay {
                 );
             }
         });
-
     }
 
+    public static void getInitMap() {
+        synchronized (UniPay.class) {
+            hasInitCallBack.set(true);
+            if (initMap != null) {
+                initCallBack();
+            }
+        }
+    }
+    public static void initCallBack() {
+        if (hasInitCallBack.get()) {
+            PayCallBack.payCallback("Init", new Gson().toJson(initMap));
+        }
+    }
+
+
+    public static Map<String, Object> initMap = null;
+    public static AtomicBoolean hasInitCallBack = new AtomicBoolean(false);
+    public static void init(Activity activity) {
+        PayComponent.getInstance().init(activity, new PayInitCallBack() {
+            @Override
+            public void onSuccess(Map<String, Object> param) {
+                synchronized (UniPay.class) {
+                    initMap = param;
+                    initMap.put("initStatus", "success");
+                    initCallBack();
+                }
+            }
+
+            @Override
+            public void onFailed(Map<String, Object> param) {
+                synchronized (UniPay.class) {
+                    initMap = param;
+                    initMap.put("initStatus", "fail");
+                    initCallBack();
+                }
+
+            }
+        });
+    }
 
     static class Callback implements IPayCallback {
 

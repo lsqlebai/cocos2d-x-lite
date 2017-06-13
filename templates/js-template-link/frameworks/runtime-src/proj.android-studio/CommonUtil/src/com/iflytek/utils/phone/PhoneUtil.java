@@ -96,7 +96,7 @@ public class PhoneUtil {
             if (ApiVersionUtil.hasGingerbread()) {
                 wlanMacAddress = getMacAddress("wlan");
             } else {
-                WifiManager systemService = getSystemService(Context.WIFI_SERVICE);
+                WifiManager systemService = (WifiManager) BaseApplication.getAppInstance().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
                 wlanMacAddress = StringUtil.defaultString(
                         systemService.getConnectionInfo().getMacAddress(),
                         StringUtil.EMPTY);
