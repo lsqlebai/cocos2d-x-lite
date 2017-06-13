@@ -13,8 +13,8 @@ android {
         applicationId "com.iflytek.musicnb"
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 140
-        versionName "1.4.0"
+        versionCode 150
+        versionName "1.5.0"
     }
     lintOptions {
         abortOnError false
