@@ -198,7 +198,7 @@ void JSDownloaderDelegatorEx::startDownload() {
 
 
 
-// jsb.downloadFile(url, proxy, function(succeed, result) {} fuction(totalBytesReceived, totalBytesExpected) {})
+// jsb.downloadFile(url, proxy, function(succeed, result) {}, fuction(totalBytesReceived, totalBytesExpected) {})
 bool js_download(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JS::CallArgs args = JS::CallArgsFromVp(argc, vp);

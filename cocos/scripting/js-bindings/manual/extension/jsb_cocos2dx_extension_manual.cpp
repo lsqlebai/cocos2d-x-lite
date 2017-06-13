@@ -30,6 +30,7 @@
 
 //add by shiqi luo
 #include "iflytek/ProxyDownloader.h"
+#include "iflytek/ProxyHttpGet.h"
 #include "extensions/assets-manager/AssetsManagerEx.h"
 
 
@@ -1083,6 +1084,9 @@ void register_all_cocos2dx_extension_manual(JSContext* cx, JS::HandleObject glob
 
 	//add by shiqi luo
 	JS_DefineFunction(cx, jsbObj, "downloadFile", js_download, 4, JSPROP_READONLY | JSPROP_PERMANENT);
+	//add by shiqi luo
+	JS_DefineFunction(cx, jsbObj, "httpGetWithProxy", proxy_http_get, 3, JSPROP_READONLY | JSPROP_PERMANENT);
+
 	//add by shiqi luo
 	JS_DefineFunction(cx, jsbObj, "setGlobalProxy", js_set_global_proxy, 1, JSPROP_READONLY | JSPROP_PERMANENT);
 
