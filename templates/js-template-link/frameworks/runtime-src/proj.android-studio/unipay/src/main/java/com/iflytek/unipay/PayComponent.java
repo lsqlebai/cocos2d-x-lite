@@ -1,7 +1,9 @@
 package com.iflytek.unipay;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.text.TextUtils;
 import android.widget.Toast;
 
@@ -27,7 +29,7 @@ import java.util.Map;
 public class PayComponent implements IPayComponent {
 
     private static PayComponent instance;
-    private boolean payStatus = false;
+    private PayStatus payStatus = new PayStatus();
     private String userId;
     private PayChannel payChannel;
     private String payMode;
@@ -51,32 +53,38 @@ public class PayComponent implements IPayComponent {
         try {
             classType = Class.forName("com.iflytek.payComponent.PayChannelImpl");
             payChannel = (PayChannel) classType.newInstance();
-
+            Logger.log().i("init channel success!");
         } catch (Exception e) {
+            Logger.log().i("init channel fail!");
             e.printStackTrace();
         }
 
     }
 
     public void appInit(Context appContext, String channel) {
+        Logger.log().i("app init success!");
         initChannel(channel);
         if (payChannel == null) return;
-
-        UBP.setDebug(true);
-        UBP.init(appContext);
         payChannel.onAppInit();
+        Logger.log().i("payChannel.onAppInit");
+        UBP.init(appContext);
+        UBP.setDebug(true);
+        Logger.log().i("UBP.init!");
 
         SDKParams params = new SDKParams().setContext(appContext);
+        Logger.log().i("UBP.getPrepareCtrl" + params.build());
         UBP.getPrepareCtrl(SDKPayType.P_SDK_Sole).prepare(params.build()
                 , new IPrepareCallback() {
                     @Override
                     public void onSuccess(Map<String, Object> result) {
-                        payStatus = true;
+                        Logger.log().i("UBP.getPrepareCtrl success");
+                        payStatus.appInit(true);
                     }
 
                     @Override
                     public void onFailed(Map<String, Object> error) {
-                        payStatus = false;
+                        Logger.log().i("UBP.getPrepareCtrl fail");
+                        payStatus.appInit(false);
                     }
                 });
     }
@@ -86,15 +94,20 @@ public class PayComponent implements IPayComponent {
     }
 
     public void init(final Context appContext, final PayInitCallBack payInitCallBack) {
+        Logger.log().i("init");
         if (payChannel == null) return;
         SDKParams sdkParams = new SDKParams().setContext(appContext);
+        Logger.log().i("sdkParams" + sdkParams.build().toString());
         payChannel.initParamUpdate(sdkParams);
+        Logger.log().i("sdkParams initParamUpdate" + sdkParams.build().toString());
         UBP.getPayCtrl(SDKPayType.P_SDK_Sole).init(sdkParams.build(), new IInitCallback() {
             @Override
             public void onSuccess(Map<String, Object> map) {
-                payStatus = true;
+                Logger.log().i("init onSuccess" + map.toString());
+                payStatus.payInit(true);
                 userId = ParamsUtils.getUserId(map);
                 if (TextUtils.isEmpty(userId)) {
+                    Logger.log().i("userId isEmpty");
                     userId = PhoneUtil.getDeviceUniqueId();
                 }
                 Logger.log().d("userId:" + userId);
@@ -106,7 +119,7 @@ public class PayComponent implements IPayComponent {
             @Override
             public void onFailed(Map<String, Object> map) {
                 Logger.log().e("init Failed:" + map);
-                payStatus = false;
+                payStatus.payInit(false);
                 if (payInitCallBack != null) {
                     payInitCallBack.onFailed(map);
                 }
@@ -142,8 +155,10 @@ public class PayComponent implements IPayComponent {
     }
 
     public void pay(final Activity activity, final UnityOrder unityOrder, final IPayCallback callback, String payMode) {
+        Logger.log().i("pay:" + unityOrder.toString());
         if (payChannel == null) return;
-        if (!payStatus) {
+        if (!payStatus.canPay()) {
+            Logger.log().e("payStatus error:" + payStatus);
             Toast.makeText(activity, "支付模块初始化失败", Toast.LENGTH_LONG).show();
             return;
         }
@@ -153,13 +168,15 @@ public class PayComponent implements IPayComponent {
                 .setUserId(userId)
                 .setNotify(unityOrder.isNotify());
 
-
+        Logger.log().i("pay sdkParams:" + sdkParams.build().toString());
         payChannel.pay(activity, sdkParams, unityOrder, callback, this);
     }
 
     public void payMonth(Activity activity, UnicomVipOrder unicomVipOrder, final IPayCallback callback, String payMode) {
+        Logger.log().i("payMonth:" + unicomVipOrder.toString());
         if (payChannel == null) return;
-        if (!payStatus) {
+        if (!payStatus.canPay()) {
+            Logger.log().e("payStatus error:" + payStatus);
             Toast.makeText(activity, "支付模块初始化失败", Toast.LENGTH_LONG).show();
             return;
         }
@@ -167,7 +184,19 @@ public class PayComponent implements IPayComponent {
         final SDKParams sdkParams = new SDKParams()
                 .setActivity(activity)
                 .setUserId(userId);
-
+        Logger.log().i("payMonth sdkParams:" + sdkParams.build().toString());
         payChannel.payMonth(activity, sdkParams, ProtoTools.createPOJO(UnicomVipOrder.class, unicomVipOrder), callback, this);
+    }
+
+    public void attachBaseContext(Application application, Context base) {
+        //UBP.getAppCtrl().attachBaseContext(application, base);
+    }
+
+    public void onConfigChanged(Configuration newConfig) {
+        UBP.getAppCtrl().onConfigurationChanged(newConfig);
+    }
+
+    public void onLowMemory() {
+        UBP.getAppCtrl().onLowMemory();
     }
 }

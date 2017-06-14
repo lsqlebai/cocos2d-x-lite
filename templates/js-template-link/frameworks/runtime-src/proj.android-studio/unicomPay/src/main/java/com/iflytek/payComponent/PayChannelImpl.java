@@ -2,13 +2,13 @@ package com.iflytek.payComponent;
 
 import android.app.Activity;
 
+import com.iflytek.pay.ubp.commonutils.log.Logger;
 import com.iflytek.pay.ubp.sole.IParams;
 import com.iflytek.pay.ubpcallback.IPayCallback;
 import com.iflytek.ubplib.UBP;
 import com.iflytek.ubplib.model.SDKParams;
 import com.iflytek.unipay.BasePayChannel;
 import com.iflytek.unipay.IPayComponent;
-import com.iflytek.unipay.PayChannel;
 import com.iflytek.unipay.UnicomVipOrder;
 import com.iflytek.unipay.UnityOrder;
 
@@ -25,6 +25,7 @@ public class PayChannelImpl extends BasePayChannel {
     public void onAppInit() {
         // 天津联通代理
         UBP.setUBPHost(proxy);
+        Logger.log().i("UBP.setUBPHost");
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.iflytek.musicnb;
 
 import android.content.Context;
+import android.content.res.Configuration;
 
 import com.google.gson.Gson;
 import com.iflytek.app.BaseApplication;
@@ -32,8 +33,25 @@ public class MainApplication extends BaseApplication {
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
+        PayComponent.getInstance().attachBaseContext(this, base);
 //        MultiDex.install(this);
     }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        // TODO Auto-generated method stub
+        super.onConfigurationChanged(newConfig);
+        PayComponent.getInstance().onConfigChanged(newConfig);
+
+    }
+
+    @Override
+    public void onLowMemory() {
+        // TODO Auto-generated method stub
+        super.onLowMemory();
+        PayComponent.getInstance().onLowMemory();
+    }
+
 
     private String getChannelId() {
         InputStream is = null;
