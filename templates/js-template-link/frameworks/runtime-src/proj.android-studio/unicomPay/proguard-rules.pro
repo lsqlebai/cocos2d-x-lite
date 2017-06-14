@@ -16,4 +16,11 @@
 #   public *;
 #}
 
--keep class com.odin.plugable.api.**{*;}
+-keep class com.sdk.commplatform.** {*;}
+-dontwarn com.sdk.commplatform.**
+
+-keep class com.odin.**{*;}
+-dontwarn com.odin.**
+
+-keep class com.huawei.**{*;}
+-dontwarn com.huawei.**
