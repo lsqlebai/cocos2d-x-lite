@@ -5653,6 +5653,13 @@ class PayOrderResponse : public ::google::protobuf::Message {
   inline ::OrderParam* release_orderparam();
   inline void set_allocated_orderparam(::OrderParam* orderparam);
 
+  // optional int32 continueType = 4;
+  inline bool has_continuetype() const;
+  inline void clear_continuetype();
+  static const int kContinueTypeFieldNumber = 4;
+  inline ::google::protobuf::int32 continuetype() const;
+  inline void set_continuetype(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:PayOrderResponse)
  private:
   inline void set_has_orderid();
@@ -5661,6 +5668,8 @@ class PayOrderResponse : public ::google::protobuf::Message {
   inline void clear_has_price();
   inline void set_has_orderparam();
   inline void clear_has_orderparam();
+  inline void set_has_continuetype();
+  inline void clear_has_continuetype();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -5669,6 +5678,7 @@ class PayOrderResponse : public ::google::protobuf::Message {
   ::std::string* orderid_;
   ::OrderParam* orderparam_;
   ::google::protobuf::int32 price_;
+  ::google::protobuf::int32 continuetype_;
   friend void  protobuf_AddDesc_game_2eproto();
   friend void protobuf_AssignDesc_game_2eproto();
   friend void protobuf_ShutdownFile_game_2eproto();
@@ -13313,6 +13323,30 @@ inline void PayOrderResponse::set_allocated_orderparam(::OrderParam* orderparam)
     clear_has_orderparam();
   }
   // @@protoc_insertion_point(field_set_allocated:PayOrderResponse.orderParam)
+}
+
+// optional int32 continueType = 4;
+inline bool PayOrderResponse::has_continuetype() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void PayOrderResponse::set_has_continuetype() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void PayOrderResponse::clear_has_continuetype() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void PayOrderResponse::clear_continuetype() {
+  continuetype_ = 0;
+  clear_has_continuetype();
+}
+inline ::google::protobuf::int32 PayOrderResponse::continuetype() const {
+  // @@protoc_insertion_point(field_get:PayOrderResponse.continueType)
+  return continuetype_;
+}
+inline void PayOrderResponse::set_continuetype(::google::protobuf::int32 value) {
+  set_has_continuetype();
+  continuetype_ = value;
+  // @@protoc_insertion_point(field_set:PayOrderResponse.continueType)
 }
 
 // -------------------------------------------------------------------

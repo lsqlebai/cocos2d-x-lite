@@ -1064,10 +1064,11 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(PayOrderRequest));
   PayOrderResponse_descriptor_ = file->message_type(49);
-  static const int PayOrderResponse_offsets_[3] = {
+  static const int PayOrderResponse_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PayOrderResponse, orderid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PayOrderResponse, price_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PayOrderResponse, orderparam_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PayOrderResponse, continuetype_),
   };
   PayOrderResponse_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -1569,21 +1570,21 @@ void protobuf_AddDesc_game_2eproto() {
     "\tuserPayId\030\001 \002(\t\"4\n\025AuthorizationRespons"
     "e\022\033\n\010userInfo\030\001 \002(\0132\t.UserInfo\"0\n\017PayOrd"
     "erRequest\022\014\n\004type\030\001 \002(\t\022\017\n\007goodsId\030\002 \002(\t"
-    "\"S\n\020PayOrderResponse\022\017\n\007orderId\030\001 \002(\t\022\r\n"
+    "\"i\n\020PayOrderResponse\022\017\n\007orderId\030\001 \002(\t\022\r\n"
     "\005price\030\002 \002(\005\022\037\n\norderParam\030\003 \002(\0132\013.Order"
-    "Param\"\177\n\nOrderParam\022\014\n\004name\030\001 \001(\t\022\023\n\013uni"
-    "comFeeId\030\002 \001(\t\022\027\n\017unicomProductId\030\003 \001(\t\022"
-    "\020\n\010aliFeeId\030\004 \001(\t\022\023\n\013weixinFeeId\030\005 \001(\t\022\016"
-    "\n\006notify\030\006 \001(\010\"F\n\020PayResultRequest\022\014\n\004ty"
-    "pe\030\001 \002(\t\022\017\n\007orderId\030\002 \002(\t\022\023\n\013orderStatus"
-    "\030\003 \002(\t\"V\n\021PayResultResponse\022\017\n\007orderId\030\001"
-    " \002(\t\022\023\n\013orderStatus\030\002 \002(\t\022\033\n\010userInfo\030\003 "
-    "\001(\0132\t.UserInfo\"2\n\023GoldCoinListRequest\022\014\n"
-    "\004page\030\001 \002(\005\022\r\n\005limit\030\002 \002(\005\"3\n\024GoldCoinLi"
-    "stResponse\022\033\n\010goldCoin\030\001 \003(\0132\t.GoldCoin\""
-    "S\n\010GoldCoin\022\n\n\002id\030\001 \002(\t\022\016\n\006canBuy\030\002 \002(\010\022"
-    "\014\n\004gold\030\003 \001(\005\022\r\n\005price\030\004 \001(\005\022\016\n\006poster\030\006"
-    " \001(\t", 5964);
+    "Param\022\024\n\014continueType\030\004 \001(\005\"\177\n\nOrderPara"
+    "m\022\014\n\004name\030\001 \001(\t\022\023\n\013unicomFeeId\030\002 \001(\t\022\027\n\017"
+    "unicomProductId\030\003 \001(\t\022\020\n\010aliFeeId\030\004 \001(\t\022"
+    "\023\n\013weixinFeeId\030\005 \001(\t\022\016\n\006notify\030\006 \001(\010\"F\n\020"
+    "PayResultRequest\022\014\n\004type\030\001 \002(\t\022\017\n\007orderI"
+    "d\030\002 \002(\t\022\023\n\013orderStatus\030\003 \002(\t\"V\n\021PayResul"
+    "tResponse\022\017\n\007orderId\030\001 \002(\t\022\023\n\013orderStatu"
+    "s\030\002 \002(\t\022\033\n\010userInfo\030\003 \001(\0132\t.UserInfo\"2\n\023"
+    "GoldCoinListRequest\022\014\n\004page\030\001 \002(\005\022\r\n\005lim"
+    "it\030\002 \002(\005\"3\n\024GoldCoinListResponse\022\033\n\010gold"
+    "Coin\030\001 \003(\0132\t.GoldCoin\"S\n\010GoldCoin\022\n\n\002id\030"
+    "\001 \002(\t\022\016\n\006canBuy\030\002 \002(\010\022\014\n\004gold\030\003 \001(\005\022\r\n\005p"
+    "rice\030\004 \001(\005\022\016\n\006poster\030\006 \001(\t", 5986);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "game.proto", &protobuf_RegisterTypes);
   MessageInfo::default_instance_ = new MessageInfo();
@@ -18931,6 +18932,7 @@ void PayOrderRequest::Swap(PayOrderRequest* other) {
 const int PayOrderResponse::kOrderIdFieldNumber;
 const int PayOrderResponse::kPriceFieldNumber;
 const int PayOrderResponse::kOrderParamFieldNumber;
+const int PayOrderResponse::kContinueTypeFieldNumber;
 #endif  // !_MSC_VER
 
 PayOrderResponse::PayOrderResponse()
@@ -18956,6 +18958,7 @@ void PayOrderResponse::SharedCtor() {
   orderid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   price_ = 0;
   orderparam_ = NULL;
+  continuetype_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -18995,17 +18998,31 @@ PayOrderResponse* PayOrderResponse::New() const {
 }
 
 void PayOrderResponse::Clear() {
-  if (_has_bits_[0 / 32] & 7) {
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<PayOrderResponse*>(16)->f) - \
+   reinterpret_cast<char*>(16))
+
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
+
+  if (_has_bits_[0 / 32] & 15) {
+    ZR_(price_, continuetype_);
     if (has_orderid()) {
       if (orderid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         orderid_->clear();
       }
     }
-    price_ = 0;
     if (has_orderparam()) {
       if (orderparam_ != NULL) orderparam_->::OrderParam::Clear();
     }
   }
+
+#undef OFFSET_OF_FIELD_
+#undef ZR_
+
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -19060,6 +19077,21 @@ bool PayOrderResponse::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(32)) goto parse_continueType;
+        break;
+      }
+
+      // optional int32 continueType = 4;
+      case 4: {
+        if (tag == 32) {
+         parse_continueType:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &continuetype_)));
+          set_has_continuetype();
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -19110,6 +19142,11 @@ void PayOrderResponse::SerializeWithCachedSizes(
       3, this->orderparam(), output);
   }
 
+  // optional int32 continueType = 4;
+  if (has_continuetype()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->continuetype(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -19143,6 +19180,11 @@ void PayOrderResponse::SerializeWithCachedSizes(
         3, this->orderparam(), target);
   }
 
+  // optional int32 continueType = 4;
+  if (has_continuetype()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->continuetype(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -19174,6 +19216,13 @@ int PayOrderResponse::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->orderparam());
+    }
+
+    // optional int32 continueType = 4;
+    if (has_continuetype()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->continuetype());
     }
 
   }
@@ -19212,6 +19261,9 @@ void PayOrderResponse::MergeFrom(const PayOrderResponse& from) {
     if (from.has_orderparam()) {
       mutable_orderparam()->::OrderParam::MergeFrom(from.orderparam());
     }
+    if (from.has_continuetype()) {
+      set_continuetype(from.continuetype());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -19239,6 +19291,7 @@ void PayOrderResponse::Swap(PayOrderResponse* other) {
     std::swap(orderid_, other->orderid_);
     std::swap(price_, other->price_);
     std::swap(orderparam_, other->orderparam_);
+    std::swap(continuetype_, other->continuetype_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
