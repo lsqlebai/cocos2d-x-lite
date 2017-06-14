@@ -185,7 +185,7 @@ public class PayComponent implements IPayComponent {
                 .setActivity(activity)
                 .setUserId(userId);
         Logger.log().i("payMonth sdkParams:" + sdkParams.build().toString());
-        payChannel.payMonth(activity, sdkParams, ProtoTools.createPOJO(UnicomVipOrder.class, unicomVipOrder), callback, this);
+        payChannel.payMonth(activity, sdkParams, unicomVipOrder, callback, this);
     }
 
     public void attachBaseContext(Application application, Context base) {
