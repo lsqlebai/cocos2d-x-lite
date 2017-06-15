@@ -39,6 +39,7 @@
     <ClCompile Include="..\manual\iflytek\jsb_ThreadNative.cpp" />
     <ClCompile Include="..\manual\iflytek\md5.c" />
     <ClCompile Include="..\manual\iflytek\ProxyDownloader.cpp" />
+    <ClCompile Include="..\manual\iflytek\ProxyHttpGet.cpp" />
     <ClCompile Include="..\manual\iflytek\ZipHelper.cpp" />
     <ClCompile Include="..\manual\jsb_event_dispatcher_manual.cpp" />
     <ClCompile Include="..\manual\jsb_opengl_functions.cpp" />
@@ -91,6 +92,7 @@
     <ClInclude Include="..\manual\iflytek\jsb_ThreadNative.h" />
     <ClInclude Include="..\manual\iflytek\md5.h" />
     <ClInclude Include="..\manual\iflytek\ProxyDownloader.h" />
+    <ClInclude Include="..\manual\iflytek\ProxyHttpGet.h" />
     <ClInclude Include="..\manual\iflytek\ZipHelper.h" />
     <ClInclude Include="..\manual\jsb_event_dispatcher_manual.h" />
     <ClInclude Include="..\manual\jsb_helper.h" />
@@ -483,10 +485,6 @@
     </ProjectReference>
     <ProjectReference Include="..\..\..\editor-support\spine\proj.win32\libSpine.vcxproj">
       <Project>{b7c2a162-dec9-4418-972e-240ab3cbfcae}</Project>
-    </ProjectReference>
-    <ProjectReference Include="D:\cocos2d-x-3.4\projects\Landlord\cocos2d\external\custom\protobuf\vsprojects\libprotobuf.vcxproj">
-      <Project>{3e283f37-a4ed-41b7-a3e6-a2d89d131a30}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

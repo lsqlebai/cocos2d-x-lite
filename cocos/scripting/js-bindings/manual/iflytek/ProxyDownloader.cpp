@@ -18,16 +18,36 @@ JSDownloaderDelegatorEx::JSDownloaderDelegatorEx(
 	JS::HandleObject obj, 
 	const std::string &url, 
 	const std::string& proxy, 
-	JS::HandleObject callback,
-	const bool download_data=false)
+	JS::HandleObject callback)
 	: __JSDownloaderDelegator(cx, obj, url, callback)
 	, _proxy(proxy)
-	, _downloadData(download_data)
-
+	, _jsProgressCallBack(nullptr)
 {
 
 }
 
+void JSDownloaderDelegatorEx::setProgressCallback(JS::HandleObject callback) {
+	_jsProgressCallBack = callback;
+
+	JS::RootedValue target(_cx, OBJECT_TO_JSVAL(_jsProgressCallBack));
+	if (!target.isNullOrUndefined())
+	{
+		js_add_object_root(target);
+	}
+}
+
+JSDownloaderDelegatorEx::~JSDownloaderDelegatorEx()
+{
+	JS::RootedValue target(_cx, OBJECT_TO_JSVAL(_jsProgressCallBack));
+	if (!target.isNullOrUndefined())
+	{
+		js_remove_object_root(target);
+	}
+	if (_downloader != nullptr) {
+		_downloader->onTaskProgress = (nullptr);
+		_downloader->onFileTaskSuccess = (nullptr);
+	}
+}
 #define MD5_BUFFER_LENGTH 16
 void MD5(void* input, int inputLength, unsigned char* output)
 {
@@ -101,15 +121,29 @@ void JSDownloaderDelegatorEx::onSuccess(const std::string& path)
 	});
 }
 
-void JSDownloaderDelegatorEx::startDownload() {
-	if (_downloadData) {
-		startDownloadData();
-	} else {
-		startDownloadFile();
-	}
+
+void JSDownloaderDelegatorEx::onProgress(int64_t totalBytesReceived, int64_t totalBytesExpected)
+{
+	Director::getInstance()->getScheduler()->performFunctionInCocosThread([this, totalBytesReceived, totalBytesExpected]
+	{
+		JS::RootedObject global(_cx, ScriptingCore::getInstance()->getGlobalObject());
+		JSAutoCompartment ac(_cx, global);
+
+		jsval valArr[2];
+
+		valArr[0] = INT_TO_JSVAL((int32_t)totalBytesReceived);
+		valArr[1] = INT_TO_JSVAL((int32_t)totalBytesExpected);
+
+		JS::RootedValue callback(_cx, OBJECT_TO_JSVAL(this->_jsProgressCallBack));
+		if (!callback.isNullOrUndefined())
+		{
+			JS::RootedValue retval(_cx);
+			JS_CallFunctionValue(_cx, global, callback, JS::HandleValueArray::fromMarkedLocation(2, valArr), &retval);
+		}
+	});
 }
 
-void JSDownloaderDelegatorEx::startDownloadFile() {
+void JSDownloaderDelegatorEx::startDownload() {
 	std::string downloadPath = getDownloadPath(_url);
 
 	if (FileUtils::getInstance()->isFileExist(downloadPath)) {
@@ -133,6 +167,15 @@ void JSDownloaderDelegatorEx::startDownloadFile() {
 			DownloaderManager::getInstance()->allOnError(_url);
 		};
 
+		_downloader->onTaskProgress = [this](const cocos2d::network::DownloadTask& task,
+			int64_t bytesReceived,
+			int64_t totalBytesReceived,
+			int64_t totalBytesExpected)
+		{
+			if (this->_jsProgressCallBack != nullptr)
+				this->onProgress(totalBytesReceived, totalBytesExpected);
+
+		};
 		_downloader->onFileTaskSuccess = [this](const cocos2d::network::DownloadTask& task)
 		{
 
@@ -149,44 +192,18 @@ void JSDownloaderDelegatorEx::startDownloadFile() {
 			}
 		};
 		
-
 		_downloader->createDownloadFileTask(_url, downloadPath, "", _proxy);
 	}
 }
 
-void JSDownloaderDelegatorEx::startDownloadData()
-{
 
-	_downloader = std::make_shared<cocos2d::network::Downloader>();
-//        _downloader->setConnectionTimeout(8);
-	_downloader->onTaskError = [this](const cocos2d::network::DownloadTask& task,
-									  int errorCode,
-									  int errorCodeInternal,
-									  const std::string& errorStr)
-	{
-		CCLOG("JSDownloaderDelegatorEx:download: %s fails: %s", _url.c_str() , errorStr.c_str());
-		this->onError();
-	};
 
-	_downloader->onDataTaskSuccess = [this](const cocos2d::network::DownloadTask& task,
-											std::vector<unsigned char>& data)
-	{
-		const char *p = (char *)data.data();
-		std::string char_data(p, data.size());
-		//CCLOG("JSDownloaderDelegatorEx:download data: [%s]", char_data.c_str());
-		this->onSuccess(char_data.c_str());
-
-	};
-
-	_downloader->createDownloadDataTaskWithProxy(_url, "", _proxy);
-}
-
-// jsb.downloadFile(url, proxy, function(succeed, result) {})
+// jsb.downloadFile(url, proxy, function(succeed, result) {}, fuction(totalBytesReceived, totalBytesExpected) {})
 bool js_download(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
 	JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-	if (argc != 3) {
+	if (argc != 3 && argc != 4) {
 		JS_ReportError(cx, "js_download : wrong number of arguments");
 		return false;
 	}
@@ -200,40 +217,14 @@ bool js_download(JSContext *cx, uint32_t argc, jsval *vp)
 	JSB_PRECONDITION2(ok, cx, false, "js_download : Error processing arguments");
 
 	JS::RootedObject callback(cx, args.get(2).toObjectOrNull());
-	
-	__JSDownloaderDelegator* delegate;
+	JSDownloaderDelegatorEx* delegate;
 	delegate = new JSDownloaderDelegatorEx(cx, obj, url, proxy, callback);
-	delegate->autorelease();
-
-	delegate->downloadAsync();
-	args.rval().setUndefined();
-	return true;
-}
-
-// jsb.downloadData(url, proxy, function(succeed, result) {})
-bool js_downloadData(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-	JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-	if (argc != 3) {
-		JS_ReportError(cx, "js_download : wrong number of arguments");
-		return false;
+	if (argc == 4) {
+		JS::RootedObject progressCallback(cx, args.get(3).toObjectOrNull());
+		delegate->setProgressCallback(progressCallback);
 	}
 
-	std::string url;
-	bool ok = jsval_to_std_string(cx, args.get(0), &url);
-	JSB_PRECONDITION2(ok, cx, false, "js_download : Error processing arguments");
-
-	std::string proxy;
-	ok = jsval_to_std_string(cx, args.get(1), &proxy);
-	JSB_PRECONDITION2(ok, cx, false, "js_download : Error processing arguments");
-
-	JS::RootedObject callback(cx, args.get(2).toObjectOrNull());
-
-	__JSDownloaderDelegator* delegate;
-	delegate = new JSDownloaderDelegatorEx(cx, obj, url, proxy, callback, true);
 	delegate->autorelease();
-
 	delegate->downloadAsync();
 	args.rval().setUndefined();
 	return true;

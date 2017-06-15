@@ -604,6 +604,29 @@ using namespace std::chrono;
 //}
 
 
+void parseJsonToJsonObj(const string& jsonStr, JS::RootedObject* jsobj)
+{
+
+	JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
+	//JS::RootedObject jsobj(cx, JS_NewObject(cx, NULL, JS::NullPtr(), JS::NullPtr()));
+
+	
+	//JS::RootedValue value(cx);
+	//JS_GetProperty(cx, *jsobj, "code", value);
+
+	/*if (curValue.IsObject())
+	{
+	for (auto iter = curValue.MemberBegin(); iter != curValue.MemberEnd(); ++iter)
+	{
+	auto key = (iter->name).GetString();
+	auto value = (iter->value).GetType();
+	CCLOG("key:%s", key);
+	CCLOG("value:");
+	}
+	}*/
+}
+
+
 /**
 * 获取时间,单位毫秒
 */
@@ -694,8 +717,8 @@ bool js_cocos2dx_extension_AsioConnection_constructor(JSContext *cx, uint32_t ar
 			//CCLOG("ASIO onMessage dataLen:%d", dataLen);
 
 
-			uint8_t* tempData = new uint8_t[dataLen];
-			memcpy(tempData, data, dataLen);
+			/*uint8_t* tempData = new uint8_t[dataLen];
+			memcpy(tempData, data, dataLen);*/
 
 			//string jsonStr = "";
 			//// 解析proto
@@ -714,48 +737,34 @@ bool js_cocos2dx_extension_AsioConnection_constructor(JSContext *cx, uint32_t ar
 			//}
 			
 
-			runOnCocosThread([cobj, tempData, dataLen, jsonStr]()
+			runOnCocosThread([cobj, dataLen, jsonStr]()
 			{
-
+				static bool test = true;
+				if (!test)
+				{
+					return;
+				}
 				if (cocos2d::Director::getInstance() == nullptr || cocos2d::ScriptEngineManager::getInstance() == nullptr)
 					return;
 
 				JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
 
 					JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
-				auto abc = JS_NewObject(cx, NULL, JS::NullPtr(), JS::NullPtr());
-				JS::RootedObject jsobj(cx, abc);
+				auto obj = JS_NewObject(cx, NULL, JS::NullPtr(), JS::NullPtr());
+				JS::RootedObject jsobj(cx, obj);
 				jsval args = OBJECT_TO_JSVAL(jsobj);
 
 				// data is binary
-				JS::RootedObject buffer(cx, JS_NewArrayBuffer(cx, dataLen));
+				/*	JS::RootedObject buffer(cx, JS_NewArrayBuffer(cx, dataLen));
 
-				if (dataLen > 0)
-				{
+					if (dataLen > 0)
+					{
 					uint8_t* bufdata = JS_GetArrayBufferData(buffer);
 					memcpy((void*)bufdata, tempData, dataLen);
-
-					
-					
-					/*if (dataLen >= 1000)
-					{
-						FILE* file = fopen("d:/test.data", "wb");
-						fwrite(tempData, dataLen, 1, file);
-						fclose(file);
-					}*/
-
-					/*FILE* file = fopen("d:/test.data", "rb");
-
-					fseek(file, 0, SEEK_END);
-					int32_t len = ftell(file);
-					fseek(file, 0, SEEK_SET);
-					char* data = new char[len];
-					fread(data, len,1, file);
-					fclose(file);*/
-				}
-				JS::RootedValue dataVal(cx);
-				dataVal = OBJECT_TO_JSVAL(buffer);
-				JS_SetProperty(cx, jsobj, "data", dataVal);
+					}
+					JS::RootedValue dataVal(cx);
+					dataVal = OBJECT_TO_JSVAL(buffer);
+					JS_SetProperty(cx, jsobj, "data", dataVal);*/
 
 				
 				JS::RootedValue errorMsgJS(cx);
@@ -764,7 +773,7 @@ bool js_cocos2dx_extension_AsioConnection_constructor(JSContext *cx, uint32_t ar
 
 				ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(((JSB_AsioConnection*)cobj->getRefPtr())->_JSDelegate.ref()), "onMessage", 1, &args);
 
-				delete[] tempData;
+				//delete[] tempData;
 			});
 		});
 

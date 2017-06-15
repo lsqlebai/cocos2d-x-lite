@@ -49,6 +49,16 @@ public class FileUtil {
 		}
 		dir.delete();
 	}
+	
+	public static void Delete(String name) {
+		File dir = new File(name);
+		if (dir.isDirectory()) {
+			for (File temp : dir.listFiles()) {
+				Delete(temp);
+			}
+		}
+		dir.delete();
+	}
 
 	public static String readline(File file) {
         try {

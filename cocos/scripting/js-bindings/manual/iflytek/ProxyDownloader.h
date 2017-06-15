@@ -7,20 +7,19 @@
 
 class JSDownloaderDelegatorEx : public __JSDownloaderDelegator {
 public:
-	JSDownloaderDelegatorEx(JSContext *cx, JS::HandleObject obj, const std::string &url, const std::string& proxy, JS::HandleObject callback, const bool download_data);
+	JSDownloaderDelegatorEx(JSContext *cx, JS::HandleObject obj, const std::string &url, const std::string& proxy, JS::HandleObject callback);
+	void setProgressCallback(JS::HandleObject callback);
+	virtual ~JSDownloaderDelegatorEx();
 private:
 	std::string _proxy;
-	bool _downloadData;
 	std::string getDownloadPath(std::string& url);
-	void startDownloadFile();
-	void startDownloadData();
+	JS::Heap<JSObject*> _jsProgressCallBack;
 protected:
 	virtual void startDownload();
 	void onSuccess(const std::string& path);
-	
+	void onProgress(int64_t totalBytesReceived, int64_t totalBytesExpected);
 	friend class DownloaderManager;
 };
 
 bool js_download(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_downloadData(JSContext *cx, uint32_t argc, jsval *vp);
 #endif

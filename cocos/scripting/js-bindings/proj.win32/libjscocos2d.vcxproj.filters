@@ -185,6 +185,9 @@
     <ClCompile Include="..\manual\iflytek\jsb_ThreadNative.cpp">
       <Filter>manual\iflytek</Filter>
     </ClCompile>
+    <ClCompile Include="..\manual\iflytek\ProxyHttpGet.cpp">
+      <Filter>manual\iflytek</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\auto\jsb_cocos2dx_auto.hpp">
@@ -1403,6 +1406,9 @@
       <Filter>manual\iflytek\gameLoG</Filter>
     </ClInclude>
     <ClInclude Include="..\manual\iflytek\jsb_ThreadNative.h">
+      <Filter>manual\iflytek</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\ProxyHttpGet.h">
       <Filter>manual\iflytek</Filter>
     </ClInclude>
   </ItemGroup>
