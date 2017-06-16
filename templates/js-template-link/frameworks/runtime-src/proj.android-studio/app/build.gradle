@@ -27,17 +27,21 @@ android {
             jniLibs.srcDir "libs"
             manifest.srcFile "AndroidManifest.xml"
             assets.srcDir "assets"
+
         }
         tmall {
             manifest.srcFile 'channel/common/AndroidManifest.xml'
+            assets.srcDirs = ['assets', 'channel/common/assets']
         }
 
         unicom {
             manifest.srcFile 'channel/unicom/AndroidManifest.xml'
+            assets.srcDirs = ['assets', 'channel/unicom/assets']
         }
 
         xiaowo {
             manifest.srcFile 'channel/xiaowo/AndroidManifest.xml'
+            assets.srcDirs = ['assets', 'channel/xiaowo/assets']
         }
 
     }
@@ -82,6 +86,40 @@ android {
         targetCompatibility JavaVersion.VERSION_1_7
     }
 }
+
+private upperFirst(name) {
+    return name[0].toUpperCase() + name[1..-1]
+}
+
+private findSourceSets(name) {
+    return android.sourceSets.find { set -> name == "${set.name}" }
+}
+
+afterEvaluate {
+    def buildTypes = ['Release', 'Debug']
+
+    android.productFlavors.each { flavor ->
+        def sourceSets = findSourceSets(flavor.name)
+        if (sourceSets.assets.srcDirs.size() > 1) {
+            // merge assets dirs
+            buildTypes.each { buildType ->
+                def upperFlavorName = upperFirst(flavor.name);
+                def prepareTask = tasks.findByName("prepare${upperFlavorName}${buildType}Dependencies")
+                prepareTask.dependsOn task("merge${upperFlavorName}${buildType}AssetsDirs", {
+                    def assetsDir = new File(project.buildDir, "intermediates/merged/assets/${flavor.name}/${buildType.toLowerCase()}")
+                    sourceSets.assets.srcDirs.each { dir ->
+                        copy {
+                            from file(dir)
+                            into assetsDir
+                        }
+                    }
+                    sourceSets.assets.srcDirs = [assetsDir.path];
+                })
+            }
+        }
+    }
+}
+
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
