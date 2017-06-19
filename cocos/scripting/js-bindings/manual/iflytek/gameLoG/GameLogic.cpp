@@ -14,7 +14,7 @@ GameLogic::GameLogic()
 
 GameLogic::~GameLogic()
 {
-
+	
 }
 
 bool GameLogic::parseJsonToFoodAreas(const string& jsonData, Vector<FoodAreaObj*>& outData)

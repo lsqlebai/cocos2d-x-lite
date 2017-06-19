@@ -16,9 +16,19 @@ public class MainApplication extends BaseApplication {
         String channel;
     }
 
+    public static String channel = "";
+
+    private static Context _context;
+    public static final Context geContext()
+    {
+        return _context;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
+        _context = this;
+
 //        FrescoHelper.initialize(this);
 
 //        x.Ext.init(this);
@@ -61,7 +71,9 @@ public class MainApplication extends BaseApplication {
             byte[] buffer = new byte[size];
             is.read(buffer);
             Config config = new Gson().fromJson(new String(buffer), Config.class);
-            return config.channel;
+
+            channel = config.channel;
+            return channel;
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

@@ -32,6 +32,8 @@ import com.iflytek.unipay.js.CocoActivityHelper;
 import com.iflytek.unipay.js.UniPay;
 import com.iflytek.utils.common.ApkUtil;
 import com.iflytek.utils.common.FileUtil;
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.analytics.mobclick.game.MobClickCppHelper;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
@@ -82,12 +84,37 @@ public class AppActivity extends Cocos2dxActivity {
 
         CocoActivityHelper.setActivity(this);
         UniPay.init(this);
+
+        // 初始化友盟统计
+        MobClickCppHelper.init(this,"59437ccfcae7e713660002a9", MainApplication.channel);
+    }
+
+    /**
+     * 上报错误日志到友盟
+     * @param errorMsg
+     */
+    public static void reportError(String errorMsg)
+    {
+        System.out.println("errorMsg:" + errorMsg);
+        MobclickAgent.reportError(MainApplication.geContext(), errorMsg);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         PayComponent.getInstance().release();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobClickCppHelper.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobClickCppHelper.onPause(this);
     }
 
     @Override
