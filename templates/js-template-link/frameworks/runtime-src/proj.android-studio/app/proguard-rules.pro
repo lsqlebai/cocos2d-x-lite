@@ -50,3 +50,8 @@
 #pay
 -keep class com.iflytek.payComponent.**{*;}
 -keep class com.iflytek.unipay.**{*;}
+
+#umeng
+-keep public class com.iflytek.leagueofglutton.R$*{ public static final int *; }
+-keepclassmembers class * { public (org.json.JSONObject); }
+-keepclassmembers enum * { public static **[] values(); public static ** valueOf(java.lang.String); }
