@@ -87,6 +87,10 @@ public:
 	void setEnableDecodeProto(const bool& isDecodeProto);
 
 	/**
+	 * 设置是否启用zlib
+	 */
+	void setEnableZlib(const bool& isEnableZlib);
+	/**
 	 * 设置代理服务器ip和port
 	 */
 	void setProxy(string proxyHost, int proxyPort);
@@ -161,6 +165,7 @@ private:
 	void* _refPtr;
 	bool _isEnableCrypt;
 	bool _isEnableDecodeProto;
+	bool _isEnableZlib;
 
 	string _proxyHost;
 	int _proxyPort;

@@ -20,7 +20,6 @@
 	"-----END PUBLIC KEY-----\n"
 
 #define IFLYTEK_NET_VERSION 11 // 通信库版本号
-#define USE_ZLIB 1 // 是否启用zlib进行数据压缩
 
 //#pragma comment(lib, "libzlib.lib") 
 
@@ -295,6 +294,7 @@ TcpConnection::TcpConnection() :_socket(_ioService), _compress(true, false, true
 	_refPtr = nullptr;
 	_isEnableCrypt = true;
 	_isEnableDecodeProto = true;
+	_isEnableZlib = true;
 	_proxyPort = 0;
 
 	
@@ -313,14 +313,17 @@ void parseMessage(::google::protobuf::Message* msg, void* data, int32_t len)
 
 void TcpConnection::setEnableCrypt(const bool& isEnableCrypt)
 {
-//#ifdef COCOS2D_DEBUG // 调试模式的包，允许使用非加密模式
 	this->_isEnableCrypt = isEnableCrypt;
-//#endif
 }
 
 void TcpConnection::setEnableDecodeProto(const bool& isDecodeProto)
 {
 	this->_isEnableDecodeProto = isDecodeProto;
+}
+
+void TcpConnection::setEnableZlib(const bool& isEnableZlib)
+{
+	this->_isEnableZlib = isEnableZlib;
 }
 
 void TcpConnection::setProxy(string proxyHost, int proxyPort)
@@ -385,7 +388,6 @@ void TcpConnection::asynSend(void* data, std::size_t len, SendCallback sendCallb
 			uint8_t* encrypted = new uint8_t[outLen];
 
 			int encrypted_length = RSAUtil::public_encrypt((unsigned char*)data, len, (unsigned char*)publicKey, encrypted);
-			//CCLOG("-------------encrypt len:%d", encrypted_length);
 
 			if (encrypted_length > 0) // 加密成功
 			{
@@ -411,13 +413,11 @@ void TcpConnection::asynSend(void* data, std::size_t len, SendCallback sendCallb
 					msg._sendCallback(msg.getSendId(), -2);
 				}
 			}
-
-
 		}
 		else
 		{
 
-			if (USE_ZLIB)
+			if (_isEnableZlib)
 			{
 				std::vector<Bytef> outData;
 				this->_compress.doCompress((Bytef*)data, len, outData); // 进行数据压缩
@@ -435,49 +435,6 @@ void TcpConnection::asynSend(void* data, std::size_t len, SendCallback sendCallb
 				msg->setBody(data, len);
 			}
 
-			//auto result = zTest((int8_t*)data, len);
-
-			//auto sendData = new int8_t[result.size()];
-
-			//for (int i = 0; i < result.size(); ++i)
-			//{
-			//	sendData[i] = result[i];
-			//}
-
-			////auto unResult =  unzTest(sendData, result.size());
-
-			//static Compression* cdc = new Compression(false, false, true);
-			//
-
-			//std::vector<Bytef> unResult;
-			//int rr = cdc->doUncompress((Bytef*)sendData, result.size(), unResult);
-
-			//int unzlen = unResult.size();
-			//if (unzlen <= 0)
-			//{
-			//	printf("errorxxxxxxxxx");
-			//}
-			//else
-			//{
-			//	MessageInfo* msg = new MessageInfo();
-			//	auto unzData = new int8_t[unResult.size()];
-			//	for (int i = 0; i < unResult.size(); ++i)
-			//	{
-			//		unzData[i] = unResult[i];
-			//	}
-
-			//	parseMessage(msg, unzData, unResult.size());
-			//	auto jsonStr = google::protobuf::JsonFormat::Utf8DebugJsonString(*msg);
-			//	if (jsonStr.length() <= 2)
-			//	{
-			//		printf("errorxxxxxxxxx  yyyyy");
-			//	}
-			//	delete msg;
-			//}
-			//msg->setBody(sendData, result.size());
-
-			//msg->setBody(data, len);
-
 			bool writeInProgress = !_sendMsgQueue.empty();
 			_sendMsgQueue.push_back(msgPtr);
 			if (!writeInProgress)
@@ -485,7 +442,6 @@ void TcpConnection::asynSend(void* data, std::size_t len, SendCallback sendCallb
 				doSend();
 			}
 		}
-		
 
 	});
 }
@@ -636,8 +592,6 @@ void TcpConnection::doReadBody(const std::shared_ptr<ReceiveMsg>& receiveMsg)
                              int8_t* msgData = (*receiveMsg).body();
                              std::size_t bodyLen = (*receiveMsg).bodyLength();
                              
-                             //std::cout << "receive len:" << bodyLen << std::endl;
-
 							 if (_isEnableCrypt)
 							 {
 
@@ -692,18 +646,14 @@ void TcpConnection::doReadBody(const std::shared_ptr<ReceiveMsg>& receiveMsg)
 											 try
 											 {
 
-												 if (USE_ZLIB)
+												 if (_isEnableZlib)
 												 {
 													 MessageInfo* msg = new MessageInfo();
-
 
 													 std::vector<Bytef> outData;
 													 _uncompress.doUncompress((Bytef*)msgData, bodyLen, outData); // 进行数据解压
 
-
 													 std::unique_ptr<int8_t[]> p(new int8_t[outData.size()]);
-
-													 // int8_t* finalData = new int8_t[outData.size()];
 													 auto finalData = p.get();
 													 int finalDataLen = outData.size();
 													 for (int i = 0; i < finalDataLen; ++i)
@@ -739,8 +689,6 @@ void TcpConnection::doReadBody(const std::shared_ptr<ReceiveMsg>& receiveMsg)
 									 }
 									 
 									_receiveCallback(msgData, bodyLen, jsonStr); // 派发消息
-
-									
 								 }
 							 }
 							
