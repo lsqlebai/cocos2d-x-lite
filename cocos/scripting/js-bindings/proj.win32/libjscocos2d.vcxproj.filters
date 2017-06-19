@@ -42,6 +42,9 @@
     <Filter Include="manual\iflytek\gameLoG">
       <UniqueIdentifier>{dc76755f-4fff-455a-95db-3008f9274fdf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="manual\iflytek\umeng">
+      <UniqueIdentifier>{d470a149-9420-41c4-835c-3a7ac33ae573}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\auto\jsb_cocos2dx_auto.cpp">
@@ -187,6 +190,15 @@
     </ClCompile>
     <ClCompile Include="..\manual\iflytek\ProxyHttpGet.cpp">
       <Filter>manual\iflytek</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\iflytek\umeng\MobClickCpp.cpp">
+      <Filter>manual\iflytek\umeng</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\iflytek\umeng\umengJniHelper.cpp">
+      <Filter>manual\iflytek\umeng</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\iflytek\umeng\jsb_umeng.cpp">
+      <Filter>manual\iflytek\umeng</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1410,6 +1422,18 @@
     </ClInclude>
     <ClInclude Include="..\manual\iflytek\ProxyHttpGet.h">
       <Filter>manual\iflytek</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\umeng\MobClickCpp.h">
+      <Filter>manual\iflytek\umeng</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\umeng\umengJniHelper.h">
+      <Filter>manual\iflytek\umeng</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\umeng\umenglog.h">
+      <Filter>manual\iflytek\umeng</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\umeng\jsb_umeng.h">
+      <Filter>manual\iflytek\umeng</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
