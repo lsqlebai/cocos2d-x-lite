@@ -16,5 +16,5 @@ public interface PayChannel {
     void onApplicationAttachBaseContext(Application application, Context base);
     void initParamUpdate(SDKParams params);
     void pay(Activity activity, SDKParams params, UnityOrder order, IPayCallback callback, IPayComponent createOrder);
-    void payMonth(Activity activity, SDKParams params, UnicomVipOrder order, IPayCallback callback, IPayComponent createOrder);
+    void payMonth(Activity activity, SDKParams params, UnityOrder order, IPayCallback callback, IPayComponent createOrder);
 }

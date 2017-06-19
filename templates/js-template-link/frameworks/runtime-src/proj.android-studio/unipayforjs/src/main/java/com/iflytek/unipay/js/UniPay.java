@@ -11,7 +11,6 @@ import com.iflytek.unipay.AuthComponent;
 import com.iflytek.unipay.AuthResultEntity;
 import com.iflytek.unipay.PayComponent;
 import com.iflytek.unipay.PayInitCallBack;
-import com.iflytek.unipay.UnicomVipOrder;
 import com.iflytek.unipay.UnityOrder;
 
 import java.util.Map;
@@ -35,7 +34,6 @@ public class UniPay {
                 );
             }
         });
-
     }
 
     public static void payMonth(final String order, final String payMode) {
@@ -44,7 +42,7 @@ public class UniPay {
             public void run() {
                 PayComponent.getInstance().payMonth(
                         CocoActivityHelper.getActivity(),
-                        new Gson().fromJson(order, UnicomVipOrder.class),
+                        new Gson().fromJson(order, UnityOrder.class),
                         new Callback(),
                         payMode
                 );

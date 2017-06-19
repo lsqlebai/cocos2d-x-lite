@@ -11,8 +11,6 @@ import com.iflytek.pay.ubpcallback.IPayCallback;
 import com.iflytek.ubplib.model.SDKParams;
 import com.iflytek.unipay.BasePayChannel;
 import com.iflytek.unipay.IPayComponent;
-import com.iflytek.unipay.PayChannel;
-import com.iflytek.unipay.UnicomVipOrder;
 import com.iflytek.unipay.UnityOrder;
 
 import java.util.HashMap;

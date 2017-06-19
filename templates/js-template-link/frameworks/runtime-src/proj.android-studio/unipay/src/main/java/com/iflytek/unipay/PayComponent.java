@@ -15,7 +15,6 @@ import com.iflytek.pay.ubpcallback.IInitCallback;
 import com.iflytek.pay.ubpcallback.IPayCallback;
 import com.iflytek.pay.ubpcallback.IPrepareCallback;
 import com.iflytek.pay.utils.ParamsUtils;
-import com.iflytek.protobuf.ProtoTools;
 import com.iflytek.ubplib.UBP;
 import com.iflytek.ubplib.model.SDKParams;
 
@@ -172,7 +171,7 @@ public class PayComponent implements IPayComponent {
         payChannel.pay(activity, sdkParams, unityOrder, callback, this);
     }
 
-    public void payMonth(Activity activity, UnicomVipOrder unicomVipOrder, final IPayCallback callback, String payMode) {
+    public void payMonth(Activity activity, UnityOrder unicomVipOrder, final IPayCallback callback, String payMode) {
         Logger.log().i("payMonth:" + unicomVipOrder.toString());
         if (payChannel == null) return;
         if (!payStatus.canPay()) {
@@ -183,7 +182,8 @@ public class PayComponent implements IPayComponent {
         this.payMode = payMode;
         final SDKParams sdkParams = new SDKParams()
                 .setActivity(activity)
-                .setUserId(userId);
+                .setUserId(userId)
+                .setNotify(unicomVipOrder.isNotify());
         Logger.log().i("payMonth sdkParams:" + sdkParams.build().toString());
         payChannel.payMonth(activity, sdkParams, unicomVipOrder, callback, this);
     }

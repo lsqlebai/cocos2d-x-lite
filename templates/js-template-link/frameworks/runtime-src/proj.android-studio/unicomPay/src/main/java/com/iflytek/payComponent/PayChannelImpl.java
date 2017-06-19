@@ -9,7 +9,6 @@ import com.iflytek.ubplib.UBP;
 import com.iflytek.ubplib.model.SDKParams;
 import com.iflytek.unipay.BasePayChannel;
 import com.iflytek.unipay.IPayComponent;
-import com.iflytek.unipay.UnicomVipOrder;
 import com.iflytek.unipay.UnityOrder;
 
 /**
@@ -50,8 +49,8 @@ public class PayChannelImpl extends BasePayChannel {
     }
 
     @Override
-    public void payMonth(Activity activity, SDKParams params, UnicomVipOrder order, IPayCallback callback, IPayComponent createOrder) {
-        params.setNotify(order.isNotify())
+    public void payMonth(Activity activity, SDKParams params, UnityOrder order, IPayCallback callback, IPayComponent createOrder) {
+        params
                 .setFeecodeId(order.getUnicomFeeId())
                 .setKeyValue(IParams.PAY_IS_SUBS_PAY, true)// 包月计费
                 .setKeyValue(IParams.PAY_PRODUCT_ID, order.getUnicomProductId())// 计费sdk需要申请

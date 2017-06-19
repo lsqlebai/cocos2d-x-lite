@@ -39,7 +39,9 @@ android {
         xiaowo {
             manifest.srcFile 'channel/xiaowo/AndroidManifest.xml'
         }
-
+        jscmcc {
+            manifest.srcFile 'channel/common/AndroidManifest.xml'
+        }
     }
     productFlavors {
         tmall {
@@ -49,6 +51,9 @@ android {
 
         }
         xiaowo {
+
+        }
+        jscmcc {
 
         }
     }
@@ -95,5 +100,7 @@ dependencies {
     unicomCompile project(':unicomPay')
 
     xiaowoCompile project(':xiaowoPay')
+
+    jscmccCompile project(':jiangsucmccPay')
 
 }

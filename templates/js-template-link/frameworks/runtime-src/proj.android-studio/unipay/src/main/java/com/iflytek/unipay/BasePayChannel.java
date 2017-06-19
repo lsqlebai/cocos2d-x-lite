@@ -23,7 +23,7 @@ public abstract class BasePayChannel implements PayChannel{
     }
 
     @Override
-    public void payMonth(Activity activity, SDKParams params, UnicomVipOrder order, IPayCallback callback, IPayComponent createOrder) {
+    public void payMonth(Activity activity, SDKParams params, UnityOrder order, IPayCallback callback, IPayComponent createOrder) {
         Toast.makeText(activity, "暂不支持包月支付", Toast.LENGTH_LONG).show();
     }
 

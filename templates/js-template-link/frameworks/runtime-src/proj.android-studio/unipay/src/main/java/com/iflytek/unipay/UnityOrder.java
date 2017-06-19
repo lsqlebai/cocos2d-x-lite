@@ -27,6 +27,16 @@ public class UnityOrder {
     @ProtoField
     String name;
 
+    public String getNotifyUrl() {
+        return notifyUrl;
+    }
+
+    public void setNotifyUrl(String notifyUrl) {
+        this.notifyUrl = notifyUrl;
+    }
+    //new for jiangsu
+    String notifyUrl;
+
     public String getAliFeeId() {
         return aliFeeId;
     }
