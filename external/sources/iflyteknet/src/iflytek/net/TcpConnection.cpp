@@ -72,9 +72,9 @@ TcpConnection::~TcpConnection()
 
 void TcpConnection::setEnableCrypt(const bool& isEnableCrypt)
 {
-#ifdef COCOS2D_DEBUG // 调试模式的包，允许使用非加密模式
+//#ifdef COCOS2D_DEBUG // 调试模式的包，允许使用非加密模式
 	this->_isEnableCrypt = isEnableCrypt;
-#endif
+//#endif
 }
 
 void TcpConnection::setEnableDecodeProto(const bool& isDecodeProto)

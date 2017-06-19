@@ -6,9 +6,8 @@ LOCAL_MODULE := iflyteknet_shared
 LOCAL_MODULE_FILENAME := libiflyteknet
    
 LOCAL_SRC_FILES := 	../src/iflytek/net/TcpConnection.cpp \
-					../src/iflytek/net/RSAUtil.cpp	\
-					../src/iflytek/net/game.pb.cc	\
-					../src/iflytek/net/json_format.cc
+					../src/iflytek/net/RSAUtil.cpp
+					
 					
 					
 
@@ -25,9 +24,9 @@ LOCAL_LDLIBS := -pthread -lz -L$(LOCAL_PATH)/prebuilt -lcrypto -lssl
 LOCAL_CFLAGS := -DASIO_STANDALONE
 
 #导入proto库
-LOCAL_WHOLE_STATIC_LIBRARIES += protobuf_static
+#LOCAL_WHOLE_STATIC_LIBRARIES += protobuf_static
 
 #include $(BUILD_STATIC_LIBRARY)
 include $(BUILD_SHARED_LIBRARY)
 
-$(call import-module,sources/protobuf/src)
+#$(call import-module,sources/protobuf/src)

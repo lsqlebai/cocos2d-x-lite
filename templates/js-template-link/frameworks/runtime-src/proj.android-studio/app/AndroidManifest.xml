@@ -34,7 +34,7 @@
         <meta-data
             android:name="UBPAppSecret"
             android:value="26142a22b4eb4b0b83683ab9199ac510" />
-        <meta-data android:name="IflytekAppId" android:value="7pom" />
+        <meta-data android:name="IflytekAppId" android:value="97kx" />
         <meta-data android:name="IflytekChannelId" android:value="9k9a" />
     </application>
     

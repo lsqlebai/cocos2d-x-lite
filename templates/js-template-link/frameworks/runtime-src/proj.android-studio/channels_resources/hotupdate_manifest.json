@@ -5,6 +5,6 @@
   },
   {
   	"flavor":"unicom",
-  	"server":"http://www.elephn.com/remote-assets/unicom"
+  	"server":"http://www.elephn.com/remote-assets/unicom/"
   }
 ]

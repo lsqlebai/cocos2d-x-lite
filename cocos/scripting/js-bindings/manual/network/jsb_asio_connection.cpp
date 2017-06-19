@@ -717,8 +717,8 @@ bool js_cocos2dx_extension_AsioConnection_constructor(JSContext *cx, uint32_t ar
 			//CCLOG("ASIO onMessage dataLen:%d", dataLen);
 
 
-			/*uint8_t* tempData = new uint8_t[dataLen];
-			memcpy(tempData, data, dataLen);*/
+			uint8_t* tempData = new uint8_t[dataLen];
+			memcpy(tempData, data, dataLen);
 
 			//string jsonStr = "";
 			//// ½âÎöproto
@@ -737,13 +737,9 @@ bool js_cocos2dx_extension_AsioConnection_constructor(JSContext *cx, uint32_t ar
 			//}
 			
 
-			runOnCocosThread([cobj, dataLen, jsonStr]()
+			runOnCocosThread([cobj, tempData, dataLen, jsonStr]()
 			{
-				static bool test = true;
-				if (!test)
-				{
-					return;
-				}
+				
 				if (cocos2d::Director::getInstance() == nullptr || cocos2d::ScriptEngineManager::getInstance() == nullptr)
 					return;
 
@@ -755,7 +751,7 @@ bool js_cocos2dx_extension_AsioConnection_constructor(JSContext *cx, uint32_t ar
 				jsval args = OBJECT_TO_JSVAL(jsobj);
 
 				// data is binary
-				/*	JS::RootedObject buffer(cx, JS_NewArrayBuffer(cx, dataLen));
+					JS::RootedObject buffer(cx, JS_NewArrayBuffer(cx, dataLen));
 
 					if (dataLen > 0)
 					{
@@ -764,7 +760,7 @@ bool js_cocos2dx_extension_AsioConnection_constructor(JSContext *cx, uint32_t ar
 					}
 					JS::RootedValue dataVal(cx);
 					dataVal = OBJECT_TO_JSVAL(buffer);
-					JS_SetProperty(cx, jsobj, "data", dataVal);*/
+					JS_SetProperty(cx, jsobj, "data", dataVal);
 
 				
 				JS::RootedValue errorMsgJS(cx);
@@ -773,7 +769,7 @@ bool js_cocos2dx_extension_AsioConnection_constructor(JSContext *cx, uint32_t ar
 
 				ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(((JSB_AsioConnection*)cobj->getRefPtr())->_JSDelegate.ref()), "onMessage", 1, &args);
 
-				//delete[] tempData;
+				delete[] tempData;
 			});
 		});
 
