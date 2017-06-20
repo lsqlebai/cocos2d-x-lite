@@ -26,6 +26,7 @@ package com.iflytek.leagueofglutton;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.iflytek.unipay.PayComponent;
 import com.iflytek.unipay.js.CocoActivityHelper;
@@ -157,11 +158,57 @@ public class AppActivity extends Cocos2dxActivity {
      */
     private void copyNewLib()
     {
+        String downloadPath = null;
+
+        File downloadFile = getExternalFilesDir("download");
+        if(downloadFile == null)
+        {
+            System.out.println("downloadFile is null");
+
+            try
+            {
+                File tmpDir = new File("/sdcard/Android/data/" +getPackageName() +"/files/download");
+
+                if(tmpDir.exists())
+                {
+                    downloadPath = tmpDir.getAbsolutePath();
+                }
+                else
+                {
+                    boolean mkResult = tmpDir.mkdirs();
+                    if(mkResult)
+                    {
+                        System.out.println("downloadFile is create success");
+                        downloadPath = tmpDir.getAbsolutePath();
+                    } else
+                    {
+                        System.out.println("downloadFile is create failed");
+                        Toast.makeText(this, "系统空间不足", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                System.out.println("downloadFile is create failed2");
+                Toast.makeText(this, "系统空间不足", Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+        } else
+        {
+            downloadPath = downloadFile.getAbsolutePath();
+        }
+
+        if(null == downloadPath)
+        {
+            System.out.println("downloadPath is null");
+            return;
+        }
+
         if(isAppUpgrade)
         {
 
             // 程序发生过升级，把之前热更新数据全部清空
-            File fileDir =  new File(getExternalFilesDir("download").getAbsolutePath());
+            File fileDir =  new File(downloadPath);
             if(fileDir.exists())
             {
                 FileUtil.Delete(fileDir);
@@ -169,7 +216,7 @@ public class AppActivity extends Cocos2dxActivity {
             return;
         }
 
-        File libCopyDirFile = new File(getExternalFilesDir("download").getAbsolutePath() + "/libCopyDir");
+        File libCopyDirFile = new File(downloadPath + "/libCopyDir");
         if(libCopyDirFile.exists() && libCopyDirFile.isFile())
         {
             BufferedReader br =  null;
