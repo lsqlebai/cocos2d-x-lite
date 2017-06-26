@@ -45,6 +45,7 @@ android {
         }
         jscmcc {
             manifest.srcFile 'channel/common/AndroidManifest.xml'
+			assets.srcDirs = ['assets', 'channel/jscmcc/assets']
         }
     }
     productFlavors {
