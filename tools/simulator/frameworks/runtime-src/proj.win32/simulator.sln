@@ -15,7 +15,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libDragonBones", "..\..\..\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libprotobuf", "..\..\..\..\..\external\sources\protobuf\vsprojects\libprotobuf.vcxproj", "{3E283F37-A4ED-41B7-A3E6-A2D89D131A30}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "iflyteknet", "..\..\..\..\..\external\sources\iflyteknet\vsproject\iflyteknet.vcxproj", "{C357A797-42B0-47DE-83C5-C3FED2E62983}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "iflyteknet", "..\..\..\..\..\external\sources\iflyteknet\vsproject\iflyteknet.vcxproj", "{7D8C5218-C005-40D4-B1FB-553ECBDE92C9}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libjscocos2d", "..\..\..\..\..\cocos\scripting\js-bindings\proj.win32\libjscocos2d.vcxproj", "{39379840-825A-45A0-B363-C09FFEF864BD}"
 EndProject
@@ -49,10 +49,10 @@ Global
 		{3E283F37-A4ED-41B7-A3E6-A2D89D131A30}.Debug|Win32.Build.0 = Debug|Win32
 		{3E283F37-A4ED-41B7-A3E6-A2D89D131A30}.Release|Win32.ActiveCfg = Release|Win32
 		{3E283F37-A4ED-41B7-A3E6-A2D89D131A30}.Release|Win32.Build.0 = Release|Win32
-		{C357A797-42B0-47DE-83C5-C3FED2E62983}.Debug|Win32.ActiveCfg = Debug|Win32
-		{C357A797-42B0-47DE-83C5-C3FED2E62983}.Debug|Win32.Build.0 = Debug|Win32
-		{C357A797-42B0-47DE-83C5-C3FED2E62983}.Release|Win32.ActiveCfg = Release|Win32
-		{C357A797-42B0-47DE-83C5-C3FED2E62983}.Release|Win32.Build.0 = Release|Win32
+		{7D8C5218-C005-40D4-B1FB-553ECBDE92C9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7D8C5218-C005-40D4-B1FB-553ECBDE92C9}.Debug|Win32.Build.0 = Debug|Win32
+		{7D8C5218-C005-40D4-B1FB-553ECBDE92C9}.Release|Win32.ActiveCfg = Release|Win32
+		{7D8C5218-C005-40D4-B1FB-553ECBDE92C9}.Release|Win32.Build.0 = Release|Win32
 		{39379840-825A-45A0-B363-C09FFEF864BD}.Debug|Win32.ActiveCfg = Debug|Win32
 		{39379840-825A-45A0-B363-C09FFEF864BD}.Debug|Win32.Build.0 = Debug|Win32
 		{39379840-825A-45A0-B363-C09FFEF864BD}.Release|Win32.ActiveCfg = Release|Win32

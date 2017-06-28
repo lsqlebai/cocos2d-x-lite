@@ -235,8 +235,17 @@ void js_cocos2dx_umeng_finalize(JSFreeOp *fop, JSObject *obj) {
 	js_proxy_t *proxy = jsb_get_js_proxy(jsObj);
 }
 
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+#include "platform/android/jni/JniHelper.h"
+#include "umengJniHelper.h"
+#endif
+
 void register_jsb_umeng_native(JSContext* cx, JS::HandleObject global)
 {
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+	umengJniHelper::setJavaVM(JniHelper::getJavaVM());
+#endif
+
 	js_cocos2dx_umeng_class = (JSClass *)calloc(1, sizeof(JSClass));
 	js_cocos2dx_umeng_class->name = "UmengNative";
 	js_cocos2dx_umeng_class->addProperty = JS_PropertyStub;

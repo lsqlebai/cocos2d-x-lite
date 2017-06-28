@@ -269,11 +269,33 @@ public:
             }
         }
 
-        return setOption(CURLOPT_URL, request->getUrl())
+		// update by sulei, add proxy
+		std::string urlStr = std::string(request->getUrl());
+		std::string dst = "@";
+
+		std::string proxy = "";
+		if (strncmp(urlStr.c_str(), dst.c_str(), dst.length()) == 0)
+		{
+			size_t fi = urlStr.find(dst, 1);
+			if (fi != urlStr.npos)
+			{
+				proxy = urlStr.substr(1, fi-1);
+				urlStr = urlStr.substr(fi+1, urlStr.length());
+			}
+		}
+
+		bool result = setOption(CURLOPT_URL, urlStr.c_str())
                 && setOption(CURLOPT_WRITEFUNCTION, callback)
                 && setOption(CURLOPT_WRITEDATA, stream)
                 && setOption(CURLOPT_HEADERFUNCTION, headerCallback)
                 && setOption(CURLOPT_HEADERDATA, headerStream);
+
+		if (!proxy.empty())
+		{
+			result = result && setOption(CURLOPT_PROXY, proxy.c_str());
+		}
+
+		return result;
 
     }
 

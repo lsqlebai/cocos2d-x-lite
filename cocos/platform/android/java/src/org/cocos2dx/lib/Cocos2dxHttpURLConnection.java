@@ -33,7 +33,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
 import java.net.ProtocolException;
+import java.net.Proxy;
 import java.net.URL;
 import java.security.KeyStore;
 import java.security.cert.Certificate;
@@ -62,8 +64,45 @@ public class Cocos2dxHttpURLConnection
         URL url;
         HttpURLConnection urlConnection;
         try {
+
+            // update by sulei, add proxy
+            String proxyStr = null;
+            if(null != linkURL && linkURL.startsWith("@"))
+            {
+                int index = linkURL.indexOf("@", 1);
+                if(index != -1)
+                {
+                    proxyStr = linkURL.substring(1, index);
+                    linkURL = linkURL.substring(index+1, linkURL.length());
+                }
+            }
+
+
             url = new URL(linkURL);
-            urlConnection = (HttpURLConnection) url.openConnection();
+            Proxy proxy = null;
+            if(proxyStr!=null)
+            {
+                String[] proxyInfo = proxyStr.split(":");
+
+                if(proxyInfo.length == 1)
+                {
+                    InetSocketAddress addr = new InetSocketAddress(proxyInfo[0], 80);
+                    proxy = new Proxy(Proxy.Type.HTTP, addr); // http 代理
+                } else if(proxyInfo.length == 2)
+                {
+                    InetSocketAddress addr = new InetSocketAddress(proxyInfo[0], Integer.parseInt(proxyInfo[1]));
+                    proxy = new Proxy(Proxy.Type.HTTP, addr); // http 代理
+                }
+            }
+
+            if(null != proxy)
+            {
+                urlConnection = (HttpURLConnection) url.openConnection(proxy);
+            } else
+            {
+                urlConnection = (HttpURLConnection) url.openConnection();
+            }
+
             //Accept-Encoding
             urlConnection.setRequestProperty("Accept-Encoding", "identity");
             urlConnection.setDoInput(true);
