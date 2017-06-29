@@ -21,6 +21,12 @@ namespace {
 const ::google::protobuf::Descriptor* MessageInfo_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   MessageInfo_reflection_ = NULL;
+const ::google::protobuf::Descriptor* GiftPackListResponse_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  GiftPackListResponse_reflection_ = NULL;
+const ::google::protobuf::Descriptor* GiftPack_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  GiftPack_reflection_ = NULL;
 const ::google::protobuf::Descriptor* Basic_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Basic_reflection_ = NULL;
@@ -197,7 +203,7 @@ void protobuf_AssignDesc_game_2eproto() {
       "game.proto");
   GOOGLE_CHECK(file != NULL);
   MessageInfo_descriptor_ = file->message_type(0);
-  static const int MessageInfo_offsets_[38] = {
+  static const int MessageInfo_offsets_[39] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MessageInfo, service_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MessageInfo, sn_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MessageInfo, code_),
@@ -236,6 +242,7 @@ void protobuf_AssignDesc_game_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MessageInfo, userinforesponse_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MessageInfo, goldcoinlistrequest_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MessageInfo, goldcoinlistresponse_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MessageInfo, giftpacklistresponse_),
   };
   MessageInfo_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -248,7 +255,41 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MessageInfo));
-  Basic_descriptor_ = file->message_type(1);
+  GiftPackListResponse_descriptor_ = file->message_type(1);
+  static const int GiftPackListResponse_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GiftPackListResponse, giftpack_),
+  };
+  GiftPackListResponse_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      GiftPackListResponse_descriptor_,
+      GiftPackListResponse::default_instance_,
+      GiftPackListResponse_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GiftPackListResponse, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GiftPackListResponse, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(GiftPackListResponse));
+  GiftPack_descriptor_ = file->message_type(2);
+  static const int GiftPack_offsets_[5] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GiftPack, id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GiftPack, canbuy_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GiftPack, price_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GiftPack, poster_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GiftPack, propid_),
+  };
+  GiftPack_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      GiftPack_descriptor_,
+      GiftPack::default_instance_,
+      GiftPack_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GiftPack, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GiftPack, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(GiftPack));
+  Basic_descriptor_ = file->message_type(3);
   static const int Basic_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Basic, channel_),
   };
@@ -263,7 +304,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Basic));
-  RegisterRequest_descriptor_ = file->message_type(2);
+  RegisterRequest_descriptor_ = file->message_type(4);
   static const int RegisterRequest_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegisterRequest, mac_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegisterRequest, userpayid_),
@@ -280,7 +321,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(RegisterRequest));
-  RegisterResponse_descriptor_ = file->message_type(3);
+  RegisterResponse_descriptor_ = file->message_type(5);
   static const int RegisterResponse_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegisterResponse, userinfo_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegisterResponse, propoverdue_),
@@ -298,7 +339,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(RegisterResponse));
-  RenewMerchandise_descriptor_ = file->message_type(4);
+  RenewMerchandise_descriptor_ = file->message_type(6);
   static const int RenewMerchandise_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RenewMerchandise, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RenewMerchandise, gold_),
@@ -315,7 +356,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(RenewMerchandise));
-  SignReward_descriptor_ = file->message_type(5);
+  SignReward_descriptor_ = file->message_type(7);
   static const int SignReward_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignReward, day_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignReward, gold_),
@@ -332,7 +373,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SignReward));
-  SkinChooseRequest_descriptor_ = file->message_type(6);
+  SkinChooseRequest_descriptor_ = file->message_type(8);
   static const int SkinChooseRequest_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SkinChooseRequest, skin_),
   };
@@ -347,7 +388,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SkinChooseRequest));
-  NickNameRandomRespone_descriptor_ = file->message_type(7);
+  NickNameRandomRespone_descriptor_ = file->message_type(9);
   static const int NickNameRandomRespone_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NickNameRandomRespone, nickname_),
   };
@@ -362,7 +403,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(NickNameRandomRespone));
-  MatchStartResponse_descriptor_ = file->message_type(8);
+  MatchStartResponse_descriptor_ = file->message_type(10);
   static const int MatchStartResponse_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MatchStartResponse, roominfo_),
   };
@@ -377,7 +418,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MatchStartResponse));
-  PLayerListResponse_descriptor_ = file->message_type(9);
+  PLayerListResponse_descriptor_ = file->message_type(11);
   static const int PLayerListResponse_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PLayerListResponse, allplayers_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PLayerListResponse, removeplayers_),
@@ -395,7 +436,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(PLayerListResponse));
-  FoodChangeResponse_descriptor_ = file->message_type(10);
+  FoodChangeResponse_descriptor_ = file->message_type(12);
   static const int FoodChangeResponse_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FoodChangeResponse, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FoodChangeResponse, foodareas_),
@@ -411,7 +452,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(FoodChangeResponse));
-  FoodArea_descriptor_ = file->message_type(11);
+  FoodArea_descriptor_ = file->message_type(13);
   static const int FoodArea_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FoodArea, areaid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FoodArea, x_),
@@ -431,7 +472,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(FoodArea));
-  RemainTimeResponse_descriptor_ = file->message_type(12);
+  RemainTimeResponse_descriptor_ = file->message_type(14);
   static const int RemainTimeResponse_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RemainTimeResponse, remain_),
   };
@@ -446,7 +487,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(RemainTimeResponse));
-  RankListResponse_descriptor_ = file->message_type(13);
+  RankListResponse_descriptor_ = file->message_type(15);
   static const int RankListResponse_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RankListResponse, rankitems_),
   };
@@ -461,7 +502,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(RankListResponse));
-  GameEndResponse_descriptor_ = file->message_type(14);
+  GameEndResponse_descriptor_ = file->message_type(16);
   static const int GameEndResponse_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameEndResponse, rankitems_),
   };
@@ -476,7 +517,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(GameEndResponse));
-  PlayerSkillRequest_descriptor_ = file->message_type(15);
+  PlayerSkillRequest_descriptor_ = file->message_type(17);
   static const int PlayerSkillRequest_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayerSkillRequest, skill_),
   };
@@ -491,7 +532,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(PlayerSkillRequest));
-  PlayerSkillResponse_descriptor_ = file->message_type(16);
+  PlayerSkillResponse_descriptor_ = file->message_type(18);
   static const int PlayerSkillResponse_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayerSkillResponse, playerskills_),
   };
@@ -506,7 +547,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(PlayerSkillResponse));
-  PlayerSkill_descriptor_ = file->message_type(17);
+  PlayerSkill_descriptor_ = file->message_type(19);
   static const int PlayerSkill_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayerSkill, skill_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayerSkill, player_),
@@ -525,7 +566,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(PlayerSkill));
-  MapEntity_descriptor_ = file->message_type(18);
+  MapEntity_descriptor_ = file->message_type(20);
   static const int MapEntity_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MapEntity, key_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MapEntity, value_),
@@ -541,7 +582,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MapEntity));
-  RankItem_descriptor_ = file->message_type(19);
+  RankItem_descriptor_ = file->message_type(21);
   static const int RankItem_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RankItem, rank_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RankItem, userinfo_),
@@ -559,7 +600,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(RankItem));
-  CellVector_descriptor_ = file->message_type(20);
+  CellVector_descriptor_ = file->message_type(22);
   static const int CellVector_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CellVector, cellid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CellVector, angle_),
@@ -575,7 +616,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CellVector));
-  PlayerOperationRequest_descriptor_ = file->message_type(21);
+  PlayerOperationRequest_descriptor_ = file->message_type(23);
   static const int PlayerOperationRequest_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayerOperationRequest, cellvector_),
   };
@@ -590,7 +631,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(PlayerOperationRequest));
-  UserInfo_descriptor_ = file->message_type(22);
+  UserInfo_descriptor_ = file->message_type(24);
   static const int UserInfo_offsets_[10] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UserInfo, uid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UserInfo, skin_),
@@ -614,7 +655,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(UserInfo));
-  Food_descriptor_ = file->message_type(23);
+  Food_descriptor_ = file->message_type(25);
   static const int Food_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Food, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Food, skin_),
@@ -632,7 +673,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Food));
-  Cell_descriptor_ = file->message_type(24);
+  Cell_descriptor_ = file->message_type(26);
   static const int Cell_offsets_[10] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Cell, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Cell, x_),
@@ -656,7 +697,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Cell));
-  Player_descriptor_ = file->message_type(25);
+  Player_descriptor_ = file->message_type(27);
   static const int Player_offsets_[7] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Player, userinfo_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Player, weight_),
@@ -677,7 +718,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Player));
-  SuperRenewInfo_descriptor_ = file->message_type(26);
+  SuperRenewInfo_descriptor_ = file->message_type(28);
   static const int SuperRenewInfo_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SuperRenewInfo, gold_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SuperRenewInfo, weight_),
@@ -694,7 +735,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SuperRenewInfo));
-  RoomInfo_descriptor_ = file->message_type(27);
+  RoomInfo_descriptor_ = file->message_type(29);
   static const int RoomInfo_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RoomInfo, width_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RoomInfo, height_),
@@ -716,7 +757,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(RoomInfo));
-  GameStateResponse_descriptor_ = file->message_type(28);
+  GameStateResponse_descriptor_ = file->message_type(30);
   static const int GameStateResponse_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameStateResponse, state_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameStateResponse, roomid_),
@@ -732,7 +773,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(GameStateResponse));
-  GameReadyRequest_descriptor_ = file->message_type(29);
+  GameReadyRequest_descriptor_ = file->message_type(31);
   static const int GameReadyRequest_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameReadyRequest, roomid_),
   };
@@ -747,7 +788,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(GameReadyRequest));
-  UltimateSkillChooseRequest_descriptor_ = file->message_type(30);
+  UltimateSkillChooseRequest_descriptor_ = file->message_type(32);
   static const int UltimateSkillChooseRequest_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UltimateSkillChooseRequest, ultimateskill_),
   };
@@ -762,7 +803,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(UltimateSkillChooseRequest));
-  UltimateSkillChooseResponse_descriptor_ = file->message_type(31);
+  UltimateSkillChooseResponse_descriptor_ = file->message_type(33);
   static const int UltimateSkillChooseResponse_offsets_[1] = {
   };
   UltimateSkillChooseResponse_reflection_ =
@@ -776,7 +817,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(UltimateSkillChooseResponse));
-  PlayerRenewalRequest_descriptor_ = file->message_type(32);
+  PlayerRenewalRequest_descriptor_ = file->message_type(34);
   static const int PlayerRenewalRequest_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayerRenewalRequest, type_),
   };
@@ -791,7 +832,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(PlayerRenewalRequest));
-  PlayerRenewalResponse_descriptor_ = file->message_type(33);
+  PlayerRenewalResponse_descriptor_ = file->message_type(35);
   static const int PlayerRenewalResponse_offsets_[1] = {
   };
   PlayerRenewalResponse_reflection_ =
@@ -805,7 +846,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(PlayerRenewalResponse));
-  Asylum_descriptor_ = file->message_type(34);
+  Asylum_descriptor_ = file->message_type(36);
   static const int Asylum_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Asylum, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Asylum, skin_),
@@ -824,7 +865,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Asylum));
-  Prop_descriptor_ = file->message_type(35);
+  Prop_descriptor_ = file->message_type(37);
   static const int Prop_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Prop, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Prop, remainday_),
@@ -840,7 +881,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Prop));
-  BackpackResponse_descriptor_ = file->message_type(36);
+  BackpackResponse_descriptor_ = file->message_type(38);
   static const int BackpackResponse_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BackpackResponse, skins_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BackpackResponse, skills_),
@@ -856,7 +897,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(BackpackResponse));
-  SkinMerchandise_descriptor_ = file->message_type(37);
+  SkinMerchandise_descriptor_ = file->message_type(39);
   static const int SkinMerchandise_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SkinMerchandise, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SkinMerchandise, name_),
@@ -878,7 +919,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SkinMerchandise));
-  SkillMerchandise_descriptor_ = file->message_type(38);
+  SkillMerchandise_descriptor_ = file->message_type(40);
   static const int SkillMerchandise_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SkillMerchandise, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SkillMerchandise, name_),
@@ -900,7 +941,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SkillMerchandise));
-  ShopMerchandiseResponse_descriptor_ = file->message_type(39);
+  ShopMerchandiseResponse_descriptor_ = file->message_type(41);
   static const int ShopMerchandiseResponse_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ShopMerchandiseResponse, skinmerchandises_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ShopMerchandiseResponse, skillmerchandises_),
@@ -916,7 +957,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ShopMerchandiseResponse));
-  BuyRequest_descriptor_ = file->message_type(40);
+  BuyRequest_descriptor_ = file->message_type(42);
   static const int BuyRequest_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BuyRequest, id_),
   };
@@ -931,7 +972,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(BuyRequest));
-  UserChangedResponse_descriptor_ = file->message_type(41);
+  UserChangedResponse_descriptor_ = file->message_type(43);
   static const int UserChangedResponse_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UserChangedResponse, userinfo_),
   };
@@ -946,7 +987,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(UserChangedResponse));
-  UserInfoResponse_descriptor_ = file->message_type(42);
+  UserInfoResponse_descriptor_ = file->message_type(44);
   static const int UserInfoResponse_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UserInfoResponse, userinfo_),
   };
@@ -961,7 +1002,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(UserInfoResponse));
-  UltimateSkill_descriptor_ = file->message_type(43);
+  UltimateSkill_descriptor_ = file->message_type(45);
   static const int UltimateSkill_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UltimateSkill, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UltimateSkill, foodid_),
@@ -977,7 +1018,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(UltimateSkill));
-  PrivilegeResponse_descriptor_ = file->message_type(44);
+  PrivilegeResponse_descriptor_ = file->message_type(46);
   static const int PrivilegeResponse_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PrivilegeResponse, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PrivilegeResponse, stamina_),
@@ -995,7 +1036,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(PrivilegeResponse));
-  Privilege_descriptor_ = file->message_type(45);
+  Privilege_descriptor_ = file->message_type(47);
   static const int Privilege_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Privilege, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Privilege, name_),
@@ -1017,7 +1058,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Privilege));
-  AuthorizationRequest_descriptor_ = file->message_type(46);
+  AuthorizationRequest_descriptor_ = file->message_type(48);
   static const int AuthorizationRequest_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AuthorizationRequest, userpayid_),
   };
@@ -1032,7 +1073,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(AuthorizationRequest));
-  AuthorizationResponse_descriptor_ = file->message_type(47);
+  AuthorizationResponse_descriptor_ = file->message_type(49);
   static const int AuthorizationResponse_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AuthorizationResponse, userinfo_),
   };
@@ -1047,7 +1088,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(AuthorizationResponse));
-  PayOrderRequest_descriptor_ = file->message_type(48);
+  PayOrderRequest_descriptor_ = file->message_type(50);
   static const int PayOrderRequest_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PayOrderRequest, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PayOrderRequest, goodsid_),
@@ -1063,7 +1104,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(PayOrderRequest));
-  PayOrderResponse_descriptor_ = file->message_type(49);
+  PayOrderResponse_descriptor_ = file->message_type(51);
   static const int PayOrderResponse_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PayOrderResponse, orderid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PayOrderResponse, price_),
@@ -1081,7 +1122,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(PayOrderResponse));
-  OrderParam_descriptor_ = file->message_type(50);
+  OrderParam_descriptor_ = file->message_type(52);
   static const int OrderParam_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OrderParam, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OrderParam, unicomfeeid_),
@@ -1101,7 +1142,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(OrderParam));
-  PayResultRequest_descriptor_ = file->message_type(51);
+  PayResultRequest_descriptor_ = file->message_type(53);
   static const int PayResultRequest_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PayResultRequest, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PayResultRequest, orderid_),
@@ -1118,7 +1159,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(PayResultRequest));
-  PayResultResponse_descriptor_ = file->message_type(52);
+  PayResultResponse_descriptor_ = file->message_type(54);
   static const int PayResultResponse_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PayResultResponse, orderid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PayResultResponse, orderstatus_),
@@ -1135,7 +1176,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(PayResultResponse));
-  GoldCoinListRequest_descriptor_ = file->message_type(53);
+  GoldCoinListRequest_descriptor_ = file->message_type(55);
   static const int GoldCoinListRequest_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GoldCoinListRequest, page_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GoldCoinListRequest, limit_),
@@ -1151,7 +1192,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(GoldCoinListRequest));
-  GoldCoinListResponse_descriptor_ = file->message_type(54);
+  GoldCoinListResponse_descriptor_ = file->message_type(56);
   static const int GoldCoinListResponse_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GoldCoinListResponse, goldcoin_),
   };
@@ -1166,7 +1207,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(GoldCoinListResponse));
-  GoldCoin_descriptor_ = file->message_type(55);
+  GoldCoin_descriptor_ = file->message_type(57);
   static const int GoldCoin_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GoldCoin, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GoldCoin, canbuy_),
@@ -1199,6 +1240,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     MessageInfo_descriptor_, &MessageInfo::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    GiftPackListResponse_descriptor_, &GiftPackListResponse::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    GiftPack_descriptor_, &GiftPack::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Basic_descriptor_, &Basic::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
@@ -1316,6 +1361,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void protobuf_ShutdownFile_game_2eproto() {
   delete MessageInfo::default_instance_;
   delete MessageInfo_reflection_;
+  delete GiftPackListResponse::default_instance_;
+  delete GiftPackListResponse_reflection_;
+  delete GiftPack::default_instance_;
+  delete GiftPack_reflection_;
   delete Basic::default_instance_;
   delete Basic_reflection_;
   delete RegisterRequest::default_instance_;
@@ -1435,7 +1484,7 @@ void protobuf_AddDesc_game_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\ngame.proto\"\277\r\n\013MessageInfo\022\017\n\007service\030"
+    "\n\ngame.proto\"\364\r\n\013MessageInfo\022\017\n\007service\030"
     "\001 \002(\005\022\n\n\002SN\030\002 \002(\005\022\014\n\004code\030\003 \001(\005\022\013\n\003msg\030\004"
     " \001(\t\022\025\n\005basic\030\034 \001(\0132\006.Basic\022)\n\017registerR"
     "equest\030\005 \001(\0132\020.RegisterRequest\022+\n\020regist"
@@ -1478,116 +1527,123 @@ void protobuf_AddDesc_game_2eproto() {
     "rInfoResponse\030# \001(\0132\021.UserInfoResponse\0221"
     "\n\023goldCoinListRequest\030% \001(\0132\024.GoldCoinLi"
     "stRequest\0223\n\024goldCoinListResponse\030& \001(\0132"
-    "\025.GoldCoinListResponse\"\030\n\005Basic\022\017\n\007chann"
-    "el\030\001 \001(\t\"A\n\017RegisterRequest\022\013\n\003mac\030\001 \001(\t"
-    "\022\021\n\tuserPayId\030\002 \001(\t\022\016\n\006device\030\003 \001(\t\"\223\001\n\020"
-    "RegisterResponse\022\033\n\010userInfo\030\001 \002(\0132\t.Use"
-    "rInfo\022\023\n\013propOverdue\030\002 \001(\005\022 \n\013signReward"
-    "s\030\003 \003(\0132\013.SignReward\022+\n\020renewMerchandise"
-    "\030\004 \001(\0132\021.RenewMerchandise\";\n\020RenewMercha"
-    "ndise\022\n\n\002id\030\001 \002(\t\022\014\n\004gold\030\002 \001(\005\022\r\n\005price"
-    "\030\003 \001(\005\"7\n\nSignReward\022\013\n\003day\030\001 \002(\005\022\014\n\004gol"
-    "d\030\002 \002(\005\022\016\n\006status\030\003 \002(\005\"!\n\021SkinChooseReq"
-    "uest\022\014\n\004skin\030\001 \002(\005\")\n\025NickNameRandomResp"
-    "one\022\020\n\010nickname\030\001 \002(\t\"1\n\022MatchStartRespo"
-    "nse\022\033\n\010roomInfo\030\001 \002(\0132\t.RoomInfo\"\216\001\n\022PLa"
-    "yerListResponse\022\033\n\nallPlayers\030\001 \003(\0132\007.Pl"
-    "ayer\022\036\n\rremovePlayers\030\002 \003(\0132\007.Player\022\033\n\n"
-    "newPlayers\030\003 \003(\0132\007.Player\022\036\n\rchangePlaye"
-    "rs\030\004 \003(\0132\007.Player\"@\n\022FoodChangeResponse\022"
-    "\014\n\004type\030\001 \002(\005\022\034\n\tfoodAreas\030\002 \003(\0132\t.FoodA"
-    "rea\"e\n\010FoodArea\022\016\n\006areaId\030\001 \001(\005\022\t\n\001x\030\002 \001"
-    "(\005\022\t\n\001y\030\003 \001(\005\022\r\n\005width\030\004 \001(\005\022\016\n\006height\030\005"
-    " \001(\005\022\024\n\005foods\030\006 \003(\0132\005.Food\"$\n\022RemainTime"
-    "Response\022\016\n\006remain\030\001 \002(\005\"0\n\020RankListResp"
-    "onse\022\034\n\trankItems\030\001 \003(\0132\t.RankItem\"/\n\017Ga"
-    "meEndResponse\022\034\n\trankItems\030\001 \003(\0132\t.RankI"
-    "tem\"#\n\022PlayerSkillRequest\022\r\n\005skill\030\001 \002(\005"
-    "\"9\n\023PlayerSkillResponse\022\"\n\014playerSkills\030"
-    "\001 \003(\0132\014.PlayerSkill\"o\n\013PlayerSkill\022\r\n\005sk"
-    "ill\030\001 \001(\005\022\027\n\006player\030\002 \001(\0132\007.Player\022\r\n\005st"
-    "ate\030\003 \001(\005\022\027\n\003map\030\004 \003(\0132\n.MapEntity\022\020\n\010du"
-    "ration\030\005 \001(\005\"\'\n\tMapEntity\022\013\n\003key\030\001 \002(\t\022\r"
-    "\n\005value\030\002 \002(\t\"U\n\010RankItem\022\014\n\004rank\030\001 \002(\005\022"
-    "\033\n\010userInfo\030\002 \001(\0132\t.UserInfo\022\016\n\006weight\030\003"
-    " \001(\005\022\016\n\006reward\030\004 \001(\005\"+\n\nCellVector\022\016\n\006ce"
-    "llId\030\001 \002(\005\022\r\n\005angle\030\002 \001(\005\"9\n\026PlayerOpera"
-    "tionRequest\022\037\n\ncellVector\030\001 \003(\0132\013.CellVe"
-    "ctor\"\310\001\n\010UserInfo\022\013\n\003uid\030\001 \002(\005\022\014\n\004skin\030\002"
-    " \001(\005\022\020\n\010nickname\030\003 \001(\t\022\017\n\007account\030\004 \001(\t\022"
-    "%\n\rultimateSkill\030\005 \001(\0132\016.UltimateSkill\022\014"
-    "\n\004gold\030\006 \001(\005\022\017\n\007stamina\030\007 \001(\005\022\022\n\nmaxStam"
-    "ina\030\010 \001(\005\022\021\n\tcountdown\030\t \001(\005\022\021\n\tprivileg"
-    "e\030\n \001(\005\"6\n\004Food\022\n\n\002id\030\001 \002(\005\022\014\n\004skin\030\002 \001("
-    "\005\022\t\n\001x\030\003 \001(\005\022\t\n\001y\030\004 \001(\005\"\247\001\n\004Cell\022\n\n\002id\030\001"
-    " \002(\005\022\t\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005\022\016\n\006radius\030\004 \001"
-    "(\005\022\r\n\005speed\030\005 \001(\005\022\r\n\005angle\030\006 \001(\005\022\016\n\006from"
-    "Id\030\007 \001(\005\022\017\n\007mergeId\030\010 \001(\005\022\016\n\006status\030\t \001("
-    "\005\022\036\n\013magnetFoods\030\n \003(\0132\t.FoodArea\"\310\001\n\006Pl"
-    "ayer\022\033\n\010userInfo\030\001 \002(\0132\t.UserInfo\022\016\n\006wei"
-    "ght\030\002 \001(\005\022\024\n\005cells\030\003 \003(\0132\005.Cell\022\016\n\006statu"
-    "s\030\004 \001(\005\022\035\n\025ultimateSkillProgress\030\005 \001(\005\022#"
-    "\n\020beKilledUserInfo\030\006 \001(\0132\t.UserInfo\022\'\n\016s"
-    "uperRenewInfo\030\007 \001(\0132\017.SuperRenewInfo\"\?\n\016"
-    "SuperRenewInfo\022\014\n\004gold\030\001 \001(\005\022\016\n\006weight\030\002"
-    " \001(\005\022\017\n\007percent\030\003 \001(\005\"\301\001\n\010RoomInfo\022\r\n\005wi"
-    "dth\030\001 \002(\005\022\016\n\006height\030\002 \002(\005\022\022\n\nremainTime\030"
-    "\003 \001(\005\022\022\n\nfoodRadius\030\004 \001(\005\022\030\n\007players\030\005 \003"
-    "(\0132\007.Player\022\034\n\tfoodAreas\030\006 \003(\0132\t.FoodAre"
-    "a\022\034\n\trankItems\030\007 \003(\0132\t.RankItem\022\030\n\007asylu"
-    "ms\030\010 \003(\0132\007.Asylum\"2\n\021GameStateResponse\022\r"
-    "\n\005state\030\001 \002(\005\022\016\n\006roomId\030\002 \001(\t\"\"\n\020GameRea"
-    "dyRequest\022\016\n\006roomId\030\001 \001(\t\"3\n\032UltimateSki"
-    "llChooseRequest\022\025\n\rultimateSkill\030\001 \001(\005\"\035"
-    "\n\033UltimateSkillChooseResponse\"$\n\024PlayerR"
-    "enewalRequest\022\014\n\004type\030\001 \001(\005\"\027\n\025PlayerRen"
-    "ewalResponse\"H\n\006Asylum\022\n\n\002id\030\001 \002(\005\022\014\n\004sk"
-    "in\030\002 \001(\005\022\t\n\001x\030\003 \001(\002\022\t\n\001y\030\004 \001(\002\022\016\n\006radius"
-    "\030\005 \001(\002\"%\n\004Prop\022\n\n\002id\030\001 \002(\005\022\021\n\tremainDay\030"
-    "\002 \002(\005\"\?\n\020BackpackResponse\022\024\n\005skins\030\001 \003(\013"
-    "2\005.Prop\022\025\n\006skills\030\002 \003(\0132\005.Prop\"\221\001\n\017SkinM"
-    "erchandise\022\n\n\002id\030\001 \002(\t\022\014\n\004name\030\002 \002(\t\022\016\n\006"
-    "propId\030\003 \002(\005\022\r\n\005price\030\004 \002(\005\022\025\n\ravailable"
-    "Days\030\005 \002(\005\022\023\n\013description\030\006 \001(\t\022\013\n\003tag\030\007"
-    " \001(\005\022\014\n\004type\030\010 \001(\005\"\225\001\n\020SkillMerchandise\022"
-    "\n\n\002id\030\001 \002(\t\022\014\n\004name\030\002 \002(\t\022\016\n\006propId\030\003 \002("
-    "\005\022\r\n\005price\030\004 \002(\005\022\025\n\ravailableDays\030\005 \002(\005\022"
-    "\023\n\013description\030\006 \001(\t\022\016\n\006foodId\030\007 \001(\005\022\014\n\004"
-    "type\030\010 \002(\005\"s\n\027ShopMerchandiseResponse\022*\n"
-    "\020skinMerchandises\030\001 \003(\0132\020.SkinMerchandis"
-    "e\022,\n\021skillMerchandises\030\002 \003(\0132\021.SkillMerc"
-    "handise\"\030\n\nBuyRequest\022\n\n\002id\030\001 \002(\t\"2\n\023Use"
-    "rChangedResponse\022\033\n\010userInfo\030\001 \002(\0132\t.Use"
-    "rInfo\"/\n\020UserInfoResponse\022\033\n\010userInfo\030\001 "
-    "\002(\0132\t.UserInfo\"+\n\rUltimateSkill\022\n\n\002id\030\001 "
-    "\002(\005\022\016\n\006foodId\030\002 \001(\005\"e\n\021PrivilegeResponse"
-    "\022\014\n\004type\030\001 \002(\005\022\017\n\007stamina\030\002 \001(\005\022\021\n\tcount"
-    "down\030\003 \001(\005\022\036\n\nprivileges\030\004 \003(\0132\n.Privile"
-    "ge\"\200\001\n\tPrivilege\022\n\n\002id\030\001 \002(\t\022\014\n\004name\030\002 \002"
-    "(\t\022\014\n\004type\030\003 \002(\005\022\020\n\010orgPrice\030\004 \001(\005\022\r\n\005pr"
-    "ice\030\005 \002(\005\022\014\n\004gold\030\006 \001(\005\022\014\n\004icon\030\007 \001(\005\022\016\n"
-    "\006poster\030\010 \001(\t\")\n\024AuthorizationRequest\022\021\n"
-    "\tuserPayId\030\001 \002(\t\"4\n\025AuthorizationRespons"
-    "e\022\033\n\010userInfo\030\001 \002(\0132\t.UserInfo\"0\n\017PayOrd"
-    "erRequest\022\014\n\004type\030\001 \002(\t\022\017\n\007goodsId\030\002 \002(\t"
-    "\"i\n\020PayOrderResponse\022\017\n\007orderId\030\001 \002(\t\022\r\n"
-    "\005price\030\002 \002(\005\022\037\n\norderParam\030\003 \002(\0132\013.Order"
-    "Param\022\024\n\014continueType\030\004 \001(\005\"\177\n\nOrderPara"
-    "m\022\014\n\004name\030\001 \001(\t\022\023\n\013unicomFeeId\030\002 \001(\t\022\027\n\017"
-    "unicomProductId\030\003 \001(\t\022\020\n\010aliFeeId\030\004 \001(\t\022"
-    "\023\n\013weixinFeeId\030\005 \001(\t\022\016\n\006notify\030\006 \001(\010\"F\n\020"
-    "PayResultRequest\022\014\n\004type\030\001 \002(\t\022\017\n\007orderI"
-    "d\030\002 \002(\t\022\023\n\013orderStatus\030\003 \002(\t\"V\n\021PayResul"
-    "tResponse\022\017\n\007orderId\030\001 \002(\t\022\023\n\013orderStatu"
-    "s\030\002 \002(\t\022\033\n\010userInfo\030\003 \001(\0132\t.UserInfo\"2\n\023"
-    "GoldCoinListRequest\022\014\n\004page\030\001 \002(\005\022\r\n\005lim"
-    "it\030\002 \002(\005\"3\n\024GoldCoinListResponse\022\033\n\010gold"
-    "Coin\030\001 \003(\0132\t.GoldCoin\"S\n\010GoldCoin\022\n\n\002id\030"
-    "\001 \002(\t\022\016\n\006canBuy\030\002 \002(\010\022\014\n\004gold\030\003 \001(\005\022\r\n\005p"
-    "rice\030\004 \001(\005\022\016\n\006poster\030\006 \001(\t", 5986);
+    "\025.GoldCoinListResponse\0223\n\024giftPackListRe"
+    "sponse\030* \001(\0132\025.GiftPackListResponse\"3\n\024G"
+    "iftPackListResponse\022\033\n\010giftPack\030\001 \003(\0132\t."
+    "GiftPack\"U\n\010GiftPack\022\n\n\002id\030\001 \002(\t\022\016\n\006canB"
+    "uy\030\002 \002(\010\022\r\n\005price\030\003 \001(\005\022\016\n\006poster\030\004 \001(\t\022"
+    "\016\n\006propId\030\005 \002(\005\"\030\n\005Basic\022\017\n\007channel\030\001 \001("
+    "\t\"A\n\017RegisterRequest\022\013\n\003mac\030\001 \001(\t\022\021\n\tuse"
+    "rPayId\030\002 \001(\t\022\016\n\006device\030\003 \001(\t\"\223\001\n\020Registe"
+    "rResponse\022\033\n\010userInfo\030\001 \002(\0132\t.UserInfo\022\023"
+    "\n\013propOverdue\030\002 \001(\005\022 \n\013signRewards\030\003 \003(\013"
+    "2\013.SignReward\022+\n\020renewMerchandise\030\004 \001(\0132"
+    "\021.RenewMerchandise\";\n\020RenewMerchandise\022\n"
+    "\n\002id\030\001 \002(\t\022\014\n\004gold\030\002 \001(\005\022\r\n\005price\030\003 \001(\005\""
+    "7\n\nSignReward\022\013\n\003day\030\001 \002(\005\022\014\n\004gold\030\002 \002(\005"
+    "\022\016\n\006status\030\003 \002(\005\"!\n\021SkinChooseRequest\022\014\n"
+    "\004skin\030\001 \002(\005\")\n\025NickNameRandomRespone\022\020\n\010"
+    "nickname\030\001 \002(\t\"1\n\022MatchStartResponse\022\033\n\010"
+    "roomInfo\030\001 \002(\0132\t.RoomInfo\"\216\001\n\022PLayerList"
+    "Response\022\033\n\nallPlayers\030\001 \003(\0132\007.Player\022\036\n"
+    "\rremovePlayers\030\002 \003(\0132\007.Player\022\033\n\nnewPlay"
+    "ers\030\003 \003(\0132\007.Player\022\036\n\rchangePlayers\030\004 \003("
+    "\0132\007.Player\"@\n\022FoodChangeResponse\022\014\n\004type"
+    "\030\001 \002(\005\022\034\n\tfoodAreas\030\002 \003(\0132\t.FoodArea\"e\n\010"
+    "FoodArea\022\016\n\006areaId\030\001 \001(\005\022\t\n\001x\030\002 \001(\005\022\t\n\001y"
+    "\030\003 \001(\005\022\r\n\005width\030\004 \001(\005\022\016\n\006height\030\005 \001(\005\022\024\n"
+    "\005foods\030\006 \003(\0132\005.Food\"$\n\022RemainTimeRespons"
+    "e\022\016\n\006remain\030\001 \002(\005\"0\n\020RankListResponse\022\034\n"
+    "\trankItems\030\001 \003(\0132\t.RankItem\"/\n\017GameEndRe"
+    "sponse\022\034\n\trankItems\030\001 \003(\0132\t.RankItem\"#\n\022"
+    "PlayerSkillRequest\022\r\n\005skill\030\001 \002(\005\"9\n\023Pla"
+    "yerSkillResponse\022\"\n\014playerSkills\030\001 \003(\0132\014"
+    ".PlayerSkill\"o\n\013PlayerSkill\022\r\n\005skill\030\001 \001"
+    "(\005\022\027\n\006player\030\002 \001(\0132\007.Player\022\r\n\005state\030\003 \001"
+    "(\005\022\027\n\003map\030\004 \003(\0132\n.MapEntity\022\020\n\010duration\030"
+    "\005 \001(\005\"\'\n\tMapEntity\022\013\n\003key\030\001 \002(\t\022\r\n\005value"
+    "\030\002 \002(\t\"U\n\010RankItem\022\014\n\004rank\030\001 \002(\005\022\033\n\010user"
+    "Info\030\002 \001(\0132\t.UserInfo\022\016\n\006weight\030\003 \001(\005\022\016\n"
+    "\006reward\030\004 \001(\005\"+\n\nCellVector\022\016\n\006cellId\030\001 "
+    "\002(\005\022\r\n\005angle\030\002 \001(\005\"9\n\026PlayerOperationReq"
+    "uest\022\037\n\ncellVector\030\001 \003(\0132\013.CellVector\"\310\001"
+    "\n\010UserInfo\022\013\n\003uid\030\001 \002(\005\022\014\n\004skin\030\002 \001(\005\022\020\n"
+    "\010nickname\030\003 \001(\t\022\017\n\007account\030\004 \001(\t\022%\n\rulti"
+    "mateSkill\030\005 \001(\0132\016.UltimateSkill\022\014\n\004gold\030"
+    "\006 \001(\005\022\017\n\007stamina\030\007 \001(\005\022\022\n\nmaxStamina\030\010 \001"
+    "(\005\022\021\n\tcountdown\030\t \001(\005\022\021\n\tprivilege\030\n \001(\005"
+    "\"6\n\004Food\022\n\n\002id\030\001 \002(\005\022\014\n\004skin\030\002 \001(\005\022\t\n\001x\030"
+    "\003 \001(\005\022\t\n\001y\030\004 \001(\005\"\247\001\n\004Cell\022\n\n\002id\030\001 \002(\005\022\t\n"
+    "\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005\022\016\n\006radius\030\004 \001(\005\022\r\n\005s"
+    "peed\030\005 \001(\005\022\r\n\005angle\030\006 \001(\005\022\016\n\006fromId\030\007 \001("
+    "\005\022\017\n\007mergeId\030\010 \001(\005\022\016\n\006status\030\t \001(\005\022\036\n\013ma"
+    "gnetFoods\030\n \003(\0132\t.FoodArea\"\310\001\n\006Player\022\033\n"
+    "\010userInfo\030\001 \002(\0132\t.UserInfo\022\016\n\006weight\030\002 \001"
+    "(\005\022\024\n\005cells\030\003 \003(\0132\005.Cell\022\016\n\006status\030\004 \001(\005"
+    "\022\035\n\025ultimateSkillProgress\030\005 \001(\005\022#\n\020beKil"
+    "ledUserInfo\030\006 \001(\0132\t.UserInfo\022\'\n\016superRen"
+    "ewInfo\030\007 \001(\0132\017.SuperRenewInfo\"\?\n\016SuperRe"
+    "newInfo\022\014\n\004gold\030\001 \001(\005\022\016\n\006weight\030\002 \001(\005\022\017\n"
+    "\007percent\030\003 \001(\005\"\301\001\n\010RoomInfo\022\r\n\005width\030\001 \002"
+    "(\005\022\016\n\006height\030\002 \002(\005\022\022\n\nremainTime\030\003 \001(\005\022\022"
+    "\n\nfoodRadius\030\004 \001(\005\022\030\n\007players\030\005 \003(\0132\007.Pl"
+    "ayer\022\034\n\tfoodAreas\030\006 \003(\0132\t.FoodArea\022\034\n\tra"
+    "nkItems\030\007 \003(\0132\t.RankItem\022\030\n\007asylums\030\010 \003("
+    "\0132\007.Asylum\"2\n\021GameStateResponse\022\r\n\005state"
+    "\030\001 \002(\005\022\016\n\006roomId\030\002 \001(\t\"\"\n\020GameReadyReque"
+    "st\022\016\n\006roomId\030\001 \001(\t\"3\n\032UltimateSkillChoos"
+    "eRequest\022\025\n\rultimateSkill\030\001 \001(\005\"\035\n\033Ultim"
+    "ateSkillChooseResponse\"$\n\024PlayerRenewalR"
+    "equest\022\014\n\004type\030\001 \001(\005\"\027\n\025PlayerRenewalRes"
+    "ponse\"H\n\006Asylum\022\n\n\002id\030\001 \002(\005\022\014\n\004skin\030\002 \001("
+    "\005\022\t\n\001x\030\003 \001(\002\022\t\n\001y\030\004 \001(\002\022\016\n\006radius\030\005 \001(\002\""
+    "%\n\004Prop\022\n\n\002id\030\001 \002(\005\022\021\n\tremainDay\030\002 \002(\005\"\?"
+    "\n\020BackpackResponse\022\024\n\005skins\030\001 \003(\0132\005.Prop"
+    "\022\025\n\006skills\030\002 \003(\0132\005.Prop\"\221\001\n\017SkinMerchand"
+    "ise\022\n\n\002id\030\001 \002(\t\022\014\n\004name\030\002 \002(\t\022\016\n\006propId\030"
+    "\003 \002(\005\022\r\n\005price\030\004 \002(\005\022\025\n\ravailableDays\030\005 "
+    "\002(\005\022\023\n\013description\030\006 \001(\t\022\013\n\003tag\030\007 \001(\005\022\014\n"
+    "\004type\030\010 \001(\005\"\225\001\n\020SkillMerchandise\022\n\n\002id\030\001"
+    " \002(\t\022\014\n\004name\030\002 \002(\t\022\016\n\006propId\030\003 \002(\005\022\r\n\005pr"
+    "ice\030\004 \002(\005\022\025\n\ravailableDays\030\005 \002(\005\022\023\n\013desc"
+    "ription\030\006 \001(\t\022\016\n\006foodId\030\007 \001(\005\022\014\n\004type\030\010 "
+    "\002(\005\"s\n\027ShopMerchandiseResponse\022*\n\020skinMe"
+    "rchandises\030\001 \003(\0132\020.SkinMerchandise\022,\n\021sk"
+    "illMerchandises\030\002 \003(\0132\021.SkillMerchandise"
+    "\"\030\n\nBuyRequest\022\n\n\002id\030\001 \002(\t\"2\n\023UserChange"
+    "dResponse\022\033\n\010userInfo\030\001 \002(\0132\t.UserInfo\"/"
+    "\n\020UserInfoResponse\022\033\n\010userInfo\030\001 \002(\0132\t.U"
+    "serInfo\"+\n\rUltimateSkill\022\n\n\002id\030\001 \002(\005\022\016\n\006"
+    "foodId\030\002 \001(\005\"e\n\021PrivilegeResponse\022\014\n\004typ"
+    "e\030\001 \002(\005\022\017\n\007stamina\030\002 \001(\005\022\021\n\tcountdown\030\003 "
+    "\001(\005\022\036\n\nprivileges\030\004 \003(\0132\n.Privilege\"\200\001\n\t"
+    "Privilege\022\n\n\002id\030\001 \002(\t\022\014\n\004name\030\002 \002(\t\022\014\n\004t"
+    "ype\030\003 \002(\005\022\020\n\010orgPrice\030\004 \001(\005\022\r\n\005price\030\005 \002"
+    "(\005\022\014\n\004gold\030\006 \001(\005\022\014\n\004icon\030\007 \001(\005\022\016\n\006poster"
+    "\030\010 \001(\t\")\n\024AuthorizationRequest\022\021\n\tuserPa"
+    "yId\030\001 \002(\t\"4\n\025AuthorizationResponse\022\033\n\010us"
+    "erInfo\030\001 \002(\0132\t.UserInfo\"0\n\017PayOrderReque"
+    "st\022\014\n\004type\030\001 \002(\t\022\017\n\007goodsId\030\002 \002(\t\"i\n\020Pay"
+    "OrderResponse\022\017\n\007orderId\030\001 \002(\t\022\r\n\005price\030"
+    "\002 \002(\005\022\037\n\norderParam\030\003 \002(\0132\013.OrderParam\022\024"
+    "\n\014continueType\030\004 \001(\005\"\177\n\nOrderParam\022\014\n\004na"
+    "me\030\001 \001(\t\022\023\n\013unicomFeeId\030\002 \001(\t\022\027\n\017unicomP"
+    "roductId\030\003 \001(\t\022\020\n\010aliFeeId\030\004 \001(\t\022\023\n\013weix"
+    "inFeeId\030\005 \001(\t\022\016\n\006notify\030\006 \001(\010\"F\n\020PayResu"
+    "ltRequest\022\014\n\004type\030\001 \002(\t\022\017\n\007orderId\030\002 \002(\t"
+    "\022\023\n\013orderStatus\030\003 \002(\t\"V\n\021PayResultRespon"
+    "se\022\017\n\007orderId\030\001 \002(\t\022\023\n\013orderStatus\030\002 \002(\t"
+    "\022\033\n\010userInfo\030\003 \001(\0132\t.UserInfo\"2\n\023GoldCoi"
+    "nListRequest\022\014\n\004page\030\001 \002(\005\022\r\n\005limit\030\002 \002("
+    "\005\"3\n\024GoldCoinListResponse\022\033\n\010goldCoin\030\001 "
+    "\003(\0132\t.GoldCoin\"S\n\010GoldCoin\022\n\n\002id\030\001 \002(\t\022\016"
+    "\n\006canBuy\030\002 \002(\010\022\014\n\004gold\030\003 \001(\005\022\r\n\005price\030\004 "
+    "\001(\005\022\016\n\006poster\030\006 \001(\t", 6179);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "game.proto", &protobuf_RegisterTypes);
   MessageInfo::default_instance_ = new MessageInfo();
+  GiftPackListResponse::default_instance_ = new GiftPackListResponse();
+  GiftPack::default_instance_ = new GiftPack();
   Basic::default_instance_ = new Basic();
   RegisterRequest::default_instance_ = new RegisterRequest();
   RegisterResponse::default_instance_ = new RegisterResponse();
@@ -1644,6 +1700,8 @@ void protobuf_AddDesc_game_2eproto() {
   GoldCoinListResponse::default_instance_ = new GoldCoinListResponse();
   GoldCoin::default_instance_ = new GoldCoin();
   MessageInfo::default_instance_->InitAsDefaultInstance();
+  GiftPackListResponse::default_instance_->InitAsDefaultInstance();
+  GiftPack::default_instance_->InitAsDefaultInstance();
   Basic::default_instance_->InitAsDefaultInstance();
   RegisterRequest::default_instance_->InitAsDefaultInstance();
   RegisterResponse::default_instance_->InitAsDefaultInstance();
@@ -1750,6 +1808,7 @@ const int MessageInfo::kPayResultResponseFieldNumber;
 const int MessageInfo::kUserInfoResponseFieldNumber;
 const int MessageInfo::kGoldCoinListRequestFieldNumber;
 const int MessageInfo::kGoldCoinListResponseFieldNumber;
+const int MessageInfo::kGiftPackListResponseFieldNumber;
 #endif  // !_MSC_VER
 
 MessageInfo::MessageInfo()
@@ -1793,6 +1852,7 @@ void MessageInfo::InitAsDefaultInstance() {
   userinforesponse_ = const_cast< ::UserInfoResponse*>(&::UserInfoResponse::default_instance());
   goldcoinlistrequest_ = const_cast< ::GoldCoinListRequest*>(&::GoldCoinListRequest::default_instance());
   goldcoinlistresponse_ = const_cast< ::GoldCoinListResponse*>(&::GoldCoinListResponse::default_instance());
+  giftpacklistresponse_ = const_cast< ::GiftPackListResponse*>(&::GiftPackListResponse::default_instance());
 }
 
 MessageInfo::MessageInfo(const MessageInfo& from)
@@ -1843,6 +1903,7 @@ void MessageInfo::SharedCtor() {
   userinforesponse_ = NULL;
   goldcoinlistrequest_ = NULL;
   goldcoinlistresponse_ = NULL;
+  giftpacklistresponse_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1890,6 +1951,7 @@ void MessageInfo::SharedDtor() {
     delete userinforesponse_;
     delete goldcoinlistrequest_;
     delete goldcoinlistresponse_;
+    delete giftpacklistresponse_;
   }
 }
 
@@ -2024,7 +2086,7 @@ void MessageInfo::Clear() {
       if (authorizationrequest_ != NULL) authorizationrequest_->::AuthorizationRequest::Clear();
     }
   }
-  if (_has_bits_[32 / 32] & 63) {
+  if (_has_bits_[32 / 32] & 127) {
     if (has_authorizationresponse()) {
       if (authorizationresponse_ != NULL) authorizationresponse_->::AuthorizationResponse::Clear();
     }
@@ -2042,6 +2104,9 @@ void MessageInfo::Clear() {
     }
     if (has_goldcoinlistresponse()) {
       if (goldcoinlistresponse_ != NULL) goldcoinlistresponse_->::GoldCoinListResponse::Clear();
+    }
+    if (has_giftpacklistresponse()) {
+      if (giftpacklistresponse_ != NULL) giftpacklistresponse_->::GiftPackListResponse::Clear();
     }
   }
 
@@ -2561,6 +2626,19 @@ bool MessageInfo::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(338)) goto parse_giftPackListResponse;
+        break;
+      }
+
+      // optional .GiftPackListResponse giftPackListResponse = 42;
+      case 42: {
+        if (tag == 338) {
+         parse_giftPackListResponse:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_giftpacklistresponse()));
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -2817,6 +2895,12 @@ void MessageInfo::SerializeWithCachedSizes(
   if (has_goldcoinlistresponse()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       38, this->goldcoinlistresponse(), output);
+  }
+
+  // optional .GiftPackListResponse giftPackListResponse = 42;
+  if (has_giftpacklistresponse()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      42, this->giftpacklistresponse(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -3091,6 +3175,13 @@ void MessageInfo::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         38, this->goldcoinlistresponse(), target);
+  }
+
+  // optional .GiftPackListResponse giftPackListResponse = 42;
+  if (has_giftpacklistresponse()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        42, this->giftpacklistresponse(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -3379,6 +3470,13 @@ int MessageInfo::ByteSize() const {
           this->goldcoinlistresponse());
     }
 
+    // optional .GiftPackListResponse giftPackListResponse = 42;
+    if (has_giftpacklistresponse()) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->giftpacklistresponse());
+    }
+
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -3528,6 +3626,9 @@ void MessageInfo::MergeFrom(const MessageInfo& from) {
     if (from.has_goldcoinlistresponse()) {
       mutable_goldcoinlistresponse()->::GoldCoinListResponse::MergeFrom(from.goldcoinlistresponse());
     }
+    if (from.has_giftpacklistresponse()) {
+      mutable_giftpacklistresponse()->::GiftPackListResponse::MergeFrom(from.giftpacklistresponse());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -3628,6 +3729,9 @@ bool MessageInfo::IsInitialized() const {
   if (has_goldcoinlistresponse()) {
     if (!this->goldcoinlistresponse().IsInitialized()) return false;
   }
+  if (has_giftpacklistresponse()) {
+    if (!this->giftpacklistresponse().IsInitialized()) return false;
+  }
   return true;
 }
 
@@ -3671,6 +3775,7 @@ void MessageInfo::Swap(MessageInfo* other) {
     std::swap(userinforesponse_, other->userinforesponse_);
     std::swap(goldcoinlistrequest_, other->goldcoinlistrequest_);
     std::swap(goldcoinlistresponse_, other->goldcoinlistresponse_);
+    std::swap(giftpacklistresponse_, other->giftpacklistresponse_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     std::swap(_has_bits_[1], other->_has_bits_[1]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
@@ -3683,6 +3788,659 @@ void MessageInfo::Swap(MessageInfo* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = MessageInfo_descriptor_;
   metadata.reflection = MessageInfo_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int GiftPackListResponse::kGiftPackFieldNumber;
+#endif  // !_MSC_VER
+
+GiftPackListResponse::GiftPackListResponse()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:GiftPackListResponse)
+}
+
+void GiftPackListResponse::InitAsDefaultInstance() {
+}
+
+GiftPackListResponse::GiftPackListResponse(const GiftPackListResponse& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:GiftPackListResponse)
+}
+
+void GiftPackListResponse::SharedCtor() {
+  _cached_size_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+GiftPackListResponse::~GiftPackListResponse() {
+  // @@protoc_insertion_point(destructor:GiftPackListResponse)
+  SharedDtor();
+}
+
+void GiftPackListResponse::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void GiftPackListResponse::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* GiftPackListResponse::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return GiftPackListResponse_descriptor_;
+}
+
+const GiftPackListResponse& GiftPackListResponse::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_game_2eproto();
+  return *default_instance_;
+}
+
+GiftPackListResponse* GiftPackListResponse::default_instance_ = NULL;
+
+GiftPackListResponse* GiftPackListResponse::New() const {
+  return new GiftPackListResponse;
+}
+
+void GiftPackListResponse::Clear() {
+  giftpack_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool GiftPackListResponse::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:GiftPackListResponse)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated .GiftPack giftPack = 1;
+      case 1: {
+        if (tag == 10) {
+         parse_giftPack:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_giftpack()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(10)) goto parse_giftPack;
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:GiftPackListResponse)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:GiftPackListResponse)
+  return false;
+#undef DO_
+}
+
+void GiftPackListResponse::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:GiftPackListResponse)
+  // repeated .GiftPack giftPack = 1;
+  for (int i = 0; i < this->giftpack_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->giftpack(i), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:GiftPackListResponse)
+}
+
+::google::protobuf::uint8* GiftPackListResponse::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:GiftPackListResponse)
+  // repeated .GiftPack giftPack = 1;
+  for (int i = 0; i < this->giftpack_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->giftpack(i), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GiftPackListResponse)
+  return target;
+}
+
+int GiftPackListResponse::ByteSize() const {
+  int total_size = 0;
+
+  // repeated .GiftPack giftPack = 1;
+  total_size += 1 * this->giftpack_size();
+  for (int i = 0; i < this->giftpack_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->giftpack(i));
+  }
+
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void GiftPackListResponse::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const GiftPackListResponse* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const GiftPackListResponse*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void GiftPackListResponse::MergeFrom(const GiftPackListResponse& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  giftpack_.MergeFrom(from.giftpack_);
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void GiftPackListResponse::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GiftPackListResponse::CopyFrom(const GiftPackListResponse& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GiftPackListResponse::IsInitialized() const {
+
+  if (!::google::protobuf::internal::AllAreInitialized(this->giftpack())) return false;
+  return true;
+}
+
+void GiftPackListResponse::Swap(GiftPackListResponse* other) {
+  if (other != this) {
+    giftpack_.Swap(&other->giftpack_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata GiftPackListResponse::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = GiftPackListResponse_descriptor_;
+  metadata.reflection = GiftPackListResponse_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int GiftPack::kIdFieldNumber;
+const int GiftPack::kCanBuyFieldNumber;
+const int GiftPack::kPriceFieldNumber;
+const int GiftPack::kPosterFieldNumber;
+const int GiftPack::kPropIdFieldNumber;
+#endif  // !_MSC_VER
+
+GiftPack::GiftPack()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:GiftPack)
+}
+
+void GiftPack::InitAsDefaultInstance() {
+}
+
+GiftPack::GiftPack(const GiftPack& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:GiftPack)
+}
+
+void GiftPack::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  id_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  canbuy_ = false;
+  price_ = 0;
+  poster_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  propid_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+GiftPack::~GiftPack() {
+  // @@protoc_insertion_point(destructor:GiftPack)
+  SharedDtor();
+}
+
+void GiftPack::SharedDtor() {
+  if (id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete id_;
+  }
+  if (poster_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete poster_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void GiftPack::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* GiftPack::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return GiftPack_descriptor_;
+}
+
+const GiftPack& GiftPack::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_game_2eproto();
+  return *default_instance_;
+}
+
+GiftPack* GiftPack::default_instance_ = NULL;
+
+GiftPack* GiftPack::New() const {
+  return new GiftPack;
+}
+
+void GiftPack::Clear() {
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<GiftPack*>(16)->f) - \
+   reinterpret_cast<char*>(16))
+
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
+
+  if (_has_bits_[0 / 32] & 31) {
+    ZR_(canbuy_, price_);
+    if (has_id()) {
+      if (id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        id_->clear();
+      }
+    }
+    if (has_poster()) {
+      if (poster_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        poster_->clear();
+      }
+    }
+    propid_ = 0;
+  }
+
+#undef OFFSET_OF_FIELD_
+#undef ZR_
+
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool GiftPack::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:GiftPack)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required string id = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_id()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->id().data(), this->id().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "id");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_canBuy;
+        break;
+      }
+
+      // required bool canBuy = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_canBuy:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &canbuy_)));
+          set_has_canbuy();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_price;
+        break;
+      }
+
+      // optional int32 price = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_price:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &price_)));
+          set_has_price();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_poster;
+        break;
+      }
+
+      // optional string poster = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_poster:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_poster()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->poster().data(), this->poster().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "poster");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(40)) goto parse_propId;
+        break;
+      }
+
+      // required int32 propId = 5;
+      case 5: {
+        if (tag == 40) {
+         parse_propId:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &propid_)));
+          set_has_propid();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:GiftPack)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:GiftPack)
+  return false;
+#undef DO_
+}
+
+void GiftPack::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:GiftPack)
+  // required string id = 1;
+  if (has_id()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->id().data(), this->id().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "id");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->id(), output);
+  }
+
+  // required bool canBuy = 2;
+  if (has_canbuy()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->canbuy(), output);
+  }
+
+  // optional int32 price = 3;
+  if (has_price()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->price(), output);
+  }
+
+  // optional string poster = 4;
+  if (has_poster()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->poster().data(), this->poster().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "poster");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      4, this->poster(), output);
+  }
+
+  // required int32 propId = 5;
+  if (has_propid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->propid(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:GiftPack)
+}
+
+::google::protobuf::uint8* GiftPack::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:GiftPack)
+  // required string id = 1;
+  if (has_id()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->id().data(), this->id().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "id");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->id(), target);
+  }
+
+  // required bool canBuy = 2;
+  if (has_canbuy()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->canbuy(), target);
+  }
+
+  // optional int32 price = 3;
+  if (has_price()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->price(), target);
+  }
+
+  // optional string poster = 4;
+  if (has_poster()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->poster().data(), this->poster().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "poster");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->poster(), target);
+  }
+
+  // required int32 propId = 5;
+  if (has_propid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->propid(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GiftPack)
+  return target;
+}
+
+int GiftPack::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required string id = 1;
+    if (has_id()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->id());
+    }
+
+    // required bool canBuy = 2;
+    if (has_canbuy()) {
+      total_size += 1 + 1;
+    }
+
+    // optional int32 price = 3;
+    if (has_price()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->price());
+    }
+
+    // optional string poster = 4;
+    if (has_poster()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->poster());
+    }
+
+    // required int32 propId = 5;
+    if (has_propid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->propid());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void GiftPack::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const GiftPack* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const GiftPack*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void GiftPack::MergeFrom(const GiftPack& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_id()) {
+      set_id(from.id());
+    }
+    if (from.has_canbuy()) {
+      set_canbuy(from.canbuy());
+    }
+    if (from.has_price()) {
+      set_price(from.price());
+    }
+    if (from.has_poster()) {
+      set_poster(from.poster());
+    }
+    if (from.has_propid()) {
+      set_propid(from.propid());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void GiftPack::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GiftPack::CopyFrom(const GiftPack& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GiftPack::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000013) != 0x00000013) return false;
+
+  return true;
+}
+
+void GiftPack::Swap(GiftPack* other) {
+  if (other != this) {
+    std::swap(id_, other->id_);
+    std::swap(canbuy_, other->canbuy_);
+    std::swap(price_, other->price_);
+    std::swap(poster_, other->poster_);
+    std::swap(propid_, other->propid_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata GiftPack::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = GiftPack_descriptor_;
+  metadata.reflection = GiftPack_reflection_;
   return metadata;
 }
 
