@@ -25,8 +25,8 @@ public class PayChannelImpl extends BasePayChannel {
     @Override
     public void onAppInit() {
         // 江苏移动代理
-        UBP.setUBPHost(proxy);
-        Logger.log().i("UBP.setUBPHost");
+//        UBP.setUBPHost(proxy);
+//        Logger.log().i("UBP.setUBPHost");
     }
 
     @Override
@@ -40,10 +40,28 @@ public class PayChannelImpl extends BasePayChannel {
         HashMap<String, String> map = new HashMap<>();
         map.put("appid", order.getUnicomProductId());
         sdkParams.setFeeExtend(new Gson().toJson(map));
+
+        sdkParams.setFeecodeId(order.getUnicomFeeId());
+        sdkParams.setPayPrice(order.getPrice());
+        sdkParams.setPayCode(order.getUnicomProductId());
+        sdkParams.setCustom(payComponent.createCustom(order.getOrderId(), "JiangShuYiDongPay"));
+
+
+        Logger.log().i("UBP.jiangsu sdkParams: feeid:" + order.getUnicomFeeId() + ",price:" + order.getPrice() + ",product:" + order.getUnicomProductId());
+
         //购买结果通知接口
-        sdkParams.setKeyValue("notifyurl", order.getNotifyUrl());
+//        sdkParams.setKeyValue("notifyurl", order.getNotifyUrl());
+
         //二次订单查询接口，确认已购买成功
         payComponent.createOrder(sdkParams, callback);
+
+
+//
+//        sdkParams.setFeecodeId("江苏移动FeeId")//讯飞分配的计费点
+//                .setPayPrice(order.getPrice())
+//                .setPayCode("0014421cp0006")//局方分配的计费点
+//                .setCustom(payComponent.createCustom(order.getOrderId(), "JiangShuYiDongPay"));
+//        payComponent.createOrder(sdkParams, callback);
     }
 
     @Override
