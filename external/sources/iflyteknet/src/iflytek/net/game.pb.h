@@ -32,6 +32,8 @@ void protobuf_AssignDesc_game_2eproto();
 void protobuf_ShutdownFile_game_2eproto();
 
 class MessageInfo;
+class GiftPackListResponse;
+class GiftPack;
 class Basic;
 class RegisterRequest;
 class RegisterResponse;
@@ -482,6 +484,15 @@ class MessageInfo : public ::google::protobuf::Message {
   inline ::GoldCoinListResponse* release_goldcoinlistresponse();
   inline void set_allocated_goldcoinlistresponse(::GoldCoinListResponse* goldcoinlistresponse);
 
+  // optional .GiftPackListResponse giftPackListResponse = 42;
+  inline bool has_giftpacklistresponse() const;
+  inline void clear_giftpacklistresponse();
+  static const int kGiftPackListResponseFieldNumber = 42;
+  inline const ::GiftPackListResponse& giftpacklistresponse() const;
+  inline ::GiftPackListResponse* mutable_giftpacklistresponse();
+  inline ::GiftPackListResponse* release_giftpacklistresponse();
+  inline void set_allocated_giftpacklistresponse(::GiftPackListResponse* giftpacklistresponse);
+
   // @@protoc_insertion_point(class_scope:MessageInfo)
  private:
   inline void set_has_service();
@@ -560,6 +571,8 @@ class MessageInfo : public ::google::protobuf::Message {
   inline void clear_has_goldcoinlistrequest();
   inline void set_has_goldcoinlistresponse();
   inline void clear_has_goldcoinlistresponse();
+  inline void set_has_giftpacklistresponse();
+  inline void clear_has_giftpacklistresponse();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -601,6 +614,7 @@ class MessageInfo : public ::google::protobuf::Message {
   ::UserInfoResponse* userinforesponse_;
   ::GoldCoinListRequest* goldcoinlistrequest_;
   ::GoldCoinListResponse* goldcoinlistresponse_;
+  ::GiftPackListResponse* giftpacklistresponse_;
   ::google::protobuf::int32 code_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_game_2eproto();
@@ -609,6 +623,217 @@ class MessageInfo : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static MessageInfo* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class GiftPackListResponse : public ::google::protobuf::Message {
+ public:
+  GiftPackListResponse();
+  virtual ~GiftPackListResponse();
+
+  GiftPackListResponse(const GiftPackListResponse& from);
+
+  inline GiftPackListResponse& operator=(const GiftPackListResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GiftPackListResponse& default_instance();
+
+  void Swap(GiftPackListResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  GiftPackListResponse* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const GiftPackListResponse& from);
+  void MergeFrom(const GiftPackListResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .GiftPack giftPack = 1;
+  inline int giftpack_size() const;
+  inline void clear_giftpack();
+  static const int kGiftPackFieldNumber = 1;
+  inline const ::GiftPack& giftpack(int index) const;
+  inline ::GiftPack* mutable_giftpack(int index);
+  inline ::GiftPack* add_giftpack();
+  inline const ::google::protobuf::RepeatedPtrField< ::GiftPack >&
+      giftpack() const;
+  inline ::google::protobuf::RepeatedPtrField< ::GiftPack >*
+      mutable_giftpack();
+
+  // @@protoc_insertion_point(class_scope:GiftPackListResponse)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::GiftPack > giftpack_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static GiftPackListResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class GiftPack : public ::google::protobuf::Message {
+ public:
+  GiftPack();
+  virtual ~GiftPack();
+
+  GiftPack(const GiftPack& from);
+
+  inline GiftPack& operator=(const GiftPack& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GiftPack& default_instance();
+
+  void Swap(GiftPack* other);
+
+  // implements Message ----------------------------------------------
+
+  GiftPack* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const GiftPack& from);
+  void MergeFrom(const GiftPack& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string id = 1;
+  inline bool has_id() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 1;
+  inline const ::std::string& id() const;
+  inline void set_id(const ::std::string& value);
+  inline void set_id(const char* value);
+  inline void set_id(const char* value, size_t size);
+  inline ::std::string* mutable_id();
+  inline ::std::string* release_id();
+  inline void set_allocated_id(::std::string* id);
+
+  // required bool canBuy = 2;
+  inline bool has_canbuy() const;
+  inline void clear_canbuy();
+  static const int kCanBuyFieldNumber = 2;
+  inline bool canbuy() const;
+  inline void set_canbuy(bool value);
+
+  // optional int32 price = 3;
+  inline bool has_price() const;
+  inline void clear_price();
+  static const int kPriceFieldNumber = 3;
+  inline ::google::protobuf::int32 price() const;
+  inline void set_price(::google::protobuf::int32 value);
+
+  // optional string poster = 4;
+  inline bool has_poster() const;
+  inline void clear_poster();
+  static const int kPosterFieldNumber = 4;
+  inline const ::std::string& poster() const;
+  inline void set_poster(const ::std::string& value);
+  inline void set_poster(const char* value);
+  inline void set_poster(const char* value, size_t size);
+  inline ::std::string* mutable_poster();
+  inline ::std::string* release_poster();
+  inline void set_allocated_poster(::std::string* poster);
+
+  // required int32 propId = 5;
+  inline bool has_propid() const;
+  inline void clear_propid();
+  static const int kPropIdFieldNumber = 5;
+  inline ::google::protobuf::int32 propid() const;
+  inline void set_propid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:GiftPack)
+ private:
+  inline void set_has_id();
+  inline void clear_has_id();
+  inline void set_has_canbuy();
+  inline void clear_has_canbuy();
+  inline void set_has_price();
+  inline void clear_has_price();
+  inline void set_has_poster();
+  inline void clear_has_poster();
+  inline void set_has_propid();
+  inline void clear_has_propid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* id_;
+  bool canbuy_;
+  ::google::protobuf::int32 price_;
+  ::std::string* poster_;
+  ::google::protobuf::int32 propid_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static GiftPack* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -7912,6 +8137,309 @@ inline void MessageInfo::set_allocated_goldcoinlistresponse(::GoldCoinListRespon
     clear_has_goldcoinlistresponse();
   }
   // @@protoc_insertion_point(field_set_allocated:MessageInfo.goldCoinListResponse)
+}
+
+// optional .GiftPackListResponse giftPackListResponse = 42;
+inline bool MessageInfo::has_giftpacklistresponse() const {
+  return (_has_bits_[1] & 0x00000040u) != 0;
+}
+inline void MessageInfo::set_has_giftpacklistresponse() {
+  _has_bits_[1] |= 0x00000040u;
+}
+inline void MessageInfo::clear_has_giftpacklistresponse() {
+  _has_bits_[1] &= ~0x00000040u;
+}
+inline void MessageInfo::clear_giftpacklistresponse() {
+  if (giftpacklistresponse_ != NULL) giftpacklistresponse_->::GiftPackListResponse::Clear();
+  clear_has_giftpacklistresponse();
+}
+inline const ::GiftPackListResponse& MessageInfo::giftpacklistresponse() const {
+  // @@protoc_insertion_point(field_get:MessageInfo.giftPackListResponse)
+  return giftpacklistresponse_ != NULL ? *giftpacklistresponse_ : *default_instance_->giftpacklistresponse_;
+}
+inline ::GiftPackListResponse* MessageInfo::mutable_giftpacklistresponse() {
+  set_has_giftpacklistresponse();
+  if (giftpacklistresponse_ == NULL) giftpacklistresponse_ = new ::GiftPackListResponse;
+  // @@protoc_insertion_point(field_mutable:MessageInfo.giftPackListResponse)
+  return giftpacklistresponse_;
+}
+inline ::GiftPackListResponse* MessageInfo::release_giftpacklistresponse() {
+  clear_has_giftpacklistresponse();
+  ::GiftPackListResponse* temp = giftpacklistresponse_;
+  giftpacklistresponse_ = NULL;
+  return temp;
+}
+inline void MessageInfo::set_allocated_giftpacklistresponse(::GiftPackListResponse* giftpacklistresponse) {
+  delete giftpacklistresponse_;
+  giftpacklistresponse_ = giftpacklistresponse;
+  if (giftpacklistresponse) {
+    set_has_giftpacklistresponse();
+  } else {
+    clear_has_giftpacklistresponse();
+  }
+  // @@protoc_insertion_point(field_set_allocated:MessageInfo.giftPackListResponse)
+}
+
+// -------------------------------------------------------------------
+
+// GiftPackListResponse
+
+// repeated .GiftPack giftPack = 1;
+inline int GiftPackListResponse::giftpack_size() const {
+  return giftpack_.size();
+}
+inline void GiftPackListResponse::clear_giftpack() {
+  giftpack_.Clear();
+}
+inline const ::GiftPack& GiftPackListResponse::giftpack(int index) const {
+  // @@protoc_insertion_point(field_get:GiftPackListResponse.giftPack)
+  return giftpack_.Get(index);
+}
+inline ::GiftPack* GiftPackListResponse::mutable_giftpack(int index) {
+  // @@protoc_insertion_point(field_mutable:GiftPackListResponse.giftPack)
+  return giftpack_.Mutable(index);
+}
+inline ::GiftPack* GiftPackListResponse::add_giftpack() {
+  // @@protoc_insertion_point(field_add:GiftPackListResponse.giftPack)
+  return giftpack_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::GiftPack >&
+GiftPackListResponse::giftpack() const {
+  // @@protoc_insertion_point(field_list:GiftPackListResponse.giftPack)
+  return giftpack_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::GiftPack >*
+GiftPackListResponse::mutable_giftpack() {
+  // @@protoc_insertion_point(field_mutable_list:GiftPackListResponse.giftPack)
+  return &giftpack_;
+}
+
+// -------------------------------------------------------------------
+
+// GiftPack
+
+// required string id = 1;
+inline bool GiftPack::has_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void GiftPack::set_has_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void GiftPack::clear_has_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void GiftPack::clear_id() {
+  if (id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    id_->clear();
+  }
+  clear_has_id();
+}
+inline const ::std::string& GiftPack::id() const {
+  // @@protoc_insertion_point(field_get:GiftPack.id)
+  return *id_;
+}
+inline void GiftPack::set_id(const ::std::string& value) {
+  set_has_id();
+  if (id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    id_ = new ::std::string;
+  }
+  id_->assign(value);
+  // @@protoc_insertion_point(field_set:GiftPack.id)
+}
+inline void GiftPack::set_id(const char* value) {
+  set_has_id();
+  if (id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    id_ = new ::std::string;
+  }
+  id_->assign(value);
+  // @@protoc_insertion_point(field_set_char:GiftPack.id)
+}
+inline void GiftPack::set_id(const char* value, size_t size) {
+  set_has_id();
+  if (id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    id_ = new ::std::string;
+  }
+  id_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:GiftPack.id)
+}
+inline ::std::string* GiftPack::mutable_id() {
+  set_has_id();
+  if (id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    id_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:GiftPack.id)
+  return id_;
+}
+inline ::std::string* GiftPack::release_id() {
+  clear_has_id();
+  if (id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = id_;
+    id_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void GiftPack::set_allocated_id(::std::string* id) {
+  if (id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete id_;
+  }
+  if (id) {
+    set_has_id();
+    id_ = id;
+  } else {
+    clear_has_id();
+    id_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:GiftPack.id)
+}
+
+// required bool canBuy = 2;
+inline bool GiftPack::has_canbuy() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void GiftPack::set_has_canbuy() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void GiftPack::clear_has_canbuy() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void GiftPack::clear_canbuy() {
+  canbuy_ = false;
+  clear_has_canbuy();
+}
+inline bool GiftPack::canbuy() const {
+  // @@protoc_insertion_point(field_get:GiftPack.canBuy)
+  return canbuy_;
+}
+inline void GiftPack::set_canbuy(bool value) {
+  set_has_canbuy();
+  canbuy_ = value;
+  // @@protoc_insertion_point(field_set:GiftPack.canBuy)
+}
+
+// optional int32 price = 3;
+inline bool GiftPack::has_price() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void GiftPack::set_has_price() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void GiftPack::clear_has_price() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void GiftPack::clear_price() {
+  price_ = 0;
+  clear_has_price();
+}
+inline ::google::protobuf::int32 GiftPack::price() const {
+  // @@protoc_insertion_point(field_get:GiftPack.price)
+  return price_;
+}
+inline void GiftPack::set_price(::google::protobuf::int32 value) {
+  set_has_price();
+  price_ = value;
+  // @@protoc_insertion_point(field_set:GiftPack.price)
+}
+
+// optional string poster = 4;
+inline bool GiftPack::has_poster() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void GiftPack::set_has_poster() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void GiftPack::clear_has_poster() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void GiftPack::clear_poster() {
+  if (poster_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    poster_->clear();
+  }
+  clear_has_poster();
+}
+inline const ::std::string& GiftPack::poster() const {
+  // @@protoc_insertion_point(field_get:GiftPack.poster)
+  return *poster_;
+}
+inline void GiftPack::set_poster(const ::std::string& value) {
+  set_has_poster();
+  if (poster_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    poster_ = new ::std::string;
+  }
+  poster_->assign(value);
+  // @@protoc_insertion_point(field_set:GiftPack.poster)
+}
+inline void GiftPack::set_poster(const char* value) {
+  set_has_poster();
+  if (poster_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    poster_ = new ::std::string;
+  }
+  poster_->assign(value);
+  // @@protoc_insertion_point(field_set_char:GiftPack.poster)
+}
+inline void GiftPack::set_poster(const char* value, size_t size) {
+  set_has_poster();
+  if (poster_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    poster_ = new ::std::string;
+  }
+  poster_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:GiftPack.poster)
+}
+inline ::std::string* GiftPack::mutable_poster() {
+  set_has_poster();
+  if (poster_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    poster_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:GiftPack.poster)
+  return poster_;
+}
+inline ::std::string* GiftPack::release_poster() {
+  clear_has_poster();
+  if (poster_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = poster_;
+    poster_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void GiftPack::set_allocated_poster(::std::string* poster) {
+  if (poster_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete poster_;
+  }
+  if (poster) {
+    set_has_poster();
+    poster_ = poster;
+  } else {
+    clear_has_poster();
+    poster_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:GiftPack.poster)
+}
+
+// required int32 propId = 5;
+inline bool GiftPack::has_propid() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void GiftPack::set_has_propid() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void GiftPack::clear_has_propid() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void GiftPack::clear_propid() {
+  propid_ = 0;
+  clear_has_propid();
+}
+inline ::google::protobuf::int32 GiftPack::propid() const {
+  // @@protoc_insertion_point(field_get:GiftPack.propId)
+  return propid_;
+}
+inline void GiftPack::set_propid(::google::protobuf::int32 value) {
+  set_has_propid();
+  propid_ = value;
+  // @@protoc_insertion_point(field_set:GiftPack.propId)
 }
 
 // -------------------------------------------------------------------
