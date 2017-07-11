@@ -31,6 +31,31 @@ void  protobuf_AddDesc_game_2eproto();
 void protobuf_AssignDesc_game_2eproto();
 void protobuf_ShutdownFile_game_2eproto();
 
+class GameEndResponse;
+class PlayerSkillRequest;
+class PlayerSkillResponse;
+class PlayerSkill;
+class MapEntity;
+class RankItem;
+class User;
+class CellVector;
+class PlayerOperationRequest;
+class Food;
+class Cell;
+class Player;
+class SuperRenewInfo;
+class RoomInfo;
+class PlayerListResponse;
+class FoodChangeResponse;
+class FoodArea;
+class RemainTimeResponse;
+class RankListResponse;
+class GameStateResponse;
+class GameReadyRequest;
+class PlayerRenewalRequest;
+class PlayerRenewalResponse;
+class Asylum;
+class UltimateSkill;
 class MessageInfo;
 class GiftPackListResponse;
 class GiftPack;
@@ -42,32 +67,8 @@ class SignReward;
 class SkinChooseRequest;
 class NickNameRandomRespone;
 class MatchStartResponse;
-class PLayerListResponse;
-class FoodChangeResponse;
-class FoodArea;
-class RemainTimeResponse;
-class RankListResponse;
-class GameEndResponse;
-class PlayerSkillRequest;
-class PlayerSkillResponse;
-class PlayerSkill;
-class MapEntity;
-class RankItem;
-class CellVector;
-class PlayerOperationRequest;
-class UserInfo;
-class Food;
-class Cell;
-class Player;
-class SuperRenewInfo;
-class RoomInfo;
-class GameStateResponse;
-class GameReadyRequest;
 class UltimateSkillChooseRequest;
 class UltimateSkillChooseResponse;
-class PlayerRenewalRequest;
-class PlayerRenewalResponse;
-class Asylum;
 class Prop;
 class BackpackResponse;
 class SkinMerchandise;
@@ -76,11 +77,11 @@ class ShopMerchandiseResponse;
 class BuyRequest;
 class UserChangedResponse;
 class UserInfoResponse;
-class UltimateSkill;
 class PrivilegeResponse;
 class Privilege;
 class AuthorizationRequest;
 class AuthorizationResponse;
+class UserInfo;
 class PayOrderRequest;
 class PayOrderResponse;
 class OrderParam;
@@ -91,6 +92,2611 @@ class GoldCoinListResponse;
 class GoldCoin;
 
 // ===================================================================
+
+class GameEndResponse : public ::google::protobuf::Message {
+ public:
+  GameEndResponse();
+  virtual ~GameEndResponse();
+
+  GameEndResponse(const GameEndResponse& from);
+
+  inline GameEndResponse& operator=(const GameEndResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GameEndResponse& default_instance();
+
+  void Swap(GameEndResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  GameEndResponse* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const GameEndResponse& from);
+  void MergeFrom(const GameEndResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .RankItem rankItems = 1;
+  inline int rankitems_size() const;
+  inline void clear_rankitems();
+  static const int kRankItemsFieldNumber = 1;
+  inline const ::RankItem& rankitems(int index) const;
+  inline ::RankItem* mutable_rankitems(int index);
+  inline ::RankItem* add_rankitems();
+  inline const ::google::protobuf::RepeatedPtrField< ::RankItem >&
+      rankitems() const;
+  inline ::google::protobuf::RepeatedPtrField< ::RankItem >*
+      mutable_rankitems();
+
+  // @@protoc_insertion_point(class_scope:GameEndResponse)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::RankItem > rankitems_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static GameEndResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class PlayerSkillRequest : public ::google::protobuf::Message {
+ public:
+  PlayerSkillRequest();
+  virtual ~PlayerSkillRequest();
+
+  PlayerSkillRequest(const PlayerSkillRequest& from);
+
+  inline PlayerSkillRequest& operator=(const PlayerSkillRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PlayerSkillRequest& default_instance();
+
+  void Swap(PlayerSkillRequest* other);
+
+  // implements Message ----------------------------------------------
+
+  PlayerSkillRequest* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const PlayerSkillRequest& from);
+  void MergeFrom(const PlayerSkillRequest& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 skill = 1;
+  inline bool has_skill() const;
+  inline void clear_skill();
+  static const int kSkillFieldNumber = 1;
+  inline ::google::protobuf::int32 skill() const;
+  inline void set_skill(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:PlayerSkillRequest)
+ private:
+  inline void set_has_skill();
+  inline void clear_has_skill();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 skill_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static PlayerSkillRequest* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class PlayerSkillResponse : public ::google::protobuf::Message {
+ public:
+  PlayerSkillResponse();
+  virtual ~PlayerSkillResponse();
+
+  PlayerSkillResponse(const PlayerSkillResponse& from);
+
+  inline PlayerSkillResponse& operator=(const PlayerSkillResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PlayerSkillResponse& default_instance();
+
+  void Swap(PlayerSkillResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  PlayerSkillResponse* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const PlayerSkillResponse& from);
+  void MergeFrom(const PlayerSkillResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .PlayerSkill playerSkills = 1;
+  inline int playerskills_size() const;
+  inline void clear_playerskills();
+  static const int kPlayerSkillsFieldNumber = 1;
+  inline const ::PlayerSkill& playerskills(int index) const;
+  inline ::PlayerSkill* mutable_playerskills(int index);
+  inline ::PlayerSkill* add_playerskills();
+  inline const ::google::protobuf::RepeatedPtrField< ::PlayerSkill >&
+      playerskills() const;
+  inline ::google::protobuf::RepeatedPtrField< ::PlayerSkill >*
+      mutable_playerskills();
+
+  // @@protoc_insertion_point(class_scope:PlayerSkillResponse)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::PlayerSkill > playerskills_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static PlayerSkillResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class PlayerSkill : public ::google::protobuf::Message {
+ public:
+  PlayerSkill();
+  virtual ~PlayerSkill();
+
+  PlayerSkill(const PlayerSkill& from);
+
+  inline PlayerSkill& operator=(const PlayerSkill& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PlayerSkill& default_instance();
+
+  void Swap(PlayerSkill* other);
+
+  // implements Message ----------------------------------------------
+
+  PlayerSkill* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const PlayerSkill& from);
+  void MergeFrom(const PlayerSkill& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 skill = 1;
+  inline bool has_skill() const;
+  inline void clear_skill();
+  static const int kSkillFieldNumber = 1;
+  inline ::google::protobuf::int32 skill() const;
+  inline void set_skill(::google::protobuf::int32 value);
+
+  // optional .Player player = 2;
+  inline bool has_player() const;
+  inline void clear_player();
+  static const int kPlayerFieldNumber = 2;
+  inline const ::Player& player() const;
+  inline ::Player* mutable_player();
+  inline ::Player* release_player();
+  inline void set_allocated_player(::Player* player);
+
+  // optional int32 state = 3;
+  inline bool has_state() const;
+  inline void clear_state();
+  static const int kStateFieldNumber = 3;
+  inline ::google::protobuf::int32 state() const;
+  inline void set_state(::google::protobuf::int32 value);
+
+  // repeated .MapEntity map = 4;
+  inline int map_size() const;
+  inline void clear_map();
+  static const int kMapFieldNumber = 4;
+  inline const ::MapEntity& map(int index) const;
+  inline ::MapEntity* mutable_map(int index);
+  inline ::MapEntity* add_map();
+  inline const ::google::protobuf::RepeatedPtrField< ::MapEntity >&
+      map() const;
+  inline ::google::protobuf::RepeatedPtrField< ::MapEntity >*
+      mutable_map();
+
+  // optional int32 duration = 5;
+  inline bool has_duration() const;
+  inline void clear_duration();
+  static const int kDurationFieldNumber = 5;
+  inline ::google::protobuf::int32 duration() const;
+  inline void set_duration(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:PlayerSkill)
+ private:
+  inline void set_has_skill();
+  inline void clear_has_skill();
+  inline void set_has_player();
+  inline void clear_has_player();
+  inline void set_has_state();
+  inline void clear_has_state();
+  inline void set_has_duration();
+  inline void clear_has_duration();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::Player* player_;
+  ::google::protobuf::int32 skill_;
+  ::google::protobuf::int32 state_;
+  ::google::protobuf::RepeatedPtrField< ::MapEntity > map_;
+  ::google::protobuf::int32 duration_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static PlayerSkill* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MapEntity : public ::google::protobuf::Message {
+ public:
+  MapEntity();
+  virtual ~MapEntity();
+
+  MapEntity(const MapEntity& from);
+
+  inline MapEntity& operator=(const MapEntity& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MapEntity& default_instance();
+
+  void Swap(MapEntity* other);
+
+  // implements Message ----------------------------------------------
+
+  MapEntity* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MapEntity& from);
+  void MergeFrom(const MapEntity& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string key = 1;
+  inline bool has_key() const;
+  inline void clear_key();
+  static const int kKeyFieldNumber = 1;
+  inline const ::std::string& key() const;
+  inline void set_key(const ::std::string& value);
+  inline void set_key(const char* value);
+  inline void set_key(const char* value, size_t size);
+  inline ::std::string* mutable_key();
+  inline ::std::string* release_key();
+  inline void set_allocated_key(::std::string* key);
+
+  // required string value = 2;
+  inline bool has_value() const;
+  inline void clear_value();
+  static const int kValueFieldNumber = 2;
+  inline const ::std::string& value() const;
+  inline void set_value(const ::std::string& value);
+  inline void set_value(const char* value);
+  inline void set_value(const char* value, size_t size);
+  inline ::std::string* mutable_value();
+  inline ::std::string* release_value();
+  inline void set_allocated_value(::std::string* value);
+
+  // @@protoc_insertion_point(class_scope:MapEntity)
+ private:
+  inline void set_has_key();
+  inline void clear_has_key();
+  inline void set_has_value();
+  inline void clear_has_value();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* key_;
+  ::std::string* value_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static MapEntity* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class RankItem : public ::google::protobuf::Message {
+ public:
+  RankItem();
+  virtual ~RankItem();
+
+  RankItem(const RankItem& from);
+
+  inline RankItem& operator=(const RankItem& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const RankItem& default_instance();
+
+  void Swap(RankItem* other);
+
+  // implements Message ----------------------------------------------
+
+  RankItem* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const RankItem& from);
+  void MergeFrom(const RankItem& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 rank = 1;
+  inline bool has_rank() const;
+  inline void clear_rank();
+  static const int kRankFieldNumber = 1;
+  inline ::google::protobuf::int32 rank() const;
+  inline void set_rank(::google::protobuf::int32 value);
+
+  // optional .User userInfo = 2;
+  inline bool has_userinfo() const;
+  inline void clear_userinfo();
+  static const int kUserInfoFieldNumber = 2;
+  inline const ::User& userinfo() const;
+  inline ::User* mutable_userinfo();
+  inline ::User* release_userinfo();
+  inline void set_allocated_userinfo(::User* userinfo);
+
+  // optional int32 weight = 3;
+  inline bool has_weight() const;
+  inline void clear_weight();
+  static const int kWeightFieldNumber = 3;
+  inline ::google::protobuf::int32 weight() const;
+  inline void set_weight(::google::protobuf::int32 value);
+
+  // optional int32 reward = 4;
+  inline bool has_reward() const;
+  inline void clear_reward();
+  static const int kRewardFieldNumber = 4;
+  inline ::google::protobuf::int32 reward() const;
+  inline void set_reward(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:RankItem)
+ private:
+  inline void set_has_rank();
+  inline void clear_has_rank();
+  inline void set_has_userinfo();
+  inline void clear_has_userinfo();
+  inline void set_has_weight();
+  inline void clear_has_weight();
+  inline void set_has_reward();
+  inline void clear_has_reward();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::User* userinfo_;
+  ::google::protobuf::int32 rank_;
+  ::google::protobuf::int32 weight_;
+  ::google::protobuf::int32 reward_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static RankItem* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class User : public ::google::protobuf::Message {
+ public:
+  User();
+  virtual ~User();
+
+  User(const User& from);
+
+  inline User& operator=(const User& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const User& default_instance();
+
+  void Swap(User* other);
+
+  // implements Message ----------------------------------------------
+
+  User* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const User& from);
+  void MergeFrom(const User& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 uid = 1;
+  inline bool has_uid() const;
+  inline void clear_uid();
+  static const int kUidFieldNumber = 1;
+  inline ::google::protobuf::int32 uid() const;
+  inline void set_uid(::google::protobuf::int32 value);
+
+  // optional int32 skin = 2;
+  inline bool has_skin() const;
+  inline void clear_skin();
+  static const int kSkinFieldNumber = 2;
+  inline ::google::protobuf::int32 skin() const;
+  inline void set_skin(::google::protobuf::int32 value);
+
+  // optional string nickname = 3;
+  inline bool has_nickname() const;
+  inline void clear_nickname();
+  static const int kNicknameFieldNumber = 3;
+  inline const ::std::string& nickname() const;
+  inline void set_nickname(const ::std::string& value);
+  inline void set_nickname(const char* value);
+  inline void set_nickname(const char* value, size_t size);
+  inline ::std::string* mutable_nickname();
+  inline ::std::string* release_nickname();
+  inline void set_allocated_nickname(::std::string* nickname);
+
+  // optional .UltimateSkill ultimateSkill = 4;
+  inline bool has_ultimateskill() const;
+  inline void clear_ultimateskill();
+  static const int kUltimateSkillFieldNumber = 4;
+  inline const ::UltimateSkill& ultimateskill() const;
+  inline ::UltimateSkill* mutable_ultimateskill();
+  inline ::UltimateSkill* release_ultimateskill();
+  inline void set_allocated_ultimateskill(::UltimateSkill* ultimateskill);
+
+  // @@protoc_insertion_point(class_scope:User)
+ private:
+  inline void set_has_uid();
+  inline void clear_has_uid();
+  inline void set_has_skin();
+  inline void clear_has_skin();
+  inline void set_has_nickname();
+  inline void clear_has_nickname();
+  inline void set_has_ultimateskill();
+  inline void clear_has_ultimateskill();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 uid_;
+  ::google::protobuf::int32 skin_;
+  ::std::string* nickname_;
+  ::UltimateSkill* ultimateskill_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static User* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class CellVector : public ::google::protobuf::Message {
+ public:
+  CellVector();
+  virtual ~CellVector();
+
+  CellVector(const CellVector& from);
+
+  inline CellVector& operator=(const CellVector& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CellVector& default_instance();
+
+  void Swap(CellVector* other);
+
+  // implements Message ----------------------------------------------
+
+  CellVector* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const CellVector& from);
+  void MergeFrom(const CellVector& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 cellId = 1;
+  inline bool has_cellid() const;
+  inline void clear_cellid();
+  static const int kCellIdFieldNumber = 1;
+  inline ::google::protobuf::int32 cellid() const;
+  inline void set_cellid(::google::protobuf::int32 value);
+
+  // optional int32 angle = 2;
+  inline bool has_angle() const;
+  inline void clear_angle();
+  static const int kAngleFieldNumber = 2;
+  inline ::google::protobuf::int32 angle() const;
+  inline void set_angle(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:CellVector)
+ private:
+  inline void set_has_cellid();
+  inline void clear_has_cellid();
+  inline void set_has_angle();
+  inline void clear_has_angle();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 cellid_;
+  ::google::protobuf::int32 angle_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static CellVector* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class PlayerOperationRequest : public ::google::protobuf::Message {
+ public:
+  PlayerOperationRequest();
+  virtual ~PlayerOperationRequest();
+
+  PlayerOperationRequest(const PlayerOperationRequest& from);
+
+  inline PlayerOperationRequest& operator=(const PlayerOperationRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PlayerOperationRequest& default_instance();
+
+  void Swap(PlayerOperationRequest* other);
+
+  // implements Message ----------------------------------------------
+
+  PlayerOperationRequest* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const PlayerOperationRequest& from);
+  void MergeFrom(const PlayerOperationRequest& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .CellVector cellVector = 1;
+  inline int cellvector_size() const;
+  inline void clear_cellvector();
+  static const int kCellVectorFieldNumber = 1;
+  inline const ::CellVector& cellvector(int index) const;
+  inline ::CellVector* mutable_cellvector(int index);
+  inline ::CellVector* add_cellvector();
+  inline const ::google::protobuf::RepeatedPtrField< ::CellVector >&
+      cellvector() const;
+  inline ::google::protobuf::RepeatedPtrField< ::CellVector >*
+      mutable_cellvector();
+
+  // @@protoc_insertion_point(class_scope:PlayerOperationRequest)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::CellVector > cellvector_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static PlayerOperationRequest* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class Food : public ::google::protobuf::Message {
+ public:
+  Food();
+  virtual ~Food();
+
+  Food(const Food& from);
+
+  inline Food& operator=(const Food& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Food& default_instance();
+
+  void Swap(Food* other);
+
+  // implements Message ----------------------------------------------
+
+  Food* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const Food& from);
+  void MergeFrom(const Food& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 id = 1;
+  inline bool has_id() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 1;
+  inline ::google::protobuf::int32 id() const;
+  inline void set_id(::google::protobuf::int32 value);
+
+  // optional int32 skin = 2;
+  inline bool has_skin() const;
+  inline void clear_skin();
+  static const int kSkinFieldNumber = 2;
+  inline ::google::protobuf::int32 skin() const;
+  inline void set_skin(::google::protobuf::int32 value);
+
+  // optional int32 x = 3;
+  inline bool has_x() const;
+  inline void clear_x();
+  static const int kXFieldNumber = 3;
+  inline ::google::protobuf::int32 x() const;
+  inline void set_x(::google::protobuf::int32 value);
+
+  // optional int32 y = 4;
+  inline bool has_y() const;
+  inline void clear_y();
+  static const int kYFieldNumber = 4;
+  inline ::google::protobuf::int32 y() const;
+  inline void set_y(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:Food)
+ private:
+  inline void set_has_id();
+  inline void clear_has_id();
+  inline void set_has_skin();
+  inline void clear_has_skin();
+  inline void set_has_x();
+  inline void clear_has_x();
+  inline void set_has_y();
+  inline void clear_has_y();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 id_;
+  ::google::protobuf::int32 skin_;
+  ::google::protobuf::int32 x_;
+  ::google::protobuf::int32 y_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static Food* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class Cell : public ::google::protobuf::Message {
+ public:
+  Cell();
+  virtual ~Cell();
+
+  Cell(const Cell& from);
+
+  inline Cell& operator=(const Cell& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Cell& default_instance();
+
+  void Swap(Cell* other);
+
+  // implements Message ----------------------------------------------
+
+  Cell* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const Cell& from);
+  void MergeFrom(const Cell& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 id = 1;
+  inline bool has_id() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 1;
+  inline ::google::protobuf::int32 id() const;
+  inline void set_id(::google::protobuf::int32 value);
+
+  // optional int32 x = 2;
+  inline bool has_x() const;
+  inline void clear_x();
+  static const int kXFieldNumber = 2;
+  inline ::google::protobuf::int32 x() const;
+  inline void set_x(::google::protobuf::int32 value);
+
+  // optional int32 y = 3;
+  inline bool has_y() const;
+  inline void clear_y();
+  static const int kYFieldNumber = 3;
+  inline ::google::protobuf::int32 y() const;
+  inline void set_y(::google::protobuf::int32 value);
+
+  // optional int32 radius = 4;
+  inline bool has_radius() const;
+  inline void clear_radius();
+  static const int kRadiusFieldNumber = 4;
+  inline ::google::protobuf::int32 radius() const;
+  inline void set_radius(::google::protobuf::int32 value);
+
+  // optional int32 speed = 5;
+  inline bool has_speed() const;
+  inline void clear_speed();
+  static const int kSpeedFieldNumber = 5;
+  inline ::google::protobuf::int32 speed() const;
+  inline void set_speed(::google::protobuf::int32 value);
+
+  // optional int32 angle = 6;
+  inline bool has_angle() const;
+  inline void clear_angle();
+  static const int kAngleFieldNumber = 6;
+  inline ::google::protobuf::int32 angle() const;
+  inline void set_angle(::google::protobuf::int32 value);
+
+  // optional int32 fromId = 7;
+  inline bool has_fromid() const;
+  inline void clear_fromid();
+  static const int kFromIdFieldNumber = 7;
+  inline ::google::protobuf::int32 fromid() const;
+  inline void set_fromid(::google::protobuf::int32 value);
+
+  // optional int32 mergeId = 8;
+  inline bool has_mergeid() const;
+  inline void clear_mergeid();
+  static const int kMergeIdFieldNumber = 8;
+  inline ::google::protobuf::int32 mergeid() const;
+  inline void set_mergeid(::google::protobuf::int32 value);
+
+  // optional int32 status = 9;
+  inline bool has_status() const;
+  inline void clear_status();
+  static const int kStatusFieldNumber = 9;
+  inline ::google::protobuf::int32 status() const;
+  inline void set_status(::google::protobuf::int32 value);
+
+  // repeated .FoodArea magnetFoods = 10;
+  inline int magnetfoods_size() const;
+  inline void clear_magnetfoods();
+  static const int kMagnetFoodsFieldNumber = 10;
+  inline const ::FoodArea& magnetfoods(int index) const;
+  inline ::FoodArea* mutable_magnetfoods(int index);
+  inline ::FoodArea* add_magnetfoods();
+  inline const ::google::protobuf::RepeatedPtrField< ::FoodArea >&
+      magnetfoods() const;
+  inline ::google::protobuf::RepeatedPtrField< ::FoodArea >*
+      mutable_magnetfoods();
+
+  // @@protoc_insertion_point(class_scope:Cell)
+ private:
+  inline void set_has_id();
+  inline void clear_has_id();
+  inline void set_has_x();
+  inline void clear_has_x();
+  inline void set_has_y();
+  inline void clear_has_y();
+  inline void set_has_radius();
+  inline void clear_has_radius();
+  inline void set_has_speed();
+  inline void clear_has_speed();
+  inline void set_has_angle();
+  inline void clear_has_angle();
+  inline void set_has_fromid();
+  inline void clear_has_fromid();
+  inline void set_has_mergeid();
+  inline void clear_has_mergeid();
+  inline void set_has_status();
+  inline void clear_has_status();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 id_;
+  ::google::protobuf::int32 x_;
+  ::google::protobuf::int32 y_;
+  ::google::protobuf::int32 radius_;
+  ::google::protobuf::int32 speed_;
+  ::google::protobuf::int32 angle_;
+  ::google::protobuf::int32 fromid_;
+  ::google::protobuf::int32 mergeid_;
+  ::google::protobuf::RepeatedPtrField< ::FoodArea > magnetfoods_;
+  ::google::protobuf::int32 status_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static Cell* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class Player : public ::google::protobuf::Message {
+ public:
+  Player();
+  virtual ~Player();
+
+  Player(const Player& from);
+
+  inline Player& operator=(const Player& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Player& default_instance();
+
+  void Swap(Player* other);
+
+  // implements Message ----------------------------------------------
+
+  Player* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const Player& from);
+  void MergeFrom(const Player& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required .User userInfo = 1;
+  inline bool has_userinfo() const;
+  inline void clear_userinfo();
+  static const int kUserInfoFieldNumber = 1;
+  inline const ::User& userinfo() const;
+  inline ::User* mutable_userinfo();
+  inline ::User* release_userinfo();
+  inline void set_allocated_userinfo(::User* userinfo);
+
+  // optional int32 weight = 2;
+  inline bool has_weight() const;
+  inline void clear_weight();
+  static const int kWeightFieldNumber = 2;
+  inline ::google::protobuf::int32 weight() const;
+  inline void set_weight(::google::protobuf::int32 value);
+
+  // repeated .Cell cells = 3;
+  inline int cells_size() const;
+  inline void clear_cells();
+  static const int kCellsFieldNumber = 3;
+  inline const ::Cell& cells(int index) const;
+  inline ::Cell* mutable_cells(int index);
+  inline ::Cell* add_cells();
+  inline const ::google::protobuf::RepeatedPtrField< ::Cell >&
+      cells() const;
+  inline ::google::protobuf::RepeatedPtrField< ::Cell >*
+      mutable_cells();
+
+  // optional int32 status = 4;
+  inline bool has_status() const;
+  inline void clear_status();
+  static const int kStatusFieldNumber = 4;
+  inline ::google::protobuf::int32 status() const;
+  inline void set_status(::google::protobuf::int32 value);
+
+  // optional int32 ultimateSkillProgress = 5;
+  inline bool has_ultimateskillprogress() const;
+  inline void clear_ultimateskillprogress();
+  static const int kUltimateSkillProgressFieldNumber = 5;
+  inline ::google::protobuf::int32 ultimateskillprogress() const;
+  inline void set_ultimateskillprogress(::google::protobuf::int32 value);
+
+  // optional .User beKilledUserInfo = 6;
+  inline bool has_bekilleduserinfo() const;
+  inline void clear_bekilleduserinfo();
+  static const int kBeKilledUserInfoFieldNumber = 6;
+  inline const ::User& bekilleduserinfo() const;
+  inline ::User* mutable_bekilleduserinfo();
+  inline ::User* release_bekilleduserinfo();
+  inline void set_allocated_bekilleduserinfo(::User* bekilleduserinfo);
+
+  // optional .SuperRenewInfo superRenewInfo = 7;
+  inline bool has_superrenewinfo() const;
+  inline void clear_superrenewinfo();
+  static const int kSuperRenewInfoFieldNumber = 7;
+  inline const ::SuperRenewInfo& superrenewinfo() const;
+  inline ::SuperRenewInfo* mutable_superrenewinfo();
+  inline ::SuperRenewInfo* release_superrenewinfo();
+  inline void set_allocated_superrenewinfo(::SuperRenewInfo* superrenewinfo);
+
+  // @@protoc_insertion_point(class_scope:Player)
+ private:
+  inline void set_has_userinfo();
+  inline void clear_has_userinfo();
+  inline void set_has_weight();
+  inline void clear_has_weight();
+  inline void set_has_status();
+  inline void clear_has_status();
+  inline void set_has_ultimateskillprogress();
+  inline void clear_has_ultimateskillprogress();
+  inline void set_has_bekilleduserinfo();
+  inline void clear_has_bekilleduserinfo();
+  inline void set_has_superrenewinfo();
+  inline void clear_has_superrenewinfo();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::User* userinfo_;
+  ::google::protobuf::RepeatedPtrField< ::Cell > cells_;
+  ::google::protobuf::int32 weight_;
+  ::google::protobuf::int32 status_;
+  ::User* bekilleduserinfo_;
+  ::SuperRenewInfo* superrenewinfo_;
+  ::google::protobuf::int32 ultimateskillprogress_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static Player* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SuperRenewInfo : public ::google::protobuf::Message {
+ public:
+  SuperRenewInfo();
+  virtual ~SuperRenewInfo();
+
+  SuperRenewInfo(const SuperRenewInfo& from);
+
+  inline SuperRenewInfo& operator=(const SuperRenewInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SuperRenewInfo& default_instance();
+
+  void Swap(SuperRenewInfo* other);
+
+  // implements Message ----------------------------------------------
+
+  SuperRenewInfo* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SuperRenewInfo& from);
+  void MergeFrom(const SuperRenewInfo& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 gold = 1;
+  inline bool has_gold() const;
+  inline void clear_gold();
+  static const int kGoldFieldNumber = 1;
+  inline ::google::protobuf::int32 gold() const;
+  inline void set_gold(::google::protobuf::int32 value);
+
+  // optional int32 weight = 2;
+  inline bool has_weight() const;
+  inline void clear_weight();
+  static const int kWeightFieldNumber = 2;
+  inline ::google::protobuf::int32 weight() const;
+  inline void set_weight(::google::protobuf::int32 value);
+
+  // optional int32 percent = 3;
+  inline bool has_percent() const;
+  inline void clear_percent();
+  static const int kPercentFieldNumber = 3;
+  inline ::google::protobuf::int32 percent() const;
+  inline void set_percent(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:SuperRenewInfo)
+ private:
+  inline void set_has_gold();
+  inline void clear_has_gold();
+  inline void set_has_weight();
+  inline void clear_has_weight();
+  inline void set_has_percent();
+  inline void clear_has_percent();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 gold_;
+  ::google::protobuf::int32 weight_;
+  ::google::protobuf::int32 percent_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static SuperRenewInfo* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class RoomInfo : public ::google::protobuf::Message {
+ public:
+  RoomInfo();
+  virtual ~RoomInfo();
+
+  RoomInfo(const RoomInfo& from);
+
+  inline RoomInfo& operator=(const RoomInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const RoomInfo& default_instance();
+
+  void Swap(RoomInfo* other);
+
+  // implements Message ----------------------------------------------
+
+  RoomInfo* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const RoomInfo& from);
+  void MergeFrom(const RoomInfo& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 width = 1;
+  inline bool has_width() const;
+  inline void clear_width();
+  static const int kWidthFieldNumber = 1;
+  inline ::google::protobuf::int32 width() const;
+  inline void set_width(::google::protobuf::int32 value);
+
+  // required int32 height = 2;
+  inline bool has_height() const;
+  inline void clear_height();
+  static const int kHeightFieldNumber = 2;
+  inline ::google::protobuf::int32 height() const;
+  inline void set_height(::google::protobuf::int32 value);
+
+  // optional int32 remainTime = 3;
+  inline bool has_remaintime() const;
+  inline void clear_remaintime();
+  static const int kRemainTimeFieldNumber = 3;
+  inline ::google::protobuf::int32 remaintime() const;
+  inline void set_remaintime(::google::protobuf::int32 value);
+
+  // optional int32 foodRadius = 4;
+  inline bool has_foodradius() const;
+  inline void clear_foodradius();
+  static const int kFoodRadiusFieldNumber = 4;
+  inline ::google::protobuf::int32 foodradius() const;
+  inline void set_foodradius(::google::protobuf::int32 value);
+
+  // repeated .Player players = 5;
+  inline int players_size() const;
+  inline void clear_players();
+  static const int kPlayersFieldNumber = 5;
+  inline const ::Player& players(int index) const;
+  inline ::Player* mutable_players(int index);
+  inline ::Player* add_players();
+  inline const ::google::protobuf::RepeatedPtrField< ::Player >&
+      players() const;
+  inline ::google::protobuf::RepeatedPtrField< ::Player >*
+      mutable_players();
+
+  // repeated .FoodArea foodAreas = 6;
+  inline int foodareas_size() const;
+  inline void clear_foodareas();
+  static const int kFoodAreasFieldNumber = 6;
+  inline const ::FoodArea& foodareas(int index) const;
+  inline ::FoodArea* mutable_foodareas(int index);
+  inline ::FoodArea* add_foodareas();
+  inline const ::google::protobuf::RepeatedPtrField< ::FoodArea >&
+      foodareas() const;
+  inline ::google::protobuf::RepeatedPtrField< ::FoodArea >*
+      mutable_foodareas();
+
+  // repeated .RankItem rankItems = 7;
+  inline int rankitems_size() const;
+  inline void clear_rankitems();
+  static const int kRankItemsFieldNumber = 7;
+  inline const ::RankItem& rankitems(int index) const;
+  inline ::RankItem* mutable_rankitems(int index);
+  inline ::RankItem* add_rankitems();
+  inline const ::google::protobuf::RepeatedPtrField< ::RankItem >&
+      rankitems() const;
+  inline ::google::protobuf::RepeatedPtrField< ::RankItem >*
+      mutable_rankitems();
+
+  // repeated .Asylum asylums = 8;
+  inline int asylums_size() const;
+  inline void clear_asylums();
+  static const int kAsylumsFieldNumber = 8;
+  inline const ::Asylum& asylums(int index) const;
+  inline ::Asylum* mutable_asylums(int index);
+  inline ::Asylum* add_asylums();
+  inline const ::google::protobuf::RepeatedPtrField< ::Asylum >&
+      asylums() const;
+  inline ::google::protobuf::RepeatedPtrField< ::Asylum >*
+      mutable_asylums();
+
+  // @@protoc_insertion_point(class_scope:RoomInfo)
+ private:
+  inline void set_has_width();
+  inline void clear_has_width();
+  inline void set_has_height();
+  inline void clear_has_height();
+  inline void set_has_remaintime();
+  inline void clear_has_remaintime();
+  inline void set_has_foodradius();
+  inline void clear_has_foodradius();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 width_;
+  ::google::protobuf::int32 height_;
+  ::google::protobuf::int32 remaintime_;
+  ::google::protobuf::int32 foodradius_;
+  ::google::protobuf::RepeatedPtrField< ::Player > players_;
+  ::google::protobuf::RepeatedPtrField< ::FoodArea > foodareas_;
+  ::google::protobuf::RepeatedPtrField< ::RankItem > rankitems_;
+  ::google::protobuf::RepeatedPtrField< ::Asylum > asylums_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static RoomInfo* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class PlayerListResponse : public ::google::protobuf::Message {
+ public:
+  PlayerListResponse();
+  virtual ~PlayerListResponse();
+
+  PlayerListResponse(const PlayerListResponse& from);
+
+  inline PlayerListResponse& operator=(const PlayerListResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PlayerListResponse& default_instance();
+
+  void Swap(PlayerListResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  PlayerListResponse* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const PlayerListResponse& from);
+  void MergeFrom(const PlayerListResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .Player allPlayers = 1;
+  inline int allplayers_size() const;
+  inline void clear_allplayers();
+  static const int kAllPlayersFieldNumber = 1;
+  inline const ::Player& allplayers(int index) const;
+  inline ::Player* mutable_allplayers(int index);
+  inline ::Player* add_allplayers();
+  inline const ::google::protobuf::RepeatedPtrField< ::Player >&
+      allplayers() const;
+  inline ::google::protobuf::RepeatedPtrField< ::Player >*
+      mutable_allplayers();
+
+  // repeated .Player removePlayers = 2;
+  inline int removeplayers_size() const;
+  inline void clear_removeplayers();
+  static const int kRemovePlayersFieldNumber = 2;
+  inline const ::Player& removeplayers(int index) const;
+  inline ::Player* mutable_removeplayers(int index);
+  inline ::Player* add_removeplayers();
+  inline const ::google::protobuf::RepeatedPtrField< ::Player >&
+      removeplayers() const;
+  inline ::google::protobuf::RepeatedPtrField< ::Player >*
+      mutable_removeplayers();
+
+  // repeated .Player newPlayers = 3;
+  inline int newplayers_size() const;
+  inline void clear_newplayers();
+  static const int kNewPlayersFieldNumber = 3;
+  inline const ::Player& newplayers(int index) const;
+  inline ::Player* mutable_newplayers(int index);
+  inline ::Player* add_newplayers();
+  inline const ::google::protobuf::RepeatedPtrField< ::Player >&
+      newplayers() const;
+  inline ::google::protobuf::RepeatedPtrField< ::Player >*
+      mutable_newplayers();
+
+  // repeated .Player changePlayers = 4;
+  inline int changeplayers_size() const;
+  inline void clear_changeplayers();
+  static const int kChangePlayersFieldNumber = 4;
+  inline const ::Player& changeplayers(int index) const;
+  inline ::Player* mutable_changeplayers(int index);
+  inline ::Player* add_changeplayers();
+  inline const ::google::protobuf::RepeatedPtrField< ::Player >&
+      changeplayers() const;
+  inline ::google::protobuf::RepeatedPtrField< ::Player >*
+      mutable_changeplayers();
+
+  // @@protoc_insertion_point(class_scope:PlayerListResponse)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::Player > allplayers_;
+  ::google::protobuf::RepeatedPtrField< ::Player > removeplayers_;
+  ::google::protobuf::RepeatedPtrField< ::Player > newplayers_;
+  ::google::protobuf::RepeatedPtrField< ::Player > changeplayers_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static PlayerListResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class FoodChangeResponse : public ::google::protobuf::Message {
+ public:
+  FoodChangeResponse();
+  virtual ~FoodChangeResponse();
+
+  FoodChangeResponse(const FoodChangeResponse& from);
+
+  inline FoodChangeResponse& operator=(const FoodChangeResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const FoodChangeResponse& default_instance();
+
+  void Swap(FoodChangeResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  FoodChangeResponse* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const FoodChangeResponse& from);
+  void MergeFrom(const FoodChangeResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 type = 1;
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 1;
+  inline ::google::protobuf::int32 type() const;
+  inline void set_type(::google::protobuf::int32 value);
+
+  // repeated .FoodArea foodAreas = 2;
+  inline int foodareas_size() const;
+  inline void clear_foodareas();
+  static const int kFoodAreasFieldNumber = 2;
+  inline const ::FoodArea& foodareas(int index) const;
+  inline ::FoodArea* mutable_foodareas(int index);
+  inline ::FoodArea* add_foodareas();
+  inline const ::google::protobuf::RepeatedPtrField< ::FoodArea >&
+      foodareas() const;
+  inline ::google::protobuf::RepeatedPtrField< ::FoodArea >*
+      mutable_foodareas();
+
+  // @@protoc_insertion_point(class_scope:FoodChangeResponse)
+ private:
+  inline void set_has_type();
+  inline void clear_has_type();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::FoodArea > foodareas_;
+  ::google::protobuf::int32 type_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static FoodChangeResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class FoodArea : public ::google::protobuf::Message {
+ public:
+  FoodArea();
+  virtual ~FoodArea();
+
+  FoodArea(const FoodArea& from);
+
+  inline FoodArea& operator=(const FoodArea& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const FoodArea& default_instance();
+
+  void Swap(FoodArea* other);
+
+  // implements Message ----------------------------------------------
+
+  FoodArea* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const FoodArea& from);
+  void MergeFrom(const FoodArea& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 areaId = 1;
+  inline bool has_areaid() const;
+  inline void clear_areaid();
+  static const int kAreaIdFieldNumber = 1;
+  inline ::google::protobuf::int32 areaid() const;
+  inline void set_areaid(::google::protobuf::int32 value);
+
+  // optional int32 x = 2;
+  inline bool has_x() const;
+  inline void clear_x();
+  static const int kXFieldNumber = 2;
+  inline ::google::protobuf::int32 x() const;
+  inline void set_x(::google::protobuf::int32 value);
+
+  // optional int32 y = 3;
+  inline bool has_y() const;
+  inline void clear_y();
+  static const int kYFieldNumber = 3;
+  inline ::google::protobuf::int32 y() const;
+  inline void set_y(::google::protobuf::int32 value);
+
+  // optional int32 width = 4;
+  inline bool has_width() const;
+  inline void clear_width();
+  static const int kWidthFieldNumber = 4;
+  inline ::google::protobuf::int32 width() const;
+  inline void set_width(::google::protobuf::int32 value);
+
+  // optional int32 height = 5;
+  inline bool has_height() const;
+  inline void clear_height();
+  static const int kHeightFieldNumber = 5;
+  inline ::google::protobuf::int32 height() const;
+  inline void set_height(::google::protobuf::int32 value);
+
+  // repeated .Food foods = 6;
+  inline int foods_size() const;
+  inline void clear_foods();
+  static const int kFoodsFieldNumber = 6;
+  inline const ::Food& foods(int index) const;
+  inline ::Food* mutable_foods(int index);
+  inline ::Food* add_foods();
+  inline const ::google::protobuf::RepeatedPtrField< ::Food >&
+      foods() const;
+  inline ::google::protobuf::RepeatedPtrField< ::Food >*
+      mutable_foods();
+
+  // @@protoc_insertion_point(class_scope:FoodArea)
+ private:
+  inline void set_has_areaid();
+  inline void clear_has_areaid();
+  inline void set_has_x();
+  inline void clear_has_x();
+  inline void set_has_y();
+  inline void clear_has_y();
+  inline void set_has_width();
+  inline void clear_has_width();
+  inline void set_has_height();
+  inline void clear_has_height();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 areaid_;
+  ::google::protobuf::int32 x_;
+  ::google::protobuf::int32 y_;
+  ::google::protobuf::int32 width_;
+  ::google::protobuf::RepeatedPtrField< ::Food > foods_;
+  ::google::protobuf::int32 height_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static FoodArea* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class RemainTimeResponse : public ::google::protobuf::Message {
+ public:
+  RemainTimeResponse();
+  virtual ~RemainTimeResponse();
+
+  RemainTimeResponse(const RemainTimeResponse& from);
+
+  inline RemainTimeResponse& operator=(const RemainTimeResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const RemainTimeResponse& default_instance();
+
+  void Swap(RemainTimeResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  RemainTimeResponse* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const RemainTimeResponse& from);
+  void MergeFrom(const RemainTimeResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 remain = 1;
+  inline bool has_remain() const;
+  inline void clear_remain();
+  static const int kRemainFieldNumber = 1;
+  inline ::google::protobuf::int32 remain() const;
+  inline void set_remain(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:RemainTimeResponse)
+ private:
+  inline void set_has_remain();
+  inline void clear_has_remain();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 remain_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static RemainTimeResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class RankListResponse : public ::google::protobuf::Message {
+ public:
+  RankListResponse();
+  virtual ~RankListResponse();
+
+  RankListResponse(const RankListResponse& from);
+
+  inline RankListResponse& operator=(const RankListResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const RankListResponse& default_instance();
+
+  void Swap(RankListResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  RankListResponse* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const RankListResponse& from);
+  void MergeFrom(const RankListResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .RankItem rankItems = 1;
+  inline int rankitems_size() const;
+  inline void clear_rankitems();
+  static const int kRankItemsFieldNumber = 1;
+  inline const ::RankItem& rankitems(int index) const;
+  inline ::RankItem* mutable_rankitems(int index);
+  inline ::RankItem* add_rankitems();
+  inline const ::google::protobuf::RepeatedPtrField< ::RankItem >&
+      rankitems() const;
+  inline ::google::protobuf::RepeatedPtrField< ::RankItem >*
+      mutable_rankitems();
+
+  // @@protoc_insertion_point(class_scope:RankListResponse)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::RankItem > rankitems_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static RankListResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class GameStateResponse : public ::google::protobuf::Message {
+ public:
+  GameStateResponse();
+  virtual ~GameStateResponse();
+
+  GameStateResponse(const GameStateResponse& from);
+
+  inline GameStateResponse& operator=(const GameStateResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GameStateResponse& default_instance();
+
+  void Swap(GameStateResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  GameStateResponse* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const GameStateResponse& from);
+  void MergeFrom(const GameStateResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 state = 1;
+  inline bool has_state() const;
+  inline void clear_state();
+  static const int kStateFieldNumber = 1;
+  inline ::google::protobuf::int32 state() const;
+  inline void set_state(::google::protobuf::int32 value);
+
+  // optional string roomId = 2;
+  inline bool has_roomid() const;
+  inline void clear_roomid();
+  static const int kRoomIdFieldNumber = 2;
+  inline const ::std::string& roomid() const;
+  inline void set_roomid(const ::std::string& value);
+  inline void set_roomid(const char* value);
+  inline void set_roomid(const char* value, size_t size);
+  inline ::std::string* mutable_roomid();
+  inline ::std::string* release_roomid();
+  inline void set_allocated_roomid(::std::string* roomid);
+
+  // @@protoc_insertion_point(class_scope:GameStateResponse)
+ private:
+  inline void set_has_state();
+  inline void clear_has_state();
+  inline void set_has_roomid();
+  inline void clear_has_roomid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* roomid_;
+  ::google::protobuf::int32 state_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static GameStateResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class GameReadyRequest : public ::google::protobuf::Message {
+ public:
+  GameReadyRequest();
+  virtual ~GameReadyRequest();
+
+  GameReadyRequest(const GameReadyRequest& from);
+
+  inline GameReadyRequest& operator=(const GameReadyRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GameReadyRequest& default_instance();
+
+  void Swap(GameReadyRequest* other);
+
+  // implements Message ----------------------------------------------
+
+  GameReadyRequest* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const GameReadyRequest& from);
+  void MergeFrom(const GameReadyRequest& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string roomId = 1;
+  inline bool has_roomid() const;
+  inline void clear_roomid();
+  static const int kRoomIdFieldNumber = 1;
+  inline const ::std::string& roomid() const;
+  inline void set_roomid(const ::std::string& value);
+  inline void set_roomid(const char* value);
+  inline void set_roomid(const char* value, size_t size);
+  inline ::std::string* mutable_roomid();
+  inline ::std::string* release_roomid();
+  inline void set_allocated_roomid(::std::string* roomid);
+
+  // optional .User user = 2;
+  inline bool has_user() const;
+  inline void clear_user();
+  static const int kUserFieldNumber = 2;
+  inline const ::User& user() const;
+  inline ::User* mutable_user();
+  inline ::User* release_user();
+  inline void set_allocated_user(::User* user);
+
+  // @@protoc_insertion_point(class_scope:GameReadyRequest)
+ private:
+  inline void set_has_roomid();
+  inline void clear_has_roomid();
+  inline void set_has_user();
+  inline void clear_has_user();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* roomid_;
+  ::User* user_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static GameReadyRequest* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class PlayerRenewalRequest : public ::google::protobuf::Message {
+ public:
+  PlayerRenewalRequest();
+  virtual ~PlayerRenewalRequest();
+
+  PlayerRenewalRequest(const PlayerRenewalRequest& from);
+
+  inline PlayerRenewalRequest& operator=(const PlayerRenewalRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PlayerRenewalRequest& default_instance();
+
+  void Swap(PlayerRenewalRequest* other);
+
+  // implements Message ----------------------------------------------
+
+  PlayerRenewalRequest* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const PlayerRenewalRequest& from);
+  void MergeFrom(const PlayerRenewalRequest& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 type = 1;
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 1;
+  inline ::google::protobuf::int32 type() const;
+  inline void set_type(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:PlayerRenewalRequest)
+ private:
+  inline void set_has_type();
+  inline void clear_has_type();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 type_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static PlayerRenewalRequest* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class PlayerRenewalResponse : public ::google::protobuf::Message {
+ public:
+  PlayerRenewalResponse();
+  virtual ~PlayerRenewalResponse();
+
+  PlayerRenewalResponse(const PlayerRenewalResponse& from);
+
+  inline PlayerRenewalResponse& operator=(const PlayerRenewalResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PlayerRenewalResponse& default_instance();
+
+  void Swap(PlayerRenewalResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  PlayerRenewalResponse* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const PlayerRenewalResponse& from);
+  void MergeFrom(const PlayerRenewalResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:PlayerRenewalResponse)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static PlayerRenewalResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class Asylum : public ::google::protobuf::Message {
+ public:
+  Asylum();
+  virtual ~Asylum();
+
+  Asylum(const Asylum& from);
+
+  inline Asylum& operator=(const Asylum& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Asylum& default_instance();
+
+  void Swap(Asylum* other);
+
+  // implements Message ----------------------------------------------
+
+  Asylum* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const Asylum& from);
+  void MergeFrom(const Asylum& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 id = 1;
+  inline bool has_id() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 1;
+  inline ::google::protobuf::int32 id() const;
+  inline void set_id(::google::protobuf::int32 value);
+
+  // optional int32 skin = 2;
+  inline bool has_skin() const;
+  inline void clear_skin();
+  static const int kSkinFieldNumber = 2;
+  inline ::google::protobuf::int32 skin() const;
+  inline void set_skin(::google::protobuf::int32 value);
+
+  // optional float x = 3;
+  inline bool has_x() const;
+  inline void clear_x();
+  static const int kXFieldNumber = 3;
+  inline float x() const;
+  inline void set_x(float value);
+
+  // optional float y = 4;
+  inline bool has_y() const;
+  inline void clear_y();
+  static const int kYFieldNumber = 4;
+  inline float y() const;
+  inline void set_y(float value);
+
+  // optional float radius = 5;
+  inline bool has_radius() const;
+  inline void clear_radius();
+  static const int kRadiusFieldNumber = 5;
+  inline float radius() const;
+  inline void set_radius(float value);
+
+  // @@protoc_insertion_point(class_scope:Asylum)
+ private:
+  inline void set_has_id();
+  inline void clear_has_id();
+  inline void set_has_skin();
+  inline void clear_has_skin();
+  inline void set_has_x();
+  inline void clear_has_x();
+  inline void set_has_y();
+  inline void clear_has_y();
+  inline void set_has_radius();
+  inline void clear_has_radius();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 id_;
+  ::google::protobuf::int32 skin_;
+  float x_;
+  float y_;
+  float radius_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static Asylum* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class UltimateSkill : public ::google::protobuf::Message {
+ public:
+  UltimateSkill();
+  virtual ~UltimateSkill();
+
+  UltimateSkill(const UltimateSkill& from);
+
+  inline UltimateSkill& operator=(const UltimateSkill& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UltimateSkill& default_instance();
+
+  void Swap(UltimateSkill* other);
+
+  // implements Message ----------------------------------------------
+
+  UltimateSkill* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const UltimateSkill& from);
+  void MergeFrom(const UltimateSkill& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 id = 1;
+  inline bool has_id() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 1;
+  inline ::google::protobuf::int32 id() const;
+  inline void set_id(::google::protobuf::int32 value);
+
+  // optional int32 foodId = 2;
+  inline bool has_foodid() const;
+  inline void clear_foodid();
+  static const int kFoodIdFieldNumber = 2;
+  inline ::google::protobuf::int32 foodid() const;
+  inline void set_foodid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:UltimateSkill)
+ private:
+  inline void set_has_id();
+  inline void clear_has_id();
+  inline void set_has_foodid();
+  inline void clear_has_foodid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 id_;
+  ::google::protobuf::int32 foodid_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static UltimateSkill* default_instance_;
+};
+// -------------------------------------------------------------------
 
 class MessageInfo : public ::google::protobuf::Message {
  public:
@@ -232,14 +2838,14 @@ class MessageInfo : public ::google::protobuf::Message {
   inline ::MatchStartResponse* release_matchstartresponse();
   inline void set_allocated_matchstartresponse(::MatchStartResponse* matchstartresponse);
 
-  // optional .PLayerListResponse pLayerListResponse = 10;
+  // optional .PlayerListResponse playerListResponse = 10;
   inline bool has_playerlistresponse() const;
   inline void clear_playerlistresponse();
-  static const int kPLayerListResponseFieldNumber = 10;
-  inline const ::PLayerListResponse& playerlistresponse() const;
-  inline ::PLayerListResponse* mutable_playerlistresponse();
-  inline ::PLayerListResponse* release_playerlistresponse();
-  inline void set_allocated_playerlistresponse(::PLayerListResponse* playerlistresponse);
+  static const int kPlayerListResponseFieldNumber = 10;
+  inline const ::PlayerListResponse& playerlistresponse() const;
+  inline ::PlayerListResponse* mutable_playerlistresponse();
+  inline ::PlayerListResponse* release_playerlistresponse();
+  inline void set_allocated_playerlistresponse(::PlayerListResponse* playerlistresponse);
 
   // optional .FoodChangeResponse foodChangeResponse = 11;
   inline bool has_foodchangeresponse() const;
@@ -586,7 +3192,7 @@ class MessageInfo : public ::google::protobuf::Message {
   ::SkinChooseRequest* skinchooserequest_;
   ::NickNameRandomRespone* nicknamerandomrespone_;
   ::MatchStartResponse* matchstartresponse_;
-  ::PLayerListResponse* playerlistresponse_;
+  ::PlayerListResponse* playerlistresponse_;
   ::FoodChangeResponse* foodchangeresponse_;
   ::PlayerOperationRequest* playeroperationrequest_;
   ::RemainTimeResponse* remaintimeresponse_;
@@ -1598,2308 +4204,6 @@ class MatchStartResponse : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class PLayerListResponse : public ::google::protobuf::Message {
- public:
-  PLayerListResponse();
-  virtual ~PLayerListResponse();
-
-  PLayerListResponse(const PLayerListResponse& from);
-
-  inline PLayerListResponse& operator=(const PLayerListResponse& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const PLayerListResponse& default_instance();
-
-  void Swap(PLayerListResponse* other);
-
-  // implements Message ----------------------------------------------
-
-  PLayerListResponse* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const PLayerListResponse& from);
-  void MergeFrom(const PLayerListResponse& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // repeated .Player allPlayers = 1;
-  inline int allplayers_size() const;
-  inline void clear_allplayers();
-  static const int kAllPlayersFieldNumber = 1;
-  inline const ::Player& allplayers(int index) const;
-  inline ::Player* mutable_allplayers(int index);
-  inline ::Player* add_allplayers();
-  inline const ::google::protobuf::RepeatedPtrField< ::Player >&
-      allplayers() const;
-  inline ::google::protobuf::RepeatedPtrField< ::Player >*
-      mutable_allplayers();
-
-  // repeated .Player removePlayers = 2;
-  inline int removeplayers_size() const;
-  inline void clear_removeplayers();
-  static const int kRemovePlayersFieldNumber = 2;
-  inline const ::Player& removeplayers(int index) const;
-  inline ::Player* mutable_removeplayers(int index);
-  inline ::Player* add_removeplayers();
-  inline const ::google::protobuf::RepeatedPtrField< ::Player >&
-      removeplayers() const;
-  inline ::google::protobuf::RepeatedPtrField< ::Player >*
-      mutable_removeplayers();
-
-  // repeated .Player newPlayers = 3;
-  inline int newplayers_size() const;
-  inline void clear_newplayers();
-  static const int kNewPlayersFieldNumber = 3;
-  inline const ::Player& newplayers(int index) const;
-  inline ::Player* mutable_newplayers(int index);
-  inline ::Player* add_newplayers();
-  inline const ::google::protobuf::RepeatedPtrField< ::Player >&
-      newplayers() const;
-  inline ::google::protobuf::RepeatedPtrField< ::Player >*
-      mutable_newplayers();
-
-  // repeated .Player changePlayers = 4;
-  inline int changeplayers_size() const;
-  inline void clear_changeplayers();
-  static const int kChangePlayersFieldNumber = 4;
-  inline const ::Player& changeplayers(int index) const;
-  inline ::Player* mutable_changeplayers(int index);
-  inline ::Player* add_changeplayers();
-  inline const ::google::protobuf::RepeatedPtrField< ::Player >&
-      changeplayers() const;
-  inline ::google::protobuf::RepeatedPtrField< ::Player >*
-      mutable_changeplayers();
-
-  // @@protoc_insertion_point(class_scope:PLayerListResponse)
- private:
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::Player > allplayers_;
-  ::google::protobuf::RepeatedPtrField< ::Player > removeplayers_;
-  ::google::protobuf::RepeatedPtrField< ::Player > newplayers_;
-  ::google::protobuf::RepeatedPtrField< ::Player > changeplayers_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static PLayerListResponse* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class FoodChangeResponse : public ::google::protobuf::Message {
- public:
-  FoodChangeResponse();
-  virtual ~FoodChangeResponse();
-
-  FoodChangeResponse(const FoodChangeResponse& from);
-
-  inline FoodChangeResponse& operator=(const FoodChangeResponse& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const FoodChangeResponse& default_instance();
-
-  void Swap(FoodChangeResponse* other);
-
-  // implements Message ----------------------------------------------
-
-  FoodChangeResponse* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const FoodChangeResponse& from);
-  void MergeFrom(const FoodChangeResponse& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // required int32 type = 1;
-  inline bool has_type() const;
-  inline void clear_type();
-  static const int kTypeFieldNumber = 1;
-  inline ::google::protobuf::int32 type() const;
-  inline void set_type(::google::protobuf::int32 value);
-
-  // repeated .FoodArea foodAreas = 2;
-  inline int foodareas_size() const;
-  inline void clear_foodareas();
-  static const int kFoodAreasFieldNumber = 2;
-  inline const ::FoodArea& foodareas(int index) const;
-  inline ::FoodArea* mutable_foodareas(int index);
-  inline ::FoodArea* add_foodareas();
-  inline const ::google::protobuf::RepeatedPtrField< ::FoodArea >&
-      foodareas() const;
-  inline ::google::protobuf::RepeatedPtrField< ::FoodArea >*
-      mutable_foodareas();
-
-  // @@protoc_insertion_point(class_scope:FoodChangeResponse)
- private:
-  inline void set_has_type();
-  inline void clear_has_type();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::FoodArea > foodareas_;
-  ::google::protobuf::int32 type_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static FoodChangeResponse* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class FoodArea : public ::google::protobuf::Message {
- public:
-  FoodArea();
-  virtual ~FoodArea();
-
-  FoodArea(const FoodArea& from);
-
-  inline FoodArea& operator=(const FoodArea& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const FoodArea& default_instance();
-
-  void Swap(FoodArea* other);
-
-  // implements Message ----------------------------------------------
-
-  FoodArea* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const FoodArea& from);
-  void MergeFrom(const FoodArea& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional int32 areaId = 1;
-  inline bool has_areaid() const;
-  inline void clear_areaid();
-  static const int kAreaIdFieldNumber = 1;
-  inline ::google::protobuf::int32 areaid() const;
-  inline void set_areaid(::google::protobuf::int32 value);
-
-  // optional int32 x = 2;
-  inline bool has_x() const;
-  inline void clear_x();
-  static const int kXFieldNumber = 2;
-  inline ::google::protobuf::int32 x() const;
-  inline void set_x(::google::protobuf::int32 value);
-
-  // optional int32 y = 3;
-  inline bool has_y() const;
-  inline void clear_y();
-  static const int kYFieldNumber = 3;
-  inline ::google::protobuf::int32 y() const;
-  inline void set_y(::google::protobuf::int32 value);
-
-  // optional int32 width = 4;
-  inline bool has_width() const;
-  inline void clear_width();
-  static const int kWidthFieldNumber = 4;
-  inline ::google::protobuf::int32 width() const;
-  inline void set_width(::google::protobuf::int32 value);
-
-  // optional int32 height = 5;
-  inline bool has_height() const;
-  inline void clear_height();
-  static const int kHeightFieldNumber = 5;
-  inline ::google::protobuf::int32 height() const;
-  inline void set_height(::google::protobuf::int32 value);
-
-  // repeated .Food foods = 6;
-  inline int foods_size() const;
-  inline void clear_foods();
-  static const int kFoodsFieldNumber = 6;
-  inline const ::Food& foods(int index) const;
-  inline ::Food* mutable_foods(int index);
-  inline ::Food* add_foods();
-  inline const ::google::protobuf::RepeatedPtrField< ::Food >&
-      foods() const;
-  inline ::google::protobuf::RepeatedPtrField< ::Food >*
-      mutable_foods();
-
-  // @@protoc_insertion_point(class_scope:FoodArea)
- private:
-  inline void set_has_areaid();
-  inline void clear_has_areaid();
-  inline void set_has_x();
-  inline void clear_has_x();
-  inline void set_has_y();
-  inline void clear_has_y();
-  inline void set_has_width();
-  inline void clear_has_width();
-  inline void set_has_height();
-  inline void clear_has_height();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::int32 areaid_;
-  ::google::protobuf::int32 x_;
-  ::google::protobuf::int32 y_;
-  ::google::protobuf::int32 width_;
-  ::google::protobuf::RepeatedPtrField< ::Food > foods_;
-  ::google::protobuf::int32 height_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static FoodArea* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class RemainTimeResponse : public ::google::protobuf::Message {
- public:
-  RemainTimeResponse();
-  virtual ~RemainTimeResponse();
-
-  RemainTimeResponse(const RemainTimeResponse& from);
-
-  inline RemainTimeResponse& operator=(const RemainTimeResponse& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const RemainTimeResponse& default_instance();
-
-  void Swap(RemainTimeResponse* other);
-
-  // implements Message ----------------------------------------------
-
-  RemainTimeResponse* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const RemainTimeResponse& from);
-  void MergeFrom(const RemainTimeResponse& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // required int32 remain = 1;
-  inline bool has_remain() const;
-  inline void clear_remain();
-  static const int kRemainFieldNumber = 1;
-  inline ::google::protobuf::int32 remain() const;
-  inline void set_remain(::google::protobuf::int32 value);
-
-  // @@protoc_insertion_point(class_scope:RemainTimeResponse)
- private:
-  inline void set_has_remain();
-  inline void clear_has_remain();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::int32 remain_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static RemainTimeResponse* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class RankListResponse : public ::google::protobuf::Message {
- public:
-  RankListResponse();
-  virtual ~RankListResponse();
-
-  RankListResponse(const RankListResponse& from);
-
-  inline RankListResponse& operator=(const RankListResponse& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const RankListResponse& default_instance();
-
-  void Swap(RankListResponse* other);
-
-  // implements Message ----------------------------------------------
-
-  RankListResponse* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const RankListResponse& from);
-  void MergeFrom(const RankListResponse& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // repeated .RankItem rankItems = 1;
-  inline int rankitems_size() const;
-  inline void clear_rankitems();
-  static const int kRankItemsFieldNumber = 1;
-  inline const ::RankItem& rankitems(int index) const;
-  inline ::RankItem* mutable_rankitems(int index);
-  inline ::RankItem* add_rankitems();
-  inline const ::google::protobuf::RepeatedPtrField< ::RankItem >&
-      rankitems() const;
-  inline ::google::protobuf::RepeatedPtrField< ::RankItem >*
-      mutable_rankitems();
-
-  // @@protoc_insertion_point(class_scope:RankListResponse)
- private:
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::RankItem > rankitems_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static RankListResponse* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class GameEndResponse : public ::google::protobuf::Message {
- public:
-  GameEndResponse();
-  virtual ~GameEndResponse();
-
-  GameEndResponse(const GameEndResponse& from);
-
-  inline GameEndResponse& operator=(const GameEndResponse& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const GameEndResponse& default_instance();
-
-  void Swap(GameEndResponse* other);
-
-  // implements Message ----------------------------------------------
-
-  GameEndResponse* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const GameEndResponse& from);
-  void MergeFrom(const GameEndResponse& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // repeated .RankItem rankItems = 1;
-  inline int rankitems_size() const;
-  inline void clear_rankitems();
-  static const int kRankItemsFieldNumber = 1;
-  inline const ::RankItem& rankitems(int index) const;
-  inline ::RankItem* mutable_rankitems(int index);
-  inline ::RankItem* add_rankitems();
-  inline const ::google::protobuf::RepeatedPtrField< ::RankItem >&
-      rankitems() const;
-  inline ::google::protobuf::RepeatedPtrField< ::RankItem >*
-      mutable_rankitems();
-
-  // @@protoc_insertion_point(class_scope:GameEndResponse)
- private:
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::RankItem > rankitems_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static GameEndResponse* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class PlayerSkillRequest : public ::google::protobuf::Message {
- public:
-  PlayerSkillRequest();
-  virtual ~PlayerSkillRequest();
-
-  PlayerSkillRequest(const PlayerSkillRequest& from);
-
-  inline PlayerSkillRequest& operator=(const PlayerSkillRequest& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const PlayerSkillRequest& default_instance();
-
-  void Swap(PlayerSkillRequest* other);
-
-  // implements Message ----------------------------------------------
-
-  PlayerSkillRequest* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const PlayerSkillRequest& from);
-  void MergeFrom(const PlayerSkillRequest& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // required int32 skill = 1;
-  inline bool has_skill() const;
-  inline void clear_skill();
-  static const int kSkillFieldNumber = 1;
-  inline ::google::protobuf::int32 skill() const;
-  inline void set_skill(::google::protobuf::int32 value);
-
-  // @@protoc_insertion_point(class_scope:PlayerSkillRequest)
- private:
-  inline void set_has_skill();
-  inline void clear_has_skill();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::int32 skill_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static PlayerSkillRequest* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class PlayerSkillResponse : public ::google::protobuf::Message {
- public:
-  PlayerSkillResponse();
-  virtual ~PlayerSkillResponse();
-
-  PlayerSkillResponse(const PlayerSkillResponse& from);
-
-  inline PlayerSkillResponse& operator=(const PlayerSkillResponse& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const PlayerSkillResponse& default_instance();
-
-  void Swap(PlayerSkillResponse* other);
-
-  // implements Message ----------------------------------------------
-
-  PlayerSkillResponse* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const PlayerSkillResponse& from);
-  void MergeFrom(const PlayerSkillResponse& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // repeated .PlayerSkill playerSkills = 1;
-  inline int playerskills_size() const;
-  inline void clear_playerskills();
-  static const int kPlayerSkillsFieldNumber = 1;
-  inline const ::PlayerSkill& playerskills(int index) const;
-  inline ::PlayerSkill* mutable_playerskills(int index);
-  inline ::PlayerSkill* add_playerskills();
-  inline const ::google::protobuf::RepeatedPtrField< ::PlayerSkill >&
-      playerskills() const;
-  inline ::google::protobuf::RepeatedPtrField< ::PlayerSkill >*
-      mutable_playerskills();
-
-  // @@protoc_insertion_point(class_scope:PlayerSkillResponse)
- private:
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::PlayerSkill > playerskills_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static PlayerSkillResponse* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class PlayerSkill : public ::google::protobuf::Message {
- public:
-  PlayerSkill();
-  virtual ~PlayerSkill();
-
-  PlayerSkill(const PlayerSkill& from);
-
-  inline PlayerSkill& operator=(const PlayerSkill& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const PlayerSkill& default_instance();
-
-  void Swap(PlayerSkill* other);
-
-  // implements Message ----------------------------------------------
-
-  PlayerSkill* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const PlayerSkill& from);
-  void MergeFrom(const PlayerSkill& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional int32 skill = 1;
-  inline bool has_skill() const;
-  inline void clear_skill();
-  static const int kSkillFieldNumber = 1;
-  inline ::google::protobuf::int32 skill() const;
-  inline void set_skill(::google::protobuf::int32 value);
-
-  // optional .Player player = 2;
-  inline bool has_player() const;
-  inline void clear_player();
-  static const int kPlayerFieldNumber = 2;
-  inline const ::Player& player() const;
-  inline ::Player* mutable_player();
-  inline ::Player* release_player();
-  inline void set_allocated_player(::Player* player);
-
-  // optional int32 state = 3;
-  inline bool has_state() const;
-  inline void clear_state();
-  static const int kStateFieldNumber = 3;
-  inline ::google::protobuf::int32 state() const;
-  inline void set_state(::google::protobuf::int32 value);
-
-  // repeated .MapEntity map = 4;
-  inline int map_size() const;
-  inline void clear_map();
-  static const int kMapFieldNumber = 4;
-  inline const ::MapEntity& map(int index) const;
-  inline ::MapEntity* mutable_map(int index);
-  inline ::MapEntity* add_map();
-  inline const ::google::protobuf::RepeatedPtrField< ::MapEntity >&
-      map() const;
-  inline ::google::protobuf::RepeatedPtrField< ::MapEntity >*
-      mutable_map();
-
-  // optional int32 duration = 5;
-  inline bool has_duration() const;
-  inline void clear_duration();
-  static const int kDurationFieldNumber = 5;
-  inline ::google::protobuf::int32 duration() const;
-  inline void set_duration(::google::protobuf::int32 value);
-
-  // @@protoc_insertion_point(class_scope:PlayerSkill)
- private:
-  inline void set_has_skill();
-  inline void clear_has_skill();
-  inline void set_has_player();
-  inline void clear_has_player();
-  inline void set_has_state();
-  inline void clear_has_state();
-  inline void set_has_duration();
-  inline void clear_has_duration();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::Player* player_;
-  ::google::protobuf::int32 skill_;
-  ::google::protobuf::int32 state_;
-  ::google::protobuf::RepeatedPtrField< ::MapEntity > map_;
-  ::google::protobuf::int32 duration_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static PlayerSkill* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class MapEntity : public ::google::protobuf::Message {
- public:
-  MapEntity();
-  virtual ~MapEntity();
-
-  MapEntity(const MapEntity& from);
-
-  inline MapEntity& operator=(const MapEntity& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const MapEntity& default_instance();
-
-  void Swap(MapEntity* other);
-
-  // implements Message ----------------------------------------------
-
-  MapEntity* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const MapEntity& from);
-  void MergeFrom(const MapEntity& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // required string key = 1;
-  inline bool has_key() const;
-  inline void clear_key();
-  static const int kKeyFieldNumber = 1;
-  inline const ::std::string& key() const;
-  inline void set_key(const ::std::string& value);
-  inline void set_key(const char* value);
-  inline void set_key(const char* value, size_t size);
-  inline ::std::string* mutable_key();
-  inline ::std::string* release_key();
-  inline void set_allocated_key(::std::string* key);
-
-  // required string value = 2;
-  inline bool has_value() const;
-  inline void clear_value();
-  static const int kValueFieldNumber = 2;
-  inline const ::std::string& value() const;
-  inline void set_value(const ::std::string& value);
-  inline void set_value(const char* value);
-  inline void set_value(const char* value, size_t size);
-  inline ::std::string* mutable_value();
-  inline ::std::string* release_value();
-  inline void set_allocated_value(::std::string* value);
-
-  // @@protoc_insertion_point(class_scope:MapEntity)
- private:
-  inline void set_has_key();
-  inline void clear_has_key();
-  inline void set_has_value();
-  inline void clear_has_value();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::std::string* key_;
-  ::std::string* value_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static MapEntity* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class RankItem : public ::google::protobuf::Message {
- public:
-  RankItem();
-  virtual ~RankItem();
-
-  RankItem(const RankItem& from);
-
-  inline RankItem& operator=(const RankItem& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const RankItem& default_instance();
-
-  void Swap(RankItem* other);
-
-  // implements Message ----------------------------------------------
-
-  RankItem* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const RankItem& from);
-  void MergeFrom(const RankItem& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // required int32 rank = 1;
-  inline bool has_rank() const;
-  inline void clear_rank();
-  static const int kRankFieldNumber = 1;
-  inline ::google::protobuf::int32 rank() const;
-  inline void set_rank(::google::protobuf::int32 value);
-
-  // optional .UserInfo userInfo = 2;
-  inline bool has_userinfo() const;
-  inline void clear_userinfo();
-  static const int kUserInfoFieldNumber = 2;
-  inline const ::UserInfo& userinfo() const;
-  inline ::UserInfo* mutable_userinfo();
-  inline ::UserInfo* release_userinfo();
-  inline void set_allocated_userinfo(::UserInfo* userinfo);
-
-  // optional int32 weight = 3;
-  inline bool has_weight() const;
-  inline void clear_weight();
-  static const int kWeightFieldNumber = 3;
-  inline ::google::protobuf::int32 weight() const;
-  inline void set_weight(::google::protobuf::int32 value);
-
-  // optional int32 reward = 4;
-  inline bool has_reward() const;
-  inline void clear_reward();
-  static const int kRewardFieldNumber = 4;
-  inline ::google::protobuf::int32 reward() const;
-  inline void set_reward(::google::protobuf::int32 value);
-
-  // @@protoc_insertion_point(class_scope:RankItem)
- private:
-  inline void set_has_rank();
-  inline void clear_has_rank();
-  inline void set_has_userinfo();
-  inline void clear_has_userinfo();
-  inline void set_has_weight();
-  inline void clear_has_weight();
-  inline void set_has_reward();
-  inline void clear_has_reward();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::UserInfo* userinfo_;
-  ::google::protobuf::int32 rank_;
-  ::google::protobuf::int32 weight_;
-  ::google::protobuf::int32 reward_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static RankItem* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class CellVector : public ::google::protobuf::Message {
- public:
-  CellVector();
-  virtual ~CellVector();
-
-  CellVector(const CellVector& from);
-
-  inline CellVector& operator=(const CellVector& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const CellVector& default_instance();
-
-  void Swap(CellVector* other);
-
-  // implements Message ----------------------------------------------
-
-  CellVector* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const CellVector& from);
-  void MergeFrom(const CellVector& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // required int32 cellId = 1;
-  inline bool has_cellid() const;
-  inline void clear_cellid();
-  static const int kCellIdFieldNumber = 1;
-  inline ::google::protobuf::int32 cellid() const;
-  inline void set_cellid(::google::protobuf::int32 value);
-
-  // optional int32 angle = 2;
-  inline bool has_angle() const;
-  inline void clear_angle();
-  static const int kAngleFieldNumber = 2;
-  inline ::google::protobuf::int32 angle() const;
-  inline void set_angle(::google::protobuf::int32 value);
-
-  // @@protoc_insertion_point(class_scope:CellVector)
- private:
-  inline void set_has_cellid();
-  inline void clear_has_cellid();
-  inline void set_has_angle();
-  inline void clear_has_angle();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::int32 cellid_;
-  ::google::protobuf::int32 angle_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static CellVector* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class PlayerOperationRequest : public ::google::protobuf::Message {
- public:
-  PlayerOperationRequest();
-  virtual ~PlayerOperationRequest();
-
-  PlayerOperationRequest(const PlayerOperationRequest& from);
-
-  inline PlayerOperationRequest& operator=(const PlayerOperationRequest& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const PlayerOperationRequest& default_instance();
-
-  void Swap(PlayerOperationRequest* other);
-
-  // implements Message ----------------------------------------------
-
-  PlayerOperationRequest* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const PlayerOperationRequest& from);
-  void MergeFrom(const PlayerOperationRequest& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // repeated .CellVector cellVector = 1;
-  inline int cellvector_size() const;
-  inline void clear_cellvector();
-  static const int kCellVectorFieldNumber = 1;
-  inline const ::CellVector& cellvector(int index) const;
-  inline ::CellVector* mutable_cellvector(int index);
-  inline ::CellVector* add_cellvector();
-  inline const ::google::protobuf::RepeatedPtrField< ::CellVector >&
-      cellvector() const;
-  inline ::google::protobuf::RepeatedPtrField< ::CellVector >*
-      mutable_cellvector();
-
-  // @@protoc_insertion_point(class_scope:PlayerOperationRequest)
- private:
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::CellVector > cellvector_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static PlayerOperationRequest* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class UserInfo : public ::google::protobuf::Message {
- public:
-  UserInfo();
-  virtual ~UserInfo();
-
-  UserInfo(const UserInfo& from);
-
-  inline UserInfo& operator=(const UserInfo& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const UserInfo& default_instance();
-
-  void Swap(UserInfo* other);
-
-  // implements Message ----------------------------------------------
-
-  UserInfo* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const UserInfo& from);
-  void MergeFrom(const UserInfo& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // required int32 uid = 1;
-  inline bool has_uid() const;
-  inline void clear_uid();
-  static const int kUidFieldNumber = 1;
-  inline ::google::protobuf::int32 uid() const;
-  inline void set_uid(::google::protobuf::int32 value);
-
-  // optional int32 skin = 2;
-  inline bool has_skin() const;
-  inline void clear_skin();
-  static const int kSkinFieldNumber = 2;
-  inline ::google::protobuf::int32 skin() const;
-  inline void set_skin(::google::protobuf::int32 value);
-
-  // optional string nickname = 3;
-  inline bool has_nickname() const;
-  inline void clear_nickname();
-  static const int kNicknameFieldNumber = 3;
-  inline const ::std::string& nickname() const;
-  inline void set_nickname(const ::std::string& value);
-  inline void set_nickname(const char* value);
-  inline void set_nickname(const char* value, size_t size);
-  inline ::std::string* mutable_nickname();
-  inline ::std::string* release_nickname();
-  inline void set_allocated_nickname(::std::string* nickname);
-
-  // optional string account = 4;
-  inline bool has_account() const;
-  inline void clear_account();
-  static const int kAccountFieldNumber = 4;
-  inline const ::std::string& account() const;
-  inline void set_account(const ::std::string& value);
-  inline void set_account(const char* value);
-  inline void set_account(const char* value, size_t size);
-  inline ::std::string* mutable_account();
-  inline ::std::string* release_account();
-  inline void set_allocated_account(::std::string* account);
-
-  // optional .UltimateSkill ultimateSkill = 5;
-  inline bool has_ultimateskill() const;
-  inline void clear_ultimateskill();
-  static const int kUltimateSkillFieldNumber = 5;
-  inline const ::UltimateSkill& ultimateskill() const;
-  inline ::UltimateSkill* mutable_ultimateskill();
-  inline ::UltimateSkill* release_ultimateskill();
-  inline void set_allocated_ultimateskill(::UltimateSkill* ultimateskill);
-
-  // optional int32 gold = 6;
-  inline bool has_gold() const;
-  inline void clear_gold();
-  static const int kGoldFieldNumber = 6;
-  inline ::google::protobuf::int32 gold() const;
-  inline void set_gold(::google::protobuf::int32 value);
-
-  // optional int32 stamina = 7;
-  inline bool has_stamina() const;
-  inline void clear_stamina();
-  static const int kStaminaFieldNumber = 7;
-  inline ::google::protobuf::int32 stamina() const;
-  inline void set_stamina(::google::protobuf::int32 value);
-
-  // optional int32 maxStamina = 8;
-  inline bool has_maxstamina() const;
-  inline void clear_maxstamina();
-  static const int kMaxStaminaFieldNumber = 8;
-  inline ::google::protobuf::int32 maxstamina() const;
-  inline void set_maxstamina(::google::protobuf::int32 value);
-
-  // optional int32 countdown = 9;
-  inline bool has_countdown() const;
-  inline void clear_countdown();
-  static const int kCountdownFieldNumber = 9;
-  inline ::google::protobuf::int32 countdown() const;
-  inline void set_countdown(::google::protobuf::int32 value);
-
-  // optional int32 privilege = 10;
-  inline bool has_privilege() const;
-  inline void clear_privilege();
-  static const int kPrivilegeFieldNumber = 10;
-  inline ::google::protobuf::int32 privilege() const;
-  inline void set_privilege(::google::protobuf::int32 value);
-
-  // @@protoc_insertion_point(class_scope:UserInfo)
- private:
-  inline void set_has_uid();
-  inline void clear_has_uid();
-  inline void set_has_skin();
-  inline void clear_has_skin();
-  inline void set_has_nickname();
-  inline void clear_has_nickname();
-  inline void set_has_account();
-  inline void clear_has_account();
-  inline void set_has_ultimateskill();
-  inline void clear_has_ultimateskill();
-  inline void set_has_gold();
-  inline void clear_has_gold();
-  inline void set_has_stamina();
-  inline void clear_has_stamina();
-  inline void set_has_maxstamina();
-  inline void clear_has_maxstamina();
-  inline void set_has_countdown();
-  inline void clear_has_countdown();
-  inline void set_has_privilege();
-  inline void clear_has_privilege();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::int32 uid_;
-  ::google::protobuf::int32 skin_;
-  ::std::string* nickname_;
-  ::std::string* account_;
-  ::UltimateSkill* ultimateskill_;
-  ::google::protobuf::int32 gold_;
-  ::google::protobuf::int32 stamina_;
-  ::google::protobuf::int32 maxstamina_;
-  ::google::protobuf::int32 countdown_;
-  ::google::protobuf::int32 privilege_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static UserInfo* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class Food : public ::google::protobuf::Message {
- public:
-  Food();
-  virtual ~Food();
-
-  Food(const Food& from);
-
-  inline Food& operator=(const Food& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const Food& default_instance();
-
-  void Swap(Food* other);
-
-  // implements Message ----------------------------------------------
-
-  Food* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Food& from);
-  void MergeFrom(const Food& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // required int32 id = 1;
-  inline bool has_id() const;
-  inline void clear_id();
-  static const int kIdFieldNumber = 1;
-  inline ::google::protobuf::int32 id() const;
-  inline void set_id(::google::protobuf::int32 value);
-
-  // optional int32 skin = 2;
-  inline bool has_skin() const;
-  inline void clear_skin();
-  static const int kSkinFieldNumber = 2;
-  inline ::google::protobuf::int32 skin() const;
-  inline void set_skin(::google::protobuf::int32 value);
-
-  // optional int32 x = 3;
-  inline bool has_x() const;
-  inline void clear_x();
-  static const int kXFieldNumber = 3;
-  inline ::google::protobuf::int32 x() const;
-  inline void set_x(::google::protobuf::int32 value);
-
-  // optional int32 y = 4;
-  inline bool has_y() const;
-  inline void clear_y();
-  static const int kYFieldNumber = 4;
-  inline ::google::protobuf::int32 y() const;
-  inline void set_y(::google::protobuf::int32 value);
-
-  // @@protoc_insertion_point(class_scope:Food)
- private:
-  inline void set_has_id();
-  inline void clear_has_id();
-  inline void set_has_skin();
-  inline void clear_has_skin();
-  inline void set_has_x();
-  inline void clear_has_x();
-  inline void set_has_y();
-  inline void clear_has_y();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::int32 id_;
-  ::google::protobuf::int32 skin_;
-  ::google::protobuf::int32 x_;
-  ::google::protobuf::int32 y_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static Food* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class Cell : public ::google::protobuf::Message {
- public:
-  Cell();
-  virtual ~Cell();
-
-  Cell(const Cell& from);
-
-  inline Cell& operator=(const Cell& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const Cell& default_instance();
-
-  void Swap(Cell* other);
-
-  // implements Message ----------------------------------------------
-
-  Cell* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Cell& from);
-  void MergeFrom(const Cell& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // required int32 id = 1;
-  inline bool has_id() const;
-  inline void clear_id();
-  static const int kIdFieldNumber = 1;
-  inline ::google::protobuf::int32 id() const;
-  inline void set_id(::google::protobuf::int32 value);
-
-  // optional int32 x = 2;
-  inline bool has_x() const;
-  inline void clear_x();
-  static const int kXFieldNumber = 2;
-  inline ::google::protobuf::int32 x() const;
-  inline void set_x(::google::protobuf::int32 value);
-
-  // optional int32 y = 3;
-  inline bool has_y() const;
-  inline void clear_y();
-  static const int kYFieldNumber = 3;
-  inline ::google::protobuf::int32 y() const;
-  inline void set_y(::google::protobuf::int32 value);
-
-  // optional int32 radius = 4;
-  inline bool has_radius() const;
-  inline void clear_radius();
-  static const int kRadiusFieldNumber = 4;
-  inline ::google::protobuf::int32 radius() const;
-  inline void set_radius(::google::protobuf::int32 value);
-
-  // optional int32 speed = 5;
-  inline bool has_speed() const;
-  inline void clear_speed();
-  static const int kSpeedFieldNumber = 5;
-  inline ::google::protobuf::int32 speed() const;
-  inline void set_speed(::google::protobuf::int32 value);
-
-  // optional int32 angle = 6;
-  inline bool has_angle() const;
-  inline void clear_angle();
-  static const int kAngleFieldNumber = 6;
-  inline ::google::protobuf::int32 angle() const;
-  inline void set_angle(::google::protobuf::int32 value);
-
-  // optional int32 fromId = 7;
-  inline bool has_fromid() const;
-  inline void clear_fromid();
-  static const int kFromIdFieldNumber = 7;
-  inline ::google::protobuf::int32 fromid() const;
-  inline void set_fromid(::google::protobuf::int32 value);
-
-  // optional int32 mergeId = 8;
-  inline bool has_mergeid() const;
-  inline void clear_mergeid();
-  static const int kMergeIdFieldNumber = 8;
-  inline ::google::protobuf::int32 mergeid() const;
-  inline void set_mergeid(::google::protobuf::int32 value);
-
-  // optional int32 status = 9;
-  inline bool has_status() const;
-  inline void clear_status();
-  static const int kStatusFieldNumber = 9;
-  inline ::google::protobuf::int32 status() const;
-  inline void set_status(::google::protobuf::int32 value);
-
-  // repeated .FoodArea magnetFoods = 10;
-  inline int magnetfoods_size() const;
-  inline void clear_magnetfoods();
-  static const int kMagnetFoodsFieldNumber = 10;
-  inline const ::FoodArea& magnetfoods(int index) const;
-  inline ::FoodArea* mutable_magnetfoods(int index);
-  inline ::FoodArea* add_magnetfoods();
-  inline const ::google::protobuf::RepeatedPtrField< ::FoodArea >&
-      magnetfoods() const;
-  inline ::google::protobuf::RepeatedPtrField< ::FoodArea >*
-      mutable_magnetfoods();
-
-  // @@protoc_insertion_point(class_scope:Cell)
- private:
-  inline void set_has_id();
-  inline void clear_has_id();
-  inline void set_has_x();
-  inline void clear_has_x();
-  inline void set_has_y();
-  inline void clear_has_y();
-  inline void set_has_radius();
-  inline void clear_has_radius();
-  inline void set_has_speed();
-  inline void clear_has_speed();
-  inline void set_has_angle();
-  inline void clear_has_angle();
-  inline void set_has_fromid();
-  inline void clear_has_fromid();
-  inline void set_has_mergeid();
-  inline void clear_has_mergeid();
-  inline void set_has_status();
-  inline void clear_has_status();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::int32 id_;
-  ::google::protobuf::int32 x_;
-  ::google::protobuf::int32 y_;
-  ::google::protobuf::int32 radius_;
-  ::google::protobuf::int32 speed_;
-  ::google::protobuf::int32 angle_;
-  ::google::protobuf::int32 fromid_;
-  ::google::protobuf::int32 mergeid_;
-  ::google::protobuf::RepeatedPtrField< ::FoodArea > magnetfoods_;
-  ::google::protobuf::int32 status_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static Cell* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class Player : public ::google::protobuf::Message {
- public:
-  Player();
-  virtual ~Player();
-
-  Player(const Player& from);
-
-  inline Player& operator=(const Player& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const Player& default_instance();
-
-  void Swap(Player* other);
-
-  // implements Message ----------------------------------------------
-
-  Player* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Player& from);
-  void MergeFrom(const Player& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // required .UserInfo userInfo = 1;
-  inline bool has_userinfo() const;
-  inline void clear_userinfo();
-  static const int kUserInfoFieldNumber = 1;
-  inline const ::UserInfo& userinfo() const;
-  inline ::UserInfo* mutable_userinfo();
-  inline ::UserInfo* release_userinfo();
-  inline void set_allocated_userinfo(::UserInfo* userinfo);
-
-  // optional int32 weight = 2;
-  inline bool has_weight() const;
-  inline void clear_weight();
-  static const int kWeightFieldNumber = 2;
-  inline ::google::protobuf::int32 weight() const;
-  inline void set_weight(::google::protobuf::int32 value);
-
-  // repeated .Cell cells = 3;
-  inline int cells_size() const;
-  inline void clear_cells();
-  static const int kCellsFieldNumber = 3;
-  inline const ::Cell& cells(int index) const;
-  inline ::Cell* mutable_cells(int index);
-  inline ::Cell* add_cells();
-  inline const ::google::protobuf::RepeatedPtrField< ::Cell >&
-      cells() const;
-  inline ::google::protobuf::RepeatedPtrField< ::Cell >*
-      mutable_cells();
-
-  // optional int32 status = 4;
-  inline bool has_status() const;
-  inline void clear_status();
-  static const int kStatusFieldNumber = 4;
-  inline ::google::protobuf::int32 status() const;
-  inline void set_status(::google::protobuf::int32 value);
-
-  // optional int32 ultimateSkillProgress = 5;
-  inline bool has_ultimateskillprogress() const;
-  inline void clear_ultimateskillprogress();
-  static const int kUltimateSkillProgressFieldNumber = 5;
-  inline ::google::protobuf::int32 ultimateskillprogress() const;
-  inline void set_ultimateskillprogress(::google::protobuf::int32 value);
-
-  // optional .UserInfo beKilledUserInfo = 6;
-  inline bool has_bekilleduserinfo() const;
-  inline void clear_bekilleduserinfo();
-  static const int kBeKilledUserInfoFieldNumber = 6;
-  inline const ::UserInfo& bekilleduserinfo() const;
-  inline ::UserInfo* mutable_bekilleduserinfo();
-  inline ::UserInfo* release_bekilleduserinfo();
-  inline void set_allocated_bekilleduserinfo(::UserInfo* bekilleduserinfo);
-
-  // optional .SuperRenewInfo superRenewInfo = 7;
-  inline bool has_superrenewinfo() const;
-  inline void clear_superrenewinfo();
-  static const int kSuperRenewInfoFieldNumber = 7;
-  inline const ::SuperRenewInfo& superrenewinfo() const;
-  inline ::SuperRenewInfo* mutable_superrenewinfo();
-  inline ::SuperRenewInfo* release_superrenewinfo();
-  inline void set_allocated_superrenewinfo(::SuperRenewInfo* superrenewinfo);
-
-  // @@protoc_insertion_point(class_scope:Player)
- private:
-  inline void set_has_userinfo();
-  inline void clear_has_userinfo();
-  inline void set_has_weight();
-  inline void clear_has_weight();
-  inline void set_has_status();
-  inline void clear_has_status();
-  inline void set_has_ultimateskillprogress();
-  inline void clear_has_ultimateskillprogress();
-  inline void set_has_bekilleduserinfo();
-  inline void clear_has_bekilleduserinfo();
-  inline void set_has_superrenewinfo();
-  inline void clear_has_superrenewinfo();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::UserInfo* userinfo_;
-  ::google::protobuf::RepeatedPtrField< ::Cell > cells_;
-  ::google::protobuf::int32 weight_;
-  ::google::protobuf::int32 status_;
-  ::UserInfo* bekilleduserinfo_;
-  ::SuperRenewInfo* superrenewinfo_;
-  ::google::protobuf::int32 ultimateskillprogress_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static Player* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class SuperRenewInfo : public ::google::protobuf::Message {
- public:
-  SuperRenewInfo();
-  virtual ~SuperRenewInfo();
-
-  SuperRenewInfo(const SuperRenewInfo& from);
-
-  inline SuperRenewInfo& operator=(const SuperRenewInfo& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const SuperRenewInfo& default_instance();
-
-  void Swap(SuperRenewInfo* other);
-
-  // implements Message ----------------------------------------------
-
-  SuperRenewInfo* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const SuperRenewInfo& from);
-  void MergeFrom(const SuperRenewInfo& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional int32 gold = 1;
-  inline bool has_gold() const;
-  inline void clear_gold();
-  static const int kGoldFieldNumber = 1;
-  inline ::google::protobuf::int32 gold() const;
-  inline void set_gold(::google::protobuf::int32 value);
-
-  // optional int32 weight = 2;
-  inline bool has_weight() const;
-  inline void clear_weight();
-  static const int kWeightFieldNumber = 2;
-  inline ::google::protobuf::int32 weight() const;
-  inline void set_weight(::google::protobuf::int32 value);
-
-  // optional int32 percent = 3;
-  inline bool has_percent() const;
-  inline void clear_percent();
-  static const int kPercentFieldNumber = 3;
-  inline ::google::protobuf::int32 percent() const;
-  inline void set_percent(::google::protobuf::int32 value);
-
-  // @@protoc_insertion_point(class_scope:SuperRenewInfo)
- private:
-  inline void set_has_gold();
-  inline void clear_has_gold();
-  inline void set_has_weight();
-  inline void clear_has_weight();
-  inline void set_has_percent();
-  inline void clear_has_percent();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::int32 gold_;
-  ::google::protobuf::int32 weight_;
-  ::google::protobuf::int32 percent_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static SuperRenewInfo* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class RoomInfo : public ::google::protobuf::Message {
- public:
-  RoomInfo();
-  virtual ~RoomInfo();
-
-  RoomInfo(const RoomInfo& from);
-
-  inline RoomInfo& operator=(const RoomInfo& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const RoomInfo& default_instance();
-
-  void Swap(RoomInfo* other);
-
-  // implements Message ----------------------------------------------
-
-  RoomInfo* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const RoomInfo& from);
-  void MergeFrom(const RoomInfo& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // required int32 width = 1;
-  inline bool has_width() const;
-  inline void clear_width();
-  static const int kWidthFieldNumber = 1;
-  inline ::google::protobuf::int32 width() const;
-  inline void set_width(::google::protobuf::int32 value);
-
-  // required int32 height = 2;
-  inline bool has_height() const;
-  inline void clear_height();
-  static const int kHeightFieldNumber = 2;
-  inline ::google::protobuf::int32 height() const;
-  inline void set_height(::google::protobuf::int32 value);
-
-  // optional int32 remainTime = 3;
-  inline bool has_remaintime() const;
-  inline void clear_remaintime();
-  static const int kRemainTimeFieldNumber = 3;
-  inline ::google::protobuf::int32 remaintime() const;
-  inline void set_remaintime(::google::protobuf::int32 value);
-
-  // optional int32 foodRadius = 4;
-  inline bool has_foodradius() const;
-  inline void clear_foodradius();
-  static const int kFoodRadiusFieldNumber = 4;
-  inline ::google::protobuf::int32 foodradius() const;
-  inline void set_foodradius(::google::protobuf::int32 value);
-
-  // repeated .Player players = 5;
-  inline int players_size() const;
-  inline void clear_players();
-  static const int kPlayersFieldNumber = 5;
-  inline const ::Player& players(int index) const;
-  inline ::Player* mutable_players(int index);
-  inline ::Player* add_players();
-  inline const ::google::protobuf::RepeatedPtrField< ::Player >&
-      players() const;
-  inline ::google::protobuf::RepeatedPtrField< ::Player >*
-      mutable_players();
-
-  // repeated .FoodArea foodAreas = 6;
-  inline int foodareas_size() const;
-  inline void clear_foodareas();
-  static const int kFoodAreasFieldNumber = 6;
-  inline const ::FoodArea& foodareas(int index) const;
-  inline ::FoodArea* mutable_foodareas(int index);
-  inline ::FoodArea* add_foodareas();
-  inline const ::google::protobuf::RepeatedPtrField< ::FoodArea >&
-      foodareas() const;
-  inline ::google::protobuf::RepeatedPtrField< ::FoodArea >*
-      mutable_foodareas();
-
-  // repeated .RankItem rankItems = 7;
-  inline int rankitems_size() const;
-  inline void clear_rankitems();
-  static const int kRankItemsFieldNumber = 7;
-  inline const ::RankItem& rankitems(int index) const;
-  inline ::RankItem* mutable_rankitems(int index);
-  inline ::RankItem* add_rankitems();
-  inline const ::google::protobuf::RepeatedPtrField< ::RankItem >&
-      rankitems() const;
-  inline ::google::protobuf::RepeatedPtrField< ::RankItem >*
-      mutable_rankitems();
-
-  // repeated .Asylum asylums = 8;
-  inline int asylums_size() const;
-  inline void clear_asylums();
-  static const int kAsylumsFieldNumber = 8;
-  inline const ::Asylum& asylums(int index) const;
-  inline ::Asylum* mutable_asylums(int index);
-  inline ::Asylum* add_asylums();
-  inline const ::google::protobuf::RepeatedPtrField< ::Asylum >&
-      asylums() const;
-  inline ::google::protobuf::RepeatedPtrField< ::Asylum >*
-      mutable_asylums();
-
-  // @@protoc_insertion_point(class_scope:RoomInfo)
- private:
-  inline void set_has_width();
-  inline void clear_has_width();
-  inline void set_has_height();
-  inline void clear_has_height();
-  inline void set_has_remaintime();
-  inline void clear_has_remaintime();
-  inline void set_has_foodradius();
-  inline void clear_has_foodradius();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::int32 width_;
-  ::google::protobuf::int32 height_;
-  ::google::protobuf::int32 remaintime_;
-  ::google::protobuf::int32 foodradius_;
-  ::google::protobuf::RepeatedPtrField< ::Player > players_;
-  ::google::protobuf::RepeatedPtrField< ::FoodArea > foodareas_;
-  ::google::protobuf::RepeatedPtrField< ::RankItem > rankitems_;
-  ::google::protobuf::RepeatedPtrField< ::Asylum > asylums_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static RoomInfo* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class GameStateResponse : public ::google::protobuf::Message {
- public:
-  GameStateResponse();
-  virtual ~GameStateResponse();
-
-  GameStateResponse(const GameStateResponse& from);
-
-  inline GameStateResponse& operator=(const GameStateResponse& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const GameStateResponse& default_instance();
-
-  void Swap(GameStateResponse* other);
-
-  // implements Message ----------------------------------------------
-
-  GameStateResponse* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const GameStateResponse& from);
-  void MergeFrom(const GameStateResponse& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // required int32 state = 1;
-  inline bool has_state() const;
-  inline void clear_state();
-  static const int kStateFieldNumber = 1;
-  inline ::google::protobuf::int32 state() const;
-  inline void set_state(::google::protobuf::int32 value);
-
-  // optional string roomId = 2;
-  inline bool has_roomid() const;
-  inline void clear_roomid();
-  static const int kRoomIdFieldNumber = 2;
-  inline const ::std::string& roomid() const;
-  inline void set_roomid(const ::std::string& value);
-  inline void set_roomid(const char* value);
-  inline void set_roomid(const char* value, size_t size);
-  inline ::std::string* mutable_roomid();
-  inline ::std::string* release_roomid();
-  inline void set_allocated_roomid(::std::string* roomid);
-
-  // @@protoc_insertion_point(class_scope:GameStateResponse)
- private:
-  inline void set_has_state();
-  inline void clear_has_state();
-  inline void set_has_roomid();
-  inline void clear_has_roomid();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::std::string* roomid_;
-  ::google::protobuf::int32 state_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static GameStateResponse* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class GameReadyRequest : public ::google::protobuf::Message {
- public:
-  GameReadyRequest();
-  virtual ~GameReadyRequest();
-
-  GameReadyRequest(const GameReadyRequest& from);
-
-  inline GameReadyRequest& operator=(const GameReadyRequest& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const GameReadyRequest& default_instance();
-
-  void Swap(GameReadyRequest* other);
-
-  // implements Message ----------------------------------------------
-
-  GameReadyRequest* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const GameReadyRequest& from);
-  void MergeFrom(const GameReadyRequest& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional string roomId = 1;
-  inline bool has_roomid() const;
-  inline void clear_roomid();
-  static const int kRoomIdFieldNumber = 1;
-  inline const ::std::string& roomid() const;
-  inline void set_roomid(const ::std::string& value);
-  inline void set_roomid(const char* value);
-  inline void set_roomid(const char* value, size_t size);
-  inline ::std::string* mutable_roomid();
-  inline ::std::string* release_roomid();
-  inline void set_allocated_roomid(::std::string* roomid);
-
-  // @@protoc_insertion_point(class_scope:GameReadyRequest)
- private:
-  inline void set_has_roomid();
-  inline void clear_has_roomid();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::std::string* roomid_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static GameReadyRequest* default_instance_;
-};
-// -------------------------------------------------------------------
-
 class UltimateSkillChooseRequest : public ::google::protobuf::Message {
  public:
   UltimateSkillChooseRequest();
@@ -4045,273 +4349,6 @@ class UltimateSkillChooseResponse : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static UltimateSkillChooseResponse* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class PlayerRenewalRequest : public ::google::protobuf::Message {
- public:
-  PlayerRenewalRequest();
-  virtual ~PlayerRenewalRequest();
-
-  PlayerRenewalRequest(const PlayerRenewalRequest& from);
-
-  inline PlayerRenewalRequest& operator=(const PlayerRenewalRequest& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const PlayerRenewalRequest& default_instance();
-
-  void Swap(PlayerRenewalRequest* other);
-
-  // implements Message ----------------------------------------------
-
-  PlayerRenewalRequest* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const PlayerRenewalRequest& from);
-  void MergeFrom(const PlayerRenewalRequest& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional int32 type = 1;
-  inline bool has_type() const;
-  inline void clear_type();
-  static const int kTypeFieldNumber = 1;
-  inline ::google::protobuf::int32 type() const;
-  inline void set_type(::google::protobuf::int32 value);
-
-  // @@protoc_insertion_point(class_scope:PlayerRenewalRequest)
- private:
-  inline void set_has_type();
-  inline void clear_has_type();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::int32 type_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static PlayerRenewalRequest* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class PlayerRenewalResponse : public ::google::protobuf::Message {
- public:
-  PlayerRenewalResponse();
-  virtual ~PlayerRenewalResponse();
-
-  PlayerRenewalResponse(const PlayerRenewalResponse& from);
-
-  inline PlayerRenewalResponse& operator=(const PlayerRenewalResponse& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const PlayerRenewalResponse& default_instance();
-
-  void Swap(PlayerRenewalResponse* other);
-
-  // implements Message ----------------------------------------------
-
-  PlayerRenewalResponse* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const PlayerRenewalResponse& from);
-  void MergeFrom(const PlayerRenewalResponse& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // @@protoc_insertion_point(class_scope:PlayerRenewalResponse)
- private:
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static PlayerRenewalResponse* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class Asylum : public ::google::protobuf::Message {
- public:
-  Asylum();
-  virtual ~Asylum();
-
-  Asylum(const Asylum& from);
-
-  inline Asylum& operator=(const Asylum& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const Asylum& default_instance();
-
-  void Swap(Asylum* other);
-
-  // implements Message ----------------------------------------------
-
-  Asylum* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Asylum& from);
-  void MergeFrom(const Asylum& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // required int32 id = 1;
-  inline bool has_id() const;
-  inline void clear_id();
-  static const int kIdFieldNumber = 1;
-  inline ::google::protobuf::int32 id() const;
-  inline void set_id(::google::protobuf::int32 value);
-
-  // optional int32 skin = 2;
-  inline bool has_skin() const;
-  inline void clear_skin();
-  static const int kSkinFieldNumber = 2;
-  inline ::google::protobuf::int32 skin() const;
-  inline void set_skin(::google::protobuf::int32 value);
-
-  // optional float x = 3;
-  inline bool has_x() const;
-  inline void clear_x();
-  static const int kXFieldNumber = 3;
-  inline float x() const;
-  inline void set_x(float value);
-
-  // optional float y = 4;
-  inline bool has_y() const;
-  inline void clear_y();
-  static const int kYFieldNumber = 4;
-  inline float y() const;
-  inline void set_y(float value);
-
-  // optional float radius = 5;
-  inline bool has_radius() const;
-  inline void clear_radius();
-  static const int kRadiusFieldNumber = 5;
-  inline float radius() const;
-  inline void set_radius(float value);
-
-  // @@protoc_insertion_point(class_scope:Asylum)
- private:
-  inline void set_has_id();
-  inline void clear_has_id();
-  inline void set_has_skin();
-  inline void clear_has_skin();
-  inline void set_has_x();
-  inline void clear_has_x();
-  inline void set_has_y();
-  inline void clear_has_y();
-  inline void set_has_radius();
-  inline void clear_has_radius();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::int32 id_;
-  ::google::protobuf::int32 skin_;
-  float x_;
-  float y_;
-  float radius_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static Asylum* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -5168,95 +5205,6 @@ class UserInfoResponse : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class UltimateSkill : public ::google::protobuf::Message {
- public:
-  UltimateSkill();
-  virtual ~UltimateSkill();
-
-  UltimateSkill(const UltimateSkill& from);
-
-  inline UltimateSkill& operator=(const UltimateSkill& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const UltimateSkill& default_instance();
-
-  void Swap(UltimateSkill* other);
-
-  // implements Message ----------------------------------------------
-
-  UltimateSkill* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const UltimateSkill& from);
-  void MergeFrom(const UltimateSkill& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // required int32 id = 1;
-  inline bool has_id() const;
-  inline void clear_id();
-  static const int kIdFieldNumber = 1;
-  inline ::google::protobuf::int32 id() const;
-  inline void set_id(::google::protobuf::int32 value);
-
-  // optional int32 foodId = 2;
-  inline bool has_foodid() const;
-  inline void clear_foodid();
-  static const int kFoodIdFieldNumber = 2;
-  inline ::google::protobuf::int32 foodid() const;
-  inline void set_foodid(::google::protobuf::int32 value);
-
-  // @@protoc_insertion_point(class_scope:UltimateSkill)
- private:
-  inline void set_has_id();
-  inline void clear_has_id();
-  inline void set_has_foodid();
-  inline void clear_has_foodid();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::int32 id_;
-  ::google::protobuf::int32 foodid_;
-  friend void  protobuf_AddDesc_game_2eproto();
-  friend void protobuf_AssignDesc_game_2eproto();
-  friend void protobuf_ShutdownFile_game_2eproto();
-
-  void InitAsDefaultInstance();
-  static UltimateSkill* default_instance_;
-};
-// -------------------------------------------------------------------
-
 class PrivilegeResponse : public ::google::protobuf::Message {
  public:
   PrivilegeResponse();
@@ -5695,6 +5643,187 @@ class AuthorizationResponse : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static AuthorizationResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class UserInfo : public ::google::protobuf::Message {
+ public:
+  UserInfo();
+  virtual ~UserInfo();
+
+  UserInfo(const UserInfo& from);
+
+  inline UserInfo& operator=(const UserInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UserInfo& default_instance();
+
+  void Swap(UserInfo* other);
+
+  // implements Message ----------------------------------------------
+
+  UserInfo* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const UserInfo& from);
+  void MergeFrom(const UserInfo& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 uid = 1;
+  inline bool has_uid() const;
+  inline void clear_uid();
+  static const int kUidFieldNumber = 1;
+  inline ::google::protobuf::int32 uid() const;
+  inline void set_uid(::google::protobuf::int32 value);
+
+  // optional int32 skin = 2;
+  inline bool has_skin() const;
+  inline void clear_skin();
+  static const int kSkinFieldNumber = 2;
+  inline ::google::protobuf::int32 skin() const;
+  inline void set_skin(::google::protobuf::int32 value);
+
+  // optional string nickname = 3;
+  inline bool has_nickname() const;
+  inline void clear_nickname();
+  static const int kNicknameFieldNumber = 3;
+  inline const ::std::string& nickname() const;
+  inline void set_nickname(const ::std::string& value);
+  inline void set_nickname(const char* value);
+  inline void set_nickname(const char* value, size_t size);
+  inline ::std::string* mutable_nickname();
+  inline ::std::string* release_nickname();
+  inline void set_allocated_nickname(::std::string* nickname);
+
+  // optional string account = 4;
+  inline bool has_account() const;
+  inline void clear_account();
+  static const int kAccountFieldNumber = 4;
+  inline const ::std::string& account() const;
+  inline void set_account(const ::std::string& value);
+  inline void set_account(const char* value);
+  inline void set_account(const char* value, size_t size);
+  inline ::std::string* mutable_account();
+  inline ::std::string* release_account();
+  inline void set_allocated_account(::std::string* account);
+
+  // optional .UltimateSkill ultimateSkill = 5;
+  inline bool has_ultimateskill() const;
+  inline void clear_ultimateskill();
+  static const int kUltimateSkillFieldNumber = 5;
+  inline const ::UltimateSkill& ultimateskill() const;
+  inline ::UltimateSkill* mutable_ultimateskill();
+  inline ::UltimateSkill* release_ultimateskill();
+  inline void set_allocated_ultimateskill(::UltimateSkill* ultimateskill);
+
+  // optional int32 gold = 6;
+  inline bool has_gold() const;
+  inline void clear_gold();
+  static const int kGoldFieldNumber = 6;
+  inline ::google::protobuf::int32 gold() const;
+  inline void set_gold(::google::protobuf::int32 value);
+
+  // optional int32 stamina = 7;
+  inline bool has_stamina() const;
+  inline void clear_stamina();
+  static const int kStaminaFieldNumber = 7;
+  inline ::google::protobuf::int32 stamina() const;
+  inline void set_stamina(::google::protobuf::int32 value);
+
+  // optional int32 maxStamina = 8;
+  inline bool has_maxstamina() const;
+  inline void clear_maxstamina();
+  static const int kMaxStaminaFieldNumber = 8;
+  inline ::google::protobuf::int32 maxstamina() const;
+  inline void set_maxstamina(::google::protobuf::int32 value);
+
+  // optional int32 countdown = 9;
+  inline bool has_countdown() const;
+  inline void clear_countdown();
+  static const int kCountdownFieldNumber = 9;
+  inline ::google::protobuf::int32 countdown() const;
+  inline void set_countdown(::google::protobuf::int32 value);
+
+  // optional int32 privilege = 10;
+  inline bool has_privilege() const;
+  inline void clear_privilege();
+  static const int kPrivilegeFieldNumber = 10;
+  inline ::google::protobuf::int32 privilege() const;
+  inline void set_privilege(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:UserInfo)
+ private:
+  inline void set_has_uid();
+  inline void clear_has_uid();
+  inline void set_has_skin();
+  inline void clear_has_skin();
+  inline void set_has_nickname();
+  inline void clear_has_nickname();
+  inline void set_has_account();
+  inline void clear_has_account();
+  inline void set_has_ultimateskill();
+  inline void clear_has_ultimateskill();
+  inline void set_has_gold();
+  inline void clear_has_gold();
+  inline void set_has_stamina();
+  inline void clear_has_stamina();
+  inline void set_has_maxstamina();
+  inline void clear_has_maxstamina();
+  inline void set_has_countdown();
+  inline void clear_has_countdown();
+  inline void set_has_privilege();
+  inline void clear_has_privilege();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 uid_;
+  ::google::protobuf::int32 skin_;
+  ::std::string* nickname_;
+  ::std::string* account_;
+  ::UltimateSkill* ultimateskill_;
+  ::google::protobuf::int32 gold_;
+  ::google::protobuf::int32 stamina_;
+  ::google::protobuf::int32 maxstamina_;
+  ::google::protobuf::int32 countdown_;
+  ::google::protobuf::int32 privilege_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static UserInfo* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -6595,6 +6724,2483 @@ class GoldCoin : public ::google::protobuf::Message {
 
 // ===================================================================
 
+// GameEndResponse
+
+// repeated .RankItem rankItems = 1;
+inline int GameEndResponse::rankitems_size() const {
+  return rankitems_.size();
+}
+inline void GameEndResponse::clear_rankitems() {
+  rankitems_.Clear();
+}
+inline const ::RankItem& GameEndResponse::rankitems(int index) const {
+  // @@protoc_insertion_point(field_get:GameEndResponse.rankItems)
+  return rankitems_.Get(index);
+}
+inline ::RankItem* GameEndResponse::mutable_rankitems(int index) {
+  // @@protoc_insertion_point(field_mutable:GameEndResponse.rankItems)
+  return rankitems_.Mutable(index);
+}
+inline ::RankItem* GameEndResponse::add_rankitems() {
+  // @@protoc_insertion_point(field_add:GameEndResponse.rankItems)
+  return rankitems_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::RankItem >&
+GameEndResponse::rankitems() const {
+  // @@protoc_insertion_point(field_list:GameEndResponse.rankItems)
+  return rankitems_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::RankItem >*
+GameEndResponse::mutable_rankitems() {
+  // @@protoc_insertion_point(field_mutable_list:GameEndResponse.rankItems)
+  return &rankitems_;
+}
+
+// -------------------------------------------------------------------
+
+// PlayerSkillRequest
+
+// required int32 skill = 1;
+inline bool PlayerSkillRequest::has_skill() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void PlayerSkillRequest::set_has_skill() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void PlayerSkillRequest::clear_has_skill() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void PlayerSkillRequest::clear_skill() {
+  skill_ = 0;
+  clear_has_skill();
+}
+inline ::google::protobuf::int32 PlayerSkillRequest::skill() const {
+  // @@protoc_insertion_point(field_get:PlayerSkillRequest.skill)
+  return skill_;
+}
+inline void PlayerSkillRequest::set_skill(::google::protobuf::int32 value) {
+  set_has_skill();
+  skill_ = value;
+  // @@protoc_insertion_point(field_set:PlayerSkillRequest.skill)
+}
+
+// -------------------------------------------------------------------
+
+// PlayerSkillResponse
+
+// repeated .PlayerSkill playerSkills = 1;
+inline int PlayerSkillResponse::playerskills_size() const {
+  return playerskills_.size();
+}
+inline void PlayerSkillResponse::clear_playerskills() {
+  playerskills_.Clear();
+}
+inline const ::PlayerSkill& PlayerSkillResponse::playerskills(int index) const {
+  // @@protoc_insertion_point(field_get:PlayerSkillResponse.playerSkills)
+  return playerskills_.Get(index);
+}
+inline ::PlayerSkill* PlayerSkillResponse::mutable_playerskills(int index) {
+  // @@protoc_insertion_point(field_mutable:PlayerSkillResponse.playerSkills)
+  return playerskills_.Mutable(index);
+}
+inline ::PlayerSkill* PlayerSkillResponse::add_playerskills() {
+  // @@protoc_insertion_point(field_add:PlayerSkillResponse.playerSkills)
+  return playerskills_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::PlayerSkill >&
+PlayerSkillResponse::playerskills() const {
+  // @@protoc_insertion_point(field_list:PlayerSkillResponse.playerSkills)
+  return playerskills_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::PlayerSkill >*
+PlayerSkillResponse::mutable_playerskills() {
+  // @@protoc_insertion_point(field_mutable_list:PlayerSkillResponse.playerSkills)
+  return &playerskills_;
+}
+
+// -------------------------------------------------------------------
+
+// PlayerSkill
+
+// optional int32 skill = 1;
+inline bool PlayerSkill::has_skill() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void PlayerSkill::set_has_skill() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void PlayerSkill::clear_has_skill() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void PlayerSkill::clear_skill() {
+  skill_ = 0;
+  clear_has_skill();
+}
+inline ::google::protobuf::int32 PlayerSkill::skill() const {
+  // @@protoc_insertion_point(field_get:PlayerSkill.skill)
+  return skill_;
+}
+inline void PlayerSkill::set_skill(::google::protobuf::int32 value) {
+  set_has_skill();
+  skill_ = value;
+  // @@protoc_insertion_point(field_set:PlayerSkill.skill)
+}
+
+// optional .Player player = 2;
+inline bool PlayerSkill::has_player() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void PlayerSkill::set_has_player() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void PlayerSkill::clear_has_player() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void PlayerSkill::clear_player() {
+  if (player_ != NULL) player_->::Player::Clear();
+  clear_has_player();
+}
+inline const ::Player& PlayerSkill::player() const {
+  // @@protoc_insertion_point(field_get:PlayerSkill.player)
+  return player_ != NULL ? *player_ : *default_instance_->player_;
+}
+inline ::Player* PlayerSkill::mutable_player() {
+  set_has_player();
+  if (player_ == NULL) player_ = new ::Player;
+  // @@protoc_insertion_point(field_mutable:PlayerSkill.player)
+  return player_;
+}
+inline ::Player* PlayerSkill::release_player() {
+  clear_has_player();
+  ::Player* temp = player_;
+  player_ = NULL;
+  return temp;
+}
+inline void PlayerSkill::set_allocated_player(::Player* player) {
+  delete player_;
+  player_ = player;
+  if (player) {
+    set_has_player();
+  } else {
+    clear_has_player();
+  }
+  // @@protoc_insertion_point(field_set_allocated:PlayerSkill.player)
+}
+
+// optional int32 state = 3;
+inline bool PlayerSkill::has_state() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void PlayerSkill::set_has_state() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void PlayerSkill::clear_has_state() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void PlayerSkill::clear_state() {
+  state_ = 0;
+  clear_has_state();
+}
+inline ::google::protobuf::int32 PlayerSkill::state() const {
+  // @@protoc_insertion_point(field_get:PlayerSkill.state)
+  return state_;
+}
+inline void PlayerSkill::set_state(::google::protobuf::int32 value) {
+  set_has_state();
+  state_ = value;
+  // @@protoc_insertion_point(field_set:PlayerSkill.state)
+}
+
+// repeated .MapEntity map = 4;
+inline int PlayerSkill::map_size() const {
+  return map_.size();
+}
+inline void PlayerSkill::clear_map() {
+  map_.Clear();
+}
+inline const ::MapEntity& PlayerSkill::map(int index) const {
+  // @@protoc_insertion_point(field_get:PlayerSkill.map)
+  return map_.Get(index);
+}
+inline ::MapEntity* PlayerSkill::mutable_map(int index) {
+  // @@protoc_insertion_point(field_mutable:PlayerSkill.map)
+  return map_.Mutable(index);
+}
+inline ::MapEntity* PlayerSkill::add_map() {
+  // @@protoc_insertion_point(field_add:PlayerSkill.map)
+  return map_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::MapEntity >&
+PlayerSkill::map() const {
+  // @@protoc_insertion_point(field_list:PlayerSkill.map)
+  return map_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::MapEntity >*
+PlayerSkill::mutable_map() {
+  // @@protoc_insertion_point(field_mutable_list:PlayerSkill.map)
+  return &map_;
+}
+
+// optional int32 duration = 5;
+inline bool PlayerSkill::has_duration() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void PlayerSkill::set_has_duration() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void PlayerSkill::clear_has_duration() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void PlayerSkill::clear_duration() {
+  duration_ = 0;
+  clear_has_duration();
+}
+inline ::google::protobuf::int32 PlayerSkill::duration() const {
+  // @@protoc_insertion_point(field_get:PlayerSkill.duration)
+  return duration_;
+}
+inline void PlayerSkill::set_duration(::google::protobuf::int32 value) {
+  set_has_duration();
+  duration_ = value;
+  // @@protoc_insertion_point(field_set:PlayerSkill.duration)
+}
+
+// -------------------------------------------------------------------
+
+// MapEntity
+
+// required string key = 1;
+inline bool MapEntity::has_key() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void MapEntity::set_has_key() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void MapEntity::clear_has_key() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void MapEntity::clear_key() {
+  if (key_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    key_->clear();
+  }
+  clear_has_key();
+}
+inline const ::std::string& MapEntity::key() const {
+  // @@protoc_insertion_point(field_get:MapEntity.key)
+  return *key_;
+}
+inline void MapEntity::set_key(const ::std::string& value) {
+  set_has_key();
+  if (key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    key_ = new ::std::string;
+  }
+  key_->assign(value);
+  // @@protoc_insertion_point(field_set:MapEntity.key)
+}
+inline void MapEntity::set_key(const char* value) {
+  set_has_key();
+  if (key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    key_ = new ::std::string;
+  }
+  key_->assign(value);
+  // @@protoc_insertion_point(field_set_char:MapEntity.key)
+}
+inline void MapEntity::set_key(const char* value, size_t size) {
+  set_has_key();
+  if (key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    key_ = new ::std::string;
+  }
+  key_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:MapEntity.key)
+}
+inline ::std::string* MapEntity::mutable_key() {
+  set_has_key();
+  if (key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    key_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:MapEntity.key)
+  return key_;
+}
+inline ::std::string* MapEntity::release_key() {
+  clear_has_key();
+  if (key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = key_;
+    key_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void MapEntity::set_allocated_key(::std::string* key) {
+  if (key_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete key_;
+  }
+  if (key) {
+    set_has_key();
+    key_ = key;
+  } else {
+    clear_has_key();
+    key_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:MapEntity.key)
+}
+
+// required string value = 2;
+inline bool MapEntity::has_value() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void MapEntity::set_has_value() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void MapEntity::clear_has_value() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void MapEntity::clear_value() {
+  if (value_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    value_->clear();
+  }
+  clear_has_value();
+}
+inline const ::std::string& MapEntity::value() const {
+  // @@protoc_insertion_point(field_get:MapEntity.value)
+  return *value_;
+}
+inline void MapEntity::set_value(const ::std::string& value) {
+  set_has_value();
+  if (value_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    value_ = new ::std::string;
+  }
+  value_->assign(value);
+  // @@protoc_insertion_point(field_set:MapEntity.value)
+}
+inline void MapEntity::set_value(const char* value) {
+  set_has_value();
+  if (value_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    value_ = new ::std::string;
+  }
+  value_->assign(value);
+  // @@protoc_insertion_point(field_set_char:MapEntity.value)
+}
+inline void MapEntity::set_value(const char* value, size_t size) {
+  set_has_value();
+  if (value_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    value_ = new ::std::string;
+  }
+  value_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:MapEntity.value)
+}
+inline ::std::string* MapEntity::mutable_value() {
+  set_has_value();
+  if (value_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    value_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:MapEntity.value)
+  return value_;
+}
+inline ::std::string* MapEntity::release_value() {
+  clear_has_value();
+  if (value_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = value_;
+    value_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void MapEntity::set_allocated_value(::std::string* value) {
+  if (value_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete value_;
+  }
+  if (value) {
+    set_has_value();
+    value_ = value;
+  } else {
+    clear_has_value();
+    value_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:MapEntity.value)
+}
+
+// -------------------------------------------------------------------
+
+// RankItem
+
+// required int32 rank = 1;
+inline bool RankItem::has_rank() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void RankItem::set_has_rank() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void RankItem::clear_has_rank() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void RankItem::clear_rank() {
+  rank_ = 0;
+  clear_has_rank();
+}
+inline ::google::protobuf::int32 RankItem::rank() const {
+  // @@protoc_insertion_point(field_get:RankItem.rank)
+  return rank_;
+}
+inline void RankItem::set_rank(::google::protobuf::int32 value) {
+  set_has_rank();
+  rank_ = value;
+  // @@protoc_insertion_point(field_set:RankItem.rank)
+}
+
+// optional .User userInfo = 2;
+inline bool RankItem::has_userinfo() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void RankItem::set_has_userinfo() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void RankItem::clear_has_userinfo() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void RankItem::clear_userinfo() {
+  if (userinfo_ != NULL) userinfo_->::User::Clear();
+  clear_has_userinfo();
+}
+inline const ::User& RankItem::userinfo() const {
+  // @@protoc_insertion_point(field_get:RankItem.userInfo)
+  return userinfo_ != NULL ? *userinfo_ : *default_instance_->userinfo_;
+}
+inline ::User* RankItem::mutable_userinfo() {
+  set_has_userinfo();
+  if (userinfo_ == NULL) userinfo_ = new ::User;
+  // @@protoc_insertion_point(field_mutable:RankItem.userInfo)
+  return userinfo_;
+}
+inline ::User* RankItem::release_userinfo() {
+  clear_has_userinfo();
+  ::User* temp = userinfo_;
+  userinfo_ = NULL;
+  return temp;
+}
+inline void RankItem::set_allocated_userinfo(::User* userinfo) {
+  delete userinfo_;
+  userinfo_ = userinfo;
+  if (userinfo) {
+    set_has_userinfo();
+  } else {
+    clear_has_userinfo();
+  }
+  // @@protoc_insertion_point(field_set_allocated:RankItem.userInfo)
+}
+
+// optional int32 weight = 3;
+inline bool RankItem::has_weight() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void RankItem::set_has_weight() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void RankItem::clear_has_weight() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void RankItem::clear_weight() {
+  weight_ = 0;
+  clear_has_weight();
+}
+inline ::google::protobuf::int32 RankItem::weight() const {
+  // @@protoc_insertion_point(field_get:RankItem.weight)
+  return weight_;
+}
+inline void RankItem::set_weight(::google::protobuf::int32 value) {
+  set_has_weight();
+  weight_ = value;
+  // @@protoc_insertion_point(field_set:RankItem.weight)
+}
+
+// optional int32 reward = 4;
+inline bool RankItem::has_reward() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void RankItem::set_has_reward() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void RankItem::clear_has_reward() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void RankItem::clear_reward() {
+  reward_ = 0;
+  clear_has_reward();
+}
+inline ::google::protobuf::int32 RankItem::reward() const {
+  // @@protoc_insertion_point(field_get:RankItem.reward)
+  return reward_;
+}
+inline void RankItem::set_reward(::google::protobuf::int32 value) {
+  set_has_reward();
+  reward_ = value;
+  // @@protoc_insertion_point(field_set:RankItem.reward)
+}
+
+// -------------------------------------------------------------------
+
+// User
+
+// required int32 uid = 1;
+inline bool User::has_uid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void User::set_has_uid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void User::clear_has_uid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void User::clear_uid() {
+  uid_ = 0;
+  clear_has_uid();
+}
+inline ::google::protobuf::int32 User::uid() const {
+  // @@protoc_insertion_point(field_get:User.uid)
+  return uid_;
+}
+inline void User::set_uid(::google::protobuf::int32 value) {
+  set_has_uid();
+  uid_ = value;
+  // @@protoc_insertion_point(field_set:User.uid)
+}
+
+// optional int32 skin = 2;
+inline bool User::has_skin() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void User::set_has_skin() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void User::clear_has_skin() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void User::clear_skin() {
+  skin_ = 0;
+  clear_has_skin();
+}
+inline ::google::protobuf::int32 User::skin() const {
+  // @@protoc_insertion_point(field_get:User.skin)
+  return skin_;
+}
+inline void User::set_skin(::google::protobuf::int32 value) {
+  set_has_skin();
+  skin_ = value;
+  // @@protoc_insertion_point(field_set:User.skin)
+}
+
+// optional string nickname = 3;
+inline bool User::has_nickname() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void User::set_has_nickname() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void User::clear_has_nickname() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void User::clear_nickname() {
+  if (nickname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    nickname_->clear();
+  }
+  clear_has_nickname();
+}
+inline const ::std::string& User::nickname() const {
+  // @@protoc_insertion_point(field_get:User.nickname)
+  return *nickname_;
+}
+inline void User::set_nickname(const ::std::string& value) {
+  set_has_nickname();
+  if (nickname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    nickname_ = new ::std::string;
+  }
+  nickname_->assign(value);
+  // @@protoc_insertion_point(field_set:User.nickname)
+}
+inline void User::set_nickname(const char* value) {
+  set_has_nickname();
+  if (nickname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    nickname_ = new ::std::string;
+  }
+  nickname_->assign(value);
+  // @@protoc_insertion_point(field_set_char:User.nickname)
+}
+inline void User::set_nickname(const char* value, size_t size) {
+  set_has_nickname();
+  if (nickname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    nickname_ = new ::std::string;
+  }
+  nickname_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:User.nickname)
+}
+inline ::std::string* User::mutable_nickname() {
+  set_has_nickname();
+  if (nickname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    nickname_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:User.nickname)
+  return nickname_;
+}
+inline ::std::string* User::release_nickname() {
+  clear_has_nickname();
+  if (nickname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = nickname_;
+    nickname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void User::set_allocated_nickname(::std::string* nickname) {
+  if (nickname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete nickname_;
+  }
+  if (nickname) {
+    set_has_nickname();
+    nickname_ = nickname;
+  } else {
+    clear_has_nickname();
+    nickname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:User.nickname)
+}
+
+// optional .UltimateSkill ultimateSkill = 4;
+inline bool User::has_ultimateskill() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void User::set_has_ultimateskill() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void User::clear_has_ultimateskill() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void User::clear_ultimateskill() {
+  if (ultimateskill_ != NULL) ultimateskill_->::UltimateSkill::Clear();
+  clear_has_ultimateskill();
+}
+inline const ::UltimateSkill& User::ultimateskill() const {
+  // @@protoc_insertion_point(field_get:User.ultimateSkill)
+  return ultimateskill_ != NULL ? *ultimateskill_ : *default_instance_->ultimateskill_;
+}
+inline ::UltimateSkill* User::mutable_ultimateskill() {
+  set_has_ultimateskill();
+  if (ultimateskill_ == NULL) ultimateskill_ = new ::UltimateSkill;
+  // @@protoc_insertion_point(field_mutable:User.ultimateSkill)
+  return ultimateskill_;
+}
+inline ::UltimateSkill* User::release_ultimateskill() {
+  clear_has_ultimateskill();
+  ::UltimateSkill* temp = ultimateskill_;
+  ultimateskill_ = NULL;
+  return temp;
+}
+inline void User::set_allocated_ultimateskill(::UltimateSkill* ultimateskill) {
+  delete ultimateskill_;
+  ultimateskill_ = ultimateskill;
+  if (ultimateskill) {
+    set_has_ultimateskill();
+  } else {
+    clear_has_ultimateskill();
+  }
+  // @@protoc_insertion_point(field_set_allocated:User.ultimateSkill)
+}
+
+// -------------------------------------------------------------------
+
+// CellVector
+
+// required int32 cellId = 1;
+inline bool CellVector::has_cellid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void CellVector::set_has_cellid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void CellVector::clear_has_cellid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void CellVector::clear_cellid() {
+  cellid_ = 0;
+  clear_has_cellid();
+}
+inline ::google::protobuf::int32 CellVector::cellid() const {
+  // @@protoc_insertion_point(field_get:CellVector.cellId)
+  return cellid_;
+}
+inline void CellVector::set_cellid(::google::protobuf::int32 value) {
+  set_has_cellid();
+  cellid_ = value;
+  // @@protoc_insertion_point(field_set:CellVector.cellId)
+}
+
+// optional int32 angle = 2;
+inline bool CellVector::has_angle() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void CellVector::set_has_angle() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void CellVector::clear_has_angle() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void CellVector::clear_angle() {
+  angle_ = 0;
+  clear_has_angle();
+}
+inline ::google::protobuf::int32 CellVector::angle() const {
+  // @@protoc_insertion_point(field_get:CellVector.angle)
+  return angle_;
+}
+inline void CellVector::set_angle(::google::protobuf::int32 value) {
+  set_has_angle();
+  angle_ = value;
+  // @@protoc_insertion_point(field_set:CellVector.angle)
+}
+
+// -------------------------------------------------------------------
+
+// PlayerOperationRequest
+
+// repeated .CellVector cellVector = 1;
+inline int PlayerOperationRequest::cellvector_size() const {
+  return cellvector_.size();
+}
+inline void PlayerOperationRequest::clear_cellvector() {
+  cellvector_.Clear();
+}
+inline const ::CellVector& PlayerOperationRequest::cellvector(int index) const {
+  // @@protoc_insertion_point(field_get:PlayerOperationRequest.cellVector)
+  return cellvector_.Get(index);
+}
+inline ::CellVector* PlayerOperationRequest::mutable_cellvector(int index) {
+  // @@protoc_insertion_point(field_mutable:PlayerOperationRequest.cellVector)
+  return cellvector_.Mutable(index);
+}
+inline ::CellVector* PlayerOperationRequest::add_cellvector() {
+  // @@protoc_insertion_point(field_add:PlayerOperationRequest.cellVector)
+  return cellvector_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::CellVector >&
+PlayerOperationRequest::cellvector() const {
+  // @@protoc_insertion_point(field_list:PlayerOperationRequest.cellVector)
+  return cellvector_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::CellVector >*
+PlayerOperationRequest::mutable_cellvector() {
+  // @@protoc_insertion_point(field_mutable_list:PlayerOperationRequest.cellVector)
+  return &cellvector_;
+}
+
+// -------------------------------------------------------------------
+
+// Food
+
+// required int32 id = 1;
+inline bool Food::has_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void Food::set_has_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void Food::clear_has_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void Food::clear_id() {
+  id_ = 0;
+  clear_has_id();
+}
+inline ::google::protobuf::int32 Food::id() const {
+  // @@protoc_insertion_point(field_get:Food.id)
+  return id_;
+}
+inline void Food::set_id(::google::protobuf::int32 value) {
+  set_has_id();
+  id_ = value;
+  // @@protoc_insertion_point(field_set:Food.id)
+}
+
+// optional int32 skin = 2;
+inline bool Food::has_skin() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void Food::set_has_skin() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void Food::clear_has_skin() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void Food::clear_skin() {
+  skin_ = 0;
+  clear_has_skin();
+}
+inline ::google::protobuf::int32 Food::skin() const {
+  // @@protoc_insertion_point(field_get:Food.skin)
+  return skin_;
+}
+inline void Food::set_skin(::google::protobuf::int32 value) {
+  set_has_skin();
+  skin_ = value;
+  // @@protoc_insertion_point(field_set:Food.skin)
+}
+
+// optional int32 x = 3;
+inline bool Food::has_x() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void Food::set_has_x() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void Food::clear_has_x() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void Food::clear_x() {
+  x_ = 0;
+  clear_has_x();
+}
+inline ::google::protobuf::int32 Food::x() const {
+  // @@protoc_insertion_point(field_get:Food.x)
+  return x_;
+}
+inline void Food::set_x(::google::protobuf::int32 value) {
+  set_has_x();
+  x_ = value;
+  // @@protoc_insertion_point(field_set:Food.x)
+}
+
+// optional int32 y = 4;
+inline bool Food::has_y() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void Food::set_has_y() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void Food::clear_has_y() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void Food::clear_y() {
+  y_ = 0;
+  clear_has_y();
+}
+inline ::google::protobuf::int32 Food::y() const {
+  // @@protoc_insertion_point(field_get:Food.y)
+  return y_;
+}
+inline void Food::set_y(::google::protobuf::int32 value) {
+  set_has_y();
+  y_ = value;
+  // @@protoc_insertion_point(field_set:Food.y)
+}
+
+// -------------------------------------------------------------------
+
+// Cell
+
+// required int32 id = 1;
+inline bool Cell::has_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void Cell::set_has_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void Cell::clear_has_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void Cell::clear_id() {
+  id_ = 0;
+  clear_has_id();
+}
+inline ::google::protobuf::int32 Cell::id() const {
+  // @@protoc_insertion_point(field_get:Cell.id)
+  return id_;
+}
+inline void Cell::set_id(::google::protobuf::int32 value) {
+  set_has_id();
+  id_ = value;
+  // @@protoc_insertion_point(field_set:Cell.id)
+}
+
+// optional int32 x = 2;
+inline bool Cell::has_x() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void Cell::set_has_x() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void Cell::clear_has_x() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void Cell::clear_x() {
+  x_ = 0;
+  clear_has_x();
+}
+inline ::google::protobuf::int32 Cell::x() const {
+  // @@protoc_insertion_point(field_get:Cell.x)
+  return x_;
+}
+inline void Cell::set_x(::google::protobuf::int32 value) {
+  set_has_x();
+  x_ = value;
+  // @@protoc_insertion_point(field_set:Cell.x)
+}
+
+// optional int32 y = 3;
+inline bool Cell::has_y() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void Cell::set_has_y() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void Cell::clear_has_y() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void Cell::clear_y() {
+  y_ = 0;
+  clear_has_y();
+}
+inline ::google::protobuf::int32 Cell::y() const {
+  // @@protoc_insertion_point(field_get:Cell.y)
+  return y_;
+}
+inline void Cell::set_y(::google::protobuf::int32 value) {
+  set_has_y();
+  y_ = value;
+  // @@protoc_insertion_point(field_set:Cell.y)
+}
+
+// optional int32 radius = 4;
+inline bool Cell::has_radius() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void Cell::set_has_radius() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void Cell::clear_has_radius() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void Cell::clear_radius() {
+  radius_ = 0;
+  clear_has_radius();
+}
+inline ::google::protobuf::int32 Cell::radius() const {
+  // @@protoc_insertion_point(field_get:Cell.radius)
+  return radius_;
+}
+inline void Cell::set_radius(::google::protobuf::int32 value) {
+  set_has_radius();
+  radius_ = value;
+  // @@protoc_insertion_point(field_set:Cell.radius)
+}
+
+// optional int32 speed = 5;
+inline bool Cell::has_speed() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void Cell::set_has_speed() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void Cell::clear_has_speed() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void Cell::clear_speed() {
+  speed_ = 0;
+  clear_has_speed();
+}
+inline ::google::protobuf::int32 Cell::speed() const {
+  // @@protoc_insertion_point(field_get:Cell.speed)
+  return speed_;
+}
+inline void Cell::set_speed(::google::protobuf::int32 value) {
+  set_has_speed();
+  speed_ = value;
+  // @@protoc_insertion_point(field_set:Cell.speed)
+}
+
+// optional int32 angle = 6;
+inline bool Cell::has_angle() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void Cell::set_has_angle() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void Cell::clear_has_angle() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void Cell::clear_angle() {
+  angle_ = 0;
+  clear_has_angle();
+}
+inline ::google::protobuf::int32 Cell::angle() const {
+  // @@protoc_insertion_point(field_get:Cell.angle)
+  return angle_;
+}
+inline void Cell::set_angle(::google::protobuf::int32 value) {
+  set_has_angle();
+  angle_ = value;
+  // @@protoc_insertion_point(field_set:Cell.angle)
+}
+
+// optional int32 fromId = 7;
+inline bool Cell::has_fromid() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void Cell::set_has_fromid() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void Cell::clear_has_fromid() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void Cell::clear_fromid() {
+  fromid_ = 0;
+  clear_has_fromid();
+}
+inline ::google::protobuf::int32 Cell::fromid() const {
+  // @@protoc_insertion_point(field_get:Cell.fromId)
+  return fromid_;
+}
+inline void Cell::set_fromid(::google::protobuf::int32 value) {
+  set_has_fromid();
+  fromid_ = value;
+  // @@protoc_insertion_point(field_set:Cell.fromId)
+}
+
+// optional int32 mergeId = 8;
+inline bool Cell::has_mergeid() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void Cell::set_has_mergeid() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void Cell::clear_has_mergeid() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void Cell::clear_mergeid() {
+  mergeid_ = 0;
+  clear_has_mergeid();
+}
+inline ::google::protobuf::int32 Cell::mergeid() const {
+  // @@protoc_insertion_point(field_get:Cell.mergeId)
+  return mergeid_;
+}
+inline void Cell::set_mergeid(::google::protobuf::int32 value) {
+  set_has_mergeid();
+  mergeid_ = value;
+  // @@protoc_insertion_point(field_set:Cell.mergeId)
+}
+
+// optional int32 status = 9;
+inline bool Cell::has_status() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void Cell::set_has_status() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void Cell::clear_has_status() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void Cell::clear_status() {
+  status_ = 0;
+  clear_has_status();
+}
+inline ::google::protobuf::int32 Cell::status() const {
+  // @@protoc_insertion_point(field_get:Cell.status)
+  return status_;
+}
+inline void Cell::set_status(::google::protobuf::int32 value) {
+  set_has_status();
+  status_ = value;
+  // @@protoc_insertion_point(field_set:Cell.status)
+}
+
+// repeated .FoodArea magnetFoods = 10;
+inline int Cell::magnetfoods_size() const {
+  return magnetfoods_.size();
+}
+inline void Cell::clear_magnetfoods() {
+  magnetfoods_.Clear();
+}
+inline const ::FoodArea& Cell::magnetfoods(int index) const {
+  // @@protoc_insertion_point(field_get:Cell.magnetFoods)
+  return magnetfoods_.Get(index);
+}
+inline ::FoodArea* Cell::mutable_magnetfoods(int index) {
+  // @@protoc_insertion_point(field_mutable:Cell.magnetFoods)
+  return magnetfoods_.Mutable(index);
+}
+inline ::FoodArea* Cell::add_magnetfoods() {
+  // @@protoc_insertion_point(field_add:Cell.magnetFoods)
+  return magnetfoods_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::FoodArea >&
+Cell::magnetfoods() const {
+  // @@protoc_insertion_point(field_list:Cell.magnetFoods)
+  return magnetfoods_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::FoodArea >*
+Cell::mutable_magnetfoods() {
+  // @@protoc_insertion_point(field_mutable_list:Cell.magnetFoods)
+  return &magnetfoods_;
+}
+
+// -------------------------------------------------------------------
+
+// Player
+
+// required .User userInfo = 1;
+inline bool Player::has_userinfo() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void Player::set_has_userinfo() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void Player::clear_has_userinfo() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void Player::clear_userinfo() {
+  if (userinfo_ != NULL) userinfo_->::User::Clear();
+  clear_has_userinfo();
+}
+inline const ::User& Player::userinfo() const {
+  // @@protoc_insertion_point(field_get:Player.userInfo)
+  return userinfo_ != NULL ? *userinfo_ : *default_instance_->userinfo_;
+}
+inline ::User* Player::mutable_userinfo() {
+  set_has_userinfo();
+  if (userinfo_ == NULL) userinfo_ = new ::User;
+  // @@protoc_insertion_point(field_mutable:Player.userInfo)
+  return userinfo_;
+}
+inline ::User* Player::release_userinfo() {
+  clear_has_userinfo();
+  ::User* temp = userinfo_;
+  userinfo_ = NULL;
+  return temp;
+}
+inline void Player::set_allocated_userinfo(::User* userinfo) {
+  delete userinfo_;
+  userinfo_ = userinfo;
+  if (userinfo) {
+    set_has_userinfo();
+  } else {
+    clear_has_userinfo();
+  }
+  // @@protoc_insertion_point(field_set_allocated:Player.userInfo)
+}
+
+// optional int32 weight = 2;
+inline bool Player::has_weight() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void Player::set_has_weight() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void Player::clear_has_weight() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void Player::clear_weight() {
+  weight_ = 0;
+  clear_has_weight();
+}
+inline ::google::protobuf::int32 Player::weight() const {
+  // @@protoc_insertion_point(field_get:Player.weight)
+  return weight_;
+}
+inline void Player::set_weight(::google::protobuf::int32 value) {
+  set_has_weight();
+  weight_ = value;
+  // @@protoc_insertion_point(field_set:Player.weight)
+}
+
+// repeated .Cell cells = 3;
+inline int Player::cells_size() const {
+  return cells_.size();
+}
+inline void Player::clear_cells() {
+  cells_.Clear();
+}
+inline const ::Cell& Player::cells(int index) const {
+  // @@protoc_insertion_point(field_get:Player.cells)
+  return cells_.Get(index);
+}
+inline ::Cell* Player::mutable_cells(int index) {
+  // @@protoc_insertion_point(field_mutable:Player.cells)
+  return cells_.Mutable(index);
+}
+inline ::Cell* Player::add_cells() {
+  // @@protoc_insertion_point(field_add:Player.cells)
+  return cells_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::Cell >&
+Player::cells() const {
+  // @@protoc_insertion_point(field_list:Player.cells)
+  return cells_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::Cell >*
+Player::mutable_cells() {
+  // @@protoc_insertion_point(field_mutable_list:Player.cells)
+  return &cells_;
+}
+
+// optional int32 status = 4;
+inline bool Player::has_status() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void Player::set_has_status() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void Player::clear_has_status() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void Player::clear_status() {
+  status_ = 0;
+  clear_has_status();
+}
+inline ::google::protobuf::int32 Player::status() const {
+  // @@protoc_insertion_point(field_get:Player.status)
+  return status_;
+}
+inline void Player::set_status(::google::protobuf::int32 value) {
+  set_has_status();
+  status_ = value;
+  // @@protoc_insertion_point(field_set:Player.status)
+}
+
+// optional int32 ultimateSkillProgress = 5;
+inline bool Player::has_ultimateskillprogress() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void Player::set_has_ultimateskillprogress() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void Player::clear_has_ultimateskillprogress() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void Player::clear_ultimateskillprogress() {
+  ultimateskillprogress_ = 0;
+  clear_has_ultimateskillprogress();
+}
+inline ::google::protobuf::int32 Player::ultimateskillprogress() const {
+  // @@protoc_insertion_point(field_get:Player.ultimateSkillProgress)
+  return ultimateskillprogress_;
+}
+inline void Player::set_ultimateskillprogress(::google::protobuf::int32 value) {
+  set_has_ultimateskillprogress();
+  ultimateskillprogress_ = value;
+  // @@protoc_insertion_point(field_set:Player.ultimateSkillProgress)
+}
+
+// optional .User beKilledUserInfo = 6;
+inline bool Player::has_bekilleduserinfo() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void Player::set_has_bekilleduserinfo() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void Player::clear_has_bekilleduserinfo() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void Player::clear_bekilleduserinfo() {
+  if (bekilleduserinfo_ != NULL) bekilleduserinfo_->::User::Clear();
+  clear_has_bekilleduserinfo();
+}
+inline const ::User& Player::bekilleduserinfo() const {
+  // @@protoc_insertion_point(field_get:Player.beKilledUserInfo)
+  return bekilleduserinfo_ != NULL ? *bekilleduserinfo_ : *default_instance_->bekilleduserinfo_;
+}
+inline ::User* Player::mutable_bekilleduserinfo() {
+  set_has_bekilleduserinfo();
+  if (bekilleduserinfo_ == NULL) bekilleduserinfo_ = new ::User;
+  // @@protoc_insertion_point(field_mutable:Player.beKilledUserInfo)
+  return bekilleduserinfo_;
+}
+inline ::User* Player::release_bekilleduserinfo() {
+  clear_has_bekilleduserinfo();
+  ::User* temp = bekilleduserinfo_;
+  bekilleduserinfo_ = NULL;
+  return temp;
+}
+inline void Player::set_allocated_bekilleduserinfo(::User* bekilleduserinfo) {
+  delete bekilleduserinfo_;
+  bekilleduserinfo_ = bekilleduserinfo;
+  if (bekilleduserinfo) {
+    set_has_bekilleduserinfo();
+  } else {
+    clear_has_bekilleduserinfo();
+  }
+  // @@protoc_insertion_point(field_set_allocated:Player.beKilledUserInfo)
+}
+
+// optional .SuperRenewInfo superRenewInfo = 7;
+inline bool Player::has_superrenewinfo() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void Player::set_has_superrenewinfo() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void Player::clear_has_superrenewinfo() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void Player::clear_superrenewinfo() {
+  if (superrenewinfo_ != NULL) superrenewinfo_->::SuperRenewInfo::Clear();
+  clear_has_superrenewinfo();
+}
+inline const ::SuperRenewInfo& Player::superrenewinfo() const {
+  // @@protoc_insertion_point(field_get:Player.superRenewInfo)
+  return superrenewinfo_ != NULL ? *superrenewinfo_ : *default_instance_->superrenewinfo_;
+}
+inline ::SuperRenewInfo* Player::mutable_superrenewinfo() {
+  set_has_superrenewinfo();
+  if (superrenewinfo_ == NULL) superrenewinfo_ = new ::SuperRenewInfo;
+  // @@protoc_insertion_point(field_mutable:Player.superRenewInfo)
+  return superrenewinfo_;
+}
+inline ::SuperRenewInfo* Player::release_superrenewinfo() {
+  clear_has_superrenewinfo();
+  ::SuperRenewInfo* temp = superrenewinfo_;
+  superrenewinfo_ = NULL;
+  return temp;
+}
+inline void Player::set_allocated_superrenewinfo(::SuperRenewInfo* superrenewinfo) {
+  delete superrenewinfo_;
+  superrenewinfo_ = superrenewinfo;
+  if (superrenewinfo) {
+    set_has_superrenewinfo();
+  } else {
+    clear_has_superrenewinfo();
+  }
+  // @@protoc_insertion_point(field_set_allocated:Player.superRenewInfo)
+}
+
+// -------------------------------------------------------------------
+
+// SuperRenewInfo
+
+// optional int32 gold = 1;
+inline bool SuperRenewInfo::has_gold() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SuperRenewInfo::set_has_gold() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SuperRenewInfo::clear_has_gold() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SuperRenewInfo::clear_gold() {
+  gold_ = 0;
+  clear_has_gold();
+}
+inline ::google::protobuf::int32 SuperRenewInfo::gold() const {
+  // @@protoc_insertion_point(field_get:SuperRenewInfo.gold)
+  return gold_;
+}
+inline void SuperRenewInfo::set_gold(::google::protobuf::int32 value) {
+  set_has_gold();
+  gold_ = value;
+  // @@protoc_insertion_point(field_set:SuperRenewInfo.gold)
+}
+
+// optional int32 weight = 2;
+inline bool SuperRenewInfo::has_weight() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SuperRenewInfo::set_has_weight() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void SuperRenewInfo::clear_has_weight() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void SuperRenewInfo::clear_weight() {
+  weight_ = 0;
+  clear_has_weight();
+}
+inline ::google::protobuf::int32 SuperRenewInfo::weight() const {
+  // @@protoc_insertion_point(field_get:SuperRenewInfo.weight)
+  return weight_;
+}
+inline void SuperRenewInfo::set_weight(::google::protobuf::int32 value) {
+  set_has_weight();
+  weight_ = value;
+  // @@protoc_insertion_point(field_set:SuperRenewInfo.weight)
+}
+
+// optional int32 percent = 3;
+inline bool SuperRenewInfo::has_percent() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void SuperRenewInfo::set_has_percent() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void SuperRenewInfo::clear_has_percent() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void SuperRenewInfo::clear_percent() {
+  percent_ = 0;
+  clear_has_percent();
+}
+inline ::google::protobuf::int32 SuperRenewInfo::percent() const {
+  // @@protoc_insertion_point(field_get:SuperRenewInfo.percent)
+  return percent_;
+}
+inline void SuperRenewInfo::set_percent(::google::protobuf::int32 value) {
+  set_has_percent();
+  percent_ = value;
+  // @@protoc_insertion_point(field_set:SuperRenewInfo.percent)
+}
+
+// -------------------------------------------------------------------
+
+// RoomInfo
+
+// required int32 width = 1;
+inline bool RoomInfo::has_width() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void RoomInfo::set_has_width() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void RoomInfo::clear_has_width() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void RoomInfo::clear_width() {
+  width_ = 0;
+  clear_has_width();
+}
+inline ::google::protobuf::int32 RoomInfo::width() const {
+  // @@protoc_insertion_point(field_get:RoomInfo.width)
+  return width_;
+}
+inline void RoomInfo::set_width(::google::protobuf::int32 value) {
+  set_has_width();
+  width_ = value;
+  // @@protoc_insertion_point(field_set:RoomInfo.width)
+}
+
+// required int32 height = 2;
+inline bool RoomInfo::has_height() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void RoomInfo::set_has_height() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void RoomInfo::clear_has_height() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void RoomInfo::clear_height() {
+  height_ = 0;
+  clear_has_height();
+}
+inline ::google::protobuf::int32 RoomInfo::height() const {
+  // @@protoc_insertion_point(field_get:RoomInfo.height)
+  return height_;
+}
+inline void RoomInfo::set_height(::google::protobuf::int32 value) {
+  set_has_height();
+  height_ = value;
+  // @@protoc_insertion_point(field_set:RoomInfo.height)
+}
+
+// optional int32 remainTime = 3;
+inline bool RoomInfo::has_remaintime() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void RoomInfo::set_has_remaintime() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void RoomInfo::clear_has_remaintime() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void RoomInfo::clear_remaintime() {
+  remaintime_ = 0;
+  clear_has_remaintime();
+}
+inline ::google::protobuf::int32 RoomInfo::remaintime() const {
+  // @@protoc_insertion_point(field_get:RoomInfo.remainTime)
+  return remaintime_;
+}
+inline void RoomInfo::set_remaintime(::google::protobuf::int32 value) {
+  set_has_remaintime();
+  remaintime_ = value;
+  // @@protoc_insertion_point(field_set:RoomInfo.remainTime)
+}
+
+// optional int32 foodRadius = 4;
+inline bool RoomInfo::has_foodradius() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void RoomInfo::set_has_foodradius() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void RoomInfo::clear_has_foodradius() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void RoomInfo::clear_foodradius() {
+  foodradius_ = 0;
+  clear_has_foodradius();
+}
+inline ::google::protobuf::int32 RoomInfo::foodradius() const {
+  // @@protoc_insertion_point(field_get:RoomInfo.foodRadius)
+  return foodradius_;
+}
+inline void RoomInfo::set_foodradius(::google::protobuf::int32 value) {
+  set_has_foodradius();
+  foodradius_ = value;
+  // @@protoc_insertion_point(field_set:RoomInfo.foodRadius)
+}
+
+// repeated .Player players = 5;
+inline int RoomInfo::players_size() const {
+  return players_.size();
+}
+inline void RoomInfo::clear_players() {
+  players_.Clear();
+}
+inline const ::Player& RoomInfo::players(int index) const {
+  // @@protoc_insertion_point(field_get:RoomInfo.players)
+  return players_.Get(index);
+}
+inline ::Player* RoomInfo::mutable_players(int index) {
+  // @@protoc_insertion_point(field_mutable:RoomInfo.players)
+  return players_.Mutable(index);
+}
+inline ::Player* RoomInfo::add_players() {
+  // @@protoc_insertion_point(field_add:RoomInfo.players)
+  return players_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::Player >&
+RoomInfo::players() const {
+  // @@protoc_insertion_point(field_list:RoomInfo.players)
+  return players_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::Player >*
+RoomInfo::mutable_players() {
+  // @@protoc_insertion_point(field_mutable_list:RoomInfo.players)
+  return &players_;
+}
+
+// repeated .FoodArea foodAreas = 6;
+inline int RoomInfo::foodareas_size() const {
+  return foodareas_.size();
+}
+inline void RoomInfo::clear_foodareas() {
+  foodareas_.Clear();
+}
+inline const ::FoodArea& RoomInfo::foodareas(int index) const {
+  // @@protoc_insertion_point(field_get:RoomInfo.foodAreas)
+  return foodareas_.Get(index);
+}
+inline ::FoodArea* RoomInfo::mutable_foodareas(int index) {
+  // @@protoc_insertion_point(field_mutable:RoomInfo.foodAreas)
+  return foodareas_.Mutable(index);
+}
+inline ::FoodArea* RoomInfo::add_foodareas() {
+  // @@protoc_insertion_point(field_add:RoomInfo.foodAreas)
+  return foodareas_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::FoodArea >&
+RoomInfo::foodareas() const {
+  // @@protoc_insertion_point(field_list:RoomInfo.foodAreas)
+  return foodareas_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::FoodArea >*
+RoomInfo::mutable_foodareas() {
+  // @@protoc_insertion_point(field_mutable_list:RoomInfo.foodAreas)
+  return &foodareas_;
+}
+
+// repeated .RankItem rankItems = 7;
+inline int RoomInfo::rankitems_size() const {
+  return rankitems_.size();
+}
+inline void RoomInfo::clear_rankitems() {
+  rankitems_.Clear();
+}
+inline const ::RankItem& RoomInfo::rankitems(int index) const {
+  // @@protoc_insertion_point(field_get:RoomInfo.rankItems)
+  return rankitems_.Get(index);
+}
+inline ::RankItem* RoomInfo::mutable_rankitems(int index) {
+  // @@protoc_insertion_point(field_mutable:RoomInfo.rankItems)
+  return rankitems_.Mutable(index);
+}
+inline ::RankItem* RoomInfo::add_rankitems() {
+  // @@protoc_insertion_point(field_add:RoomInfo.rankItems)
+  return rankitems_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::RankItem >&
+RoomInfo::rankitems() const {
+  // @@protoc_insertion_point(field_list:RoomInfo.rankItems)
+  return rankitems_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::RankItem >*
+RoomInfo::mutable_rankitems() {
+  // @@protoc_insertion_point(field_mutable_list:RoomInfo.rankItems)
+  return &rankitems_;
+}
+
+// repeated .Asylum asylums = 8;
+inline int RoomInfo::asylums_size() const {
+  return asylums_.size();
+}
+inline void RoomInfo::clear_asylums() {
+  asylums_.Clear();
+}
+inline const ::Asylum& RoomInfo::asylums(int index) const {
+  // @@protoc_insertion_point(field_get:RoomInfo.asylums)
+  return asylums_.Get(index);
+}
+inline ::Asylum* RoomInfo::mutable_asylums(int index) {
+  // @@protoc_insertion_point(field_mutable:RoomInfo.asylums)
+  return asylums_.Mutable(index);
+}
+inline ::Asylum* RoomInfo::add_asylums() {
+  // @@protoc_insertion_point(field_add:RoomInfo.asylums)
+  return asylums_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::Asylum >&
+RoomInfo::asylums() const {
+  // @@protoc_insertion_point(field_list:RoomInfo.asylums)
+  return asylums_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::Asylum >*
+RoomInfo::mutable_asylums() {
+  // @@protoc_insertion_point(field_mutable_list:RoomInfo.asylums)
+  return &asylums_;
+}
+
+// -------------------------------------------------------------------
+
+// PlayerListResponse
+
+// repeated .Player allPlayers = 1;
+inline int PlayerListResponse::allplayers_size() const {
+  return allplayers_.size();
+}
+inline void PlayerListResponse::clear_allplayers() {
+  allplayers_.Clear();
+}
+inline const ::Player& PlayerListResponse::allplayers(int index) const {
+  // @@protoc_insertion_point(field_get:PlayerListResponse.allPlayers)
+  return allplayers_.Get(index);
+}
+inline ::Player* PlayerListResponse::mutable_allplayers(int index) {
+  // @@protoc_insertion_point(field_mutable:PlayerListResponse.allPlayers)
+  return allplayers_.Mutable(index);
+}
+inline ::Player* PlayerListResponse::add_allplayers() {
+  // @@protoc_insertion_point(field_add:PlayerListResponse.allPlayers)
+  return allplayers_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::Player >&
+PlayerListResponse::allplayers() const {
+  // @@protoc_insertion_point(field_list:PlayerListResponse.allPlayers)
+  return allplayers_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::Player >*
+PlayerListResponse::mutable_allplayers() {
+  // @@protoc_insertion_point(field_mutable_list:PlayerListResponse.allPlayers)
+  return &allplayers_;
+}
+
+// repeated .Player removePlayers = 2;
+inline int PlayerListResponse::removeplayers_size() const {
+  return removeplayers_.size();
+}
+inline void PlayerListResponse::clear_removeplayers() {
+  removeplayers_.Clear();
+}
+inline const ::Player& PlayerListResponse::removeplayers(int index) const {
+  // @@protoc_insertion_point(field_get:PlayerListResponse.removePlayers)
+  return removeplayers_.Get(index);
+}
+inline ::Player* PlayerListResponse::mutable_removeplayers(int index) {
+  // @@protoc_insertion_point(field_mutable:PlayerListResponse.removePlayers)
+  return removeplayers_.Mutable(index);
+}
+inline ::Player* PlayerListResponse::add_removeplayers() {
+  // @@protoc_insertion_point(field_add:PlayerListResponse.removePlayers)
+  return removeplayers_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::Player >&
+PlayerListResponse::removeplayers() const {
+  // @@protoc_insertion_point(field_list:PlayerListResponse.removePlayers)
+  return removeplayers_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::Player >*
+PlayerListResponse::mutable_removeplayers() {
+  // @@protoc_insertion_point(field_mutable_list:PlayerListResponse.removePlayers)
+  return &removeplayers_;
+}
+
+// repeated .Player newPlayers = 3;
+inline int PlayerListResponse::newplayers_size() const {
+  return newplayers_.size();
+}
+inline void PlayerListResponse::clear_newplayers() {
+  newplayers_.Clear();
+}
+inline const ::Player& PlayerListResponse::newplayers(int index) const {
+  // @@protoc_insertion_point(field_get:PlayerListResponse.newPlayers)
+  return newplayers_.Get(index);
+}
+inline ::Player* PlayerListResponse::mutable_newplayers(int index) {
+  // @@protoc_insertion_point(field_mutable:PlayerListResponse.newPlayers)
+  return newplayers_.Mutable(index);
+}
+inline ::Player* PlayerListResponse::add_newplayers() {
+  // @@protoc_insertion_point(field_add:PlayerListResponse.newPlayers)
+  return newplayers_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::Player >&
+PlayerListResponse::newplayers() const {
+  // @@protoc_insertion_point(field_list:PlayerListResponse.newPlayers)
+  return newplayers_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::Player >*
+PlayerListResponse::mutable_newplayers() {
+  // @@protoc_insertion_point(field_mutable_list:PlayerListResponse.newPlayers)
+  return &newplayers_;
+}
+
+// repeated .Player changePlayers = 4;
+inline int PlayerListResponse::changeplayers_size() const {
+  return changeplayers_.size();
+}
+inline void PlayerListResponse::clear_changeplayers() {
+  changeplayers_.Clear();
+}
+inline const ::Player& PlayerListResponse::changeplayers(int index) const {
+  // @@protoc_insertion_point(field_get:PlayerListResponse.changePlayers)
+  return changeplayers_.Get(index);
+}
+inline ::Player* PlayerListResponse::mutable_changeplayers(int index) {
+  // @@protoc_insertion_point(field_mutable:PlayerListResponse.changePlayers)
+  return changeplayers_.Mutable(index);
+}
+inline ::Player* PlayerListResponse::add_changeplayers() {
+  // @@protoc_insertion_point(field_add:PlayerListResponse.changePlayers)
+  return changeplayers_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::Player >&
+PlayerListResponse::changeplayers() const {
+  // @@protoc_insertion_point(field_list:PlayerListResponse.changePlayers)
+  return changeplayers_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::Player >*
+PlayerListResponse::mutable_changeplayers() {
+  // @@protoc_insertion_point(field_mutable_list:PlayerListResponse.changePlayers)
+  return &changeplayers_;
+}
+
+// -------------------------------------------------------------------
+
+// FoodChangeResponse
+
+// required int32 type = 1;
+inline bool FoodChangeResponse::has_type() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void FoodChangeResponse::set_has_type() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void FoodChangeResponse::clear_has_type() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void FoodChangeResponse::clear_type() {
+  type_ = 0;
+  clear_has_type();
+}
+inline ::google::protobuf::int32 FoodChangeResponse::type() const {
+  // @@protoc_insertion_point(field_get:FoodChangeResponse.type)
+  return type_;
+}
+inline void FoodChangeResponse::set_type(::google::protobuf::int32 value) {
+  set_has_type();
+  type_ = value;
+  // @@protoc_insertion_point(field_set:FoodChangeResponse.type)
+}
+
+// repeated .FoodArea foodAreas = 2;
+inline int FoodChangeResponse::foodareas_size() const {
+  return foodareas_.size();
+}
+inline void FoodChangeResponse::clear_foodareas() {
+  foodareas_.Clear();
+}
+inline const ::FoodArea& FoodChangeResponse::foodareas(int index) const {
+  // @@protoc_insertion_point(field_get:FoodChangeResponse.foodAreas)
+  return foodareas_.Get(index);
+}
+inline ::FoodArea* FoodChangeResponse::mutable_foodareas(int index) {
+  // @@protoc_insertion_point(field_mutable:FoodChangeResponse.foodAreas)
+  return foodareas_.Mutable(index);
+}
+inline ::FoodArea* FoodChangeResponse::add_foodareas() {
+  // @@protoc_insertion_point(field_add:FoodChangeResponse.foodAreas)
+  return foodareas_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::FoodArea >&
+FoodChangeResponse::foodareas() const {
+  // @@protoc_insertion_point(field_list:FoodChangeResponse.foodAreas)
+  return foodareas_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::FoodArea >*
+FoodChangeResponse::mutable_foodareas() {
+  // @@protoc_insertion_point(field_mutable_list:FoodChangeResponse.foodAreas)
+  return &foodareas_;
+}
+
+// -------------------------------------------------------------------
+
+// FoodArea
+
+// optional int32 areaId = 1;
+inline bool FoodArea::has_areaid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void FoodArea::set_has_areaid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void FoodArea::clear_has_areaid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void FoodArea::clear_areaid() {
+  areaid_ = 0;
+  clear_has_areaid();
+}
+inline ::google::protobuf::int32 FoodArea::areaid() const {
+  // @@protoc_insertion_point(field_get:FoodArea.areaId)
+  return areaid_;
+}
+inline void FoodArea::set_areaid(::google::protobuf::int32 value) {
+  set_has_areaid();
+  areaid_ = value;
+  // @@protoc_insertion_point(field_set:FoodArea.areaId)
+}
+
+// optional int32 x = 2;
+inline bool FoodArea::has_x() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void FoodArea::set_has_x() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void FoodArea::clear_has_x() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void FoodArea::clear_x() {
+  x_ = 0;
+  clear_has_x();
+}
+inline ::google::protobuf::int32 FoodArea::x() const {
+  // @@protoc_insertion_point(field_get:FoodArea.x)
+  return x_;
+}
+inline void FoodArea::set_x(::google::protobuf::int32 value) {
+  set_has_x();
+  x_ = value;
+  // @@protoc_insertion_point(field_set:FoodArea.x)
+}
+
+// optional int32 y = 3;
+inline bool FoodArea::has_y() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void FoodArea::set_has_y() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void FoodArea::clear_has_y() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void FoodArea::clear_y() {
+  y_ = 0;
+  clear_has_y();
+}
+inline ::google::protobuf::int32 FoodArea::y() const {
+  // @@protoc_insertion_point(field_get:FoodArea.y)
+  return y_;
+}
+inline void FoodArea::set_y(::google::protobuf::int32 value) {
+  set_has_y();
+  y_ = value;
+  // @@protoc_insertion_point(field_set:FoodArea.y)
+}
+
+// optional int32 width = 4;
+inline bool FoodArea::has_width() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void FoodArea::set_has_width() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void FoodArea::clear_has_width() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void FoodArea::clear_width() {
+  width_ = 0;
+  clear_has_width();
+}
+inline ::google::protobuf::int32 FoodArea::width() const {
+  // @@protoc_insertion_point(field_get:FoodArea.width)
+  return width_;
+}
+inline void FoodArea::set_width(::google::protobuf::int32 value) {
+  set_has_width();
+  width_ = value;
+  // @@protoc_insertion_point(field_set:FoodArea.width)
+}
+
+// optional int32 height = 5;
+inline bool FoodArea::has_height() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void FoodArea::set_has_height() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void FoodArea::clear_has_height() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void FoodArea::clear_height() {
+  height_ = 0;
+  clear_has_height();
+}
+inline ::google::protobuf::int32 FoodArea::height() const {
+  // @@protoc_insertion_point(field_get:FoodArea.height)
+  return height_;
+}
+inline void FoodArea::set_height(::google::protobuf::int32 value) {
+  set_has_height();
+  height_ = value;
+  // @@protoc_insertion_point(field_set:FoodArea.height)
+}
+
+// repeated .Food foods = 6;
+inline int FoodArea::foods_size() const {
+  return foods_.size();
+}
+inline void FoodArea::clear_foods() {
+  foods_.Clear();
+}
+inline const ::Food& FoodArea::foods(int index) const {
+  // @@protoc_insertion_point(field_get:FoodArea.foods)
+  return foods_.Get(index);
+}
+inline ::Food* FoodArea::mutable_foods(int index) {
+  // @@protoc_insertion_point(field_mutable:FoodArea.foods)
+  return foods_.Mutable(index);
+}
+inline ::Food* FoodArea::add_foods() {
+  // @@protoc_insertion_point(field_add:FoodArea.foods)
+  return foods_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::Food >&
+FoodArea::foods() const {
+  // @@protoc_insertion_point(field_list:FoodArea.foods)
+  return foods_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::Food >*
+FoodArea::mutable_foods() {
+  // @@protoc_insertion_point(field_mutable_list:FoodArea.foods)
+  return &foods_;
+}
+
+// -------------------------------------------------------------------
+
+// RemainTimeResponse
+
+// required int32 remain = 1;
+inline bool RemainTimeResponse::has_remain() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void RemainTimeResponse::set_has_remain() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void RemainTimeResponse::clear_has_remain() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void RemainTimeResponse::clear_remain() {
+  remain_ = 0;
+  clear_has_remain();
+}
+inline ::google::protobuf::int32 RemainTimeResponse::remain() const {
+  // @@protoc_insertion_point(field_get:RemainTimeResponse.remain)
+  return remain_;
+}
+inline void RemainTimeResponse::set_remain(::google::protobuf::int32 value) {
+  set_has_remain();
+  remain_ = value;
+  // @@protoc_insertion_point(field_set:RemainTimeResponse.remain)
+}
+
+// -------------------------------------------------------------------
+
+// RankListResponse
+
+// repeated .RankItem rankItems = 1;
+inline int RankListResponse::rankitems_size() const {
+  return rankitems_.size();
+}
+inline void RankListResponse::clear_rankitems() {
+  rankitems_.Clear();
+}
+inline const ::RankItem& RankListResponse::rankitems(int index) const {
+  // @@protoc_insertion_point(field_get:RankListResponse.rankItems)
+  return rankitems_.Get(index);
+}
+inline ::RankItem* RankListResponse::mutable_rankitems(int index) {
+  // @@protoc_insertion_point(field_mutable:RankListResponse.rankItems)
+  return rankitems_.Mutable(index);
+}
+inline ::RankItem* RankListResponse::add_rankitems() {
+  // @@protoc_insertion_point(field_add:RankListResponse.rankItems)
+  return rankitems_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::RankItem >&
+RankListResponse::rankitems() const {
+  // @@protoc_insertion_point(field_list:RankListResponse.rankItems)
+  return rankitems_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::RankItem >*
+RankListResponse::mutable_rankitems() {
+  // @@protoc_insertion_point(field_mutable_list:RankListResponse.rankItems)
+  return &rankitems_;
+}
+
+// -------------------------------------------------------------------
+
+// GameStateResponse
+
+// required int32 state = 1;
+inline bool GameStateResponse::has_state() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void GameStateResponse::set_has_state() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void GameStateResponse::clear_has_state() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void GameStateResponse::clear_state() {
+  state_ = 0;
+  clear_has_state();
+}
+inline ::google::protobuf::int32 GameStateResponse::state() const {
+  // @@protoc_insertion_point(field_get:GameStateResponse.state)
+  return state_;
+}
+inline void GameStateResponse::set_state(::google::protobuf::int32 value) {
+  set_has_state();
+  state_ = value;
+  // @@protoc_insertion_point(field_set:GameStateResponse.state)
+}
+
+// optional string roomId = 2;
+inline bool GameStateResponse::has_roomid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void GameStateResponse::set_has_roomid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void GameStateResponse::clear_has_roomid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void GameStateResponse::clear_roomid() {
+  if (roomid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    roomid_->clear();
+  }
+  clear_has_roomid();
+}
+inline const ::std::string& GameStateResponse::roomid() const {
+  // @@protoc_insertion_point(field_get:GameStateResponse.roomId)
+  return *roomid_;
+}
+inline void GameStateResponse::set_roomid(const ::std::string& value) {
+  set_has_roomid();
+  if (roomid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    roomid_ = new ::std::string;
+  }
+  roomid_->assign(value);
+  // @@protoc_insertion_point(field_set:GameStateResponse.roomId)
+}
+inline void GameStateResponse::set_roomid(const char* value) {
+  set_has_roomid();
+  if (roomid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    roomid_ = new ::std::string;
+  }
+  roomid_->assign(value);
+  // @@protoc_insertion_point(field_set_char:GameStateResponse.roomId)
+}
+inline void GameStateResponse::set_roomid(const char* value, size_t size) {
+  set_has_roomid();
+  if (roomid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    roomid_ = new ::std::string;
+  }
+  roomid_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:GameStateResponse.roomId)
+}
+inline ::std::string* GameStateResponse::mutable_roomid() {
+  set_has_roomid();
+  if (roomid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    roomid_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:GameStateResponse.roomId)
+  return roomid_;
+}
+inline ::std::string* GameStateResponse::release_roomid() {
+  clear_has_roomid();
+  if (roomid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = roomid_;
+    roomid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void GameStateResponse::set_allocated_roomid(::std::string* roomid) {
+  if (roomid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete roomid_;
+  }
+  if (roomid) {
+    set_has_roomid();
+    roomid_ = roomid;
+  } else {
+    clear_has_roomid();
+    roomid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:GameStateResponse.roomId)
+}
+
+// -------------------------------------------------------------------
+
+// GameReadyRequest
+
+// optional string roomId = 1;
+inline bool GameReadyRequest::has_roomid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void GameReadyRequest::set_has_roomid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void GameReadyRequest::clear_has_roomid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void GameReadyRequest::clear_roomid() {
+  if (roomid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    roomid_->clear();
+  }
+  clear_has_roomid();
+}
+inline const ::std::string& GameReadyRequest::roomid() const {
+  // @@protoc_insertion_point(field_get:GameReadyRequest.roomId)
+  return *roomid_;
+}
+inline void GameReadyRequest::set_roomid(const ::std::string& value) {
+  set_has_roomid();
+  if (roomid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    roomid_ = new ::std::string;
+  }
+  roomid_->assign(value);
+  // @@protoc_insertion_point(field_set:GameReadyRequest.roomId)
+}
+inline void GameReadyRequest::set_roomid(const char* value) {
+  set_has_roomid();
+  if (roomid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    roomid_ = new ::std::string;
+  }
+  roomid_->assign(value);
+  // @@protoc_insertion_point(field_set_char:GameReadyRequest.roomId)
+}
+inline void GameReadyRequest::set_roomid(const char* value, size_t size) {
+  set_has_roomid();
+  if (roomid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    roomid_ = new ::std::string;
+  }
+  roomid_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:GameReadyRequest.roomId)
+}
+inline ::std::string* GameReadyRequest::mutable_roomid() {
+  set_has_roomid();
+  if (roomid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    roomid_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:GameReadyRequest.roomId)
+  return roomid_;
+}
+inline ::std::string* GameReadyRequest::release_roomid() {
+  clear_has_roomid();
+  if (roomid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = roomid_;
+    roomid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void GameReadyRequest::set_allocated_roomid(::std::string* roomid) {
+  if (roomid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete roomid_;
+  }
+  if (roomid) {
+    set_has_roomid();
+    roomid_ = roomid;
+  } else {
+    clear_has_roomid();
+    roomid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:GameReadyRequest.roomId)
+}
+
+// optional .User user = 2;
+inline bool GameReadyRequest::has_user() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void GameReadyRequest::set_has_user() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void GameReadyRequest::clear_has_user() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void GameReadyRequest::clear_user() {
+  if (user_ != NULL) user_->::User::Clear();
+  clear_has_user();
+}
+inline const ::User& GameReadyRequest::user() const {
+  // @@protoc_insertion_point(field_get:GameReadyRequest.user)
+  return user_ != NULL ? *user_ : *default_instance_->user_;
+}
+inline ::User* GameReadyRequest::mutable_user() {
+  set_has_user();
+  if (user_ == NULL) user_ = new ::User;
+  // @@protoc_insertion_point(field_mutable:GameReadyRequest.user)
+  return user_;
+}
+inline ::User* GameReadyRequest::release_user() {
+  clear_has_user();
+  ::User* temp = user_;
+  user_ = NULL;
+  return temp;
+}
+inline void GameReadyRequest::set_allocated_user(::User* user) {
+  delete user_;
+  user_ = user;
+  if (user) {
+    set_has_user();
+  } else {
+    clear_has_user();
+  }
+  // @@protoc_insertion_point(field_set_allocated:GameReadyRequest.user)
+}
+
+// -------------------------------------------------------------------
+
+// PlayerRenewalRequest
+
+// optional int32 type = 1;
+inline bool PlayerRenewalRequest::has_type() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void PlayerRenewalRequest::set_has_type() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void PlayerRenewalRequest::clear_has_type() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void PlayerRenewalRequest::clear_type() {
+  type_ = 0;
+  clear_has_type();
+}
+inline ::google::protobuf::int32 PlayerRenewalRequest::type() const {
+  // @@protoc_insertion_point(field_get:PlayerRenewalRequest.type)
+  return type_;
+}
+inline void PlayerRenewalRequest::set_type(::google::protobuf::int32 value) {
+  set_has_type();
+  type_ = value;
+  // @@protoc_insertion_point(field_set:PlayerRenewalRequest.type)
+}
+
+// -------------------------------------------------------------------
+
+// PlayerRenewalResponse
+
+// -------------------------------------------------------------------
+
+// Asylum
+
+// required int32 id = 1;
+inline bool Asylum::has_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void Asylum::set_has_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void Asylum::clear_has_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void Asylum::clear_id() {
+  id_ = 0;
+  clear_has_id();
+}
+inline ::google::protobuf::int32 Asylum::id() const {
+  // @@protoc_insertion_point(field_get:Asylum.id)
+  return id_;
+}
+inline void Asylum::set_id(::google::protobuf::int32 value) {
+  set_has_id();
+  id_ = value;
+  // @@protoc_insertion_point(field_set:Asylum.id)
+}
+
+// optional int32 skin = 2;
+inline bool Asylum::has_skin() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void Asylum::set_has_skin() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void Asylum::clear_has_skin() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void Asylum::clear_skin() {
+  skin_ = 0;
+  clear_has_skin();
+}
+inline ::google::protobuf::int32 Asylum::skin() const {
+  // @@protoc_insertion_point(field_get:Asylum.skin)
+  return skin_;
+}
+inline void Asylum::set_skin(::google::protobuf::int32 value) {
+  set_has_skin();
+  skin_ = value;
+  // @@protoc_insertion_point(field_set:Asylum.skin)
+}
+
+// optional float x = 3;
+inline bool Asylum::has_x() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void Asylum::set_has_x() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void Asylum::clear_has_x() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void Asylum::clear_x() {
+  x_ = 0;
+  clear_has_x();
+}
+inline float Asylum::x() const {
+  // @@protoc_insertion_point(field_get:Asylum.x)
+  return x_;
+}
+inline void Asylum::set_x(float value) {
+  set_has_x();
+  x_ = value;
+  // @@protoc_insertion_point(field_set:Asylum.x)
+}
+
+// optional float y = 4;
+inline bool Asylum::has_y() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void Asylum::set_has_y() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void Asylum::clear_has_y() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void Asylum::clear_y() {
+  y_ = 0;
+  clear_has_y();
+}
+inline float Asylum::y() const {
+  // @@protoc_insertion_point(field_get:Asylum.y)
+  return y_;
+}
+inline void Asylum::set_y(float value) {
+  set_has_y();
+  y_ = value;
+  // @@protoc_insertion_point(field_set:Asylum.y)
+}
+
+// optional float radius = 5;
+inline bool Asylum::has_radius() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void Asylum::set_has_radius() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void Asylum::clear_has_radius() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void Asylum::clear_radius() {
+  radius_ = 0;
+  clear_has_radius();
+}
+inline float Asylum::radius() const {
+  // @@protoc_insertion_point(field_get:Asylum.radius)
+  return radius_;
+}
+inline void Asylum::set_radius(float value) {
+  set_has_radius();
+  radius_ = value;
+  // @@protoc_insertion_point(field_set:Asylum.radius)
+}
+
+// -------------------------------------------------------------------
+
+// UltimateSkill
+
+// required int32 id = 1;
+inline bool UltimateSkill::has_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void UltimateSkill::set_has_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void UltimateSkill::clear_has_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void UltimateSkill::clear_id() {
+  id_ = 0;
+  clear_has_id();
+}
+inline ::google::protobuf::int32 UltimateSkill::id() const {
+  // @@protoc_insertion_point(field_get:UltimateSkill.id)
+  return id_;
+}
+inline void UltimateSkill::set_id(::google::protobuf::int32 value) {
+  set_has_id();
+  id_ = value;
+  // @@protoc_insertion_point(field_set:UltimateSkill.id)
+}
+
+// optional int32 foodId = 2;
+inline bool UltimateSkill::has_foodid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void UltimateSkill::set_has_foodid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void UltimateSkill::clear_has_foodid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void UltimateSkill::clear_foodid() {
+  foodid_ = 0;
+  clear_has_foodid();
+}
+inline ::google::protobuf::int32 UltimateSkill::foodid() const {
+  // @@protoc_insertion_point(field_get:UltimateSkill.foodId)
+  return foodid_;
+}
+inline void UltimateSkill::set_foodid(::google::protobuf::int32 value) {
+  set_has_foodid();
+  foodid_ = value;
+  // @@protoc_insertion_point(field_set:UltimateSkill.foodId)
+}
+
+// -------------------------------------------------------------------
+
 // MessageInfo
 
 // required int32 service = 1;
@@ -6991,7 +9597,7 @@ inline void MessageInfo::set_allocated_matchstartresponse(::MatchStartResponse* 
   // @@protoc_insertion_point(field_set_allocated:MessageInfo.matchStartResponse)
 }
 
-// optional .PLayerListResponse pLayerListResponse = 10;
+// optional .PlayerListResponse playerListResponse = 10;
 inline bool MessageInfo::has_playerlistresponse() const {
   return (_has_bits_[0] & 0x00000400u) != 0;
 }
@@ -7002,26 +9608,26 @@ inline void MessageInfo::clear_has_playerlistresponse() {
   _has_bits_[0] &= ~0x00000400u;
 }
 inline void MessageInfo::clear_playerlistresponse() {
-  if (playerlistresponse_ != NULL) playerlistresponse_->::PLayerListResponse::Clear();
+  if (playerlistresponse_ != NULL) playerlistresponse_->::PlayerListResponse::Clear();
   clear_has_playerlistresponse();
 }
-inline const ::PLayerListResponse& MessageInfo::playerlistresponse() const {
-  // @@protoc_insertion_point(field_get:MessageInfo.pLayerListResponse)
+inline const ::PlayerListResponse& MessageInfo::playerlistresponse() const {
+  // @@protoc_insertion_point(field_get:MessageInfo.playerListResponse)
   return playerlistresponse_ != NULL ? *playerlistresponse_ : *default_instance_->playerlistresponse_;
 }
-inline ::PLayerListResponse* MessageInfo::mutable_playerlistresponse() {
+inline ::PlayerListResponse* MessageInfo::mutable_playerlistresponse() {
   set_has_playerlistresponse();
-  if (playerlistresponse_ == NULL) playerlistresponse_ = new ::PLayerListResponse;
-  // @@protoc_insertion_point(field_mutable:MessageInfo.pLayerListResponse)
+  if (playerlistresponse_ == NULL) playerlistresponse_ = new ::PlayerListResponse;
+  // @@protoc_insertion_point(field_mutable:MessageInfo.playerListResponse)
   return playerlistresponse_;
 }
-inline ::PLayerListResponse* MessageInfo::release_playerlistresponse() {
+inline ::PlayerListResponse* MessageInfo::release_playerlistresponse() {
   clear_has_playerlistresponse();
-  ::PLayerListResponse* temp = playerlistresponse_;
+  ::PlayerListResponse* temp = playerlistresponse_;
   playerlistresponse_ = NULL;
   return temp;
 }
-inline void MessageInfo::set_allocated_playerlistresponse(::PLayerListResponse* playerlistresponse) {
+inline void MessageInfo::set_allocated_playerlistresponse(::PlayerListResponse* playerlistresponse) {
   delete playerlistresponse_;
   playerlistresponse_ = playerlistresponse;
   if (playerlistresponse) {
@@ -7029,7 +9635,7 @@ inline void MessageInfo::set_allocated_playerlistresponse(::PLayerListResponse* 
   } else {
     clear_has_playerlistresponse();
   }
-  // @@protoc_insertion_point(field_set_allocated:MessageInfo.pLayerListResponse)
+  // @@protoc_insertion_point(field_set_allocated:MessageInfo.playerListResponse)
 }
 
 // optional .FoodChangeResponse foodChangeResponse = 11;
@@ -9253,2430 +11859,6 @@ inline void MatchStartResponse::set_allocated_roominfo(::RoomInfo* roominfo) {
 
 // -------------------------------------------------------------------
 
-// PLayerListResponse
-
-// repeated .Player allPlayers = 1;
-inline int PLayerListResponse::allplayers_size() const {
-  return allplayers_.size();
-}
-inline void PLayerListResponse::clear_allplayers() {
-  allplayers_.Clear();
-}
-inline const ::Player& PLayerListResponse::allplayers(int index) const {
-  // @@protoc_insertion_point(field_get:PLayerListResponse.allPlayers)
-  return allplayers_.Get(index);
-}
-inline ::Player* PLayerListResponse::mutable_allplayers(int index) {
-  // @@protoc_insertion_point(field_mutable:PLayerListResponse.allPlayers)
-  return allplayers_.Mutable(index);
-}
-inline ::Player* PLayerListResponse::add_allplayers() {
-  // @@protoc_insertion_point(field_add:PLayerListResponse.allPlayers)
-  return allplayers_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::Player >&
-PLayerListResponse::allplayers() const {
-  // @@protoc_insertion_point(field_list:PLayerListResponse.allPlayers)
-  return allplayers_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::Player >*
-PLayerListResponse::mutable_allplayers() {
-  // @@protoc_insertion_point(field_mutable_list:PLayerListResponse.allPlayers)
-  return &allplayers_;
-}
-
-// repeated .Player removePlayers = 2;
-inline int PLayerListResponse::removeplayers_size() const {
-  return removeplayers_.size();
-}
-inline void PLayerListResponse::clear_removeplayers() {
-  removeplayers_.Clear();
-}
-inline const ::Player& PLayerListResponse::removeplayers(int index) const {
-  // @@protoc_insertion_point(field_get:PLayerListResponse.removePlayers)
-  return removeplayers_.Get(index);
-}
-inline ::Player* PLayerListResponse::mutable_removeplayers(int index) {
-  // @@protoc_insertion_point(field_mutable:PLayerListResponse.removePlayers)
-  return removeplayers_.Mutable(index);
-}
-inline ::Player* PLayerListResponse::add_removeplayers() {
-  // @@protoc_insertion_point(field_add:PLayerListResponse.removePlayers)
-  return removeplayers_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::Player >&
-PLayerListResponse::removeplayers() const {
-  // @@protoc_insertion_point(field_list:PLayerListResponse.removePlayers)
-  return removeplayers_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::Player >*
-PLayerListResponse::mutable_removeplayers() {
-  // @@protoc_insertion_point(field_mutable_list:PLayerListResponse.removePlayers)
-  return &removeplayers_;
-}
-
-// repeated .Player newPlayers = 3;
-inline int PLayerListResponse::newplayers_size() const {
-  return newplayers_.size();
-}
-inline void PLayerListResponse::clear_newplayers() {
-  newplayers_.Clear();
-}
-inline const ::Player& PLayerListResponse::newplayers(int index) const {
-  // @@protoc_insertion_point(field_get:PLayerListResponse.newPlayers)
-  return newplayers_.Get(index);
-}
-inline ::Player* PLayerListResponse::mutable_newplayers(int index) {
-  // @@protoc_insertion_point(field_mutable:PLayerListResponse.newPlayers)
-  return newplayers_.Mutable(index);
-}
-inline ::Player* PLayerListResponse::add_newplayers() {
-  // @@protoc_insertion_point(field_add:PLayerListResponse.newPlayers)
-  return newplayers_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::Player >&
-PLayerListResponse::newplayers() const {
-  // @@protoc_insertion_point(field_list:PLayerListResponse.newPlayers)
-  return newplayers_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::Player >*
-PLayerListResponse::mutable_newplayers() {
-  // @@protoc_insertion_point(field_mutable_list:PLayerListResponse.newPlayers)
-  return &newplayers_;
-}
-
-// repeated .Player changePlayers = 4;
-inline int PLayerListResponse::changeplayers_size() const {
-  return changeplayers_.size();
-}
-inline void PLayerListResponse::clear_changeplayers() {
-  changeplayers_.Clear();
-}
-inline const ::Player& PLayerListResponse::changeplayers(int index) const {
-  // @@protoc_insertion_point(field_get:PLayerListResponse.changePlayers)
-  return changeplayers_.Get(index);
-}
-inline ::Player* PLayerListResponse::mutable_changeplayers(int index) {
-  // @@protoc_insertion_point(field_mutable:PLayerListResponse.changePlayers)
-  return changeplayers_.Mutable(index);
-}
-inline ::Player* PLayerListResponse::add_changeplayers() {
-  // @@protoc_insertion_point(field_add:PLayerListResponse.changePlayers)
-  return changeplayers_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::Player >&
-PLayerListResponse::changeplayers() const {
-  // @@protoc_insertion_point(field_list:PLayerListResponse.changePlayers)
-  return changeplayers_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::Player >*
-PLayerListResponse::mutable_changeplayers() {
-  // @@protoc_insertion_point(field_mutable_list:PLayerListResponse.changePlayers)
-  return &changeplayers_;
-}
-
-// -------------------------------------------------------------------
-
-// FoodChangeResponse
-
-// required int32 type = 1;
-inline bool FoodChangeResponse::has_type() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void FoodChangeResponse::set_has_type() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void FoodChangeResponse::clear_has_type() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void FoodChangeResponse::clear_type() {
-  type_ = 0;
-  clear_has_type();
-}
-inline ::google::protobuf::int32 FoodChangeResponse::type() const {
-  // @@protoc_insertion_point(field_get:FoodChangeResponse.type)
-  return type_;
-}
-inline void FoodChangeResponse::set_type(::google::protobuf::int32 value) {
-  set_has_type();
-  type_ = value;
-  // @@protoc_insertion_point(field_set:FoodChangeResponse.type)
-}
-
-// repeated .FoodArea foodAreas = 2;
-inline int FoodChangeResponse::foodareas_size() const {
-  return foodareas_.size();
-}
-inline void FoodChangeResponse::clear_foodareas() {
-  foodareas_.Clear();
-}
-inline const ::FoodArea& FoodChangeResponse::foodareas(int index) const {
-  // @@protoc_insertion_point(field_get:FoodChangeResponse.foodAreas)
-  return foodareas_.Get(index);
-}
-inline ::FoodArea* FoodChangeResponse::mutable_foodareas(int index) {
-  // @@protoc_insertion_point(field_mutable:FoodChangeResponse.foodAreas)
-  return foodareas_.Mutable(index);
-}
-inline ::FoodArea* FoodChangeResponse::add_foodareas() {
-  // @@protoc_insertion_point(field_add:FoodChangeResponse.foodAreas)
-  return foodareas_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::FoodArea >&
-FoodChangeResponse::foodareas() const {
-  // @@protoc_insertion_point(field_list:FoodChangeResponse.foodAreas)
-  return foodareas_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::FoodArea >*
-FoodChangeResponse::mutable_foodareas() {
-  // @@protoc_insertion_point(field_mutable_list:FoodChangeResponse.foodAreas)
-  return &foodareas_;
-}
-
-// -------------------------------------------------------------------
-
-// FoodArea
-
-// optional int32 areaId = 1;
-inline bool FoodArea::has_areaid() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void FoodArea::set_has_areaid() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void FoodArea::clear_has_areaid() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void FoodArea::clear_areaid() {
-  areaid_ = 0;
-  clear_has_areaid();
-}
-inline ::google::protobuf::int32 FoodArea::areaid() const {
-  // @@protoc_insertion_point(field_get:FoodArea.areaId)
-  return areaid_;
-}
-inline void FoodArea::set_areaid(::google::protobuf::int32 value) {
-  set_has_areaid();
-  areaid_ = value;
-  // @@protoc_insertion_point(field_set:FoodArea.areaId)
-}
-
-// optional int32 x = 2;
-inline bool FoodArea::has_x() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void FoodArea::set_has_x() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void FoodArea::clear_has_x() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void FoodArea::clear_x() {
-  x_ = 0;
-  clear_has_x();
-}
-inline ::google::protobuf::int32 FoodArea::x() const {
-  // @@protoc_insertion_point(field_get:FoodArea.x)
-  return x_;
-}
-inline void FoodArea::set_x(::google::protobuf::int32 value) {
-  set_has_x();
-  x_ = value;
-  // @@protoc_insertion_point(field_set:FoodArea.x)
-}
-
-// optional int32 y = 3;
-inline bool FoodArea::has_y() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void FoodArea::set_has_y() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void FoodArea::clear_has_y() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void FoodArea::clear_y() {
-  y_ = 0;
-  clear_has_y();
-}
-inline ::google::protobuf::int32 FoodArea::y() const {
-  // @@protoc_insertion_point(field_get:FoodArea.y)
-  return y_;
-}
-inline void FoodArea::set_y(::google::protobuf::int32 value) {
-  set_has_y();
-  y_ = value;
-  // @@protoc_insertion_point(field_set:FoodArea.y)
-}
-
-// optional int32 width = 4;
-inline bool FoodArea::has_width() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void FoodArea::set_has_width() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void FoodArea::clear_has_width() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void FoodArea::clear_width() {
-  width_ = 0;
-  clear_has_width();
-}
-inline ::google::protobuf::int32 FoodArea::width() const {
-  // @@protoc_insertion_point(field_get:FoodArea.width)
-  return width_;
-}
-inline void FoodArea::set_width(::google::protobuf::int32 value) {
-  set_has_width();
-  width_ = value;
-  // @@protoc_insertion_point(field_set:FoodArea.width)
-}
-
-// optional int32 height = 5;
-inline bool FoodArea::has_height() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
-inline void FoodArea::set_has_height() {
-  _has_bits_[0] |= 0x00000010u;
-}
-inline void FoodArea::clear_has_height() {
-  _has_bits_[0] &= ~0x00000010u;
-}
-inline void FoodArea::clear_height() {
-  height_ = 0;
-  clear_has_height();
-}
-inline ::google::protobuf::int32 FoodArea::height() const {
-  // @@protoc_insertion_point(field_get:FoodArea.height)
-  return height_;
-}
-inline void FoodArea::set_height(::google::protobuf::int32 value) {
-  set_has_height();
-  height_ = value;
-  // @@protoc_insertion_point(field_set:FoodArea.height)
-}
-
-// repeated .Food foods = 6;
-inline int FoodArea::foods_size() const {
-  return foods_.size();
-}
-inline void FoodArea::clear_foods() {
-  foods_.Clear();
-}
-inline const ::Food& FoodArea::foods(int index) const {
-  // @@protoc_insertion_point(field_get:FoodArea.foods)
-  return foods_.Get(index);
-}
-inline ::Food* FoodArea::mutable_foods(int index) {
-  // @@protoc_insertion_point(field_mutable:FoodArea.foods)
-  return foods_.Mutable(index);
-}
-inline ::Food* FoodArea::add_foods() {
-  // @@protoc_insertion_point(field_add:FoodArea.foods)
-  return foods_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::Food >&
-FoodArea::foods() const {
-  // @@protoc_insertion_point(field_list:FoodArea.foods)
-  return foods_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::Food >*
-FoodArea::mutable_foods() {
-  // @@protoc_insertion_point(field_mutable_list:FoodArea.foods)
-  return &foods_;
-}
-
-// -------------------------------------------------------------------
-
-// RemainTimeResponse
-
-// required int32 remain = 1;
-inline bool RemainTimeResponse::has_remain() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void RemainTimeResponse::set_has_remain() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void RemainTimeResponse::clear_has_remain() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void RemainTimeResponse::clear_remain() {
-  remain_ = 0;
-  clear_has_remain();
-}
-inline ::google::protobuf::int32 RemainTimeResponse::remain() const {
-  // @@protoc_insertion_point(field_get:RemainTimeResponse.remain)
-  return remain_;
-}
-inline void RemainTimeResponse::set_remain(::google::protobuf::int32 value) {
-  set_has_remain();
-  remain_ = value;
-  // @@protoc_insertion_point(field_set:RemainTimeResponse.remain)
-}
-
-// -------------------------------------------------------------------
-
-// RankListResponse
-
-// repeated .RankItem rankItems = 1;
-inline int RankListResponse::rankitems_size() const {
-  return rankitems_.size();
-}
-inline void RankListResponse::clear_rankitems() {
-  rankitems_.Clear();
-}
-inline const ::RankItem& RankListResponse::rankitems(int index) const {
-  // @@protoc_insertion_point(field_get:RankListResponse.rankItems)
-  return rankitems_.Get(index);
-}
-inline ::RankItem* RankListResponse::mutable_rankitems(int index) {
-  // @@protoc_insertion_point(field_mutable:RankListResponse.rankItems)
-  return rankitems_.Mutable(index);
-}
-inline ::RankItem* RankListResponse::add_rankitems() {
-  // @@protoc_insertion_point(field_add:RankListResponse.rankItems)
-  return rankitems_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::RankItem >&
-RankListResponse::rankitems() const {
-  // @@protoc_insertion_point(field_list:RankListResponse.rankItems)
-  return rankitems_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::RankItem >*
-RankListResponse::mutable_rankitems() {
-  // @@protoc_insertion_point(field_mutable_list:RankListResponse.rankItems)
-  return &rankitems_;
-}
-
-// -------------------------------------------------------------------
-
-// GameEndResponse
-
-// repeated .RankItem rankItems = 1;
-inline int GameEndResponse::rankitems_size() const {
-  return rankitems_.size();
-}
-inline void GameEndResponse::clear_rankitems() {
-  rankitems_.Clear();
-}
-inline const ::RankItem& GameEndResponse::rankitems(int index) const {
-  // @@protoc_insertion_point(field_get:GameEndResponse.rankItems)
-  return rankitems_.Get(index);
-}
-inline ::RankItem* GameEndResponse::mutable_rankitems(int index) {
-  // @@protoc_insertion_point(field_mutable:GameEndResponse.rankItems)
-  return rankitems_.Mutable(index);
-}
-inline ::RankItem* GameEndResponse::add_rankitems() {
-  // @@protoc_insertion_point(field_add:GameEndResponse.rankItems)
-  return rankitems_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::RankItem >&
-GameEndResponse::rankitems() const {
-  // @@protoc_insertion_point(field_list:GameEndResponse.rankItems)
-  return rankitems_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::RankItem >*
-GameEndResponse::mutable_rankitems() {
-  // @@protoc_insertion_point(field_mutable_list:GameEndResponse.rankItems)
-  return &rankitems_;
-}
-
-// -------------------------------------------------------------------
-
-// PlayerSkillRequest
-
-// required int32 skill = 1;
-inline bool PlayerSkillRequest::has_skill() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void PlayerSkillRequest::set_has_skill() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void PlayerSkillRequest::clear_has_skill() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void PlayerSkillRequest::clear_skill() {
-  skill_ = 0;
-  clear_has_skill();
-}
-inline ::google::protobuf::int32 PlayerSkillRequest::skill() const {
-  // @@protoc_insertion_point(field_get:PlayerSkillRequest.skill)
-  return skill_;
-}
-inline void PlayerSkillRequest::set_skill(::google::protobuf::int32 value) {
-  set_has_skill();
-  skill_ = value;
-  // @@protoc_insertion_point(field_set:PlayerSkillRequest.skill)
-}
-
-// -------------------------------------------------------------------
-
-// PlayerSkillResponse
-
-// repeated .PlayerSkill playerSkills = 1;
-inline int PlayerSkillResponse::playerskills_size() const {
-  return playerskills_.size();
-}
-inline void PlayerSkillResponse::clear_playerskills() {
-  playerskills_.Clear();
-}
-inline const ::PlayerSkill& PlayerSkillResponse::playerskills(int index) const {
-  // @@protoc_insertion_point(field_get:PlayerSkillResponse.playerSkills)
-  return playerskills_.Get(index);
-}
-inline ::PlayerSkill* PlayerSkillResponse::mutable_playerskills(int index) {
-  // @@protoc_insertion_point(field_mutable:PlayerSkillResponse.playerSkills)
-  return playerskills_.Mutable(index);
-}
-inline ::PlayerSkill* PlayerSkillResponse::add_playerskills() {
-  // @@protoc_insertion_point(field_add:PlayerSkillResponse.playerSkills)
-  return playerskills_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::PlayerSkill >&
-PlayerSkillResponse::playerskills() const {
-  // @@protoc_insertion_point(field_list:PlayerSkillResponse.playerSkills)
-  return playerskills_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::PlayerSkill >*
-PlayerSkillResponse::mutable_playerskills() {
-  // @@protoc_insertion_point(field_mutable_list:PlayerSkillResponse.playerSkills)
-  return &playerskills_;
-}
-
-// -------------------------------------------------------------------
-
-// PlayerSkill
-
-// optional int32 skill = 1;
-inline bool PlayerSkill::has_skill() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void PlayerSkill::set_has_skill() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void PlayerSkill::clear_has_skill() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void PlayerSkill::clear_skill() {
-  skill_ = 0;
-  clear_has_skill();
-}
-inline ::google::protobuf::int32 PlayerSkill::skill() const {
-  // @@protoc_insertion_point(field_get:PlayerSkill.skill)
-  return skill_;
-}
-inline void PlayerSkill::set_skill(::google::protobuf::int32 value) {
-  set_has_skill();
-  skill_ = value;
-  // @@protoc_insertion_point(field_set:PlayerSkill.skill)
-}
-
-// optional .Player player = 2;
-inline bool PlayerSkill::has_player() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void PlayerSkill::set_has_player() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void PlayerSkill::clear_has_player() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void PlayerSkill::clear_player() {
-  if (player_ != NULL) player_->::Player::Clear();
-  clear_has_player();
-}
-inline const ::Player& PlayerSkill::player() const {
-  // @@protoc_insertion_point(field_get:PlayerSkill.player)
-  return player_ != NULL ? *player_ : *default_instance_->player_;
-}
-inline ::Player* PlayerSkill::mutable_player() {
-  set_has_player();
-  if (player_ == NULL) player_ = new ::Player;
-  // @@protoc_insertion_point(field_mutable:PlayerSkill.player)
-  return player_;
-}
-inline ::Player* PlayerSkill::release_player() {
-  clear_has_player();
-  ::Player* temp = player_;
-  player_ = NULL;
-  return temp;
-}
-inline void PlayerSkill::set_allocated_player(::Player* player) {
-  delete player_;
-  player_ = player;
-  if (player) {
-    set_has_player();
-  } else {
-    clear_has_player();
-  }
-  // @@protoc_insertion_point(field_set_allocated:PlayerSkill.player)
-}
-
-// optional int32 state = 3;
-inline bool PlayerSkill::has_state() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void PlayerSkill::set_has_state() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void PlayerSkill::clear_has_state() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void PlayerSkill::clear_state() {
-  state_ = 0;
-  clear_has_state();
-}
-inline ::google::protobuf::int32 PlayerSkill::state() const {
-  // @@protoc_insertion_point(field_get:PlayerSkill.state)
-  return state_;
-}
-inline void PlayerSkill::set_state(::google::protobuf::int32 value) {
-  set_has_state();
-  state_ = value;
-  // @@protoc_insertion_point(field_set:PlayerSkill.state)
-}
-
-// repeated .MapEntity map = 4;
-inline int PlayerSkill::map_size() const {
-  return map_.size();
-}
-inline void PlayerSkill::clear_map() {
-  map_.Clear();
-}
-inline const ::MapEntity& PlayerSkill::map(int index) const {
-  // @@protoc_insertion_point(field_get:PlayerSkill.map)
-  return map_.Get(index);
-}
-inline ::MapEntity* PlayerSkill::mutable_map(int index) {
-  // @@protoc_insertion_point(field_mutable:PlayerSkill.map)
-  return map_.Mutable(index);
-}
-inline ::MapEntity* PlayerSkill::add_map() {
-  // @@protoc_insertion_point(field_add:PlayerSkill.map)
-  return map_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::MapEntity >&
-PlayerSkill::map() const {
-  // @@protoc_insertion_point(field_list:PlayerSkill.map)
-  return map_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::MapEntity >*
-PlayerSkill::mutable_map() {
-  // @@protoc_insertion_point(field_mutable_list:PlayerSkill.map)
-  return &map_;
-}
-
-// optional int32 duration = 5;
-inline bool PlayerSkill::has_duration() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
-inline void PlayerSkill::set_has_duration() {
-  _has_bits_[0] |= 0x00000010u;
-}
-inline void PlayerSkill::clear_has_duration() {
-  _has_bits_[0] &= ~0x00000010u;
-}
-inline void PlayerSkill::clear_duration() {
-  duration_ = 0;
-  clear_has_duration();
-}
-inline ::google::protobuf::int32 PlayerSkill::duration() const {
-  // @@protoc_insertion_point(field_get:PlayerSkill.duration)
-  return duration_;
-}
-inline void PlayerSkill::set_duration(::google::protobuf::int32 value) {
-  set_has_duration();
-  duration_ = value;
-  // @@protoc_insertion_point(field_set:PlayerSkill.duration)
-}
-
-// -------------------------------------------------------------------
-
-// MapEntity
-
-// required string key = 1;
-inline bool MapEntity::has_key() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void MapEntity::set_has_key() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void MapEntity::clear_has_key() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void MapEntity::clear_key() {
-  if (key_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    key_->clear();
-  }
-  clear_has_key();
-}
-inline const ::std::string& MapEntity::key() const {
-  // @@protoc_insertion_point(field_get:MapEntity.key)
-  return *key_;
-}
-inline void MapEntity::set_key(const ::std::string& value) {
-  set_has_key();
-  if (key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    key_ = new ::std::string;
-  }
-  key_->assign(value);
-  // @@protoc_insertion_point(field_set:MapEntity.key)
-}
-inline void MapEntity::set_key(const char* value) {
-  set_has_key();
-  if (key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    key_ = new ::std::string;
-  }
-  key_->assign(value);
-  // @@protoc_insertion_point(field_set_char:MapEntity.key)
-}
-inline void MapEntity::set_key(const char* value, size_t size) {
-  set_has_key();
-  if (key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    key_ = new ::std::string;
-  }
-  key_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:MapEntity.key)
-}
-inline ::std::string* MapEntity::mutable_key() {
-  set_has_key();
-  if (key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    key_ = new ::std::string;
-  }
-  // @@protoc_insertion_point(field_mutable:MapEntity.key)
-  return key_;
-}
-inline ::std::string* MapEntity::release_key() {
-  clear_has_key();
-  if (key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    return NULL;
-  } else {
-    ::std::string* temp = key_;
-    key_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-    return temp;
-  }
-}
-inline void MapEntity::set_allocated_key(::std::string* key) {
-  if (key_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete key_;
-  }
-  if (key) {
-    set_has_key();
-    key_ = key;
-  } else {
-    clear_has_key();
-    key_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  }
-  // @@protoc_insertion_point(field_set_allocated:MapEntity.key)
-}
-
-// required string value = 2;
-inline bool MapEntity::has_value() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void MapEntity::set_has_value() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void MapEntity::clear_has_value() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void MapEntity::clear_value() {
-  if (value_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    value_->clear();
-  }
-  clear_has_value();
-}
-inline const ::std::string& MapEntity::value() const {
-  // @@protoc_insertion_point(field_get:MapEntity.value)
-  return *value_;
-}
-inline void MapEntity::set_value(const ::std::string& value) {
-  set_has_value();
-  if (value_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    value_ = new ::std::string;
-  }
-  value_->assign(value);
-  // @@protoc_insertion_point(field_set:MapEntity.value)
-}
-inline void MapEntity::set_value(const char* value) {
-  set_has_value();
-  if (value_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    value_ = new ::std::string;
-  }
-  value_->assign(value);
-  // @@protoc_insertion_point(field_set_char:MapEntity.value)
-}
-inline void MapEntity::set_value(const char* value, size_t size) {
-  set_has_value();
-  if (value_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    value_ = new ::std::string;
-  }
-  value_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:MapEntity.value)
-}
-inline ::std::string* MapEntity::mutable_value() {
-  set_has_value();
-  if (value_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    value_ = new ::std::string;
-  }
-  // @@protoc_insertion_point(field_mutable:MapEntity.value)
-  return value_;
-}
-inline ::std::string* MapEntity::release_value() {
-  clear_has_value();
-  if (value_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    return NULL;
-  } else {
-    ::std::string* temp = value_;
-    value_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-    return temp;
-  }
-}
-inline void MapEntity::set_allocated_value(::std::string* value) {
-  if (value_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete value_;
-  }
-  if (value) {
-    set_has_value();
-    value_ = value;
-  } else {
-    clear_has_value();
-    value_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  }
-  // @@protoc_insertion_point(field_set_allocated:MapEntity.value)
-}
-
-// -------------------------------------------------------------------
-
-// RankItem
-
-// required int32 rank = 1;
-inline bool RankItem::has_rank() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void RankItem::set_has_rank() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void RankItem::clear_has_rank() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void RankItem::clear_rank() {
-  rank_ = 0;
-  clear_has_rank();
-}
-inline ::google::protobuf::int32 RankItem::rank() const {
-  // @@protoc_insertion_point(field_get:RankItem.rank)
-  return rank_;
-}
-inline void RankItem::set_rank(::google::protobuf::int32 value) {
-  set_has_rank();
-  rank_ = value;
-  // @@protoc_insertion_point(field_set:RankItem.rank)
-}
-
-// optional .UserInfo userInfo = 2;
-inline bool RankItem::has_userinfo() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void RankItem::set_has_userinfo() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void RankItem::clear_has_userinfo() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void RankItem::clear_userinfo() {
-  if (userinfo_ != NULL) userinfo_->::UserInfo::Clear();
-  clear_has_userinfo();
-}
-inline const ::UserInfo& RankItem::userinfo() const {
-  // @@protoc_insertion_point(field_get:RankItem.userInfo)
-  return userinfo_ != NULL ? *userinfo_ : *default_instance_->userinfo_;
-}
-inline ::UserInfo* RankItem::mutable_userinfo() {
-  set_has_userinfo();
-  if (userinfo_ == NULL) userinfo_ = new ::UserInfo;
-  // @@protoc_insertion_point(field_mutable:RankItem.userInfo)
-  return userinfo_;
-}
-inline ::UserInfo* RankItem::release_userinfo() {
-  clear_has_userinfo();
-  ::UserInfo* temp = userinfo_;
-  userinfo_ = NULL;
-  return temp;
-}
-inline void RankItem::set_allocated_userinfo(::UserInfo* userinfo) {
-  delete userinfo_;
-  userinfo_ = userinfo;
-  if (userinfo) {
-    set_has_userinfo();
-  } else {
-    clear_has_userinfo();
-  }
-  // @@protoc_insertion_point(field_set_allocated:RankItem.userInfo)
-}
-
-// optional int32 weight = 3;
-inline bool RankItem::has_weight() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void RankItem::set_has_weight() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void RankItem::clear_has_weight() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void RankItem::clear_weight() {
-  weight_ = 0;
-  clear_has_weight();
-}
-inline ::google::protobuf::int32 RankItem::weight() const {
-  // @@protoc_insertion_point(field_get:RankItem.weight)
-  return weight_;
-}
-inline void RankItem::set_weight(::google::protobuf::int32 value) {
-  set_has_weight();
-  weight_ = value;
-  // @@protoc_insertion_point(field_set:RankItem.weight)
-}
-
-// optional int32 reward = 4;
-inline bool RankItem::has_reward() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void RankItem::set_has_reward() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void RankItem::clear_has_reward() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void RankItem::clear_reward() {
-  reward_ = 0;
-  clear_has_reward();
-}
-inline ::google::protobuf::int32 RankItem::reward() const {
-  // @@protoc_insertion_point(field_get:RankItem.reward)
-  return reward_;
-}
-inline void RankItem::set_reward(::google::protobuf::int32 value) {
-  set_has_reward();
-  reward_ = value;
-  // @@protoc_insertion_point(field_set:RankItem.reward)
-}
-
-// -------------------------------------------------------------------
-
-// CellVector
-
-// required int32 cellId = 1;
-inline bool CellVector::has_cellid() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void CellVector::set_has_cellid() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void CellVector::clear_has_cellid() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void CellVector::clear_cellid() {
-  cellid_ = 0;
-  clear_has_cellid();
-}
-inline ::google::protobuf::int32 CellVector::cellid() const {
-  // @@protoc_insertion_point(field_get:CellVector.cellId)
-  return cellid_;
-}
-inline void CellVector::set_cellid(::google::protobuf::int32 value) {
-  set_has_cellid();
-  cellid_ = value;
-  // @@protoc_insertion_point(field_set:CellVector.cellId)
-}
-
-// optional int32 angle = 2;
-inline bool CellVector::has_angle() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void CellVector::set_has_angle() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void CellVector::clear_has_angle() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void CellVector::clear_angle() {
-  angle_ = 0;
-  clear_has_angle();
-}
-inline ::google::protobuf::int32 CellVector::angle() const {
-  // @@protoc_insertion_point(field_get:CellVector.angle)
-  return angle_;
-}
-inline void CellVector::set_angle(::google::protobuf::int32 value) {
-  set_has_angle();
-  angle_ = value;
-  // @@protoc_insertion_point(field_set:CellVector.angle)
-}
-
-// -------------------------------------------------------------------
-
-// PlayerOperationRequest
-
-// repeated .CellVector cellVector = 1;
-inline int PlayerOperationRequest::cellvector_size() const {
-  return cellvector_.size();
-}
-inline void PlayerOperationRequest::clear_cellvector() {
-  cellvector_.Clear();
-}
-inline const ::CellVector& PlayerOperationRequest::cellvector(int index) const {
-  // @@protoc_insertion_point(field_get:PlayerOperationRequest.cellVector)
-  return cellvector_.Get(index);
-}
-inline ::CellVector* PlayerOperationRequest::mutable_cellvector(int index) {
-  // @@protoc_insertion_point(field_mutable:PlayerOperationRequest.cellVector)
-  return cellvector_.Mutable(index);
-}
-inline ::CellVector* PlayerOperationRequest::add_cellvector() {
-  // @@protoc_insertion_point(field_add:PlayerOperationRequest.cellVector)
-  return cellvector_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::CellVector >&
-PlayerOperationRequest::cellvector() const {
-  // @@protoc_insertion_point(field_list:PlayerOperationRequest.cellVector)
-  return cellvector_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::CellVector >*
-PlayerOperationRequest::mutable_cellvector() {
-  // @@protoc_insertion_point(field_mutable_list:PlayerOperationRequest.cellVector)
-  return &cellvector_;
-}
-
-// -------------------------------------------------------------------
-
-// UserInfo
-
-// required int32 uid = 1;
-inline bool UserInfo::has_uid() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void UserInfo::set_has_uid() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void UserInfo::clear_has_uid() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void UserInfo::clear_uid() {
-  uid_ = 0;
-  clear_has_uid();
-}
-inline ::google::protobuf::int32 UserInfo::uid() const {
-  // @@protoc_insertion_point(field_get:UserInfo.uid)
-  return uid_;
-}
-inline void UserInfo::set_uid(::google::protobuf::int32 value) {
-  set_has_uid();
-  uid_ = value;
-  // @@protoc_insertion_point(field_set:UserInfo.uid)
-}
-
-// optional int32 skin = 2;
-inline bool UserInfo::has_skin() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void UserInfo::set_has_skin() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void UserInfo::clear_has_skin() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void UserInfo::clear_skin() {
-  skin_ = 0;
-  clear_has_skin();
-}
-inline ::google::protobuf::int32 UserInfo::skin() const {
-  // @@protoc_insertion_point(field_get:UserInfo.skin)
-  return skin_;
-}
-inline void UserInfo::set_skin(::google::protobuf::int32 value) {
-  set_has_skin();
-  skin_ = value;
-  // @@protoc_insertion_point(field_set:UserInfo.skin)
-}
-
-// optional string nickname = 3;
-inline bool UserInfo::has_nickname() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void UserInfo::set_has_nickname() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void UserInfo::clear_has_nickname() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void UserInfo::clear_nickname() {
-  if (nickname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    nickname_->clear();
-  }
-  clear_has_nickname();
-}
-inline const ::std::string& UserInfo::nickname() const {
-  // @@protoc_insertion_point(field_get:UserInfo.nickname)
-  return *nickname_;
-}
-inline void UserInfo::set_nickname(const ::std::string& value) {
-  set_has_nickname();
-  if (nickname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    nickname_ = new ::std::string;
-  }
-  nickname_->assign(value);
-  // @@protoc_insertion_point(field_set:UserInfo.nickname)
-}
-inline void UserInfo::set_nickname(const char* value) {
-  set_has_nickname();
-  if (nickname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    nickname_ = new ::std::string;
-  }
-  nickname_->assign(value);
-  // @@protoc_insertion_point(field_set_char:UserInfo.nickname)
-}
-inline void UserInfo::set_nickname(const char* value, size_t size) {
-  set_has_nickname();
-  if (nickname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    nickname_ = new ::std::string;
-  }
-  nickname_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:UserInfo.nickname)
-}
-inline ::std::string* UserInfo::mutable_nickname() {
-  set_has_nickname();
-  if (nickname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    nickname_ = new ::std::string;
-  }
-  // @@protoc_insertion_point(field_mutable:UserInfo.nickname)
-  return nickname_;
-}
-inline ::std::string* UserInfo::release_nickname() {
-  clear_has_nickname();
-  if (nickname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    return NULL;
-  } else {
-    ::std::string* temp = nickname_;
-    nickname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-    return temp;
-  }
-}
-inline void UserInfo::set_allocated_nickname(::std::string* nickname) {
-  if (nickname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete nickname_;
-  }
-  if (nickname) {
-    set_has_nickname();
-    nickname_ = nickname;
-  } else {
-    clear_has_nickname();
-    nickname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  }
-  // @@protoc_insertion_point(field_set_allocated:UserInfo.nickname)
-}
-
-// optional string account = 4;
-inline bool UserInfo::has_account() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void UserInfo::set_has_account() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void UserInfo::clear_has_account() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void UserInfo::clear_account() {
-  if (account_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    account_->clear();
-  }
-  clear_has_account();
-}
-inline const ::std::string& UserInfo::account() const {
-  // @@protoc_insertion_point(field_get:UserInfo.account)
-  return *account_;
-}
-inline void UserInfo::set_account(const ::std::string& value) {
-  set_has_account();
-  if (account_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    account_ = new ::std::string;
-  }
-  account_->assign(value);
-  // @@protoc_insertion_point(field_set:UserInfo.account)
-}
-inline void UserInfo::set_account(const char* value) {
-  set_has_account();
-  if (account_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    account_ = new ::std::string;
-  }
-  account_->assign(value);
-  // @@protoc_insertion_point(field_set_char:UserInfo.account)
-}
-inline void UserInfo::set_account(const char* value, size_t size) {
-  set_has_account();
-  if (account_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    account_ = new ::std::string;
-  }
-  account_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:UserInfo.account)
-}
-inline ::std::string* UserInfo::mutable_account() {
-  set_has_account();
-  if (account_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    account_ = new ::std::string;
-  }
-  // @@protoc_insertion_point(field_mutable:UserInfo.account)
-  return account_;
-}
-inline ::std::string* UserInfo::release_account() {
-  clear_has_account();
-  if (account_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    return NULL;
-  } else {
-    ::std::string* temp = account_;
-    account_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-    return temp;
-  }
-}
-inline void UserInfo::set_allocated_account(::std::string* account) {
-  if (account_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete account_;
-  }
-  if (account) {
-    set_has_account();
-    account_ = account;
-  } else {
-    clear_has_account();
-    account_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  }
-  // @@protoc_insertion_point(field_set_allocated:UserInfo.account)
-}
-
-// optional .UltimateSkill ultimateSkill = 5;
-inline bool UserInfo::has_ultimateskill() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
-inline void UserInfo::set_has_ultimateskill() {
-  _has_bits_[0] |= 0x00000010u;
-}
-inline void UserInfo::clear_has_ultimateskill() {
-  _has_bits_[0] &= ~0x00000010u;
-}
-inline void UserInfo::clear_ultimateskill() {
-  if (ultimateskill_ != NULL) ultimateskill_->::UltimateSkill::Clear();
-  clear_has_ultimateskill();
-}
-inline const ::UltimateSkill& UserInfo::ultimateskill() const {
-  // @@protoc_insertion_point(field_get:UserInfo.ultimateSkill)
-  return ultimateskill_ != NULL ? *ultimateskill_ : *default_instance_->ultimateskill_;
-}
-inline ::UltimateSkill* UserInfo::mutable_ultimateskill() {
-  set_has_ultimateskill();
-  if (ultimateskill_ == NULL) ultimateskill_ = new ::UltimateSkill;
-  // @@protoc_insertion_point(field_mutable:UserInfo.ultimateSkill)
-  return ultimateskill_;
-}
-inline ::UltimateSkill* UserInfo::release_ultimateskill() {
-  clear_has_ultimateskill();
-  ::UltimateSkill* temp = ultimateskill_;
-  ultimateskill_ = NULL;
-  return temp;
-}
-inline void UserInfo::set_allocated_ultimateskill(::UltimateSkill* ultimateskill) {
-  delete ultimateskill_;
-  ultimateskill_ = ultimateskill;
-  if (ultimateskill) {
-    set_has_ultimateskill();
-  } else {
-    clear_has_ultimateskill();
-  }
-  // @@protoc_insertion_point(field_set_allocated:UserInfo.ultimateSkill)
-}
-
-// optional int32 gold = 6;
-inline bool UserInfo::has_gold() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
-}
-inline void UserInfo::set_has_gold() {
-  _has_bits_[0] |= 0x00000020u;
-}
-inline void UserInfo::clear_has_gold() {
-  _has_bits_[0] &= ~0x00000020u;
-}
-inline void UserInfo::clear_gold() {
-  gold_ = 0;
-  clear_has_gold();
-}
-inline ::google::protobuf::int32 UserInfo::gold() const {
-  // @@protoc_insertion_point(field_get:UserInfo.gold)
-  return gold_;
-}
-inline void UserInfo::set_gold(::google::protobuf::int32 value) {
-  set_has_gold();
-  gold_ = value;
-  // @@protoc_insertion_point(field_set:UserInfo.gold)
-}
-
-// optional int32 stamina = 7;
-inline bool UserInfo::has_stamina() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
-}
-inline void UserInfo::set_has_stamina() {
-  _has_bits_[0] |= 0x00000040u;
-}
-inline void UserInfo::clear_has_stamina() {
-  _has_bits_[0] &= ~0x00000040u;
-}
-inline void UserInfo::clear_stamina() {
-  stamina_ = 0;
-  clear_has_stamina();
-}
-inline ::google::protobuf::int32 UserInfo::stamina() const {
-  // @@protoc_insertion_point(field_get:UserInfo.stamina)
-  return stamina_;
-}
-inline void UserInfo::set_stamina(::google::protobuf::int32 value) {
-  set_has_stamina();
-  stamina_ = value;
-  // @@protoc_insertion_point(field_set:UserInfo.stamina)
-}
-
-// optional int32 maxStamina = 8;
-inline bool UserInfo::has_maxstamina() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
-}
-inline void UserInfo::set_has_maxstamina() {
-  _has_bits_[0] |= 0x00000080u;
-}
-inline void UserInfo::clear_has_maxstamina() {
-  _has_bits_[0] &= ~0x00000080u;
-}
-inline void UserInfo::clear_maxstamina() {
-  maxstamina_ = 0;
-  clear_has_maxstamina();
-}
-inline ::google::protobuf::int32 UserInfo::maxstamina() const {
-  // @@protoc_insertion_point(field_get:UserInfo.maxStamina)
-  return maxstamina_;
-}
-inline void UserInfo::set_maxstamina(::google::protobuf::int32 value) {
-  set_has_maxstamina();
-  maxstamina_ = value;
-  // @@protoc_insertion_point(field_set:UserInfo.maxStamina)
-}
-
-// optional int32 countdown = 9;
-inline bool UserInfo::has_countdown() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
-}
-inline void UserInfo::set_has_countdown() {
-  _has_bits_[0] |= 0x00000100u;
-}
-inline void UserInfo::clear_has_countdown() {
-  _has_bits_[0] &= ~0x00000100u;
-}
-inline void UserInfo::clear_countdown() {
-  countdown_ = 0;
-  clear_has_countdown();
-}
-inline ::google::protobuf::int32 UserInfo::countdown() const {
-  // @@protoc_insertion_point(field_get:UserInfo.countdown)
-  return countdown_;
-}
-inline void UserInfo::set_countdown(::google::protobuf::int32 value) {
-  set_has_countdown();
-  countdown_ = value;
-  // @@protoc_insertion_point(field_set:UserInfo.countdown)
-}
-
-// optional int32 privilege = 10;
-inline bool UserInfo::has_privilege() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
-}
-inline void UserInfo::set_has_privilege() {
-  _has_bits_[0] |= 0x00000200u;
-}
-inline void UserInfo::clear_has_privilege() {
-  _has_bits_[0] &= ~0x00000200u;
-}
-inline void UserInfo::clear_privilege() {
-  privilege_ = 0;
-  clear_has_privilege();
-}
-inline ::google::protobuf::int32 UserInfo::privilege() const {
-  // @@protoc_insertion_point(field_get:UserInfo.privilege)
-  return privilege_;
-}
-inline void UserInfo::set_privilege(::google::protobuf::int32 value) {
-  set_has_privilege();
-  privilege_ = value;
-  // @@protoc_insertion_point(field_set:UserInfo.privilege)
-}
-
-// -------------------------------------------------------------------
-
-// Food
-
-// required int32 id = 1;
-inline bool Food::has_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void Food::set_has_id() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void Food::clear_has_id() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void Food::clear_id() {
-  id_ = 0;
-  clear_has_id();
-}
-inline ::google::protobuf::int32 Food::id() const {
-  // @@protoc_insertion_point(field_get:Food.id)
-  return id_;
-}
-inline void Food::set_id(::google::protobuf::int32 value) {
-  set_has_id();
-  id_ = value;
-  // @@protoc_insertion_point(field_set:Food.id)
-}
-
-// optional int32 skin = 2;
-inline bool Food::has_skin() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void Food::set_has_skin() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void Food::clear_has_skin() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void Food::clear_skin() {
-  skin_ = 0;
-  clear_has_skin();
-}
-inline ::google::protobuf::int32 Food::skin() const {
-  // @@protoc_insertion_point(field_get:Food.skin)
-  return skin_;
-}
-inline void Food::set_skin(::google::protobuf::int32 value) {
-  set_has_skin();
-  skin_ = value;
-  // @@protoc_insertion_point(field_set:Food.skin)
-}
-
-// optional int32 x = 3;
-inline bool Food::has_x() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void Food::set_has_x() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void Food::clear_has_x() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void Food::clear_x() {
-  x_ = 0;
-  clear_has_x();
-}
-inline ::google::protobuf::int32 Food::x() const {
-  // @@protoc_insertion_point(field_get:Food.x)
-  return x_;
-}
-inline void Food::set_x(::google::protobuf::int32 value) {
-  set_has_x();
-  x_ = value;
-  // @@protoc_insertion_point(field_set:Food.x)
-}
-
-// optional int32 y = 4;
-inline bool Food::has_y() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void Food::set_has_y() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void Food::clear_has_y() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void Food::clear_y() {
-  y_ = 0;
-  clear_has_y();
-}
-inline ::google::protobuf::int32 Food::y() const {
-  // @@protoc_insertion_point(field_get:Food.y)
-  return y_;
-}
-inline void Food::set_y(::google::protobuf::int32 value) {
-  set_has_y();
-  y_ = value;
-  // @@protoc_insertion_point(field_set:Food.y)
-}
-
-// -------------------------------------------------------------------
-
-// Cell
-
-// required int32 id = 1;
-inline bool Cell::has_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void Cell::set_has_id() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void Cell::clear_has_id() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void Cell::clear_id() {
-  id_ = 0;
-  clear_has_id();
-}
-inline ::google::protobuf::int32 Cell::id() const {
-  // @@protoc_insertion_point(field_get:Cell.id)
-  return id_;
-}
-inline void Cell::set_id(::google::protobuf::int32 value) {
-  set_has_id();
-  id_ = value;
-  // @@protoc_insertion_point(field_set:Cell.id)
-}
-
-// optional int32 x = 2;
-inline bool Cell::has_x() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void Cell::set_has_x() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void Cell::clear_has_x() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void Cell::clear_x() {
-  x_ = 0;
-  clear_has_x();
-}
-inline ::google::protobuf::int32 Cell::x() const {
-  // @@protoc_insertion_point(field_get:Cell.x)
-  return x_;
-}
-inline void Cell::set_x(::google::protobuf::int32 value) {
-  set_has_x();
-  x_ = value;
-  // @@protoc_insertion_point(field_set:Cell.x)
-}
-
-// optional int32 y = 3;
-inline bool Cell::has_y() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void Cell::set_has_y() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void Cell::clear_has_y() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void Cell::clear_y() {
-  y_ = 0;
-  clear_has_y();
-}
-inline ::google::protobuf::int32 Cell::y() const {
-  // @@protoc_insertion_point(field_get:Cell.y)
-  return y_;
-}
-inline void Cell::set_y(::google::protobuf::int32 value) {
-  set_has_y();
-  y_ = value;
-  // @@protoc_insertion_point(field_set:Cell.y)
-}
-
-// optional int32 radius = 4;
-inline bool Cell::has_radius() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void Cell::set_has_radius() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void Cell::clear_has_radius() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void Cell::clear_radius() {
-  radius_ = 0;
-  clear_has_radius();
-}
-inline ::google::protobuf::int32 Cell::radius() const {
-  // @@protoc_insertion_point(field_get:Cell.radius)
-  return radius_;
-}
-inline void Cell::set_radius(::google::protobuf::int32 value) {
-  set_has_radius();
-  radius_ = value;
-  // @@protoc_insertion_point(field_set:Cell.radius)
-}
-
-// optional int32 speed = 5;
-inline bool Cell::has_speed() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
-inline void Cell::set_has_speed() {
-  _has_bits_[0] |= 0x00000010u;
-}
-inline void Cell::clear_has_speed() {
-  _has_bits_[0] &= ~0x00000010u;
-}
-inline void Cell::clear_speed() {
-  speed_ = 0;
-  clear_has_speed();
-}
-inline ::google::protobuf::int32 Cell::speed() const {
-  // @@protoc_insertion_point(field_get:Cell.speed)
-  return speed_;
-}
-inline void Cell::set_speed(::google::protobuf::int32 value) {
-  set_has_speed();
-  speed_ = value;
-  // @@protoc_insertion_point(field_set:Cell.speed)
-}
-
-// optional int32 angle = 6;
-inline bool Cell::has_angle() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
-}
-inline void Cell::set_has_angle() {
-  _has_bits_[0] |= 0x00000020u;
-}
-inline void Cell::clear_has_angle() {
-  _has_bits_[0] &= ~0x00000020u;
-}
-inline void Cell::clear_angle() {
-  angle_ = 0;
-  clear_has_angle();
-}
-inline ::google::protobuf::int32 Cell::angle() const {
-  // @@protoc_insertion_point(field_get:Cell.angle)
-  return angle_;
-}
-inline void Cell::set_angle(::google::protobuf::int32 value) {
-  set_has_angle();
-  angle_ = value;
-  // @@protoc_insertion_point(field_set:Cell.angle)
-}
-
-// optional int32 fromId = 7;
-inline bool Cell::has_fromid() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
-}
-inline void Cell::set_has_fromid() {
-  _has_bits_[0] |= 0x00000040u;
-}
-inline void Cell::clear_has_fromid() {
-  _has_bits_[0] &= ~0x00000040u;
-}
-inline void Cell::clear_fromid() {
-  fromid_ = 0;
-  clear_has_fromid();
-}
-inline ::google::protobuf::int32 Cell::fromid() const {
-  // @@protoc_insertion_point(field_get:Cell.fromId)
-  return fromid_;
-}
-inline void Cell::set_fromid(::google::protobuf::int32 value) {
-  set_has_fromid();
-  fromid_ = value;
-  // @@protoc_insertion_point(field_set:Cell.fromId)
-}
-
-// optional int32 mergeId = 8;
-inline bool Cell::has_mergeid() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
-}
-inline void Cell::set_has_mergeid() {
-  _has_bits_[0] |= 0x00000080u;
-}
-inline void Cell::clear_has_mergeid() {
-  _has_bits_[0] &= ~0x00000080u;
-}
-inline void Cell::clear_mergeid() {
-  mergeid_ = 0;
-  clear_has_mergeid();
-}
-inline ::google::protobuf::int32 Cell::mergeid() const {
-  // @@protoc_insertion_point(field_get:Cell.mergeId)
-  return mergeid_;
-}
-inline void Cell::set_mergeid(::google::protobuf::int32 value) {
-  set_has_mergeid();
-  mergeid_ = value;
-  // @@protoc_insertion_point(field_set:Cell.mergeId)
-}
-
-// optional int32 status = 9;
-inline bool Cell::has_status() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
-}
-inline void Cell::set_has_status() {
-  _has_bits_[0] |= 0x00000100u;
-}
-inline void Cell::clear_has_status() {
-  _has_bits_[0] &= ~0x00000100u;
-}
-inline void Cell::clear_status() {
-  status_ = 0;
-  clear_has_status();
-}
-inline ::google::protobuf::int32 Cell::status() const {
-  // @@protoc_insertion_point(field_get:Cell.status)
-  return status_;
-}
-inline void Cell::set_status(::google::protobuf::int32 value) {
-  set_has_status();
-  status_ = value;
-  // @@protoc_insertion_point(field_set:Cell.status)
-}
-
-// repeated .FoodArea magnetFoods = 10;
-inline int Cell::magnetfoods_size() const {
-  return magnetfoods_.size();
-}
-inline void Cell::clear_magnetfoods() {
-  magnetfoods_.Clear();
-}
-inline const ::FoodArea& Cell::magnetfoods(int index) const {
-  // @@protoc_insertion_point(field_get:Cell.magnetFoods)
-  return magnetfoods_.Get(index);
-}
-inline ::FoodArea* Cell::mutable_magnetfoods(int index) {
-  // @@protoc_insertion_point(field_mutable:Cell.magnetFoods)
-  return magnetfoods_.Mutable(index);
-}
-inline ::FoodArea* Cell::add_magnetfoods() {
-  // @@protoc_insertion_point(field_add:Cell.magnetFoods)
-  return magnetfoods_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::FoodArea >&
-Cell::magnetfoods() const {
-  // @@protoc_insertion_point(field_list:Cell.magnetFoods)
-  return magnetfoods_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::FoodArea >*
-Cell::mutable_magnetfoods() {
-  // @@protoc_insertion_point(field_mutable_list:Cell.magnetFoods)
-  return &magnetfoods_;
-}
-
-// -------------------------------------------------------------------
-
-// Player
-
-// required .UserInfo userInfo = 1;
-inline bool Player::has_userinfo() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void Player::set_has_userinfo() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void Player::clear_has_userinfo() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void Player::clear_userinfo() {
-  if (userinfo_ != NULL) userinfo_->::UserInfo::Clear();
-  clear_has_userinfo();
-}
-inline const ::UserInfo& Player::userinfo() const {
-  // @@protoc_insertion_point(field_get:Player.userInfo)
-  return userinfo_ != NULL ? *userinfo_ : *default_instance_->userinfo_;
-}
-inline ::UserInfo* Player::mutable_userinfo() {
-  set_has_userinfo();
-  if (userinfo_ == NULL) userinfo_ = new ::UserInfo;
-  // @@protoc_insertion_point(field_mutable:Player.userInfo)
-  return userinfo_;
-}
-inline ::UserInfo* Player::release_userinfo() {
-  clear_has_userinfo();
-  ::UserInfo* temp = userinfo_;
-  userinfo_ = NULL;
-  return temp;
-}
-inline void Player::set_allocated_userinfo(::UserInfo* userinfo) {
-  delete userinfo_;
-  userinfo_ = userinfo;
-  if (userinfo) {
-    set_has_userinfo();
-  } else {
-    clear_has_userinfo();
-  }
-  // @@protoc_insertion_point(field_set_allocated:Player.userInfo)
-}
-
-// optional int32 weight = 2;
-inline bool Player::has_weight() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void Player::set_has_weight() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void Player::clear_has_weight() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void Player::clear_weight() {
-  weight_ = 0;
-  clear_has_weight();
-}
-inline ::google::protobuf::int32 Player::weight() const {
-  // @@protoc_insertion_point(field_get:Player.weight)
-  return weight_;
-}
-inline void Player::set_weight(::google::protobuf::int32 value) {
-  set_has_weight();
-  weight_ = value;
-  // @@protoc_insertion_point(field_set:Player.weight)
-}
-
-// repeated .Cell cells = 3;
-inline int Player::cells_size() const {
-  return cells_.size();
-}
-inline void Player::clear_cells() {
-  cells_.Clear();
-}
-inline const ::Cell& Player::cells(int index) const {
-  // @@protoc_insertion_point(field_get:Player.cells)
-  return cells_.Get(index);
-}
-inline ::Cell* Player::mutable_cells(int index) {
-  // @@protoc_insertion_point(field_mutable:Player.cells)
-  return cells_.Mutable(index);
-}
-inline ::Cell* Player::add_cells() {
-  // @@protoc_insertion_point(field_add:Player.cells)
-  return cells_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::Cell >&
-Player::cells() const {
-  // @@protoc_insertion_point(field_list:Player.cells)
-  return cells_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::Cell >*
-Player::mutable_cells() {
-  // @@protoc_insertion_point(field_mutable_list:Player.cells)
-  return &cells_;
-}
-
-// optional int32 status = 4;
-inline bool Player::has_status() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void Player::set_has_status() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void Player::clear_has_status() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void Player::clear_status() {
-  status_ = 0;
-  clear_has_status();
-}
-inline ::google::protobuf::int32 Player::status() const {
-  // @@protoc_insertion_point(field_get:Player.status)
-  return status_;
-}
-inline void Player::set_status(::google::protobuf::int32 value) {
-  set_has_status();
-  status_ = value;
-  // @@protoc_insertion_point(field_set:Player.status)
-}
-
-// optional int32 ultimateSkillProgress = 5;
-inline bool Player::has_ultimateskillprogress() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
-inline void Player::set_has_ultimateskillprogress() {
-  _has_bits_[0] |= 0x00000010u;
-}
-inline void Player::clear_has_ultimateskillprogress() {
-  _has_bits_[0] &= ~0x00000010u;
-}
-inline void Player::clear_ultimateskillprogress() {
-  ultimateskillprogress_ = 0;
-  clear_has_ultimateskillprogress();
-}
-inline ::google::protobuf::int32 Player::ultimateskillprogress() const {
-  // @@protoc_insertion_point(field_get:Player.ultimateSkillProgress)
-  return ultimateskillprogress_;
-}
-inline void Player::set_ultimateskillprogress(::google::protobuf::int32 value) {
-  set_has_ultimateskillprogress();
-  ultimateskillprogress_ = value;
-  // @@protoc_insertion_point(field_set:Player.ultimateSkillProgress)
-}
-
-// optional .UserInfo beKilledUserInfo = 6;
-inline bool Player::has_bekilleduserinfo() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
-}
-inline void Player::set_has_bekilleduserinfo() {
-  _has_bits_[0] |= 0x00000020u;
-}
-inline void Player::clear_has_bekilleduserinfo() {
-  _has_bits_[0] &= ~0x00000020u;
-}
-inline void Player::clear_bekilleduserinfo() {
-  if (bekilleduserinfo_ != NULL) bekilleduserinfo_->::UserInfo::Clear();
-  clear_has_bekilleduserinfo();
-}
-inline const ::UserInfo& Player::bekilleduserinfo() const {
-  // @@protoc_insertion_point(field_get:Player.beKilledUserInfo)
-  return bekilleduserinfo_ != NULL ? *bekilleduserinfo_ : *default_instance_->bekilleduserinfo_;
-}
-inline ::UserInfo* Player::mutable_bekilleduserinfo() {
-  set_has_bekilleduserinfo();
-  if (bekilleduserinfo_ == NULL) bekilleduserinfo_ = new ::UserInfo;
-  // @@protoc_insertion_point(field_mutable:Player.beKilledUserInfo)
-  return bekilleduserinfo_;
-}
-inline ::UserInfo* Player::release_bekilleduserinfo() {
-  clear_has_bekilleduserinfo();
-  ::UserInfo* temp = bekilleduserinfo_;
-  bekilleduserinfo_ = NULL;
-  return temp;
-}
-inline void Player::set_allocated_bekilleduserinfo(::UserInfo* bekilleduserinfo) {
-  delete bekilleduserinfo_;
-  bekilleduserinfo_ = bekilleduserinfo;
-  if (bekilleduserinfo) {
-    set_has_bekilleduserinfo();
-  } else {
-    clear_has_bekilleduserinfo();
-  }
-  // @@protoc_insertion_point(field_set_allocated:Player.beKilledUserInfo)
-}
-
-// optional .SuperRenewInfo superRenewInfo = 7;
-inline bool Player::has_superrenewinfo() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
-}
-inline void Player::set_has_superrenewinfo() {
-  _has_bits_[0] |= 0x00000040u;
-}
-inline void Player::clear_has_superrenewinfo() {
-  _has_bits_[0] &= ~0x00000040u;
-}
-inline void Player::clear_superrenewinfo() {
-  if (superrenewinfo_ != NULL) superrenewinfo_->::SuperRenewInfo::Clear();
-  clear_has_superrenewinfo();
-}
-inline const ::SuperRenewInfo& Player::superrenewinfo() const {
-  // @@protoc_insertion_point(field_get:Player.superRenewInfo)
-  return superrenewinfo_ != NULL ? *superrenewinfo_ : *default_instance_->superrenewinfo_;
-}
-inline ::SuperRenewInfo* Player::mutable_superrenewinfo() {
-  set_has_superrenewinfo();
-  if (superrenewinfo_ == NULL) superrenewinfo_ = new ::SuperRenewInfo;
-  // @@protoc_insertion_point(field_mutable:Player.superRenewInfo)
-  return superrenewinfo_;
-}
-inline ::SuperRenewInfo* Player::release_superrenewinfo() {
-  clear_has_superrenewinfo();
-  ::SuperRenewInfo* temp = superrenewinfo_;
-  superrenewinfo_ = NULL;
-  return temp;
-}
-inline void Player::set_allocated_superrenewinfo(::SuperRenewInfo* superrenewinfo) {
-  delete superrenewinfo_;
-  superrenewinfo_ = superrenewinfo;
-  if (superrenewinfo) {
-    set_has_superrenewinfo();
-  } else {
-    clear_has_superrenewinfo();
-  }
-  // @@protoc_insertion_point(field_set_allocated:Player.superRenewInfo)
-}
-
-// -------------------------------------------------------------------
-
-// SuperRenewInfo
-
-// optional int32 gold = 1;
-inline bool SuperRenewInfo::has_gold() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void SuperRenewInfo::set_has_gold() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void SuperRenewInfo::clear_has_gold() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void SuperRenewInfo::clear_gold() {
-  gold_ = 0;
-  clear_has_gold();
-}
-inline ::google::protobuf::int32 SuperRenewInfo::gold() const {
-  // @@protoc_insertion_point(field_get:SuperRenewInfo.gold)
-  return gold_;
-}
-inline void SuperRenewInfo::set_gold(::google::protobuf::int32 value) {
-  set_has_gold();
-  gold_ = value;
-  // @@protoc_insertion_point(field_set:SuperRenewInfo.gold)
-}
-
-// optional int32 weight = 2;
-inline bool SuperRenewInfo::has_weight() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void SuperRenewInfo::set_has_weight() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void SuperRenewInfo::clear_has_weight() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void SuperRenewInfo::clear_weight() {
-  weight_ = 0;
-  clear_has_weight();
-}
-inline ::google::protobuf::int32 SuperRenewInfo::weight() const {
-  // @@protoc_insertion_point(field_get:SuperRenewInfo.weight)
-  return weight_;
-}
-inline void SuperRenewInfo::set_weight(::google::protobuf::int32 value) {
-  set_has_weight();
-  weight_ = value;
-  // @@protoc_insertion_point(field_set:SuperRenewInfo.weight)
-}
-
-// optional int32 percent = 3;
-inline bool SuperRenewInfo::has_percent() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void SuperRenewInfo::set_has_percent() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void SuperRenewInfo::clear_has_percent() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void SuperRenewInfo::clear_percent() {
-  percent_ = 0;
-  clear_has_percent();
-}
-inline ::google::protobuf::int32 SuperRenewInfo::percent() const {
-  // @@protoc_insertion_point(field_get:SuperRenewInfo.percent)
-  return percent_;
-}
-inline void SuperRenewInfo::set_percent(::google::protobuf::int32 value) {
-  set_has_percent();
-  percent_ = value;
-  // @@protoc_insertion_point(field_set:SuperRenewInfo.percent)
-}
-
-// -------------------------------------------------------------------
-
-// RoomInfo
-
-// required int32 width = 1;
-inline bool RoomInfo::has_width() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void RoomInfo::set_has_width() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void RoomInfo::clear_has_width() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void RoomInfo::clear_width() {
-  width_ = 0;
-  clear_has_width();
-}
-inline ::google::protobuf::int32 RoomInfo::width() const {
-  // @@protoc_insertion_point(field_get:RoomInfo.width)
-  return width_;
-}
-inline void RoomInfo::set_width(::google::protobuf::int32 value) {
-  set_has_width();
-  width_ = value;
-  // @@protoc_insertion_point(field_set:RoomInfo.width)
-}
-
-// required int32 height = 2;
-inline bool RoomInfo::has_height() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void RoomInfo::set_has_height() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void RoomInfo::clear_has_height() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void RoomInfo::clear_height() {
-  height_ = 0;
-  clear_has_height();
-}
-inline ::google::protobuf::int32 RoomInfo::height() const {
-  // @@protoc_insertion_point(field_get:RoomInfo.height)
-  return height_;
-}
-inline void RoomInfo::set_height(::google::protobuf::int32 value) {
-  set_has_height();
-  height_ = value;
-  // @@protoc_insertion_point(field_set:RoomInfo.height)
-}
-
-// optional int32 remainTime = 3;
-inline bool RoomInfo::has_remaintime() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void RoomInfo::set_has_remaintime() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void RoomInfo::clear_has_remaintime() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void RoomInfo::clear_remaintime() {
-  remaintime_ = 0;
-  clear_has_remaintime();
-}
-inline ::google::protobuf::int32 RoomInfo::remaintime() const {
-  // @@protoc_insertion_point(field_get:RoomInfo.remainTime)
-  return remaintime_;
-}
-inline void RoomInfo::set_remaintime(::google::protobuf::int32 value) {
-  set_has_remaintime();
-  remaintime_ = value;
-  // @@protoc_insertion_point(field_set:RoomInfo.remainTime)
-}
-
-// optional int32 foodRadius = 4;
-inline bool RoomInfo::has_foodradius() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void RoomInfo::set_has_foodradius() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void RoomInfo::clear_has_foodradius() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void RoomInfo::clear_foodradius() {
-  foodradius_ = 0;
-  clear_has_foodradius();
-}
-inline ::google::protobuf::int32 RoomInfo::foodradius() const {
-  // @@protoc_insertion_point(field_get:RoomInfo.foodRadius)
-  return foodradius_;
-}
-inline void RoomInfo::set_foodradius(::google::protobuf::int32 value) {
-  set_has_foodradius();
-  foodradius_ = value;
-  // @@protoc_insertion_point(field_set:RoomInfo.foodRadius)
-}
-
-// repeated .Player players = 5;
-inline int RoomInfo::players_size() const {
-  return players_.size();
-}
-inline void RoomInfo::clear_players() {
-  players_.Clear();
-}
-inline const ::Player& RoomInfo::players(int index) const {
-  // @@protoc_insertion_point(field_get:RoomInfo.players)
-  return players_.Get(index);
-}
-inline ::Player* RoomInfo::mutable_players(int index) {
-  // @@protoc_insertion_point(field_mutable:RoomInfo.players)
-  return players_.Mutable(index);
-}
-inline ::Player* RoomInfo::add_players() {
-  // @@protoc_insertion_point(field_add:RoomInfo.players)
-  return players_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::Player >&
-RoomInfo::players() const {
-  // @@protoc_insertion_point(field_list:RoomInfo.players)
-  return players_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::Player >*
-RoomInfo::mutable_players() {
-  // @@protoc_insertion_point(field_mutable_list:RoomInfo.players)
-  return &players_;
-}
-
-// repeated .FoodArea foodAreas = 6;
-inline int RoomInfo::foodareas_size() const {
-  return foodareas_.size();
-}
-inline void RoomInfo::clear_foodareas() {
-  foodareas_.Clear();
-}
-inline const ::FoodArea& RoomInfo::foodareas(int index) const {
-  // @@protoc_insertion_point(field_get:RoomInfo.foodAreas)
-  return foodareas_.Get(index);
-}
-inline ::FoodArea* RoomInfo::mutable_foodareas(int index) {
-  // @@protoc_insertion_point(field_mutable:RoomInfo.foodAreas)
-  return foodareas_.Mutable(index);
-}
-inline ::FoodArea* RoomInfo::add_foodareas() {
-  // @@protoc_insertion_point(field_add:RoomInfo.foodAreas)
-  return foodareas_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::FoodArea >&
-RoomInfo::foodareas() const {
-  // @@protoc_insertion_point(field_list:RoomInfo.foodAreas)
-  return foodareas_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::FoodArea >*
-RoomInfo::mutable_foodareas() {
-  // @@protoc_insertion_point(field_mutable_list:RoomInfo.foodAreas)
-  return &foodareas_;
-}
-
-// repeated .RankItem rankItems = 7;
-inline int RoomInfo::rankitems_size() const {
-  return rankitems_.size();
-}
-inline void RoomInfo::clear_rankitems() {
-  rankitems_.Clear();
-}
-inline const ::RankItem& RoomInfo::rankitems(int index) const {
-  // @@protoc_insertion_point(field_get:RoomInfo.rankItems)
-  return rankitems_.Get(index);
-}
-inline ::RankItem* RoomInfo::mutable_rankitems(int index) {
-  // @@protoc_insertion_point(field_mutable:RoomInfo.rankItems)
-  return rankitems_.Mutable(index);
-}
-inline ::RankItem* RoomInfo::add_rankitems() {
-  // @@protoc_insertion_point(field_add:RoomInfo.rankItems)
-  return rankitems_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::RankItem >&
-RoomInfo::rankitems() const {
-  // @@protoc_insertion_point(field_list:RoomInfo.rankItems)
-  return rankitems_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::RankItem >*
-RoomInfo::mutable_rankitems() {
-  // @@protoc_insertion_point(field_mutable_list:RoomInfo.rankItems)
-  return &rankitems_;
-}
-
-// repeated .Asylum asylums = 8;
-inline int RoomInfo::asylums_size() const {
-  return asylums_.size();
-}
-inline void RoomInfo::clear_asylums() {
-  asylums_.Clear();
-}
-inline const ::Asylum& RoomInfo::asylums(int index) const {
-  // @@protoc_insertion_point(field_get:RoomInfo.asylums)
-  return asylums_.Get(index);
-}
-inline ::Asylum* RoomInfo::mutable_asylums(int index) {
-  // @@protoc_insertion_point(field_mutable:RoomInfo.asylums)
-  return asylums_.Mutable(index);
-}
-inline ::Asylum* RoomInfo::add_asylums() {
-  // @@protoc_insertion_point(field_add:RoomInfo.asylums)
-  return asylums_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::Asylum >&
-RoomInfo::asylums() const {
-  // @@protoc_insertion_point(field_list:RoomInfo.asylums)
-  return asylums_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::Asylum >*
-RoomInfo::mutable_asylums() {
-  // @@protoc_insertion_point(field_mutable_list:RoomInfo.asylums)
-  return &asylums_;
-}
-
-// -------------------------------------------------------------------
-
-// GameStateResponse
-
-// required int32 state = 1;
-inline bool GameStateResponse::has_state() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void GameStateResponse::set_has_state() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void GameStateResponse::clear_has_state() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void GameStateResponse::clear_state() {
-  state_ = 0;
-  clear_has_state();
-}
-inline ::google::protobuf::int32 GameStateResponse::state() const {
-  // @@protoc_insertion_point(field_get:GameStateResponse.state)
-  return state_;
-}
-inline void GameStateResponse::set_state(::google::protobuf::int32 value) {
-  set_has_state();
-  state_ = value;
-  // @@protoc_insertion_point(field_set:GameStateResponse.state)
-}
-
-// optional string roomId = 2;
-inline bool GameStateResponse::has_roomid() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void GameStateResponse::set_has_roomid() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void GameStateResponse::clear_has_roomid() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void GameStateResponse::clear_roomid() {
-  if (roomid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    roomid_->clear();
-  }
-  clear_has_roomid();
-}
-inline const ::std::string& GameStateResponse::roomid() const {
-  // @@protoc_insertion_point(field_get:GameStateResponse.roomId)
-  return *roomid_;
-}
-inline void GameStateResponse::set_roomid(const ::std::string& value) {
-  set_has_roomid();
-  if (roomid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    roomid_ = new ::std::string;
-  }
-  roomid_->assign(value);
-  // @@protoc_insertion_point(field_set:GameStateResponse.roomId)
-}
-inline void GameStateResponse::set_roomid(const char* value) {
-  set_has_roomid();
-  if (roomid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    roomid_ = new ::std::string;
-  }
-  roomid_->assign(value);
-  // @@protoc_insertion_point(field_set_char:GameStateResponse.roomId)
-}
-inline void GameStateResponse::set_roomid(const char* value, size_t size) {
-  set_has_roomid();
-  if (roomid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    roomid_ = new ::std::string;
-  }
-  roomid_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:GameStateResponse.roomId)
-}
-inline ::std::string* GameStateResponse::mutable_roomid() {
-  set_has_roomid();
-  if (roomid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    roomid_ = new ::std::string;
-  }
-  // @@protoc_insertion_point(field_mutable:GameStateResponse.roomId)
-  return roomid_;
-}
-inline ::std::string* GameStateResponse::release_roomid() {
-  clear_has_roomid();
-  if (roomid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    return NULL;
-  } else {
-    ::std::string* temp = roomid_;
-    roomid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-    return temp;
-  }
-}
-inline void GameStateResponse::set_allocated_roomid(::std::string* roomid) {
-  if (roomid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete roomid_;
-  }
-  if (roomid) {
-    set_has_roomid();
-    roomid_ = roomid;
-  } else {
-    clear_has_roomid();
-    roomid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  }
-  // @@protoc_insertion_point(field_set_allocated:GameStateResponse.roomId)
-}
-
-// -------------------------------------------------------------------
-
-// GameReadyRequest
-
-// optional string roomId = 1;
-inline bool GameReadyRequest::has_roomid() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void GameReadyRequest::set_has_roomid() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void GameReadyRequest::clear_has_roomid() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void GameReadyRequest::clear_roomid() {
-  if (roomid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    roomid_->clear();
-  }
-  clear_has_roomid();
-}
-inline const ::std::string& GameReadyRequest::roomid() const {
-  // @@protoc_insertion_point(field_get:GameReadyRequest.roomId)
-  return *roomid_;
-}
-inline void GameReadyRequest::set_roomid(const ::std::string& value) {
-  set_has_roomid();
-  if (roomid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    roomid_ = new ::std::string;
-  }
-  roomid_->assign(value);
-  // @@protoc_insertion_point(field_set:GameReadyRequest.roomId)
-}
-inline void GameReadyRequest::set_roomid(const char* value) {
-  set_has_roomid();
-  if (roomid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    roomid_ = new ::std::string;
-  }
-  roomid_->assign(value);
-  // @@protoc_insertion_point(field_set_char:GameReadyRequest.roomId)
-}
-inline void GameReadyRequest::set_roomid(const char* value, size_t size) {
-  set_has_roomid();
-  if (roomid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    roomid_ = new ::std::string;
-  }
-  roomid_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:GameReadyRequest.roomId)
-}
-inline ::std::string* GameReadyRequest::mutable_roomid() {
-  set_has_roomid();
-  if (roomid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    roomid_ = new ::std::string;
-  }
-  // @@protoc_insertion_point(field_mutable:GameReadyRequest.roomId)
-  return roomid_;
-}
-inline ::std::string* GameReadyRequest::release_roomid() {
-  clear_has_roomid();
-  if (roomid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    return NULL;
-  } else {
-    ::std::string* temp = roomid_;
-    roomid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-    return temp;
-  }
-}
-inline void GameReadyRequest::set_allocated_roomid(::std::string* roomid) {
-  if (roomid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete roomid_;
-  }
-  if (roomid) {
-    set_has_roomid();
-    roomid_ = roomid;
-  } else {
-    clear_has_roomid();
-    roomid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  }
-  // @@protoc_insertion_point(field_set_allocated:GameReadyRequest.roomId)
-}
-
-// -------------------------------------------------------------------
-
 // UltimateSkillChooseRequest
 
 // optional int32 ultimateSkill = 1;
@@ -11706,162 +11888,6 @@ inline void UltimateSkillChooseRequest::set_ultimateskill(::google::protobuf::in
 // -------------------------------------------------------------------
 
 // UltimateSkillChooseResponse
-
-// -------------------------------------------------------------------
-
-// PlayerRenewalRequest
-
-// optional int32 type = 1;
-inline bool PlayerRenewalRequest::has_type() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void PlayerRenewalRequest::set_has_type() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void PlayerRenewalRequest::clear_has_type() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void PlayerRenewalRequest::clear_type() {
-  type_ = 0;
-  clear_has_type();
-}
-inline ::google::protobuf::int32 PlayerRenewalRequest::type() const {
-  // @@protoc_insertion_point(field_get:PlayerRenewalRequest.type)
-  return type_;
-}
-inline void PlayerRenewalRequest::set_type(::google::protobuf::int32 value) {
-  set_has_type();
-  type_ = value;
-  // @@protoc_insertion_point(field_set:PlayerRenewalRequest.type)
-}
-
-// -------------------------------------------------------------------
-
-// PlayerRenewalResponse
-
-// -------------------------------------------------------------------
-
-// Asylum
-
-// required int32 id = 1;
-inline bool Asylum::has_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void Asylum::set_has_id() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void Asylum::clear_has_id() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void Asylum::clear_id() {
-  id_ = 0;
-  clear_has_id();
-}
-inline ::google::protobuf::int32 Asylum::id() const {
-  // @@protoc_insertion_point(field_get:Asylum.id)
-  return id_;
-}
-inline void Asylum::set_id(::google::protobuf::int32 value) {
-  set_has_id();
-  id_ = value;
-  // @@protoc_insertion_point(field_set:Asylum.id)
-}
-
-// optional int32 skin = 2;
-inline bool Asylum::has_skin() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void Asylum::set_has_skin() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void Asylum::clear_has_skin() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void Asylum::clear_skin() {
-  skin_ = 0;
-  clear_has_skin();
-}
-inline ::google::protobuf::int32 Asylum::skin() const {
-  // @@protoc_insertion_point(field_get:Asylum.skin)
-  return skin_;
-}
-inline void Asylum::set_skin(::google::protobuf::int32 value) {
-  set_has_skin();
-  skin_ = value;
-  // @@protoc_insertion_point(field_set:Asylum.skin)
-}
-
-// optional float x = 3;
-inline bool Asylum::has_x() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void Asylum::set_has_x() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void Asylum::clear_has_x() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void Asylum::clear_x() {
-  x_ = 0;
-  clear_has_x();
-}
-inline float Asylum::x() const {
-  // @@protoc_insertion_point(field_get:Asylum.x)
-  return x_;
-}
-inline void Asylum::set_x(float value) {
-  set_has_x();
-  x_ = value;
-  // @@protoc_insertion_point(field_set:Asylum.x)
-}
-
-// optional float y = 4;
-inline bool Asylum::has_y() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void Asylum::set_has_y() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void Asylum::clear_has_y() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void Asylum::clear_y() {
-  y_ = 0;
-  clear_has_y();
-}
-inline float Asylum::y() const {
-  // @@protoc_insertion_point(field_get:Asylum.y)
-  return y_;
-}
-inline void Asylum::set_y(float value) {
-  set_has_y();
-  y_ = value;
-  // @@protoc_insertion_point(field_set:Asylum.y)
-}
-
-// optional float radius = 5;
-inline bool Asylum::has_radius() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
-inline void Asylum::set_has_radius() {
-  _has_bits_[0] |= 0x00000010u;
-}
-inline void Asylum::clear_has_radius() {
-  _has_bits_[0] &= ~0x00000010u;
-}
-inline void Asylum::clear_radius() {
-  radius_ = 0;
-  clear_has_radius();
-}
-inline float Asylum::radius() const {
-  // @@protoc_insertion_point(field_get:Asylum.radius)
-  return radius_;
-}
-inline void Asylum::set_radius(float value) {
-  set_has_radius();
-  radius_ = value;
-  // @@protoc_insertion_point(field_set:Asylum.radius)
-}
 
 // -------------------------------------------------------------------
 
@@ -12919,58 +12945,6 @@ inline void UserInfoResponse::set_allocated_userinfo(::UserInfo* userinfo) {
 
 // -------------------------------------------------------------------
 
-// UltimateSkill
-
-// required int32 id = 1;
-inline bool UltimateSkill::has_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void UltimateSkill::set_has_id() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void UltimateSkill::clear_has_id() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void UltimateSkill::clear_id() {
-  id_ = 0;
-  clear_has_id();
-}
-inline ::google::protobuf::int32 UltimateSkill::id() const {
-  // @@protoc_insertion_point(field_get:UltimateSkill.id)
-  return id_;
-}
-inline void UltimateSkill::set_id(::google::protobuf::int32 value) {
-  set_has_id();
-  id_ = value;
-  // @@protoc_insertion_point(field_set:UltimateSkill.id)
-}
-
-// optional int32 foodId = 2;
-inline bool UltimateSkill::has_foodid() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void UltimateSkill::set_has_foodid() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void UltimateSkill::clear_has_foodid() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void UltimateSkill::clear_foodid() {
-  foodid_ = 0;
-  clear_has_foodid();
-}
-inline ::google::protobuf::int32 UltimateSkill::foodid() const {
-  // @@protoc_insertion_point(field_get:UltimateSkill.foodId)
-  return foodid_;
-}
-inline void UltimateSkill::set_foodid(::google::protobuf::int32 value) {
-  set_has_foodid();
-  foodid_ = value;
-  // @@protoc_insertion_point(field_set:UltimateSkill.foodId)
-}
-
-// -------------------------------------------------------------------
-
 // PrivilegeResponse
 
 // required int32 type = 1;
@@ -13550,6 +13524,371 @@ inline void AuthorizationResponse::set_allocated_userinfo(::UserInfo* userinfo) 
     clear_has_userinfo();
   }
   // @@protoc_insertion_point(field_set_allocated:AuthorizationResponse.userInfo)
+}
+
+// -------------------------------------------------------------------
+
+// UserInfo
+
+// required int32 uid = 1;
+inline bool UserInfo::has_uid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void UserInfo::set_has_uid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void UserInfo::clear_has_uid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void UserInfo::clear_uid() {
+  uid_ = 0;
+  clear_has_uid();
+}
+inline ::google::protobuf::int32 UserInfo::uid() const {
+  // @@protoc_insertion_point(field_get:UserInfo.uid)
+  return uid_;
+}
+inline void UserInfo::set_uid(::google::protobuf::int32 value) {
+  set_has_uid();
+  uid_ = value;
+  // @@protoc_insertion_point(field_set:UserInfo.uid)
+}
+
+// optional int32 skin = 2;
+inline bool UserInfo::has_skin() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void UserInfo::set_has_skin() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void UserInfo::clear_has_skin() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void UserInfo::clear_skin() {
+  skin_ = 0;
+  clear_has_skin();
+}
+inline ::google::protobuf::int32 UserInfo::skin() const {
+  // @@protoc_insertion_point(field_get:UserInfo.skin)
+  return skin_;
+}
+inline void UserInfo::set_skin(::google::protobuf::int32 value) {
+  set_has_skin();
+  skin_ = value;
+  // @@protoc_insertion_point(field_set:UserInfo.skin)
+}
+
+// optional string nickname = 3;
+inline bool UserInfo::has_nickname() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void UserInfo::set_has_nickname() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void UserInfo::clear_has_nickname() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void UserInfo::clear_nickname() {
+  if (nickname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    nickname_->clear();
+  }
+  clear_has_nickname();
+}
+inline const ::std::string& UserInfo::nickname() const {
+  // @@protoc_insertion_point(field_get:UserInfo.nickname)
+  return *nickname_;
+}
+inline void UserInfo::set_nickname(const ::std::string& value) {
+  set_has_nickname();
+  if (nickname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    nickname_ = new ::std::string;
+  }
+  nickname_->assign(value);
+  // @@protoc_insertion_point(field_set:UserInfo.nickname)
+}
+inline void UserInfo::set_nickname(const char* value) {
+  set_has_nickname();
+  if (nickname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    nickname_ = new ::std::string;
+  }
+  nickname_->assign(value);
+  // @@protoc_insertion_point(field_set_char:UserInfo.nickname)
+}
+inline void UserInfo::set_nickname(const char* value, size_t size) {
+  set_has_nickname();
+  if (nickname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    nickname_ = new ::std::string;
+  }
+  nickname_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:UserInfo.nickname)
+}
+inline ::std::string* UserInfo::mutable_nickname() {
+  set_has_nickname();
+  if (nickname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    nickname_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:UserInfo.nickname)
+  return nickname_;
+}
+inline ::std::string* UserInfo::release_nickname() {
+  clear_has_nickname();
+  if (nickname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = nickname_;
+    nickname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void UserInfo::set_allocated_nickname(::std::string* nickname) {
+  if (nickname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete nickname_;
+  }
+  if (nickname) {
+    set_has_nickname();
+    nickname_ = nickname;
+  } else {
+    clear_has_nickname();
+    nickname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:UserInfo.nickname)
+}
+
+// optional string account = 4;
+inline bool UserInfo::has_account() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void UserInfo::set_has_account() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void UserInfo::clear_has_account() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void UserInfo::clear_account() {
+  if (account_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    account_->clear();
+  }
+  clear_has_account();
+}
+inline const ::std::string& UserInfo::account() const {
+  // @@protoc_insertion_point(field_get:UserInfo.account)
+  return *account_;
+}
+inline void UserInfo::set_account(const ::std::string& value) {
+  set_has_account();
+  if (account_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    account_ = new ::std::string;
+  }
+  account_->assign(value);
+  // @@protoc_insertion_point(field_set:UserInfo.account)
+}
+inline void UserInfo::set_account(const char* value) {
+  set_has_account();
+  if (account_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    account_ = new ::std::string;
+  }
+  account_->assign(value);
+  // @@protoc_insertion_point(field_set_char:UserInfo.account)
+}
+inline void UserInfo::set_account(const char* value, size_t size) {
+  set_has_account();
+  if (account_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    account_ = new ::std::string;
+  }
+  account_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:UserInfo.account)
+}
+inline ::std::string* UserInfo::mutable_account() {
+  set_has_account();
+  if (account_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    account_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:UserInfo.account)
+  return account_;
+}
+inline ::std::string* UserInfo::release_account() {
+  clear_has_account();
+  if (account_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = account_;
+    account_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void UserInfo::set_allocated_account(::std::string* account) {
+  if (account_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete account_;
+  }
+  if (account) {
+    set_has_account();
+    account_ = account;
+  } else {
+    clear_has_account();
+    account_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:UserInfo.account)
+}
+
+// optional .UltimateSkill ultimateSkill = 5;
+inline bool UserInfo::has_ultimateskill() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void UserInfo::set_has_ultimateskill() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void UserInfo::clear_has_ultimateskill() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void UserInfo::clear_ultimateskill() {
+  if (ultimateskill_ != NULL) ultimateskill_->::UltimateSkill::Clear();
+  clear_has_ultimateskill();
+}
+inline const ::UltimateSkill& UserInfo::ultimateskill() const {
+  // @@protoc_insertion_point(field_get:UserInfo.ultimateSkill)
+  return ultimateskill_ != NULL ? *ultimateskill_ : *default_instance_->ultimateskill_;
+}
+inline ::UltimateSkill* UserInfo::mutable_ultimateskill() {
+  set_has_ultimateskill();
+  if (ultimateskill_ == NULL) ultimateskill_ = new ::UltimateSkill;
+  // @@protoc_insertion_point(field_mutable:UserInfo.ultimateSkill)
+  return ultimateskill_;
+}
+inline ::UltimateSkill* UserInfo::release_ultimateskill() {
+  clear_has_ultimateskill();
+  ::UltimateSkill* temp = ultimateskill_;
+  ultimateskill_ = NULL;
+  return temp;
+}
+inline void UserInfo::set_allocated_ultimateskill(::UltimateSkill* ultimateskill) {
+  delete ultimateskill_;
+  ultimateskill_ = ultimateskill;
+  if (ultimateskill) {
+    set_has_ultimateskill();
+  } else {
+    clear_has_ultimateskill();
+  }
+  // @@protoc_insertion_point(field_set_allocated:UserInfo.ultimateSkill)
+}
+
+// optional int32 gold = 6;
+inline bool UserInfo::has_gold() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void UserInfo::set_has_gold() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void UserInfo::clear_has_gold() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void UserInfo::clear_gold() {
+  gold_ = 0;
+  clear_has_gold();
+}
+inline ::google::protobuf::int32 UserInfo::gold() const {
+  // @@protoc_insertion_point(field_get:UserInfo.gold)
+  return gold_;
+}
+inline void UserInfo::set_gold(::google::protobuf::int32 value) {
+  set_has_gold();
+  gold_ = value;
+  // @@protoc_insertion_point(field_set:UserInfo.gold)
+}
+
+// optional int32 stamina = 7;
+inline bool UserInfo::has_stamina() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void UserInfo::set_has_stamina() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void UserInfo::clear_has_stamina() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void UserInfo::clear_stamina() {
+  stamina_ = 0;
+  clear_has_stamina();
+}
+inline ::google::protobuf::int32 UserInfo::stamina() const {
+  // @@protoc_insertion_point(field_get:UserInfo.stamina)
+  return stamina_;
+}
+inline void UserInfo::set_stamina(::google::protobuf::int32 value) {
+  set_has_stamina();
+  stamina_ = value;
+  // @@protoc_insertion_point(field_set:UserInfo.stamina)
+}
+
+// optional int32 maxStamina = 8;
+inline bool UserInfo::has_maxstamina() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void UserInfo::set_has_maxstamina() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void UserInfo::clear_has_maxstamina() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void UserInfo::clear_maxstamina() {
+  maxstamina_ = 0;
+  clear_has_maxstamina();
+}
+inline ::google::protobuf::int32 UserInfo::maxstamina() const {
+  // @@protoc_insertion_point(field_get:UserInfo.maxStamina)
+  return maxstamina_;
+}
+inline void UserInfo::set_maxstamina(::google::protobuf::int32 value) {
+  set_has_maxstamina();
+  maxstamina_ = value;
+  // @@protoc_insertion_point(field_set:UserInfo.maxStamina)
+}
+
+// optional int32 countdown = 9;
+inline bool UserInfo::has_countdown() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void UserInfo::set_has_countdown() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void UserInfo::clear_has_countdown() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void UserInfo::clear_countdown() {
+  countdown_ = 0;
+  clear_has_countdown();
+}
+inline ::google::protobuf::int32 UserInfo::countdown() const {
+  // @@protoc_insertion_point(field_get:UserInfo.countdown)
+  return countdown_;
+}
+inline void UserInfo::set_countdown(::google::protobuf::int32 value) {
+  set_has_countdown();
+  countdown_ = value;
+  // @@protoc_insertion_point(field_set:UserInfo.countdown)
+}
+
+// optional int32 privilege = 10;
+inline bool UserInfo::has_privilege() const {
+  return (_has_bits_[0] & 0x00000200u) != 0;
+}
+inline void UserInfo::set_has_privilege() {
+  _has_bits_[0] |= 0x00000200u;
+}
+inline void UserInfo::clear_has_privilege() {
+  _has_bits_[0] &= ~0x00000200u;
+}
+inline void UserInfo::clear_privilege() {
+  privilege_ = 0;
+  clear_has_privilege();
+}
+inline ::google::protobuf::int32 UserInfo::privilege() const {
+  // @@protoc_insertion_point(field_get:UserInfo.privilege)
+  return privilege_;
+}
+inline void UserInfo::set_privilege(::google::protobuf::int32 value) {
+  set_has_privilege();
+  privilege_ = value;
+  // @@protoc_insertion_point(field_set:UserInfo.privilege)
 }
 
 // -------------------------------------------------------------------
