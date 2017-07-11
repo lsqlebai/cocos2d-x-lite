@@ -323,10 +323,18 @@ private:
     bool _inited;
 	//add by Shiqi Luo
 	static std::string _proxy;
+
+	// add by sulei
+	static std::string _packageUrl;
+	static std::string _remoteManifestUrl;
+	static std::string _remoteVersionUrl;
 public:
 	
 	static void setGlobalProxy(std::string& proxy);
 	static std::string getGlobalProxy();
+
+	// add by sulei, config hot update url params
+	static void setHotUpdateUrl(const std::string& packageUrl, const std::string& remoteManifestUrl, const std::string& remoteVersionUrl);
 };
 
 NS_CC_EXT_END

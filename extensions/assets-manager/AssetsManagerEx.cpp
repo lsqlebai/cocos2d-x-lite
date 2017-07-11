@@ -144,7 +144,16 @@ void AssetsManagerEx::initManifests(const std::string& manifestUrl)
     _localManifest = new (std::nothrow) Manifest();
     if (_localManifest)
     {
-        loadLocalManifest(manifestUrl);
+		loadLocalManifest(manifestUrl);
+
+
+		// update by sulei, modify hot update url params
+		if (!AssetsManagerEx::_packageUrl.empty())
+		{
+			_localManifest->_packageUrl = AssetsManagerEx::_packageUrl;
+			_localManifest->_remoteManifestUrl = AssetsManagerEx::_remoteManifestUrl;
+			_localManifest->_remoteVersionUrl = AssetsManagerEx::_remoteVersionUrl;
+		}
         
         // Init and load temporary manifest
         _tempManifest = new (std::nothrow) Manifest();
@@ -578,6 +587,14 @@ void AssetsManagerEx::parseVersion()
     }
     else
     {
+		// update by sulei, modify hot update url params
+		if (!AssetsManagerEx::_packageUrl.empty())
+		{
+			_remoteManifest->_packageUrl = AssetsManagerEx::_packageUrl;
+			_remoteManifest->_remoteManifestUrl = AssetsManagerEx::_remoteManifestUrl;
+			_remoteManifest->_remoteVersionUrl = AssetsManagerEx::_remoteVersionUrl;
+		}
+
         if (_localManifest->versionGreater(_remoteManifest, _versionCompareHandle))
         {
             _updateState = State::UP_TO_DATE;
@@ -646,6 +663,15 @@ void AssetsManagerEx::parseManifest()
     }
     else
     {
+
+		// update by sulei, modify hot update url params
+		if (!AssetsManagerEx::_packageUrl.empty())
+		{
+			_remoteManifest->_packageUrl = AssetsManagerEx::_packageUrl;
+			_remoteManifest->_remoteManifestUrl = AssetsManagerEx::_remoteManifestUrl;
+			_remoteManifest->_remoteVersionUrl = AssetsManagerEx::_remoteVersionUrl;
+		}
+
         if (_localManifest->versionGreater(_remoteManifest, _versionCompareHandle))
         {
             _updateState = State::UP_TO_DATE;
@@ -1201,6 +1227,17 @@ void AssetsManagerEx::onDownloadUnitsFinished()
 std::string AssetsManagerEx::_proxy = "";
 std::string AssetsManagerEx::getGlobalProxy() {
 	return AssetsManagerEx::_proxy;
+}
+
+
+std::string AssetsManagerEx::_packageUrl = "";
+std::string AssetsManagerEx::_remoteManifestUrl = "";
+std::string AssetsManagerEx::_remoteVersionUrl = "";
+void AssetsManagerEx::setHotUpdateUrl(const std::string& packageUrl, const std::string& remoteManifestUrl, const std::string& remoteVersionUrl)
+{
+	AssetsManagerEx::_packageUrl = packageUrl;
+	AssetsManagerEx::_remoteManifestUrl = remoteManifestUrl;
+	AssetsManagerEx::_remoteVersionUrl = remoteVersionUrl;
 }
 
 void AssetsManagerEx::setGlobalProxy(std::string& proxy) {

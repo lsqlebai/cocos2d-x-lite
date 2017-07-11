@@ -1037,6 +1037,38 @@ bool js_set_global_proxy(JSContext *cx, uint32_t argc, jsval *vp) {
 	return true;
 }
 
+// add by sulei
+// jsb.setHotUpdateUrl(packageUrl,remoteManifestUrl,remoteVersionUrl)
+
+// example
+//packageUrl:"http://172.16.4.198/remote-assets/",
+//remoteManifestUrl : "http://172.16.4.198/remote-assets/project.manifest",
+//remoteVersionUrl : "http://172.16.4.198/remote-assets/version.manifest"
+bool js_set_hot_update_url(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+	JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+	if (argc != 3) {
+		JS_ReportError(cx, "js_set_hot_update_url : wrong number of arguments:%d, shouled be 3", argc);
+		return false;
+	}
+
+	std::string packageUrl;
+	bool ok = jsval_to_std_string(cx, args.get(0), &packageUrl);
+	JSB_PRECONDITION2(ok, cx, false, "js_set_hot_update_url : Error processing argument packageUrl");
+
+	std::string remoteManifestUrl;
+	ok = jsval_to_std_string(cx, args.get(1), &remoteManifestUrl);
+	JSB_PRECONDITION2(ok, cx, false, "js_set_hot_update_url : Error processing argument remoteManifestUrl");
+
+	std::string remoteVersionUrl;
+	ok = jsval_to_std_string(cx, args.get(2), &remoteVersionUrl);
+	JSB_PRECONDITION2(ok, cx, false, "js_set_hot_update_url : Error processing argument remoteVersionUrl");
+
+	AssetsManagerEx::setHotUpdateUrl(packageUrl, remoteManifestUrl, remoteVersionUrl);
+	return true;
+}
+
 extern JSObject* jsb_cocos2d_extension_ScrollView_prototype;
 extern JSObject* jsb_cocos2d_extension_TableView_prototype;
 extern JSObject* jsb_cocos2d_extension_Control_prototype;
@@ -1089,6 +1121,8 @@ void register_all_cocos2dx_extension_manual(JSContext* cx, JS::HandleObject glob
 
 	//add by shiqi luo
 	JS_DefineFunction(cx, jsbObj, "setGlobalProxy", js_set_global_proxy, 1, JSPROP_READONLY | JSPROP_PERMANENT);
+
+	JS_DefineFunction(cx, jsbObj, "setHotUpdateUrl", js_set_hot_update_url, 3, JSPROP_READONLY | JSPROP_PERMANENT);
 
     JS::RootedObject performance(cx);
     get_or_create_js_obj(cx, global, "performance", &performance);

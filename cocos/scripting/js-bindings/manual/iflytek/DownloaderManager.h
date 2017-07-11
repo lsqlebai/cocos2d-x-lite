@@ -28,4 +28,6 @@ private:
 
 bool js_set_global_proxy(JSContext *cx, uint32_t argc, jsval *vp);
 
+bool js_set_hot_update_url(JSContext *cx, uint32_t argc, jsval *vp);
+
 #endif // __DOWNLOAD_MANAGER_H__
