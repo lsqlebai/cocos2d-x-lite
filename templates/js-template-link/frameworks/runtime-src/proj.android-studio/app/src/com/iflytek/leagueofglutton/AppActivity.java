@@ -30,7 +30,6 @@ import android.widget.Toast;
 
 import com.iflytek.unipay.PayComponent;
 import com.iflytek.unipay.js.CocoActivityHelper;
-import com.iflytek.unipay.js.UniPay;
 import com.iflytek.utils.common.ApkUtil;
 import com.iflytek.utils.common.FileUtil;
 import com.umeng.analytics.MobclickAgent;
@@ -79,12 +78,24 @@ public class AppActivity extends Cocos2dxActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // 联通渠道，设置代理
+        if("018TJLT".equals(MainApplication.channel))
+        {
+            System.setProperty("http.proxySet", "true");    //设置使用网络代理
+            System.setProperty("http.proxyHost", "202.99.114.28");  //设置代理服务器地址
+            System.setProperty("http.proxyPort", "10011");    //设置代理服务器端口号
+
+            // 针对https也开启代理
+            System.setProperty("https.proxyHost", "202.99.114.28");
+            System.setProperty("https.proxyPort", "10011");
+        }
+
         ApkUtil.init(this);
         initInfo();
         super.onCreate(savedInstanceState);
 
         CocoActivityHelper.setActivity(this);
-        UniPay.init(this);
 
         // 初始化友盟统计
         MobClickCppHelper.init(this,"59506351bbea835a61000f4f", MainApplication.channel);
@@ -275,7 +286,16 @@ public class AppActivity extends Cocos2dxActivity {
         File srcDir = new File("/data/data/" + getPackageName() + "/lib");
         File dstDir = getFilesDir();
 
-        File[] srcFiles = srcDir.listFiles();
+        File[] srcFiles = srcDir.listFiles(new FileFilter() {
+            @Override
+            public boolean accept(File file) {
+                if(file.getName().indexOf("cocos2djs") != -1) // 不拷贝引擎库
+                {
+                    return false;
+                }
+                return true;
+            }
+        });
         if(null != srcFiles)
         {
             for(File srcFile : srcFiles)
@@ -305,12 +325,13 @@ public class AppActivity extends Cocos2dxActivity {
         //super.onLoadNativeLibraries();
 
         try {
+//            System.load(getFilesDir() + "/libcocos2djs.so");
+
             System.load(getFilesDir() + "/libiflyteknet.so");
-            System.load(getFilesDir() + "/libcocos2djs.so");
+            System.loadLibrary("cocos2djs");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-
 }
