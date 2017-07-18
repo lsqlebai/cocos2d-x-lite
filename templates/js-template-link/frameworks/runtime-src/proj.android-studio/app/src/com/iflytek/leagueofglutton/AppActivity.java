@@ -96,6 +96,7 @@ public class AppActivity extends Cocos2dxActivity {
         super.onCreate(savedInstanceState);
 
         CocoActivityHelper.setActivity(this);
+		UniPay.init(this); // 初始化支付
 
         // 初始化友盟统计
         MobClickCppHelper.init(this,"59506351bbea835a61000f4f", MainApplication.channel);
