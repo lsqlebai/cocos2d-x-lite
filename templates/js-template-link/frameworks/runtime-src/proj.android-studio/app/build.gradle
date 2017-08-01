@@ -13,8 +13,8 @@ android {
         applicationId "com.iflytek.leagueofglutton"
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 10100
-        versionName "1.1.0"
+        versionCode 10105
+        versionName "1.1.5"
     }
     lintOptions {
         abortOnError false
