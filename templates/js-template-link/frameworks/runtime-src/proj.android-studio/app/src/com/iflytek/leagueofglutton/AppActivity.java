@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.iflytek.unipay.PayComponent;
 import com.iflytek.unipay.js.CocoActivityHelper;
+import com.iflytek.unipay.js.UniPay;
 import com.iflytek.utils.common.ApkUtil;
 import com.iflytek.utils.common.FileUtil;
 import com.umeng.analytics.MobclickAgent;
@@ -96,10 +97,13 @@ public class AppActivity extends Cocos2dxActivity {
         super.onCreate(savedInstanceState);
 
         CocoActivityHelper.setActivity(this);
-		UniPay.init(this); // 初始化支付
+
+        UniPay.init(this); // 初始化支付
 
         // 初始化友盟统计
         MobClickCppHelper.init(this,"59506351bbea835a61000f4f", MainApplication.channel);
+
+        MobclickAgent.setCatchUncaughtExceptions(true);
     }
 
     /**
@@ -122,12 +126,14 @@ public class AppActivity extends Cocos2dxActivity {
     protected void onResume() {
         super.onResume();
         MobClickCppHelper.onResume(this);
+        MobclickAgent.onResume(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         MobClickCppHelper.onPause(this);
+        MobclickAgent.onPause(this);
     }
 
     @Override
