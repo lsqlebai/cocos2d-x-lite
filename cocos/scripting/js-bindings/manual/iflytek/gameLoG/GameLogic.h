@@ -7,6 +7,8 @@ USING_NS_CC;
 using namespace std;
 
 
+#define NONE_NUMBER -999999 //  未赋值的number
+
 class PropIdStartOffset
 {
 public:
@@ -27,6 +29,11 @@ public:
 	int32_t skin; // 食物皮肤下标
 	float x;  // 食物在地图中的x坐标
 	float y; // 食物在地图中的y坐标
+
+	float fromX; // 解析时可以为空，食物出生位置x，需要做动画处理
+	float fromY; // 解析时可以为空，食物出生位置y，需要做动画处理
+	float radius; // 解析时可以为空，食物半径
+
 	CREATE_FUNC(FoodObj);
 	bool init(){ return true; }
 	FoodObj();

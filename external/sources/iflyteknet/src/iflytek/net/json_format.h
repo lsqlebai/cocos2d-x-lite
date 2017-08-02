@@ -62,6 +62,10 @@ namespace io {
 class LIBPROTOBUF_EXPORT JsonFormat {
  public:
 
+	 /**
+	  * 将ProtoBuf对象转换为json，null repeat会转换成[]
+	  * @param msg proto对象
+	  */
 	static string Utf8DebugJsonString(google::protobuf::Message& msg);
 
   // Outputs a textual representation of the given message to the given

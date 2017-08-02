@@ -91,6 +91,37 @@ bool GameLogic::parseJsonToFoodAreas(const string& jsonData, Vector<FoodAreaObj*
 								float value = curFood["y"].GetFloat();
 								food->y = value;
 							}
+
+							if (curFood.HasMember("fromX") && curFood["fromX"].IsNumber())
+							{
+								float value = curFood["fromX"].GetFloat();
+								food->fromX = value;
+							}
+							else
+							{
+								food->fromX = NONE_NUMBER;
+							}
+
+							if (curFood.HasMember("fromY") && curFood["fromY"].IsNumber())
+							{
+								float value = curFood["fromY"].GetFloat();
+								food->fromY = value;
+							}
+							else
+							{
+								food->fromY = NONE_NUMBER;
+							}
+
+							if (curFood.HasMember("radius") && curFood["radius"].IsNumber())
+							{
+								float value = curFood["radius"].GetFloat();
+								food->radius = value;
+							}
+							else
+							{
+								food->radius = NONE_NUMBER;
+							}
+
 							foodArea->foods.pushBack(food);
 						}
 					}
@@ -175,25 +206,52 @@ void GameLogic::addOrRemoveFood(const bool& isAdd, const Vector<FoodAreaObj*> &f
 					{
 						auto curFoodInfo = curFoods.at(j);
 						
-						
-						
 						auto foodSpriteFrame = this->getFoodSkinByIndex(curFoodInfo->skin - PropIdStartOffset::FOOD_START);
 						//auto foodNode = Sprite::createWithSpriteFrame(foodSpriteFrame); // 创建食物
 						auto foodNode = _getSprite();
 						foodNode->setSpriteFrame(foodSpriteFrame);
-
-						if (foodScale <= 0)
+						
+						float curScale = 1;
+						if (curFoodInfo->radius != NONE_NUMBER) // 指定了食物半径
 						{
-							foodScale = this->_foodRadius * 2 / foodNode->getContentSize().width;
+							curScale = this->_foodRadius * 2 / foodNode->getContentSize().width;
+						}
+						else // 未指定半径，使用默认半径
+						{
+
+							if (foodScale <= 0)
+							{
+								foodScale = this->_foodRadius * 2 / foodNode->getContentSize().width;
+							}
+							curScale = foodScale;
 						}
 
 						// 设置食物尺寸
-						foodNode->setScale(foodScale);
+						foodNode->setScale(curScale);
 						
 						foodNode->setTag(curFoodInfo->id);
 
 						curFoodLayer->addChild(foodNode);
-						foodNode->setPosition(Vec2(curFoodInfo->x, curFoodInfo->y)); // 放置到地图中
+
+						// 有起始位置，需要进行动画
+						if (curFoodInfo->fromX != NONE_NUMBER && curFoodInfo->fromY != NONE_NUMBER)
+						{
+							foodNode->setPosition(Vec2(curFoodInfo->fromX, curFoodInfo->fromY)); // 放置到地图中
+
+
+							Action* action = Sequence::create(JumpTo::create(0.8, Vec2(curFoodInfo->x, curFoodInfo->y), 100, 1),
+								CallFunc::create([foodNode, this]()
+							{
+								//foodNode->removeFromParent();
+								//_putSprite((Sprite*)foodNode); // 放到缓存池
+							}),nullptr);
+							foodNode->runAction(action);
+						}
+						else
+						{
+							foodNode->setPosition(Vec2(curFoodInfo->x, curFoodInfo->y)); // 放置到地图中
+						}
+						
 					}
 				}
 			}

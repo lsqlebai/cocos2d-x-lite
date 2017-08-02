@@ -19,7 +19,7 @@
 	"twb+Xpw3inl1KoMQmwIDAQAB\n"\
 	"-----END PUBLIC KEY-----\n"
 
-#define IFLYTEK_NET_VERSION 11 // 通信库版本号
+#define IFLYTEK_NET_VERSION 12 // 通信库版本号
 
 //#pragma comment(lib, "libzlib.lib") 
 
