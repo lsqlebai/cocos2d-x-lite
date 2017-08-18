@@ -15,6 +15,7 @@ android {
         targetSdkVersion 22
         versionCode 10105
         versionName "1.1.5"
+        multiDexEnabled true
     }
     lintOptions {
         abortOnError false
@@ -133,13 +134,13 @@ dependencies {
     compile project(':CommonUtil')
     compile project(':unipay')
     compile project(path: ':unipayforjs')
-
+    compile 'com.android.support:multidex:1.0.1'
     tmallCompile project(':commonPay')
 
-    unicomCompile project(':unicomPay')
+    //unicomCompile project(':unicomPay')
 
-    xiaowoCompile project(':xiaowoPay')
+    //xiaowoCompile project(':xiaowoPay')
 
-    jscmccCompile project(':jiangsucmccPay')
+    //jscmccCompile project(':jiangsucmccPay')
 
 }

@@ -2,15 +2,17 @@ package com.iflytek.leagueofglutton;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.support.multidex.MultiDex;
+import android.support.multidex.MultiDexApplication;
 
 import com.google.gson.Gson;
-import com.iflytek.app.BaseApplication;
+import com.iflytek.leagueofglutton.dex.DexLoaderManager;
 import com.iflytek.unipay.PayComponent;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-public class MainApplication extends BaseApplication {
+public class MainApplication extends MultiDexApplication {
 
     static class Config {
         String channel;
@@ -38,13 +40,14 @@ public class MainApplication extends BaseApplication {
 //        MobclickAgent.startWithConfigure(new MobclickAgent.UMAnalyticsConfig(this, "57b66b9267e58e55b0002b8f", AppUtil.getAppId()));
         // 支付组件初始化
         PayComponent.getInstance().appInit(this, getChannelId());
+        DexLoaderManager.getInstance().copyDexLocked();
     }
 
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
+        MultiDex.install(this);
         PayComponent.getInstance().attachBaseContext(this, base);
-//        MultiDex.install(this);
     }
 
     @Override
