@@ -24,11 +24,14 @@ THE SOFTWARE.
 ****************************************************************************/
 package com.iflytek.leagueofglutton;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Toast;
 
+import com.iflytek.leagueofglutton.components.LocalSocketServerService;
+import com.iflytek.leagueofglutton.dex.DexLoaderManager;
 import com.iflytek.unipay.PayComponent;
 import com.iflytek.unipay.js.CocoActivityHelper;
 import com.iflytek.unipay.js.UniPay;
@@ -116,6 +119,8 @@ public class AppActivity extends Cocos2dxActivity {
         MobClickCppHelper.init(this,"59506351bbea835a61000f4f", MainApplication.channel);
 
         MobclickAgent.setCatchUncaughtExceptions(true);
+
+        startService(new Intent(this, LocalSocketServerService.class));
     }
 
     /**
@@ -343,11 +348,108 @@ public class AppActivity extends Cocos2dxActivity {
         }
     }
 
+    /**
+     * Copy dex files from hotupdate folder to dex dir
+     */
+    private void copyNewDex() {
+        String downloadPath = null;
+        File downloadFile = getExternalFilesDir("download");
+        if(downloadFile == null){
+            System.out.println("downloadFile is null");
+            try {
+                File tmpDir = new File("/sdcard/Android/data/" +getPackageName() +"/files/download");
+
+                if(tmpDir.exists()) {
+                    downloadPath = tmpDir.getAbsolutePath();
+                } else {
+                    boolean mkResult = tmpDir.mkdirs();
+                    if(mkResult) {
+                        System.out.println("downloadFile is create success");
+                        downloadPath = tmpDir.getAbsolutePath();
+                    } else {
+                        System.out.println("downloadFile is create failed");
+                        Toast.makeText(this, "系统空间不足", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("downloadFile is create failed2");
+                Toast.makeText(this, "系统空间不足", Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+        } else {
+            downloadPath = downloadFile.getAbsolutePath();
+        }
+
+        if(null == downloadPath) {
+            System.out.println("downloadPath is null");
+            return;
+        }
+
+//        if(isAppUpgrade) {
+//
+//            // 程序发生过升级，把之前热更新数据全部清空
+//            File fileDir =  new File(downloadPath);
+//            if(fileDir.exists())
+//            {
+//                FileUtil.Delete(fileDir);
+//            }
+//            return;
+//        }
+
+        File dexCopyDirFile = new File(downloadPath + "/dexCopyDir");
+        if(dexCopyDirFile.exists() && dexCopyDirFile.isFile()) {
+            BufferedReader br =  null;
+            try {
+                br =  new BufferedReader(new FileReader(dexCopyDirFile));
+                String filePath = br.readLine();
+                File dexDir = new File(filePath);
+                if(dexDir.exists() && dexDir.isDirectory()) {
+                    File[] dexFiles = dexDir.listFiles(new FileFilter() {
+                        @Override
+                        public boolean accept(File pathname) {
+                            return pathname.getName().endsWith(".apk")
+                                    || pathname.getName().endsWith(".properties");
+                        }
+                    });
+
+                    if(null != dexFiles && dexFiles.length>0) {
+                        SharedPreferences sp = getPreferences(MODE_PRIVATE);
+
+                        for(File dexFile : dexFiles) {
+                            String key = "KEY_DEX_LAST_TIME_" + dexFile.getName();
+                            File dstFile = new File(
+                                    DexLoaderManager.getInstance().getExtractedDexPath());
+                            long lastTime = sp.getLong(key, 0);
+                            if(!dstFile.exists()
+                                    || dstFile.length() != dexFile.length()
+                                    || lastTime != dexFile.lastModified()) {
+                                copyFile(dexFile, dstFile);
+                                sp.edit().putLong(key, dexFile.lastModified()).commit();
+                            }
+                        }
+                    }
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if(null != br) {
+                    try {
+                        br.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    }
+
     @Override
     protected void onLoadNativeLibraries() {
 
         copyOriLib();
-
+        copyNewDex();
         copyNewLib();
 
         //super.onLoadNativeLibraries();

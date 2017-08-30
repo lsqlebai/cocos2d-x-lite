@@ -2,8 +2,8 @@ apply plugin: 'com.android.library'
 
 dependencies {
     compile fileTree(include: '*.jar', dir: 'libs')
-    compile 'com.android.support:support-core-ui:24.2.0'
-    compile 'com.google.protobuf:protobuf-java:2.6.1'
+
+    //compile 'com.google.protobuf:protobuf-java:2.6.1'
     compile ('com.android.support:recyclerview-v7:23.0.1'){
         exclude module: 'support-v4'
     }
