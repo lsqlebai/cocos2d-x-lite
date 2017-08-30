@@ -26,6 +26,7 @@ package com.iflytek.leagueofglutton;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Toast;
 
 import com.iflytek.unipay.PayComponent;
@@ -98,7 +99,18 @@ public class AppActivity extends Cocos2dxActivity {
 
         CocoActivityHelper.setActivity(this);
 
-        UniPay.init(this); // 初始化支付
+        if("018JXYD".equals(MainApplication.channel))
+        {
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    UniPay.init(AppActivity.this); // 初始化支付
+                }
+            }, 1000);
+        }else {
+            UniPay.init(AppActivity.this); // 初始化支付
+        }
 
         // 初始化友盟统计
         MobClickCppHelper.init(this,"59506351bbea835a61000f4f", MainApplication.channel);
@@ -290,7 +302,16 @@ public class AppActivity extends Cocos2dxActivity {
 
     private void copyOriLib()
     {
-        File srcDir = new File("/data/data/" + getPackageName() + "/lib");
+        File srcDir;
+        File tmpDir = getFilesDir();
+        if(null != tmpDir)
+        {
+            srcDir = new File(tmpDir.getParentFile().getAbsoluteFile() + "/lib");
+        }
+        else
+        {
+            srcDir = new File("/data/data/" + getPackageName() + "/lib");
+        }
         File dstDir = getFilesDir();
 
         File[] srcFiles = srcDir.listFiles(new FileFilter() {

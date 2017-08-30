@@ -47,6 +47,10 @@ android {
             manifest.srcFile 'channel/common/AndroidManifest.xml'
 			assets.srcDirs = ['assets', 'channel/jscmcc/assets']
         }
+        jxcmcc {
+            manifest.srcFile 'channel/common/AndroidManifest.xml'
+            assets.srcDirs = ['assets', 'channel/jxcmcc/assets']
+        }
     }
     productFlavors {
         tmall {
@@ -59,6 +63,9 @@ android {
 
         }
         jscmcc {
+
+        }
+        jxcmcc {
 
         }
     }
@@ -142,4 +149,5 @@ dependencies {
 
     jscmccCompile project(':jiangsucmccPay')
 
+    jxcmccCompile project(':jiangxicmccPay')
 }
