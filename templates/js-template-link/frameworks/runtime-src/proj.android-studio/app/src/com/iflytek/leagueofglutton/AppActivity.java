@@ -24,12 +24,14 @@ THE SOFTWARE.
 ****************************************************************************/
 package com.iflytek.leagueofglutton;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.iflytek.leagueofglutton.components.LocalSocketServerService;
 import com.iflytek.leagueofglutton.dex.DexLoaderManager;
 import com.iflytek.unipay.PayComponent;
 import com.iflytek.unipay.js.CocoActivityHelper;
@@ -118,6 +120,7 @@ public class AppActivity extends Cocos2dxActivity {
         MobClickCppHelper.init(this,"59506351bbea835a61000f4f", MainApplication.channel);
 
         MobclickAgent.setCatchUncaughtExceptions(true);
+		startService(new Intent(this, LocalSocketServerService.class));
     }
 
     /**
