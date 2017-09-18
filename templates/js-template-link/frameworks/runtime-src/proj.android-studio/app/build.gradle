@@ -55,6 +55,11 @@ android {
             manifest.srcFile 'channel/common/AndroidManifest.xml'
             assets.srcDirs = ['assets', 'channel/shdx/assets']
         }
+        gddx {
+            defaultConfig.applicationId "com.iflytek.leagueofglutton.egame"
+            manifest.srcFile 'channel/common/AndroidManifest.xml'
+            assets.srcDirs = ['assets', 'channel/gddx/assets']
+        }
     }
     productFlavors {
         tmall {
@@ -74,6 +79,9 @@ android {
         }
 
         shdx {
+
+        }
+        gddx {
 
         }
     }
@@ -160,4 +168,6 @@ dependencies {
     jxcmccCompile project(':jiangxicmccPay')
 
     shdxCompile project(':commonPay')
+    gddxCompile project(':commonPay')
+
 }
