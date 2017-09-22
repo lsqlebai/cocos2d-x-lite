@@ -32,6 +32,8 @@ void protobuf_AssignDesc_game_2eproto();
 void protobuf_ShutdownFile_game_2eproto();
 
 class MessageInfo;
+class GiftPackListResponse;
+class GiftPack;
 class Basic;
 class RegisterRequest;
 class RegisterResponse;
@@ -80,6 +82,7 @@ class Cell;
 class Player;
 class SuperRenewInfo;
 class RoomInfo;
+class UserNotifyResponse;
 class PlayerListResponse;
 class FlightPropsResponse;
 class FlightProps;
@@ -182,17 +185,17 @@ class MessageInfo : public ::google::protobuf::Message {
   inline ::std::string* release_msg();
   inline void set_allocated_msg(::std::string* msg);
 
-  // optional string token = 39;
-  inline bool has_token() const;
-  inline void clear_token();
-  static const int kTokenFieldNumber = 39;
-  inline const ::std::string& token() const;
-  inline void set_token(const ::std::string& value);
-  inline void set_token(const char* value);
-  inline void set_token(const char* value, size_t size);
-  inline ::std::string* mutable_token();
-  inline ::std::string* release_token();
-  inline void set_allocated_token(::std::string* token);
+  // optional string userToken = 39;
+  inline bool has_usertoken() const;
+  inline void clear_usertoken();
+  static const int kUserTokenFieldNumber = 39;
+  inline const ::std::string& usertoken() const;
+  inline void set_usertoken(const ::std::string& value);
+  inline void set_usertoken(const char* value);
+  inline void set_usertoken(const char* value, size_t size);
+  inline ::std::string* mutable_usertoken();
+  inline ::std::string* release_usertoken();
+  inline void set_allocated_usertoken(::std::string* usertoken);
 
   // optional .Basic basic = 28;
   inline bool has_basic() const;
@@ -518,14 +521,32 @@ class MessageInfo : public ::google::protobuf::Message {
   inline ::SignInResponse* release_signinresponse();
   inline void set_allocated_signinresponse(::SignInResponse* signinresponse);
 
-  // optional .FlightPropsResponse flightPropsResponse = 42;
+  // optional .GiftPackListResponse giftPackListResponse = 42;
+  inline bool has_giftpacklistresponse() const;
+  inline void clear_giftpacklistresponse();
+  static const int kGiftPackListResponseFieldNumber = 42;
+  inline const ::GiftPackListResponse& giftpacklistresponse() const;
+  inline ::GiftPackListResponse* mutable_giftpacklistresponse();
+  inline ::GiftPackListResponse* release_giftpacklistresponse();
+  inline void set_allocated_giftpacklistresponse(::GiftPackListResponse* giftpacklistresponse);
+
+  // optional .FlightPropsResponse flightPropsResponse = 43;
   inline bool has_flightpropsresponse() const;
   inline void clear_flightpropsresponse();
-  static const int kFlightPropsResponseFieldNumber = 42;
+  static const int kFlightPropsResponseFieldNumber = 43;
   inline const ::FlightPropsResponse& flightpropsresponse() const;
   inline ::FlightPropsResponse* mutable_flightpropsresponse();
   inline ::FlightPropsResponse* release_flightpropsresponse();
   inline void set_allocated_flightpropsresponse(::FlightPropsResponse* flightpropsresponse);
+
+  // optional .UserNotifyResponse userNotifyResponse = 44;
+  inline bool has_usernotifyresponse() const;
+  inline void clear_usernotifyresponse();
+  static const int kUserNotifyResponseFieldNumber = 44;
+  inline const ::UserNotifyResponse& usernotifyresponse() const;
+  inline ::UserNotifyResponse* mutable_usernotifyresponse();
+  inline ::UserNotifyResponse* release_usernotifyresponse();
+  inline void set_allocated_usernotifyresponse(::UserNotifyResponse* usernotifyresponse);
 
   // @@protoc_insertion_point(class_scope:MessageInfo)
  private:
@@ -537,8 +558,8 @@ class MessageInfo : public ::google::protobuf::Message {
   inline void clear_has_code();
   inline void set_has_msg();
   inline void clear_has_msg();
-  inline void set_has_token();
-  inline void clear_has_token();
+  inline void set_has_usertoken();
+  inline void clear_has_usertoken();
   inline void set_has_basic();
   inline void clear_has_basic();
   inline void set_has_registerrequest();
@@ -611,8 +632,12 @@ class MessageInfo : public ::google::protobuf::Message {
   inline void clear_has_skinchooseresponse();
   inline void set_has_signinresponse();
   inline void clear_has_signinresponse();
+  inline void set_has_giftpacklistresponse();
+  inline void clear_has_giftpacklistresponse();
   inline void set_has_flightpropsresponse();
   inline void clear_has_flightpropsresponse();
+  inline void set_has_usernotifyresponse();
+  inline void clear_has_usernotifyresponse();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -620,7 +645,7 @@ class MessageInfo : public ::google::protobuf::Message {
   ::google::protobuf::int32 service_;
   ::google::protobuf::int32 sn_;
   ::std::string* msg_;
-  ::std::string* token_;
+  ::std::string* usertoken_;
   ::Basic* basic_;
   ::RegisterRequest* registerrequest_;
   ::RegisterResponse* registerresponse_;
@@ -657,7 +682,9 @@ class MessageInfo : public ::google::protobuf::Message {
   ::GoldCoinListResponse* goldcoinlistresponse_;
   ::SkinChooseResponse* skinchooseresponse_;
   ::SignInResponse* signinresponse_;
+  ::GiftPackListResponse* giftpacklistresponse_;
   ::FlightPropsResponse* flightpropsresponse_;
+  ::UserNotifyResponse* usernotifyresponse_;
   ::google::protobuf::int32 code_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_game_2eproto();
@@ -666,6 +693,217 @@ class MessageInfo : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static MessageInfo* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class GiftPackListResponse : public ::google::protobuf::Message {
+ public:
+  GiftPackListResponse();
+  virtual ~GiftPackListResponse();
+
+  GiftPackListResponse(const GiftPackListResponse& from);
+
+  inline GiftPackListResponse& operator=(const GiftPackListResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GiftPackListResponse& default_instance();
+
+  void Swap(GiftPackListResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  GiftPackListResponse* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const GiftPackListResponse& from);
+  void MergeFrom(const GiftPackListResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .GiftPack giftPack = 1;
+  inline int giftpack_size() const;
+  inline void clear_giftpack();
+  static const int kGiftPackFieldNumber = 1;
+  inline const ::GiftPack& giftpack(int index) const;
+  inline ::GiftPack* mutable_giftpack(int index);
+  inline ::GiftPack* add_giftpack();
+  inline const ::google::protobuf::RepeatedPtrField< ::GiftPack >&
+      giftpack() const;
+  inline ::google::protobuf::RepeatedPtrField< ::GiftPack >*
+      mutable_giftpack();
+
+  // @@protoc_insertion_point(class_scope:GiftPackListResponse)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::GiftPack > giftpack_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static GiftPackListResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class GiftPack : public ::google::protobuf::Message {
+ public:
+  GiftPack();
+  virtual ~GiftPack();
+
+  GiftPack(const GiftPack& from);
+
+  inline GiftPack& operator=(const GiftPack& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GiftPack& default_instance();
+
+  void Swap(GiftPack* other);
+
+  // implements Message ----------------------------------------------
+
+  GiftPack* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const GiftPack& from);
+  void MergeFrom(const GiftPack& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string id = 1;
+  inline bool has_id() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 1;
+  inline const ::std::string& id() const;
+  inline void set_id(const ::std::string& value);
+  inline void set_id(const char* value);
+  inline void set_id(const char* value, size_t size);
+  inline ::std::string* mutable_id();
+  inline ::std::string* release_id();
+  inline void set_allocated_id(::std::string* id);
+
+  // required bool canBuy = 2;
+  inline bool has_canbuy() const;
+  inline void clear_canbuy();
+  static const int kCanBuyFieldNumber = 2;
+  inline bool canbuy() const;
+  inline void set_canbuy(bool value);
+
+  // optional int32 price = 3;
+  inline bool has_price() const;
+  inline void clear_price();
+  static const int kPriceFieldNumber = 3;
+  inline ::google::protobuf::int32 price() const;
+  inline void set_price(::google::protobuf::int32 value);
+
+  // optional string poster = 4;
+  inline bool has_poster() const;
+  inline void clear_poster();
+  static const int kPosterFieldNumber = 4;
+  inline const ::std::string& poster() const;
+  inline void set_poster(const ::std::string& value);
+  inline void set_poster(const char* value);
+  inline void set_poster(const char* value, size_t size);
+  inline ::std::string* mutable_poster();
+  inline ::std::string* release_poster();
+  inline void set_allocated_poster(::std::string* poster);
+
+  // required int32 propId = 5;
+  inline bool has_propid() const;
+  inline void clear_propid();
+  static const int kPropIdFieldNumber = 5;
+  inline ::google::protobuf::int32 propid() const;
+  inline void set_propid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:GiftPack)
+ private:
+  inline void set_has_id();
+  inline void clear_has_id();
+  inline void set_has_canbuy();
+  inline void clear_has_canbuy();
+  inline void set_has_price();
+  inline void clear_has_price();
+  inline void set_has_poster();
+  inline void clear_has_poster();
+  inline void set_has_propid();
+  inline void clear_has_propid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* id_;
+  bool canbuy_;
+  ::google::protobuf::int32 price_;
+  ::std::string* poster_;
+  ::google::protobuf::int32 propid_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static GiftPack* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -3181,6 +3419,36 @@ class UserInfo : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 privilege() const;
   inline void set_privilege(::google::protobuf::int32 value);
 
+  // optional .BaseSkill baseSkill = 11;
+  inline bool has_baseskill() const;
+  inline void clear_baseskill();
+  static const int kBaseSkillFieldNumber = 11;
+  inline const ::BaseSkill& baseskill() const;
+  inline ::BaseSkill* mutable_baseskill();
+  inline ::BaseSkill* release_baseskill();
+  inline void set_allocated_baseskill(::BaseSkill* baseskill);
+
+  // optional int32 rankedValue = 12;
+  inline bool has_rankedvalue() const;
+  inline void clear_rankedvalue();
+  static const int kRankedValueFieldNumber = 12;
+  inline ::google::protobuf::int32 rankedvalue() const;
+  inline void set_rankedvalue(::google::protobuf::int32 value);
+
+  // optional int32 fragment = 13;
+  inline bool has_fragment() const;
+  inline void clear_fragment();
+  static const int kFragmentFieldNumber = 13;
+  inline ::google::protobuf::int32 fragment() const;
+  inline void set_fragment(::google::protobuf::int32 value);
+
+  // optional bool isRankLock = 14;
+  inline bool has_isranklock() const;
+  inline void clear_isranklock();
+  static const int kIsRankLockFieldNumber = 14;
+  inline bool isranklock() const;
+  inline void set_isranklock(bool value);
+
   // @@protoc_insertion_point(class_scope:UserInfo)
  private:
   inline void set_has_uid();
@@ -3203,6 +3471,14 @@ class UserInfo : public ::google::protobuf::Message {
   inline void clear_has_countdown();
   inline void set_has_privilege();
   inline void clear_has_privilege();
+  inline void set_has_baseskill();
+  inline void clear_has_baseskill();
+  inline void set_has_rankedvalue();
+  inline void clear_has_rankedvalue();
+  inline void set_has_fragment();
+  inline void clear_has_fragment();
+  inline void set_has_isranklock();
+  inline void clear_has_isranklock();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -3217,7 +3493,11 @@ class UserInfo : public ::google::protobuf::Message {
   ::google::protobuf::int32 stamina_;
   ::google::protobuf::int32 maxstamina_;
   ::google::protobuf::int32 countdown_;
+  ::BaseSkill* baseskill_;
   ::google::protobuf::int32 privilege_;
+  ::google::protobuf::int32 rankedvalue_;
+  ::google::protobuf::int32 fragment_;
+  bool isranklock_;
   friend void  protobuf_AddDesc_game_2eproto();
   friend void protobuf_AssignDesc_game_2eproto();
   friend void protobuf_ShutdownFile_game_2eproto();
@@ -4670,6 +4950,27 @@ class RankItem : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 reward() const;
   inline void set_reward(::google::protobuf::int32 value);
 
+  // optional int32 killed = 5;
+  inline bool has_killed() const;
+  inline void clear_killed();
+  static const int kKilledFieldNumber = 5;
+  inline ::google::protobuf::int32 killed() const;
+  inline void set_killed(::google::protobuf::int32 value);
+
+  // optional int32 rankedValue = 6;
+  inline bool has_rankedvalue() const;
+  inline void clear_rankedvalue();
+  static const int kRankedValueFieldNumber = 6;
+  inline ::google::protobuf::int32 rankedvalue() const;
+  inline void set_rankedvalue(::google::protobuf::int32 value);
+
+  // optional int32 beKilled = 7;
+  inline bool has_bekilled() const;
+  inline void clear_bekilled();
+  static const int kBeKilledFieldNumber = 7;
+  inline ::google::protobuf::int32 bekilled() const;
+  inline void set_bekilled(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:RankItem)
  private:
   inline void set_has_rank();
@@ -4680,6 +4981,12 @@ class RankItem : public ::google::protobuf::Message {
   inline void clear_has_weight();
   inline void set_has_reward();
   inline void clear_has_reward();
+  inline void set_has_killed();
+  inline void clear_has_killed();
+  inline void set_has_rankedvalue();
+  inline void clear_has_rankedvalue();
+  inline void set_has_bekilled();
+  inline void clear_has_bekilled();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -4689,6 +4996,9 @@ class RankItem : public ::google::protobuf::Message {
   ::google::protobuf::int32 rank_;
   ::google::protobuf::int32 weight_;
   ::google::protobuf::int32 reward_;
+  ::google::protobuf::int32 killed_;
+  ::google::protobuf::int32 rankedvalue_;
+  ::google::protobuf::int32 bekilled_;
   friend void  protobuf_AddDesc_game_2eproto();
   friend void protobuf_AssignDesc_game_2eproto();
   friend void protobuf_ShutdownFile_game_2eproto();
@@ -4758,16 +5068,46 @@ class BaseSkill : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 id() const;
   inline void set_id(::google::protobuf::int32 value);
 
+  // optional int32 coolDown = 2;
+  inline bool has_cooldown() const;
+  inline void clear_cooldown();
+  static const int kCoolDownFieldNumber = 2;
+  inline ::google::protobuf::int32 cooldown() const;
+  inline void set_cooldown(::google::protobuf::int32 value);
+
+  // optional int32 limitWeight = 3;
+  inline bool has_limitweight() const;
+  inline void clear_limitweight();
+  static const int kLimitWeightFieldNumber = 3;
+  inline ::google::protobuf::int32 limitweight() const;
+  inline void set_limitweight(::google::protobuf::int32 value);
+
+  // optional int32 level = 4;
+  inline bool has_level() const;
+  inline void clear_level();
+  static const int kLevelFieldNumber = 4;
+  inline ::google::protobuf::int32 level() const;
+  inline void set_level(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:BaseSkill)
  private:
   inline void set_has_id();
   inline void clear_has_id();
+  inline void set_has_cooldown();
+  inline void clear_has_cooldown();
+  inline void set_has_limitweight();
+  inline void clear_has_limitweight();
+  inline void set_has_level();
+  inline void clear_has_level();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::google::protobuf::int32 id_;
+  ::google::protobuf::int32 cooldown_;
+  ::google::protobuf::int32 limitweight_;
+  ::google::protobuf::int32 level_;
   friend void  protobuf_AddDesc_game_2eproto();
   friend void protobuf_AssignDesc_game_2eproto();
   friend void protobuf_ShutdownFile_game_2eproto();
@@ -5763,6 +6103,34 @@ class RoomInfo : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::Asylum >*
       mutable_asylums();
 
+  // repeated .FlightProps flightProps = 9;
+  inline int flightprops_size() const;
+  inline void clear_flightprops();
+  static const int kFlightPropsFieldNumber = 9;
+  inline const ::FlightProps& flightprops(int index) const;
+  inline ::FlightProps* mutable_flightprops(int index);
+  inline ::FlightProps* add_flightprops();
+  inline const ::google::protobuf::RepeatedPtrField< ::FlightProps >&
+      flightprops() const;
+  inline ::google::protobuf::RepeatedPtrField< ::FlightProps >*
+      mutable_flightprops();
+
+  // repeated string userNotify = 10;
+  inline int usernotify_size() const;
+  inline void clear_usernotify();
+  static const int kUserNotifyFieldNumber = 10;
+  inline const ::std::string& usernotify(int index) const;
+  inline ::std::string* mutable_usernotify(int index);
+  inline void set_usernotify(int index, const ::std::string& value);
+  inline void set_usernotify(int index, const char* value);
+  inline void set_usernotify(int index, const char* value, size_t size);
+  inline ::std::string* add_usernotify();
+  inline void add_usernotify(const ::std::string& value);
+  inline void add_usernotify(const char* value);
+  inline void add_usernotify(const char* value, size_t size);
+  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& usernotify() const;
+  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_usernotify();
+
   // @@protoc_insertion_point(class_scope:RoomInfo)
  private:
   inline void set_has_width();
@@ -5786,12 +6154,100 @@ class RoomInfo : public ::google::protobuf::Message {
   ::google::protobuf::RepeatedPtrField< ::FoodArea > foodareas_;
   ::google::protobuf::RepeatedPtrField< ::RankItem > rankitems_;
   ::google::protobuf::RepeatedPtrField< ::Asylum > asylums_;
+  ::google::protobuf::RepeatedPtrField< ::FlightProps > flightprops_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> usernotify_;
   friend void  protobuf_AddDesc_game_2eproto();
   friend void protobuf_AssignDesc_game_2eproto();
   friend void protobuf_ShutdownFile_game_2eproto();
 
   void InitAsDefaultInstance();
   static RoomInfo* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class UserNotifyResponse : public ::google::protobuf::Message {
+ public:
+  UserNotifyResponse();
+  virtual ~UserNotifyResponse();
+
+  UserNotifyResponse(const UserNotifyResponse& from);
+
+  inline UserNotifyResponse& operator=(const UserNotifyResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UserNotifyResponse& default_instance();
+
+  void Swap(UserNotifyResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  UserNotifyResponse* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const UserNotifyResponse& from);
+  void MergeFrom(const UserNotifyResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated string userNotify = 1;
+  inline int usernotify_size() const;
+  inline void clear_usernotify();
+  static const int kUserNotifyFieldNumber = 1;
+  inline const ::std::string& usernotify(int index) const;
+  inline ::std::string* mutable_usernotify(int index);
+  inline void set_usernotify(int index, const ::std::string& value);
+  inline void set_usernotify(int index, const char* value);
+  inline void set_usernotify(int index, const char* value, size_t size);
+  inline ::std::string* add_usernotify();
+  inline void add_usernotify(const ::std::string& value);
+  inline void add_usernotify(const char* value);
+  inline void add_usernotify(const char* value, size_t size);
+  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& usernotify() const;
+  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_usernotify();
+
+  // @@protoc_insertion_point(class_scope:UserNotifyResponse)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> usernotify_;
+  friend void  protobuf_AddDesc_game_2eproto();
+  friend void protobuf_AssignDesc_game_2eproto();
+  friend void protobuf_ShutdownFile_game_2eproto();
+
+  void InitAsDefaultInstance();
+  static UserNotifyResponse* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -6088,6 +6544,41 @@ class FlightProps : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 type() const;
   inline void set_type(::google::protobuf::int32 value);
 
+  // optional int32 fromCellId = 9;
+  inline bool has_fromcellid() const;
+  inline void clear_fromcellid();
+  static const int kFromCellIdFieldNumber = 9;
+  inline ::google::protobuf::int32 fromcellid() const;
+  inline void set_fromcellid(::google::protobuf::int32 value);
+
+  // optional int32 targetCellId = 10;
+  inline bool has_targetcellid() const;
+  inline void clear_targetcellid();
+  static const int kTargetCellIdFieldNumber = 10;
+  inline ::google::protobuf::int32 targetcellid() const;
+  inline void set_targetcellid(::google::protobuf::int32 value);
+
+  // optional int32 status = 11;
+  inline bool has_status() const;
+  inline void clear_status();
+  static const int kStatusFieldNumber = 11;
+  inline ::google::protobuf::int32 status() const;
+  inline void set_status(::google::protobuf::int32 value);
+
+  // optional int32 fromUserId = 12;
+  inline bool has_fromuserid() const;
+  inline void clear_fromuserid();
+  static const int kFromUserIdFieldNumber = 12;
+  inline ::google::protobuf::int32 fromuserid() const;
+  inline void set_fromuserid(::google::protobuf::int32 value);
+
+  // optional int32 targetUserId = 13;
+  inline bool has_targetuserid() const;
+  inline void clear_targetuserid();
+  static const int kTargetUserIdFieldNumber = 13;
+  inline ::google::protobuf::int32 targetuserid() const;
+  inline void set_targetuserid(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:FlightProps)
  private:
   inline void set_has_id();
@@ -6106,6 +6597,16 @@ class FlightProps : public ::google::protobuf::Message {
   inline void clear_has_radius();
   inline void set_has_type();
   inline void clear_has_type();
+  inline void set_has_fromcellid();
+  inline void clear_has_fromcellid();
+  inline void set_has_targetcellid();
+  inline void clear_has_targetcellid();
+  inline void set_has_status();
+  inline void clear_has_status();
+  inline void set_has_fromuserid();
+  inline void clear_has_fromuserid();
+  inline void set_has_targetuserid();
+  inline void clear_has_targetuserid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -6119,6 +6620,11 @@ class FlightProps : public ::google::protobuf::Message {
   ::google::protobuf::int32 y_;
   ::google::protobuf::int32 radius_;
   ::google::protobuf::int32 type_;
+  ::google::protobuf::int32 fromcellid_;
+  ::google::protobuf::int32 targetcellid_;
+  ::google::protobuf::int32 status_;
+  ::google::protobuf::int32 fromuserid_;
+  ::google::protobuf::int32 targetuserid_;
   friend void  protobuf_AddDesc_game_2eproto();
   friend void protobuf_AssignDesc_game_2eproto();
   friend void protobuf_ShutdownFile_game_2eproto();
@@ -7037,12 +7543,21 @@ class UltimateSkill : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 foodid() const;
   inline void set_foodid(::google::protobuf::int32 value);
 
+  // optional int32 level = 3;
+  inline bool has_level() const;
+  inline void clear_level();
+  static const int kLevelFieldNumber = 3;
+  inline ::google::protobuf::int32 level() const;
+  inline void set_level(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:UltimateSkill)
  private:
   inline void set_has_id();
   inline void clear_has_id();
   inline void set_has_foodid();
   inline void clear_has_foodid();
+  inline void set_has_level();
+  inline void clear_has_level();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -7050,6 +7565,7 @@ class UltimateSkill : public ::google::protobuf::Message {
   mutable int _cached_size_;
   ::google::protobuf::int32 id_;
   ::google::protobuf::int32 foodid_;
+  ::google::protobuf::int32 level_;
   friend void  protobuf_AddDesc_game_2eproto();
   friend void protobuf_AssignDesc_game_2eproto();
   friend void protobuf_ShutdownFile_game_2eproto();
@@ -7212,80 +7728,80 @@ inline void MessageInfo::set_allocated_msg(::std::string* msg) {
   // @@protoc_insertion_point(field_set_allocated:MessageInfo.msg)
 }
 
-// optional string token = 39;
-inline bool MessageInfo::has_token() const {
+// optional string userToken = 39;
+inline bool MessageInfo::has_usertoken() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
-inline void MessageInfo::set_has_token() {
+inline void MessageInfo::set_has_usertoken() {
   _has_bits_[0] |= 0x00000010u;
 }
-inline void MessageInfo::clear_has_token() {
+inline void MessageInfo::clear_has_usertoken() {
   _has_bits_[0] &= ~0x00000010u;
 }
-inline void MessageInfo::clear_token() {
-  if (token_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    token_->clear();
+inline void MessageInfo::clear_usertoken() {
+  if (usertoken_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    usertoken_->clear();
   }
-  clear_has_token();
+  clear_has_usertoken();
 }
-inline const ::std::string& MessageInfo::token() const {
-  // @@protoc_insertion_point(field_get:MessageInfo.token)
-  return *token_;
+inline const ::std::string& MessageInfo::usertoken() const {
+  // @@protoc_insertion_point(field_get:MessageInfo.userToken)
+  return *usertoken_;
 }
-inline void MessageInfo::set_token(const ::std::string& value) {
-  set_has_token();
-  if (token_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    token_ = new ::std::string;
+inline void MessageInfo::set_usertoken(const ::std::string& value) {
+  set_has_usertoken();
+  if (usertoken_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    usertoken_ = new ::std::string;
   }
-  token_->assign(value);
-  // @@protoc_insertion_point(field_set:MessageInfo.token)
+  usertoken_->assign(value);
+  // @@protoc_insertion_point(field_set:MessageInfo.userToken)
 }
-inline void MessageInfo::set_token(const char* value) {
-  set_has_token();
-  if (token_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    token_ = new ::std::string;
+inline void MessageInfo::set_usertoken(const char* value) {
+  set_has_usertoken();
+  if (usertoken_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    usertoken_ = new ::std::string;
   }
-  token_->assign(value);
-  // @@protoc_insertion_point(field_set_char:MessageInfo.token)
+  usertoken_->assign(value);
+  // @@protoc_insertion_point(field_set_char:MessageInfo.userToken)
 }
-inline void MessageInfo::set_token(const char* value, size_t size) {
-  set_has_token();
-  if (token_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    token_ = new ::std::string;
+inline void MessageInfo::set_usertoken(const char* value, size_t size) {
+  set_has_usertoken();
+  if (usertoken_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    usertoken_ = new ::std::string;
   }
-  token_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:MessageInfo.token)
+  usertoken_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:MessageInfo.userToken)
 }
-inline ::std::string* MessageInfo::mutable_token() {
-  set_has_token();
-  if (token_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    token_ = new ::std::string;
+inline ::std::string* MessageInfo::mutable_usertoken() {
+  set_has_usertoken();
+  if (usertoken_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    usertoken_ = new ::std::string;
   }
-  // @@protoc_insertion_point(field_mutable:MessageInfo.token)
-  return token_;
+  // @@protoc_insertion_point(field_mutable:MessageInfo.userToken)
+  return usertoken_;
 }
-inline ::std::string* MessageInfo::release_token() {
-  clear_has_token();
-  if (token_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+inline ::std::string* MessageInfo::release_usertoken() {
+  clear_has_usertoken();
+  if (usertoken_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     return NULL;
   } else {
-    ::std::string* temp = token_;
-    token_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    ::std::string* temp = usertoken_;
+    usertoken_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     return temp;
   }
 }
-inline void MessageInfo::set_allocated_token(::std::string* token) {
-  if (token_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete token_;
+inline void MessageInfo::set_allocated_usertoken(::std::string* usertoken) {
+  if (usertoken_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete usertoken_;
   }
-  if (token) {
-    set_has_token();
-    token_ = token;
+  if (usertoken) {
+    set_has_usertoken();
+    usertoken_ = usertoken;
   } else {
-    clear_has_token();
-    token_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    clear_has_usertoken();
+    usertoken_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_set_allocated:MessageInfo.token)
+  // @@protoc_insertion_point(field_set_allocated:MessageInfo.userToken)
 }
 
 // optional .Basic basic = 28;
@@ -8764,15 +9280,56 @@ inline void MessageInfo::set_allocated_signinresponse(::SignInResponse* signinre
   // @@protoc_insertion_point(field_set_allocated:MessageInfo.signInResponse)
 }
 
-// optional .FlightPropsResponse flightPropsResponse = 42;
-inline bool MessageInfo::has_flightpropsresponse() const {
+// optional .GiftPackListResponse giftPackListResponse = 42;
+inline bool MessageInfo::has_giftpacklistresponse() const {
   return (_has_bits_[1] & 0x00000200u) != 0;
 }
-inline void MessageInfo::set_has_flightpropsresponse() {
+inline void MessageInfo::set_has_giftpacklistresponse() {
   _has_bits_[1] |= 0x00000200u;
 }
-inline void MessageInfo::clear_has_flightpropsresponse() {
+inline void MessageInfo::clear_has_giftpacklistresponse() {
   _has_bits_[1] &= ~0x00000200u;
+}
+inline void MessageInfo::clear_giftpacklistresponse() {
+  if (giftpacklistresponse_ != NULL) giftpacklistresponse_->::GiftPackListResponse::Clear();
+  clear_has_giftpacklistresponse();
+}
+inline const ::GiftPackListResponse& MessageInfo::giftpacklistresponse() const {
+  // @@protoc_insertion_point(field_get:MessageInfo.giftPackListResponse)
+  return giftpacklistresponse_ != NULL ? *giftpacklistresponse_ : *default_instance_->giftpacklistresponse_;
+}
+inline ::GiftPackListResponse* MessageInfo::mutable_giftpacklistresponse() {
+  set_has_giftpacklistresponse();
+  if (giftpacklistresponse_ == NULL) giftpacklistresponse_ = new ::GiftPackListResponse;
+  // @@protoc_insertion_point(field_mutable:MessageInfo.giftPackListResponse)
+  return giftpacklistresponse_;
+}
+inline ::GiftPackListResponse* MessageInfo::release_giftpacklistresponse() {
+  clear_has_giftpacklistresponse();
+  ::GiftPackListResponse* temp = giftpacklistresponse_;
+  giftpacklistresponse_ = NULL;
+  return temp;
+}
+inline void MessageInfo::set_allocated_giftpacklistresponse(::GiftPackListResponse* giftpacklistresponse) {
+  delete giftpacklistresponse_;
+  giftpacklistresponse_ = giftpacklistresponse;
+  if (giftpacklistresponse) {
+    set_has_giftpacklistresponse();
+  } else {
+    clear_has_giftpacklistresponse();
+  }
+  // @@protoc_insertion_point(field_set_allocated:MessageInfo.giftPackListResponse)
+}
+
+// optional .FlightPropsResponse flightPropsResponse = 43;
+inline bool MessageInfo::has_flightpropsresponse() const {
+  return (_has_bits_[1] & 0x00000400u) != 0;
+}
+inline void MessageInfo::set_has_flightpropsresponse() {
+  _has_bits_[1] |= 0x00000400u;
+}
+inline void MessageInfo::clear_has_flightpropsresponse() {
+  _has_bits_[1] &= ~0x00000400u;
 }
 inline void MessageInfo::clear_flightpropsresponse() {
   if (flightpropsresponse_ != NULL) flightpropsresponse_->::FlightPropsResponse::Clear();
@@ -8803,6 +9360,309 @@ inline void MessageInfo::set_allocated_flightpropsresponse(::FlightPropsResponse
     clear_has_flightpropsresponse();
   }
   // @@protoc_insertion_point(field_set_allocated:MessageInfo.flightPropsResponse)
+}
+
+// optional .UserNotifyResponse userNotifyResponse = 44;
+inline bool MessageInfo::has_usernotifyresponse() const {
+  return (_has_bits_[1] & 0x00000800u) != 0;
+}
+inline void MessageInfo::set_has_usernotifyresponse() {
+  _has_bits_[1] |= 0x00000800u;
+}
+inline void MessageInfo::clear_has_usernotifyresponse() {
+  _has_bits_[1] &= ~0x00000800u;
+}
+inline void MessageInfo::clear_usernotifyresponse() {
+  if (usernotifyresponse_ != NULL) usernotifyresponse_->::UserNotifyResponse::Clear();
+  clear_has_usernotifyresponse();
+}
+inline const ::UserNotifyResponse& MessageInfo::usernotifyresponse() const {
+  // @@protoc_insertion_point(field_get:MessageInfo.userNotifyResponse)
+  return usernotifyresponse_ != NULL ? *usernotifyresponse_ : *default_instance_->usernotifyresponse_;
+}
+inline ::UserNotifyResponse* MessageInfo::mutable_usernotifyresponse() {
+  set_has_usernotifyresponse();
+  if (usernotifyresponse_ == NULL) usernotifyresponse_ = new ::UserNotifyResponse;
+  // @@protoc_insertion_point(field_mutable:MessageInfo.userNotifyResponse)
+  return usernotifyresponse_;
+}
+inline ::UserNotifyResponse* MessageInfo::release_usernotifyresponse() {
+  clear_has_usernotifyresponse();
+  ::UserNotifyResponse* temp = usernotifyresponse_;
+  usernotifyresponse_ = NULL;
+  return temp;
+}
+inline void MessageInfo::set_allocated_usernotifyresponse(::UserNotifyResponse* usernotifyresponse) {
+  delete usernotifyresponse_;
+  usernotifyresponse_ = usernotifyresponse;
+  if (usernotifyresponse) {
+    set_has_usernotifyresponse();
+  } else {
+    clear_has_usernotifyresponse();
+  }
+  // @@protoc_insertion_point(field_set_allocated:MessageInfo.userNotifyResponse)
+}
+
+// -------------------------------------------------------------------
+
+// GiftPackListResponse
+
+// repeated .GiftPack giftPack = 1;
+inline int GiftPackListResponse::giftpack_size() const {
+  return giftpack_.size();
+}
+inline void GiftPackListResponse::clear_giftpack() {
+  giftpack_.Clear();
+}
+inline const ::GiftPack& GiftPackListResponse::giftpack(int index) const {
+  // @@protoc_insertion_point(field_get:GiftPackListResponse.giftPack)
+  return giftpack_.Get(index);
+}
+inline ::GiftPack* GiftPackListResponse::mutable_giftpack(int index) {
+  // @@protoc_insertion_point(field_mutable:GiftPackListResponse.giftPack)
+  return giftpack_.Mutable(index);
+}
+inline ::GiftPack* GiftPackListResponse::add_giftpack() {
+  // @@protoc_insertion_point(field_add:GiftPackListResponse.giftPack)
+  return giftpack_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::GiftPack >&
+GiftPackListResponse::giftpack() const {
+  // @@protoc_insertion_point(field_list:GiftPackListResponse.giftPack)
+  return giftpack_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::GiftPack >*
+GiftPackListResponse::mutable_giftpack() {
+  // @@protoc_insertion_point(field_mutable_list:GiftPackListResponse.giftPack)
+  return &giftpack_;
+}
+
+// -------------------------------------------------------------------
+
+// GiftPack
+
+// required string id = 1;
+inline bool GiftPack::has_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void GiftPack::set_has_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void GiftPack::clear_has_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void GiftPack::clear_id() {
+  if (id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    id_->clear();
+  }
+  clear_has_id();
+}
+inline const ::std::string& GiftPack::id() const {
+  // @@protoc_insertion_point(field_get:GiftPack.id)
+  return *id_;
+}
+inline void GiftPack::set_id(const ::std::string& value) {
+  set_has_id();
+  if (id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    id_ = new ::std::string;
+  }
+  id_->assign(value);
+  // @@protoc_insertion_point(field_set:GiftPack.id)
+}
+inline void GiftPack::set_id(const char* value) {
+  set_has_id();
+  if (id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    id_ = new ::std::string;
+  }
+  id_->assign(value);
+  // @@protoc_insertion_point(field_set_char:GiftPack.id)
+}
+inline void GiftPack::set_id(const char* value, size_t size) {
+  set_has_id();
+  if (id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    id_ = new ::std::string;
+  }
+  id_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:GiftPack.id)
+}
+inline ::std::string* GiftPack::mutable_id() {
+  set_has_id();
+  if (id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    id_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:GiftPack.id)
+  return id_;
+}
+inline ::std::string* GiftPack::release_id() {
+  clear_has_id();
+  if (id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = id_;
+    id_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void GiftPack::set_allocated_id(::std::string* id) {
+  if (id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete id_;
+  }
+  if (id) {
+    set_has_id();
+    id_ = id;
+  } else {
+    clear_has_id();
+    id_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:GiftPack.id)
+}
+
+// required bool canBuy = 2;
+inline bool GiftPack::has_canbuy() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void GiftPack::set_has_canbuy() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void GiftPack::clear_has_canbuy() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void GiftPack::clear_canbuy() {
+  canbuy_ = false;
+  clear_has_canbuy();
+}
+inline bool GiftPack::canbuy() const {
+  // @@protoc_insertion_point(field_get:GiftPack.canBuy)
+  return canbuy_;
+}
+inline void GiftPack::set_canbuy(bool value) {
+  set_has_canbuy();
+  canbuy_ = value;
+  // @@protoc_insertion_point(field_set:GiftPack.canBuy)
+}
+
+// optional int32 price = 3;
+inline bool GiftPack::has_price() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void GiftPack::set_has_price() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void GiftPack::clear_has_price() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void GiftPack::clear_price() {
+  price_ = 0;
+  clear_has_price();
+}
+inline ::google::protobuf::int32 GiftPack::price() const {
+  // @@protoc_insertion_point(field_get:GiftPack.price)
+  return price_;
+}
+inline void GiftPack::set_price(::google::protobuf::int32 value) {
+  set_has_price();
+  price_ = value;
+  // @@protoc_insertion_point(field_set:GiftPack.price)
+}
+
+// optional string poster = 4;
+inline bool GiftPack::has_poster() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void GiftPack::set_has_poster() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void GiftPack::clear_has_poster() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void GiftPack::clear_poster() {
+  if (poster_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    poster_->clear();
+  }
+  clear_has_poster();
+}
+inline const ::std::string& GiftPack::poster() const {
+  // @@protoc_insertion_point(field_get:GiftPack.poster)
+  return *poster_;
+}
+inline void GiftPack::set_poster(const ::std::string& value) {
+  set_has_poster();
+  if (poster_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    poster_ = new ::std::string;
+  }
+  poster_->assign(value);
+  // @@protoc_insertion_point(field_set:GiftPack.poster)
+}
+inline void GiftPack::set_poster(const char* value) {
+  set_has_poster();
+  if (poster_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    poster_ = new ::std::string;
+  }
+  poster_->assign(value);
+  // @@protoc_insertion_point(field_set_char:GiftPack.poster)
+}
+inline void GiftPack::set_poster(const char* value, size_t size) {
+  set_has_poster();
+  if (poster_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    poster_ = new ::std::string;
+  }
+  poster_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:GiftPack.poster)
+}
+inline ::std::string* GiftPack::mutable_poster() {
+  set_has_poster();
+  if (poster_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    poster_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:GiftPack.poster)
+  return poster_;
+}
+inline ::std::string* GiftPack::release_poster() {
+  clear_has_poster();
+  if (poster_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = poster_;
+    poster_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void GiftPack::set_allocated_poster(::std::string* poster) {
+  if (poster_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete poster_;
+  }
+  if (poster) {
+    set_has_poster();
+    poster_ = poster;
+  } else {
+    clear_has_poster();
+    poster_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:GiftPack.poster)
+}
+
+// required int32 propId = 5;
+inline bool GiftPack::has_propid() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void GiftPack::set_has_propid() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void GiftPack::clear_has_propid() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void GiftPack::clear_propid() {
+  propid_ = 0;
+  clear_has_propid();
+}
+inline ::google::protobuf::int32 GiftPack::propid() const {
+  // @@protoc_insertion_point(field_get:GiftPack.propId)
+  return propid_;
+}
+inline void GiftPack::set_propid(::google::protobuf::int32 value) {
+  set_has_propid();
+  propid_ = value;
+  // @@protoc_insertion_point(field_set:GiftPack.propId)
 }
 
 // -------------------------------------------------------------------
@@ -11779,6 +12639,119 @@ inline void UserInfo::set_privilege(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:UserInfo.privilege)
 }
 
+// optional .BaseSkill baseSkill = 11;
+inline bool UserInfo::has_baseskill() const {
+  return (_has_bits_[0] & 0x00000400u) != 0;
+}
+inline void UserInfo::set_has_baseskill() {
+  _has_bits_[0] |= 0x00000400u;
+}
+inline void UserInfo::clear_has_baseskill() {
+  _has_bits_[0] &= ~0x00000400u;
+}
+inline void UserInfo::clear_baseskill() {
+  if (baseskill_ != NULL) baseskill_->::BaseSkill::Clear();
+  clear_has_baseskill();
+}
+inline const ::BaseSkill& UserInfo::baseskill() const {
+  // @@protoc_insertion_point(field_get:UserInfo.baseSkill)
+  return baseskill_ != NULL ? *baseskill_ : *default_instance_->baseskill_;
+}
+inline ::BaseSkill* UserInfo::mutable_baseskill() {
+  set_has_baseskill();
+  if (baseskill_ == NULL) baseskill_ = new ::BaseSkill;
+  // @@protoc_insertion_point(field_mutable:UserInfo.baseSkill)
+  return baseskill_;
+}
+inline ::BaseSkill* UserInfo::release_baseskill() {
+  clear_has_baseskill();
+  ::BaseSkill* temp = baseskill_;
+  baseskill_ = NULL;
+  return temp;
+}
+inline void UserInfo::set_allocated_baseskill(::BaseSkill* baseskill) {
+  delete baseskill_;
+  baseskill_ = baseskill;
+  if (baseskill) {
+    set_has_baseskill();
+  } else {
+    clear_has_baseskill();
+  }
+  // @@protoc_insertion_point(field_set_allocated:UserInfo.baseSkill)
+}
+
+// optional int32 rankedValue = 12;
+inline bool UserInfo::has_rankedvalue() const {
+  return (_has_bits_[0] & 0x00000800u) != 0;
+}
+inline void UserInfo::set_has_rankedvalue() {
+  _has_bits_[0] |= 0x00000800u;
+}
+inline void UserInfo::clear_has_rankedvalue() {
+  _has_bits_[0] &= ~0x00000800u;
+}
+inline void UserInfo::clear_rankedvalue() {
+  rankedvalue_ = 0;
+  clear_has_rankedvalue();
+}
+inline ::google::protobuf::int32 UserInfo::rankedvalue() const {
+  // @@protoc_insertion_point(field_get:UserInfo.rankedValue)
+  return rankedvalue_;
+}
+inline void UserInfo::set_rankedvalue(::google::protobuf::int32 value) {
+  set_has_rankedvalue();
+  rankedvalue_ = value;
+  // @@protoc_insertion_point(field_set:UserInfo.rankedValue)
+}
+
+// optional int32 fragment = 13;
+inline bool UserInfo::has_fragment() const {
+  return (_has_bits_[0] & 0x00001000u) != 0;
+}
+inline void UserInfo::set_has_fragment() {
+  _has_bits_[0] |= 0x00001000u;
+}
+inline void UserInfo::clear_has_fragment() {
+  _has_bits_[0] &= ~0x00001000u;
+}
+inline void UserInfo::clear_fragment() {
+  fragment_ = 0;
+  clear_has_fragment();
+}
+inline ::google::protobuf::int32 UserInfo::fragment() const {
+  // @@protoc_insertion_point(field_get:UserInfo.fragment)
+  return fragment_;
+}
+inline void UserInfo::set_fragment(::google::protobuf::int32 value) {
+  set_has_fragment();
+  fragment_ = value;
+  // @@protoc_insertion_point(field_set:UserInfo.fragment)
+}
+
+// optional bool isRankLock = 14;
+inline bool UserInfo::has_isranklock() const {
+  return (_has_bits_[0] & 0x00002000u) != 0;
+}
+inline void UserInfo::set_has_isranklock() {
+  _has_bits_[0] |= 0x00002000u;
+}
+inline void UserInfo::clear_has_isranklock() {
+  _has_bits_[0] &= ~0x00002000u;
+}
+inline void UserInfo::clear_isranklock() {
+  isranklock_ = false;
+  clear_has_isranklock();
+}
+inline bool UserInfo::isranklock() const {
+  // @@protoc_insertion_point(field_get:UserInfo.isRankLock)
+  return isranklock_;
+}
+inline void UserInfo::set_isranklock(bool value) {
+  set_has_isranklock();
+  isranklock_ = value;
+  // @@protoc_insertion_point(field_set:UserInfo.isRankLock)
+}
+
 // -------------------------------------------------------------------
 
 // PayOrderRequest
@@ -13771,6 +14744,78 @@ inline void RankItem::set_reward(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:RankItem.reward)
 }
 
+// optional int32 killed = 5;
+inline bool RankItem::has_killed() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void RankItem::set_has_killed() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void RankItem::clear_has_killed() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void RankItem::clear_killed() {
+  killed_ = 0;
+  clear_has_killed();
+}
+inline ::google::protobuf::int32 RankItem::killed() const {
+  // @@protoc_insertion_point(field_get:RankItem.killed)
+  return killed_;
+}
+inline void RankItem::set_killed(::google::protobuf::int32 value) {
+  set_has_killed();
+  killed_ = value;
+  // @@protoc_insertion_point(field_set:RankItem.killed)
+}
+
+// optional int32 rankedValue = 6;
+inline bool RankItem::has_rankedvalue() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void RankItem::set_has_rankedvalue() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void RankItem::clear_has_rankedvalue() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void RankItem::clear_rankedvalue() {
+  rankedvalue_ = 0;
+  clear_has_rankedvalue();
+}
+inline ::google::protobuf::int32 RankItem::rankedvalue() const {
+  // @@protoc_insertion_point(field_get:RankItem.rankedValue)
+  return rankedvalue_;
+}
+inline void RankItem::set_rankedvalue(::google::protobuf::int32 value) {
+  set_has_rankedvalue();
+  rankedvalue_ = value;
+  // @@protoc_insertion_point(field_set:RankItem.rankedValue)
+}
+
+// optional int32 beKilled = 7;
+inline bool RankItem::has_bekilled() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void RankItem::set_has_bekilled() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void RankItem::clear_has_bekilled() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void RankItem::clear_bekilled() {
+  bekilled_ = 0;
+  clear_has_bekilled();
+}
+inline ::google::protobuf::int32 RankItem::bekilled() const {
+  // @@protoc_insertion_point(field_get:RankItem.beKilled)
+  return bekilled_;
+}
+inline void RankItem::set_bekilled(::google::protobuf::int32 value) {
+  set_has_bekilled();
+  bekilled_ = value;
+  // @@protoc_insertion_point(field_set:RankItem.beKilled)
+}
+
 // -------------------------------------------------------------------
 
 // BaseSkill
@@ -13797,6 +14842,78 @@ inline void BaseSkill::set_id(::google::protobuf::int32 value) {
   set_has_id();
   id_ = value;
   // @@protoc_insertion_point(field_set:BaseSkill.id)
+}
+
+// optional int32 coolDown = 2;
+inline bool BaseSkill::has_cooldown() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void BaseSkill::set_has_cooldown() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void BaseSkill::clear_has_cooldown() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void BaseSkill::clear_cooldown() {
+  cooldown_ = 0;
+  clear_has_cooldown();
+}
+inline ::google::protobuf::int32 BaseSkill::cooldown() const {
+  // @@protoc_insertion_point(field_get:BaseSkill.coolDown)
+  return cooldown_;
+}
+inline void BaseSkill::set_cooldown(::google::protobuf::int32 value) {
+  set_has_cooldown();
+  cooldown_ = value;
+  // @@protoc_insertion_point(field_set:BaseSkill.coolDown)
+}
+
+// optional int32 limitWeight = 3;
+inline bool BaseSkill::has_limitweight() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void BaseSkill::set_has_limitweight() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void BaseSkill::clear_has_limitweight() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void BaseSkill::clear_limitweight() {
+  limitweight_ = 0;
+  clear_has_limitweight();
+}
+inline ::google::protobuf::int32 BaseSkill::limitweight() const {
+  // @@protoc_insertion_point(field_get:BaseSkill.limitWeight)
+  return limitweight_;
+}
+inline void BaseSkill::set_limitweight(::google::protobuf::int32 value) {
+  set_has_limitweight();
+  limitweight_ = value;
+  // @@protoc_insertion_point(field_set:BaseSkill.limitWeight)
+}
+
+// optional int32 level = 4;
+inline bool BaseSkill::has_level() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void BaseSkill::set_has_level() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void BaseSkill::clear_has_level() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void BaseSkill::clear_level() {
+  level_ = 0;
+  clear_has_level();
+}
+inline ::google::protobuf::int32 BaseSkill::level() const {
+  // @@protoc_insertion_point(field_get:BaseSkill.level)
+  return level_;
+}
+inline void BaseSkill::set_level(::google::protobuf::int32 value) {
+  set_has_level();
+  level_ = value;
+  // @@protoc_insertion_point(field_set:BaseSkill.level)
 }
 
 // -------------------------------------------------------------------
@@ -15042,6 +16159,148 @@ RoomInfo::mutable_asylums() {
   return &asylums_;
 }
 
+// repeated .FlightProps flightProps = 9;
+inline int RoomInfo::flightprops_size() const {
+  return flightprops_.size();
+}
+inline void RoomInfo::clear_flightprops() {
+  flightprops_.Clear();
+}
+inline const ::FlightProps& RoomInfo::flightprops(int index) const {
+  // @@protoc_insertion_point(field_get:RoomInfo.flightProps)
+  return flightprops_.Get(index);
+}
+inline ::FlightProps* RoomInfo::mutable_flightprops(int index) {
+  // @@protoc_insertion_point(field_mutable:RoomInfo.flightProps)
+  return flightprops_.Mutable(index);
+}
+inline ::FlightProps* RoomInfo::add_flightprops() {
+  // @@protoc_insertion_point(field_add:RoomInfo.flightProps)
+  return flightprops_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::FlightProps >&
+RoomInfo::flightprops() const {
+  // @@protoc_insertion_point(field_list:RoomInfo.flightProps)
+  return flightprops_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::FlightProps >*
+RoomInfo::mutable_flightprops() {
+  // @@protoc_insertion_point(field_mutable_list:RoomInfo.flightProps)
+  return &flightprops_;
+}
+
+// repeated string userNotify = 10;
+inline int RoomInfo::usernotify_size() const {
+  return usernotify_.size();
+}
+inline void RoomInfo::clear_usernotify() {
+  usernotify_.Clear();
+}
+inline const ::std::string& RoomInfo::usernotify(int index) const {
+  // @@protoc_insertion_point(field_get:RoomInfo.userNotify)
+  return usernotify_.Get(index);
+}
+inline ::std::string* RoomInfo::mutable_usernotify(int index) {
+  // @@protoc_insertion_point(field_mutable:RoomInfo.userNotify)
+  return usernotify_.Mutable(index);
+}
+inline void RoomInfo::set_usernotify(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:RoomInfo.userNotify)
+  usernotify_.Mutable(index)->assign(value);
+}
+inline void RoomInfo::set_usernotify(int index, const char* value) {
+  usernotify_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:RoomInfo.userNotify)
+}
+inline void RoomInfo::set_usernotify(int index, const char* value, size_t size) {
+  usernotify_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:RoomInfo.userNotify)
+}
+inline ::std::string* RoomInfo::add_usernotify() {
+  return usernotify_.Add();
+}
+inline void RoomInfo::add_usernotify(const ::std::string& value) {
+  usernotify_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:RoomInfo.userNotify)
+}
+inline void RoomInfo::add_usernotify(const char* value) {
+  usernotify_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:RoomInfo.userNotify)
+}
+inline void RoomInfo::add_usernotify(const char* value, size_t size) {
+  usernotify_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:RoomInfo.userNotify)
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+RoomInfo::usernotify() const {
+  // @@protoc_insertion_point(field_list:RoomInfo.userNotify)
+  return usernotify_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+RoomInfo::mutable_usernotify() {
+  // @@protoc_insertion_point(field_mutable_list:RoomInfo.userNotify)
+  return &usernotify_;
+}
+
+// -------------------------------------------------------------------
+
+// UserNotifyResponse
+
+// repeated string userNotify = 1;
+inline int UserNotifyResponse::usernotify_size() const {
+  return usernotify_.size();
+}
+inline void UserNotifyResponse::clear_usernotify() {
+  usernotify_.Clear();
+}
+inline const ::std::string& UserNotifyResponse::usernotify(int index) const {
+  // @@protoc_insertion_point(field_get:UserNotifyResponse.userNotify)
+  return usernotify_.Get(index);
+}
+inline ::std::string* UserNotifyResponse::mutable_usernotify(int index) {
+  // @@protoc_insertion_point(field_mutable:UserNotifyResponse.userNotify)
+  return usernotify_.Mutable(index);
+}
+inline void UserNotifyResponse::set_usernotify(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:UserNotifyResponse.userNotify)
+  usernotify_.Mutable(index)->assign(value);
+}
+inline void UserNotifyResponse::set_usernotify(int index, const char* value) {
+  usernotify_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:UserNotifyResponse.userNotify)
+}
+inline void UserNotifyResponse::set_usernotify(int index, const char* value, size_t size) {
+  usernotify_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:UserNotifyResponse.userNotify)
+}
+inline ::std::string* UserNotifyResponse::add_usernotify() {
+  return usernotify_.Add();
+}
+inline void UserNotifyResponse::add_usernotify(const ::std::string& value) {
+  usernotify_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:UserNotifyResponse.userNotify)
+}
+inline void UserNotifyResponse::add_usernotify(const char* value) {
+  usernotify_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:UserNotifyResponse.userNotify)
+}
+inline void UserNotifyResponse::add_usernotify(const char* value, size_t size) {
+  usernotify_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:UserNotifyResponse.userNotify)
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+UserNotifyResponse::usernotify() const {
+  // @@protoc_insertion_point(field_list:UserNotifyResponse.userNotify)
+  return usernotify_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+UserNotifyResponse::mutable_usernotify() {
+  // @@protoc_insertion_point(field_mutable_list:UserNotifyResponse.userNotify)
+  return &usernotify_;
+}
+
 // -------------------------------------------------------------------
 
 // PlayerListResponse
@@ -15352,6 +16611,126 @@ inline void FlightProps::set_type(::google::protobuf::int32 value) {
   set_has_type();
   type_ = value;
   // @@protoc_insertion_point(field_set:FlightProps.type)
+}
+
+// optional int32 fromCellId = 9;
+inline bool FlightProps::has_fromcellid() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void FlightProps::set_has_fromcellid() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void FlightProps::clear_has_fromcellid() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void FlightProps::clear_fromcellid() {
+  fromcellid_ = 0;
+  clear_has_fromcellid();
+}
+inline ::google::protobuf::int32 FlightProps::fromcellid() const {
+  // @@protoc_insertion_point(field_get:FlightProps.fromCellId)
+  return fromcellid_;
+}
+inline void FlightProps::set_fromcellid(::google::protobuf::int32 value) {
+  set_has_fromcellid();
+  fromcellid_ = value;
+  // @@protoc_insertion_point(field_set:FlightProps.fromCellId)
+}
+
+// optional int32 targetCellId = 10;
+inline bool FlightProps::has_targetcellid() const {
+  return (_has_bits_[0] & 0x00000200u) != 0;
+}
+inline void FlightProps::set_has_targetcellid() {
+  _has_bits_[0] |= 0x00000200u;
+}
+inline void FlightProps::clear_has_targetcellid() {
+  _has_bits_[0] &= ~0x00000200u;
+}
+inline void FlightProps::clear_targetcellid() {
+  targetcellid_ = 0;
+  clear_has_targetcellid();
+}
+inline ::google::protobuf::int32 FlightProps::targetcellid() const {
+  // @@protoc_insertion_point(field_get:FlightProps.targetCellId)
+  return targetcellid_;
+}
+inline void FlightProps::set_targetcellid(::google::protobuf::int32 value) {
+  set_has_targetcellid();
+  targetcellid_ = value;
+  // @@protoc_insertion_point(field_set:FlightProps.targetCellId)
+}
+
+// optional int32 status = 11;
+inline bool FlightProps::has_status() const {
+  return (_has_bits_[0] & 0x00000400u) != 0;
+}
+inline void FlightProps::set_has_status() {
+  _has_bits_[0] |= 0x00000400u;
+}
+inline void FlightProps::clear_has_status() {
+  _has_bits_[0] &= ~0x00000400u;
+}
+inline void FlightProps::clear_status() {
+  status_ = 0;
+  clear_has_status();
+}
+inline ::google::protobuf::int32 FlightProps::status() const {
+  // @@protoc_insertion_point(field_get:FlightProps.status)
+  return status_;
+}
+inline void FlightProps::set_status(::google::protobuf::int32 value) {
+  set_has_status();
+  status_ = value;
+  // @@protoc_insertion_point(field_set:FlightProps.status)
+}
+
+// optional int32 fromUserId = 12;
+inline bool FlightProps::has_fromuserid() const {
+  return (_has_bits_[0] & 0x00000800u) != 0;
+}
+inline void FlightProps::set_has_fromuserid() {
+  _has_bits_[0] |= 0x00000800u;
+}
+inline void FlightProps::clear_has_fromuserid() {
+  _has_bits_[0] &= ~0x00000800u;
+}
+inline void FlightProps::clear_fromuserid() {
+  fromuserid_ = 0;
+  clear_has_fromuserid();
+}
+inline ::google::protobuf::int32 FlightProps::fromuserid() const {
+  // @@protoc_insertion_point(field_get:FlightProps.fromUserId)
+  return fromuserid_;
+}
+inline void FlightProps::set_fromuserid(::google::protobuf::int32 value) {
+  set_has_fromuserid();
+  fromuserid_ = value;
+  // @@protoc_insertion_point(field_set:FlightProps.fromUserId)
+}
+
+// optional int32 targetUserId = 13;
+inline bool FlightProps::has_targetuserid() const {
+  return (_has_bits_[0] & 0x00001000u) != 0;
+}
+inline void FlightProps::set_has_targetuserid() {
+  _has_bits_[0] |= 0x00001000u;
+}
+inline void FlightProps::clear_has_targetuserid() {
+  _has_bits_[0] &= ~0x00001000u;
+}
+inline void FlightProps::clear_targetuserid() {
+  targetuserid_ = 0;
+  clear_has_targetuserid();
+}
+inline ::google::protobuf::int32 FlightProps::targetuserid() const {
+  // @@protoc_insertion_point(field_get:FlightProps.targetUserId)
+  return targetuserid_;
+}
+inline void FlightProps::set_targetuserid(::google::protobuf::int32 value) {
+  set_has_targetuserid();
+  targetuserid_ = value;
+  // @@protoc_insertion_point(field_set:FlightProps.targetUserId)
 }
 
 // -------------------------------------------------------------------
@@ -16059,6 +17438,30 @@ inline void UltimateSkill::set_foodid(::google::protobuf::int32 value) {
   set_has_foodid();
   foodid_ = value;
   // @@protoc_insertion_point(field_set:UltimateSkill.foodId)
+}
+
+// optional int32 level = 3;
+inline bool UltimateSkill::has_level() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void UltimateSkill::set_has_level() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void UltimateSkill::clear_has_level() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void UltimateSkill::clear_level() {
+  level_ = 0;
+  clear_has_level();
+}
+inline ::google::protobuf::int32 UltimateSkill::level() const {
+  // @@protoc_insertion_point(field_get:UltimateSkill.level)
+  return level_;
+}
+inline void UltimateSkill::set_level(::google::protobuf::int32 value) {
+  set_has_level();
+  level_ = value;
+  // @@protoc_insertion_point(field_set:UltimateSkill.level)
 }
 
 
