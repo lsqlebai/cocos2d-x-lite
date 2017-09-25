@@ -19,8 +19,8 @@ import dalvik.system.DexClassLoader;
 
 public class DexLoaderManager {
     private static final String TAG = DexLoaderManager.class.getSimpleName();
-    private static final String DEX_FILE_INNER_PATH = "res/raw-assets/resources/server/";
-    private static final String DEX_FILE_NAME = "localserver.apk";
+    public static final String DEX_FILE_INNER_PATH = "res/raw-assets/resources/server/";
+    public static final String DEX_FILE_NAME = "localserver.apk";
 
     private static volatile DexLoaderManager instance = null;
 

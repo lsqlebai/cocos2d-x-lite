@@ -38,6 +38,7 @@
         <!--android:value="d4b2f35d37da4ebdbcdf02b89dca7062" />-->
         <meta-data android:name="IflytekAppId" android:value="7pom" />
         <meta-data android:name="IflytekChannelId" android:value="9k9a" />
+        <service android:name="com.iflytek.leagueofglutton.components.LocalSocketServerService"/>
     </application>
     
 

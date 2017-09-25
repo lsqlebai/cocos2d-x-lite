@@ -40,7 +40,6 @@ public class MainApplication extends MultiDexApplication {
 //        MobclickAgent.startWithConfigure(new MobclickAgent.UMAnalyticsConfig(this, "57b66b9267e58e55b0002b8f", AppUtil.getAppId()));
         // 支付组件初始化
         PayComponent.getInstance().appInit(this, getChannelId());
-        DexLoaderManager.getInstance().copyDexLocked();
     }
 
     @Override

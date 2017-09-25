@@ -29,6 +29,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.iflytek.leagueofglutton.components.LocalSocketServerService;
@@ -47,16 +48,17 @@ import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileFilter;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.channels.FileChannel;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 // For JS and JAVA reflection test, you can delete it if it's your own project
 
 public class AppActivity extends Cocos2dxActivity {
+    private static final String TAG = "AppActivity";
 
     boolean isAppUpgrade = false; // 程序是否发生过升级
 
@@ -160,35 +162,6 @@ public class AppActivity extends Cocos2dxActivity {
         glSurfaceView.setEGLConfigChooser(5, 6, 5, 0, 16, 8);
 
         return glSurfaceView;
-    }
-
-    public static void copyFile(File srcFile, File destFile) throws IOException {
-
-        System.out.println("doLib do copy file:" + srcFile.getAbsolutePath() + "," + destFile.getAbsolutePath());
-
-        if (!destFile.exists()) {
-            destFile.createNewFile();
-        }
-
-        FileChannel source = null;
-        FileChannel destination = null;
-
-        try {
-            source = new FileInputStream(srcFile).getChannel();
-            destination = new FileOutputStream(destFile).getChannel();
-            destination.transferFrom(source, 0, source.size());
-        }catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-        finally {
-            if (source != null) {
-                source.close();
-            }
-            if (destination != null) {
-                destination.close();
-            }
-        }
     }
 
     /**
@@ -301,7 +274,7 @@ public class AppActivity extends Cocos2dxActivity {
                             long lastTime = sp.getLong(key, 0);
                             if(!dstFile.exists() || dstFile.length() != soFile.length() || lastTime != soFile.lastModified()) // so库发生过变化，则进行覆盖
                             {
-                                copyFile(soFile, dstFile);
+                                FileUtil.copyFile(soFile, dstFile);
                                 sp.edit().putLong(key, soFile.lastModified()).commit(); // 保存本次拷贝库的时间
                             }
                             else
@@ -396,7 +369,7 @@ public class AppActivity extends Cocos2dxActivity {
 
                         System.out.println("doLib dstFile is not exists, do copy");
 
-                        copyFile(srcFile, dstFile);
+                        FileUtil.copyFile(srcFile, dstFile);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -411,97 +384,82 @@ public class AppActivity extends Cocos2dxActivity {
         }
     }
 
+    private void prepareLocalServerDex() {
+        copyDownloadedDex(getExternalFilesDir("download"));
+        File dexFile = new File(DexLoaderManager.getInstance().getExtractedDexPath());
+        if (dexFile.exists()) {
+            return;
+        }
+        Log.d(TAG, "prepareLocalServerDex: " + dexFile.getPath());
+        File destDir = new File(DexLoaderManager.getInstance().getExtractedDexDirPath());
+        destDir.mkdirs();
+        InputStream inputStream = null;
+        OutputStream outputStream = null;
+        try {
+            inputStream = getAssets().open(DexLoaderManager.DEX_FILE_INNER_PATH
+                    + DexLoaderManager.DEX_FILE_NAME);
+            outputStream = new FileOutputStream(dexFile);
+            byte[] arrayOfByte = new byte[1024];
+            while (true) {
+                int i = inputStream.read(arrayOfByte);
+                if (i == -1) {
+                    break;
+                }
+                outputStream.write(arrayOfByte, 0, i);
+                outputStream.flush();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (inputStream != null) try {
+                inputStream.close();
+                outputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     /**
      * Copy dex files from hotupdate folder to dex dir
      */
-    private void copyNewDex() {
-        String downloadPath = null;
-        File downloadFile = getExternalFilesDir("download");
-        if(downloadFile == null){
-            System.out.println("downloadFile is null");
+    private void copyDownloadedDex(File downloadFile) {
+        if (downloadFile == null || !downloadFile.exists()) return;
+        String dexFilePath = null;
+        File downloadRecord = new File(downloadFile, "dexCopyDir");
+        BufferedReader bufferedReader = null;
+        if (downloadRecord.exists() && downloadRecord.isFile()) {
             try {
-                File tmpDir = new File("/sdcard/Android/data/" +getPackageName() +"/files/download");
-
-                if(tmpDir.exists()) {
-                    downloadPath = tmpDir.getAbsolutePath();
-                } else {
-                    boolean mkResult = tmpDir.mkdirs();
-                    if(mkResult) {
-                        System.out.println("downloadFile is create success");
-                        downloadPath = tmpDir.getAbsolutePath();
-                    } else {
-                        System.out.println("downloadFile is create failed");
-                        Toast.makeText(this, "系统空间不足", Toast.LENGTH_SHORT).show();
-                    }
-                }
+                bufferedReader = new BufferedReader(new FileReader(downloadRecord));
+                dexFilePath = bufferedReader.readLine();
             } catch (Exception e) {
-                System.out.println("downloadFile is create failed2");
-                Toast.makeText(this, "系统空间不足", Toast.LENGTH_SHORT).show();
-                e.printStackTrace();
-            }
-        } else {
-            downloadPath = downloadFile.getAbsolutePath();
-        }
-
-        if(null == downloadPath) {
-            System.out.println("downloadPath is null");
-            return;
-        }
-
-//        if(isAppUpgrade) {
-//
-//            // 程序发生过升级，把之前热更新数据全部清空
-//            File fileDir =  new File(downloadPath);
-//            if(fileDir.exists())
-//            {
-//                FileUtil.Delete(fileDir);
-//            }
-//            return;
-//        }
-
-        File dexCopyDirFile = new File(downloadPath + "/dexCopyDir");
-        if(dexCopyDirFile.exists() && dexCopyDirFile.isFile()) {
-            BufferedReader br =  null;
-            try {
-                br =  new BufferedReader(new FileReader(dexCopyDirFile));
-                String filePath = br.readLine();
-                File dexDir = new File(filePath);
-                if(dexDir.exists() && dexDir.isDirectory()) {
-                    File[] dexFiles = dexDir.listFiles(new FileFilter() {
-                        @Override
-                        public boolean accept(File pathname) {
-                            return pathname.getName().endsWith(".apk")
-                                    || pathname.getName().endsWith(".properties");
-                        }
-                    });
-
-                    if(null != dexFiles && dexFiles.length>0) {
-                        SharedPreferences sp = getPreferences(MODE_PRIVATE);
-
-                        for(File dexFile : dexFiles) {
-                            String key = "KEY_DEX_LAST_TIME_" + dexFile.getName();
-                            File dstFile = new File(
-                                    DexLoaderManager.getInstance().getExtractedDexPath());
-                            long lastTime = sp.getLong(key, 0);
-                            if(!dstFile.exists()
-                                    || dstFile.length() != dexFile.length()
-                                    || lastTime != dexFile.lastModified()) {
-                                copyFile(dexFile, dstFile);
-                                sp.edit().putLong(key, dexFile.lastModified()).commit();
-                            }
-                        }
-                    }
-                }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
                 e.printStackTrace();
             } finally {
-                if(null != br) {
-                    try {
-                        br.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                if (bufferedReader != null) try {
+                    bufferedReader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (dexFilePath != null) {
+                File searchPath = new File(dexFilePath);
+                if (searchPath.exists() && searchPath.isDirectory()) {
+                    File[] dexFiles = searchPath.listFiles(new FileFilter() {
+                        @Override
+                        public boolean accept(File pathname) {
+                            return pathname.getName().endsWith(DexLoaderManager.DEX_FILE_NAME);
+                        }
+                    });
+                    for(File dexFile : dexFiles) {
+                        try {
+                            Log.d(TAG, "copyDownloadedDex: " + dexFile.getPath()
+                                    + "->" + DexLoaderManager.getInstance().getExtractedDexPath());
+                            FileUtil.copyFile(dexFile,
+                                    new File(DexLoaderManager.getInstance().getExtractedDexPath()));
+                            dexFile.delete();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
@@ -520,8 +478,8 @@ public class AppActivity extends Cocos2dxActivity {
         System.out.println("dolib internalDir:" + path1 + ",externalDir:" + path2);
 
         copyOriLib();
-        copyNewDex();
         copyNewLib();
+        prepareLocalServerDex();
 
         //super.onLoadNativeLibraries();
 
