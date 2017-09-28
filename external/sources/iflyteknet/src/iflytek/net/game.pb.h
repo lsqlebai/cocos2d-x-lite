@@ -6131,6 +6131,18 @@ class RoomInfo : public ::google::protobuf::Message {
   inline const ::google::protobuf::RepeatedPtrField< ::std::string>& usernotify() const;
   inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_usernotify();
 
+  // optional string uuid = 11;
+  inline bool has_uuid() const;
+  inline void clear_uuid();
+  static const int kUuidFieldNumber = 11;
+  inline const ::std::string& uuid() const;
+  inline void set_uuid(const ::std::string& value);
+  inline void set_uuid(const char* value);
+  inline void set_uuid(const char* value, size_t size);
+  inline ::std::string* mutable_uuid();
+  inline ::std::string* release_uuid();
+  inline void set_allocated_uuid(::std::string* uuid);
+
   // @@protoc_insertion_point(class_scope:RoomInfo)
  private:
   inline void set_has_width();
@@ -6141,6 +6153,8 @@ class RoomInfo : public ::google::protobuf::Message {
   inline void clear_has_remaintime();
   inline void set_has_foodradius();
   inline void clear_has_foodradius();
+  inline void set_has_uuid();
+  inline void clear_has_uuid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -6156,6 +6170,7 @@ class RoomInfo : public ::google::protobuf::Message {
   ::google::protobuf::RepeatedPtrField< ::Asylum > asylums_;
   ::google::protobuf::RepeatedPtrField< ::FlightProps > flightprops_;
   ::google::protobuf::RepeatedPtrField< ::std::string> usernotify_;
+  ::std::string* uuid_;
   friend void  protobuf_AddDesc_game_2eproto();
   friend void protobuf_AssignDesc_game_2eproto();
   friend void protobuf_ShutdownFile_game_2eproto();
@@ -16241,6 +16256,82 @@ inline ::google::protobuf::RepeatedPtrField< ::std::string>*
 RoomInfo::mutable_usernotify() {
   // @@protoc_insertion_point(field_mutable_list:RoomInfo.userNotify)
   return &usernotify_;
+}
+
+// optional string uuid = 11;
+inline bool RoomInfo::has_uuid() const {
+  return (_has_bits_[0] & 0x00000400u) != 0;
+}
+inline void RoomInfo::set_has_uuid() {
+  _has_bits_[0] |= 0x00000400u;
+}
+inline void RoomInfo::clear_has_uuid() {
+  _has_bits_[0] &= ~0x00000400u;
+}
+inline void RoomInfo::clear_uuid() {
+  if (uuid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    uuid_->clear();
+  }
+  clear_has_uuid();
+}
+inline const ::std::string& RoomInfo::uuid() const {
+  // @@protoc_insertion_point(field_get:RoomInfo.uuid)
+  return *uuid_;
+}
+inline void RoomInfo::set_uuid(const ::std::string& value) {
+  set_has_uuid();
+  if (uuid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    uuid_ = new ::std::string;
+  }
+  uuid_->assign(value);
+  // @@protoc_insertion_point(field_set:RoomInfo.uuid)
+}
+inline void RoomInfo::set_uuid(const char* value) {
+  set_has_uuid();
+  if (uuid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    uuid_ = new ::std::string;
+  }
+  uuid_->assign(value);
+  // @@protoc_insertion_point(field_set_char:RoomInfo.uuid)
+}
+inline void RoomInfo::set_uuid(const char* value, size_t size) {
+  set_has_uuid();
+  if (uuid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    uuid_ = new ::std::string;
+  }
+  uuid_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:RoomInfo.uuid)
+}
+inline ::std::string* RoomInfo::mutable_uuid() {
+  set_has_uuid();
+  if (uuid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    uuid_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:RoomInfo.uuid)
+  return uuid_;
+}
+inline ::std::string* RoomInfo::release_uuid() {
+  clear_has_uuid();
+  if (uuid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = uuid_;
+    uuid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void RoomInfo::set_allocated_uuid(::std::string* uuid) {
+  if (uuid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete uuid_;
+  }
+  if (uuid) {
+    set_has_uuid();
+    uuid_ = uuid;
+  } else {
+    clear_has_uuid();
+    uuid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:RoomInfo.uuid)
 }
 
 // -------------------------------------------------------------------

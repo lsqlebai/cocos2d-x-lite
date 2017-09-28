@@ -1130,7 +1130,7 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SuperRenewInfo));
   RoomInfo_descriptor_ = file->message_type(50);
-  static const int RoomInfo_offsets_[10] = {
+  static const int RoomInfo_offsets_[11] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RoomInfo, width_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RoomInfo, height_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RoomInfo, remaintime_),
@@ -1141,6 +1141,7 @@ void protobuf_AssignDesc_game_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RoomInfo, asylums_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RoomInfo, flightprops_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RoomInfo, usernotify_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RoomInfo, uuid_),
   };
   RoomInfo_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -1826,38 +1827,38 @@ void protobuf_AddDesc_game_2eproto() {
     "ress\030\005 \001(\005\022\037\n\020beKilledUserInfo\030\006 \001(\0132\005.U"
     "ser\022\'\n\016superRenewInfo\030\007 \001(\0132\017.SuperRenew"
     "Info\"\?\n\016SuperRenewInfo\022\014\n\004gold\030\001 \001(\005\022\016\n\006"
-    "weight\030\002 \001(\005\022\017\n\007percent\030\003 \001(\005\"\370\001\n\010RoomIn"
+    "weight\030\002 \001(\005\022\017\n\007percent\030\003 \001(\005\"\206\002\n\010RoomIn"
     "fo\022\r\n\005width\030\001 \002(\005\022\016\n\006height\030\002 \002(\005\022\022\n\nrem"
     "ainTime\030\003 \001(\005\022\022\n\nfoodRadius\030\004 \001(\005\022\030\n\007pla"
     "yers\030\005 \003(\0132\007.Player\022\034\n\tfoodAreas\030\006 \003(\0132\t"
     ".FoodArea\022\034\n\trankItems\030\007 \003(\0132\t.RankItem\022"
     "\030\n\007asylums\030\010 \003(\0132\007.Asylum\022!\n\013flightProps"
     "\030\t \003(\0132\014.FlightProps\022\022\n\nuserNotify\030\n \003(\t"
-    "\"(\n\022UserNotifyResponse\022\022\n\nuserNotify\030\001 \003"
-    "(\t\"<\n\022PlayerListResponse\022\014\n\004type\030\001 \002(\005\022\030"
-    "\n\007players\030\002 \003(\0132\007.Player\"F\n\023FlightPropsR"
-    "esponse\022\014\n\004type\030\001 \002(\005\022!\n\013flightProps\030\002 \003"
-    "(\0132\014.FlightProps\"\335\001\n\013FlightProps\022\n\n\002id\030\001"
-    " \001(\005\022\r\n\005speed\030\002 \001(\005\022\014\n\004skin\030\003 \001(\005\022\r\n\005ang"
-    "le\030\004 \001(\005\022\t\n\001x\030\005 \001(\005\022\t\n\001y\030\006 \001(\005\022\016\n\006radius"
-    "\030\007 \001(\005\022\014\n\004type\030\010 \001(\005\022\022\n\nfromCellId\030\t \001(\005"
-    "\022\024\n\014targetCellId\030\n \001(\005\022\016\n\006status\030\013 \001(\005\022\022"
-    "\n\nfromUserId\030\014 \001(\005\022\024\n\014targetUserId\030\r \001(\005"
-    "\"@\n\022FoodChangeResponse\022\014\n\004type\030\001 \002(\005\022\034\n\t"
-    "foodAreas\030\002 \003(\0132\t.FoodArea\"e\n\010FoodArea\022\016"
-    "\n\006areaId\030\001 \001(\005\022\t\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005\022\r\n\005"
-    "width\030\004 \001(\005\022\016\n\006height\030\005 \001(\005\022\024\n\005foods\030\006 \003"
-    "(\0132\005.Food\"$\n\022RemainTimeResponse\022\016\n\006remai"
-    "n\030\001 \002(\005\"0\n\020RankListResponse\022\034\n\trankItems"
-    "\030\001 \003(\0132\t.RankItem\"2\n\021GameStateResponse\022\r"
-    "\n\005state\030\001 \002(\005\022\016\n\006roomId\030\002 \001(\t\"7\n\020GameRea"
-    "dyRequest\022\016\n\006roomId\030\001 \001(\t\022\023\n\004user\030\002 \001(\0132"
-    "\005.User\"$\n\024PlayerRenewalRequest\022\014\n\004type\030\001"
-    " \001(\005\"\027\n\025PlayerRenewalResponse\"H\n\006Asylum\022"
-    "\n\n\002id\030\001 \002(\005\022\014\n\004skin\030\002 \001(\005\022\t\n\001x\030\003 \001(\002\022\t\n\001"
-    "y\030\004 \001(\002\022\016\n\006radius\030\005 \001(\002\":\n\rUltimateSkill"
-    "\022\n\n\002id\030\001 \002(\005\022\016\n\006foodId\030\002 \001(\005\022\r\n\005level\030\003 "
-    "\001(\005", 7243);
+    "\022\014\n\004uuid\030\013 \001(\t\"(\n\022UserNotifyResponse\022\022\n\n"
+    "userNotify\030\001 \003(\t\"<\n\022PlayerListResponse\022\014"
+    "\n\004type\030\001 \002(\005\022\030\n\007players\030\002 \003(\0132\007.Player\"F"
+    "\n\023FlightPropsResponse\022\014\n\004type\030\001 \002(\005\022!\n\013f"
+    "lightProps\030\002 \003(\0132\014.FlightProps\"\335\001\n\013Fligh"
+    "tProps\022\n\n\002id\030\001 \001(\005\022\r\n\005speed\030\002 \001(\005\022\014\n\004ski"
+    "n\030\003 \001(\005\022\r\n\005angle\030\004 \001(\005\022\t\n\001x\030\005 \001(\005\022\t\n\001y\030\006"
+    " \001(\005\022\016\n\006radius\030\007 \001(\005\022\014\n\004type\030\010 \001(\005\022\022\n\nfr"
+    "omCellId\030\t \001(\005\022\024\n\014targetCellId\030\n \001(\005\022\016\n\006"
+    "status\030\013 \001(\005\022\022\n\nfromUserId\030\014 \001(\005\022\024\n\014targ"
+    "etUserId\030\r \001(\005\"@\n\022FoodChangeResponse\022\014\n\004"
+    "type\030\001 \002(\005\022\034\n\tfoodAreas\030\002 \003(\0132\t.FoodArea"
+    "\"e\n\010FoodArea\022\016\n\006areaId\030\001 \001(\005\022\t\n\001x\030\002 \001(\005\022"
+    "\t\n\001y\030\003 \001(\005\022\r\n\005width\030\004 \001(\005\022\016\n\006height\030\005 \001("
+    "\005\022\024\n\005foods\030\006 \003(\0132\005.Food\"$\n\022RemainTimeRes"
+    "ponse\022\016\n\006remain\030\001 \002(\005\"0\n\020RankListRespons"
+    "e\022\034\n\trankItems\030\001 \003(\0132\t.RankItem\"2\n\021GameS"
+    "tateResponse\022\r\n\005state\030\001 \002(\005\022\016\n\006roomId\030\002 "
+    "\001(\t\"7\n\020GameReadyRequest\022\016\n\006roomId\030\001 \001(\t\022"
+    "\023\n\004user\030\002 \001(\0132\005.User\"$\n\024PlayerRenewalReq"
+    "uest\022\014\n\004type\030\001 \001(\005\"\027\n\025PlayerRenewalRespo"
+    "nse\"H\n\006Asylum\022\n\n\002id\030\001 \002(\005\022\014\n\004skin\030\002 \001(\005\022"
+    "\t\n\001x\030\003 \001(\002\022\t\n\001y\030\004 \001(\002\022\016\n\006radius\030\005 \001(\002\":\n"
+    "\rUltimateSkill\022\n\n\002id\030\001 \002(\005\022\016\n\006foodId\030\002 \001"
+    "(\005\022\r\n\005level\030\003 \001(\005", 7257);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "game.proto", &protobuf_RegisterTypes);
   MessageInfo::default_instance_ = new MessageInfo();
@@ -20842,6 +20843,7 @@ const int RoomInfo::kRankItemsFieldNumber;
 const int RoomInfo::kAsylumsFieldNumber;
 const int RoomInfo::kFlightPropsFieldNumber;
 const int RoomInfo::kUserNotifyFieldNumber;
+const int RoomInfo::kUuidFieldNumber;
 #endif  // !_MSC_VER
 
 RoomInfo::RoomInfo()
@@ -20867,6 +20869,7 @@ void RoomInfo::SharedCtor() {
   height_ = 0;
   remaintime_ = 0;
   foodradius_ = 0;
+  uuid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -20876,6 +20879,9 @@ RoomInfo::~RoomInfo() {
 }
 
 void RoomInfo::SharedDtor() {
+  if (uuid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete uuid_;
+  }
   if (this != default_instance_) {
   }
 }
@@ -20913,6 +20919,11 @@ void RoomInfo::Clear() {
   } while (0)
 
   ZR_(width_, foodradius_);
+  if (has_uuid()) {
+    if (uuid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+      uuid_->clear();
+    }
+  }
 
 #undef OFFSET_OF_FIELD_
 #undef ZR_
@@ -21081,6 +21092,23 @@ bool RoomInfo::MergePartialFromCodedStream(
           goto handle_unusual;
         }
         if (input->ExpectTag(82)) goto parse_userNotify;
+        if (input->ExpectTag(90)) goto parse_uuid;
+        break;
+      }
+
+      // optional string uuid = 11;
+      case 11: {
+        if (tag == 90) {
+         parse_uuid:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_uuid()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->uuid().data(), this->uuid().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "uuid");
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -21170,6 +21198,16 @@ void RoomInfo::SerializeWithCachedSizes(
       10, this->usernotify(i), output);
   }
 
+  // optional string uuid = 11;
+  if (has_uuid()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->uuid().data(), this->uuid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "uuid");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      11, this->uuid(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -21245,6 +21283,17 @@ void RoomInfo::SerializeWithCachedSizes(
       WriteStringToArray(10, this->usernotify(i), target);
   }
 
+  // optional string uuid = 11;
+  if (has_uuid()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->uuid().data(), this->uuid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "uuid");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        11, this->uuid(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -21283,6 +21332,15 @@ int RoomInfo::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->foodradius());
+    }
+
+  }
+  if (_has_bits_[10 / 32] & (0xffu << (10 % 32))) {
+    // optional string uuid = 11;
+    if (has_uuid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->uuid());
     }
 
   }
@@ -21378,6 +21436,11 @@ void RoomInfo::MergeFrom(const RoomInfo& from) {
       set_foodradius(from.foodradius());
     }
   }
+  if (from._has_bits_[10 / 32] & (0xffu << (10 % 32))) {
+    if (from.has_uuid()) {
+      set_uuid(from.uuid());
+    }
+  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -21415,6 +21478,7 @@ void RoomInfo::Swap(RoomInfo* other) {
     asylums_.Swap(&other->asylums_);
     flightprops_.Swap(&other->flightprops_);
     usernotify_.Swap(&other->usernotify_);
+    std::swap(uuid_, other->uuid_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
