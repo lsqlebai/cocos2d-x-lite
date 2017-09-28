@@ -25,18 +25,10 @@ public class LocalSocketServerService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         DexLoaderManager.getInstance().setApkClassLoader(this);
-        ClassLoader cl = getClassLoader();
         try {
             Class serverClass = DexLoaderManager.getInstance().loadClass(this);
             Method getInstanceMethod = serverClass.getMethod("getInstance");
             sServerObj = getInstanceMethod.invoke(null);
-
-            Method initMethod = serverClass.getMethod("init", Context.class);
-            initMethod.invoke(sServerObj, this);
-
-            Method startMethod = serverClass.getMethod("start");
-            startMethod.invoke(sServerObj);
-
             sStopMethod = serverClass.getMethod("stop");
 
         } catch (NoSuchMethodException e) {
@@ -46,6 +38,8 @@ public class LocalSocketServerService extends Service {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
+
+        mServerThread.start();
 
         return super.onStartCommand(intent, flags, startId);
     }
@@ -71,4 +65,27 @@ public class LocalSocketServerService extends Service {
         }
         super.onDestroy();
     }
+
+    Thread mServerThread = new Thread("local-server") {
+        @Override
+        public void run() {
+            try {
+                Class serverClass = DexLoaderManager.getInstance()
+                        .loadClass(LocalSocketServerService.this);
+
+                Method initMethod = serverClass.getMethod("init", Context.class);
+                initMethod.invoke(sServerObj, LocalSocketServerService.this);
+
+                Method startMethod = serverClass.getMethod("start");
+                startMethod.invoke(sServerObj);
+
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+    };
 }
