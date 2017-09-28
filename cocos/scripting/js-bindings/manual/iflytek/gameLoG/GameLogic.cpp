@@ -377,7 +377,7 @@ void GameLogic::updateFoodArea(const int32_t& visibleRectX, const int32_t& visib
 cocos2d::SpriteFrame* GameLogic::getFoodSkinById(const int32_t& id)
 {
 	SpriteFrame* result = nullptr;
-	string key = "food" + std::to_string(id);
+	string key = "food" + StringUtils::toString(id);
 	
 	auto findResult = _foodSkinMap.find(key);
 
