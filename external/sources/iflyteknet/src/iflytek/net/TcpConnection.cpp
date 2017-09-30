@@ -580,6 +580,7 @@ void TcpConnection::doReadHeader()
     
 }
 
+
 void TcpConnection::doReadBody(const std::shared_ptr<ReceiveMsg>& receiveMsg)
 {
     asio::async_read(_socket,
@@ -663,7 +664,6 @@ void TcpConnection::doReadBody(const std::shared_ptr<ReceiveMsg>& receiveMsg)
 													 
 													 parseMessage(msg, finalData, finalDataLen);
 													 jsonStr = google::protobuf::JsonFormat::Utf8DebugJsonString(*msg);
-
 
 													 msgData = (int8_t*)finalData;
 													 bodyLen = finalDataLen;

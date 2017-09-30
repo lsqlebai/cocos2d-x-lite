@@ -1560,56 +1560,46 @@ void JsonFormat::Printer::PrintField(const Message& message,
 			  printer->PrintMessageEnd(
 			  sub_message, field_index, count, single_line_mode_));*/
 
-			  if (field_index == count - 1) // last item
-			  {
-				  if (single_line_mode_)
-				  {
-					  if (!isLastField)
-					  {
-						  generator.Print("],");
-					  }
-					  else
-					  {
-						  generator.Print("]");
-					  }
-
-				  }
-				  else
-				  {
-					  if (!isLastField)
-					  {
-						  generator.Print("],\n");
-					  }
-					  else
-					  {
-						  generator.Print("]\n");
-					  }
-
-				  }
-			  }
-			  else if (field_index == -1) // not list, is map
-			  {
-				  if (single_line_mode_) {
-					  if (!isLastField)
-					  {
-						  generator.Print(",");
-					  }
-
-				  }
-				  else {
-					  if (!isLastField)
-					  {
-						  generator.Print(",\n");
-					  }
-
-				  }
-			  }
+			  
 
 		  }
 		  else {
 			  //generator.Print(":");
 			  // Write the field value.
 			  PrintFieldValue(message, reflection, field, field_index, generator);
+			 
+		  }
+
+
+		  if (field_index == count - 1) // last item
+		  {
+			  if (single_line_mode_)
+			  {
+				  if (!isLastField)
+				  {
+					  generator.Print("],");
+				  }
+				  else
+				  {
+					  generator.Print("]");
+				  }
+
+			  }
+			  else
+			  {
+				  if (!isLastField)
+				  {
+					  generator.Print("],\n");
+				  }
+				  else
+				  {
+					  generator.Print("]\n");
+				  }
+
+			  }
+		  }
+		  else if (field_index == -1) // not list, is map
+		  {
 			  if (single_line_mode_) {
 				  if (!isLastField)
 				  {
