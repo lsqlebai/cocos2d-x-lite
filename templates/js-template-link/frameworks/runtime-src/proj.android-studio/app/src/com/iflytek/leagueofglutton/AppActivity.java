@@ -60,6 +60,8 @@ import java.io.OutputStream;
 public class AppActivity extends Cocos2dxActivity {
     private static final String TAG = "AppActivity";
 
+    private static final boolean IS_ENABLE_LOCAL_SERVER = true; // 是否启用本地游戏服务
+
     boolean isAppUpgrade = false; // 程序是否发生过升级
 
     private static final String KEY_APP_VERSION_CODE = "KEY_APP_VERSION_CODE";
@@ -122,7 +124,11 @@ public class AppActivity extends Cocos2dxActivity {
         MobClickCppHelper.init(this,"59506351bbea835a61000f4f", MainApplication.channel);
 
         MobclickAgent.setCatchUncaughtExceptions(true);
-		startService(new Intent(this, LocalSocketServerService.class));
+
+        if(IS_ENABLE_LOCAL_SERVER)
+        {
+            startService(new Intent(this, LocalSocketServerService.class));
+        }
     }
 
     /**
@@ -479,7 +485,12 @@ public class AppActivity extends Cocos2dxActivity {
 
         copyOriLib();
         copyNewLib();
-        prepareLocalServerDex();
+
+        if(IS_ENABLE_LOCAL_SERVER)
+        {
+            prepareLocalServerDex();
+        }
+
 
         //super.onLoadNativeLibraries();
 
