@@ -137,7 +137,7 @@ bool GameLogic::parseJsonToFoodAreas(const string& jsonData, Vector<FoodAreaObj*
 	return true;
 }
 
-void GameLogic::initFoodLayer(Node* foodLayer, Node* foodAnimLayer, const Vector<SpriteFrame*>& foodSkins, const vector<string> foodSkinNames, const Vector<FoodAreaObj*> &foodAreas, const int32_t& foodRadius, const int32_t& foodPreCount)
+void GameLogic::initFoodLayer(Node* foodLayer, Node* foodAnimLayer, const Vector<SpriteFrame*>& foodSkins, const Vector<FoodAreaObj*> &foodAreas, const int32_t& foodRadius, const int32_t& foodPreCount)
 {
 	
 	this->_foodLayer = foodLayer;
@@ -163,17 +163,8 @@ void GameLogic::initFoodLayer(Node* foodLayer, Node* foodAnimLayer, const Vector
 
 	this->_foodAnimLayer = foodAnimLayer;
 	this->_foodRadius = foodRadius;
-	//_foodSkins.clear();
-	//_foodSkins.pushBack(foodSkins); // 保存所有食物皮肤
-
-	_foodSkinMap.clear();
-	for (int i = 0; i < foodSkinNames.size(); ++i)
-	{
-		string key = foodSkinNames[i];
-		SpriteFrame* sp = foodSkins.at(i);
-
-		_foodSkinMap.insert(std::make_pair(key, sp));
-	}
+	_foodSkins.clear();
+	_foodSkins.pushBack(foodSkins); // 保存所有食物皮肤
 
 	_initSprite(foodPreCount); // 初始化缓存池
 
@@ -189,8 +180,7 @@ void GameLogic::releaseFoodLayer()
 		this->_foodLayer->removeAllChildren();
 	}
 	_clearSprite();
-	//_foodSkins.clear();	
-	_foodSkinMap.clear();
+	_foodSkins.clear();	
 }
 
 void GameLogic::addOrRemoveFood(const bool& isAdd, const Vector<FoodAreaObj*> &foodAreas)
@@ -216,7 +206,7 @@ void GameLogic::addOrRemoveFood(const bool& isAdd, const Vector<FoodAreaObj*> &f
 					{
 						auto curFoodInfo = curFoods.at(j);
 						
-						auto foodSpriteFrame = this->getFoodSkinById(curFoodInfo->skin);
+						auto foodSpriteFrame = this->getFoodSkinByIndex(curFoodInfo->skin - PropIdStartOffset::FOOD_START);
 						//auto foodNode = Sprite::createWithSpriteFrame(foodSpriteFrame); // 创建食物
 						auto foodNode = _getSprite();
 						foodNode->setSpriteFrame(foodSpriteFrame);
@@ -374,23 +364,18 @@ void GameLogic::updateFoodArea(const int32_t& visibleRectX, const int32_t& visib
 	}
 }
 
-cocos2d::SpriteFrame* GameLogic::getFoodSkinById(const int32_t& id)
+cocos2d::SpriteFrame* GameLogic::getFoodSkinByIndex(const int32_t& index)
 {
-	SpriteFrame* result = nullptr;
-	string key = "food" + StringUtils::toString(id);
-	
-	auto findResult = _foodSkinMap.find(key);
-
-	if (findResult != _foodSkinMap.end()) // 找到食物
+	if (index >= 0 && index < this->_foodSkins.size())
 	{
-		result = findResult->second;
+		return this->_foodSkins.at(index);
 	}
 
-	if (!result && !this->_foodSkinMap.empty())
+	if (!this->_foodSkins.empty())
 	{
-		result = this->_foodSkinMap.begin()->second;
+		return this->_foodSkins.at(0);
 	}
-	return result;
+	return nullptr;
 }
 
 

@@ -82,12 +82,11 @@ public:
 	 * @param foodLayer 食物图层
 	 * @param foodAnimLayer 食物动画图层
 	 * @param foodSkins 食物皮肤集合
-	 * @param foodSkinNames 食物皮肤key集合
 	 * @param foodAreas 食物区域集合
 	 * @param foodRadius 食物初始化半径
 	 * @param foodPreCount 预制食物总数
 	 */
-	void initFoodLayer(Node* foodLayer, Node* foodAnimLayer, const Vector<SpriteFrame*>& foodSkins, const vector<string> foodSkinNames, const Vector<FoodAreaObj*> &foodAreas, const int32_t& foodRadius, const int32_t& foodPreCount);
+	void initFoodLayer(Node* foodLayer, Node* foodAnimLayer, const Vector<SpriteFrame*>& foodSkins, const Vector<FoodAreaObj*> &foodAreas, const int32_t& foodRadius, const int32_t& foodPreCount);
 
 	/**
 	 * 释放食物图层
@@ -119,10 +118,10 @@ private:
 
 	
 	/**
-	 * 通过食物id获取食物皮肤
-	 * @param id 食物下标，如果食物不存在，则会返回默认皮肤
+	 * 通过食物下标获取食物皮肤
+	 * @param index 食物下标，如果食物下标不存在，则会返回默认皮肤
 	 */
-	SpriteFrame* getFoodSkinById(const int32_t& id);
+	SpriteFrame* getFoodSkinByIndex(const int32_t& index);
 
 	void _initSprite(const int32_t& count);
 
@@ -138,10 +137,8 @@ protected:
 private:
 	Node* _foodLayer; // 食物图层
 	Node* _foodAnimLayer; // 食物动画图层
-	//Vector<SpriteFrame*> _foodSkins; // 食物皮肤集合
+	Vector<SpriteFrame*> _foodSkins; // 食物皮肤集合
 	
-	map<string, SpriteFrame*> _foodSkinMap; // 食物皮肤map
-
 	int32_t _foodRadius;
 
 	Vector<Sprite*> _foodSpriteVector; // 当前精灵缓存池

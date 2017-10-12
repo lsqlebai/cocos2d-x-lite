@@ -337,7 +337,7 @@ bool js_cocos2dx_gamelogic_initFoodLayer(JSContext *cx, uint32_t argc, jsval *vp
 	CCLOG("gamelogic initFoodLayer argc:%d", argc);
 	
 	
-	if (argc == 7)
+	if (argc == 6)
 	{
 		
 		JS::RootedObject foodLayerJObj(cx, argv[0].toObjectOrNull());
@@ -358,10 +358,6 @@ bool js_cocos2dx_gamelogic_initFoodLayer(JSContext *cx, uint32_t argc, jsval *vp
 		ok &= jsval_to_ccvector(cx, argv.get(2), &foodSkins);
 		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_gamelogic_initFoodLayer : Error processing arguments, foodSkins error");
 
-		
-		vector<string> foodSkinNames;
-		ok &= jsval_to_vector_string(cx, argv.get(6), &foodSkinNames);
-		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_gamelogic_initFoodLayer : Error processing arguments, foodSkinNames error");
 
 		std::string foodsStr;
 		jsval_to_std_string(cx, argv[3], &foodsStr);
@@ -382,7 +378,7 @@ bool js_cocos2dx_gamelogic_initFoodLayer(JSContext *cx, uint32_t argc, jsval *vp
 		
 
 		// 初始化食物图层
-		cobj->initFoodLayer(foodLayer, foodAnimLayer, foodSkins, foodSkinNames, foodAreas, foodRadius, foodPreCount);
+		cobj->initFoodLayer(foodLayer, foodAnimLayer, foodSkins, foodAreas, foodRadius, foodPreCount);
 	}
 	else
 	{
