@@ -997,12 +997,13 @@ void protobuf_AssignDesc_game_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(BaseSkill));
   User_descriptor_ = file->message_type(43);
-  static const int User_offsets_[5] = {
+  static const int User_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(User, uid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(User, skin_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(User, nickname_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(User, ultimateskill_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(User, baseskill_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(User, rankedvalue_),
   };
   User_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -1808,57 +1809,57 @@ void protobuf_AddDesc_game_2eproto() {
     "\022\016\n\006reward\030\004 \001(\005\022\016\n\006killed\030\005 \001(\005\022\023\n\013rank"
     "edValue\030\006 \001(\005\022\020\n\010beKilled\030\007 \001(\005\"M\n\tBaseS"
     "kill\022\n\n\002id\030\001 \001(\005\022\020\n\010coolDown\030\002 \001(\005\022\023\n\013li"
-    "mitWeight\030\003 \001(\005\022\r\n\005level\030\004 \001(\005\"y\n\004User\022\013"
-    "\n\003uid\030\001 \002(\005\022\014\n\004skin\030\002 \001(\005\022\020\n\010nickname\030\003 "
-    "\001(\t\022%\n\rultimateSkill\030\004 \001(\0132\016.UltimateSki"
-    "ll\022\035\n\tbaseSkill\030\005 \001(\0132\n.BaseSkill\"+\n\nCel"
-    "lVector\022\016\n\006cellId\030\001 \002(\005\022\r\n\005angle\030\002 \001(\005\"9"
-    "\n\026PlayerOperationRequest\022\037\n\ncellVector\030\001"
-    " \003(\0132\013.CellVector\"d\n\004Food\022\n\n\002id\030\001 \002(\005\022\014\n"
-    "\004skin\030\002 \001(\005\022\t\n\001x\030\003 \001(\005\022\t\n\001y\030\004 \001(\005\022\r\n\005fro"
-    "mX\030\006 \001(\005\022\r\n\005fromY\030\007 \001(\005\022\016\n\006radius\030\010 \001(\005\""
-    "\247\001\n\004Cell\022\n\n\002id\030\001 \002(\005\022\t\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001"
-    "(\005\022\016\n\006radius\030\004 \001(\005\022\r\n\005speed\030\005 \001(\005\022\r\n\005ang"
-    "le\030\006 \001(\005\022\016\n\006fromId\030\007 \001(\005\022\017\n\007mergeId\030\010 \001("
-    "\005\022\016\n\006status\030\t \001(\005\022\036\n\013magnetFoods\030\n \003(\0132\t"
-    ".FoodArea\"\300\001\n\006Player\022\027\n\010userInfo\030\001 \002(\0132\005"
-    ".User\022\016\n\006weight\030\002 \001(\005\022\024\n\005cells\030\003 \003(\0132\005.C"
-    "ell\022\016\n\006status\030\004 \001(\005\022\035\n\025ultimateSkillProg"
-    "ress\030\005 \001(\005\022\037\n\020beKilledUserInfo\030\006 \001(\0132\005.U"
-    "ser\022\'\n\016superRenewInfo\030\007 \001(\0132\017.SuperRenew"
-    "Info\"\?\n\016SuperRenewInfo\022\014\n\004gold\030\001 \001(\005\022\016\n\006"
-    "weight\030\002 \001(\005\022\017\n\007percent\030\003 \001(\005\"\206\002\n\010RoomIn"
-    "fo\022\r\n\005width\030\001 \002(\005\022\016\n\006height\030\002 \002(\005\022\022\n\nrem"
-    "ainTime\030\003 \001(\005\022\022\n\nfoodRadius\030\004 \001(\005\022\030\n\007pla"
-    "yers\030\005 \003(\0132\007.Player\022\034\n\tfoodAreas\030\006 \003(\0132\t"
-    ".FoodArea\022\034\n\trankItems\030\007 \003(\0132\t.RankItem\022"
-    "\030\n\007asylums\030\010 \003(\0132\007.Asylum\022!\n\013flightProps"
-    "\030\t \003(\0132\014.FlightProps\022\022\n\nuserNotify\030\n \003(\t"
-    "\022\014\n\004uuid\030\013 \001(\t\"(\n\022UserNotifyResponse\022\022\n\n"
-    "userNotify\030\001 \003(\t\"<\n\022PlayerListResponse\022\014"
-    "\n\004type\030\001 \002(\005\022\030\n\007players\030\002 \003(\0132\007.Player\"F"
-    "\n\023FlightPropsResponse\022\014\n\004type\030\001 \002(\005\022!\n\013f"
-    "lightProps\030\002 \003(\0132\014.FlightProps\"\335\001\n\013Fligh"
-    "tProps\022\n\n\002id\030\001 \001(\005\022\r\n\005speed\030\002 \001(\005\022\014\n\004ski"
-    "n\030\003 \001(\005\022\r\n\005angle\030\004 \001(\005\022\t\n\001x\030\005 \001(\005\022\t\n\001y\030\006"
-    " \001(\005\022\016\n\006radius\030\007 \001(\005\022\014\n\004type\030\010 \001(\005\022\022\n\nfr"
-    "omCellId\030\t \001(\005\022\024\n\014targetCellId\030\n \001(\005\022\016\n\006"
-    "status\030\013 \001(\005\022\022\n\nfromUserId\030\014 \001(\005\022\024\n\014targ"
-    "etUserId\030\r \001(\005\"@\n\022FoodChangeResponse\022\014\n\004"
-    "type\030\001 \002(\005\022\034\n\tfoodAreas\030\002 \003(\0132\t.FoodArea"
-    "\"e\n\010FoodArea\022\016\n\006areaId\030\001 \001(\005\022\t\n\001x\030\002 \001(\005\022"
-    "\t\n\001y\030\003 \001(\005\022\r\n\005width\030\004 \001(\005\022\016\n\006height\030\005 \001("
-    "\005\022\024\n\005foods\030\006 \003(\0132\005.Food\"$\n\022RemainTimeRes"
-    "ponse\022\016\n\006remain\030\001 \002(\005\"0\n\020RankListRespons"
-    "e\022\034\n\trankItems\030\001 \003(\0132\t.RankItem\"2\n\021GameS"
-    "tateResponse\022\r\n\005state\030\001 \002(\005\022\016\n\006roomId\030\002 "
-    "\001(\t\"7\n\020GameReadyRequest\022\016\n\006roomId\030\001 \001(\t\022"
-    "\023\n\004user\030\002 \001(\0132\005.User\"$\n\024PlayerRenewalReq"
-    "uest\022\014\n\004type\030\001 \001(\005\"\027\n\025PlayerRenewalRespo"
-    "nse\"H\n\006Asylum\022\n\n\002id\030\001 \002(\005\022\014\n\004skin\030\002 \001(\005\022"
-    "\t\n\001x\030\003 \001(\002\022\t\n\001y\030\004 \001(\002\022\016\n\006radius\030\005 \001(\002\":\n"
-    "\rUltimateSkill\022\n\n\002id\030\001 \002(\005\022\016\n\006foodId\030\002 \001"
-    "(\005\022\r\n\005level\030\003 \001(\005", 7257);
+    "mitWeight\030\003 \001(\005\022\r\n\005level\030\004 \001(\005\"\216\001\n\004User\022"
+    "\013\n\003uid\030\001 \002(\005\022\014\n\004skin\030\002 \001(\005\022\020\n\010nickname\030\003"
+    " \001(\t\022%\n\rultimateSkill\030\004 \001(\0132\016.UltimateSk"
+    "ill\022\035\n\tbaseSkill\030\005 \001(\0132\n.BaseSkill\022\023\n\013ra"
+    "nkedValue\030\006 \001(\005\"+\n\nCellVector\022\016\n\006cellId\030"
+    "\001 \002(\005\022\r\n\005angle\030\002 \001(\005\"9\n\026PlayerOperationR"
+    "equest\022\037\n\ncellVector\030\001 \003(\0132\013.CellVector\""
+    "d\n\004Food\022\n\n\002id\030\001 \002(\005\022\014\n\004skin\030\002 \001(\005\022\t\n\001x\030\003"
+    " \001(\005\022\t\n\001y\030\004 \001(\005\022\r\n\005fromX\030\006 \001(\005\022\r\n\005fromY\030"
+    "\007 \001(\005\022\016\n\006radius\030\010 \001(\005\"\247\001\n\004Cell\022\n\n\002id\030\001 \002"
+    "(\005\022\t\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005\022\016\n\006radius\030\004 \001(\005"
+    "\022\r\n\005speed\030\005 \001(\005\022\r\n\005angle\030\006 \001(\005\022\016\n\006fromId"
+    "\030\007 \001(\005\022\017\n\007mergeId\030\010 \001(\005\022\016\n\006status\030\t \001(\005\022"
+    "\036\n\013magnetFoods\030\n \003(\0132\t.FoodArea\"\300\001\n\006Play"
+    "er\022\027\n\010userInfo\030\001 \002(\0132\005.User\022\016\n\006weight\030\002 "
+    "\001(\005\022\024\n\005cells\030\003 \003(\0132\005.Cell\022\016\n\006status\030\004 \001("
+    "\005\022\035\n\025ultimateSkillProgress\030\005 \001(\005\022\037\n\020beKi"
+    "lledUserInfo\030\006 \001(\0132\005.User\022\'\n\016superRenewI"
+    "nfo\030\007 \001(\0132\017.SuperRenewInfo\"\?\n\016SuperRenew"
+    "Info\022\014\n\004gold\030\001 \001(\005\022\016\n\006weight\030\002 \001(\005\022\017\n\007pe"
+    "rcent\030\003 \001(\005\"\206\002\n\010RoomInfo\022\r\n\005width\030\001 \002(\005\022"
+    "\016\n\006height\030\002 \002(\005\022\022\n\nremainTime\030\003 \001(\005\022\022\n\nf"
+    "oodRadius\030\004 \001(\005\022\030\n\007players\030\005 \003(\0132\007.Playe"
+    "r\022\034\n\tfoodAreas\030\006 \003(\0132\t.FoodArea\022\034\n\trankI"
+    "tems\030\007 \003(\0132\t.RankItem\022\030\n\007asylums\030\010 \003(\0132\007"
+    ".Asylum\022!\n\013flightProps\030\t \003(\0132\014.FlightPro"
+    "ps\022\022\n\nuserNotify\030\n \003(\t\022\014\n\004uuid\030\013 \001(\t\"(\n\022"
+    "UserNotifyResponse\022\022\n\nuserNotify\030\001 \003(\t\"<"
+    "\n\022PlayerListResponse\022\014\n\004type\030\001 \002(\005\022\030\n\007pl"
+    "ayers\030\002 \003(\0132\007.Player\"F\n\023FlightPropsRespo"
+    "nse\022\014\n\004type\030\001 \002(\005\022!\n\013flightProps\030\002 \003(\0132\014"
+    ".FlightProps\"\335\001\n\013FlightProps\022\n\n\002id\030\001 \001(\005"
+    "\022\r\n\005speed\030\002 \001(\005\022\014\n\004skin\030\003 \001(\005\022\r\n\005angle\030\004"
+    " \001(\005\022\t\n\001x\030\005 \001(\005\022\t\n\001y\030\006 \001(\005\022\016\n\006radius\030\007 \001"
+    "(\005\022\014\n\004type\030\010 \001(\005\022\022\n\nfromCellId\030\t \001(\005\022\024\n\014"
+    "targetCellId\030\n \001(\005\022\016\n\006status\030\013 \001(\005\022\022\n\nfr"
+    "omUserId\030\014 \001(\005\022\024\n\014targetUserId\030\r \001(\005\"@\n\022"
+    "FoodChangeResponse\022\014\n\004type\030\001 \002(\005\022\034\n\tfood"
+    "Areas\030\002 \003(\0132\t.FoodArea\"e\n\010FoodArea\022\016\n\006ar"
+    "eaId\030\001 \001(\005\022\t\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005\022\r\n\005widt"
+    "h\030\004 \001(\005\022\016\n\006height\030\005 \001(\005\022\024\n\005foods\030\006 \003(\0132\005"
+    ".Food\"$\n\022RemainTimeResponse\022\016\n\006remain\030\001 "
+    "\002(\005\"0\n\020RankListResponse\022\034\n\trankItems\030\001 \003"
+    "(\0132\t.RankItem\"2\n\021GameStateResponse\022\r\n\005st"
+    "ate\030\001 \002(\005\022\016\n\006roomId\030\002 \001(\t\"7\n\020GameReadyRe"
+    "quest\022\016\n\006roomId\030\001 \001(\t\022\023\n\004user\030\002 \001(\0132\005.Us"
+    "er\"$\n\024PlayerRenewalRequest\022\014\n\004type\030\001 \001(\005"
+    "\"\027\n\025PlayerRenewalResponse\"H\n\006Asylum\022\n\n\002i"
+    "d\030\001 \002(\005\022\014\n\004skin\030\002 \001(\005\022\t\n\001x\030\003 \001(\002\022\t\n\001y\030\004 "
+    "\001(\002\022\016\n\006radius\030\005 \001(\002\":\n\rUltimateSkill\022\n\n\002"
+    "id\030\001 \002(\005\022\016\n\006foodId\030\002 \001(\005\022\r\n\005level\030\003 \001(\005", 7279);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "game.proto", &protobuf_RegisterTypes);
   MessageInfo::default_instance_ = new MessageInfo();
@@ -18054,6 +18055,7 @@ const int User::kSkinFieldNumber;
 const int User::kNicknameFieldNumber;
 const int User::kUltimateSkillFieldNumber;
 const int User::kBaseSkillFieldNumber;
+const int User::kRankedValueFieldNumber;
 #endif  // !_MSC_VER
 
 User::User()
@@ -18082,6 +18084,7 @@ void User::SharedCtor() {
   nickname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ultimateskill_ = NULL;
   baseskill_ = NULL;
+  rankedvalue_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -18132,7 +18135,7 @@ void User::Clear() {
     ::memset(&first, 0, n);                                \
   } while (0)
 
-  if (_has_bits_[0 / 32] & 31) {
+  if (_has_bits_[0 / 32] & 63) {
     ZR_(uid_, skin_);
     if (has_nickname()) {
       if (nickname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -18145,6 +18148,7 @@ void User::Clear() {
     if (has_baseskill()) {
       if (baseskill_ != NULL) baseskill_->::BaseSkill::Clear();
     }
+    rankedvalue_ = 0;
   }
 
 #undef OFFSET_OF_FIELD_
@@ -18232,6 +18236,21 @@ bool User::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(48)) goto parse_rankedValue;
+        break;
+      }
+
+      // optional int32 rankedValue = 6;
+      case 6: {
+        if (tag == 48) {
+         parse_rankedValue:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &rankedvalue_)));
+          set_has_rankedvalue();
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -18293,6 +18312,11 @@ void User::SerializeWithCachedSizes(
       5, this->baseskill(), output);
   }
 
+  // optional int32 rankedValue = 6;
+  if (has_rankedvalue()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->rankedvalue(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -18336,6 +18360,11 @@ void User::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         5, this->baseskill(), target);
+  }
+
+  // optional int32 rankedValue = 6;
+  if (has_rankedvalue()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->rankedvalue(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -18385,6 +18414,13 @@ int User::ByteSize() const {
           this->baseskill());
     }
 
+    // optional int32 rankedValue = 6;
+    if (has_rankedvalue()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->rankedvalue());
+    }
+
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -18427,6 +18463,9 @@ void User::MergeFrom(const User& from) {
     if (from.has_baseskill()) {
       mutable_baseskill()->::BaseSkill::MergeFrom(from.baseskill());
     }
+    if (from.has_rankedvalue()) {
+      set_rankedvalue(from.rankedvalue());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -18459,6 +18498,7 @@ void User::Swap(User* other) {
     std::swap(nickname_, other->nickname_);
     std::swap(ultimateskill_, other->ultimateskill_);
     std::swap(baseskill_, other->baseskill_);
+    std::swap(rankedvalue_, other->rankedvalue_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

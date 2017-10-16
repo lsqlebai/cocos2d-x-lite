@@ -5214,6 +5214,13 @@ class User : public ::google::protobuf::Message {
   inline ::BaseSkill* release_baseskill();
   inline void set_allocated_baseskill(::BaseSkill* baseskill);
 
+  // optional int32 rankedValue = 6;
+  inline bool has_rankedvalue() const;
+  inline void clear_rankedvalue();
+  static const int kRankedValueFieldNumber = 6;
+  inline ::google::protobuf::int32 rankedvalue() const;
+  inline void set_rankedvalue(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:User)
  private:
   inline void set_has_uid();
@@ -5226,6 +5233,8 @@ class User : public ::google::protobuf::Message {
   inline void clear_has_ultimateskill();
   inline void set_has_baseskill();
   inline void clear_has_baseskill();
+  inline void set_has_rankedvalue();
+  inline void clear_has_rankedvalue();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -5236,6 +5245,7 @@ class User : public ::google::protobuf::Message {
   ::std::string* nickname_;
   ::UltimateSkill* ultimateskill_;
   ::BaseSkill* baseskill_;
+  ::google::protobuf::int32 rankedvalue_;
   friend void  protobuf_AddDesc_game_2eproto();
   friend void protobuf_AssignDesc_game_2eproto();
   friend void protobuf_ShutdownFile_game_2eproto();
@@ -15139,6 +15149,30 @@ inline void User::set_allocated_baseskill(::BaseSkill* baseskill) {
     clear_has_baseskill();
   }
   // @@protoc_insertion_point(field_set_allocated:User.baseSkill)
+}
+
+// optional int32 rankedValue = 6;
+inline bool User::has_rankedvalue() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void User::set_has_rankedvalue() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void User::clear_has_rankedvalue() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void User::clear_rankedvalue() {
+  rankedvalue_ = 0;
+  clear_has_rankedvalue();
+}
+inline ::google::protobuf::int32 User::rankedvalue() const {
+  // @@protoc_insertion_point(field_get:User.rankedValue)
+  return rankedvalue_;
+}
+inline void User::set_rankedvalue(::google::protobuf::int32 value) {
+  set_has_rankedvalue();
+  rankedvalue_ = value;
+  // @@protoc_insertion_point(field_set:User.rankedValue)
 }
 
 // -------------------------------------------------------------------
