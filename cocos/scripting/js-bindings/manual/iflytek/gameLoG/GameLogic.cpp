@@ -248,7 +248,7 @@ void GameLogic::addOrRemoveFood(const bool& isAdd, const Vector<FoodAreaObj*> &f
 						{
 							foodNode->setPosition(Vec2(curFoodInfo->fromX, curFoodInfo->fromY)); // 放置到地图中
 
-
+							
 							Action* action = Sequence::create(JumpTo::create(0.8, Vec2(curFoodInfo->x, curFoodInfo->y), 100, 1),
 								CallFunc::create([foodNode, this]()
 							{
