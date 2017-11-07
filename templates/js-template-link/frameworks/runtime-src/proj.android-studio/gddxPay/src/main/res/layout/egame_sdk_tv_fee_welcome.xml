@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <!-- loading布局 -->
+
+
+    <!-- 总的付费界面 -->
+
+    <LinearLayout
+        android:id="@+id/egame_tv_fee_layout"
+        android:layout_width="@dimen/dx_800"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:background="@drawable/egame_sdk_tv_pop_bg"
+        android:focusable="false"
+        android:orientation="vertical"
+        android:visibility="visible" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dx_50"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:focusable="false"
+                android:paddingLeft="@dimen/dx_20"
+                android:text="收费提示"
+                android:textColor="#48c2ff"
+                android:textSize="@dimen/_28_sp_egame_textSize" />
+
+            <TextView
+                android:id="@+id/egame_tv_sdk_version"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:focusable="false"
+                android:gravity="right"
+                android:paddingRight="@dimen/dx_20"
+                android:text="v1.1.0"
+                android:textColor="#48c2ff"
+                android:textSize="@dimen/_24_sp_egame_textSize" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dx_2"
+            android:layout_marginLeft="@dimen/dx_8"
+            android:layout_marginRight="@dimen/dx_8"
+            android:layout_marginTop="@dimen/dx_13"
+            android:background="#48c2ff"
+            android:focusable="false" />
+
+        <TextView
+            android:id="@+id/egame_tv_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dx_50"
+            android:layout_marginRight="@dimen/dx_50"
+            android:layout_marginTop="@dimen/dx_30"
+            android:focusable="false"
+            android:gravity="center"
+            android:text="您将花费8元下载愤怒的小鸟(情人节版)，付费成功后，重复下载本游戏将不再收取任何费用"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/_24_sp_egame_textSize" />
+
+        <TextView
+            android:id="@+id/egame_tv_aidou_balance"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dx_10"
+            android:focusable="false"
+            android:gravity="center"
+            android:text="爱豆余额：5"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/_24_sp_egame_textSize"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/egame_tv_hubei_account"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dx_10"
+            android:focusable="false"
+            android:gravity="center"
+            android:text="宽带号： 13988889999"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/_24_sp_egame_textSize"
+            android:visibility="gone" />
+
+        <!-- 宽带的立即支付布局 -->
+
+        <LinearLayout
+            android:id="@+id/layout_broadband"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dx_23"
+            android:focusable="false"
+            android:orientation="vertical"
+            android:visibility="visible" >
+
+            <Button
+                android:id="@+id/btn_broadband"
+                style="@style/egame_button_text_sytle"
+                android:layout_width="@dimen/dx_244"
+                android:layout_height="@dimen/dx_70"
+                android:layout_gravity="center"
+                android:focusable="true"
+                android:text="立即支付 "
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:id="@+id/layout_moreway"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="@dimen/dx_30"
+                android:visibility="visible" >
+
+                <TextView
+                    android:id="@+id/text_moreway"
+                    style="@style/tv5_moreway_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:focusable="true"
+                    android:text="更多付费方式"
+                    android:textSize="@dimen/_24_sp_egame_textSize" />
+
+                <ImageView
+                    android:id="@+id/image_moreway"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/egame_sdk_tv_pay_icon_arrow_down" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/fee_line"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dx_2"
+            android:layout_marginTop="@dimen/dx_13"
+            android:background="@drawable/egame_sdk_tv_line" >
+        </TextView>
+
+        <!-- 主要支付方式的布局,包括爱豆，支付宝，电话支付 -->
+
+        <LinearLayout
+            android:id="@+id/ll_pay_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="@dimen/dx_20"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <ScrollView
+                android:id="@+id/pay_list_scrollView"
+                style="@style/vertical_scrollbar"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="@dimen/dx_55"
+                android:layout_marginRight="@dimen/dx_30"
+                android:layout_marginTop="@dimen/dx_20"
+                android:layout_weight="1" >
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutScroll"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:id="@+id/egame_skyworth"
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/dx_90"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/egame_sdk_tv_egame_listitem_selector"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:visibility="gone" >
+
+                        <LinearLayout
+                            android:id="@+id/eganme_fast"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="@dimen/dx_25"
+                            android:layout_marginTop="@dimen/dx_25"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:visibility="visible" >
+
+                            <ImageView
+                                android:id="@+id/imageView1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/egame_sdk_tv_icon_payment_skyworth" />
+
+                            <TextView
+                                android:id="@+id/textView1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/dx_10"
+                                android:text="支付宝、微信支付、短信支付"
+                                android:textColor="#ffffff"
+                                android:textSize="@dimen/_20_sp_egame_textSize" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <cn.egame.terminal.sdk.pay.tv.ui.gifview.GridScrollView
+                        android:id="@+id/egame_vertical_gridview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:focusable="true"
+                        android:numColumns="2"
+                        android:visibility="visible" />
+                </LinearLayout>
+            </ScrollView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/yeepay_bind_pay"
+                    style="@style/tv5_unbind_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dx_10"
+                    android:focusable="true"
+                    android:text="解绑信用卡快捷支付"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/_24_sp_egame_textSize"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/tv_dispach"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dx_10"
+                    android:focusable="false"
+                    android:text="|"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/_24_sp_egame_textSize"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/cancle_alipay_auth"
+                    style="@style/tv5_unbind_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dx_10"
+                    android:focusable="true"
+                    android:text="取消支付宝授权"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/_24_sp_egame_textSize"
+                    android:visibility="visible" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/egame_sdk_tv_mask"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/dx_20" >
+
+        <ProgressBar
+            android:id="@+id/loadingProgress"
+            android:layout_width="@dimen/dx_30"
+            android:layout_height="@dimen/dx_30" />
+
+        <Button
+            android:id="@+id/loadingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="重新加载"
+            android:textSize="@dimen/_20_sp_egame_textSize"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/loadingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/_20_sp_egame_textSize" />
+    </LinearLayout>
+
+</FrameLayout>

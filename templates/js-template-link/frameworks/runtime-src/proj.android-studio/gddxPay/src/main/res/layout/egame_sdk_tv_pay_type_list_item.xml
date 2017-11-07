@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pay_type_ll"
+    android:layout_width="@dimen/dx_280"
+    android:layout_height="@dimen/dx_185"
+    android:background="@drawable/egame_sdk_tv_egame_listitem_selector"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/eganme_nomal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/egame_sdk_tv_icon_payment_aidou" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dx_85"
+            android:layout_marginLeft="@dimen/dx_10"
+            android:gravity="center"
+            android:text="支付方式"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/_20_sp_egame_textSize" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/eganme_fast"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" >
+
+            <ImageView
+                android:id="@+id/fast_image"
+                android:layout_width="@dimen/dx_40"
+                android:layout_height="@dimen/dx_20"
+                android:src="@drawable/egame_sdk_tv_icon_payment_aidou" />
+
+            <TextView
+                android:id="@+id/fast_title"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dx_43"
+                android:layout_marginLeft="@dimen/dx_10"
+                android:gravity="center"
+                android:text="支付方式"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/_20_sp_egame_textSize" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/card_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="交通银行"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/_16_sp_egame_textSize" />
+
+            <TextView
+                android:id="@+id/card_num"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dx_43"
+                android:layout_marginLeft="@dimen/dx_10"
+                android:gravity="center"
+                android:text="支付方式"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/_16_sp_egame_textSize" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

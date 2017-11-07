@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/loading"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <ProgressBar
+            android:id="@+id/loadingProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/loadingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="重新加载"
+            android:textSize="@dimen/_20_sp_egame_textSize"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/loadingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#ff000000"
+            android:textSize="@dimen/_24_sp_egame_textSize" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="@dimen/dx_800"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/egame_sdk_tv_pop_bg"
+        android:focusable="false"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dx_70"
+                android:focusable="false"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dx_20"
+                android:text="支付提示 "
+                android:textColor="#48c2ff"
+                android:textSize="@dimen/_32_sp_egame_textSize" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dx_2"
+                android:layout_marginLeft="@dimen/dx_8"
+                android:layout_marginRight="@dimen/dx_8"
+                android:background="#48c2ff"
+                android:focusable="false" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dx_0"
+            android:layout_marginTop="@dimen/dx_20"
+            android:layout_weight="1" >
+
+            <LinearLayout
+                android:id="@+id/linearLayout_more"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal" >
+
+                <TextView
+                    android:id="@+id/text_charge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="账号余额  :"
+                    android:textColor="#ffe92e"
+                    android:textSize="@dimen/_24_sp_egame_textSize" />
+
+                <TextView
+                    android:id="@+id/text_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dx_20"
+                    android:layout_toRightOf="@+id/text_charge"
+                    android:text="800"
+                    android:textColor="#ffe92e"
+                    android:textSize="@dimen/_24_sp_egame_textSize" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/text_balance"
+                    android:text="爱豆"
+                    android:textColor="#ffe92e"
+                    android:textSize="@dimen/_24_sp_egame_textSize" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/text_prompt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearLayout_more"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dx_30"
+                android:text="你确定使用  8爱豆下载 愤怒的小鸟(情人节版)吗? "
+                android:textColor="#ffe92e"
+                android:textSize="@dimen/_24_sp_egame_textSize" />
+
+            <Button
+                android:id="@+id/btn_ensure"
+                style="@style/egame_button_usercenter_text_left_sytle"
+                android:layout_width="@dimen/dx_400"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_prompt"
+                android:layout_marginTop="@dimen/dx_30"
+                android:text="确定"
+                android:textSize="@dimen/_20_sp_egame_textSize" />
+
+            <Button
+                android:id="@+id/btn_cancel"
+                style="@style/egame_button_usercenter_text_right_sytle"
+                android:layout_width="@dimen/dx_400"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_prompt"
+                android:layout_marginTop="@dimen/dx_30"
+                android:layout_toRightOf="@+id/btn_ensure"
+                android:text="取消"
+                android:textSize="@dimen/_20_sp_egame_textSize" />
+            
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/text_prompt"
+                android:layout_marginTop="@dimen/dx_46"
+                android:gravity="center_horizontal" 
+                android:visibility="gone">
+
+                <Button
+                    style="@style/egame_button_usercenter_text_left_sytle"
+                    android:layout_width="@dimen/dx_0"
+                    android:layout_height="@dimen/dx_100"
+                    android:layout_weight="1"
+                    android:text="确定" />
+
+                <Button
+                    style="@style/egame_button_usercenter_text_right_sytle"
+                    android:layout_width="@dimen/dx_0"
+                    android:layout_height="@dimen/dx_100"
+                    android:layout_weight="1"
+                    android:text="取消" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!-- 余额不足的界面 -->
+
+    <LinearLayout
+        android:id="@+id/egame_tv_ll_pay_short"
+        android:layout_width="@dimen/dx_800"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/egame_sdk_tv_pop_bg"
+        android:focusable="false"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dx_70"
+                android:focusable="false"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dx_20"
+                android:text="支付提示 "
+                android:textColor="#48c2ff"
+                android:textSize="@dimen/_32_sp_egame_textSize" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dx_2"
+                android:layout_marginLeft="@dimen/dx_8"
+                android:layout_marginRight="@dimen/dx_8"
+                android:background="#48c2ff"
+                android:focusable="false" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dx_0"
+            android:layout_marginTop="@dimen/dx_20"
+            android:layout_weight="1" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="账号余额  :"
+                    android:textColor="#ffe92e"
+                    android:textSize="@dimen/_24_sp_egame_textSize" />
+
+                <TextView
+                    android:id="@+id/text_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dx_20"
+                    android:layout_toRightOf="@+id/text_charge"
+                    android:text="0"
+                    android:textColor="#ffe92e"
+                    android:textSize="@dimen/_24_sp_egame_textSize" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/text_number"
+                    android:text="爱豆"
+                    android:textColor="#ffe92e"
+                    android:textSize="@dimen/_24_sp_egame_textSize" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearLayout_more"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dx_30"
+                android:text="您的余额不足,请先充值,或更换支付方式"
+                android:textColor="#ffe92e"
+                android:textSize="@dimen/_24_sp_egame_textSize" />
+
+            <Button
+                android:id="@+id/btn_paid"
+                style="@style/egame_button_usercenter_text_left_sytle"
+                android:layout_width="@dimen/dx_400"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dx_30"
+                android:layout_below="@+id/text_prompt"
+                android:text="确定"
+                android:textSize="@dimen/_20_sp_egame_textSize" />
+
+            <Button
+                android:id="@+id/btn_cancel_short"
+                style="@style/egame_button_usercenter_text_right_sytle"
+                android:layout_width="@dimen/dx_400"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dx_30"
+                android:layout_toRightOf="@+id/btn_paid"
+                android:layout_below="@+id/text_prompt"
+                android:text="取消"
+                android:textSize="@dimen/_20_sp_egame_textSize" />
+            
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_prompt"
+                android:layout_marginTop="@dimen/dx_46"
+                android:gravity="center_horizontal"
+                android:visibility="gone" >
+
+                <Button
+                    style="@style/egame_button_usercenter_text_left_sytle"
+                    android:layout_width="@dimen/dx_0"
+                    android:layout_height="@dimen/dx_100"
+                    android:layout_weight="1"
+                    android:text="确定"
+                    android:textSize="@dimen/_20_sp_egame_textSize"
+                    android:visibility="gone" />
+
+                <Button
+                    style="@style/egame_button_usercenter_text_right_sytle"
+                    android:layout_width="@dimen/dx_0"
+                    android:layout_height="@dimen/dx_100"
+                    android:layout_weight="1"
+                    android:text="取消"
+                    android:textSize="@dimen/_20_sp_egame_textSize"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

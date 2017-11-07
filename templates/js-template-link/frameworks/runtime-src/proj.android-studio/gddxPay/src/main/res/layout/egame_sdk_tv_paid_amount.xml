@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <LinearLayout
+        android:id="@+id/loading"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:orientation="vertical" 
+        android:visibility="gone"
+        >
+
+        <ProgressBar
+            android:id="@+id/loadingProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/loadingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="重新加载"
+            android:textSize="@dimen/_20_sp_egame_textSize"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/loadingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#ff000000"
+            android:textSize="@dimen/_20_sp_egame_textSize" />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/egame_tv_ll_pay"
+        android:layout_width="@dimen/dx_930"
+        android:layout_height="@dimen/dx_570"
+        android:layout_centerInParent="true"
+        android:background="@drawable/egame_sdk_tv_whiterounded_half_bg"
+        android:focusable="false"
+        android:orientation="vertical" 
+        android:visibility="visible"
+        >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dx_70"
+            android:focusable="false"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dx_13"
+            android:text="充值"
+            android:textColor="#65ba00"
+            android:textSize="@dimen/_32_sp_egame_textSize" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dx_1"
+            android:background="#65ba00"
+            android:focusable="false"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:gravity="center" >
+                
+              <TextView
+                 android:layout_width="@dimen/dx_846"
+                 android:layout_height="@dimen/dx_57"
+                 android:background="@drawable/egame_sdk_tv_paid_amount"
+                 android:layout_marginTop="@dimen/dx_20"
+                 android:layout_marginBottom="@dimen/dx_20"
+                 android:focusable="false"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dx_113"
+            android:layout_marginTop="@dimen/dx_13"
+            android:orientation="horizontal" 
+            android:focusable="false">
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dx_113"
+            android:layout_marginTop="@dimen/dx_20" 
+            android:focusable="false">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="充值金额 :"
+                android:textSize="@dimen/_28_sp_egame_textSize" 
+                android:textColor="#505050"
+                android:focusable="false"/>
+
+            <EditText
+                android:id="@+id/edit_input_amount"
+                android:layout_width="@dimen/dx_450"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dx_20"
+                android:gravity="left"
+                android:hint="  请输入需要充值爱豆金额 "
+                android:cursorVisible="true"
+                android:textCursorDrawable="@null"
+                android:editable="true"
+                android:lines="1"
+                android:textSize="@dimen/_24_sp_egame_textSize" 
+                android:textColor="#ffffff"
+                android:focusable="true"
+                android:numeric="integer"
+                />
+            
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dx_70"
+                android:layout_marginLeft="@dimen/dx_10"
+                android:gravity="center"
+                android:text="爱豆"
+                android:textSize="@dimen/_28_sp_egame_textSize"
+                android:textColor="#ff000000" 
+                android:focusable="false"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dx_53"
+            android:layout_marginTop="@dimen/dx_20" 
+            android:gravity="center_vertical"
+            android:focusable="false">
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选择充值方式 :"
+                android:textSize="@dimen/_28_sp_egame_textSize" 
+                android:textColor="#505050"/>
+            
+            <TextView
+                android:id="@+id/text_zhifubao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="支付宝"
+                android:textSize="@dimen/_28_sp_egame_textSize" 
+                android:textColor="#505050"
+                android:focusable="false"
+                android:layout_marginLeft="@dimen/dx_20"
+                android:visibility="visible"
+                 />
+
+            <RadioGroup
+                android:id="@+id/radioGroup1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:orientation="horizontal"
+                android:focusable="false"
+                android:visibility="gone">
+
+                <RadioButton
+                    android:id="@+id/radio_zhifubao_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dx_16"
+                    android:text="支付宝" 
+                    android:textSize="@dimen/_28_sp_egame_textSize"
+                    android:textColor="#505050"
+                    android:button="@null"
+                    android:checked="true"
+                    />
+
+                <RadioButton
+                    android:id="@+id/radio_zhangzhongfu_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="掌中付"                  
+                    android:textSize="@dimen/_28_sp_egame_textSize"
+                    android:textColor="#505050"
+                    android:button="@null"
+                    />
+                   
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" 
+            android:layout_marginLeft="@dimen/dx_110"
+            android:layout_marginTop="@dimen/dx_20"
+            android:focusable="false">
+
+            <TextView
+                android:id="@+id/textView92"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="应付金额 :"
+                android:textSize="@dimen/_28_sp_egame_textSize" 
+                android:textColor="#505050"
+                android:focusable="false"/>
+
+            <TextView
+                android:id="@+id/text_paid_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/dx_20"
+                android:textSize="@dimen/_28_sp_egame_textSize" 
+                android:textColor="#505050"
+                android:focusable="false"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" 
+            android:gravity="bottom|center_horizontal"
+            android:layout_marginTop="@dimen/dx_20">
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="@dimen/dx_200"
+                android:layout_height="@dimen/dx_70"
+                android:text="下一步" 
+                android:textSize="@dimen/_28_sp_egame_textSize"
+                android:gravity="center"
+                android:focusable="true"
+                />
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="@dimen/dx_200"
+                android:layout_height="@dimen/dx_70"
+                android:text="取消" 
+                android:gravity="center" 	
+                android:textSize="@dimen/_28_sp_egame_textSize"
+                android:layout_marginLeft="@dimen/dx_66"
+                android:focusable="true"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    
+    <!-- 充值方式的界面 -->
+    <LinearLayout
+        android:id="@+id/egame_tv_ll_pay_way"
+        android:layout_width="@dimen/dx_800"
+        android:layout_height="wrap_content" 
+        android:layout_centerInParent="true"
+        android:background="@drawable/egame_sdk_tv_pop_bg"
+        android:focusable="false"
+        android:orientation="vertical"
+        android:visibility="gone">
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dx_70"
+            android:focusable="false"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dx_13"
+            android:text="充值"
+            android:textColor="#48c2ff"
+            android:textSize="@dimen/_28_sp_egame_textSize" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dx_1"
+            android:background="#48c2ff"
+            android:focusable="false" />
+        
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:gravity="center_horizontal" >
+
+           
+             <TextView
+                 android:layout_width="@dimen/dx_564"
+                 android:layout_height="@dimen/dx_37"
+                 android:background="@drawable/egame_sdk_tv_paid_way"
+                 android:layout_marginTop="@dimen/dx_20"
+                 android:layout_marginBottom="@dimen/dx_20"
+                 android:focusable="false"
+                 />
+                  
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dx_113"
+            android:layout_marginTop="@dimen/dx_20" 
+            android:focusable="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="充值金额 :"
+                android:focusable="false"
+                android:textSize="@dimen/_24_sp_egame_textSize" 
+                android:textColor="#ffffff"/>
+
+            <TextView 
+                android:id="@+id/text_quick_paid_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dx_20"
+                android:gravity="center"
+                android:text="10爱豆"
+                android:focusable="false"
+                android:textSize="@dimen/_24_sp_egame_textSize"
+                android:textColor="#ffe92e" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dx_53"
+            android:layout_marginTop="@dimen/dx_20" 
+            android:gravity="center_vertical"
+            android:focusable="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dx_10"
+                android:text="选择充值方式 :"
+                android:textSize="@dimen/_24_sp_egame_textSize" 
+                android:textColor="#ffffff"
+                android:focusable="false"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="支付宝"
+                android:textSize="@dimen/_24_sp_egame_textSize" 
+                android:textColor="#ffffff"
+                android:focusable="false"
+                android:layout_marginLeft="@dimen/dx_20"
+                android:visibility="visible"
+                />
+
+            <RadioGroup
+                android:id="@+id/radioGroup2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:orientation="horizontal"
+                android:focusable="false"
+                android:visibility="gone"
+                >
+
+                <RadioButton
+                    android:id="@+id/radio_zhifubao_way"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"                
+                    android:layout_marginRight="@dimen/dx_16"                
+                    android:text="支付宝" 
+                    android:textSize="@dimen/_24_sp_egame_textSize"
+                    android:textColor="#505050"
+                    android:button="@null"
+                    android:checked="true"
+                    >                  
+                </RadioButton>
+                    
+                <RadioButton
+                    android:id="@+id/radio_zhangzhongfu_way"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dx_20"
+                    android:text="掌中付"                                     
+                    android:textSize="@dimen/_24_sp_egame_textSize"
+                    android:textColor="#505050"
+                    android:button="@null"
+                    />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" 
+            android:layout_marginLeft="@dimen/dx_110"
+            android:layout_marginTop="@dimen/dx_20"
+            android:focusable="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="应付金额 :"
+                android:focusable="false"
+                android:textSize="@dimen/_24_sp_egame_textSize" 
+                android:textColor="#ffffff"/>
+
+            <TextView
+                android:id="@+id/text_quick_should_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/dx_20"
+                android:textSize="@dimen/_24_sp_egame_textSize" 
+                android:text="10元"
+                android:focusable="false"
+                android:textColor="#ffe92e"/>
+        </LinearLayout>
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" 
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dx_43"
+            android:focusable="false"
+            android:visibility="visible"
+            >
+
+            <Button
+                android:id="@+id/btn_next_way"
+                android:layout_width="@dimen/dx_400"
+                android:layout_height="wrap_content"
+                android:text="下一步" 
+                android:focusable="true"
+                style="@style/egame_button_usercenter_text_left_sytle"
+                />
+
+            <Button
+                android:id="@+id/btn_cancel_way"
+                android:layout_width="@dimen/dx_400"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/btn_next_way"
+                android:text="取消" 
+                android:focusable="true"
+                style="@style/egame_button_usercenter_text_right_sytle"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

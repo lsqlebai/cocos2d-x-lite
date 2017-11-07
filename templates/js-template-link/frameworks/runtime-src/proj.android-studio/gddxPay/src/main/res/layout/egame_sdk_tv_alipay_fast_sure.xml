@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     android:focusable="false"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/alipay_fast_sure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="你确定使用支付宝支付1元"
+        android:textSize="@dimen/_24_sp_egame_textSize" />
+    
+    <TextView
+        android:id="@+id/alipay_fast_sure_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="支付宝账户：54041451@qq.com"
+        android:textSize="@dimen/_20_sp_egame_textSize" />
+
+</LinearLayout>

@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="custom_launch_theme_color">#50000000</color>
+    <color name="custom_theme_color">#50000000</color>
+    <color name="gc_black">#000000</color>
+    <color name="gc_gray">#CFCFD1</color>
+    <color name="gc_green">#52C60D</color>
+    <color name="gc_light_green">#A5D687</color>
+    <color name="gc_transparent">#50000000</color>
+    <color name="gc_white">#FFFFFF</color>
+    <dimen name="_16_sp_egame_textSize">16.0px</dimen>
+    <dimen name="_20_sp_egame_textSize">20.0px</dimen>
+    <dimen name="_24_sp_egame_textSize">24.0px</dimen>
+    <dimen name="_28_sp_egame_textSize">28.0px</dimen>
+    <dimen name="_32_sp_egame_textSize">32.0px</dimen>
+    <dimen name="dx_1">1dp</dimen>
+    <dimen name="dx_10">10dp</dimen>
+    <dimen name="dx_100">100dp</dimen>
+    <dimen name="dx_1026">1026dp</dimen>
+    <dimen name="dx_103">103dp</dimen>
+    <dimen name="dx_11">11px</dimen>
+    <dimen name="dx_110">110dp</dimen>
+    <dimen name="dx_113">113dp</dimen>
+    <dimen name="dx_12">12dp</dimen>
+    <dimen name="dx_120">120dp</dimen>
+    <dimen name="dx_1239">1239dp</dimen>
+    <dimen name="dx_13">13dp</dimen>
+    <dimen name="dx_14">14dp</dimen>
+    <dimen name="dx_140">140dp</dimen>
+    <dimen name="dx_1442">1442dp</dimen>
+    <dimen name="dx_15">15dp</dimen>
+    <dimen name="dx_1532">1532dp</dimen>
+    <dimen name="dx_16">16dp</dimen>
+    <dimen name="dx_1655">1655dp</dimen>
+    <dimen name="dx_1679">1679dp</dimen>
+    <dimen name="dx_17">17dp</dimen>
+    <dimen name="dx_170">170dp</dimen>
+    <dimen name="dx_1745">1745dp</dimen>
+    <dimen name="dx_18">18dp</dimen>
+    <dimen name="dx_180">180dp</dimen>
+    <dimen name="dx_1857">1857dp</dimen>
+    <dimen name="dx_1868">1868dp</dimen>
+    <dimen name="dx_1958">1958dp</dimen>
+    <dimen name="dx_2">2dp</dimen>
+    <dimen name="dx_20">20dp</dimen>
+    <dimen name="dx_200">200dp</dimen>
+    <dimen name="dx_2081">2081dp</dimen>
+    <dimen name="dx_210">210dp</dimen>
+    <dimen name="dx_211">211dp</dimen>
+    <dimen name="dx_2171">2171dp</dimen>
+    <dimen name="dx_22">22dp</dimen>
+    <dimen name="dx_220">220dp</dimen>
+    <dimen name="dx_221">221dp</dimen>
+    <dimen name="dx_227">227dp</dimen>
+    <dimen name="dx_23">23dp</dimen>
+    <dimen name="dx_24">24dp</dimen>
+    <dimen name="dx_240">240dp</dimen>
+    <dimen name="dx_244">244dp</dimen>
+    <dimen name="dx_250">250dp</dimen>
+    <dimen name="dx_26">26dp</dimen>
+    <dimen name="dx_27">27dp</dimen>
+    <dimen name="dx_280">280dp</dimen>
+    <dimen name="dx_286">286dp</dimen>
+    <dimen name="dx_297">297dp</dimen>
+    <dimen name="dx_3">3dp</dimen>
+    <dimen name="dx_30">0dp</dimen>
+    <dimen name="dx_300">300dp</dimen>
+    <dimen name="dx_305">305dp</dimen>
+    <dimen name="dx_308">308dp</dimen>
+    <dimen name="dx_315">315dp</dimen>
+    <dimen name="dx_33">33dp</dimen>
+    <dimen name="dx_330">330dp</dimen>
+    <dimen name="dx_340">340dp</dimen>
+    <dimen name="dx_35">35dp</dimen>
+    <dimen name="dx_350">350dp</dimen>
+    <dimen name="dx_37">37dp</dimen>
+    <dimen name="dx_372">372dp</dimen>
+    <dimen name="dx_38">38dp</dimen>
+    <dimen name="dx_380">380dp</dimen>
+    <dimen name="dx_387">387dp</dimen>
+    <dimen name="dx_4">4dp</dimen>
+    <dimen name="dx_40">40dp</dimen>
+    <dimen name="dx_400">400dp</dimen>
+    <dimen name="dx_413">413dp</dimen>
+    <dimen name="dx_42">42dp</dimen>
+    <dimen name="dx_420">420dp</dimen>
+    <dimen name="dx_43">43dp</dimen>
+    <dimen name="dx_434">434dp</dimen>
+    <dimen name="dx_440">440dp</dimen>
+    <dimen name="dx_450">450dp</dimen>
+    <dimen name="dx_454">454dp</dimen>
+    <dimen name="dx_46">46dp</dimen>
+    <dimen name="dx_465">465dp</dimen>
+    <dimen name="dx_466">466dp</dimen>
+    <dimen name="dx_468">468dp</dimen>
+    <dimen name="dx_477">477dp</dimen>
+    <dimen name="dx_5">5dp</dimen>
+    <dimen name="dx_50">50dp</dimen>
+    <dimen name="dx_510">510dp</dimen>
+    <dimen name="dx_52">52dp</dimen>
+    <dimen name="dx_528">528dp</dimen>
+    <dimen name="dx_53">53dp</dimen>
+    <dimen name="dx_533">533dp</dimen>
+    <dimen name="dx_540">540dp</dimen>
+    <dimen name="dx_55">55dp</dimen>
+    <dimen name="dx_564">564dp</dimen>
+    <dimen name="dx_57">57dp</dimen>
+    <dimen name="dx_570">570dp</dimen>
+    <dimen name="dx_575">575dp</dimen>
+    <dimen name="dx_60">60dp</dimen>
+    <dimen name="dx_600">600dp</dimen>
+    <dimen name="dx_61">61dp</dimen>
+    <dimen name="dx_614">614dp</dimen>
+    <dimen name="dx_64">64dp</dimen>
+    <dimen name="dx_65">65dp</dimen>
+    <dimen name="dx_66">66dp</dimen>
+    <dimen name="dx_70">70dp</dimen>
+    <dimen name="dx_712">712dp</dimen>
+    <dimen name="dx_8">8dp</dimen>
+    <dimen name="dx_80">80dp</dimen>
+    <dimen name="dx_800">800dp</dimen>
+    <dimen name="dx_813">813dp</dimen>
+    <dimen name="dx_840">840dp</dimen>
+    <dimen name="dx_846">846dp</dimen>
+    <dimen name="dx_85">85dp</dimen>
+    <dimen name="dx_9">9dp</dimen>
+    <dimen name="dx_90">90dp</dimen>
+    <dimen name="dx_93">93dp</dimen>
+    <dimen name="dx_930">930dp</dimen>
+    <dimen name="dx_94">94dp</dimen>
+    <dimen name="dx_f10">-10px</dimen>
+    <dimen name="dx_f12">-12px</dimen>
+    <dimen name="dx_f30">-30.0px</dimen>
+    <dimen name="dx_f43">-43px</dimen>
+    <dimen name="dx_f6">-6dp</dimen>
+    <dimen name="dx_f67">-67.0px</dimen>
+    <dimen name="dx_f93">-93.0px</dimen>
+    <dimen name="frame_first_margin_left">50dp</dimen>
+    <dimen name="frame_first_margin_top">20dp</dimen>
+    <dimen name="home_frame_margin">-116dp</dimen>
+    <dimen name="home_frame_padding">62dip</dimen>
+    <dimen name="home_viewpage_margin_top">70dp</dimen>
+    <string name="app_name">JiangXi_Mobile</string>
+    <style name="Transparent">
+        <item name="android:windowBackground">@color/gc_transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@+android:style/Animation.Translucent</item>
+    </style>
+    <style name="applicationTheme" parent="@android:style/Theme.Light">
+        <item name="android:dropDownListViewStyle">@style/myAutoCompleteStyle</item>
+    </style>
+    <style name="dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <!-- 边框 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 无标题 -->
+        <item name="android:backgroundDimEnabled">false</item>
+        <!-- 模糊 -->
+        <item name="android:windowBackground">@drawable/egame_sdk_tv_pop_bg</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+    <style name="egame_Transparent" parent="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+        <item name="android:windowBackground">@color/custom_theme_color</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@+android:style/Animation.Translucent</item>
+    </style>
+    <style name="egame_button_text_sytle">
+        <item name="android:textSize">@dimen/_20_sp_egame_textSize</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:background">@drawable/egame_sdk_tv_egame_listitem_selector</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="egame_button_usercenter_text_left_sytle">
+        <item name="android:textSize">@dimen/_20_sp_egame_textSize</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:background">@drawable/egame_sdk_tv_user_btn_left_selector</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="egame_button_usercenter_text_middle_sytle">
+        <item name="android:textSize">@dimen/_20_sp_egame_textSize</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:background">@drawable/egame_sdk_tv_user_btn_middle_selector</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="egame_button_usercenter_text_right_sytle">
+        <item name="android:textSize">@dimen/_20_sp_egame_textSize</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:background">@drawable/egame_sdk_tv_user_btn_right_selector</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="egame_launch_transparent" parent="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+        <item name="android:windowBackground">@color/custom_launch_theme_color</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@+android:style/Animation.Dialog</item>
+    </style>
+    <style name="myAutoCompleteStyle" parent="android:style/Widget.ListView.DropDown">
+        <item name="android:divider">#00ff00</item>
+        <item name="android:dividerHeight">0dp</item>
+    </style>
+    <style name="myDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+    <style name="search_keybord_full">
+        <item name="android:textSize">@dimen/_24_sp_egame_textSize</item>
+        <item name="android:textColor">@drawable/egame_sdk_tv_menu_textcolor_selector</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/egame_sdk_tv_keypad_button_selector</item>
+        <item name="android:layout_width">@dimen/dx_76</item>
+        <item name="android:layout_height">@dimen/dx_76</item>
+        <item name="android:layout_margin">@dimen/dx_0</item>
+        <item name="android:onClick">onClick</item>
+    </style>
+    <style name="search_keybord_unclick">
+        <item name="android:textSize">@dimen/_24_sp_egame_textSize</item>
+        <item name="android:textColor">@drawable/egame_sdk_tv_menu_textcolor_selector</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/egame_sdk_tv_keypad_button_selector</item>
+        <item name="android:layout_width">@dimen/dx_76</item>
+        <item name="android:layout_height">@dimen/dx_76</item>
+        <item name="android:layout_margin">@dimen/dx_0</item>
+    </style>
+    <style name="tv5_moreway_style">
+        <item name="android:textColor">@drawable/egame_sdk_tv_moreway_textcolor_selector</item>
+        <item name="android:background">@drawable/egame_sdk_tv_moreway_selector</item>
+    </style>
+    <style name="tv5_unbind_style">
+        <item name="android:background">@drawable/egame_sdk_tv_moreway_selector</item>
+    </style>
+    <style name="vertical_scrollbar">
+        <item name="android:scrollbarAlwaysDrawVerticalTrack">false</item>
+        <item name="android:scrollbarStyle">outsideInset</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:fadeScrollbars">true</item>
+        <item name="android:scrollbarSize">1000dp</item>
+        <item name="android:scrollbarFadeDuration">1000</item>
+        <item name="android:scrollbarTrackVertical">@drawable/egame_sdk_tv_scroll_bar_bg</item>
+        <item name="android:scrollbarThumbVertical">@drawable/egame_sdk_tv_scroll_bar</item>
+    </style>
+</resources>

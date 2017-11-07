@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/egame_dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dx_10"
+        android:textColor="#48c2ff"
+        android:textSize="@dimen/_24_sp_egame_textSize" >
+    </TextView>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dx_2"
+        android:layout_marginLeft="@dimen/dx_8"
+        android:layout_marginRight="@dimen/dx_8"
+        android:background="#48c2ff" />
+
+    <LinearLayout
+        android:id="@+id/egame_dialog_content"
+        android:layout_width="@dimen/dx_630"
+        android:layout_height="@dimen/dx_310"
+
+        android:layout_marginTop="@dimen/dx_26"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="@dimen/dx_93"
+                android:layout_height="@dimen/dx_93"
+                android:src="@drawable/egame_sdk_tv_payment_icon_zhifubao" />
+
+            <TextView
+                android:id="@+id/alipay_wait_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dx_20"
+                android:lines="1"
+                android:text="支付金额"
+                android:textSize="@dimen/_24_sp_egame_textSize" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dx_10"
+            
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/alipay_info_line"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lines="1"                   
+                    android:textColor="#ffffff"         
+                    android:textSize="@dimen/_20_sp_egame_textSize" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dx_10"
+               
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/alipay_info_line_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lines="1"
+                    android:textColor="#ffffff"  
+                    android:textSize="@dimen/_20_sp_egame_textSize" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dx_10"
+                
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/alipay_info_line_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lines="1"
+                    android:textColor="#ffffff"  
+                    android:textSize="@dimen/_20_sp_egame_textSize" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dx_20"            
+            android:paddingBottom="@dimen/dx_56"
+            
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/alipay_info_line_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textColor="#ff642e"
+                android:textSize="@dimen/_20_sp_egame_textSize" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

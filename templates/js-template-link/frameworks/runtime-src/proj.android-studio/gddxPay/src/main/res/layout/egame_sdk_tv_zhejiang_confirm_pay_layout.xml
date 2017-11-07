@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="false"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/zjTitleLayout"
+        android:layout_width="@dimen/dx_900"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="#202D3F"
+        android:focusable="false"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:focusable="false" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:focusable="false"
+                android:gravity="center"
+                android:layout_margin="@dimen/dx_10"
+                android:text="订购信息"
+                android:textColor="#D19432"
+                android:textSize="@dimen/dx_25" />
+            
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dx_2"
+            android:layout_marginLeft="@dimen/dx_8"
+            android:layout_marginRight="@dimen/dx_8"
+            android:background="#767F88"
+            android:focusable="false" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_marginTop="@dimen/dx_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/egame_sdk_tv_zj_circle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="业务名称："
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/dx_20" />
+
+                <TextView
+                    android:id="@+id/zjTextProductName"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/dx_20" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_marginTop="@dimen/dx_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/egame_sdk_tv_zj_circle" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="业务类型：包月类业务（默认为自动续订）"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/dx_20" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_marginTop="@dimen/dx_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/egame_sdk_tv_zj_circle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="资费说明："
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/dx_20" />
+
+                <TextView
+                    android:id="@+id/zjConfirmPayPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/dx_20" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="元/月，订购的首月按照实际的使用天数计费"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/dx_20" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_marginTop="@dimen/dx_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/egame_sdk_tv_zj_circle" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="退订说明：本月退订，次月1日生效，本月收取全月费用。取消订购请进入“首页-服务-订购服务查询-我要退订”操作。"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/dx_20" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/zjConfirmPayBottonLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+           
+            <Button
+                android:id="@+id/zjConfirmBtnSure"
+                style="@style/egame_button_text_sytle"
+                android:layout_width="@dimen/dx_180"
+                android:layout_height="@dimen/dx_60"
+                android:layout_gravity="center"
+                android:focusable="true"
+                android:text="接受订购"/>
+            
+            
+            <Button
+                android:id="@+id/zjConfirmPayBtnCancel"
+                style="@style/egame_button_text_sytle"
+                android:layout_width="@dimen/dx_180"
+                android:layout_height="@dimen/dx_60"
+                android:layout_gravity="center"
+                android:focusable="true"
+                android:text="取消订购" />
+            
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="false"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/egame_sdk_tv_icon_finish"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:text="解绑成功"
+            android:textSize="@dimen/_32_sp_egame_textSize" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/egame_yeepay_unbind_success"
+        android:layout_width="fill_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="您已成功解绑交通银行信用卡******8888"
+        android:textSize="@dimen/_24_sp_egame_textSize" />
+
+ 
+
+</LinearLayout>

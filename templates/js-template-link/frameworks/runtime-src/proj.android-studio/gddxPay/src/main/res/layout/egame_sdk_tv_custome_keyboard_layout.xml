@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/egame_yeepay_keyboard"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dx_10"
+    android:layout_marginLeft="@dimen/dx_30"
+    android:layout_marginTop="@dimen/dx_10" >
+
+    <Button
+        android:id="@+id/key_1"
+        style="@style/search_keybord_full"
+        android:tag="1"
+        android:text="1"
+        android:textSize="@dimen/_32_sp_egame_textSize"
+        android:textStyle="bold" >
+    </Button>
+
+    <Button
+        android:id="@+id/key_2"
+        style="@style/search_keybord_full"
+        android:layout_toRightOf="@+id/key_1"
+        android:tag="2"
+        android:text="2"
+        android:textSize="@dimen/_32_sp_egame_textSize"
+        android:textStyle="bold" >
+    </Button>
+
+    <Button
+        android:id="@+id/key_3"
+        style="@style/search_keybord_full"
+        android:layout_toRightOf="@+id/key_2"
+        android:tag="3"
+        android:text="3"
+        android:textSize="@dimen/_32_sp_egame_textSize"
+        android:textStyle="bold" >
+    </Button>
+
+    <Button
+        android:id="@+id/key_4"
+        style="@style/search_keybord_full"
+        android:layout_below="@+id/key_1"
+        android:tag="4"
+        android:text="4"
+        android:textSize="@dimen/_32_sp_egame_textSize"
+        android:textStyle="bold" >
+    </Button>
+
+    <Button
+        android:id="@+id/key_5"
+        style="@style/search_keybord_full"
+        android:layout_below="@+id/key_2"
+        android:layout_toRightOf="@+id/key_4"
+        android:tag="5"
+        android:text="5"
+        android:textSize="@dimen/_32_sp_egame_textSize"
+        android:textStyle="bold" >
+    </Button>
+
+    <Button
+        android:id="@+id/key_6"
+        style="@style/search_keybord_full"
+        android:layout_below="@+id/key_3"
+        android:layout_toRightOf="@+id/key_5"
+        android:tag="6"
+        android:text="6"
+        android:textSize="@dimen/_32_sp_egame_textSize"
+        android:textStyle="bold" >
+    </Button>
+
+    <Button
+        android:id="@+id/key_7"
+        style="@style/search_keybord_full"
+        android:layout_below="@+id/key_4"
+        android:tag="7"
+        android:text="7"
+        android:textSize="@dimen/_32_sp_egame_textSize"
+        android:textStyle="bold" >
+    </Button>
+
+    <Button
+        android:id="@+id/key_8"
+        style="@style/search_keybord_full"
+        android:layout_below="@+id/key_5"
+        android:layout_toRightOf="@+id/key_7"
+        android:tag="8"
+        android:text="8"
+        android:textSize="@dimen/_32_sp_egame_textSize"
+        android:textStyle="bold" >
+    </Button>
+
+    <Button
+        android:id="@+id/key_9"
+        style="@style/search_keybord_full"
+        android:layout_below="@+id/key_6"
+        android:layout_toRightOf="@+id/key_8"
+        android:tag="9"
+        android:text="9"
+        android:textSize="@dimen/_32_sp_egame_textSize"
+        android:textStyle="bold" >
+    </Button>
+
+    <Button
+        android:id="@+id/pw_keybord_key_next"
+        style="@style/search_keybord_unclick"
+        android:layout_below="@+id/pw_keybord_key_up"
+        android:layout_toRightOf="@+id/key_6"
+        android:onClick="onClick"
+        android:text="下一行"
+        android:textSize="@dimen/_16_sp_egame_textSize" >
+    </Button>
+
+    <Button
+        android:id="@+id/key_0"
+        style="@style/search_keybord_full"
+        android:layout_below="@+id/key_7"
+        android:tag="0"
+        android:text="0"
+        android:textSize="@dimen/_32_sp_egame_textSize"
+        android:textStyle="bold" >
+    </Button>
+
+    <Button
+        android:id="@+id/pw_keybord_key_up"
+        style="@style/search_keybord_unclick"
+        android:layout_toRightOf="@+id/key_3"
+        android:onClick="onClick"
+        android:text="上一行"
+        android:textSize="@dimen/_16_sp_egame_textSize" >
+    </Button>
+
+    <Button
+        android:id="@+id/key_ensure"
+        style="@style/tv5_moreway_style"
+        android:layout_width="@dimen/dx_152"
+        android:layout_height="@dimen/dx_76"
+        android:layout_below="@+id/key_9"
+        android:layout_toRightOf="@+id/key_0"
+        android:singleLine="true"
+        android:tag="重新发送"
+        android:text="重新发送"
+        android:textSize="@dimen/_20_sp_egame_textSize"
+        android:textStyle="bold" >
+    </Button>
+
+    <Button
+        android:id="@+id/pw_keybord_key_remove"
+        style="@style/search_keybord_full"
+        android:layout_below="@+id/pw_keybord_key_next"
+        android:layout_toRightOf="@+id/key_9"
+        android:background="@drawable/egame_sdk_tv_keypad_back_selector" >
+    </Button>
+
+    <Button
+        android:id="@+id/pw_keybord_key_back"
+        style="@style/search_keybord_full"
+        android:layout_below="@+id/pw_keybord_key_remove"
+        android:layout_toRightOf="@+id/key_ensure"
+        android:text="返回" >
+    </Button>
+
+    <Button
+        android:id="@+id/pw_keybord_key_sure"
+        style="@style/egame_button_text_sytle"
+        android:layout_width="@dimen/dx_304"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/key_ensure"
+        android:onClick="onClick"
+        android:text="立即支付" >
+    </Button>
+
+</RelativeLayout>

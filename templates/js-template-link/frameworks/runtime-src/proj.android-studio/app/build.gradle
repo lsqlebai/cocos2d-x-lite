@@ -13,8 +13,8 @@ android {
         applicationId "com.iflytek.leagueofglutton"
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 10105
-        versionName "1.1.5"
+        versionCode 20000
+        versionName "2.0.0"
         multiDexEnabled true
     }
     lintOptions {
@@ -45,6 +45,7 @@ android {
             assets.srcDirs = ['assets', 'channel/xiaowo/assets']
         }
         jscmcc {
+
             manifest.srcFile 'channel/common/AndroidManifest.xml'
 			assets.srcDirs = ['assets', 'channel/jscmcc/assets']
         }
@@ -53,37 +54,38 @@ android {
             assets.srcDirs = ['assets', 'channel/jxcmcc/assets']
         }
         shdx {
+
             manifest.srcFile 'channel/common/AndroidManifest.xml'
             assets.srcDirs = ['assets', 'channel/shdx/assets']
         }
         gddx {
-            defaultConfig.applicationId "com.iflytek.leagueofglutton.egame"
-            manifest.srcFile 'channel/common/AndroidManifest.xml'
+
+            manifest.srcFile 'channel/gddx/AndroidManifest.xml'
             assets.srcDirs = ['assets', 'channel/gddx/assets']
         }
     }
     productFlavors {
         tmall {
-
+            applicationId "com.iflytek.leagueofglutton"
         }
         unicom {
-
+            applicationId "com.iflytek.leagueofglutton"
         }
         xiaowo {
-
+            applicationId "com.iflytek.leagueofglutton"
         }
         jscmcc {
-
+            applicationId "com.iflytek.leagueofglutton"
         }
         jxcmcc {
-
+            applicationId "com.iflytek.leagueofglutton"
         }
 
         shdx {
-
+            applicationId "com.iflytek.leagueofglutton"
         }
         gddx {
-
+            applicationId "com.iflytek.leagueofglutton.egame"
         }
     }
     signingConfigs {
@@ -97,6 +99,15 @@ android {
     }
 
     buildTypes {
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //if (project.hasProperty("RELEASE_STORE_FILE")) {
+            signingConfig signingConfigs.release
+            //}
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -169,6 +180,6 @@ dependencies {
     jxcmccCompile project(':jiangxicmccPay')
 
     shdxCompile project(':commonPay')
-    gddxCompile project(':commonPay')
+    gddxCompile project(':gddxPay')
 
 }

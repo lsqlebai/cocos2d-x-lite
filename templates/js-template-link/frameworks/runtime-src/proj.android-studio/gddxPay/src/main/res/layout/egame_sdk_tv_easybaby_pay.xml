@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/egame_dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dx_10"
+        android:textColor="#48c2ff"
+        android:textSize="@dimen/_24_sp_egame_textSize" >
+    </TextView>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dx_2"
+        android:layout_marginLeft="@dimen/dx_8"
+        android:layout_marginRight="@dimen/dx_8"
+        android:background="#48c2ff" />
+
+    <LinearLayout
+        android:id="@+id/egame_dialog_content"
+        android:layout_width="@dimen/dx_700"
+        android:layout_height="@dimen/dx_210"
+        android:gravity="center"
+        android:orientation="horizontal" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/dialog_sure"
+            style="@style/egame_button_usercenter_text_left_sytle"
+            android:layout_width="@dimen/dx_0"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+             />
+
+        <Button
+            android:id="@+id/dialog_cancel"
+            style="@style/egame_button_usercenter_text_right_sytle"
+            android:layout_width="@dimen/dx_0"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/egame_back"
+        style="@style/egame_button_usercenter_text_left_sytle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+         />
+
+</LinearLayout>

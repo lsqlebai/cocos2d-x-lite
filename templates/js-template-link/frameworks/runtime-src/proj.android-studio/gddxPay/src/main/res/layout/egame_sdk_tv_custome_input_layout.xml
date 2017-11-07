@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="false"
+    android:orientation="vertical" >
+
+    <!-- 自定义充值 -->
+
+    <LinearLayout
+        android:id="@+id/Layout_complete_phoneNum"
+        android:layout_width="@dimen/dx_900"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/egame_sdk_tv_pop_bg"
+        android:focusable="false"
+        android:orientation="vertical"
+        android:visibility="visible" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/custome_input_title"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dx_70"
+                android:focusable="false"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dx_20"
+                android:textColor="#48c2ff"
+                android:textSize="@dimen/_28_sp_egame_textSize" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dx_2"
+                android:layout_marginLeft="@dimen/dx_8"
+                android:layout_marginRight="@dimen/dx_8"
+                android:background="#48c2ff"
+                android:focusable="false" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dx_8"
+            android:layout_marginRight="@dimen/dx_8"
+            android:background="#464d57"
+            android:gravity="center"
+            android:paddingBottom="@dimen/dx_10"
+            android:paddingTop="@dimen/dx_10" >
+
+            <LinearLayout
+                android:id="@+id/egame_game_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+                <TextView
+                    android:id="@+id/egame_yeepay_gamename_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="游戏名称:"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/_20_sp_egame_textSize" />
+
+                <TextView
+                    android:id="@+id/egame_yeepay_gamename"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="鸡宝宝"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/_20_sp_egame_textSize" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dx_100"
+                android:layout_toRightOf="@+id/egame_game_name" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="支付金额:"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/_20_sp_egame_textSize" />
+
+                <TextView
+                    android:id="@+id/egame_yeepay_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8元"
+                    android:textColor="#ffee2200"
+                    android:textSize="@dimen/_20_sp_egame_textSize" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:focusable="false"
+            android:gravity="center" >
+
+            <LinearLayout
+                android:id="@+id/egame_ll_input"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:focusable="false"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="@dimen/dx_1"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="@dimen/dx_30"
+                android:background="@drawable/egame_sdk_tv_line_vertical_number"
+                android:focusable="false" >
+            </LinearLayout>
+
+            <include layout="@layout/egame_sdk_tv_custome_keyboard_layout" />
+        </LinearLayout>
+    </LinearLayout>
+
+<!--     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/egame_yeepay_guide_one"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/egame_sdk_tv_boot_yibao_1"
+            android:visibility="gone" />
+        
+        <ImageView
+            android:id="@+id/egame_yeepay_guide_two"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/egame_sdk_tv_boot_yibao_2"
+            android:visibility="gone" />
+    </LinearLayout> -->
+
+</RelativeLayout>

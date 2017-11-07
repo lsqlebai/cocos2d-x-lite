@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="false"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/zjTitleLayout"
+        android:layout_width="@dimen/dx_900"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="#202D3F"
+        android:focusable="false"
+        android:orientation="vertical"
+        android:visibility="visible" >
+
+        <RelativeLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:focusable="false" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:focusable="false"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dx_18"
+                android:layout_margin="@dimen/dx_10"
+                android:text="安全订购"
+                android:textColor="#D19432"
+                android:textSize="@dimen/dx_25" />
+
+            <TextView
+                android:id="@+id/zjBtnPaySet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="#656769"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="订购设置"
+                android:textSize="@dimen/dx_15" />
+
+            <TextView
+                android:id="@+id/zjBtnChangePwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/zjBtnPaySet"
+                android:background="#656769"
+                android:padding="5dp"
+                android:text="修改密码"
+                android:textSize="@dimen/dx_15" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dx_2"
+            android:layout_marginLeft="@dimen/dx_8"
+            android:layout_marginRight="@dimen/dx_8"
+            android:background="#767F88"
+            android:focusable="false" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_marginTop="@dimen/dx_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/egame_sdk_tv_zj_circle" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="您现在订购的服务为iTV付费增值业务，其费用不包含在现有的宽带或iTV基本套餐内，需另行在您的电信账户中收取。"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/dx_18" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_marginTop="@dimen/dx_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/egame_sdk_tv_zj_circle" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="您订购的iTV付费增值业务价格及服务内容均以电视页面展示为准。"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/dx_18" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_marginTop="@dimen/dx_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/egame_sdk_tv_zj_circle" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="您订购的包月服务默认为自动续订，如果取消订购，请进入“首页-服务-订购服务查询-我要退订”中进行操作。本月退订，次月1日生效。订购的首月按照实际的使用天数计费。"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/dx_18" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_marginTop="@dimen/dx_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/egame_sdk_tv_zj_circle" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="您订购的iTV付费增值业务将在下月初出账，请您及时至电信营业厅、网上营业厅或iTV服务栏目充值缴费，避免因欠费引起您的手机、宽带、iTV停机。"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/dx_18" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_marginTop="@dimen/dx_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/egame_sdk_tv_zj_circle" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="您已选择“安全订购”方式，如需修改请通过“订购设置”进行变更。"
+                        android:textColor="#ffffff"
+                        android:textSize="@dimen/dx_18" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="#CB9D4B"
+                        android:text="提醒：您已将初始密码123456修改为您的自定义密码，请您牢记密码，如果忘记请拨打10000充值。修改订购方式请选择“订购设置”。" 
+                        android:textSize="@dimen/dx_15"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        
+        <LinearLayout 
+            android:id="@+id/zjPwdInputLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="5dp"
+            android:gravity="center">
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="请输入自定义密码："
+                android:textColor="#ffffff"
+                android:textSize="@dimen/dx_18"
+                />
+            <EditText 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:background="#ffffff"
+                android:singleLine="true"
+                android:hint="可按“OK”键进入下一步"
+                android:nextFocusDown="@+id/zjSafeBtnConfirm"
+                android:textSize="@dimen/dx_15"/>
+        </LinearLayout>
+        
+        <LinearLayout 
+            android:id="@+id/zjSafeBottonLayout"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            
+            <Button
+                android:id="@+id/zjSafeBtnConfirm"
+                style="@style/egame_button_text_sytle"
+                android:layout_width="@dimen/dx_180"
+                android:layout_height="@dimen/dx_60"
+                android:layout_gravity="center"
+                android:focusable="true"
+                android:text="接受订购" />
+            
+            <Button
+                android:id="@+id/zjSafeBtnCancel"
+                style="@style/egame_button_text_sytle"
+                android:layout_width="@dimen/dx_180"
+                android:layout_height="@dimen/dx_60"
+                android:layout_gravity="center"
+                android:focusable="true"
+                android:text="不接受" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

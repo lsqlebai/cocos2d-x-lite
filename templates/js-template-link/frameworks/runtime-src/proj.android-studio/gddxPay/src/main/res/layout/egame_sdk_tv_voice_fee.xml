@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:id="@+id/egame_tv_ll_pay"
+        android:layout_width="@dimen/dx_930"
+        android:layout_height="@dimen/dx_600"
+        android:layout_centerInParent="true"
+        android:background="@drawable/egame_sdk_tv_pop_bg"
+        android:focusable="false"
+        android:orientation="vertical"
+        android:visibility="visible" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dx_70"
+            android:focusable="false"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dx_20"
+            android:text="电话支付"
+            android:textColor="#48c2ff"
+            android:textSize="@dimen/_32_sp_egame_textSize" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dx_2"
+            android:layout_marginLeft="@dimen/dx_26"
+            android:layout_marginRight="@dimen/dx_26"
+            android:background="#48c2ff"
+            android:focusable="false" />
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dx_0"
+            android:layout_weight="1"
+            android:focusable="false" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dx_20"
+                android:layout_marginRight="@dimen/dx_20"
+                android:focusable="false"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/egame_tv_title"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dx_70"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:text="您将在 “美女斗地主2011” 游戏中花费  10元  激活第4关"
+                    android:textColor="#646464"
+                    android:textSize="@dimen/_24_sp_egame_textSize"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dx_26"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.8"
+                        android:background="@drawable/egame_sdk_tv_process_left"
+                        android:focusable="false"
+                        android:gravity="center"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:id="@+id/fee_no"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:focusable="false"
+                            android:gravity="center"
+                            android:paddingTop="@dimen/dx_2"
+                            android:text="拨打声讯电话16836565"
+                            android:textColor="#ffffff"
+                            android:textSize="@dimen/_24_sp_egame_textSize" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:focusable="false"
+                            android:gravity="center"
+                            android:paddingBottom="@dimen/dx_2"
+                            android:text="(支持部分省中国电信固话和\n部分省电信手机，详见下方)"
+                            android:textColor="#ffffff"
+                            android:textSize="@dimen/_20_sp_egame_textSize" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/egame_sdk_tv_process_left"
+                        android:focusable="false"
+                        android:gravity="center"
+                        android:text="根据语音提示输入\n下方产品代码"
+                        android:textColor="#ffffff"
+                        android:textSize="@dimen/_20_sp_egame_textSize" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/egame_sdk_tv_process_right"
+                        android:focusable="false"
+                        android:gravity="center"
+                        android:text="完成付费"
+                        android:textColor="#ffffff"
+                        android:textSize="@dimen/_20_sp_egame_textSize" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dx_31"
+                    android:focusable="false"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:text="产品代码："
+                        android:textColor="#ffffff"
+                        android:textSize="@dimen/_24_sp_egame_textSize" />
+
+                    <TextView
+                        android:id="@+id/feecode_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:text="加载中..."
+                        android:textColor="#ff642e"
+                        android:textSize="@dimen/_24_sp_egame_textSize" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dx_10"
+                        android:focusable="false"
+                        android:gravity="center"
+                        android:text="(通话过程中请勿关闭该窗口，否则无法完成付费)"
+                        android:textColor="#ffffff"
+                        android:textSize="@dimen/_20_sp_egame_textSize" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/egame_tv_tips"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dx_10"
+                    android:focusable="false"
+                    android:text="温馨提示：\n1.本次资费将在您当月话费中扣除\n2.北京、天津、辽宁、吉林、黑龙江、内蒙古、河北、河南、山东、山西暂未开通168声讯付费\n3.广东、浙江、江西、黑龙江用户也可使用电信手机拨打\n\n如有疑问可拨打客服热线：4008-289-289或咨询当地10000"
+                    android:textColor="#bbbbbb"
+                    android:textSize="@dimen/_20_sp_egame_textSize" />
+            </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/tv_finish_pay"
+            style="@style/egame_button_usercenter_text_middle_sytle"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dx_70"
+            android:layout_marginTop="@dimen/dx_5"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="完成支付" />
+
+        <RelativeLayout
+            android:id="@+id/finish_pay"
+            style="@style/egame_button_usercenter_text_middle_sytle"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dx_70"
+            android:layout_gravity="center"
+            android:focusable="true"
+            android:gravity="center"
+            android:visibility="gone" >
+
+            <!--
+                 <cn.egame.terminal.sdk.pay.tv.ui.gifview.GifView
+                android:id="@+id/egame_tv_loding"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dx_50"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/dx_440"
+                android:enabled="false"
+                android:focusable="false"
+                android:gravity="center" />
+            -->
+
+            <ImageView
+                android:id="@+id/egame_loading_bottom"
+                android:layout_width="@dimen/dx_50"
+                android:layout_height="@dimen/dx_50"
+                android:layout_gravity="center" />
+
+            <ImageView
+                android:id="@+id/egame_loading_top"
+                android:layout_width="@dimen/dx_50"
+                android:layout_height="@dimen/dx_50"
+                android:layout_gravity="center" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/egame_tv_ll_error"
+        android:layout_width="@dimen/dx_930"
+        android:layout_height="@dimen/dx_570"
+        android:layout_centerInParent="true"
+        android:background="@drawable/egame_sdk_tv_pop_bg"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dx_70"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dx_20"
+            android:text="出错了"
+            android:textColor="#48c2ff"
+            android:textSize="@dimen/_32_sp_egame_textSize" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dx_2"
+            android:background="#48c2ff" />
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dx_0"
+            android:layout_weight="1" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dx_20"
+                android:layout_marginRight="@dimen/dx_20"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/fee_error_text"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dx_10"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/_20_sp_egame_textSize" />
+            </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dx_2"
+            android:background="#48c2ff" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/egame_tv_retry"
+                style="@style/egame_button_usercenter_text_left_sytle"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dx_70"
+                android:layout_margin="@dimen/dx_5"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="重试"
+                android:textSize="@dimen/_24_sp_egame_textSize" />
+
+            <Button
+                android:id="@+id/egame_tv_back_game"
+                style="@style/egame_button_usercenter_text_right_sytle"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dx_70"
+                android:layout_margin="@dimen/dx_5"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="返回"
+                android:textSize="@dimen/_24_sp_egame_textSize" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

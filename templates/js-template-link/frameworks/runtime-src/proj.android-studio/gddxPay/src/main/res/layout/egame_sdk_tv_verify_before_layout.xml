@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="false"
+    android:gravity="center_vertical"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right" >
+
+        <TextView
+            android:id="@+id/text_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dx_27"
+            android:focusable="false"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/_20_sp_egame_textSize" />
+
+        <EditText
+            android:id="@+id/edit_credit_card"
+            android:layout_width="@dimen/dx_320"
+            android:layout_height="@dimen/dx_60"
+            android:layout_alignBaseline="@+id/text_phone"
+            android:layout_marginLeft="@dimen/dx_9"
+            android:layout_marginTop="@dimen/dx_18"
+            android:layout_toRightOf="@+id/text_phone"
+            android:background="@drawable/egame_sdk_tv_input_box_black_normal"
+            android:editable="false"
+            android:focusable="false"
+            android:lines="1"
+            android:maxLength="20"
+            android:paddingLeft="@dimen/dx_35"
+            android:singleLine="true"
+            android:textColor="#ffffff"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/_20_sp_egame_textSize" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right" >
+
+        <TextView
+            android:id="@+id/text_effecitve_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dx_27"
+            android:focusable="false"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/_20_sp_egame_textSize" />
+
+        <EditText
+            android:id="@+id/edit_effecitve_time"
+            android:layout_width="@dimen/dx_320"
+            android:layout_height="@dimen/dx_60"
+            android:layout_alignBaseline="@+id/text_effecitve_time"
+            android:layout_marginLeft="@dimen/dx_9"
+            android:layout_marginTop="@dimen/dx_18"
+            android:layout_toRightOf="@+id/text_effecitve_time"
+            android:background="@drawable/egame_sdk_tv_input_box_black_normal"
+            android:editable="false"
+            android:focusable="false"
+            android:lines="1"
+            android:maxLength="4"
+            android:paddingLeft="@dimen/dx_30"
+            android:singleLine="true"
+            android:textColor="#ffffff"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/_16_sp_egame_textSize" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right" >
+
+        <TextView
+            android:id="@+id/text_cw2num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dx_27"
+            android:focusable="false"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/_20_sp_egame_textSize" />
+
+        <EditText
+            android:id="@+id/edit_cw2num"
+            android:layout_width="@dimen/dx_320"
+            android:layout_height="@dimen/dx_60"
+            android:layout_alignBaseline="@+id/text_cw2num"
+            android:layout_marginLeft="@dimen/dx_9"
+            android:layout_marginTop="@dimen/dx_18"
+            android:layout_toRightOf="@+id/text_cw2num"
+            android:background="@drawable/egame_sdk_tv_input_box_black_normal"
+            android:editable="false"
+            android:focusable="false"
+            android:lines="1"
+            android:maxLength="3"
+            android:paddingLeft="@dimen/dx_30"
+            android:singleLine="true"
+            android:textColor="#ffffff"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/_20_sp_egame_textSize" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right" >
+
+        <TextView
+            android:id="@+id/text_obligate_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dx_27"
+            android:focusable="false"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/_20_sp_egame_textSize" />
+
+        <EditText
+            android:id="@+id/edit_obligate_number"
+            android:layout_width="@dimen/dx_320"
+            android:layout_height="@dimen/dx_60"
+            android:layout_alignBaseline="@+id/text_obligate_phone"
+            android:layout_marginLeft="@dimen/dx_9"
+            android:layout_marginTop="@dimen/dx_18"
+            android:layout_toRightOf="@+id/text_obligate_phone"
+            android:background="@drawable/egame_sdk_tv_input_box_black_normal"
+            android:editable="false"
+            android:focusable="false"
+            android:lines="1"
+            android:maxLength="13"
+            android:paddingLeft="@dimen/dx_30"
+            android:singleLine="true"
+            android:textColor="#ffffff"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/_20_sp_egame_textSize" />
+    </RelativeLayout>
+
+</LinearLayout>
