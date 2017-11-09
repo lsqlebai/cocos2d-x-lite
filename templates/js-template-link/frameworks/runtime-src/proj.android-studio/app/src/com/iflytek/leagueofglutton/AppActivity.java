@@ -82,7 +82,7 @@ public class AppActivity extends Cocos2dxActivity {
                sp.edit().putInt(KEY_APP_VERSION_CODE, curCode).commit(); // 保存当前程序版本号
            }
         }
-        System.out.println("isAppUpgrade:" + isAppUpgrade);
+        println("isAppUpgrade:" + isAppUpgrade);
 
     }
 
@@ -137,7 +137,7 @@ public class AppActivity extends Cocos2dxActivity {
      */
     public static void reportError(String errorMsg)
     {
-        System.out.println("errorMsg:" + errorMsg);
+        println("errorMsg:" + errorMsg);
         MobclickAgent.reportError(MainApplication.geContext(), errorMsg);
     }
 
@@ -176,14 +176,14 @@ public class AppActivity extends Cocos2dxActivity {
     private void copyNewLib()
     {
 
-        System.out.println("doLib copyNewLib");
+        println("doLib copyNewLib");
         String downloadPath = null;
 
         File downloadFile = getExternalFilesDir("download");
 
         if(downloadFile == null)
         {
-            System.out.println("downloadFile is null");
+            println("downloadFile is null");
 
             try
             {
@@ -198,34 +198,34 @@ public class AppActivity extends Cocos2dxActivity {
                     boolean mkResult = tmpDir.mkdirs();
                     if(mkResult)
                     {
-                        System.out.println("downloadFile is create success");
+                        println("downloadFile is create success");
                         downloadPath = tmpDir.getAbsolutePath();
                     } else
                     {
-                        System.out.println("downloadFile is create failed");
+                        println("downloadFile is create failed");
                         Toast.makeText(this, "系统空间不足", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
             catch (Exception e)
             {
-                System.out.println("downloadFile is create failed2");
+                println("downloadFile is create failed2");
                 Toast.makeText(this, "系统空间不足", Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
         } else
         {
 
-            System.out.println("doLib downloadFile is not null");
+            println("doLib downloadFile is not null");
 
             downloadPath = downloadFile.getAbsolutePath();
 
-            System.out.println("doLib downloadFile path:" + downloadPath);
+            println("doLib downloadFile path:" + downloadPath);
         }
 
         if(null == downloadPath)
         {
-            System.out.println("downloadPath is null");
+            println("downloadPath is null");
             return;
         }
 
@@ -243,7 +243,7 @@ public class AppActivity extends Cocos2dxActivity {
 
         File libCopyDirFile = new File(downloadPath + "/libCopyDir");
 
-        System.out.println("doLib libCopyDirFile:" + libCopyDirFile.getAbsolutePath());
+        println("doLib libCopyDirFile:" + libCopyDirFile.getAbsolutePath());
         if(libCopyDirFile.exists() && libCopyDirFile.isFile())
         {
             BufferedReader br =  null;
@@ -251,7 +251,7 @@ public class AppActivity extends Cocos2dxActivity {
                 br =  new BufferedReader(new FileReader(libCopyDirFile));
                 String filePath = br.readLine();
 
-                System.out.println("doLib readLine:" + filePath);
+                println("doLib readLine:" + filePath);
                 File libDir = new File(filePath);
                 if(libDir.exists() && libDir.isDirectory())
                 {
@@ -265,7 +265,7 @@ public class AppActivity extends Cocos2dxActivity {
 
                     if(null != soFiles && soFiles.length>0)
                     {
-                        System.out.println("doLib soFiles is valid");
+                        println("doLib soFiles is valid");
                         File dstDir = getFilesDir();
                         SharedPreferences sp = getPreferences(MODE_PRIVATE);
 
@@ -275,7 +275,7 @@ public class AppActivity extends Cocos2dxActivity {
 
                             File dstFile = new File(dstDir.getAbsolutePath() + "/" + soFile.getName());
 
-                            System.out.println("doLib prepare copy so, soFile:" + soFile.getAbsolutePath() + ",dstFile:" + dstFile.getAbsolutePath());
+                            println("doLib prepare copy so, soFile:" + soFile.getAbsolutePath() + ",dstFile:" + dstFile.getAbsolutePath());
 
                             long lastTime = sp.getLong(key, 0);
                             if(!dstFile.exists() || dstFile.length() != soFile.length() || lastTime != soFile.lastModified()) // so库发生过变化，则进行覆盖
@@ -285,16 +285,16 @@ public class AppActivity extends Cocos2dxActivity {
                             }
                             else
                             {
-                                System.out.println("doLib prepare copy so, no change");
+                                println("doLib prepare copy so, no change");
                             }
                         }
                     }else
                     {
-                        System.out.println("doLib soFiles is null or length is 0");
+                        println("doLib soFiles is null or length is 0");
                     }
                 } else
                 {
-                    System.out.println("doLib readLine path is not exists or is not dir");
+                    println("doLib readLine path is not exists or is not dir");
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -311,7 +311,7 @@ public class AppActivity extends Cocos2dxActivity {
                 }
             }
         }else {
-            System.out.println("doLib is not exists or is not file");
+            println("doLib is not exists or is not file");
         }
     }
 
@@ -320,39 +320,39 @@ public class AppActivity extends Cocos2dxActivity {
 
         String oriLibPath = getApplicationInfo().nativeLibraryDir;
         File srcDir;
-        System.out.println("doLib oriLibPath:" + oriLibPath);
+        println("doLib oriLibPath:" + oriLibPath);
         if(TextUtils.isEmpty(oriLibPath))
         {
-            System.out.println("doLib oriLibPath is empty");
+            println("doLib oriLibPath is empty");
             File tmpDir = getFilesDir();
 
             if(null != tmpDir)
             {
-                System.out.println("doLib tmpDir is not null, path:" + tmpDir.getAbsolutePath());
+                println("doLib tmpDir is not null, path:" + tmpDir.getAbsolutePath());
 
                 srcDir = new File(tmpDir.getParentFile().getAbsoluteFile() + "/lib");
             }
             else
             {
-                System.out.println("doLib tmpDir is null");
+                println("doLib tmpDir is null");
                 srcDir = new File("/data/data/" + getPackageName() + "/lib");
             }
         }
         else
         {
-            System.out.println("doLib oriLibPath is valid");
+            println("doLib oriLibPath is valid");
             srcDir = new File(oriLibPath);
         }
 
 
-        System.out.println("doLib srcDir, path:" + srcDir.getAbsolutePath());
+        println("doLib srcDir, path:" + srcDir.getAbsolutePath());
         File dstDir = getFilesDir();
 
         File[] srcFiles = srcDir.listFiles(new FileFilter() {
             @Override
             public boolean accept(File file) {
 
-                System.out.println("doLib accept file:" + file.getAbsolutePath());
+                println("doLib accept file:" + file.getAbsolutePath());
 
                 if(file.getName().indexOf("cocos2djs") != -1) // 不拷贝引擎库
                 {
@@ -367,13 +367,13 @@ public class AppActivity extends Cocos2dxActivity {
             {
                 File dstFile = new File(dstDir.getAbsolutePath() + "/" + srcFile.getName());
 
-                System.out.println("doLib dstFile is :" + dstFile.getAbsolutePath());
+                println("doLib dstFile is :" + dstFile.getAbsolutePath());
 
                 if(!dstFile.exists())
                 {
                     try {
 
-                        System.out.println("doLib dstFile is not exists, do copy");
+                        println("doLib dstFile is not exists, do copy");
 
                         FileUtil.copyFile(srcFile, dstFile);
                     } catch (IOException e) {
@@ -381,12 +381,12 @@ public class AppActivity extends Cocos2dxActivity {
                     }
                 }else
                 {
-                    System.out.println("doLib dstFile is exists, no need copy");
+                    println("doLib dstFile is exists, no need copy");
                 }
             }
         }else
         {
-            System.out.println("doLib srcFiles is null");
+            println("doLib srcFiles is null");
         }
     }
 
@@ -474,21 +474,24 @@ public class AppActivity extends Cocos2dxActivity {
 
     @Override
     protected void onLoadNativeLibraries() {
-        System.out.println("onLoadNativeLibraries");
+        println("onLoadNativeLibraries");
 
         File internalDir = getFilesDir();
         File externalDir = getExternalFilesDir("");
 
         String path1 = internalDir != null ? internalDir.getAbsolutePath() : "null";
-        String path2 = internalDir != null ? externalDir.getAbsolutePath() : "null";
-        System.out.println("dolib internalDir:" + path1 + ",externalDir:" + path2);
+        String path2 = externalDir != null ? externalDir.getAbsolutePath() : "null";
+        println("dolib internalDir:" + path1 + ",externalDir:" + path2);
 
         copyOriLib();
         copyNewLib();
+        println("onLoadNativeLibraries copy over");
 
         if(IS_ENABLE_LOCAL_SERVER)
         {
             prepareLocalServerDex();
+
+            println("onLoadNativeLibraries server prepare over");
         }
 
 
@@ -500,8 +503,15 @@ public class AppActivity extends Cocos2dxActivity {
             System.load(getFilesDir() + "/libiflyteknet.so");
             System.loadLibrary("cocos2djs");
 
+
+            println("onLoadNativeLibraries over");
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    static void println(String msg)
+    {
+        System.out.println("msg:" + msg + ",time:" + System.currentTimeMillis());
     }
 }
