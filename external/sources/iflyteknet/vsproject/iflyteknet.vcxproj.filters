@@ -53,5 +53,11 @@
     <ClInclude Include="..\src\iflytek\net\Compression.h">
       <Filter>iflytek\net</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\iflytek\net\common_def.h">
+      <Filter>iflytek\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\iflytek\net\logger.h">
+      <Filter>iflytek\net</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
