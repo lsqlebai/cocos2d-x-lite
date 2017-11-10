@@ -26,6 +26,8 @@ package com.iflytek.leagueofglutton;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -369,7 +371,7 @@ public class AppActivity extends Cocos2dxActivity {
 
                 println("doLib dstFile is :" + dstFile.getAbsolutePath());
 
-                if(!dstFile.exists())
+                if(!dstFile.exists() || isAppUpgrade) // 文件不存在或者发生过升级，都需要拷贝
                 {
                     try {
 
@@ -390,35 +392,102 @@ public class AppActivity extends Cocos2dxActivity {
         }
     }
 
-    private void prepareLocalServerDex() {
-        copyDownloadedDex(getExternalFilesDir("download"));
-        File dexFile = new File(DexLoaderManager.getInstance().getExtractedDexPath());
-        if (dexFile.exists()) {
-            return;
+
+    /**
+     * 检测apk合法性
+     * @param archiveFilePath
+     * @return
+     */
+    private boolean checkAPKValid(String archiveFilePath)
+    {
+        boolean result = false;
+        try {
+            PackageManager pm = getPackageManager();
+            Log.e("archiveFilePath", archiveFilePath);
+            PackageInfo info = pm.getPackageArchiveInfo(archiveFilePath,
+                    PackageManager.GET_ACTIVITIES);
+            if (info != null) {
+                result = true;
+            }
+        } catch (Exception e) {
+            result = false;
         }
-        Log.d(TAG, "prepareLocalServerDex: " + dexFile.getPath());
+        return result;
+    }
+
+    private void prepareLocalServerDex() {
+        copyOriDex();
+
+        copyDownloadedDex(getExternalFilesDir("download"));
+    }
+
+    private void copyOriDex()
+    {
+        File dexFile = new File(DexLoaderManager.getInstance().getExtractedDexPath());
+
+        println("dolib copyOriDex: " + dexFile.getPath());
         File destDir = new File(DexLoaderManager.getInstance().getExtractedDexDirPath());
-        destDir.mkdirs();
+
+        if(!destDir.exists())
+        {
+            println("dolib destDir mkdirs");
+            destDir.mkdirs();
+        }
+
         InputStream inputStream = null;
         OutputStream outputStream = null;
         try {
             inputStream = getAssets().open(DexLoaderManager.DEX_FILE_INNER_PATH
                     + DexLoaderManager.DEX_FILE_NAME);
-            outputStream = new FileOutputStream(dexFile);
-            byte[] arrayOfByte = new byte[1024];
-            while (true) {
-                int i = inputStream.read(arrayOfByte);
-                if (i == -1) {
-                    break;
+
+            boolean isCanCopy;
+            if(dexFile.exists()) // 目标文件已经存在，判断文件完整性
+            {
+                if(!checkAPKValid(dexFile.getAbsolutePath())) // apk不完整，重新拷贝
+                {
+                    println("dolib dexFile apk is broken, rewrite");
+                    isCanCopy = true;
+                    dexFile.delete();
+                }else {
+                    isCanCopy = false;
                 }
-                outputStream.write(arrayOfByte, 0, i);
+            }else
+            {
+                isCanCopy = true;
+            }
+
+            if(isAppUpgrade)
+            {
+                isCanCopy = true; // 发生过升级，拷贝
+            }
+
+            if(isCanCopy)
+            {
+                println("dolib dexFile copy ori");
+                outputStream = new FileOutputStream(dexFile);
+                byte[] arrayOfByte = new byte[1024];
+                while (true) {
+                    int i = inputStream.read(arrayOfByte);
+                    if (i == -1) {
+                        break;
+                    }
+                    outputStream.write(arrayOfByte, 0, i);
+                }
                 outputStream.flush();
             }
+
+            println("dolib dexFile copy over,fileSize:" + dexFile.length());
         } catch (IOException e) {
+            println("dolib dexFile copy exception");
             e.printStackTrace();
         } finally {
-            if (inputStream != null) try {
+            if (inputStream != null)
+                try {
                 inputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if(outputStream != null) try {
                 outputStream.close();
             } catch (IOException e) {
                 e.printStackTrace();

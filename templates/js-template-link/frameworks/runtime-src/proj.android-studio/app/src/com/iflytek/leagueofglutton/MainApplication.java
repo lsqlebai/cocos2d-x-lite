@@ -6,7 +6,7 @@ import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
 import com.google.gson.Gson;
-import com.iflytek.leagueofglutton.dex.DexLoaderManager;
+import com.iflytek.ubplib.UBP;
 import com.iflytek.unipay.PayComponent;
 
 import java.io.IOException;

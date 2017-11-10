@@ -102,7 +102,7 @@ public class DexLoaderManager {
 
         try {
             ret = cl.loadClass("com.iflytek.localserver.game.main.ServerMain");
-        } catch (ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             return ret;
