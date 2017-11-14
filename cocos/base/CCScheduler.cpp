@@ -141,6 +141,11 @@ void Timer::update(float dt)
         {
             break;
         }
+        
+        if (_scheduler->isCurrentTargetSalvaged())
+        {
+            break;
+        }
     }
 }
 
@@ -823,6 +828,12 @@ void Scheduler::performFunctionInCocosThread(const std::function<void ()> &funct
     _functionsToPerform.push_back(function);
 
     _performMutex.unlock();
+}
+
+void Scheduler::removeAllFunctionsToBePerformedInCocosThread()
+{
+    std::unique_lock<std::mutex> lock(_performMutex);
+    _functionsToPerform.clear();
 }
 
 // main loop

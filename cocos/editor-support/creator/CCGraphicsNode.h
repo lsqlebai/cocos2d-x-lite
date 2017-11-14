@@ -1,19 +1,19 @@
 
 /****************************************************************************
  Copyright (c) 2016 Chukong Technologies Inc.
- 
+
  http://www.cocos2d-x.org
- 
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
- 
+
  The above copyright notice and this permission notice shall be included in
  all copies or substantial portions of the Software.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -21,7 +21,7 @@
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
- 
+
  ****************************************************************************/
 
 #ifndef __CREATOR_CCGRAPHICSNODE_H__
@@ -74,7 +74,7 @@ public:
     {
         reset();
     }
-    
+
     void reset () {
         dx = 0;
         dy = 0;
@@ -93,6 +93,7 @@ public:
 };
 
 typedef std::vector< VecPoint* > VecPointVector;
+    
 
 struct Path
 {
@@ -104,20 +105,48 @@ struct Path
     bool complex;
 };
 typedef struct Path Path;
+
+class GraphicsBuffer
+{
+public:
+    GraphicsBuffer();
+    ~GraphicsBuffer();
     
+    bool allocVerts(int vertsCount);
+    void allocIndices(int indicesCount);
+    
+    void clear();
+    
+    // verts
+    int nVerts;
+    int vertsOffset;
+    VecVertex* verts;
+    bool vertsDirty;
+    
+    // indices
+    int nIndices;
+    int indicesOffset;
+    GLushort* indices;
+    bool indicesDirty;
+    
+    GLuint buffersVBO[2];
+};
+
 struct Command
 {
     cocos2d::Color4F color;
     float strokeMult;
-        
+    
     int nVerts;
     int vertsOffset;
     int nIndices;
     int indicesOffset;
+    
+    GraphicsBuffer* buffer;
 };
 typedef struct Command Command;
 typedef std::vector< Command* > CommandVector;
-
+    
 
 class CC_DLL GraphicsNode : public cocos2d::Node
 {
@@ -165,7 +194,7 @@ public:
     void roundRect(float x, float y, float w, float h, float r);
     void ellipse(float cx, float cy, float rx, float ry);
     void circle(float cx, float cy, float r);
-    
+
     void fillRect(float x, float y, float w, float h);
 
     void close();
@@ -203,7 +232,7 @@ protected:
 
     static float normalize(float *x, float* y);
     static int curveDivs(float r, float arc, float tol);
-    
+
     static void chooseBevel(int bevel, VecPoint* p0, VecPoint* p1, float w,
                             float* x0, float* y0, float* x1, float* y1);
 
@@ -222,30 +251,26 @@ protected:
 
     void calculateJoins(float w, int lineJoin, float miterLimit);
 
-    void allocVerts(int count);
-    void allocIndices(int count);
+    void allocBuffer();
     
     void vset(float x, float y, float u, float v);
-    
+
     void pushCommand(cocos2d::Color4F& color, float strokeMult, int vertsOffset, int nVerts, int indicesOffset, int nIndices);
-    
+
     void buttCapStart(VecPoint* p, float dx, float dy, float w, float d, float aa);
     void buttCapEnd(VecPoint* p, float dx, float dy, float w, float d, float aa);
     void roundCapStart(VecPoint* p, float dx, float dy, float w, int ncap, float aa);
     void roundCapEnd(VecPoint* p, float dx, float dy, float w, int ncap, float aa);
-    
+
     void roundJoin(VecPoint* p0, VecPoint* p1, float lw, float rw, float lu, float ru, int ncap, float fringe);
     void bevelJoin(VecPoint* p0, VecPoint* p1, float lw, float rw, float lu, float ru, float fringe);
 protected:
 
     cocos2d::CustomCommand _customCommand;
 
-    bool _vertsDirty;
-    bool _indicesDirty;
     bool _needUpdatePathOffset;
 
 
-    GLuint _buffersVBO[2];
     float _ratio;
 
     float _lineWidth;
@@ -254,7 +279,7 @@ protected:
     LineJoin _lineJoin;
     cocos2d::Color4F _strokeColor;
     cocos2d::Color4F _fillColor;
-
+    
     float _fringeWidth;
 
     float _tessTol;
@@ -270,24 +295,18 @@ protected:
     // commands
     int _nCommands;
     CommandVector _commands;
-    
-    
+
+
     // path
     int _nPath;
     int _pathOffset;
     std::vector<Path*> _paths;
     
+    // buffer
+    std::vector<GraphicsBuffer*> _buffers;
+    GraphicsBuffer* _buffer;
+    
     Path* _curPath;
-
-    // verts
-    int _nVerts;
-    int _vertsOffset;
-    VecVertex* _verts;
-
-    // indices
-    int _nIndices;
-    int _indicesOffset;
-    GLushort* _indices;
 };
 
 }

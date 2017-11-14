@@ -430,6 +430,17 @@ public:
      */
     void performFunctionInCocosThread( const std::function<void()> &function);
 
+    /**
+     * Remove all pending functions queued to be performed with Scheduler::performFunctionInCocosThread
+     * Functions unscheduled in this manner will not be executed
+     * This function is thread safe
+     * @since v3.14
+     * @js NA
+     */
+    void removeAllFunctionsToBePerformedInCocosThread();
+    
+    bool isCurrentTargetSalvaged () const { return _currentTargetSalvaged; };
+
 protected:
 
     /** Schedules the 'callback' function for a given target with a given priority.

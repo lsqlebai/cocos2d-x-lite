@@ -19,5 +19,5 @@ protected:
 
 };
 
-bool proxy_http_get(JSContext *cx, uint32_t argc, jsval *vp);
+bool proxy_http_get(JSContext *cx, uint32_t argc, JS::Value *vp);
 #endif

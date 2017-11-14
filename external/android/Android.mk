@@ -69,6 +69,21 @@ endif
 
 include $(PREBUILT_STATIC_LIBRARY)
 
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := cocos_crypto_static
+LOCAL_MODULE_FILENAME := crypto
+LOCAL_SRC_FILES := $(TARGET_ARCH_ABI)/libcrypto.a
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/$(TARGET_ARCH_ABI)/include
+include $(PREBUILT_STATIC_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := cocos_ssl_static
+LOCAL_MODULE_FILENAME := ssl
+LOCAL_SRC_FILES := $(TARGET_ARCH_ABI)/libssl.a
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/$(TARGET_ARCH_ABI)/include
+include $(PREBUILT_STATIC_LIBRARY)
+
 #======================================
 include $(CLEAR_VARS)
 
@@ -84,6 +99,14 @@ include $(PREBUILT_STATIC_LIBRARY)
 #======================================
 include $(CLEAR_VARS)
 
+LOCAL_MODULE := cocos_mozglue_static
+LOCAL_MODULE_FILENAME := mozglue
+LOCAL_SRC_FILES := $(TARGET_ARCH_ABI)/libmozglue.a
+include $(PREBUILT_STATIC_LIBRARY)
+
+#======================================
+include $(CLEAR_VARS)
+
 LOCAL_MODULE := spidermonkey_static
 LOCAL_MODULE_FILENAME := js_static
 LOCAL_SRC_FILES := $(TARGET_ARCH_ABI)/libjs_static.a
@@ -91,7 +114,7 @@ LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/$(TARGET_ARCH_ABI)/include/spidermonkey
 
 LOCAL_CPPFLAGS := -D__STDC_LIMIT_MACROS=1 -Wno-invalid-offsetof
 LOCAL_EXPORT_CPPFLAGS := -D__STDC_LIMIT_MACROS=1 -Wno-invalid-offsetof
-
+LOCAL_STATIC_LIBRARIES += cocos_mozglue_static
 include $(PREBUILT_STATIC_LIBRARY)
 
 #======================================

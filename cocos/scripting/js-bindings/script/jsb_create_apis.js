@@ -197,18 +197,11 @@ _p._ctor = function(tmxFile, resourcePath){
 
 /************************  Actions  *************************/
 
-cc.Speed.prototype._ctor = function(action, speed) {
+cc.Speed.prototype._ctor = function (action, speed) {
     speed !== undefined && this.initWithAction(action, speed);
 };
-
-cc.Follow.prototype._ctor = function (followedNode, rect) {
-    if(followedNode)
-        rect ? this.initWithTarget(followedNode, rect)
-             : this.initWithTarget(followedNode);
-};
-
-cc.OrbitCamera.prototype._ctor = function (t, radius, deltaRadius, angleZ, deltaAngleZ, angleX, deltaAngleX) {
-    deltaAngleX !== undefined && this.initWithDuration(t, radius, deltaRadius, angleZ, deltaAngleZ, angleX, deltaAngleX);
+cc.speed = cc.Speed.create = function (action, speed) {
+    return new cc.Speed(action, speed);
 };
 
 cc.CardinalSplineTo.prototype._ctor = cc.CardinalSplineBy.prototype._ctor = function(duration, points, tension) {
@@ -257,56 +250,6 @@ cc.EaseElasticIn.prototype._ctor = easeElasticCtor;
 cc.EaseElasticOut.prototype._ctor = easeElasticCtor;
 cc.EaseElasticInOut.prototype._ctor = easeElasticCtor;
 
-cc.ReuseGrid.prototype._ctor = function(times) {
-    times !== undefined && this.initWithTimes(times);
-};
-
-var durationCtor = function(duration, gridSize) {
-    gridSize && this.initWithDuration(duration, gridSize);
-};
-
-cc.GridAction.prototype._ctor = durationCtor;
-cc.Grid3DAction.prototype._ctor = durationCtor;
-cc.TiledGrid3DAction.prototype._ctor = durationCtor;
-cc.PageTurn3D.prototype._ctor = durationCtor;
-cc.FadeOutTRTiles.prototype._ctor = durationCtor;
-cc.FadeOutBLTiles.prototype._ctor = durationCtor;
-cc.FadeOutUpTiles.prototype._ctor = durationCtor;
-cc.FadeOutDownTiles.prototype._ctor = durationCtor;
-
-
-cc.Twirl.prototype._ctor = function(duration, gridSize, position, twirls, amplitude) {
-    amplitude !== undefined && this.initWithDuration(duration, gridSize, position, twirls, amplitude);
-};
-
-cc.Waves.prototype._ctor = function(duration, gridSize, waves, amplitude, horizontal, vertical) {
-    vertical !== undefined && this.initWithDuration(duration, gridSize, waves, amplitude, horizontal, vertical);
-};
-
-cc.Liquid.prototype._ctor = function(duration, gridSize, waves, amplitude) {
-    amplitude !== undefined && this.initWithDuration(duration, gridSize, waves, amplitude);
-};
-
-cc.Shaky3D.prototype._ctor = function(duration, gridSize, range, shakeZ) {
-    shakeZ !== undefined && this.initWithDuration(duration, gridSize, range, shakeZ);
-};
-
-cc.Ripple3D.prototype._ctor = function(duration, gridSize, position, radius, waves, amplitude) {
-    amplitude !== undefined && this.initWithDuration(duration, gridSize, position, radius, waves, amplitude);
-};
-
-cc.Lens3D.prototype._ctor = function(duration, gridSize, position, radius) {
-    radius !== undefined && this.initWithDuration(duration, gridSize, position, radius);
-};
-
-cc.FlipY3D.prototype._ctor = cc.FlipX3D.prototype._ctor = function(duration) {
-    duration !== undefined && this.initWithDuration(duration, cc.size(1, 1));
-};
-
-cc.Waves3D.prototype._ctor = function(duration, gridSize, waves, amplitude) {
-    amplitude !== undefined && this.initWithDuration(duration, gridSize, waves, amplitude);
-};
-
 cc.RemoveSelf.prototype._ctor = function(isNeedCleanUp) {
     isNeedCleanUp !== undefined && cc.RemoveSelf.prototype.init.call(this, isNeedCleanUp);
 };
@@ -330,10 +273,19 @@ cc.Place.prototype._ctor = function(pos, y) {
 };
 
 cc.CallFunc.prototype._ctor = function(selector, selectorTarget, data) {
-    if(selector !== undefined){
-        if(selectorTarget === undefined)
+    if (selector !== undefined) {
+        if (selectorTarget === undefined) {
             this.initWithFunction(selector);
-        else this.initWithFunction(selector, selectorTarget, data);
+        }
+        else {
+            var callback = selector;
+            if (data !== undefined) {
+                callback = function (sender) {
+                    selector.call(this, sender, data);
+                }
+            }
+            this.initWithFunction(callback, selectorTarget);
+        }
     }
 };
 
@@ -342,44 +294,88 @@ cc.ActionInterval.prototype._ctor = function(d) {
 };
 
 cc.Sequence.prototype._ctor = function(...args) {
-    var paramArray = (args[0] instanceof Array) ? args[0] : args;
-    var last = paramArray.length - 1;
-    if ((last >= 0) && (paramArray[last] == null))
+    var actions = (args[0] instanceof Array) ? args[0] : args;
+    var last = actions.length - 1;
+    if ((last >= 0) && (actions[last] == null))
         cc.log('parameters should not be ending with null in Javascript');
 
-    if (last >= 0) {
-        var prev = paramArray[0];
+    if (last >= 1) {
+        var prev = actions[0];
         for (var i = 1; i < last; i++) {
-            if (paramArray[i]) {
-                prev = cc.Sequence.create(prev, paramArray[i]);
+            if (actions[i]) {
+                prev = new cc.Sequence(prev, actions[i]);
             }
         }
-        this.initWithTwoActions(prev, paramArray[last]);
+        this.initWithTwoActions(prev, actions[last]);
+    }
+};
+cc.sequence = cc.Sequence.create = function (...args) {
+    var actions = (args[0] instanceof Array) ? args[0] : args;
+    var last = actions.length - 1;
+    if ((last >= 0) && (actions[last] == null))
+        cc.log('parameters should not be ending with null in Javascript');
+
+    if (last >= 1) {
+        var prev = actions[0];
+        for (var i = 1; i < last; i++) {
+            if (actions[i]) {
+                prev = new cc.Sequence(prev, actions[i]);
+            }
+        }
+        return new cc.Sequence(prev, actions[last]);
+    }
+    else {
+        return null;
     }
 };
 
-cc.Repeat.prototype._ctor = function(action, times) {
+cc.Repeat.prototype._ctor = function (action, times) {
     times !== undefined && this.initWithAction(action, times);
 };
-
-cc.RepeatForever.prototype._ctor = function(action) {
-    action !== undefined && this.initWithAction(action);
+cc.repeat = cc.Repeat.create = function (action, times) {
+    return new cc.Repeat(action, times);
 };
 
-cc.Spawn.prototype._ctor = function(...args) {
-    var paramArray = (args[0] instanceof Array) ? args[0] : args;
-    var last = paramArray.length - 1;
-    if ((last >= 0) && (paramArray[last] == null))
+cc.RepeatForever.prototype._ctor = function (action) {
+    action !== undefined && this.initWithAction(action);
+};
+cc.repeatForever = cc.RepeatForever.create = function (action) {
+    return new cc.RepeatForever(action);
+};
+
+cc.Spawn.prototype._ctor = function (...args) {
+    var actions = (args[0] instanceof Array) ? args[0] : args;
+    var last = actions.length - 1;
+    if ((last >= 0) && (actions[last] == null))
         cc.log('parameters should not be ending with null in Javascript');
 
-    if (last >= 0) {
-        var prev = paramArray[0];
+    if (last >= 1) {
+        var prev = actions[0];
         for (var i = 1; i < last; i++) {
-            if (paramArray[i]) {
-                prev = cc.Spawn.create(prev, paramArray[i]);
+            if (actions[i]) {
+                prev = new cc.Spawn(prev, actions[i]);
             }
         }
-        this.initWithTwoActions(prev, paramArray[last]);
+        this.initWithTwoActions(prev, actions[last]);
+    }
+};
+cc.spawn = cc.Spawn.create = function (...args) {
+    var actions = (args[0] instanceof Array) ? args[0] : args;
+    var last = actions.length - 1;
+    if ((last >= 0) && (actions[last] == null))
+        cc.log('parameters should not be ending with null in Javascript');
+
+    if (last >= 1) {
+        var prev = actions[0];
+        for (var i = 1; i < last; i++) {
+            if (actions[i]) {
+                prev = new cc.Spawn(prev, actions[i]);
+            }
+        }
+        return new cc.Spawn(prev, actions[last]);
+    }
+    else {
+        return null;
     }
 };
 
@@ -459,80 +455,12 @@ cc.ReverseTime.prototype._ctor = function(action) {
     action && this.initWithAction(action);
 };*/
 
-cc.Animate.prototype._ctor = function(animation) {
-    animation && this.initWithAnimation(animation);
-};
-
-cc.TargetedAction.prototype._ctor = function(target, action) {
+cc.TargetedAction.prototype._ctor = function (target, action) {
     action && this.initWithTarget(target, action);
 };
-
-cc.ProgressTo.prototype._ctor = function(duration, percent) {
-    percent !== undefined && this.initWithDuration(duration, percent);
+cc.targetedAction = cc.TargetedAction.create = function (target, action) {
+    return new cc.TargetedAction(target, action);
 };
-
-cc.ProgressFromTo.prototype._ctor = function(duration, fromPercentage, toPercentage) {
-    toPercentage !== undefined && this.initWithDuration(duration, fromPercentage, toPercentage);
-};
-
-cc.SplitCols.prototype._ctor = cc.SplitRows.prototype._ctor = function(duration, rowsCols) {
-    rowsCols !== undefined && this.initWithDuration(duration, rowsCols);
-};
-
-cc.JumpTiles3D.prototype._ctor = function(duration, gridSize, numberOfJumps, amplitude) {
-    amplitude !== undefined && this.initWithDuration(duration, gridSize, numberOfJumps, amplitude);
-};
-
-cc.WavesTiles3D.prototype._ctor = function(duration, gridSize, waves, amplitude) {
-    amplitude !== undefined && this.initWithDuration(duration, gridSize, waves, amplitude);
-};
-
-cc.TurnOffTiles.prototype._ctor = function(duration, gridSize, seed) {
-    if (gridSize !== undefined) {
-        seed = seed || 0;
-        this.initWithDuration(duration, gridSize, seed);
-    }
-};
-
-cc.ShakyTiles3D.prototype._ctor = function(duration, gridSize, range, shakeZ) {
-    shakeZ !== undefined && this.initWithDuration(duration, gridSize, range, shakeZ);
-};
-
-cc.ShatteredTiles3D.prototype._ctor = function(duration, gridSize, range, shatterZ) {
-    shatterZ !== undefined && this.initWithDuration(duration, gridSize, range, shatterZ);
-};
-
-cc.ShuffleTiles.prototype._ctor = function(duration, gridSize, seed) {
-    seed !== undefined && this.initWithDuration(duration, gridSize, seed);
-};
-
-cc.ActionTween.prototype._ctor = function(duration, key, from, to) {
-    to !== undefined && this.initWithDuration(duration, key, from, to);
-};
-
-cc.Animation.prototype._ctor = function(frames, delay, loops) {
-    if (frames === undefined) {
-        this.init();
-    } else {
-        var frame0 = frames[0];
-        delay = delay === undefined ? 0 : delay;
-        loops = loops === undefined ? 1 : loops;
-        if(frame0){
-            if (frame0 instanceof cc.SpriteFrame) {
-                //init with sprite frames , delay and loops.
-                this.initWithSpriteFrames(frames, delay, loops);
-            }else if(frame0 instanceof cc.AnimationFrame) {
-                //init with sprite frames , delay and loops.
-                this.initWithAnimationFrames(frames, delay, loops);
-            }
-        }
-    }
-};
-
-cc.AnimationFrame.prototype._ctor = function(spriteFrame, delayUnits, userInfo) {
-    delayUnits !== undefined && this.initWithSpriteFrame(spriteFrame, delayUnits, userInfo);
-};
-
 
 /************************  Nodes  *************************/
 

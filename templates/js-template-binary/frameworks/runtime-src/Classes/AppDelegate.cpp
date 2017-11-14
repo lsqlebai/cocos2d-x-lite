@@ -59,9 +59,9 @@ bool AppDelegate::applicationDidFinishLaunching()
     auto glview = director->getOpenGLView();
     if(!glview) {
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
-        glview = GLViewImpl::create("raphael");
+        glview = GLViewImpl::create("HelloJavascript");
 #else
-        glview = GLViewImpl::createWithRect("raphael", Rect(0,0,900,640));
+        glview = GLViewImpl::createWithRect("HelloJavascript", Rect(0,0,900,640));
 #endif
         director->setOpenGLView(glview);
     }
@@ -76,13 +76,10 @@ bool AppDelegate::applicationDidFinishLaunching()
     sc->addRegisterCallback(register_all_anysdk_framework);
     sc->addRegisterCallback(register_all_anysdk_manual);
 #endif
+    ScriptEngineManager::getInstance()->setScriptEngine(sc);
     sc->start();
     sc->runScript("script/jsb_boot.js");
-#if defined(COCOS2D_DEBUG) && (COCOS2D_DEBUG > 0)
-    sc->enableDebugger();
-#endif
-    ScriptEngineManager::getInstance()->setScriptEngine(sc);
-    ScriptingCore::getInstance()->runScript("main.js");
+    sc->runScript("main.js");
     
     return true;
 }

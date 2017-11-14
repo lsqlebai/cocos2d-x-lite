@@ -184,7 +184,53 @@ storage/local-storage/LocalStorage-android.cpp \
 ../external/sources/poly2tri/sweep/cdt.cc \
 ../external/sources/poly2tri/sweep/sweep_context.cc \
 ../external/sources/poly2tri/sweep/sweep.cc \
-../external/sources/clipper/clipper.cpp
+../external/sources/clipper/clipper.cpp \
+../external/sources/Box2D/Collision/Shapes/b2ChainShape.cpp \
+../external/sources/Box2D/Collision/Shapes/b2CircleShape.cpp \
+../external/sources/Box2D/Collision/Shapes/b2EdgeShape.cpp \
+../external/sources/Box2D/Collision/Shapes/b2PolygonShape.cpp \
+../external/sources/Box2D/Collision/b2BroadPhase.cpp \
+../external/sources/Box2D/Collision/b2CollideCircle.cpp \
+../external/sources/Box2D/Collision/b2CollideEdge.cpp \
+../external/sources/Box2D/Collision/b2CollidePolygon.cpp \
+../external/sources/Box2D/Collision/b2Collision.cpp \
+../external/sources/Box2D/Collision/b2Distance.cpp \
+../external/sources/Box2D/Collision/b2DynamicTree.cpp \
+../external/sources/Box2D/Collision/b2TimeOfImpact.cpp \
+../external/sources/Box2D/Common/b2BlockAllocator.cpp \
+../external/sources/Box2D/Common/b2Draw.cpp \
+../external/sources/Box2D/Common/b2Math.cpp \
+../external/sources/Box2D/Common/b2Settings.cpp \
+../external/sources/Box2D/Common/b2StackAllocator.cpp \
+../external/sources/Box2D/Common/b2Timer.cpp \
+../external/sources/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp \
+../external/sources/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp \
+../external/sources/Box2D/Dynamics/Contacts/b2CircleContact.cpp \
+../external/sources/Box2D/Dynamics/Contacts/b2Contact.cpp \
+../external/sources/Box2D/Dynamics/Contacts/b2ContactSolver.cpp \
+../external/sources/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp \
+../external/sources/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp \
+../external/sources/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp \
+../external/sources/Box2D/Dynamics/Contacts/b2PolygonContact.cpp \
+../external/sources/Box2D/Dynamics/Joints/b2DistanceJoint.cpp \
+../external/sources/Box2D/Dynamics/Joints/b2FrictionJoint.cpp \
+../external/sources/Box2D/Dynamics/Joints/b2GearJoint.cpp \
+../external/sources/Box2D/Dynamics/Joints/b2Joint.cpp \
+../external/sources/Box2D/Dynamics/Joints/b2MotorJoint.cpp \
+../external/sources/Box2D/Dynamics/Joints/b2MouseJoint.cpp \
+../external/sources/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp \
+../external/sources/Box2D/Dynamics/Joints/b2PulleyJoint.cpp \
+../external/sources/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp \
+../external/sources/Box2D/Dynamics/Joints/b2RopeJoint.cpp \
+../external/sources/Box2D/Dynamics/Joints/b2WeldJoint.cpp \
+../external/sources/Box2D/Dynamics/Joints/b2WheelJoint.cpp \
+../external/sources/Box2D/Dynamics/b2Body.cpp \
+../external/sources/Box2D/Dynamics/b2ContactManager.cpp \
+../external/sources/Box2D/Dynamics/b2Fixture.cpp \
+../external/sources/Box2D/Dynamics/b2Island.cpp \
+../external/sources/Box2D/Dynamics/b2World.cpp \
+../external/sources/Box2D/Dynamics/b2WorldCallbacks.cpp \
+../external/sources/Box2D/Rope/b2Rope.cpp \
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH) \
                     $(LOCAL_PATH)/platform \
@@ -204,6 +250,8 @@ LOCAL_EXPORT_LDLIBS := -lGLESv2 \
                        -landroid
 
 LOCAL_STATIC_LIBRARIES := cocos_freetype2_static
+LOCAL_STATIC_LIBRARIES += spine_static
+LOCAL_STATIC_LIBRARIES += creator_static
 LOCAL_STATIC_LIBRARIES += cocos_png_static
 LOCAL_STATIC_LIBRARIES += cocos_jpeg_static
 LOCAL_STATIC_LIBRARIES += cocos_tiff_static
@@ -234,21 +282,19 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := cocos2dx_static
 LOCAL_MODULE_FILENAME := libcocos2d
 
-LOCAL_STATIC_LIBRARIES := cocostudio_static
-LOCAL_STATIC_LIBRARIES += cocosbuilder_static
+LOCAL_STATIC_LIBRARIES := audioengine_static
+LOCAL_STATIC_LIBRARIES += cocos_network_static
+LOCAL_STATIC_LIBRARIES += cocos_ui_static
 LOCAL_STATIC_LIBRARIES += spine_static
 LOCAL_STATIC_LIBRARIES += dragonbones_static
 LOCAL_STATIC_LIBRARIES += creator_static
-LOCAL_STATIC_LIBRARIES += cocos_network_static
-LOCAL_STATIC_LIBRARIES += audioengine_static
+LOCAL_STATIC_LIBRARIES += cocos2dx_internal_static
 
 include $(BUILD_STATIC_LIBRARY)
 
 #==============================================================
 #$(call import-module,.)
 $(call import-module,android)
-$(call import-module,editor-support/cocostudio)
-$(call import-module,editor-support/cocosbuilder)
 $(call import-module,editor-support/dragonbones/proj.android)
 $(call import-module,editor-support/spine)
 $(call import-module,editor-support/creator)

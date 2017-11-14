@@ -509,6 +509,20 @@ float
 },
 
 /**
+ * @method draw
+ * @param {cc.Renderer} arg0
+ * @param {mat4_object} arg1
+ * @param {unsigned int} arg2
+ */
+draw : function (
+renderer, 
+mat4, 
+int 
+)
+{
+},
+
+/**
  * @method bezierCurveTo
  * @param {float} arg0
  * @param {float} arg1
@@ -721,6 +735,456 @@ create : function (
  * @constructor
  */
 GraphicsNode : function (
+)
+{
+},
+
+};
+
+/**
+ * @class PhysicsDebugDraw
+ */
+cc.PhysicsDebugDraw = {
+
+/**
+ * @method getDrawer
+ * @return {creator::GraphicsNode}
+ */
+getDrawer : function (
+)
+{
+    return creator::GraphicsNode;
+},
+
+/**
+ * @method ClearDraw
+ */
+ClearDraw : function (
+)
+{
+},
+
+/**
+ * @method AddDrawerToNode
+ * @param {cc.Node} arg0
+ */
+AddDrawerToNode : function (
+node 
+)
+{
+},
+
+/**
+ * @method PhysicsDebugDraw
+ * @constructor
+ */
+PhysicsDebugDraw : function (
+)
+{
+},
+
+};
+
+/**
+ * @class PhysicsWorldManifoldWrapper
+ */
+cc.PhysicsWorldManifoldWrapper = {
+
+/**
+ * @method getSeparation
+ * @param {int} arg0
+ * @return {float}
+ */
+getSeparation : function (
+int 
+)
+{
+    return 0;
+},
+
+/**
+ * @method getX
+ * @param {int} arg0
+ * @return {float}
+ */
+getX : function (
+int 
+)
+{
+    return 0;
+},
+
+/**
+ * @method getY
+ * @param {int} arg0
+ * @return {float}
+ */
+getY : function (
+int 
+)
+{
+    return 0;
+},
+
+/**
+ * @method getCount
+ * @return {int}
+ */
+getCount : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method getNormalY
+ * @return {float}
+ */
+getNormalY : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method getNormalX
+ * @return {float}
+ */
+getNormalX : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method PhysicsWorldManifoldWrapper
+ * @constructor
+ */
+PhysicsWorldManifoldWrapper : function (
+)
+{
+},
+
+};
+
+/**
+ * @class PhysicsUtils
+ */
+cc.PhysicsUtils = {
+
+/**
+ * @method addB2Body
+ * @param {b2Body} arg0
+ */
+addB2Body : function (
+b2body 
+)
+{
+},
+
+/**
+ * @method syncNode
+ */
+syncNode : function (
+)
+{
+},
+
+/**
+ * @method removeB2Body
+ * @param {b2Body} arg0
+ */
+removeB2Body : function (
+b2body 
+)
+{
+},
+
+/**
+ * @method getContactManifoldWrapper
+ * @param {b2Contact} arg0
+ * @return {creator::PhysicsManifoldWrapper}
+ */
+getContactManifoldWrapper : function (
+b2contact 
+)
+{
+    return creator::PhysicsManifoldWrapper;
+},
+
+/**
+ * @method getContactWorldManifoldWrapper
+ * @param {b2Contact} arg0
+ * @return {creator::PhysicsWorldManifoldWrapper}
+ */
+getContactWorldManifoldWrapper : function (
+b2contact 
+)
+{
+    return creator::PhysicsWorldManifoldWrapper;
+},
+
+/**
+ * @method PhysicsUtils
+ * @constructor
+ */
+PhysicsUtils : function (
+)
+{
+},
+
+};
+
+/**
+ * @class PhysicsContactImpulse
+ */
+cc.PhysicsContactImpulse = {
+
+/**
+ * @method getCount
+ * @return {int}
+ */
+getCount : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method getNormalImpulse
+ * @param {int} arg0
+ * @return {float}
+ */
+getNormalImpulse : function (
+int 
+)
+{
+    return 0;
+},
+
+/**
+ * @method getTangentImpulse
+ * @param {int} arg0
+ * @return {float}
+ */
+getTangentImpulse : function (
+int 
+)
+{
+    return 0;
+},
+
+/**
+ * @method PhysicsContactImpulse
+ * @constructor
+ */
+PhysicsContactImpulse : function (
+)
+{
+},
+
+};
+
+/**
+ * @class PhysicsContactListener
+ */
+cc.PhysicsContactListener = {
+
+/**
+ * @method unregisterContactFixture
+ * @param {b2Fixture} arg0
+ */
+unregisterContactFixture : function (
+b2fixture 
+)
+{
+},
+
+/**
+ * @method registerContactFixture
+ * @param {b2Fixture} arg0
+ */
+registerContactFixture : function (
+b2fixture 
+)
+{
+},
+
+/**
+ * @method PhysicsContactListener
+ * @constructor
+ */
+PhysicsContactListener : function (
+)
+{
+},
+
+};
+
+/**
+ * @class PhysicsAABBQueryCallback
+ */
+cc.PhysicsAABBQueryCallback = {
+
+/**
+ * @method init
+* @param {b2Vec2} b2vec2
+*/
+init : function(
+b2vec2 
+)
+{
+},
+
+/**
+ * @method getFixture
+ * @return {b2Fixture}
+ */
+getFixture : function (
+)
+{
+    return b2Fixture;
+},
+
+/**
+ * @method PhysicsAABBQueryCallback
+ * @constructor
+ */
+PhysicsAABBQueryCallback : function (
+)
+{
+},
+
+};
+
+/**
+ * @class PhysicsRayCastCallback
+ */
+cc.PhysicsRayCastCallback = {
+
+/**
+ * @method getType
+ * @return {int}
+ */
+getType : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method init
+ * @param {int} arg0
+ */
+init : function (
+int 
+)
+{
+},
+
+/**
+ * @method getFractions
+ * @return {Array}
+ */
+getFractions : function (
+)
+{
+    return new Array();
+},
+
+/**
+ * @method PhysicsRayCastCallback
+ * @constructor
+ */
+PhysicsRayCastCallback : function (
+)
+{
+},
+
+};
+
+/**
+ * @class CameraNode
+ */
+cc.CameraNode = {
+
+/**
+ * @method removeTarget
+ * @param {cc.Node} arg0
+ */
+removeTarget : function (
+node 
+)
+{
+},
+
+/**
+ * @method setTransform
+ * @param {float} arg0
+ * @param {float} arg1
+ * @param {float} arg2
+ * @param {float} arg3
+ * @param {float} arg4
+ * @param {float} arg5
+ */
+setTransform : function (
+float, 
+float, 
+float, 
+float, 
+float, 
+float 
+)
+{
+},
+
+/**
+ * @method getVisibleRect
+ * @return {rect_object}
+ */
+getVisibleRect : function (
+)
+{
+    return cc.Rect;
+},
+
+/**
+ * @method containsNode
+ * @param {cc.Node} arg0
+ * @return {bool}
+ */
+containsNode : function (
+node 
+)
+{
+    return false;
+},
+
+/**
+ * @method addTarget
+ * @param {cc.Node} arg0
+ */
+addTarget : function (
+node 
+)
+{
+},
+
+/**
+ * @method getInstance
+ * @return {creator::CameraNode}
+ */
+getInstance : function (
+)
+{
+    return creator::CameraNode;
+},
+
+/**
+ * @method CameraNode
+ * @constructor
+ */
+CameraNode : function (
 )
 {
 },

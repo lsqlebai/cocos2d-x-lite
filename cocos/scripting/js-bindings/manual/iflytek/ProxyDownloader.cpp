@@ -199,12 +199,12 @@ void JSDownloaderDelegatorEx::startDownload() {
 
 
 // jsb.downloadFile(url, proxy, function(succeed, result) {}, fuction(totalBytesReceived, totalBytesExpected) {})
-bool js_download(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_download(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
 	JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
 	JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
 	if (argc != 3 && argc != 4) {
-		JS_ReportError(cx, "js_download : wrong number of arguments");
+		JS_ReportErrorUTF8(cx, "js_download : wrong number of arguments");
 		return false;
 	}
 

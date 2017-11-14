@@ -35,6 +35,7 @@
 #define KEY_VERSION_URL         "remoteVersionUrl"
 #define KEY_GROUP_VERSIONS      "groupVersions"
 #define KEY_ENGINE_VERSION      "engineVersion"
+#define KEY_UPDATING            "updating"
 #define KEY_ASSETS              "assets"
 #define KEY_COMPRESSED_FILES    "compressedFiles"
 #define KEY_SEARCH_PATHS        "searchPaths"
@@ -73,6 +74,7 @@ static int cmpVersion(const std::string& v1, const std::string& v2)
 Manifest::Manifest(const std::string& manifestUrl/* = ""*/)
 : _versionLoaded(false)
 , _loaded(false)
+, _updating(false)
 , _manifestRoot("")
 , _remoteManifestUrl("")
 , _remoteVersionUrl("")
@@ -82,7 +84,23 @@ Manifest::Manifest(const std::string& manifestUrl/* = ""*/)
     // Init variables
     _fileUtils = FileUtils::getInstance();
     if (manifestUrl.size() > 0)
-        parse(manifestUrl);
+        parseFile(manifestUrl);
+}
+
+Manifest::Manifest(const std::string& content, const std::string& manifestRoot)
+: _versionLoaded(false)
+, _loaded(false)
+, _updating(false)
+, _manifestRoot("")
+, _remoteManifestUrl("")
+, _remoteVersionUrl("")
+, _version("")
+, _engineVer("")
+{
+    // Init variables
+    _fileUtils = FileUtils::getInstance();
+    if (content.size() > 0)
+        parseJSONString(content, manifestRoot);
 }
 
 void Manifest::loadJson(const std::string& url)
@@ -100,16 +118,28 @@ void Manifest::loadJson(const std::string& url)
         }
         else
         {
-            // Parse file with rapid json
-            _json.Parse<0>(content.c_str());
-            // Print error
-            if (_json.HasParseError()) {
-                size_t offset = _json.GetErrorOffset();
-                if (offset > 0)
-                    offset--;
-                std::string errorSnippet = content.substr(offset, 10);
-                CCLOG("File parse error %d at <%s>\n", _json.GetParseError(), errorSnippet.c_str());
-            }
+            loadJsonFromString(content);
+        }
+    }
+}
+
+void Manifest::loadJsonFromString(const std::string& content)
+{
+    if (content.size() == 0)
+    {
+        CCLOG("Fail to parse empty json content.");
+    }
+    else
+    {
+        // Parse file with rapid json
+        _json.Parse<0>(content.c_str());
+        // Print error
+        if (_json.HasParseError()) {
+            size_t offset = _json.GetErrorOffset();
+            if (offset > 0)
+                offset--;
+            std::string errorSnippet = content.substr(offset, 10);
+            CCLOG("File parse error %d at <%s>\n", _json.GetParseError(), errorSnippet.c_str());
         }
     }
 }
@@ -124,7 +154,7 @@ void Manifest::parseVersion(const std::string& versionUrl)
     }
 }
 
-void Manifest::parse(const std::string& manifestUrl)
+void Manifest::parseFile(const std::string& manifestUrl)
 {
     loadJson(manifestUrl);
 	
@@ -140,6 +170,18 @@ void Manifest::parse(const std::string& manifestUrl)
     }
 }
 
+void Manifest::parseJSONString(const std::string& content, const std::string& manifestRoot)
+{
+    loadJsonFromString(content);
+    
+    if (!_json.HasParseError() && _json.IsObject())
+    {
+        // Register the local manifest root
+        _manifestRoot = manifestRoot;
+        loadManifest(_json);
+    }
+}
+
 bool Manifest::isVersionLoaded() const
 {
     return _versionLoaded;
@@ -147,6 +189,22 @@ bool Manifest::isVersionLoaded() const
 bool Manifest::isLoaded() const
 {
     return _loaded;
+}
+
+void Manifest::setUpdating(bool updating)
+{
+    if (_loaded && _json.IsObject())
+    {
+        if (_json.HasMember(KEY_UPDATING) && _json[KEY_UPDATING].IsBool())
+        {
+            _json[KEY_UPDATING].SetBool(updating);
+        }
+        else
+        {
+            _json.AddMember<bool>(KEY_UPDATING, updating, _json.GetAllocator());
+        }
+        _updating = updating;
+    }
 }
 
 bool Manifest::versionEquals(const Manifest *b) const
@@ -487,6 +545,12 @@ void Manifest::loadVersion(const rapidjson::Document &json)
     if ( json.HasMember(KEY_ENGINE_VERSION) && json[KEY_ENGINE_VERSION].IsString() )
     {
         _engineVer = json[KEY_ENGINE_VERSION].GetString();
+    }
+    
+    // Retrieve updating flag
+    if ( json.HasMember(KEY_UPDATING) && json[KEY_UPDATING].IsBool() )
+    {
+        _updating = json[KEY_UPDATING].GetBool();
     }
     
     _versionLoaded = true;

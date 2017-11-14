@@ -1,7 +1,7 @@
 /****************************************************************************
  Copyright (c) 2010-2012 cocos2d-x.org
  Copyright (c) 2012 James Chen
- Copyright (c) 2013-2015 zilongshanren
+ Copyright (c) 2013-2017 zilongshanren
 
  http://www.cocos2d-x.org
 
@@ -27,6 +27,12 @@
 
 #define kLabelZOrder  9999
 
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+#define PASSWORD_CHAR "*"
+#else
+#define PASSWORD_CHAR "\u25CF"
+#endif
+
 #include "UIEditBox.h"
 #include "base/CCDirector.h"
 #include "2d/CCLabel.h"
@@ -47,7 +53,8 @@ EditBoxImplCommon::EditBoxImplCommon(EditBox* pEditText)
 , _keyboardReturnType(EditBox::KeyboardReturnType::DEFAULT)
 , _colText(Color3B::WHITE)
 , _colPlaceHolder(Color3B::GRAY)
-, _maxLength(-1)
+, _maxLength(-1),
+_editingMode(false)
 {
 }
 
@@ -126,7 +133,7 @@ void EditBoxImplCommon::setInactiveText(const char* pText)
     {
         std::string passwordString;
         for(int i = 0; i < strlen(pText); ++i)
-            passwordString.append("\u25CF");
+            passwordString.append(PASSWORD_CHAR);
         _label->setString(passwordString);
     }
     else
@@ -218,23 +225,27 @@ void EditBoxImplCommon::setReturnType(EditBox::KeyboardReturnType returnType)
 void EditBoxImplCommon::refreshInactiveText()
 {
     setInactiveText(_text.c_str());
-    if(_text.empty())
-    {
-        _label->setVisible(false);
-        _labelPlaceHolder->setVisible(true);
-    }
-    else
-    {
-        _label->setVisible(true);
-        _labelPlaceHolder->setVisible(false);
+    if (!_editingMode) {
+        if(_text.empty())
+        {
+            _label->setVisible(false);
+            _labelPlaceHolder->setVisible(true);
+        }
+        else
+        {
+            _label->setVisible(true);
+            _labelPlaceHolder->setVisible(false);
+        }
     }
 }
 
 void EditBoxImplCommon::setText(const char* text)
 {
-    this->setNativeText(text);
-    _text = text;
-    refreshInactiveText();
+    if (nullptr != text) {
+        this->setNativeText(text);
+        _text = text;
+        refreshInactiveText();
+    }
 }
 
 const char*  EditBoxImplCommon::getText()
@@ -242,13 +253,13 @@ const char*  EditBoxImplCommon::getText()
     return _text.c_str();
 }
 
-void EditBoxImplCommon::setPlaceHolder(const char* pText)
+void EditBoxImplCommon::setPlaceHolder(const char* text)
 {
-    if (pText != NULL)
+    if (nullptr != text)
     {
-        _placeHolder = pText;
+        _placeHolder = text;
+        this->setNativePlaceHolder(text);
         _labelPlaceHolder->setString(_placeHolder);
-        this->setNativePlaceHolder(pText);
     }
 }
 
@@ -295,6 +306,7 @@ void EditBoxImplCommon::openKeyboard()
 {
     _label->setVisible(false);
     _labelPlaceHolder->setVisible(false);
+    _editingMode = true;
     this->setNativeVisible(true);
     this->nativeOpenKeyboard();
 }
@@ -302,10 +314,12 @@ void EditBoxImplCommon::openKeyboard()
 void EditBoxImplCommon::closeKeyboard()
 {
     this->nativeCloseKeyboard();
+    _editingMode = false;
 }
 
 void EditBoxImplCommon::onEndEditing(const std::string& text)
 {
+    _editingMode = false;
     this->setNativeVisible(false);
     refreshInactiveText();
 }

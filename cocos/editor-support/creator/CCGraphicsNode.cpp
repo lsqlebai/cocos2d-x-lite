@@ -1,19 +1,19 @@
 
 /****************************************************************************
  Copyright (c) 2016 Chukong Technologies Inc.
- 
+
  http://www.cocos2d-x.org
- 
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
- 
+
  The above copyright notice and this permission notice shall be included in
  all copies or substantial portions of the Software.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -21,7 +21,7 @@
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
- 
+
  ****************************************************************************/
 
 #include "CCGraphicsNode.h"
@@ -48,11 +48,67 @@
 
 #define EPSILON 0.0000000001f
 
+#define MAX_BUFFER_SIZE 65535
+
 USING_NS_CC;
 
 namespace creator {
 
+GraphicsBuffer::GraphicsBuffer()
+: vertsDirty(false)
+, indicesDirty(false)
+, vertsOffset(0)
+, nVerts(VECTOR_INIT_VERTS_SIZE)
+, indicesOffset(0)
+, nIndices(VECTOR_INIT_VERTS_SIZE*3)
+{
+    verts = (VecVertex*)malloc(sizeof(VecVertex) * nVerts);
+    indices = (GLushort*)malloc(sizeof(GLushort) * nIndices);
+    
+    glGenBuffers(2, buffersVBO);
+}
+    
+GraphicsBuffer::~GraphicsBuffer()
+{
+    CC_SAFE_DELETE(verts);
+    CC_SAFE_DELETE(indices);
+}
+    
+bool GraphicsBuffer::allocVerts(int vertsCount)
+{
+    int dnverts = vertsOffset + vertsCount;
+    if (dnverts > MAX_BUFFER_SIZE) {
+        return false;
+    }
+        
+    if (dnverts > nVerts) {
+        while (dnverts > nVerts) {
+            nVerts *= 2;
+        }
+        verts = (VecVertex*)realloc(verts, sizeof(VecVertex) * nVerts);
+    }
+    
+    return true;
+}
+    
+void GraphicsBuffer::allocIndices(int indicesCount)
+{
+    int dnIndices = indicesOffset + indicesCount;
+    
+    if (dnIndices > nIndices) {
+        while (dnIndices > nIndices) {
+            nIndices *= 2;
+        }
+        indices = (GLushort*)realloc(indices, sizeof(GLushort) * nIndices);
+    }
+}
 
+void GraphicsBuffer::clear()
+{
+    vertsOffset = 0;
+    indicesOffset = 0;
+}
+    
 GraphicsNode* GraphicsNode::create()
 {
     GraphicsNode * ret = new (std::nothrow) GraphicsNode();
@@ -66,31 +122,25 @@ GraphicsNode* GraphicsNode::create()
 }
 
 GraphicsNode::GraphicsNode()
-: _vertsDirty(false)
-, _indicesDirty(false)
-, _needUpdatePathOffset(false)
+: _needUpdatePathOffset(false)
 , _lineWidth(1)
 , _lineCap(CAP_BUTT)
 , _lineJoin(JOIN_MITER)
 , _nPoints(0)
 , _nPath(0)
 , _pathOffset(0)
-, _vertsOffset(0)
-, _nVerts(VECTOR_INIT_VERTS_SIZE)
-, _indicesOffset(0)
-, _nIndices(VECTOR_INIT_VERTS_SIZE*3)
+
 , _nCommands(0)
 , _curPath(nullptr)
+    
+, _buffer(nullptr)
 {
     _miterLimit = 10.0f;
-    
+
     setDeviceRatio(1);
 
     _strokeColor = Color4F::BLACK;
     _fillColor = Color4F::WHITE;
-
-    _verts = (VecVertex*)malloc(sizeof(VecVertex) * _nVerts);
-    _indices = (GLushort*)malloc(sizeof(GLushort) * _nIndices);
 
     auto glprogram = GLProgram::createWithByteArrays(ccGraphicsVert, ccGraphicsFrag);
     auto glprogramstate = GLProgramState::getOrCreateWithGLProgram(glprogram);
@@ -98,7 +148,6 @@ GraphicsNode::GraphicsNode()
     // shader state
     setGLProgramState(glprogramstate);
 
-    glGenBuffers(2, _buffersVBO);
 
     CHECK_GL_ERROR_DEBUG();
 }
@@ -140,7 +189,7 @@ void GraphicsNode::bezierCurveTo(float c1x, float c1y, float c2x, float c2y, flo
     }
 
     tesselateBezier(last->x,last->y, c1x,c1y, c2x,c2y, x,y, 0, PT_CORNER);
-    
+
     _commandx = x;
     _commandy = y;
 }
@@ -267,7 +316,7 @@ void GraphicsNode::rect(float x, float y, float w, float h)
     lineTo(x+w, y+h);
     lineTo(x+w, y);
     close();
-    
+
     _curPath->complex = false;
 }
 
@@ -290,7 +339,7 @@ void GraphicsNode::roundRect(float x, float y, float w, float h, float r)
         lineTo(x+rx, y);
         bezierCurveTo(x+rx*(1-VECTOR_KAPPA90), y, x, y+ry*(1-VECTOR_KAPPA90), x, y+ry);
         close();
-        
+
         _curPath->complex = false;
     }
 }
@@ -304,7 +353,7 @@ void GraphicsNode::ellipse(float cx, float cy, float rx, float ry)
     bezierCurveTo(cx-rx*VECTOR_KAPPA90, cy-ry, cx-rx, cy-ry*VECTOR_KAPPA90, cx-rx, cy);
 
     close();
-    
+
     _curPath->complex = false;
 }
 
@@ -312,17 +361,17 @@ void GraphicsNode::circle(float cx, float cy, float r)
 {
     int divs = curveDivs(r, PI_2, _tessTol);
     float step = PI_2 / divs;
-    
+
     moveTo(cx, cy + r);
-    
+
     for (int i = 1; i < divs; i++) {
         float angle = step * i;
         float x = r * sin(angle);
         float y = r * cos(angle);
-        
+
         lineTo(cx + x, cy + y);
     }
-    
+
     close();
     _curPath->complex = false;
 }
@@ -349,11 +398,11 @@ void GraphicsNode::stroke()
     float strokeWidth = _lineWidth * scale;
 
     flattenPaths();
-
+    
     expandStroke(strokeWidth*0.5f + _fringeWidth*0.5f, _lineCap, _lineJoin, _miterLimit);
 
-    _vertsDirty = true;
-    _indicesDirty = true;
+    _buffer->vertsDirty = true;
+    _buffer->indicesDirty = true;
     _needUpdatePathOffset = true;
 }
 
@@ -363,8 +412,8 @@ void GraphicsNode::fill()
 
     expandFill(_fringeWidth, JOIN_MITER, 2.4f);
 
-    _vertsDirty = true;
-    _indicesDirty = true;
+    _buffer->vertsDirty = true;
+    _buffer->indicesDirty = true;
     _needUpdatePathOffset = true;
 }
 
@@ -376,30 +425,41 @@ void GraphicsNode::clear(bool clean)
             _paths.pop_back();
             delete path;
         }
-        
+
         for (int i = (int)_points.size() - 1; i >=0; i--) {
             VecPoint* p = _points[i];
             _points.pop_back();
             delete p;
         }
-        
-        CC_SAFE_DELETE(_verts);
-        CC_SAFE_DELETE(_indices);
 
-        for(auto&& it : _commands) {
-            delete it;
+        for (int i = (int)_commands.size() - 1; i >=0; i--) {
+            Command* c = _commands[i];
+            _commands.pop_back();
+            delete c;
         }
-        _commands.clear();
+        
+        for (int i = (int)_buffers.size() - 1; i >=0; i--) {
+            GraphicsBuffer* b = _buffers[i];
+            _buffers.pop_back();
+            delete b;
+        }
+        
+        _buffer = nullptr;
     }
-    
+    else if (_buffers.size() > 0) {
+        for (int i = (int)_buffers.size() - 1; i >=0; i--) {
+            GraphicsBuffer* b = _buffers[i];
+            b->clear();
+        }
+        
+        _buffer = _buffers[0];
+    }
+
     _nPoints = 0;
-    
+
     _nPath = 0;
     _pathOffset = 0;
 
-    _vertsOffset = 0;
-    _indicesOffset = 0;
-    
     _curPath = nullptr;
     
     _nCommands = 0;
@@ -515,7 +575,7 @@ void GraphicsNode::addPoint(Path* path, float x, float y, int flags)
             return;
         }
     }
-    
+
     _nPoints ++;
     if (_nPoints > _points.size()) {
         pt = new VecPoint(x, y);
@@ -527,7 +587,7 @@ void GraphicsNode::addPoint(Path* path, float x, float y, int flags)
         pt->x = x;
         pt->y = y;
     }
-    
+
     pt->flags = (unsigned char)flags;
     path->points.push_back(pt);
 }
@@ -537,23 +597,23 @@ Path* GraphicsNode::addPath()
     if (!(_curPath && _curPath->points.size() <= 1)) {
         _nPath ++;
     }
-    
+
     Path* path = nullptr;
-    
-    
+
+
     if (_nPath > _paths.size()) {
         path = new Path();
         _paths.push_back(path);
     }
     else {
-        
+
         path = _paths[_nPath - 1];
         path->points.clear();
     }
 
     path->closed = false;
     path->complex = true;
-    
+
     _curPath = path;
 
     return path;
@@ -590,12 +650,16 @@ void GraphicsNode::expandStroke(float w, int lineCap, int lineJoin, float miterL
         }
     }
 
-    allocVerts(cverts);
-    allocIndices((cverts - 2*(_nPath-_pathOffset)) * 3);
+    if (!_buffer || !_buffer->allocVerts(cverts)) {
+        allocBuffer();
+        _buffer->allocVerts(cverts);
+    }
+    
+    _buffer->allocIndices((cverts - 2*(_nPath-_pathOffset)) * 3);
     
     for (i = _pathOffset; i < _nPath; i++) {
-        VecVertex* verts = _verts + _vertsOffset;
-        int offset = _vertsOffset;
+        VecVertex* verts = _buffer->verts + _buffer->vertsOffset;
+        int offset = _buffer->vertsOffset;
         
         Path* path = _paths[i];
 
@@ -669,18 +733,18 @@ void GraphicsNode::expandStroke(float w, int lineCap, int lineJoin, float miterL
             else if (lineCap == CAP_ROUND)
                 roundCapEnd(p1, dx, dy, w, ncap, aa);
         }
-        
+
         // stroke indices
-        int indicesOffset = _indicesOffset;
-        
-        for (int start = offset+2, end = _vertsOffset; start < end; start++) {
-            _indices[_indicesOffset++] = start - 2;
-            _indices[_indicesOffset++] = start - 1;
-            _indices[_indicesOffset++] = start;
+        int indicesOffset = _buffer->indicesOffset;
+
+        for (int start = offset+2, end = _buffer->vertsOffset; start < end; start++) {
+            _buffer->indices[_buffer->indicesOffset++] = start - 2;
+            _buffer->indices[_buffer->indicesOffset++] = start - 1;
+            _buffer->indices[_buffer->indicesOffset++] = start;
         }
-        
+
         float strokeMult = (_lineWidth*0.5f + _fringeWidth*0.5f) / _fringeWidth;
-        pushCommand(_strokeColor, strokeMult, offset, _vertsOffset - offset, indicesOffset, _indicesOffset - indicesOffset);
+        pushCommand(_strokeColor, strokeMult, offset, _buffer->vertsOffset - offset, indicesOffset, _buffer->indicesOffset - indicesOffset);
     }
 }
 
@@ -705,15 +769,18 @@ void GraphicsNode::expandFill(float w, int lineJoin, float miterLimit)
         }
     }
 
-    allocVerts(cverts);
+    if (!_buffer || !_buffer->allocVerts(cverts)) {
+        allocBuffer();
+        _buffer->allocVerts(cverts);
+    }
 
     convex = _nPath == 1 && _paths[_pathOffset]->convex;
 
     for (i = _pathOffset; i < _nPath; i++) {
         Path* path = _paths[i];
-        
-        VecVertex* verts = _verts + _vertsOffset;
-        int offset = _vertsOffset;
+
+        VecVertex* verts = _buffer->verts + _buffer->vertsOffset;
+        int offset = _buffer->vertsOffset;
         
         VecPointVector& pts = path->points;
         int pathSize = (int)pts.size();
@@ -724,7 +791,7 @@ void GraphicsNode::expandFill(float w, int lineJoin, float miterLimit)
 
         // Calculate shape vertices.
         woff = 0.5f*aa;
-        
+
         if (fringe) {
             // Looping
             p0 = pts[pathSize-1];
@@ -750,7 +817,7 @@ void GraphicsNode::expandFill(float w, int lineJoin, float miterLimit)
                 } else {
                     vset(p1->x + (p1->dmx * woff), p1->y + (p1->dmy * woff), 0.5f,1);
                 }
-                
+
                 if (j < (pathSize - 1)) {
                     p0 = p1;
                     p1 = pts[j + 1];
@@ -762,57 +829,57 @@ void GraphicsNode::expandFill(float w, int lineJoin, float miterLimit)
             }
         }
         
-        int nVerts = _vertsOffset - offset;
-        int indicesOffset = _indicesOffset;
+        int nVerts = _buffer->vertsOffset - offset;
+        int indicesOffset = _buffer->indicesOffset;
         
         if (path->complex) {
             // indices
             std::vector<int> indices;
-            Triangulate::process(verts, 0, _vertsOffset - offset, indices);
+            Triangulate::process(verts, 0, _buffer->vertsOffset - offset, indices);
             int nIndices = (int)indices.size();
-            
-            allocIndices(nIndices);
+
+            _buffer->allocIndices(nIndices);
             
             for (j = 0; j < nIndices; j++) {
-                _indices[j + _indicesOffset] = indices[j] + offset;
+                _buffer->indices[j + _buffer->indicesOffset] = indices[j] + offset;
             }
             
-            _indicesOffset += nIndices;
+            _buffer->indicesOffset += nIndices;
         }
         else {
-            allocIndices((nVerts - 2) * 3);
+            _buffer->allocIndices((nVerts - 2) * 3);
             
             int first = offset;
-            for (int start = offset+2, end = _vertsOffset; start < end; start++) {
-                _indices[_indicesOffset++] = first;
-                _indices[_indicesOffset++] = start - 1;
-                _indices[_indicesOffset++] = start;
+            for (int start = offset+2, end = _buffer->vertsOffset; start < end; start++) {
+                _buffer->indices[_buffer->indicesOffset++] = first;
+                _buffer->indices[_buffer->indicesOffset++] = start - 1;
+                _buffer->indices[_buffer->indicesOffset++] = start;
             }
         }
-        
-        pushCommand(_fillColor, 1, offset, _vertsOffset - offset, indicesOffset, _indicesOffset - indicesOffset);
+
+        pushCommand(_fillColor, 1, offset, _buffer->vertsOffset - offset, indicesOffset, _buffer->indicesOffset - indicesOffset);
         
         // Calculate fringe
         if (fringe) {
-            verts = _verts + _vertsOffset;
-            offset = _vertsOffset;
+            verts = _buffer->verts + _buffer->vertsOffset;
+            offset = _buffer->vertsOffset;
             
             float lw = w + woff;
             float rw = w - woff;
             float lu = 0;
             float ru = 1;
-            
+
             // Create only half a fringe for convex shapes so that
             // the shape can be rendered without stenciling.
             if (convex) {
                 lw = woff;    // This should generate the same vertex as fill inset above.
                 lu = 0.5f;    // Set outline fade at middle.
             }
-            
+
             // Looping
             p0 = pts[pathSize-1];
             p1 = pts[0];
-            
+
             for (j = 0; j < pathSize; ++j) {
                 if ((p1->flags & (PT_BEVEL | PT_INNERBEVEL)) != 0) {
                     bevelJoin(p0, p1, lw, rw, lu, ru, _fringeWidth);
@@ -826,24 +893,24 @@ void GraphicsNode::expandFill(float w, int lineJoin, float miterLimit)
                     p1 = pts[j + 1];
                 }
             }
-            
+
             // Loop it
             vset(verts[0].x, verts[0].y, lu,1);
             vset(verts[1].x, verts[1].y, ru,1);
-            
+
             // fill stroke indices
-            nVerts = _vertsOffset - offset;
-            indicesOffset = _indicesOffset;
+            nVerts = _buffer->vertsOffset - offset;
+            indicesOffset = _buffer->indicesOffset;
             
-            allocIndices((nVerts - 2) * 3);
+            _buffer->allocIndices((nVerts - 2) * 3);
             
-            for (int start = offset+2, end = _vertsOffset; start < end; start++) {
-                _indices[_indicesOffset++] = start - 2;
-                _indices[_indicesOffset++] = start - 1;
-                _indices[_indicesOffset++] = start;
+            for (int start = offset+2, end = _buffer->vertsOffset; start < end; start++) {
+                _buffer->indices[_buffer->indicesOffset++] = start - 2;
+                _buffer->indices[_buffer->indicesOffset++] = start - 1;
+                _buffer->indices[_buffer->indicesOffset++] = start;
             }
-            
-            pushCommand(_fillColor, 1, offset, nVerts, indicesOffset, _indicesOffset - indicesOffset);
+
+            pushCommand(_fillColor, 1, offset, nVerts, indicesOffset, _buffer->indicesOffset - indicesOffset);
         }
     }
 }
@@ -854,7 +921,7 @@ void GraphicsNode::flattenPaths()
         _nPath --;
         _curPath = _nPath > 0 ? _paths[_nPath - 1] : nullptr;
     }
-    
+
     for (int i = _pathOffset; i < _nPath; i++) {
         Path* path = _paths[i];
         VecPointVector& pts = path->points;
@@ -957,61 +1024,53 @@ void GraphicsNode::calculateJoins(float w, int lineJoin, float miterLimit)
     }
 }
 
-void GraphicsNode::allocVerts(int count)
+void GraphicsNode::allocBuffer()
 {
-    int nverts = _vertsOffset + count;
-    
-    if (nverts > _nVerts) {
-        while (nverts > _nVerts) {
-            _nVerts *= 2;
+    if (_buffer) {
+        const auto iterator = std::find(_buffers.begin(), _buffers.end(), _buffer);
+        if (iterator != _buffers.end() && (*iterator) != _buffers.back()) {
+            _buffer = *(iterator+1);
+            return;
         }
-        _verts = (VecVertex*)realloc(_verts, sizeof(VecVertex) * _nVerts);
     }
+    
+    GraphicsBuffer* buffer = new GraphicsBuffer();
+    _buffer = buffer;
+    _buffers.push_back(buffer);
 }
 
-void GraphicsNode::allocIndices(int count)
-{
-    int nIndices = _indicesOffset + count;
     
-    if (nIndices > _nIndices) {
-        while (nIndices > _nIndices) {
-            _nIndices *= 2;
-        }
-        _indices = (GLushort*)realloc(_indices, sizeof(GLushort) * _nIndices);
-    }
-}
-
-
 void GraphicsNode::vset(float x, float y, float u, float v)
 {
-    VecVertex* vtx = &_verts[_vertsOffset];
-    
+    VecVertex* vtx = &_buffer->verts[_buffer->vertsOffset];
+
     vtx->x = x;
     vtx->y = y;
     vtx->u = u;
     vtx->v = v;
     
-    _vertsOffset ++;
+    _buffer->vertsOffset ++;
 }
-    
+
 void GraphicsNode::pushCommand(cocos2d::Color4F& color, float strokeMult, int vertsOffset, int nVerts, int indicesOffset, int nIndices)
 {
     Command* lastCmd = nullptr;
     if (_commands.size() >= _nCommands && _nCommands > 0) {
         lastCmd = _commands[_nCommands - 1];
     }
-    
+
     if (lastCmd &&
         ((lastCmd->vertsOffset + lastCmd->nVerts) == vertsOffset) &&
         ((lastCmd->indicesOffset + lastCmd->nIndices) == indicesOffset) &&
         lastCmd->color.equals(color) &&
-        lastCmd->strokeMult == strokeMult) {
+        lastCmd->strokeMult == strokeMult &&
+        lastCmd->buffer == _buffer) {
         lastCmd->nVerts += nVerts;
         lastCmd->nIndices += nIndices;
     }
     else {
         Command* cmd;
-            
+
         _nCommands ++;
         if (_nCommands > _commands.size()) {
             cmd = new Command();
@@ -1020,13 +1079,14 @@ void GraphicsNode::pushCommand(cocos2d::Color4F& color, float strokeMult, int ve
         else {
             cmd = _commands[_nCommands - 1];
         }
-        
+
         cmd->color = color;
         cmd->strokeMult = strokeMult;
         cmd->vertsOffset = vertsOffset;
         cmd->nVerts = nVerts;
         cmd->indicesOffset = indicesOffset;
         cmd->nIndices = nIndices;
+        cmd->buffer = _buffer;
     }
 }
 
@@ -1061,7 +1121,7 @@ void GraphicsNode::roundCapStart(VecPoint* p, float dx, float dy, float w, int n
     float py = p->y;
     float dlx = dy;
     float dly = -dx;
-    
+
     for (i = 0; i < ncap; i++) {
         float a = i/(float)(ncap-1) * PI;
         float ax = cosf(a) * w, ay = sinf(a) * w;
@@ -1079,7 +1139,7 @@ void GraphicsNode::roundCapEnd(VecPoint* p, float dx, float dy, float w, int nca
     float py = p->y;
     float dlx = dy;
     float dly = -dx;
-    
+
     vset(px + dlx*w, py + dly*w, 0,1);
     vset(px - dlx*w, py - dly*w, 1,1);
     for (i = 0; i < ncap; i++) {
@@ -1097,17 +1157,17 @@ void GraphicsNode::roundJoin(VecPoint* p0, VecPoint* p1, float lw, float rw, flo
     float dly0 = -p0->dx;
     float dlx1 = p1->dy;
     float dly1 = -p1->dx;
-    
+
     if (p1->flags & PT_LEFT) {
         float lx0,ly0,lx1,ly1,a0,a1;
         chooseBevel(p1->flags & PT_INNERBEVEL, p0, p1, lw, &lx0,&ly0, &lx1,&ly1);
         a0 = atan2f(-dly0, -dlx0);
         a1 = atan2f(-dly1, -dlx1);
         if (a1 > a0) a1 -= PI_2;
-        
+
         vset(lx0, ly0, lu,1);
         vset(p1->x - dlx0*rw, p1->y - dly0*rw, ru,1);
-        
+
         n = clampi((int)ceilf(((a0 - a1) / PI) * ncap), 2, ncap);
         for (i = 0; i < n; i++) {
             float u = i/(float)(n-1);
@@ -1117,20 +1177,20 @@ void GraphicsNode::roundJoin(VecPoint* p0, VecPoint* p1, float lw, float rw, flo
             vset(p1->x, p1->y, 0.5f,1);
             vset(rx, ry, ru,1);
         }
-        
+
         vset(lx1, ly1, lu,1);
         vset(p1->x - dlx1*rw, p1->y - dly1*rw, ru,1);
-        
+
     } else {
         float rx0,ry0,rx1,ry1,a0,a1;
         chooseBevel(p1->flags & PT_INNERBEVEL, p0, p1, -rw, &rx0,&ry0, &rx1,&ry1);
         a0 = atan2f(dly0, dlx0);
         a1 = atan2f(dly1, dlx1);
         if (a1 < a0) a1 += PI_2;
-        
+
         vset(p1->x + dlx0*rw, p1->y + dly0*rw, lu,1);
         vset(rx0, ry0, ru,1);
-        
+
         n = clampi((int)ceilf(((a1 - a0) / PI) * ncap), 2, ncap);
         for (i = 0; i < n; i++) {
             float u = i/(float)(n-1);
@@ -1140,10 +1200,10 @@ void GraphicsNode::roundJoin(VecPoint* p0, VecPoint* p1, float lw, float rw, flo
             vset(lx, ly, lu,1);
             vset(p1->x, p1->y, 0.5f,1);
         }
-        
+
         vset(p1->x + dlx1*rw, p1->y + dly1*rw, lu,1);
         vset(rx1, ry1, ru,1);
-        
+
     }
 }
 
@@ -1156,62 +1216,62 @@ void GraphicsNode::bevelJoin(VecPoint* p0, VecPoint* p1, float lw, float rw, flo
     float dly0 = -p0->dx;
     float dlx1 = p1->dy;
     float dly1 = -p1->dx;
-    
+
     if (p1->flags & PT_LEFT) {
         chooseBevel(p1->flags & PT_INNERBEVEL, p0, p1, lw, &lx0,&ly0, &lx1,&ly1);
-        
+
         vset(lx0, ly0, lu,1);
         vset(p1->x - dlx0*rw, p1->y - dly0*rw, ru,1);
-        
+
 //        if (p1->flags & PT_BEVEL) {
 //            vset(lx0, ly0, lu,1);
 //            vset(p1->x - dlx0*rw, p1->y - dly0*rw, ru,1);
-//            
+//
 //            vset(lx1, ly1, lu,1);
 //            vset(p1->x - dlx1*rw, p1->y - dly1*rw, ru,1);
 //        } else {
 //            rx0 = p1->x - p1->dmx * rw;
 //            ry0 = p1->y - p1->dmy * rw;
-//            
+//
 //            vset(p1->x, p1->y, 0.5f,1);
 //            vset(p1->x - dlx0*rw, p1->y - dly0*rw, ru,1);
-//            
+//
 //            vset(rx0, ry0, ru,1);
 //            vset(rx0, ry0, ru,1);
-//            
+//
 //            vset(p1->x, p1->y, 0.5f,1);
 //            vset(p1->x - dlx1*rw, p1->y - dly1*rw, ru,1);
 //        }
-        
+
         vset(lx1, ly1, lu,1);
         vset(p1->x - dlx1*rw, p1->y - dly1*rw, ru,1);
-        
+
     } else {
         chooseBevel(p1->flags & PT_INNERBEVEL, p0, p1, -rw, &rx0,&ry0, &rx1,&ry1);
-        
+
         vset(p1->x + dlx0*lw, p1->y + dly0*lw, lu,1);
         vset(rx0, ry0, ru,1);
-        
+
 //        if (p1->flags & PT_BEVEL) {
 //            vset(p1->x + dlx0*lw, p1->y + dly0*lw, lu,1);
 //            vset(rx0, ry0, ru,1);
-//            
+//
 //            vset(p1->x + dlx1*lw, p1->y + dly1*lw, lu,1);
 //            vset(rx1, ry1, ru,1);
 //        } else {
 //            lx0 = p1->x + p1->dmx * lw;
 //            ly0 = p1->y + p1->dmy * lw;
-//            
+//
 //            vset(p1->x + dlx0*lw, p1->y + dly0*lw, lu,1);
 //            vset(p1->x, p1->y, 0.5f,1);
-//            
+//
 //            vset(lx0, ly0, lu,1);
 //            vset(lx0, ly0, lu,1);
-//            
+//
 //            vset(p1->x + dlx1*lw, p1->y + dly1*lw, lu,1);
 //            vset(p1->x, p1->y, 0.5f,1);
 //        }
-        
+
         vset(p1->x + dlx1*lw, p1->y + dly1*lw, lu,1);
         vset(rx1, ry1, ru,1);
     }
@@ -1228,41 +1288,43 @@ void GraphicsNode::draw(Renderer *renderer, const Mat4 &transform, uint32_t flag
 
 void GraphicsNode::onDraw(const Mat4 &transform, uint32_t flags)
 {
-    if (!_verts || _nCommands <=0) return;
-    
+    if (_nCommands <=0) return;
+
     auto program = getGLProgram();
     program->use();
     program->setUniformsForBuiltins(transform);
 
     glBlendFunc(BlendFunc::ALPHA_NON_PREMULTIPLIED.src, BlendFunc::ALPHA_NON_PREMULTIPLIED.dst);
 
-    glBindBuffer(GL_ARRAY_BUFFER, _buffersVBO[0]);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _buffersVBO[1]);
-
-    if (_vertsDirty) {
-        glBufferData(GL_ARRAY_BUFFER, sizeof(VecVertex) * _vertsOffset, _verts, GL_DYNAMIC_DRAW);
-
-        _vertsDirty = false;
-    }
     
-    if (_indicesDirty) {
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(_indices[0]) * _indicesOffset, _indices, GL_STREAM_DRAW);
-        
-        _indicesDirty = false;
-    }
-
-    GL::enableVertexAttribs(GL::VERTEX_ATTRIB_FLAG_POSITION | GL::VERTEX_ATTRIB_FLAG_TEX_COORD);
-
-    glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_POSITION, 2, GL_FLOAT, GL_FALSE, sizeof(VecVertex), (const GLvoid*)(size_t)0);
-    glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_TEX_COORD, 2, GL_FLOAT, GL_FALSE, sizeof(VecVertex), (const GLvoid*)(0 + 2*sizeof(float)));
-
-
     GLint colorLocation = program->getUniformLocation("color");
     GLint strokeMultLocation = program->getUniformLocation("strokeMult");
-
+    
     // draw paths
     for (int i = 0; i < _nCommands; i++) {
         Command* cmd = _commands[i];
+        
+        GraphicsBuffer* buffer = cmd->buffer;
+        
+        glBindBuffer(GL_ARRAY_BUFFER, buffer->buffersVBO[0]);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer->buffersVBO[1]);
+        
+        if (buffer->vertsDirty) {
+            glBufferData(GL_ARRAY_BUFFER, sizeof(VecVertex) * buffer->vertsOffset, buffer->verts, GL_DYNAMIC_DRAW);
+            
+            buffer->vertsDirty = false;
+        }
+        
+        if (buffer->indicesDirty) {
+            glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(buffer->indices[0]) * buffer->indicesOffset, buffer->indices, GL_STREAM_DRAW);
+            
+            buffer->indicesDirty = false;
+        }
+        
+        GL::enableVertexAttribs(GL::VERTEX_ATTRIB_FLAG_POSITION | GL::VERTEX_ATTRIB_FLAG_TEX_COORD);
+        
+        glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_POSITION, 2, GL_FLOAT, GL_FALSE, sizeof(VecVertex), (const GLvoid*)(size_t)0);
+        glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_TEX_COORD, 2, GL_FLOAT, GL_FALSE, sizeof(VecVertex), (const GLvoid*)(0 + 2*sizeof(float)));
         
         if (cmd->nIndices) {
             Color4F& color = cmd->color;
@@ -1274,7 +1336,7 @@ void GraphicsNode::onDraw(const Mat4 &transform, uint32_t flags)
             CC_INCREMENT_GL_DRAWN_BATCHES_AND_VERTICES(1, cmd->nVerts);
         }
     }
-
+    
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 

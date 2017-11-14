@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -15,6 +15,7 @@
     <ProjectGuid>{98A51BA8-FC3A-415B-AC8F-8C7BD464E93E}</ProjectGuid>
     <RootNamespace>cocos2d-x.win32</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -24,6 +25,8 @@
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v120_xp</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0'">v140</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v140_xp</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0'">v140</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v140_xp</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -32,6 +35,8 @@
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v120_xp</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0'">v140</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v140_xp</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0'">v140</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v140_xp</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -76,7 +81,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\include;$(EngineRoot)extensions;$(EngineRoot);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_USRDLL;_DEBUG;_WINDOWS;_LIB;COCOS2DXWIN32_EXPORTS;GL_GLEXT_PROTOTYPES;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_USE3DDLL;_EXPORT_DLL_;_USRSTUDIODLL;_USREXDLL;_USEGUIDLL;CC_ENABLE_CHIPMUNK_INTEGRATION=1;PROTOBUF_USE_DLLS;LIBPROTOBUF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_USRDLL;_DEBUG;_WINDOWS;_LIB;COCOS2DXWIN32_EXPORTS;GL_GLEXT_PROTOTYPES;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_USE3DDLL;_EXPORT_DLL_;_USRSTUDIODLL;_USREXDLL;_USEGUIDLL;PROTOBUF_USE_DLLS;LIBPROTOBUF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -103,7 +108,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\win32\libs\Debug\*.*" "$(OutDir)"</Comm
       <ImportLibrary>$(TargetDir)$(TargetName).lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
       <ModuleDefinitionFile>cocos2d.def</ModuleDefinitionFile>
-      <AdditionalDependencies>sqlite3.lib;libcurl_imp.lib;websockets.lib;libmpg123.lib;libogg.lib;libvorbis.lib;libvorbisfile.lib;OpenAL32.lib;version.lib;libwebp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sqlite3.lib;libcrypto.lib;libssl.lib;libcurl.lib;websockets.lib;libmpg123.lib;libogg.lib;libvorbis.lib;libvorbisfile.lib;OpenAL32.lib;version.lib;libwebp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -117,7 +122,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\win32\libs\Debug\*.*" "$(OutDir)"</Comm
     </PreBuildEvent>
     <ClCompile>
       <AdditionalIncludeDirectories>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\include;$(EngineRoot)cocos\editor-support;$(EngineRoot)extensions;$(EngineRoot)external\win32\include\zlib;$(EngineRoot)external\win32\include\freetype2;$(EngineRoot);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_USRDLL;NDEBUG;_WINDOWS;_LIB;COCOS2DXWIN32_EXPORTS;GL_GLEXT_PROTOTYPES;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_USE3DDLL;_EXPORT_DLL_;_USRSTUDIODLL;_USREXDLL;_USEGUIDLL;CC_ENABLE_CHIPMUNK_INTEGRATION=1;PROTOBUF_USE_DLLS;LIBPROTOBUF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_USRDLL;NDEBUG;_WINDOWS;_LIB;COCOS2DXWIN32_EXPORTS;GL_GLEXT_PROTOTYPES;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_USE3DDLL;_EXPORT_DLL_;_USRSTUDIODLL;_USREXDLL;_USEGUIDLL;PROTOBUF_USE_DLLS;LIBPROTOBUF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>
       </PrecompiledHeader>
@@ -135,7 +140,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\win32\libs\*.*" "$(OutDir)"
 </Command>
     </PreLinkEvent>
     <Link>
-      <AdditionalDependencies>sqlite3.lib;libcurl_imp.lib;websockets.lib;libmpg123.lib;libogg.lib;libvorbis.lib;libvorbisfile.lib;OpenAL32.lib;version.lib;libwebp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sqlite3.lib;libcrypto.lib;libssl.lib;libcurl.lib;websockets.lib;libmpg123.lib;libogg.lib;libvorbis.lib;libvorbisfile.lib;OpenAL32.lib;version.lib;libwebp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
       <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>LIBCMTD.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -189,6 +194,10 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\win32\libs\*.*" "$(OutDir)"
     <ClCompile Include="..\..\external\sources\xxhash\xxhash.c" />
     <ClCompile Include="..\audio\AudioEngine.cpp" />
     <ClCompile Include="..\audio\win32\AudioCache.cpp" />
+    <ClCompile Include="..\audio\win32\AudioDecoder.cpp" />
+    <ClCompile Include="..\audio\win32\AudioDecoderManager.cpp" />
+    <ClCompile Include="..\audio\win32\AudioDecoderMp3.cpp" />
+    <ClCompile Include="..\audio\win32\AudioDecoderOgg.cpp" />
     <ClCompile Include="..\audio\win32\AudioEngine-win32.cpp" />
     <ClCompile Include="..\audio\win32\AudioPlayer.cpp" />
     <ClCompile Include="..\audio\win32\MciPlayer.cpp" />
@@ -301,8 +310,17 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\win32\libs\*.*" "$(OutDir)"
     <ClCompile Include="..\editor-support\cocostudio\CocoStudio.cpp" />
     <ClCompile Include="..\editor-support\cocostudio\DictionaryHelper.cpp" />
     <ClCompile Include="..\editor-support\cocostudio\WidgetCallBackHandlerProtocol.cpp" />
+    <ClCompile Include="..\editor-support\creator\CCCameraNode.cpp" />
     <ClCompile Include="..\editor-support\creator\CCGraphicsNode.cpp" />
     <ClCompile Include="..\editor-support\creator\CCScale9Sprite.cpp" />
+    <ClCompile Include="..\editor-support\creator\physics\CCPhysicsAABBQueryCallback.cpp" />
+    <ClCompile Include="..\editor-support\creator\physics\CCPhysicsContactImpulse.cpp" />
+    <ClCompile Include="..\editor-support\creator\physics\CCPhysicsContactListener.cpp" />
+    <ClCompile Include="..\editor-support\creator\physics\CCPhysicsDebugDraw.cpp" />
+    <ClCompile Include="..\editor-support\creator\physics\CCPhysicsManifoldWrapper.cpp" />
+    <ClCompile Include="..\editor-support\creator\physics\CCPhysicsRayCastCallback.cpp" />
+    <ClCompile Include="..\editor-support\creator\physics\CCPhysicsUtils.cpp" />
+    <ClCompile Include="..\editor-support\creator\physics\CCPhysicsWorldManifoldWrapper.cpp" />
     <ClCompile Include="..\editor-support\creator\Triangulate.cpp" />
     <ClCompile Include="..\math\CCAffineTransform.cpp" />
     <ClCompile Include="..\math\CCGeometry.cpp" />
@@ -318,7 +336,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\win32\libs\*.*" "$(OutDir)"
     <ClCompile Include="..\network\CCDownloader.cpp" />
     <ClCompile Include="..\network\HttpClient.cpp" />
     <ClCompile Include="..\network\SocketIO.cpp" />
-    <ClCompile Include="..\network\WebSocket.cpp" />
+    <ClCompile Include="..\network\Uri.cpp" />
+    <ClCompile Include="..\network\WebSocket-libwebsockets.cpp" />
     <ClCompile Include="..\platform\CCFileUtils.cpp" />
     <ClCompile Include="..\platform\CCGLView.cpp" />
     <ClCompile Include="..\platform\CCImage.cpp" />
@@ -363,6 +382,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\win32\libs\*.*" "$(OutDir)"
     <ClCompile Include="..\ui\UIButton.cpp" />
     <ClCompile Include="..\ui\UIAbstractCheckButton.cpp" />
     <ClCompile Include="..\ui\UICheckBox.cpp" />
+    <ClCompile Include="..\ui\UIEditBox\UIEditBoxImpl-common.cpp" />
     <ClCompile Include="..\ui\UIRadioButton.cpp" />
     <ClCompile Include="..\ui\UIEditBox\UIEditBox.cpp" />
     <ClCompile Include="..\ui\UIEditBox\UIEditBoxImpl-win32.cpp" />
@@ -513,7 +533,12 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\win32\libs\*.*" "$(OutDir)"
     <ClInclude Include="..\audio\include\Export.h" />
     <ClInclude Include="..\audio\include\SimpleAudioEngine.h" />
     <ClInclude Include="..\audio\win32\AudioCache.h" />
+    <ClInclude Include="..\audio\win32\AudioDecoder.h" />
+    <ClInclude Include="..\audio\win32\AudioDecoderManager.h" />
+    <ClInclude Include="..\audio\win32\AudioDecoderMp3.h" />
+    <ClInclude Include="..\audio\win32\AudioDecoderOgg.h" />
     <ClInclude Include="..\audio\win32\AudioEngine-win32.h" />
+    <ClInclude Include="..\audio\win32\AudioMacros.h" />
     <ClInclude Include="..\audio\win32\AudioPlayer.h" />
     <ClInclude Include="..\audio\win32\MciPlayer.h" />
     <ClInclude Include="..\base\base64.h" />
@@ -645,8 +670,18 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\win32\libs\*.*" "$(OutDir)"
     <ClInclude Include="..\editor-support\cocostudio\CSParse3DBinary_generated.h" />
     <ClInclude Include="..\editor-support\cocostudio\DictionaryHelper.h" />
     <ClInclude Include="..\editor-support\cocostudio\WidgetCallBackHandlerProtocol.h" />
+    <ClInclude Include="..\editor-support\creator\CCCameraNode.h" />
     <ClInclude Include="..\editor-support\creator\CCGraphicsNode.h" />
     <ClInclude Include="..\editor-support\creator\CCScale9Sprite.h" />
+    <ClInclude Include="..\editor-support\creator\physics\CCPhysicsAABBQueryCallback.h" />
+    <ClInclude Include="..\editor-support\creator\physics\CCPhysicsContactImpulse.h" />
+    <ClInclude Include="..\editor-support\creator\physics\CCPhysicsContactListener.h" />
+    <ClInclude Include="..\editor-support\creator\physics\CCPhysicsDebugDraw.h" />
+    <ClInclude Include="..\editor-support\creator\physics\CCPhysicsDefine.h" />
+    <ClInclude Include="..\editor-support\creator\physics\CCPhysicsManifoldWrapper.h" />
+    <ClInclude Include="..\editor-support\creator\physics\CCPhysicsRayCastCallback.h" />
+    <ClInclude Include="..\editor-support\creator\physics\CCPhysicsUtils.h" />
+    <ClInclude Include="..\editor-support\creator\physics\CCPhysicsWorldManifoldWrapper.h" />
     <ClInclude Include="..\editor-support\creator\Triangulate.h" />
     <ClInclude Include="..\math\CCAffineTransform.h" />
     <ClInclude Include="..\math\CCGeometry.h" />
@@ -668,6 +703,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\win32\libs\*.*" "$(OutDir)"
     <ClInclude Include="..\network\HttpRequest.h" />
     <ClInclude Include="..\network\HttpResponse.h" />
     <ClInclude Include="..\network\SocketIO.h" />
+    <ClInclude Include="..\network\Uri.h" />
     <ClInclude Include="..\network\WebSocket.h" />
     <ClInclude Include="..\platform\CCApplicationProtocol.h" />
     <ClInclude Include="..\platform\CCCommon.h" />
@@ -722,6 +758,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\win32\libs\*.*" "$(OutDir)"
     <ClInclude Include="..\ui\UIButton.h" />
     <ClInclude Include="..\ui\UICheckBox.h" />
     <ClInclude Include="..\ui\UIEditBox\UIEditBox.h" />
+    <ClInclude Include="..\ui\UIEditBox\UIEditBoxImpl-common.h" />
     <ClInclude Include="..\ui\UIEditBox\UIEditBoxImpl-win32.h" />
     <ClInclude Include="..\ui\UIEditBox\UIEditBoxImpl.h" />
     <ClInclude Include="..\ui\UIHBox.h" />
@@ -833,6 +870,9 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\win32\libs\*.*" "$(OutDir)"
     </ProjectReference>
     <ProjectReference Include="..\editor-support\spine\proj.win32\libSpine.vcxproj">
       <Project>{b7c2a162-dec9-4418-972e-240ab3cbfcae}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\external\sources\Box2D\proj.win32\libBox2D.vcxproj">
+      <Project>{EB7E5610-C178-49C9-8B4C-1C283E616ED9}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

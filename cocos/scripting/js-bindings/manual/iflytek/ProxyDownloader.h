@@ -21,5 +21,5 @@ protected:
 	friend class DownloaderManager;
 };
 
-bool js_download(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_download(JSContext *cx, uint32_t argc, JS::Value *vp);
 #endif

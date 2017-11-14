@@ -31,6 +31,7 @@ import android.graphics.Typeface;
 import android.os.Looper;
 import android.text.Editable;
 import android.text.InputType;
+import android.text.Selection;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.util.SparseArray;
@@ -50,6 +51,7 @@ public class Cocos2dxEditBoxHelper {
 
     private static SparseArray<Cocos2dxEditBox> mEditBoxArray;
     private static int mViewTag = 0;
+    private static float mPadding = 5.0f;
 
     //Call native methods
     private static native void editBoxEditingDidBegin(int index);
@@ -79,14 +81,9 @@ public class Cocos2dxEditBoxHelper {
         Cocos2dxEditBoxHelper.mEditBoxArray = new SparseArray<Cocos2dxEditBox>();
     }
 
-    public static int convertToSP(float point){
+    public static int getPadding(float scaleX) {
         Resources r = mCocos2dxActivity.getResources();
-
-        int convertedValue = (int)TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_SP, point, r.getDisplayMetrics());
-
-        return  convertedValue;
-
+        return (int) (mPadding * scaleX);
     }
 
     public static int createEditBox(final int left, final int top, final int width, final int height, final float scaleX) {
@@ -101,21 +98,13 @@ public class Cocos2dxEditBoxHelper {
                 editBox.setInputMode(6); //kEditBoxInputModeSingleLine
                 editBox.setReturnType(0);  //kKeyboardReturnTypeDefault
                 editBox.setHintTextColor(Color.GRAY);
-                editBox.setVisibility(View.INVISIBLE);
+                editBox.setVisibility(View.GONE);
                 editBox.setBackgroundColor(Color.TRANSPARENT);
                 editBox.setTextColor(Color.WHITE);
                 editBox.setSingleLine();
                 editBox.setOpenGLViewScaleX(scaleX);
-                Resources r = mCocos2dxActivity.getResources();
-                float density =  r.getDisplayMetrics().density;
-                int paddingBottom = (int)(height * 0.33f / density);
-                paddingBottom = convertToSP(paddingBottom  - 5 * scaleX / density);
-                paddingBottom = paddingBottom / 2;
-                int paddingTop = paddingBottom;
-                int paddingLeft = (int)(5 * scaleX / density);
-                paddingLeft = convertToSP(paddingLeft);
 
-                editBox.setPadding(paddingLeft,paddingTop, 0, paddingBottom);
+                editBox.setPadding(getPadding(scaleX),0, 0, 0);
 
                 FrameLayout.LayoutParams lParams = new FrameLayout.LayoutParams(
                         FrameLayout.LayoutParams.WRAP_CONTENT,
@@ -142,14 +131,18 @@ public class Cocos2dxEditBoxHelper {
                     //http://stackoverflow.com/questions/21713246/addtextchangedlistener-and-ontextchanged-are-always-called-when-android-fragment
                     @Override
                     public void afterTextChanged(final Editable s) {
-                        if(!s.toString().equals("") && (Boolean)editBox.getTag()) {
-                            mCocos2dxActivity.runOnGLThread(new Runnable() {
+                        if (!editBox.getChangedTextProgrammatically()) {
+                            if((Boolean)editBox.getTag()) {
+                                mCocos2dxActivity.runOnGLThread(new Runnable() {
                                     @Override
                                     public void run() {
                                         Cocos2dxEditBoxHelper.__editBoxEditingChanged(index, s.toString());
                                     }
                                 });
+                            }
                         }
+                        editBox.setChangedTextProgrammatically(false);
+
                     }
                 });
 
@@ -159,6 +152,7 @@ public class Cocos2dxEditBoxHelper {
                     @Override
                     public void onFocusChange(View v, boolean hasFocus) {
                         editBox.setTag(true);
+                        editBox.setChangedTextProgrammatically(false);
                         if (hasFocus) {
                             mCocos2dxActivity.runOnGLThread(new Runnable() {
                                 @Override
@@ -270,12 +264,8 @@ public class Cocos2dxEditBoxHelper {
                     }else{
                         tf = Typeface.DEFAULT;
                     }
-                    // TODO: The font size is not the same across all the android devices...
                     if (fontSize >= 0){
-                        float density =  mCocos2dxActivity.getResources().getDisplayMetrics().density;
-//                        Log.e("XXX", "density is " + density);
-                        editBox.setTextSize(TypedValue.COMPLEX_UNIT_SP,
-                                fontSize / density );
+                        editBox.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize);
                     }
                     editBox.setTypeface(tf);
                 }
@@ -350,7 +340,10 @@ public class Cocos2dxEditBoxHelper {
             public void run() {
                 Cocos2dxEditBox editBox = mEditBoxArray.get(index);
                 if (editBox != null) {
+                    editBox.setChangedTextProgrammatically(true);
                     editBox.setText(text);
+                    int position = text.length();
+                    editBox.setSelection(position);
                 }
             }
         });
@@ -427,6 +420,7 @@ public class Cocos2dxEditBoxHelper {
         Cocos2dxEditBox editBox = mEditBoxArray.get(index);
         if (null != editBox) {
             editBox.requestFocus();
+            mCocos2dxActivity.getGLSurfaceView().requestLayout();
             imm.showSoftInput(editBox, 0);
             mCocos2dxActivity.getGLSurfaceView().setSoftKeyboardShown(true);
         }

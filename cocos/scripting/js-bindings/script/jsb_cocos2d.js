@@ -26,7 +26,7 @@
 
 // CCConfig.js
 //
-cc.ENGINE_VERSION = "Cocos2d-JS v3.14";
+cc.ENGINE_VERSION = "Cocos2d-x-lite v1.6.0";
 
 // Resolution policies
 
@@ -752,9 +752,6 @@ for (var a in easeActions) {
 
 // Action2d
 cc.action = cc.Action.create;
-cc.speed = cc.Speed.create;
-cc.follow = cc.Follow.create;
-cc.orbitCamera = cc.OrbitCamera.create;
 cc.cardinalSplineTo = cc.CardinalSplineTo.create;
 cc.cardinalSplineBy = cc.CardinalSplineBy.create;
 cc.catmullRomTo = cc.CatmullRomTo.create;
@@ -765,21 +762,25 @@ cc.toggleVisibility = cc.ToggleVisibility.create;
 cc.removeSelf = cc.RemoveSelf.create;
 cc.flipX = cc.FlipX.create;
 cc.flipY = cc.FlipY.create;
-// cc.place = cc.Place.create;
-cc.callFunc = cc.CallFunc.create;
+cc.callFunc = function (selector, target, data) {
+    var callback = selector;
+    if (data !== undefined) {
+        callback = function (sender) {
+            selector.call(this, sender, data);
+        };
+    }
+    if (target !== undefined) {
+        cc.CallFunc.create(callback);
+    }
+    else {
+        cc.CallFunc.create(callback, target);
+    }
+}
 cc.actionInterval = cc.ActionInterval.create;
-cc.sequence = cc.Sequence.create;
-cc.repeat = cc.Repeat.create;
-cc.repeatForever = cc.RepeatForever.create;
-cc.spawn = cc.Spawn.create;
 cc.rotateTo = cc.RotateTo.create;
 cc.rotateBy = cc.RotateBy.create;
-//cc.moveBy = cc.MoveBy.create;
-//cc.moveTo = cc.MoveTo.create;
 cc.skewTo = cc.SkewTo.create;
 cc.skewBy = cc.SkewBy.create;
-//cc.jumpBy = cc.JumpBy.create;
-//cc.jumpTo = cc.JumpTo.create;
 cc.bezierBy = cc.BezierBy.create;
 cc.bezierTo = cc.BezierTo.create;
 cc.scaleTo = cc.ScaleTo.create;
@@ -792,9 +793,6 @@ cc.tintTo = cc.TintTo.create;
 cc.tintBy = cc.TintBy.create;
 cc.delayTime = cc.DelayTime.create;
 cc.reverseTime = cc.ReverseTime.create;
-cc.animate = cc.Animate.create;
-cc.targetedAction = cc.TargetedAction.create;
-cc.actionTween = cc.ActionTween.create;
 
 cc.Place._create = cc.Place.create;
 cc.place = cc.Place.create = function(posOrX, y){
@@ -840,37 +838,6 @@ cc.jumpBy = cc.JumpBy.create = function(duration, position, y, height, jumps){
         return cc.JumpBy._create(duration, cc.p(position, y), height, jumps);
     }
 };
-
-// Actions3d
-cc.gridAction = cc.GridAction.create;
-cc.grid3DAction = cc.Grid3DAction.create;
-cc.tiledGrid3DAction = cc.TiledGrid3DAction.create;
-cc.stopGrid = cc.StopGrid.create;
-cc.reuseGrid = cc.ReuseGrid.create;
-cc.waves3D = cc.Waves3D.create;
-cc.flipX3D = cc.FlipX3D.create;
-cc.flipY3D = cc.FlipY3D.create;
-cc.lens3D = cc.Lens3D.create;
-cc.ripple3D = cc.Ripple3D.create;
-cc.shaky3D = cc.Shaky3D.create;
-cc.liquid = cc.Liquid.create;
-cc.waves = cc.Waves.create;
-cc.twirl = cc.Twirl.create;
-cc.pageTurn3D = cc.PageTurn3D.create;
-cc.shakyTiles3D = cc.ShakyTiles3D.create;
-cc.shatteredTiles3D = cc.ShatteredTiles3D.create;
-cc.shuffleTiles = cc.ShuffleTiles.create;
-cc.fadeOutTRTiles = cc.FadeOutTRTiles.create;
-cc.fadeOutBLTiles = cc.FadeOutBLTiles.create;
-cc.fadeOutUpTiles = cc.FadeOutUpTiles.create;
-cc.fadeOutDownTiles = cc.FadeOutDownTiles.create;
-cc.turnOffTiles = cc.TurnOffTiles.create;
-cc.wavesTiles3D = cc.WavesTiles3D.create;
-cc.jumpTiles3D = cc.JumpTiles3D.create;
-cc.splitRows = cc.SplitRows.create;
-cc.splitCols = cc.SplitCols.create;
-cc.progressTo = cc.ProgressTo.create;
-cc.progressFromTo = cc.ProgressFromTo.create;
 
 // Speed functions
 cc.Speed.prototype.speed = cc.ActionInterval.prototype.speed = function(speed) {
@@ -939,7 +906,6 @@ cc.Speed.prototype.getSpeed = cc.ActionInterval.prototype.getSpeed = function() 
 //
 // Node API
 //
-
 cc.Node.prototype.setUserData = function (data) {
     this.userData = data;
 };

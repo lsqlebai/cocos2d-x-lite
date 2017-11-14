@@ -113,8 +113,9 @@ public:
     virtual void nativeCloseKeyboard() = 0;
     virtual void setNativeMaxLength(int maxLength) {};
 
+protected:
+    bool _editingMode;
 
-private:
     void            initInactiveLabels(const Size& size);
     void            setInactiveText(const char* pText);
     void            placeInactiveLabels(const Size& size);

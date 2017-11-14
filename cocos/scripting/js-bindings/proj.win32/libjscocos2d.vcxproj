@@ -11,25 +11,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\auto\jsb_box2d_auto.cpp" />
     <ClCompile Include="..\auto\jsb_cocos2dx_auto.cpp" />
     <ClCompile Include="..\auto\jsb_cocos2dx_audioengine_auto.cpp" />
-    <ClCompile Include="..\auto\jsb_cocos2dx_builder_auto.cpp" />
     <ClCompile Include="..\auto\jsb_cocos2dx_dragonbones_auto.cpp" />
     <ClCompile Include="..\auto\jsb_cocos2dx_extension_auto.cpp" />
     <ClCompile Include="..\auto\jsb_cocos2dx_network_auto.cpp" />
     <ClCompile Include="..\auto\jsb_cocos2dx_spine_auto.cpp" />
-    <ClCompile Include="..\auto\jsb_cocos2dx_studio_auto.cpp" />
     <ClCompile Include="..\auto\jsb_cocos2dx_ui_auto.cpp" />
     <ClCompile Include="..\auto\jsb_creator_auto.cpp" />
-    <ClCompile Include="..\auto\js_bindings_chipmunk_auto_classes.cpp" />
-    <ClCompile Include="..\auto\js_bindings_chipmunk_functions.cpp" />
-    <ClCompile Include="..\manual\chipmunk\js_bindings_chipmunk_manual.cpp" />
-    <ClCompile Include="..\manual\chipmunk\js_bindings_chipmunk_registration.cpp" />
+    <ClCompile Include="..\manual\BaseJSAction.cpp" />
+    <ClCompile Include="..\manual\box2d\js_bindings_box2d_manual.cpp" />
     <ClCompile Include="..\manual\cocos2d_specifics.cpp" />
-    <ClCompile Include="..\manual\cocosbuilder\js_bindings_ccbreader.cpp" />
-    <ClCompile Include="..\manual\cocostudio\jsb_cocos2dx_studio_conversions.cpp" />
-    <ClCompile Include="..\manual\cocostudio\jsb_cocos2dx_studio_manual.cpp" />
-    <ClCompile Include="..\manual\component\CCComponentJS.cpp" />
+    <ClCompile Include="..\manual\creator\js_bindings_creator_manual.cpp" />
     <ClCompile Include="..\manual\dragonbones\jsb_cocos2dx_dragonbones_manual.cpp" />
     <ClCompile Include="..\manual\extension\jsb_cocos2dx_extension_manual.cpp" />
     <ClCompile Include="..\manual\iflytek\CallbackManager.cpp" />
@@ -48,13 +42,11 @@
     <ClCompile Include="..\manual\jsb_opengl_functions.cpp" />
     <ClCompile Include="..\manual\jsb_opengl_manual.cpp" />
     <ClCompile Include="..\manual\jsb_opengl_registration.cpp" />
-    <ClCompile Include="..\manual\js_bindings_core.cpp" />
     <ClCompile Include="..\manual\js_bindings_opengl.cpp" />
     <ClCompile Include="..\manual\js_manual_conversions.cpp" />
     <ClCompile Include="..\manual\js_module_register.cpp" />
     <ClCompile Include="..\manual\localstorage\js_bindings_system_functions.cpp" />
     <ClCompile Include="..\manual\localstorage\js_bindings_system_registration.cpp" />
-    <ClCompile Include="..\manual\network\jsb_asio_connection.cpp" />
     <ClCompile Include="..\manual\network\jsb_socketio.cpp" />
     <ClCompile Include="..\manual\network\jsb_websocket.cpp" />
     <ClCompile Include="..\manual\network\js_network_manual.cpp" />
@@ -64,28 +56,19 @@
     <ClCompile Include="..\manual\ui\jsb_cocos2dx_ui_manual.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\auto\jsb_box2d_auto.hpp" />
     <ClInclude Include="..\auto\jsb_cocos2dx_auto.hpp" />
     <ClInclude Include="..\auto\jsb_cocos2dx_audioengine_auto.hpp" />
-    <ClInclude Include="..\auto\jsb_cocos2dx_builder_auto.hpp" />
     <ClInclude Include="..\auto\jsb_cocos2dx_dragonbones_auto.hpp" />
     <ClInclude Include="..\auto\jsb_cocos2dx_extension_auto.hpp" />
     <ClInclude Include="..\auto\jsb_cocos2dx_network_auto.hpp" />
     <ClInclude Include="..\auto\jsb_cocos2dx_spine_auto.hpp" />
-    <ClInclude Include="..\auto\jsb_cocos2dx_studio_auto.hpp" />
     <ClInclude Include="..\auto\jsb_cocos2dx_ui_auto.hpp" />
     <ClInclude Include="..\auto\jsb_creator_auto.hpp" />
-    <ClInclude Include="..\auto\js_bindings_chipmunk_auto_classes.h" />
-    <ClInclude Include="..\auto\js_bindings_chipmunk_auto_classes_registration.h" />
-    <ClInclude Include="..\auto\js_bindings_chipmunk_functions.h" />
-    <ClInclude Include="..\auto\js_bindings_chipmunk_functions_registration.h" />
-    <ClInclude Include="..\manual\chipmunk\js_bindings_chipmunk_manual.h" />
-    <ClInclude Include="..\manual\chipmunk\js_bindings_chipmunk_registration.h" />
+    <ClInclude Include="..\manual\BaseJSAction.h" />
+    <ClInclude Include="..\manual\box2d\js_bindings_box2d_manual.h" />
     <ClInclude Include="..\manual\cocos2d_specifics.hpp" />
-    <ClInclude Include="..\manual\cocosbuilder\cocosbuilder_specifics.hpp" />
-    <ClInclude Include="..\manual\cocosbuilder\js_bindings_ccbreader.h" />
-    <ClInclude Include="..\manual\cocostudio\jsb_cocos2dx_studio_conversions.h" />
-    <ClInclude Include="..\manual\cocostudio\jsb_cocos2dx_studio_manual.h" />
-    <ClInclude Include="..\manual\component\CCComponentJS.h" />
+    <ClInclude Include="..\manual\creator\js_bindings_creator_manual.h" />
     <ClInclude Include="..\manual\dragonbones\jsb_cocos2dx_dragonbones_manual.h" />
     <ClInclude Include="..\manual\extension\jsb_cocos2dx_extension_manual.h" />
     <ClInclude Include="..\manual\iflytek\CallbackManager.h" />
@@ -107,382 +90,22 @@
     <ClInclude Include="..\manual\jsb_opengl_manual.h" />
     <ClInclude Include="..\manual\jsb_opengl_registration.h" />
     <ClInclude Include="..\manual\js_bindings_config.h" />
-    <ClInclude Include="..\manual\js_bindings_core.h" />
     <ClInclude Include="..\manual\js_bindings_opengl.h" />
     <ClInclude Include="..\manual\js_manual_conversions.h" />
     <ClInclude Include="..\manual\js_module_register.h" />
     <ClInclude Include="..\manual\localstorage\js_bindings_system_functions.h" />
     <ClInclude Include="..\manual\localstorage\js_bindings_system_functions_registration.h" />
     <ClInclude Include="..\manual\localstorage\js_bindings_system_registration.h" />
-    <ClInclude Include="..\manual\network\boost\asio.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\async_result.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\basic_datagram_socket.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\basic_deadline_timer.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\basic_io_object.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\basic_raw_socket.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\basic_seq_packet_socket.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\basic_serial_port.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\basic_signal_set.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\basic_socket.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\basic_socket_acceptor.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\basic_socket_iostream.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\basic_socket_streambuf.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\basic_streambuf.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\basic_streambuf_fwd.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\basic_stream_socket.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\basic_waitable_timer.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\buffer.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\buffered_read_stream.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\buffered_read_stream_fwd.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\buffered_stream.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\buffered_stream_fwd.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\buffered_write_stream.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\buffered_write_stream_fwd.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\buffers_iterator.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\completion_condition.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\connect.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\coroutine.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\datagram_socket_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\deadline_timer.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\deadline_timer_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\addressof.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\array.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\array_fwd.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\assert.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\atomic_count.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\base_from_completion_cond.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\bind_handler.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\buffered_stream_storage.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\buffer_resize_guard.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\buffer_sequence_adapter.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\call_stack.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\chrono_time_traits.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\completion_handler.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\config.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\consuming_buffers.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\cstdint.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\date_time_fwd.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\deadline_timer_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\dependent_type.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\descriptor_ops.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\descriptor_read_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\descriptor_write_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\dev_poll_reactor.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\epoll_reactor.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\event.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\eventfd_select_interrupter.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\fd_set_adapter.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\fenced_block.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\function.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\gcc_arm_fenced_block.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\gcc_hppa_fenced_block.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\gcc_sync_fenced_block.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\gcc_x86_fenced_block.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\handler_alloc_helpers.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\handler_cont_helpers.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\handler_invoke_helpers.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\handler_tracking.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\handler_type_requirements.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\hash_map.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\impl\dev_poll_reactor.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\impl\epoll_reactor.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\impl\kqueue_reactor.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\impl\select_reactor.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\impl\service_registry.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\impl\strand_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\impl\task_io_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\impl\winrt_timer_scheduler.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\impl\win_iocp_io_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\io_control.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\keyword_tss_ptr.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\kqueue_reactor.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\limits.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\local_free_on_block_exit.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\macos_fenced_block.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\mutex.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\noncopyable.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\null_event.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\null_fenced_block.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\null_mutex.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\null_reactor.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\null_signal_blocker.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\null_socket_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\null_static_mutex.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\null_thread.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\null_tss_ptr.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\object_pool.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\old_win_sdk_compat.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\operation.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\op_queue.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\pipe_select_interrupter.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\pop_options.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\posix_event.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\posix_fd_set_adapter.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\posix_mutex.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\posix_signal_blocker.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\posix_static_mutex.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\posix_thread.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\posix_tss_ptr.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\push_options.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\reactive_descriptor_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\reactive_null_buffers_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\reactive_serial_port_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\reactive_socket_accept_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\reactive_socket_connect_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\reactive_socket_recvfrom_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\reactive_socket_recvmsg_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\reactive_socket_recv_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\reactive_socket_sendto_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\reactive_socket_send_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\reactive_socket_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\reactive_socket_service_base.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\reactor.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\reactor_fwd.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\reactor_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\reactor_op_queue.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\regex_fwd.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\resolver_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\resolver_service_base.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\resolve_endpoint_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\resolve_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\scoped_lock.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\scoped_ptr.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\select_interrupter.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\select_reactor.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\service_registry.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\shared_ptr.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\signal_blocker.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\signal_handler.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\signal_init.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\signal_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\signal_set_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\socket_holder.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\socket_ops.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\socket_option.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\socket_select_interrupter.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\socket_types.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\solaris_fenced_block.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\static_mutex.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\std_event.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\std_mutex.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\std_static_mutex.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\std_thread.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\strand_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\task_io_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\task_io_service_operation.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\task_io_service_thread_info.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\thread.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\thread_info_base.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\throw_error.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\throw_exception.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\timer_queue.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\timer_queue_base.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\timer_queue_ptime.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\timer_queue_set.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\timer_scheduler.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\timer_scheduler_fwd.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\tss_ptr.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\type_traits.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\variadic_templates.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\wait_handler.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\wait_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\weak_ptr.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\wince_thread.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\winrt_async_manager.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\winrt_async_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\winrt_resolver_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\winrt_resolve_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\winrt_socket_connect_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\winrt_socket_recv_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\winrt_socket_send_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\winrt_ssocket_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\winrt_ssocket_service_base.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\winrt_timer_scheduler.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\winrt_utils.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\winsock_init.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_event.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_fd_set_adapter.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_fenced_block.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_iocp_handle_read_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_iocp_handle_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_iocp_handle_write_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_iocp_io_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_iocp_null_buffers_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_iocp_operation.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_iocp_overlapped_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_iocp_overlapped_ptr.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_iocp_serial_port_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_iocp_socket_accept_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_iocp_socket_connect_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_iocp_socket_recvfrom_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_iocp_socket_recvmsg_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_iocp_socket_recv_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_iocp_socket_send_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_iocp_socket_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_iocp_socket_service_base.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_iocp_thread_info.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_mutex.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_object_handle_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_static_mutex.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_thread.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\win_tss_ptr.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\detail\wrapped_handler.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\error.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\error_code.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\generic\basic_endpoint.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\generic\datagram_protocol.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\generic\detail\endpoint.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\generic\raw_protocol.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\generic\seq_packet_protocol.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\generic\stream_protocol.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\handler_alloc_hook.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\handler_continuation_hook.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\handler_invoke_hook.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\handler_type.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\high_resolution_timer.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\impl\buffered_read_stream.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\impl\buffered_write_stream.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\impl\connect.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\impl\io_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\impl\read.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\impl\read_at.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\impl\read_until.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\impl\serial_port_base.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\impl\spawn.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\impl\src.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\impl\use_future.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\impl\write.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\impl\write_at.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\io_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ip\address.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ip\address_v4.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ip\address_v6.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ip\basic_endpoint.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ip\basic_resolver.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ip\basic_resolver_entry.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ip\basic_resolver_iterator.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ip\basic_resolver_query.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ip\detail\endpoint.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ip\detail\socket_option.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ip\host_name.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ip\icmp.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ip\impl\address.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ip\impl\address_v4.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ip\impl\address_v6.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ip\impl\basic_endpoint.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ip\multicast.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ip\resolver_query_base.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ip\resolver_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ip\tcp.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ip\udp.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ip\unicast.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ip\v6_only.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\is_read_buffered.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\is_write_buffered.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\local\basic_endpoint.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\local\connect_pair.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\local\datagram_protocol.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\local\detail\endpoint.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\local\stream_protocol.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\placeholders.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\posix\basic_descriptor.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\posix\basic_stream_descriptor.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\posix\descriptor_base.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\posix\stream_descriptor.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\posix\stream_descriptor_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\raw_socket_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\read.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\read_at.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\read_until.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\seq_packet_socket_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\serial_port.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\serial_port_base.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\serial_port_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\signal_set.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\signal_set_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\socket_acceptor_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\socket_base.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\spawn.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\basic_context.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\context.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\context_base.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\context_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\detail\buffered_handshake_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\detail\engine.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\detail\handshake_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\detail\io.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\detail\openssl_init.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\detail\openssl_types.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\detail\password_callback.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\detail\read_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\detail\shutdown_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\detail\stream_core.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\detail\verify_callback.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\detail\write_op.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\error.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\impl\context.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\impl\src.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\old\basic_context.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\old\context_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\old\detail\openssl_context_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\old\detail\openssl_operation.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\old\detail\openssl_stream_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\old\stream.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\old\stream_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\rfc2818_verification.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\stream.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\stream_base.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\stream_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\verify_context.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\ssl\verify_mode.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\steady_timer.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\strand.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\streambuf.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\stream_socket_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\system_error.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\system_timer.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\thread.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\time_traits.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\unyield.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\use_future.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\version.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\waitable_timer_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\wait_traits.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\windows\basic_handle.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\windows\basic_object_handle.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\windows\basic_random_access_handle.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\windows\basic_stream_handle.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\windows\object_handle.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\windows\object_handle_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\windows\overlapped_ptr.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\windows\random_access_handle.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\windows\random_access_handle_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\windows\stream_handle.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\windows\stream_handle_service.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\write.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\write_at.hpp" />
-    <ClInclude Include="..\manual\network\boost\asio\yield.hpp" />
-    <ClInclude Include="..\manual\network\jsb_asio_connection.h" />
     <ClInclude Include="..\manual\network\jsb_socketio.h" />
     <ClInclude Include="..\manual\network\jsb_websocket.h" />
     <ClInclude Include="..\manual\network\js_network_manual.h" />
-    <ClInclude Include="..\manual\network\RSAUtil.h" />
-    <ClInclude Include="..\manual\network\TcpConnection.hpp" />
     <ClInclude Include="..\manual\network\XMLHTTPRequest.h" />
     <ClInclude Include="..\manual\ScriptingCore.h" />
     <ClInclude Include="..\manual\spidermonkey_specifics.h" />
     <ClInclude Include="..\manual\spine\jsb_cocos2dx_spine_manual.h" />
     <ClInclude Include="..\manual\ui\jsb_cocos2dx_ui_manual.h" />
-    <ClInclude Include="JSBinder.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\external\sources\iflyteknet\vsproject\iflyteknet.vcxproj">
-      <Project>{c357a797-42b0-47de-83c5-c3fed2e62983}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\external\sources\protobuf\vsprojects\libprotobuf.vcxproj">
-      <Project>{3e283f37-a4ed-41b7-a3e6-a2d89d131a30}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\2d\libcocos2d.vcxproj">
       <Project>{98a51ba8-fc3a-415b-ac8f-8c7bd464e93e}</Project>
     </ProjectReference>
@@ -493,69 +116,15 @@
     <ProjectReference Include="..\..\..\editor-support\spine\proj.win32\libSpine.vcxproj">
       <Project>{b7c2a162-dec9-4418-972e-240ab3cbfcae}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\manual\network\boost\asio\detail\impl\buffer_sequence_adapter.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\descriptor_ops.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\dev_poll_reactor.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\epoll_reactor.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\eventfd_select_interrupter.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\handler_tracking.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\kqueue_reactor.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\pipe_select_interrupter.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\posix_event.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\posix_mutex.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\posix_thread.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\posix_tss_ptr.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\reactive_descriptor_service.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\reactive_serial_port_service.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\reactive_socket_service_base.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\resolver_service_base.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\select_reactor.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\service_registry.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\signal_set_service.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\socket_ops.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\socket_select_interrupter.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\strand_service.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\task_io_service.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\throw_error.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\timer_queue_ptime.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\timer_queue_set.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\winrt_ssocket_service_base.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\winrt_timer_scheduler.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\winsock_init.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\win_event.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\win_iocp_handle_service.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\win_iocp_io_service.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\win_iocp_serial_port_service.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\win_iocp_socket_service_base.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\win_mutex.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\win_object_handle_service.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\win_static_mutex.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\win_thread.ipp" />
-    <None Include="..\manual\network\boost\asio\detail\impl\win_tss_ptr.ipp" />
-    <None Include="..\manual\network\boost\asio\generic\detail\impl\endpoint.ipp" />
-    <None Include="..\manual\network\boost\asio\impl\error.ipp" />
-    <None Include="..\manual\network\boost\asio\impl\error_code.ipp" />
-    <None Include="..\manual\network\boost\asio\impl\handler_alloc_hook.ipp" />
-    <None Include="..\manual\network\boost\asio\impl\io_service.ipp" />
-    <None Include="..\manual\network\boost\asio\impl\serial_port_base.ipp" />
-    <None Include="..\manual\network\boost\asio\ip\detail\impl\endpoint.ipp" />
-    <None Include="..\manual\network\boost\asio\ip\impl\address.ipp" />
-    <None Include="..\manual\network\boost\asio\ip\impl\address_v4.ipp" />
-    <None Include="..\manual\network\boost\asio\ip\impl\address_v6.ipp" />
-    <None Include="..\manual\network\boost\asio\ip\impl\host_name.ipp" />
-    <None Include="..\manual\network\boost\asio\local\detail\impl\endpoint.ipp" />
-    <None Include="..\manual\network\boost\asio\ssl\detail\impl\engine.ipp" />
-    <None Include="..\manual\network\boost\asio\ssl\detail\impl\openssl_init.ipp" />
-    <None Include="..\manual\network\boost\asio\ssl\impl\context.ipp" />
-    <None Include="..\manual\network\boost\asio\ssl\impl\error.ipp" />
-    <None Include="..\manual\network\boost\asio\ssl\impl\rfc2818_verification.ipp" />
+    <ProjectReference Include="..\..\..\..\external\sources\Box2D\proj.win32\libBox2D.vcxproj">
+      <Project>{EB7E5610-C178-49C9-8B4C-1C283E616ED9}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{39379840-825A-45A0-B363-C09FFEF864BD}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>libjscocos2d</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -566,6 +135,8 @@
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v120_xp</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0'">v140</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v140_xp</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0'">v140</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v140_xp</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
@@ -575,6 +146,8 @@
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v120_xp</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0'">v140</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v140_xp</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0'">v140</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v140_xp</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -606,7 +179,8 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_LIB;COCOS2D_DEBUG=1;ASIO_STANDALONE;XP_WIN;JS_HAVE___INTN;JS_INTPTR_TYPE=int;COCOS2D_JAVASCRIPT=1;CC_ENABLE_CHIPMUNK_INTEGRATION=1;_CRT_SECURE_NO_WARNINGS;_USRJSSTATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_LIB;COCOS2D_DEBUG=1;XP_WIN;JS_HAVE___INTN;JS_INTPTR_TYPE=int;COCOS2D_JAVASCRIPT=1;CC_ENABLE_CHIPMUNK_INTEGRATION=1;_CRT_SECURE_NO_WARNINGS;_USRJSSTATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_LIB;COCOS2D_DEBUG=1;ASIO_STANDALONE;XP_WIN;JS_HAVE___INTN;JS_INTPTR_TYPE=int;COCOS2D_JAVASCRIPT=1;_CRT_SECURE_NO_WARNINGS;_USRJSSTATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..;$(EngineRoot);$(EngineRoot)cocos\editor-support;$(ProjectDir)..\auto;$(ProjectDir)..\manual;$(EngineRoot)external\win32\include\spidermonkey;$(EngineRoot)external\sources\protobuf\src;$(EngineRoot)external\sources\iflyteknet\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4068;4101;4800;4251;4244;4099;4083;4700;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -630,7 +204,7 @@
       <Optimization>MinSpace</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_LIB;XP_WIN;JS_HAVE___INTN;JS_INTPTR_TYPE=int;COCOS2D_JAVASCRIPT=1;CC_ENABLE_CHIPMUNK_INTEGRATION=1;_CRT_SECURE_NO_WARNINGS;_USRJSSTATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_LIB;XP_WIN;JS_HAVE___INTN;JS_INTPTR_TYPE=int;COCOS2D_JAVASCRIPT=1;_CRT_SECURE_NO_WARNINGS;_USRJSSTATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..;$(EngineRoot);$(EngineRoot)cocos\editor-support;$(ProjectDir)..\auto;$(ProjectDir)..\manual;$(EngineRoot)external\win32\include\spidermonkey;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4068;4101;4800;4251;4244;4099;4083;4700;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>

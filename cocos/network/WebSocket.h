@@ -1,6 +1,6 @@
 /****************************************************************************
  Copyright (c) 2010-2012 cocos2d-x.org
- Copyright (c) 2013-2016 Chukong Technologies Inc.
+ Copyright (c) 2013-2017 Chukong Technologies Inc.
 
  http://www.cocos2d-x.org
 
@@ -22,26 +22,26 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
 
-"[WebSocket module] is based in part on the work of the libwebsockets  project
-(http://libwebsockets.org)"
-
  ****************************************************************************/
 
-#ifndef __CC_WEBSOCKET_H__
-#define __CC_WEBSOCKET_H__
-
-#include <string>
-#include <vector>
-#include <mutex>
-#include <memory>  // for std::shared_ptr
-#include <atomic>
+#pragma once
 
 #include "platform/CCPlatformMacros.h"
 #include "platform/CCStdC.h"
+#include "base/CCRef.h"
 
-struct lws;
-struct lws_context;
-struct lws_protocols;
+#include <string>
+#include <vector>
+
+#ifndef OBJC_CLASS
+#ifdef __OBJC__
+#define OBJC_CLASS(name) @class name
+#else
+#define OBJC_CLASS(name) class name
+#endif
+#endif // OBJC_CLASS
+
+OBJC_CLASS(WebSocketImpl);
 
 /**
  * @addtogroup network
@@ -50,16 +50,13 @@ struct lws_protocols;
 
 NS_CC_BEGIN
 
-class EventListenerCustom;
 namespace network {
-
-class WsThreadHelper;
 
 /**
  * WebSocket is wrapper of the libwebsockets-protocol, let the develop could call the websocket easily.
  * Please note that all public methods of WebSocket have to be invoked on Cocos Thread.
  */
-class CC_DLL WebSocket
+class CC_DLL WebSocket : public Ref
 {
 public:
     /**
@@ -67,13 +64,15 @@ public:
      * @note This method has to be invoked on Cocos Thread
      */
     static void closeAllConnections();
-
+    
     /**
-     * Construtor of WebSocket.
+     * Constructor of WebSocket.
      *
      * @js ctor
      */
     WebSocket();
+
+private:
     /**
      * Destructor of WebSocket.
      *
@@ -82,6 +81,7 @@ public:
      */
     virtual ~WebSocket();
 
+public:
     /**
      * Data structure for message
      */
@@ -129,7 +129,7 @@ public:
         /**
          * This function to be called after the client connection complete a handshake with the remote server.
          * This means that the WebSocket connection is ready to send and receive data.
-         *
+         * 
          * @param ws The WebSocket object connected
          */
         virtual void onOpen(WebSocket* ws) = 0;
@@ -159,22 +159,24 @@ public:
         virtual void onError(WebSocket* ws, const ErrorCode& error) = 0;
     };
 
-
     /**
-     *  @brief  The initialized method for websocket.
-     *          It needs to be invoked right after websocket instance is allocated.
-     *  @param  delegate The delegate which want to receive event from websocket.
-     *  @param  url      The URL of websocket server.
+     *  @brief The initialized method for websocket.
+     *         It needs to be invoked right after websocket instance is allocated.
+     *  @param delegate The delegate which want to receive event from websocket.
+     *  @param url The URL of websocket server.
+     *  @param protocols The websocket protocols that agree with websocket server
+     *  @param caFilePath The ca file path for wss connection
      *  @return true: Success, false: Failure.
      *  @lua NA
      */
     bool init(const Delegate& delegate,
               const std::string& url,
-              const std::vector<std::string>* protocols = nullptr);
+              const std::vector<std::string>* protocols = nullptr,
+              const std::string& caFilePath = "");
 
     /**
      *  @brief Sends string data to websocket server.
-     *
+     *  
      *  @param message string data.
      *  @lua sendstring
      */
@@ -182,7 +184,7 @@ public:
 
     /**
      *  @brief Sends binary data to websocket server.
-     *
+     *  
      *  @param binaryMsg binary string data.
      *  @param len the size of binary string data.
      *  @lua sendstring
@@ -190,16 +192,16 @@ public:
     void send(const unsigned char* binaryMsg, unsigned int len);
 
     /**
-     * @brief Closes the connection to server synchronously.
-     * @note It's a synchronous method, it will not return until websocket thread exits.
+     *  @brief Closes the connection to server synchronously.
+     *  @note It's a synchronous method, it will not return until websocket thread exits.
      */
     void close();
-
+    
     /**
      *  @brief Closes the connection to server asynchronously.
      *  @note It's an asynchronous method, it just notifies websocket thread to exit and returns directly,
-     *        If using 'closeAsync' to close websocket connection,
-     *        be carefull of not using destructed variables in the callback of 'onClose'.
+     *        If using 'closeAsync' to close websocket connection, 
+     *        be careful of not using destructed variables in the callback of 'onClose'.
      */
     void closeAsync();
 
@@ -207,49 +209,27 @@ public:
      *  @brief Gets current state of connection.
      *  @return State the state value could be State::CONNECTING, State::OPEN, State::CLOSING or State::CLOSED
      */
-    State getReadyState();
+    State getReadyState() const;
 
+    /**
+     *  @brief Gets the URL of websocket connection.
+     */
+    const std::string& getUrl() const;
+
+    /**
+     *  @brief Gets the protocol selected by websocket server.
+     */
+    const std::string& getProtocol() const;
+
+    Delegate* getDelegate() const;
 private:
-    void onSubThreadStarted();
-    void onSubThreadLoop();
-    void onSubThreadEnded();
-
-    // The following callback functions are invoked in websocket thread
-    int onSocketCallback(struct lws *wsi, int reason, void *user, void *in, ssize_t len);
-
-    void onClientWritable();
-    void onClientReceivedData(void* in, ssize_t len);
-    void onConnectionOpened();
-    void onConnectionError();
-    void onConnectionClosed();
-
-private:
-    std::mutex   _readStateMutex;
-    State        _readyState;
-    std::string  _host;
-    unsigned int _port;
-    std::string  _path;
-
-    std::vector<char> _receivedData;
-
-    friend class WsThreadHelper;
-    friend class WebSocketCallbackWrapper;
-    WsThreadHelper* _wsHelper;
-
-    struct lws*         _wsInstance;
-    struct lws_context* _wsContext;
-    std::shared_ptr<std::atomic<bool>> _isDestroyed;
-    Delegate* _delegate;
-    int _SSLConnection;
-    struct lws_protocols* _wsProtocols;
-    EventListenerCustom* _resetDirectorListener;
+    WebSocketImpl* _impl;
 };
 
-}
+} // namespace network {
 
 NS_CC_END
 
 // end group
 /// @}
 
-#endif /* defined(__CC_JSB_WEBSOCKET_H__) */

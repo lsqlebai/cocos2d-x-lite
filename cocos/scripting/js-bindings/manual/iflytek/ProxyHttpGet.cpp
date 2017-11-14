@@ -29,17 +29,18 @@ void ProxyHttpGet::onSuccess(const std::string& response)
 		JS::RootedObject global(_cx, ScriptingCore::getInstance()->getGlobalObject());
 		JSAutoCompartment ac(_cx, global);
 
-		jsval valArr[2];
-
+		// TODO jsb modify
+		/*JS::Value valArr[2];
+		
 		valArr[0] = BOOLEAN_TO_JSVAL(true);
 		valArr[1] = std_string_to_jsval(_cx, response);
-
+		
 		JS::RootedValue callback(_cx, OBJECT_TO_JSVAL(_jsCallback));
 		if (!callback.isNull())
 		{
 			JS::RootedValue retval(_cx);
 			JS_CallFunctionValue(_cx, global, callback, JS::HandleValueArray::fromMarkedLocation(2, valArr), &retval);
-		}
+		}*/
 		release();
 	});
 }
@@ -72,12 +73,12 @@ void ProxyHttpGet::startDownload()
 }
 
 // jsb.downloadFile(url, proxy, function(succeed, result) {}, fuction(totalBytesReceived, totalBytesExpected) {})
-bool proxy_http_get(JSContext *cx, uint32_t argc, jsval *vp)
+bool proxy_http_get(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
 	JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
 	JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
 	if (argc != 3) {
-		JS_ReportError(cx, "proxy_http_get : wrong number of arguments");
+		JS_ReportErrorUTF8(cx, "proxy_http_get : wrong number of arguments");
 		return false;
 	}
 
