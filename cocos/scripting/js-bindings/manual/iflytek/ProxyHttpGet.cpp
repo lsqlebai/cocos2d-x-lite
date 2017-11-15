@@ -29,18 +29,19 @@ void ProxyHttpGet::onSuccess(const std::string& response)
 		JS::RootedObject global(_cx, ScriptingCore::getInstance()->getGlobalObject());
 		JSAutoCompartment ac(_cx, global);
 
-		// TODO jsb modify
-		/*JS::Value valArr[2];
-		
-		valArr[0] = BOOLEAN_TO_JSVAL(true);
-		valArr[1] = std_string_to_jsval(_cx, response);
-		
-		JS::RootedValue callback(_cx, OBJECT_TO_JSVAL(_jsCallback));
+		JS::Value valArr[2];
+
+		valArr[0] = JS::RootedValue(_cx, JS::BooleanValue(true));
+		JS::RootedValue responseJS(_cx);
+		std_string_to_jsval(_cx, response, &responseJS);
+		valArr[1] = responseJS;
+
+		JS::RootedValue callback(_cx, JS::ObjectOrNullValue(_jsCallback));
 		if (!callback.isNull())
 		{
 			JS::RootedValue retval(_cx);
 			JS_CallFunctionValue(_cx, global, callback, JS::HandleValueArray::fromMarkedLocation(2, valArr), &retval);
-		}*/
+		}
 		release();
 	});
 }

@@ -12,8 +12,16 @@ bool CallbackManager::callJS(std::string domain, std::string arg) {
 		return false;
 	else {
 		auto callback = callbackMap[domain];
-		auto value = std_string_to_jsval(ScriptingCore::getInstance()->getGlobalContext(), arg);
-		return ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(*(callback.object)), callback.functionName.c_str(), 1, &value);
+
+		JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
+		JS::RootedValue ret(cx);
+		std_string_to_jsval(cx, arg, &ret);
+
+		JS::HandleValueArray args(ret);
+
+		JS::RootedValue owner(cx, JS::ObjectOrNullValue(*(callback.object)));
+
+		return ScriptingCore::getInstance()->executeFunctionWithOwner(owner, callback.functionName.c_str(), args);
 	}
 
 }

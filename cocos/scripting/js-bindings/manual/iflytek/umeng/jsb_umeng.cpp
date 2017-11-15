@@ -19,49 +19,24 @@ class JSB_UmengNative
 public:
 	JSB_UmengNative()
 	{
-		JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
-		_JSDelegate.construct(cx);
 	}
 
 	~JSB_UmengNative()
 	{
-		_JSDelegate.destroyIfConstructed();
 	}
 
 	void setJSDelegate(JS::HandleObject pJSDelegate)
 	{
-		_JSDelegate.ref() = pJSDelegate;
+		_JSDelegate = pJSDelegate;
 	}
 protected:
 public:
 
-	mozilla::Maybe<JS::PersistentRootedObject> _JSDelegate;
-};
-
-class ThreadNativeImpl
-{
-
-public:
-	ThreadNativeImpl()
-	{
-		this->_p = nullptr;
-	}
-
-	void* getRefPtr()
-	{
-		return this->_p;
-	}
-
-	void setRefPtr(void* p)
-	{
-		this->_p = p;
-	}
-
-	void *_p;
+	JS::PersistentRootedObject _JSDelegate;
 };
 
 
-bool js_cocos2dx_umeng_beginLogPageView(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_cocos2dx_umeng_beginLogPageView(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
 	JS::CallArgs argv = JS::CallArgsFromVp(argc, vp);
 	JS::RootedObject obj(cx, argv.thisv().toObjectOrNull());
@@ -80,13 +55,13 @@ bool js_cocos2dx_umeng_beginLogPageView(JSContext *cx, uint32_t argc, jsval *vp)
 	}
 	else
 	{
-		JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
+		JS_ReportErrorUTF8(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 		return false;
 	}
 	return true;
 }
 
-bool js_cocos2dx_umeng_endLogPageView(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_cocos2dx_umeng_endLogPageView(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
 	JS::CallArgs argv = JS::CallArgsFromVp(argc, vp);
 	JS::RootedObject obj(cx, argv.thisv().toObjectOrNull());
@@ -104,13 +79,13 @@ bool js_cocos2dx_umeng_endLogPageView(JSContext *cx, uint32_t argc, jsval *vp)
 	}
 	else
 	{
-		JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
+		JS_ReportErrorUTF8(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 		return false;
 	}
 	return true;
 }
 
-bool js_cocos2dx_umeng_payForGold(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_cocos2dx_umeng_payForGold(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
 
 	JS::CallArgs argv = JS::CallArgsFromVp(argc, vp);
@@ -134,12 +109,12 @@ bool js_cocos2dx_umeng_payForGold(JSContext *cx, uint32_t argc, jsval *vp)
 	}
 	else
 	{
-		JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
+		JS_ReportErrorUTF8(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 		return false;
 	}
 	return true;
 }
-bool js_cocos2dx_umeng_payForGoods(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_cocos2dx_umeng_payForGoods(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
 
 	JS::CallArgs argv = JS::CallArgsFromVp(argc, vp);
@@ -173,13 +148,13 @@ bool js_cocos2dx_umeng_payForGoods(JSContext *cx, uint32_t argc, jsval *vp)
 	}
 	else
 	{
-		JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
+		JS_ReportErrorUTF8(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 		return false;
 	}
 	return true;
 }
 
-bool js_cocos2dx_umeng_buyGoods(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_cocos2dx_umeng_buyGoods(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
 
 	JS::CallArgs argv = JS::CallArgsFromVp(argc, vp);
@@ -209,20 +184,21 @@ bool js_cocos2dx_umeng_buyGoods(JSContext *cx, uint32_t argc, jsval *vp)
 	}
 	else
 	{
-		JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
+		JS_ReportErrorUTF8(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 		return false;
 	}
 	return true;
 }
 
-bool js_cocos2dx_umeng_constructor(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_cocos2dx_umeng_constructor(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
 	CCLOG("jsbindings: constructor JS object (UmnegNative)");
 	JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
 
 	JS::RootedObject proto(cx, js_cocos2dx_umeng_prototype);
-	JS::RootedObject obj(cx, JS_NewObject(cx, js_cocos2dx_umeng_class, proto, JS::NullPtr()));
-	args.rval().set(OBJECT_TO_JSVAL(obj));
+	JS::RootedObject obj(cx, JS_NewObjectWithGivenProto(cx, js_cocos2dx_umeng_class, proto));
+
+	args.rval().set(JS::ObjectOrNullValue(obj));
 	return true;
 }
 
@@ -230,9 +206,6 @@ bool js_cocos2dx_umeng_constructor(JSContext *cx, uint32_t argc, jsval *vp)
 void js_cocos2dx_umeng_finalize(JSFreeOp *fop, JSObject *obj) {
 	CCLOG("jsbindings: finalizing JS object %p (UmnegNative)", obj);
 
-	JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
-	JS::RootedObject jsObj(cx, obj);
-	js_proxy_t *proxy = jsb_get_js_proxy(jsObj);
 }
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
@@ -246,23 +219,24 @@ void register_jsb_umeng_native(JSContext* cx, JS::HandleObject global)
 	umengJniHelper::setJavaVM(JniHelper::getJavaVM());
 #endif
 
-	js_cocos2dx_umeng_class = (JSClass *)calloc(1, sizeof(JSClass));
-	js_cocos2dx_umeng_class->name = "UmengNative";
-	js_cocos2dx_umeng_class->addProperty = JS_PropertyStub;
-	js_cocos2dx_umeng_class->delProperty = JS_DeletePropertyStub;
-	js_cocos2dx_umeng_class->getProperty = JS_PropertyStub;
-	js_cocos2dx_umeng_class->setProperty = JS_StrictPropertyStub;
-	js_cocos2dx_umeng_class->enumerate = JS_EnumerateStub;
-	js_cocos2dx_umeng_class->resolve = JS_ResolveStub;
-	js_cocos2dx_umeng_class->convert = JS_ConvertStub;
-	js_cocos2dx_umeng_class->finalize = js_cocos2dx_umeng_finalize;
-	js_cocos2dx_umeng_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	static const JSClassOps umengnative_classOps = {
+		nullptr, nullptr, nullptr, nullptr,
+		nullptr, nullptr, nullptr,
+		js_cocos2dx_umeng_finalize,
+		nullptr, nullptr, nullptr, nullptr
+	};
+	static JSClass umengnative_class = {
+		"GameLogicNative",
+		JSCLASS_HAS_PRIVATE | JSCLASS_FOREGROUND_FINALIZE,
+		&umengnative_classOps
+	};
+
+	js_cocos2dx_umeng_class = &umengnative_class;
 
 	static JSPropertySpec properties[] = {
 		JS_PS_END
 	};
-	/*static void beginLogPageView(const char *pageName);
-	static void endLogPageView(const char *pageName);*/
+
 	static JSFunctionSpec funcs[] = {
 		JS_FN("beginLogPageView", js_cocos2dx_umeng_beginLogPageView, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("endLogPageView", js_cocos2dx_umeng_endLogPageView, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -273,17 +247,56 @@ void register_jsb_umeng_native(JSContext* cx, JS::HandleObject global)
 		JS_FS_END
 	};
 
-	static JSFunctionSpec st_funcs[] = {
-		JS_FS_END
-	};
-
+	JS::RootedObject parent_proto(cx, nullptr);
 	js_cocos2dx_umeng_prototype = JS_InitClass(
 		cx, global,
-		JS::NullPtr(),
+		parent_proto,
 		js_cocos2dx_umeng_class,
 		js_cocos2dx_umeng_constructor, 0, // constructor
 		properties,
 		funcs,
-		NULL, // no static properties
-		st_funcs);
+		nullptr, // no static properties
+		nullptr);
+
+
+	//js_cocos2dx_umeng_class = (JSClass *)calloc(1, sizeof(JSClass));
+	//js_cocos2dx_umeng_class->name = "UmengNative";
+	//js_cocos2dx_umeng_class->addProperty = JS_PropertyStub;
+	//js_cocos2dx_umeng_class->delProperty = JS_DeletePropertyStub;
+	//js_cocos2dx_umeng_class->getProperty = JS_PropertyStub;
+	//js_cocos2dx_umeng_class->setProperty = JS_StrictPropertyStub;
+	//js_cocos2dx_umeng_class->enumerate = JS_EnumerateStub;
+	//js_cocos2dx_umeng_class->resolve = JS_ResolveStub;
+	//js_cocos2dx_umeng_class->convert = JS_ConvertStub;
+	//js_cocos2dx_umeng_class->finalize = js_cocos2dx_umeng_finalize;
+	//js_cocos2dx_umeng_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+	//static JSPropertySpec properties[] = {
+	//	JS_PS_END
+	//};
+	///*static void beginLogPageView(const char *pageName);
+	//static void endLogPageView(const char *pageName);*/
+	//static JSFunctionSpec funcs[] = {
+	//	JS_FN("beginLogPageView", js_cocos2dx_umeng_beginLogPageView, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+	//	JS_FN("endLogPageView", js_cocos2dx_umeng_endLogPageView, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+	//	JS_FN("payForGold", js_cocos2dx_umeng_payForGold, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+	//	JS_FN("payForGoods", js_cocos2dx_umeng_payForGoods, 4, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+	//	JS_FN("buyGoods", js_cocos2dx_umeng_buyGoods, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+
+	//	JS_FS_END
+	//};
+
+	//static JSFunctionSpec st_funcs[] = {
+	//	JS_FS_END
+	//};
+
+	//js_cocos2dx_umeng_prototype = JS_InitClass(
+	//	cx, global,
+	//	JS::NullPtr(),
+	//	js_cocos2dx_umeng_class,
+	//	js_cocos2dx_umeng_constructor, 0, // constructor
+	//	properties,
+	//	funcs,
+	//	NULL, // no static properties
+	//	st_funcs);
 }

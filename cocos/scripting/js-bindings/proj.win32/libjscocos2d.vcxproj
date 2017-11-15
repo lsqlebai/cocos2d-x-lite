@@ -30,7 +30,6 @@
     <ClCompile Include="..\manual\iflytek\DownloaderManager.cpp" />
     <ClCompile Include="..\manual\iflytek\gameLoG\GameLogic.cpp" />
     <ClCompile Include="..\manual\iflytek\gameLoG\jsb_GameLogic.cpp" />
-    <ClCompile Include="..\manual\iflytek\jsb_ThreadNative.cpp" />
     <ClCompile Include="..\manual\iflytek\md5.c" />
     <ClCompile Include="..\manual\iflytek\ProxyDownloader.cpp" />
     <ClCompile Include="..\manual\iflytek\ProxyHttpGet.cpp" />
@@ -47,6 +46,7 @@
     <ClCompile Include="..\manual\js_module_register.cpp" />
     <ClCompile Include="..\manual\localstorage\js_bindings_system_functions.cpp" />
     <ClCompile Include="..\manual\localstorage\js_bindings_system_registration.cpp" />
+    <ClCompile Include="..\manual\network\jsb_asio_connection.cpp" />
     <ClCompile Include="..\manual\network\jsb_socketio.cpp" />
     <ClCompile Include="..\manual\network\jsb_websocket.cpp" />
     <ClCompile Include="..\manual\network\js_network_manual.cpp" />
@@ -75,7 +75,6 @@
     <ClInclude Include="..\manual\iflytek\DownloaderManager.h" />
     <ClInclude Include="..\manual\iflytek\gameLoG\GameLogic.h" />
     <ClInclude Include="..\manual\iflytek\gameLoG\jsb_GameLogic.h" />
-    <ClInclude Include="..\manual\iflytek\jsb_ThreadNative.h" />
     <ClInclude Include="..\manual\iflytek\md5.h" />
     <ClInclude Include="..\manual\iflytek\ProxyDownloader.h" />
     <ClInclude Include="..\manual\iflytek\ProxyHttpGet.h" />
@@ -96,6 +95,7 @@
     <ClInclude Include="..\manual\localstorage\js_bindings_system_functions.h" />
     <ClInclude Include="..\manual\localstorage\js_bindings_system_functions_registration.h" />
     <ClInclude Include="..\manual\localstorage\js_bindings_system_registration.h" />
+    <ClInclude Include="..\manual\network\jsb_asio_connection.h" />
     <ClInclude Include="..\manual\network\jsb_socketio.h" />
     <ClInclude Include="..\manual\network\jsb_websocket.h" />
     <ClInclude Include="..\manual\network\js_network_manual.h" />
@@ -106,6 +106,9 @@
     <ClInclude Include="..\manual\ui\jsb_cocos2dx_ui_manual.h" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\external\sources\iflyteknet\vsproject\iflyteknet.vcxproj">
+      <Project>{7d8c5218-c005-40d4-b1fb-553ecbde92c9}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\2d\libcocos2d.vcxproj">
       <Project>{98a51ba8-fc3a-415b-ac8f-8c7bd464e93e}</Project>
     </ProjectReference>

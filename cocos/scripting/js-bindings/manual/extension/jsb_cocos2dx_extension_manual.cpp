@@ -364,11 +364,11 @@ extern JS::PersistentRootedObject* jsb_cocos2d_extension_EventListenerAssetsMana
 extern JS::PersistentRootedObject* jsb_cocos2d_extension_Manifest_prototype;
 //add byshiqi luo
 // jsb.setGlobalProxy(proxy)
-bool js_set_global_proxy(JSContext *cx, uint32_t argc, jsval *vp) {
+bool js_set_global_proxy(JSContext *cx, uint32_t argc, JS::Value *vp) {
 	JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
 	JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
 	if (argc != 1) {
-		JS_ReportError(cx, "js_download : wrong number of arguments");
+		JS_ReportErrorUTF8(cx, "js_download : wrong number of arguments");
 		return false;
 	}
 
@@ -387,12 +387,12 @@ bool js_set_global_proxy(JSContext *cx, uint32_t argc, jsval *vp) {
 //packageUrl:"http://172.16.4.198/remote-assets/",
 //remoteManifestUrl : "http://172.16.4.198/remote-assets/project.manifest",
 //remoteVersionUrl : "http://172.16.4.198/remote-assets/version.manifest"
-bool js_set_hot_update_url(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_set_hot_update_url(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
 	JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
 	JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
 	if (argc != 3) {
-		JS_ReportError(cx, "js_set_hot_update_url : wrong number of arguments:%d, shouled be 3", argc);
+		JS_ReportErrorUTF8(cx, "js_set_hot_update_url : wrong number of arguments:%d, shouled be 3", argc);
 		return false;
 	}
 

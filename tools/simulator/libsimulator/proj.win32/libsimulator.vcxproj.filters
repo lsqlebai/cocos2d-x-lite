@@ -23,21 +23,6 @@
     <Filter Include="runtime">
       <UniqueIdentifier>{0fbe614e-803e-4c08-a31d-c58069f24fe7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="runtime\protobuf-lite">
-      <UniqueIdentifier>{d5a6f543-83ac-4f1a-af62-f1fd73814cbc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="runtime\protobuf-lite\google">
-      <UniqueIdentifier>{28bd7d1e-25df-4c63-a7b3-dfab4b257992}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="runtime\protobuf-lite\google\protobuf">
-      <UniqueIdentifier>{544dead8-d438-4f5e-a032-ff2bc4e4b175}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="runtime\protobuf-lite\google\protobuf\io">
-      <UniqueIdentifier>{8c7e073a-7bcf-4457-9929-84a02247f73a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="runtime\protobuf-lite\google\protobuf\stubs">
-      <UniqueIdentifier>{33b5b035-810a-41c0-b187-c2730f347673}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\network\CCHTTPRequest.h">

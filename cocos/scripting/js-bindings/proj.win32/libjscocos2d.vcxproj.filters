@@ -131,27 +131,6 @@
     <ClCompile Include="..\manual\creator\js_bindings_creator_manual.cpp">
       <Filter>manual</Filter>
     </ClCompile>
-    <ClCompile Include="..\manual\iflytek\CallbackManager.cpp">
-      <Filter>manual\iflytek</Filter>
-    </ClCompile>
-    <ClCompile Include="..\manual\iflytek\DownloaderManager.cpp">
-      <Filter>manual\iflytek</Filter>
-    </ClCompile>
-    <ClCompile Include="..\manual\iflytek\jsb_ThreadNative.cpp">
-      <Filter>manual\iflytek</Filter>
-    </ClCompile>
-    <ClCompile Include="..\manual\iflytek\md5.c">
-      <Filter>manual\iflytek</Filter>
-    </ClCompile>
-    <ClCompile Include="..\manual\iflytek\ProxyDownloader.cpp">
-      <Filter>manual\iflytek</Filter>
-    </ClCompile>
-    <ClCompile Include="..\manual\iflytek\ProxyHttpGet.cpp">
-      <Filter>manual\iflytek</Filter>
-    </ClCompile>
-    <ClCompile Include="..\manual\iflytek\ZipHelper.cpp">
-      <Filter>manual\iflytek</Filter>
-    </ClCompile>
     <ClCompile Include="..\manual\iflytek\gameLoG\GameLogic.cpp">
       <Filter>manual\iflytek\gameLoG</Filter>
     </ClCompile>
@@ -166,6 +145,27 @@
     </ClCompile>
     <ClCompile Include="..\manual\iflytek\umeng\umengJniHelper.cpp">
       <Filter>manual\iflytek\umeng</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\iflytek\ZipHelper.cpp">
+      <Filter>manual\iflytek</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\iflytek\CallbackManager.cpp">
+      <Filter>manual\iflytek</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\iflytek\md5.c">
+      <Filter>manual\iflytek</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\iflytek\DownloaderManager.cpp">
+      <Filter>manual\iflytek</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\iflytek\ProxyDownloader.cpp">
+      <Filter>manual\iflytek</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\iflytek\ProxyHttpGet.cpp">
+      <Filter>manual\iflytek</Filter>
+    </ClCompile>
+    <ClCompile Include="..\manual\network\jsb_asio_connection.cpp">
+      <Filter>manual\network</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -274,27 +274,6 @@
     <ClInclude Include="..\manual\BaseJSAction.h">
       <Filter>manual</Filter>
     </ClInclude>
-    <ClInclude Include="..\manual\iflytek\CallbackManager.h">
-      <Filter>manual\iflytek</Filter>
-    </ClInclude>
-    <ClInclude Include="..\manual\iflytek\DownloaderManager.h">
-      <Filter>manual\iflytek</Filter>
-    </ClInclude>
-    <ClInclude Include="..\manual\iflytek\jsb_ThreadNative.h">
-      <Filter>manual\iflytek</Filter>
-    </ClInclude>
-    <ClInclude Include="..\manual\iflytek\md5.h">
-      <Filter>manual\iflytek</Filter>
-    </ClInclude>
-    <ClInclude Include="..\manual\iflytek\ProxyDownloader.h">
-      <Filter>manual\iflytek</Filter>
-    </ClInclude>
-    <ClInclude Include="..\manual\iflytek\ProxyHttpGet.h">
-      <Filter>manual\iflytek</Filter>
-    </ClInclude>
-    <ClInclude Include="..\manual\iflytek\ZipHelper.h">
-      <Filter>manual\iflytek</Filter>
-    </ClInclude>
     <ClInclude Include="..\manual\iflytek\gameLoG\GameLogic.h">
       <Filter>manual\iflytek\gameLoG</Filter>
     </ClInclude>
@@ -312,6 +291,27 @@
     </ClInclude>
     <ClInclude Include="..\manual\iflytek\umeng\umenglog.h">
       <Filter>manual\iflytek\umeng</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\ZipHelper.h">
+      <Filter>manual\iflytek</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\CallbackManager.h">
+      <Filter>manual\iflytek</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\md5.h">
+      <Filter>manual\iflytek</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\DownloaderManager.h">
+      <Filter>manual\iflytek</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\ProxyDownloader.h">
+      <Filter>manual\iflytek</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\iflytek\ProxyHttpGet.h">
+      <Filter>manual\iflytek</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manual\network\jsb_asio_connection.h">
+      <Filter>manual\network</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

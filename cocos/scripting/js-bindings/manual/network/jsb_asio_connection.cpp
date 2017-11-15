@@ -69,143 +69,18 @@ public:
 
     JSB_AsioConnection()
     {
-        JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
-        _JSDelegate.construct(cx);
     }
 
     ~JSB_AsioConnection()
     {
-        _JSDelegate.destroyIfConstructed();
     }
-
-    //virtual void onOpen(WebSocket* ws)
-    //{
-    //    js_proxy_t * p = jsb_get_native_proxy(ws);
-    //    if (!p) return;
-
-    //    if (cocos2d::Director::getInstance() == nullptr || cocos2d::ScriptEngineManager::getInstance() == nullptr)
-    //        return;
-
-    //    JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
-
-    //    JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
-    //    JS::RootedObject jsobj(cx, JS_NewObject(cx, NULL, JS::NullPtr(), JS::NullPtr()));
-    //    JS::RootedValue vp(cx);
-    //    vp = c_string_to_jsval(cx, "open");
-    //    JS_SetProperty(cx, jsobj, "type", vp);
-
-    //    jsval args = OBJECT_TO_JSVAL(jsobj);
-
-    //    ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(_JSDelegate.ref()), "onopen", 1, &args);
-    //}
-
-    //virtual void onMessage(WebSocket* ws, const WebSocket::Data& data)
-    //{
-    //    js_proxy_t * p = jsb_get_native_proxy(ws);
-    //    if (p == nullptr) return;
-
-    //    if (cocos2d::Director::getInstance() == nullptr || cocos2d::ScriptEngineManager::getInstance() == nullptr)
-    //        return;
-
-    //    JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
-
-    //    JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
-    //    JS::RootedObject jsobj(cx, JS_NewObject(cx, NULL, JS::NullPtr(), JS::NullPtr()));
-    //    JS::RootedValue vp(cx);
-    //    vp = c_string_to_jsval(cx, "message");
-    //    JS_SetProperty(cx, jsobj, "type", vp);
-
-    //    JS::RootedValue args(cx, OBJECT_TO_JSVAL(jsobj));
-    //    if (data.isBinary)
-    //    {// data is binary
-    //        JS::RootedObject buffer(cx, JS_NewArrayBuffer(cx, static_cast<uint32_t>(data.len)));
-    //        if (data.len > 0)
-    //        {
-    //            uint8_t* bufdata = JS_GetArrayBufferData(buffer);
-    //            memcpy((void*)bufdata, (void*)data.bytes, data.len);
-    //        }
-    //        JS::RootedValue dataVal(cx);
-    //        dataVal = OBJECT_TO_JSVAL(buffer);
-    //        JS_SetProperty(cx, jsobj, "data", dataVal);
-    //    }
-    //    else
-    //    {// data is string
-    //        JS::RootedValue dataVal(cx);
-    //        if (strlen(data.bytes) == 0 && data.len > 0)
-    //        {// String with 0x00 prefix
-    //            dataVal = STRING_TO_JSVAL(JS_NewStringCopyN(cx, data.bytes, data.len));
-    //        }
-    //        else
-    //        {// Normal string
-    //            dataVal = c_string_to_jsval(cx, data.bytes);
-    //        }
-    //        if (dataVal.isNullOrUndefined())
-    //        {
-    //            ws->closeAsync();
-    //            return;
-    //        }
-    //        JS_SetProperty(cx, jsobj, "data", dataVal);
-    //    }
-
-    //    ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(_JSDelegate.ref()), "onMessage", 1, args.address());
-    //}
-
-    //virtual void onClose(WebSocket* ws)
-    //{
-    //    js_proxy_t * p = jsb_get_native_proxy(ws);
-    //    if (!p) return;
-
-    //    if (cocos2d::Director::getInstance() != nullptr && cocos2d::Director::getInstance()->getRunningScene() && cocos2d::ScriptEngineManager::getInstance() != nullptr)
-    //    {
-    //        JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
-    //        
-    //        JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
-    //        JS::RootedObject jsobj(cx, JS_NewObject(cx, NULL, JS::NullPtr(), JS::NullPtr()));
-    //        JS::RootedValue vp(cx);
-    //        vp = c_string_to_jsval(cx, "close");
-    //        JS_SetProperty(cx, jsobj, "type", vp);
-    //        
-    //        JS::RootedValue args(cx, OBJECT_TO_JSVAL(jsobj));
-    //        ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(_JSDelegate.ref()), "onclose", 1, args.address());
-    //        
-    //        auto copy = &p->obj;
-    //        JS::RemoveObjectRoot(cx, copy);
-    //        jsb_remove_proxy(p);
-    //    }
-    //    
-    //    // Delete WebSocket instance
-    //    CC_SAFE_DELETE(ws);
-    //    // Delete self at last while websocket was closed.
-    //    delete this;
-    //}
-
-    //virtual void onError(WebSocket* ws, const WebSocket::ErrorCode& error)
-    //{
-    //    js_proxy_t * p = jsb_get_native_proxy(ws);
-    //    if (!p) return;
-
-    //    if (cocos2d::Director::getInstance() == nullptr || cocos2d::ScriptEngineManager::getInstance() == nullptr)
-    //        return;
-
-    //    JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
-
-    //    JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
-    //    JS::RootedObject jsobj(cx, JS_NewObject(cx, NULL, JS::NullPtr(), JS::NullPtr()));
-    //    JS::RootedValue vp(cx);
-    //    vp = c_string_to_jsval(cx, "error");
-    //    JS_SetProperty(cx, jsobj, "type", vp);
-
-    //    JS::RootedValue args(cx, OBJECT_TO_JSVAL(jsobj));
-
-    //    ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(_JSDelegate.ref()), "onerror", 1, args.address());
-    //}
 
     void setJSDelegate(JS::HandleObject pJSDelegate)
     {
-        _JSDelegate.ref() = pJSDelegate;
+		_JSDelegate = pJSDelegate;
     }
 public:
-    mozilla::Maybe<JS::PersistentRootedObject> _JSDelegate;
+    JS::PersistentRootedObject _JSDelegate;
 };
 
 JSClass  *js_cocos2dx_asioconnection_class;
@@ -221,27 +96,56 @@ void runOnCocosThread(const std::function<void()>& fun)
 void js_cocos2dx_AsioConnection_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOG("jsbindings: finalizing JS object %p (AsioConnection)", obj);
 
-	JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
+	/*JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
 	JS::RootedObject jsObj(cx, obj);
-	js_proxy_t *proxy = jsb_get_js_proxy(jsObj);
+	js_proxy_t *proxy = jsb_get_js_proxy(cx, jsObj);
 	TcpConnection* cobj = (TcpConnection *)(proxy ? proxy->ptr : NULL);
 	if (cobj)
 	{
 		auto ref = cobj->getRefPtr();
 		CC_SAFE_DELETE(ref);
 		CC_SAFE_DELETE(cobj);
+	}*/
+
+	TcpConnection *cobj = static_cast<TcpConnection *>(JS_GetPrivate(obj));
+	if (cobj)
+	{
+		js_proxy_t * p = jsb_get_native_proxy(cobj);
+		if (p)
+		{
+#if not CC_ENABLE_GC_FOR_NATIVE_OBJECTS
+			auto copy = &p->obj;
+			JS::RemoveObjectRoot(cx, copy);
+#endif
+			jsb_remove_proxy(p);
+		}
+
+		ScriptingCore::getInstance()->setFinalizing(true);
+		
+		// check connecting status,do disconnect
+		if (cobj->isConnecting())
+		{
+			cobj->disconnect();
+		}
+		JSB_AsioConnection* jsbObj = static_cast<JSB_AsioConnection*>(cobj->getRefPtr());
+
+		CC_SAFE_DELETE(jsbObj);
+		CC_SAFE_DELETE(cobj);
+		
+		ScriptingCore::getInstance()->setFinalizing(false);
 	}
+
 }
 
 
-bool js_cocos2dx_extension_AsioConnection_asynConnect(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_cocos2dx_extension_AsioConnection_asynConnect(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
 	CCLOG("ASIO asynConnect");
 
 	JS::CallArgs argv = JS::CallArgsFromVp(argc, vp);
 	JS::RootedObject jsObj(cx, argv.thisv().toObjectOrNull());
 
-	js_proxy_t *proxy = jsb_get_js_proxy(jsObj);
+	js_proxy_t *proxy = jsb_get_js_proxy(cx, jsObj);
 	TcpConnection* cobj = (TcpConnection *)(proxy ? proxy->ptr : NULL);
 
 	JSB_PRECONDITION2(cobj, cx, false, "Invalid Native Object");
@@ -277,32 +181,31 @@ bool js_cocos2dx_extension_AsioConnection_asynConnect(JSContext *cx, uint32_t ar
 					if (cocos2d::Director::getInstance() == nullptr || cocos2d::ScriptEngineManager::getInstance() == nullptr)
 						return;
 
-					JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
-
 
 					JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
-					JS::RootedObject jsobj(cx, JS_NewObject(cx, NULL, JS::NullPtr(), JS::NullPtr()));
+					JS::RootedObject jsobj(cx, JS_NewPlainObject(cx));
 
-					JS::RootedValue errorCodeJS(cx);
-					errorCodeJS = INT_TO_JSVAL(errorCode);
+					JS::RootedValue errorCodeJS(cx, JS::Int32Value(errorCode));
 					JS_SetProperty(cx, jsobj, "errorCode", errorCodeJS);
 
 
 					JS::RootedValue errorMsgJS(cx);
-					errorMsgJS = c_string_to_jsval(cx, errorMsg);
+					c_string_to_jsval(cx, errorMsg, &errorMsgJS);
 					JS_SetProperty(cx, jsobj, "errorMsg", errorMsgJS);
 
+					JS::RootedValue jsobjVal(cx, JS::ObjectOrNullValue(jsobj));
+					JS::HandleValueArray args(jsobjVal);
 
-					JS::RootedValue args(cx, OBJECT_TO_JSVAL(jsobj));
+					JS::RootedValue owner(cx, JS::ObjectOrNullValue(((JSB_AsioConnection*)cobj->getRefPtr())->_JSDelegate));
 
-					ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(((JSB_AsioConnection*)cobj->getRefPtr())->_JSDelegate.ref()), "onConnectResult", 1, args.address());
+					ScriptingCore::getInstance()->executeFunctionWithOwner(owner, "onConnectResult", args);
 				});
 				
 			});
 	    }
 	    else
 	    {
-	        JS_ReportError(cx, "wrong host or port");
+	        JS_ReportErrorUTF8(cx, "wrong host or port");
 	        return false;
 	    }
 
@@ -315,11 +218,11 @@ bool js_cocos2dx_extension_AsioConnection_asynConnect(JSContext *cx, uint32_t ar
 	}
 
 
-	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 2);
+	JS_ReportErrorUTF8(cx, "wrong number of arguments: %d, was expecting %d", argc, 2);
 	return true;
 }
 
-bool js_cocos2dx_extension_AsioConnection_disconnect(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_cocos2dx_extension_AsioConnection_disconnect(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
 
 	CCLOG("ASIO disconnect");
@@ -327,7 +230,7 @@ bool js_cocos2dx_extension_AsioConnection_disconnect(JSContext *cx, uint32_t arg
 	JS::CallArgs argv = JS::CallArgsFromVp(argc, vp);
 	JS::RootedObject obj(cx, argv.thisv().toObjectOrNull());
 
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	js_proxy_t *proxy = jsb_get_js_proxy(cx, obj);
 	TcpConnection* cobj = (TcpConnection *)(proxy ? proxy->ptr : NULL);
 
 	JSB_PRECONDITION2(cobj, cx, false, "Invalid Native Object");
@@ -339,65 +242,69 @@ bool js_cocos2dx_extension_AsioConnection_disconnect(JSContext *cx, uint32_t arg
 	
 }
 
-bool js_cocos2dx_extension_AsioConnection_isConnected(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_cocos2dx_extension_AsioConnection_isConnected(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
 	CCLOG("ASIO isConnected");
 
 	JS::CallArgs argv = JS::CallArgsFromVp(argc, vp);
 	JS::RootedObject obj(cx, argv.thisv().toObjectOrNull());
 
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	js_proxy_t *proxy = jsb_get_js_proxy(cx, obj);
 	TcpConnection* cobj = (TcpConnection *)(proxy ? proxy->ptr : NULL);
 
 	JSB_PRECONDITION2(cobj, cx, false, "Invalid Native Object");
 
-	argv.rval().set(BOOLEAN_TO_JSVAL(cobj->isConnected()));
+	JS::RootedValue jsret(cx, JS::BooleanValue(cobj->isConnected()));
+	argv.rval().set(jsret);
 	return true;
 }
 
 
-bool js_cocos2dx_extension_AsioConnection_isConnecting(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_cocos2dx_extension_AsioConnection_isConnecting(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
 	CCLOG("ASIO isConnecting");
 
 	JS::CallArgs argv = JS::CallArgsFromVp(argc, vp);
 	JS::RootedObject obj(cx, argv.thisv().toObjectOrNull());
 
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	js_proxy_t *proxy = jsb_get_js_proxy(cx, obj);
 	TcpConnection* cobj = (TcpConnection *)(proxy ? proxy->ptr : NULL);
 
 	JSB_PRECONDITION2(cobj, cx, false, "Invalid Native Object");
 
-	argv.rval().set(BOOLEAN_TO_JSVAL(cobj->isConnecting()));
+	JS::RootedValue jsret(cx, JS::BooleanValue(cobj->isConnecting()));
+	argv.rval().set(jsret);
 
 	return true;
 }
 
-bool js_cocos2dx_extension_AsioConnection_getVersion(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_cocos2dx_extension_AsioConnection_getVersion(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
 	CCLOG("ASIO getVersion");
 
 	JS::CallArgs argv = JS::CallArgsFromVp(argc, vp);
 	JS::RootedObject obj(cx, argv.thisv().toObjectOrNull());
 
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	js_proxy_t *proxy = jsb_get_js_proxy(cx, obj);
 	TcpConnection* cobj = (TcpConnection *)(proxy ? proxy->ptr : NULL);
 
 	JSB_PRECONDITION2(cobj, cx, false, "Invalid Native Object");
 
-	argv.rval().set(INT_TO_JSVAL(TcpConnection::getVersion()));
+	JS::RootedValue versionJS(cx, JS::Int32Value(TcpConnection::getVersion()));
+
+	argv.rval().set(versionJS);
 
 	return true;
 }
 
-bool js_cocos2dx_extension_AsioConnection_setEnableCrypt(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_cocos2dx_extension_AsioConnection_setEnableCrypt(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
 	CCLOG("ASIO setEnableCrypt");
 
 	JS::CallArgs argv = JS::CallArgsFromVp(argc, vp);
 	JS::RootedObject obj(cx, argv.thisv().toObjectOrNull());
 
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	js_proxy_t *proxy = jsb_get_js_proxy(cx, obj);
 	TcpConnection* cobj = (TcpConnection *)(proxy ? proxy->ptr : NULL);
 
 	JSB_PRECONDITION2(cobj, cx, false, "Invalid Native Object");
@@ -414,21 +321,21 @@ bool js_cocos2dx_extension_AsioConnection_setEnableCrypt(JSContext *cx, uint32_t
 	}
 	else
 	{
-		JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
+		JS_ReportErrorUTF8(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 		return false;
 	}
 	return true;
 }
 
 
-bool js_cocos2dx_extension_AsioConnection_setEnableDecodeProto(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_cocos2dx_extension_AsioConnection_setEnableDecodeProto(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
 	CCLOG("ASIO setEnableDecodeProto");
 
 	JS::CallArgs argv = JS::CallArgsFromVp(argc, vp);
 	JS::RootedObject obj(cx, argv.thisv().toObjectOrNull());
 
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	js_proxy_t *proxy = jsb_get_js_proxy(cx, obj);
 	TcpConnection* cobj = (TcpConnection *)(proxy ? proxy->ptr : NULL);
 
 	JSB_PRECONDITION2(cobj, cx, false, "Invalid Native Object");
@@ -445,20 +352,20 @@ bool js_cocos2dx_extension_AsioConnection_setEnableDecodeProto(JSContext *cx, ui
 	}
 	else
 	{
-		JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
+		JS_ReportErrorUTF8(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 		return false;
 	}
 	return true;
 }
 
-bool js_cocos2dx_extension_AsioConnection_setEnableZlib(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_cocos2dx_extension_AsioConnection_setEnableZlib(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
 	CCLOG("ASIO setEnableDecodeProto");
 
 	JS::CallArgs argv = JS::CallArgsFromVp(argc, vp);
 	JS::RootedObject obj(cx, argv.thisv().toObjectOrNull());
 
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	js_proxy_t *proxy = jsb_get_js_proxy(cx, obj);
 	TcpConnection* cobj = (TcpConnection *)(proxy ? proxy->ptr : NULL);
 
 	JSB_PRECONDITION2(cobj, cx, false, "Invalid Native Object");
@@ -474,21 +381,21 @@ bool js_cocos2dx_extension_AsioConnection_setEnableZlib(JSContext *cx, uint32_t 
 	}
 	else
 	{
-		JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
+		JS_ReportErrorUTF8(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 		return false;
 	}
 	return true;
 }
 
 
-bool js_cocos2dx_extension_AsioConnection_setProxy(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_cocos2dx_extension_AsioConnection_setProxy(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
 	CCLOG("ASIO setProxy");
 
 	JS::CallArgs argv = JS::CallArgsFromVp(argc, vp);
 	JS::RootedObject obj(cx, argv.thisv().toObjectOrNull());
 
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	js_proxy_t *proxy = jsb_get_js_proxy(cx, obj);
 	TcpConnection* cobj = (TcpConnection *)(proxy ? proxy->ptr : NULL);
 
 	JSB_PRECONDITION2(cobj, cx, false, "Invalid Native Object");
@@ -511,13 +418,13 @@ bool js_cocos2dx_extension_AsioConnection_setProxy(JSContext *cx, uint32_t argc,
 		}
 		else
 		{
-			JS_ReportError(cx, "wrong arguments format, arg1 must be string, arg2 must be int");
+			JS_ReportErrorUTF8(cx, "wrong arguments format, arg1 must be string, arg2 must be int");
 			return false;
 		}
 	}
 	else
 	{
-		JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 2);
+		JS_ReportErrorUTF8(cx, "wrong number of arguments: %d, was expecting %d", argc, 2);
 		return false;
 	}
 
@@ -525,12 +432,12 @@ bool js_cocos2dx_extension_AsioConnection_setProxy(JSContext *cx, uint32_t argc,
 	return true;
 }
 
-bool js_cocos2dx_extension_AsioConnection_asynSend(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_cocos2dx_extension_AsioConnection_asynSend(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
 	//CCLOG("ASIO asynSend");
     JS::CallArgs argv = JS::CallArgsFromVp(argc, vp);
     JS::RootedObject obj(cx, argv.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    js_proxy_t *proxy = jsb_get_js_proxy(cx, obj);
 	TcpConnection* cobj = (TcpConnection *)(proxy ? proxy->ptr : NULL);
     JSB_PRECONDITION2( cobj, cx, false, "Invalid Native Object");
 
@@ -544,14 +451,15 @@ bool js_cocos2dx_extension_AsioConnection_asynSend(JSContext *cx, uint32_t argc,
             uint32_t len = 0;
 
             JS::RootedObject jsobj(cx, argv[0].toObjectOrNull());
+			bool flag;
             if (JS_IsArrayBufferObject(jsobj))
             {
-                bufdata = JS_GetArrayBufferData(jsobj);
+				bufdata = JS_GetArrayBufferData(jsobj, &flag, JS::AutoCheckCannotGC());
                 len = JS_GetArrayBufferByteLength(jsobj);
             }
             else if (JS_IsArrayBufferViewObject(jsobj))
             {
-                bufdata = (uint8_t*)JS_GetArrayBufferViewData(jsobj);
+                bufdata = (uint8_t*)JS_GetArrayBufferViewData(jsobj, &flag, JS::AutoCheckCannotGC());
                 len = JS_GetArrayBufferViewByteLength(jsobj);
             }
 
@@ -567,24 +475,21 @@ bool js_cocos2dx_extension_AsioConnection_asynSend(JSContext *cx, uint32_t argc,
 					if (cocos2d::Director::getInstance() == nullptr || cocos2d::ScriptEngineManager::getInstance() == nullptr)
 						return;
 
-					JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
 
+					JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
+					JS::RootedObject jsobj(cx, JS_NewPlainObject(cx));
 
-						JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
-					JS::RootedObject jsobj(cx, JS_NewObject(cx, NULL, JS::NullPtr(), JS::NullPtr()));
-
-					JS::RootedValue sendIdJS(cx);
-					sendIdJS = INT_TO_JSVAL(sendId);
+					JS::RootedValue sendIdJS(cx, JS::Int32Value(sendId));
 					JS_SetProperty(cx, jsobj, "sendId", sendIdJS);
 
-					JS::RootedValue errorCodeJS(cx);
-					errorCodeJS = INT_TO_JSVAL(sendResult);
+					JS::RootedValue errorCodeJS(cx, JS::Int32Value(sendResult));
 					JS_SetProperty(cx, jsobj, "errorCode", errorCodeJS);
 
-
-					JS::RootedValue args(cx, OBJECT_TO_JSVAL(jsobj));
-
-					ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(((JSB_AsioConnection*)cobj->getRefPtr())->_JSDelegate.ref()), "onSendResult", 1, args.address());
+					JS::RootedValue jsobjVal(cx, JS::ObjectOrNullValue(jsobj));
+					JS::HandleValueArray args(jsobjVal);
+					JS::RootedValue owner(cx, JS::ObjectOrNullValue(((JSB_AsioConnection*)cobj->getRefPtr())->_JSDelegate));
+					
+					ScriptingCore::getInstance()->executeFunctionWithOwner(owner, "onSendResult", args);
 				});
 
 			}, argv[1].toInt32());
@@ -592,7 +497,7 @@ bool js_cocos2dx_extension_AsioConnection_asynSend(JSContext *cx, uint32_t argc,
 		else if (argv[0].isString())
 		{
 
-			JS_ReportError(cx, "data type string to be sent is unsupported.");
+			JS_ReportErrorUTF8(cx, "data type string to be sent is unsupported.");
 
 			ssize_t len = JS_GetStringLength(argv[0].toString());
 			std::string data;
@@ -610,7 +515,7 @@ bool js_cocos2dx_extension_AsioConnection_asynSend(JSContext *cx, uint32_t argc,
 		}
         else
         {
-            JS_ReportError(cx, "data type to be sent is unsupported.");
+            JS_ReportErrorUTF8(cx, "data type to be sent is unsupported.");
             return false;
         }
 
@@ -619,12 +524,12 @@ bool js_cocos2dx_extension_AsioConnection_asynSend(JSContext *cx, uint32_t argc,
         return true;
     }
 
-    JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d or %d", argc, 1, 2);
+    JS_ReportErrorUTF8(cx, "wrong number of arguments: %d, was expecting %d or %d", argc, 1, 2);
     return true;
 }
 
 
-bool js_cocos2dx_extension_AsioConnection_constructor(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_cocos2dx_extension_AsioConnection_constructor(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
 
@@ -638,7 +543,7 @@ bool js_cocos2dx_extension_AsioConnection_constructor(JSContext *cx, uint32_t ar
 		//} while (0);
 
         JS::RootedObject proto(cx, js_cocos2dx_asioconnection_prototype);
-        JS::RootedObject obj(cx, JS_NewObject(cx, js_cocos2dx_asioconnection_class, proto, JS::NullPtr()));
+        JS::RootedObject obj(cx, JS_NewObjectWithGivenProto(cx, js_cocos2dx_asioconnection_class, proto));
 
 		TcpConnection* cobj = new TcpConnection();
 
@@ -662,17 +567,15 @@ bool js_cocos2dx_extension_AsioConnection_constructor(JSContext *cx, uint32_t ar
 				{
 					std::unique_ptr<int8_t[]> tempDataPtr(tempData);
 				}
-				
 
 				if (cocos2d::Director::getInstance() == nullptr || cocos2d::ScriptEngineManager::getInstance() == nullptr)
 					return;
 
-				JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
-
 				JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
-				auto obj = JS_NewObject(cx, NULL, JS::NullPtr(), JS::NullPtr());
-				JS::RootedObject jsobj(cx, obj);
-				jsval args = OBJECT_TO_JSVAL(jsobj);
+				JS::RootedObject jsobj(cx, JS_NewPlainObject(cx));
+
+				JS::RootedValue jsobjVal(cx, JS::ObjectOrNullValue(jsobj));
+				JS::HandleValueArray args(jsobjVal);
 
 				if (tempData)
 				{
@@ -680,21 +583,23 @@ bool js_cocos2dx_extension_AsioConnection_constructor(JSContext *cx, uint32_t ar
 					// data is binary
 					JS::RootedObject buffer(cx, JS_NewArrayBuffer(cx, dataLen));
 
+					bool flag;
 					if (dataLen > 0)
 					{
-						uint8_t* bufdata = JS_GetArrayBufferData(buffer);
+						uint8_t* bufdata = JS_GetArrayBufferData(buffer, &flag, JS::AutoCheckCannotGC());
 						memcpy((void*)bufdata, tempData, dataLen);
 					}
-					JS::RootedValue dataVal(cx);
-					dataVal = OBJECT_TO_JSVAL(buffer);
+					JS::RootedValue dataVal(cx, JS::ObjectOrNullValue(buffer));
 					JS_SetProperty(cx, jsobj, "data", dataVal);
 				}
 
 				JS::RootedValue errorMsgJS(cx);
-				errorMsgJS = c_string_to_jsval(cx, jsonStr.c_str());
+				c_string_to_jsval(cx, jsonStr.c_str(), &errorMsgJS);
 				JS_SetProperty(cx, jsobj, "protoObjJson", errorMsgJS);
 
-				ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(((JSB_AsioConnection*)cobj->getRefPtr())->_JSDelegate.ref()), "onMessage", 1, &args);
+				JS::RootedValue owner(cx, JS::ObjectOrNullValue(((JSB_AsioConnection*)cobj->getRefPtr())->_JSDelegate));
+
+				ScriptingCore::getInstance()->executeFunctionWithOwner(owner, "onMessage", args);
 			});
 		});
 
@@ -708,89 +613,144 @@ bool js_cocos2dx_extension_AsioConnection_constructor(JSContext *cx, uint32_t ar
 				if (cocos2d::Director::getInstance() == nullptr || cocos2d::ScriptEngineManager::getInstance() == nullptr)
 					return;
 
-				JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
+				JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
+				JS::RootedObject jsobj(cx, JS_NewPlainObject(cx));
 
-					JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
-				JS::RootedObject jsobj(cx, JS_NewObject(cx, NULL, JS::NullPtr(), JS::NullPtr()));
-				jsval args = OBJECT_TO_JSVAL(jsobj);
-
-				JS::RootedValue isByMyselfJS(cx);
-				isByMyselfJS = BOOLEAN_TO_JSVAL(isBySelf);
+				JS::RootedValue isByMyselfJS(cx, JS::BooleanValue(isBySelf));
 				JS_SetProperty(cx, jsobj, "isBySelf", isByMyselfJS);
 
+				JS::RootedValue jsobjVal(cx, JS::ObjectOrNullValue(jsobj));
+				JS::HandleValueArray args(jsobjVal);
 
-				ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(((JSB_AsioConnection*)cobj->getRefPtr())->_JSDelegate.ref()), "onDisconnect", 1, &args);
+				JS::RootedValue owner(cx, JS::ObjectOrNullValue(((JSB_AsioConnection*)cobj->getRefPtr())->_JSDelegate));
+
+				ScriptingCore::getInstance()->executeFunctionWithOwner(owner, "onDisconnect", args);
 			});
 		});
 
 		JSB_AsioConnection* delegate = new JSB_AsioConnection();
 		delegate->setJSDelegate(obj);
 		cobj->setRefPtr(delegate);
-        js_proxy_t *p = jsb_new_proxy(cobj, obj);
-        JS::AddNamedObjectRoot(cx, &p->obj, "AsioConnection");
+        //js_proxy_t *p = jsb_new_proxy(cx, cobj, obj);
+        //JS::AddNamedObjectRoot(cx, &p->obj, "AsioConnection");
 
+		jsb_new_proxy(cx, cobj, obj);
+		JS_SetPrivate(obj.get(), cobj);
 
-
-		args.rval().set(OBJECT_TO_JSVAL(obj));
+		JS::RootedValue ret(cx, JS::ObjectOrNullValue(obj));
+		args.rval().set(ret);
 		return true;
     //}
-	//JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 0);
+	//JS_ReportErrorUTF8(cx, "wrong number of arguments: %d, was expecting %d", argc, 0);
 	//return false;
 	
 }
 
 void register_jsb_asio_connection(JSContext *cx, JS::HandleObject global)
 {
-    js_cocos2dx_asioconnection_class = (JSClass *)calloc(1, sizeof(JSClass));
-    js_cocos2dx_asioconnection_class->name = "AsioConnection";
-    js_cocos2dx_asioconnection_class->addProperty = JS_PropertyStub;
-    js_cocos2dx_asioconnection_class->delProperty = JS_DeletePropertyStub;
-    js_cocos2dx_asioconnection_class->getProperty = JS_PropertyStub;
-    js_cocos2dx_asioconnection_class->setProperty = JS_StrictPropertyStub;
-    js_cocos2dx_asioconnection_class->enumerate = JS_EnumerateStub;
-    js_cocos2dx_asioconnection_class->resolve = JS_ResolveStub;
-    js_cocos2dx_asioconnection_class->convert = JS_ConvertStub;
-    js_cocos2dx_asioconnection_class->finalize = js_cocos2dx_AsioConnection_finalize;
-    js_cocos2dx_asioconnection_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
-    static JSPropertySpec properties[] = {
-       // JS_PSG("readyState", js_cocos2dx_extension_WebSocket_get_readyState, JSPROP_ENUMERATE | JSPROP_PERMANENT),
-        JS_PS_END
-    };
+	JSClass  *js_cocos2dx_asioconnection_class;
+	JSObject *js_cocos2dx_asioconnection_prototype;
 
-    static JSFunctionSpec funcs[] = {
+
+	static const JSClassOps asioconnection_classOps = {
+		nullptr, nullptr, nullptr, nullptr,
+		nullptr, nullptr, nullptr,
+		js_cocos2dx_AsioConnection_finalize,
+		nullptr, nullptr, nullptr, nullptr
+	};
+
+	static JSClass asioconnection_class = {
+		"AsioConnection",
+		JSCLASS_HAS_PRIVATE | JSCLASS_FOREGROUND_FINALIZE,
+		&asioconnection_classOps
+	};
+
+	js_cocos2dx_asioconnection_class = &asioconnection_class;
+
+	static JSPropertySpec properties[] = {
+		JS_PS_END
+	};
+
+	static JSFunctionSpec funcs[] = {
 		JS_FN("asynConnect", js_cocos2dx_extension_AsioConnection_asynConnect, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("disconnect", js_cocos2dx_extension_AsioConnection_disconnect, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isConnected", js_cocos2dx_extension_AsioConnection_isConnected, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isConnecting", js_cocos2dx_extension_AsioConnection_isConnecting, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("asynSend", js_cocos2dx_extension_AsioConnection_asynSend, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),		
+		JS_FN("asynSend", js_cocos2dx_extension_AsioConnection_asynSend, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setEnableCrypt", js_cocos2dx_extension_AsioConnection_setEnableCrypt, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setEnableDecodeProto", js_cocos2dx_extension_AsioConnection_setEnableDecodeProto, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setEnableZlib", js_cocos2dx_extension_AsioConnection_setEnableZlib, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setProxy", js_cocos2dx_extension_AsioConnection_setProxy, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getVersion", js_cocos2dx_extension_AsioConnection_getVersion, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		
-        JS_FS_END
-    };
 
-    static JSFunctionSpec st_funcs[] = {
-        JS_FS_END
-    };
+		JS_FS_END
+	};
 
-    js_cocos2dx_asioconnection_prototype = JS_InitClass(
-                                                cx, global,
-                                                JS::NullPtr(),
-                                                js_cocos2dx_asioconnection_class,
-                                                js_cocos2dx_extension_AsioConnection_constructor, 0, // constructor
-                                                properties,
-                                                funcs,
-                                                NULL, // no static properties
-                                                st_funcs);
+	JS::RootedObject parent_proto(cx, nullptr);
+	js_cocos2dx_asioconnection_prototype = JS_InitClass(
+		cx, global,
+		parent_proto,
+		js_cocos2dx_asioconnection_class,
+		js_cocos2dx_extension_AsioConnection_constructor, 0, // constructor
+		properties,
+		funcs,
+		nullptr, // no static properties
+		nullptr);
 
-    //JS::RootedObject jsclassObj(cx, anonEvaluate(cx, global, "(function () { return AsioConnection; })()").toObjectOrNull());
 
-    //JS_DefineProperty(cx, jsclassObj, "CONNECTING", (int)WebSocket::State::CONNECTING, JSPROP_ENUMERATE | JSPROP_PERMANENT | JSPROP_READONLY);
-    //JS_DefineProperty(cx, jsclassObj, "OPEN", (int)WebSocket::State::OPEN, JSPROP_ENUMERATE | JSPROP_PERMANENT | JSPROP_READONLY);
-    //JS_DefineProperty(cx, jsclassObj, "CLOSING", (int)WebSocket::State::CLOSING, JSPROP_ENUMERATE | JSPROP_PERMANENT | JSPROP_READONLY);
-    //JS_DefineProperty(cx, jsclassObj, "CLOSED", (int)WebSocket::State::CLOSED, JSPROP_ENUMERATE | JSPROP_PERMANENT | JSPROP_READONLY);
+
+
+  //  js_cocos2dx_asioconnection_class = (JSClass *)calloc(1, sizeof(JSClass));
+  //  js_cocos2dx_asioconnection_class->name = "AsioConnection";
+  //  js_cocos2dx_asioconnection_class->addProperty = JS_PropertyStub;
+  //  js_cocos2dx_asioconnection_class->delProperty = JS_DeletePropertyStub;
+  //  js_cocos2dx_asioconnection_class->getProperty = JS_PropertyStub;
+  //  js_cocos2dx_asioconnection_class->setProperty = JS_StrictPropertyStub;
+  //  js_cocos2dx_asioconnection_class->enumerate = JS_EnumerateStub;
+  //  js_cocos2dx_asioconnection_class->resolve = JS_ResolveStub;
+  //  js_cocos2dx_asioconnection_class->convert = JS_ConvertStub;
+  //  js_cocos2dx_asioconnection_class->finalize = js_cocos2dx_AsioConnection_finalize;
+  //  js_cocos2dx_asioconnection_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+  //  static JSPropertySpec properties[] = {
+  //     // JS_PSG("readyState", js_cocos2dx_extension_WebSocket_get_readyState, JSPROP_ENUMERATE | JSPROP_PERMANENT),
+  //      JS_PS_END
+  //  };
+
+  //  static JSFunctionSpec funcs[] = {
+		//JS_FN("asynConnect", js_cocos2dx_extension_AsioConnection_asynConnect, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		//JS_FN("disconnect", js_cocos2dx_extension_AsioConnection_disconnect, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		//JS_FN("isConnected", js_cocos2dx_extension_AsioConnection_isConnected, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		//JS_FN("isConnecting", js_cocos2dx_extension_AsioConnection_isConnecting, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		//JS_FN("asynSend", js_cocos2dx_extension_AsioConnection_asynSend, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),		
+		//JS_FN("setEnableCrypt", js_cocos2dx_extension_AsioConnection_setEnableCrypt, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		//JS_FN("setEnableDecodeProto", js_cocos2dx_extension_AsioConnection_setEnableDecodeProto, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		//JS_FN("setEnableZlib", js_cocos2dx_extension_AsioConnection_setEnableZlib, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		//JS_FN("setProxy", js_cocos2dx_extension_AsioConnection_setProxy, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		//JS_FN("getVersion", js_cocos2dx_extension_AsioConnection_getVersion, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		//
+  //      JS_FS_END
+  //  };
+
+  //  static JSFunctionSpec st_funcs[] = {
+  //      JS_FS_END
+  //  };
+
+  //  js_cocos2dx_asioconnection_prototype = JS_InitClass(
+  //                                              cx, global,
+  //                                              JS::NullPtr(),
+  //                                              js_cocos2dx_asioconnection_class,
+  //                                              js_cocos2dx_extension_AsioConnection_constructor, 0, // constructor
+  //                                              properties,
+  //                                              funcs,
+  //                                              NULL, // no static properties
+  //                                              st_funcs);
+
+  //  //JS::RootedObject jsclassObj(cx, anonEvaluate(cx, global, "(function () { return AsioConnection; })()").toObjectOrNull());
+
+  //  //JS_DefineProperty(cx, jsclassObj, "CONNECTING", (int)WebSocket::State::CONNECTING, JSPROP_ENUMERATE | JSPROP_PERMANENT | JSPROP_READONLY);
+  //  //JS_DefineProperty(cx, jsclassObj, "OPEN", (int)WebSocket::State::OPEN, JSPROP_ENUMERATE | JSPROP_PERMANENT | JSPROP_READONLY);
+  //  //JS_DefineProperty(cx, jsclassObj, "CLOSING", (int)WebSocket::State::CLOSING, JSPROP_ENUMERATE | JSPROP_PERMANENT | JSPROP_READONLY);
+  //  //JS_DefineProperty(cx, jsclassObj, "CLOSED", (int)WebSocket::State::CLOSED, JSPROP_ENUMERATE | JSPROP_PERMANENT | JSPROP_READONLY);
 }

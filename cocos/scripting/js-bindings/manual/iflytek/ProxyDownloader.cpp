@@ -29,7 +29,7 @@ JSDownloaderDelegatorEx::JSDownloaderDelegatorEx(
 void JSDownloaderDelegatorEx::setProgressCallback(JS::HandleObject callback) {
 	_jsProgressCallBack = callback;
 
-	JS::RootedValue target(_cx, OBJECT_TO_JSVAL(_jsProgressCallBack));
+	JS::RootedValue target(_cx, JS::ObjectOrNullValue(_jsProgressCallBack));
 	if (!target.isNullOrUndefined())
 	{
 		js_add_object_root(target);
@@ -38,7 +38,7 @@ void JSDownloaderDelegatorEx::setProgressCallback(JS::HandleObject callback) {
 
 JSDownloaderDelegatorEx::~JSDownloaderDelegatorEx()
 {
-	JS::RootedValue target(_cx, OBJECT_TO_JSVAL(_jsProgressCallBack));
+	JS::RootedValue target(_cx, JS::ObjectOrNullValue(_jsProgressCallBack));
 	if (!target.isNullOrUndefined())
 	{
 		js_remove_object_root(target);
@@ -106,12 +106,14 @@ void JSDownloaderDelegatorEx::onSuccess(const std::string& path)
 		JS::RootedObject global(_cx, ScriptingCore::getInstance()->getGlobalObject());
 		JSAutoCompartment ac(_cx, global);
 
-		jsval valArr[2];
+		JS::Value valArr[2];
 
-		valArr[0] = BOOLEAN_TO_JSVAL(true);
-		valArr[1] = std_string_to_jsval(_cx, path);
+		valArr[0] = JS::RootedValue(_cx ,JS::BooleanValue(true));
+		JS::RootedValue pathJS(_cx);
+		std_string_to_jsval(_cx, path, &pathJS);
+		valArr[1] = pathJS;
 
-		JS::RootedValue callback(_cx, OBJECT_TO_JSVAL(_jsCallback));
+		JS::RootedValue callback(_cx, JS::ObjectOrNullValue(_jsCallback));
 		if (!callback.isNull())
 		{
 			JS::RootedValue retval(_cx);
@@ -129,12 +131,12 @@ void JSDownloaderDelegatorEx::onProgress(int64_t totalBytesReceived, int64_t tot
 		JS::RootedObject global(_cx, ScriptingCore::getInstance()->getGlobalObject());
 		JSAutoCompartment ac(_cx, global);
 
-		jsval valArr[2];
+		JS::Value valArr[2];
 
-		valArr[0] = INT_TO_JSVAL((int32_t)totalBytesReceived);
-		valArr[1] = INT_TO_JSVAL((int32_t)totalBytesExpected);
+		valArr[0] = JS::RootedValue(_cx, JS::Int32Value((int32_t)totalBytesReceived));
+		valArr[1] = JS::RootedValue(_cx, JS::Int32Value((int32_t)totalBytesExpected));
 
-		JS::RootedValue callback(_cx, OBJECT_TO_JSVAL(this->_jsProgressCallBack));
+		JS::RootedValue callback(_cx, JS::ObjectOrNullValue(this->_jsProgressCallBack));
 		if (!callback.isNullOrUndefined())
 		{
 			JS::RootedValue retval(_cx);
