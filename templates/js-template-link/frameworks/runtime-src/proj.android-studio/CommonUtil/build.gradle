@@ -18,6 +18,10 @@ android {
         disable 'MissingRegistered'
     }
 
+    defaultConfig {
+        multiDexEnabled true
+    }
+
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
