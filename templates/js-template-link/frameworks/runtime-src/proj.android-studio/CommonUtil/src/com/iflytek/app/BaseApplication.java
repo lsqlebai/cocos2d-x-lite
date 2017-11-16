@@ -1,15 +1,15 @@
 package com.iflytek.app;
 
 
-import android.app.Application;
 import android.content.Context;
+import android.support.multidex.MultiDexApplication;
 
 import com.iflytek.listener.CatchExceptionListener;
 
 /**
  * @author wpfang
  */
-public class BaseApplication extends Application {
+public class BaseApplication extends MultiDexApplication {
     private static BaseApplication appInstance;
     CatchExceptionListener mCatchExceptionListener;
     /**

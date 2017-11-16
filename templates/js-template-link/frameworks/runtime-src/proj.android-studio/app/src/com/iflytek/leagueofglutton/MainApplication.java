@@ -3,16 +3,15 @@ package com.iflytek.leagueofglutton;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.support.multidex.MultiDex;
-import android.support.multidex.MultiDexApplication;
 
 import com.google.gson.Gson;
-import com.iflytek.ubplib.UBP;
+import com.iflytek.app.BaseApplication;
 import com.iflytek.unipay.PayComponent;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-public class MainApplication extends MultiDexApplication {
+public class MainApplication extends BaseApplication {
 
     static class Config {
         String channel;

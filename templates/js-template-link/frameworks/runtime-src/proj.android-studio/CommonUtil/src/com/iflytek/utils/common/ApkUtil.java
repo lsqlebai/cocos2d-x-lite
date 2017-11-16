@@ -11,8 +11,6 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
 
-import com.iflytek.app.BaseApplication;
-
 import java.io.File;
 
 public class ApkUtil {
@@ -29,7 +27,7 @@ public class ApkUtil {
     public static void startInstallApk(String apkPath) {
         Intent intent = ApkUtil.getApkFileIntent(apkPath);
         /* 使用Application的Context在切换界面时有黑屏情况 */
-        Context context = BaseApplication.getAppInstance();
+        Context context = sContext;
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         context.startActivity(intent);

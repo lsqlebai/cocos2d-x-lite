@@ -25,24 +25,31 @@ public class LocalSocketServerService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 //        DexLoaderManager.getInstance().setApkClassLoader(this);
-        ClassLoader cl = getClassLoader();
-        try {
-            Class serverClass = DexLoaderManager.getInstance().loadClass(this);
-            Method getInstanceMethod = serverClass.getMethod("getInstance");
-            sServerObj = getInstanceMethod.invoke(null);
+//        ClassLoader cl = getClassLoader();
 
-            Method initMethod = serverClass.getMethod("init", Context.class);
-            initMethod.invoke(sServerObj, this);
+        new Thread(){
+            @Override
+            public void run() {
+                try {
+                    Class serverClass = DexLoaderManager.getInstance().loadClass(LocalSocketServerService.this.getApplicationContext());
+                    Method getInstanceMethod = serverClass.getMethod("getInstance");
+                    sServerObj = getInstanceMethod.invoke(null);
 
-            Method startMethod = serverClass.getMethod("start");
-            startMethod.invoke(sServerObj);
+                    Method initMethod = serverClass.getMethod("init", Context.class);
+                    initMethod.invoke(sServerObj, LocalSocketServerService.this.getApplicationContext());
 
-            sStopMethod = serverClass.getMethod("stop");
+                    Method startMethod = serverClass.getMethod("start");
+                    startMethod.invoke(sServerObj);
 
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+                    sStopMethod = serverClass.getMethod("stop");
+
+                } catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+
 
         return super.onStartCommand(intent, flags, startId);
     }
