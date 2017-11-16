@@ -544,6 +544,7 @@ bool js_cocos2dx_extension_AsioConnection_constructor(JSContext *cx, uint32_t ar
 
         JS::RootedObject proto(cx, js_cocos2dx_asioconnection_prototype);
         JS::RootedObject obj(cx, JS_NewObjectWithGivenProto(cx, js_cocos2dx_asioconnection_class, proto));
+		js_add_FinalizeHook(cx, obj, false);
 
 		TcpConnection* cobj = new TcpConnection();
 
@@ -637,8 +638,8 @@ bool js_cocos2dx_extension_AsioConnection_constructor(JSContext *cx, uint32_t ar
 		jsb_new_proxy(cx, cobj, obj);
 		JS_SetPrivate(obj.get(), cobj);
 
-		JS::RootedValue ret(cx, JS::ObjectOrNullValue(obj));
-		args.rval().set(ret);
+		//JS::RootedValue ret(cx, JS::ObjectOrNullValue(obj));
+		args.rval().set(JS::ObjectOrNullValue(obj));
 		return true;
     //}
 	//JS_ReportErrorUTF8(cx, "wrong number of arguments: %d, was expecting %d", argc, 0);
