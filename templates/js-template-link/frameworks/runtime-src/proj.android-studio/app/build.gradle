@@ -239,12 +239,12 @@ afterEvaluate {
 	            }
 	        }
 	    }
-    externalNativeBuildDebug.doLast {
+    tasks.findByName('externalNativeBuildDebug')?.doLast {
         println ('Copying debug .so')
         copySo()
     }
 
-    externalNativeBuildRelease.doLast {
+    tasks.findByName('externalNativeBuildRelease')?.doLast {
         println ('Copying release .so')
         copySo()
     }

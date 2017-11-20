@@ -156,7 +156,13 @@ namespace experimental{
             Widget::onExit();
             _impl->setVisible(false);
         }
-        
+
+        void WebView::cleanup()
+        {
+            ProtectedNode::cleanup();
+            CC_SAFE_DELETE(_impl);
+        }
+
         void WebView::setBounces(bool bounces)
         {
           _impl->setBounces(bounces);

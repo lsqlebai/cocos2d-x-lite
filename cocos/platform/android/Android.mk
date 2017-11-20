@@ -21,8 +21,6 @@ jni/JniHelper.cpp \
 jni/TouchesJni.cpp \
 pay/PayBinder.cpp
 
-LOCAL_STATIC_LIBRARIES := libjscocos2d
-
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH) \

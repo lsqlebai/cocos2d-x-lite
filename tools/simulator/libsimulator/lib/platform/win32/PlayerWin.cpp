@@ -1,4 +1,4 @@
-﻿
+
 #include "PlayerWin.h"
 
 USING_NS_CC;

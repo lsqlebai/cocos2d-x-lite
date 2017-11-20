@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libjscocos2d", "$(COCOS_X_R
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libiflyteknet", "$(COCOS_X_ROOT)\external\sources\iflyteknet\vsproject\iflyteknet.vcxproj", "{39379840-825A-45A0-B363-C09FFEF864BD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libprotobuf", "$(COCOS_X_ROOT)\external\sources\protobuf\vsprojects\libprotobuf.vcxproj", "{39379840-825A-45A0-B363-C09FFEF864BD}"
+EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libDragonBones", "$(COCOS_X_ROOT)\cocos\editor-support\dragonbones\proj.win32\libDragonBones.vcxproj", "{6B494955-1E66-40DA-830D-0D31B8D301EF}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libBox2D", "$(COCOS_X_ROOT)\external\sources\Box2D\proj.win32\libBox2D.vcxproj", "{EB7E5610-C178-49C9-8B4C-1C283E616ED9}"

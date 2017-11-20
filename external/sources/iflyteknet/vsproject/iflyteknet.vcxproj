@@ -32,7 +32,7 @@
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7D8C5218-C005-40D4-B1FB-553ECBDE92C9}</ProjectGuid>
+    <ProjectGuid>{244BCEC1-71CC-422F-9DDF-5171094E2D04}</ProjectGuid>
     <RootNamespace>iflyteknet</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
