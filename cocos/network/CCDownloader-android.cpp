@@ -155,7 +155,7 @@ namespace cocos2d { namespace network {
             if (JniHelper::getStaticMethodInfo(methodInfo,
                                                JCLS_DOWNLOADER,
                                                "createTask",
-                                               "(" JARG_DOWNLOADER "I" JARG_STR JARG_STR")V"))
+                                               "(" JARG_DOWNLOADER "I" JARG_STR JARG_STR JARG_STR")V"))
             {
                 jstring jstrURL = methodInfo.env->NewStringUTF(task->requestURL.c_str());
                 jstring jstrPath= methodInfo.env->NewStringUTF(task->storagePath.c_str());

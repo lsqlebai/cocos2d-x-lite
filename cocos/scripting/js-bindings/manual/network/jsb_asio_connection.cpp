@@ -67,7 +67,7 @@ class JSB_AsioConnection
 {
 public:
 
-    JSB_AsioConnection()
+    JSB_AsioConnection():_JSDelegate(nullptr)
     {
     }
 
@@ -77,10 +77,16 @@ public:
 
     void setJSDelegate(JS::HandleObject pJSDelegate)
     {
-		_JSDelegate = pJSDelegate;
+		//_JSDelegate = pJSDelegate;
+
+		if (_JSDelegate) {
+			CC_SAFE_DELETE(_JSDelegate);
+		}
+		JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
+		_JSDelegate = new (std::nothrow) JS::PersistentRootedObject(cx, pJSDelegate);
     }
 public:
-    JS::PersistentRootedObject _JSDelegate;
+    JS::PersistentRootedObject *_JSDelegate;
 };
 
 JSClass  *js_cocos2dx_asioconnection_class;
@@ -123,7 +129,7 @@ void js_cocos2dx_AsioConnection_finalize(JSFreeOp *fop, JSObject *obj) {
 		ScriptingCore::getInstance()->setFinalizing(true);
 		
 		// check connecting status,do disconnect
-		if (cobj->isConnecting())
+		if (cobj->isConnected())
 		{
 			cobj->disconnect();
 		}
@@ -178,27 +184,31 @@ bool js_cocos2dx_extension_AsioConnection_asynConnect(JSContext *cx, uint32_t ar
 				{
 
 					// connect callback
-					if (cocos2d::Director::getInstance() == nullptr || cocos2d::ScriptEngineManager::getInstance() == nullptr)
+					if (cocos2d::Director::getInstance() == nullptr ||  !cocos2d::Director::getInstance()->getRunningScene() || cocos2d::ScriptEngineManager::getInstance() == nullptr)
 						return;
 
-
 					JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
-					JS::RootedObject jsobj(cx, JS_NewPlainObject(cx));
 
-					JS::RootedValue errorCodeJS(cx, JS::Int32Value(errorCode));
-					JS_SetProperty(cx, jsobj, "errorCode", errorCodeJS);
+					auto _jsd = ((JSB_AsioConnection*)cobj->getRefPtr())->_JSDelegate;
+					JS::RootedValue delegate(cx, JS::ObjectOrNullValue(_jsd->get()));
+
+					if (delegate.isObject())
+					{
+						JS::RootedObject jsobj(cx, JS_NewPlainObject(cx));
+
+						JS::RootedValue errorCodeJS(cx, JS::Int32Value(errorCode));
+						JS_SetProperty(cx, jsobj, "errorCode", errorCodeJS);
 
 
-					JS::RootedValue errorMsgJS(cx);
-					c_string_to_jsval(cx, errorMsg, &errorMsgJS);
-					JS_SetProperty(cx, jsobj, "errorMsg", errorMsgJS);
+						JS::RootedValue errorMsgJS(cx);
+						c_string_to_jsval(cx, errorMsg, &errorMsgJS);
+						JS_SetProperty(cx, jsobj, "errorMsg", errorMsgJS);
 
-					JS::RootedValue jsobjVal(cx, JS::ObjectOrNullValue(jsobj));
-					JS::HandleValueArray args(jsobjVal);
+						JS::RootedValue jsobjVal(cx, JS::ObjectOrNullValue(jsobj));
+						JS::HandleValueArray args(jsobjVal);
 
-					JS::RootedValue owner(cx, JS::ObjectOrNullValue(((JSB_AsioConnection*)cobj->getRefPtr())->_JSDelegate));
-
-					ScriptingCore::getInstance()->executeFunctionWithOwner(owner, "onConnectResult", args);
+						ScriptingCore::getInstance()->executeFunctionWithOwner(delegate, "onConnectResult", args);
+					}
 				});
 				
 			});
@@ -471,25 +481,32 @@ bool js_cocos2dx_extension_AsioConnection_asynSend(JSContext *cx, uint32_t argc,
 				runOnCocosThread([=]()
 				{
 
-					// connect callback
-					if (cocos2d::Director::getInstance() == nullptr || cocos2d::ScriptEngineManager::getInstance() == nullptr)
+					// send callback
+					if (cocos2d::Director::getInstance() == nullptr || !cocos2d::Director::getInstance()->getRunningScene() || cocos2d::ScriptEngineManager::getInstance() == nullptr)
 						return;
 
-
 					JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
-					JS::RootedObject jsobj(cx, JS_NewPlainObject(cx));
 
-					JS::RootedValue sendIdJS(cx, JS::Int32Value(sendId));
-					JS_SetProperty(cx, jsobj, "sendId", sendIdJS);
+					auto _jsd = ((JSB_AsioConnection*)cobj->getRefPtr())->_JSDelegate;
+					JS::RootedValue delegate(cx, JS::ObjectOrNullValue(_jsd->get()));
 
-					JS::RootedValue errorCodeJS(cx, JS::Int32Value(sendResult));
-					JS_SetProperty(cx, jsobj, "errorCode", errorCodeJS);
+					if (delegate.isObject())
+					{
+						JS::RootedObject jsobj(cx, JS_NewPlainObject(cx));
 
-					JS::RootedValue jsobjVal(cx, JS::ObjectOrNullValue(jsobj));
-					JS::HandleValueArray args(jsobjVal);
-					JS::RootedValue owner(cx, JS::ObjectOrNullValue(((JSB_AsioConnection*)cobj->getRefPtr())->_JSDelegate));
-					
-					ScriptingCore::getInstance()->executeFunctionWithOwner(owner, "onSendResult", args);
+						JS::RootedValue sendIdJS(cx, JS::Int32Value(sendId));
+						JS_SetProperty(cx, jsobj, "sendId", sendIdJS);
+
+						JS::RootedValue errorCodeJS(cx, JS::Int32Value(sendResult));
+						JS_SetProperty(cx, jsobj, "errorCode", errorCodeJS);
+
+						JS::RootedValue jsobjVal(cx, JS::ObjectOrNullValue(jsobj));
+						JS::HandleValueArray args(jsobjVal);
+						
+
+						ScriptingCore::getInstance()->executeFunctionWithOwner(delegate, "onSendResult", args);
+					}
+
 				});
 
 			}, argv[1].toInt32());
@@ -552,55 +569,88 @@ bool js_cocos2dx_extension_AsioConnection_constructor(JSContext *cx, uint32_t ar
 		cobj->registerReceiveCallback([=](void* data, const std::size_t& dataLen, const string& jsonStr)
 		{
 
-			//CCLOG("ASIO onMessage dataLen:%d", dataLen);
+			CCLOG("ASIO onMessage dataLen:%d", dataLen);
 
 			int8_t* tempData = nullptr;
 			
+			CCLOG("ASIO onMessage 1");
 			if (jsonStr.empty())
 			{
+				CCLOG("ASIO onMessage 2");
 				tempData = new int8_t[dataLen];
+				CCLOG("ASIO onMessage 3");
 				memcpy(tempData, data, dataLen);
+				CCLOG("ASIO onMessage 4");
 			}
 
 			runOnCocosThread([cobj, tempData, dataLen, jsonStr]()
 			{
-				if (tempData)
-				{
-					std::unique_ptr<int8_t[]> tempDataPtr(tempData);
-				}
 
-				if (cocos2d::Director::getInstance() == nullptr || cocos2d::ScriptEngineManager::getInstance() == nullptr)
+				CCLOG("ASIO onMessage 5");
+
+				// message callback
+				if (cocos2d::Director::getInstance() == nullptr || !cocos2d::Director::getInstance()->getRunningScene() || cocos2d::ScriptEngineManager::getInstance() == nullptr)
 					return;
 
+				CCLOG("ASIO onMessage 6");
+
 				JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
-				JS::RootedObject jsobj(cx, JS_NewPlainObject(cx));
-
-				JS::RootedValue jsobjVal(cx, JS::ObjectOrNullValue(jsobj));
-				JS::HandleValueArray args(jsobjVal);
-
-				if (tempData)
+				CCLOG("ASIO onMessage 7");
+				auto _jsd = ((JSB_AsioConnection*)cobj->getRefPtr())->_JSDelegate;
+				CCLOG("ASIO onMessage 8");
+				JS::RootedValue delegate(cx, JS::ObjectOrNullValue(_jsd->get()));
+				CCLOG("ASIO onMessage 9");
+				if (delegate.isObject())
 				{
-
-					// data is binary
-					JS::RootedObject buffer(cx, JS_NewArrayBuffer(cx, dataLen));
-
-					bool flag;
-					if (dataLen > 0)
+					CCLOG("ASIO onMessage 10");
+					if (tempData)
 					{
-						uint8_t* bufdata = JS_GetArrayBufferData(buffer, &flag, JS::AutoCheckCannotGC());
-						memcpy((void*)bufdata, tempData, dataLen);
+						CCLOG("ASIO onMessage 11");
+						std::unique_ptr<int8_t[]> tempDataPtr(tempData);
 					}
-					JS::RootedValue dataVal(cx, JS::ObjectOrNullValue(buffer));
-					JS_SetProperty(cx, jsobj, "data", dataVal);
+
+					CCLOG("ASIO onMessage 12");
+					JS::RootedObject jsobj(cx, JS_NewPlainObject(cx));
+					CCLOG("ASIO onMessage 13");
+					JS::RootedValue jsobjVal(cx, JS::ObjectOrNullValue(jsobj));
+					CCLOG("ASIO onMessage 14");
+					JS::HandleValueArray args(jsobjVal);
+					CCLOG("ASIO onMessage 15");
+					if (tempData)
+					{
+						CCLOG("ASIO onMessage 16");
+
+						// data is binary
+						JS::RootedObject buffer(cx, JS_NewArrayBuffer(cx, dataLen));
+						CCLOG("ASIO onMessage 17");
+
+						bool flag;
+						if (dataLen > 0)
+						{
+							CCLOG("ASIO onMessage 18");
+							uint8_t* bufdata = JS_GetArrayBufferData(buffer, &flag, JS::AutoCheckCannotGC());
+							CCLOG("ASIO onMessage 19");
+							memcpy((void*)bufdata, tempData, dataLen);
+							CCLOG("ASIO onMessage 20");
+						}
+						CCLOG("ASIO onMessage 21");
+						JS::RootedValue dataVal(cx, JS::ObjectOrNullValue(buffer));
+						CCLOG("ASIO onMessage 22");
+						JS_SetProperty(cx, jsobj, "data", dataVal);
+						CCLOG("ASIO onMessage 23");
+					}
+					CCLOG("ASIO onMessage 24");
+					JS::RootedValue errorMsgJS(cx);
+					CCLOG("ASIO onMessage 25");
+					c_string_to_jsval(cx, jsonStr.c_str(), &errorMsgJS);
+					CCLOG("ASIO onMessage 26");
+					JS_SetProperty(cx, jsobj, "protoObjJson", errorMsgJS);
+					CCLOG("ASIO onMessage 27");
+
+					ScriptingCore::getInstance()->executeFunctionWithOwner(delegate, "onMessage", args);
+					CCLOG("ASIO onMessage 28");
 				}
-
-				JS::RootedValue errorMsgJS(cx);
-				c_string_to_jsval(cx, jsonStr.c_str(), &errorMsgJS);
-				JS_SetProperty(cx, jsobj, "protoObjJson", errorMsgJS);
-
-				JS::RootedValue owner(cx, JS::ObjectOrNullValue(((JSB_AsioConnection*)cobj->getRefPtr())->_JSDelegate));
-
-				ScriptingCore::getInstance()->executeFunctionWithOwner(owner, "onMessage", args);
+				CCLOG("ASIO onMessage 29");
 			});
 		});
 
@@ -611,21 +661,28 @@ bool js_cocos2dx_extension_AsioConnection_constructor(JSContext *cx, uint32_t ar
 
 			runOnCocosThread([=]()
 			{
-				if (cocos2d::Director::getInstance() == nullptr || cocos2d::ScriptEngineManager::getInstance() == nullptr)
+
+				// disconnect callback
+				if (cocos2d::Director::getInstance() == nullptr || !cocos2d::Director::getInstance()->getRunningScene() || cocos2d::ScriptEngineManager::getInstance() == nullptr)
 					return;
 
 				JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
-				JS::RootedObject jsobj(cx, JS_NewPlainObject(cx));
 
-				JS::RootedValue isByMyselfJS(cx, JS::BooleanValue(isBySelf));
-				JS_SetProperty(cx, jsobj, "isBySelf", isByMyselfJS);
+				auto _jsd = ((JSB_AsioConnection*)cobj->getRefPtr())->_JSDelegate;
+				JS::RootedValue delegate(cx, JS::ObjectOrNullValue(_jsd->get()));
 
-				JS::RootedValue jsobjVal(cx, JS::ObjectOrNullValue(jsobj));
-				JS::HandleValueArray args(jsobjVal);
+				if (delegate.isObject())
+				{
+					JS::RootedObject jsobj(cx, JS_NewPlainObject(cx));
 
-				JS::RootedValue owner(cx, JS::ObjectOrNullValue(((JSB_AsioConnection*)cobj->getRefPtr())->_JSDelegate));
+					JS::RootedValue isByMyselfJS(cx, JS::BooleanValue(isBySelf));
+					JS_SetProperty(cx, jsobj, "isBySelf", isByMyselfJS);
 
-				ScriptingCore::getInstance()->executeFunctionWithOwner(owner, "onDisconnect", args);
+					JS::RootedValue jsobjVal(cx, JS::ObjectOrNullValue(jsobj));
+					JS::HandleValueArray args(jsobjVal);
+
+					ScriptingCore::getInstance()->executeFunctionWithOwner(delegate, "onDisconnect", args);
+				}
 			});
 		});
 
@@ -649,9 +706,6 @@ bool js_cocos2dx_extension_AsioConnection_constructor(JSContext *cx, uint32_t ar
 
 void register_jsb_asio_connection(JSContext *cx, JS::HandleObject global)
 {
-
-	JSClass  *js_cocos2dx_asioconnection_class;
-	JSObject *js_cocos2dx_asioconnection_prototype;
 
 
 	static const JSClassOps asioconnection_classOps = {

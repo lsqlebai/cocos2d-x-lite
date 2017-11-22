@@ -11,6 +11,7 @@
 #include "game.pb.h"
 #include "json_format.h"
 #include "zlib.h"
+#include "logger.h"
 
 #define publicKey "-----BEGIN PUBLIC KEY-----\n"\
 	"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrIAwtYCCsgPr6wai8kX8etPCZ\n"\
@@ -587,110 +588,187 @@ void TcpConnection::doReadBody(const std::shared_ptr<ReceiveMsg>& receiveMsg)
                      asio::buffer((*receiveMsg).receiveBody(), (*receiveMsg).receiveBodyLength()),
                      [this, receiveMsg](std::error_code ec, std::size_t len/*length*/)
                      {
+
+						DEBUG_LOG("---- msg read body");
+
+						// TODO test code
+						if (true)
+						{
+							if (!ec)
+							{
+								loopRead();
+							}
+							else
+							{
+								doDisconnect();
+							}
+							return;
+						}
+						
+
+
                          if (!ec)
                          {
                              
                              int8_t* msgData = (*receiveMsg).body();
                              std::size_t bodyLen = (*receiveMsg).bodyLength();
                              
+							 DEBUG_LOG("---- msg len:%d", bodyLen);
+
 							 if (_isEnableCrypt)
 							 {
+
+								 DEBUG_LOG("---- msg 1");
 
 								 // 对接收的数据进行解密
 								 uint8_t* decrypted = new uint8_t[bodyLen];
 
+								 DEBUG_LOG("---- msg 2");
+
 								 int decrypted_length = RSAUtil::public_decrypt((unsigned char*)msgData, bodyLen, (unsigned char*)publicKey, decrypted);
 								// CCLOG("-------------decrypt len:%d", decrypted_length);
 
+								 DEBUG_LOG("---- msg 3");
+
 								 if (decrypted_length > 0) // 解密成功
 								 {
+
+									 DEBUG_LOG("---- msg 4");
+
 									 if (_receiveCallback)
 									 {
+										 DEBUG_LOG("---- msg 5");
 
 										 string jsonStr = "";
 										 if (_isEnableDecodeProto) // 解析proto
 										 {
+
+											 DEBUG_LOG("---- msg 6");
 											 if (decrypted_length > 0)
 											 {
 												 try
 												 {
+													 DEBUG_LOG("---- msg 7");
 													 MessageInfo* msg = new MessageInfo();
-
+													 DEBUG_LOG("---- msg 8");
 													 parseMessage(msg, decrypted, decrypted_length);
+													 DEBUG_LOG("---- msg 9");
 													 jsonStr = google::protobuf::JsonFormat::Utf8DebugJsonString(*msg);
+													 DEBUG_LOG("---- msg 10");
 													 delete msg;
+													 DEBUG_LOG("---- msg 11");
 												 }
 												 catch (...)
 												 {
+													 DEBUG_LOG("---- msg 12");
 												 }
 											 }
 										 }
 										 
+										 DEBUG_LOG("---- msg 13");
 										 _receiveCallback(decrypted, decrypted_length, jsonStr); // 派发消息
+										 DEBUG_LOG("---- msg 14");
 									 }
 									 delete[] decrypted;
+									 DEBUG_LOG("---- msg 15");
 								 }
 								 else // 解密数据失败
 								 {
+									 DEBUG_LOG("---- msg 16");
 									 std::cerr << "Decrypt data failed" << endl;
 								 }
 							 }
 							 else
 							 {
-								 if (_receiveCallback)
+								 DEBUG_LOG("---- msg 22");
+								 if (_receiveCallback && false)
 								 {
+									 DEBUG_LOG("---- msg 23");
 									 string jsonStr = "";
 									 if (_isEnableDecodeProto) // 解析proto
 									 {
+										 DEBUG_LOG("---- msg 24");
 										 if (bodyLen > 0)
 										 {
+											 DEBUG_LOG("---- msg 25");
 											 try
 											 {
 
+												 DEBUG_LOG("---- msg 26");
 												 if (_isEnableZlib)
 												 {
+													 DEBUG_LOG("---- msg 27");
 													 MessageInfo* msg = new MessageInfo();
-
+													 DEBUG_LOG("---- msg 28");
 													 std::vector<Bytef> outData;
+													 DEBUG_LOG("---- msg 29");
 													 _uncompress.doUncompress((Bytef*)msgData, bodyLen, outData); // 进行数据解压
-
+													 DEBUG_LOG("---- msg 30");
 													 std::unique_ptr<int8_t[]> p(new int8_t[outData.size()]);
+													 DEBUG_LOG("---- msg 31");
 													 auto finalData = p.get();
+													 DEBUG_LOG("---- msg 32");
 													 int finalDataLen = outData.size();
+													 DEBUG_LOG("---- msg 33, finalDataLen:%d", finalDataLen);
 													 for (int i = 0; i < finalDataLen; ++i)
 													 {
 														 finalData[i] = outData.at(i);
+														 
+														 
+															 //DEBUG_LOG("---- msg --:%d,val:%d", i, outData.at(i));
+														 
+														 
 													 }
-													 
+													 DEBUG_LOG("---- msg 34");
 													 parseMessage(msg, finalData, finalDataLen);
-													 jsonStr = google::protobuf::JsonFormat::Utf8DebugJsonString(*msg);
+													 auto byteSize = msg->ByteSize();
+													 
+													 DEBUG_LOG("---- msg 35");
 
+													 
+
+													 DEBUG_LOG("---- msg 35xxx: byteSize:%d", byteSize);
+
+													 auto str1 = msg->DebugString();
+													 DEBUG_LOG("---- msg str1:%s", str1.c_str());
+													 auto str = msg->Utf8DebugString();
+													 DEBUG_LOG("---- msg str:%s", str.c_str());
+													 jsonStr = google::protobuf::JsonFormat::Utf8DebugJsonString(*msg);
+													 DEBUG_LOG("---- msg 36");
 													 msgData = (int8_t*)finalData;
 													 bodyLen = finalDataLen;
-													 
+													 DEBUG_LOG("---- msg 37");
 													 delete msg;
+													 DEBUG_LOG("---- msg 38");
 												 }
 												 else
 												 {
+													 DEBUG_LOG("---- msg 39");
 													 {
 														 MessageInfo* msg = new MessageInfo();
 														 parseMessage(msg, msgData, bodyLen);
-														 
+														 DEBUG_LOG("---- msg 40");
 														 jsonStr = google::protobuf::JsonFormat::Utf8DebugJsonString(*msg);
 														 delete msg;
+														 DEBUG_LOG("---- msg 41");
 													 }
+
 												 }
 											 }
 											 catch (...)
 											 {
-
+												 DEBUG_LOG("---- msg 42");
 											 }
 										 }
 									 }
 									 
-									_receiveCallback(msgData, bodyLen, jsonStr); // 派发消息
+									 DEBUG_LOG("---- msg 43");
+									//_receiveCallback(msgData, bodyLen, jsonStr); // 派发消息
+									DEBUG_LOG("---- msg 44");
 								 }
 							 }
+
+							 DEBUG_LOG("---- msg final");
 							
                             // for (int i = 0; i < bodyLen; ++i)
                             // {
@@ -715,6 +793,9 @@ void TcpConnection::loopRead()
 
 void TcpConnection::asynConnect(string host, int port, ConnectCallback callback)
 {
+
+	DEBUG_LOG("---- asynConnect");
+
     if(isConnected() || isConnecting())
     {
         return;
@@ -943,6 +1024,8 @@ void TcpConnection::asynConnect(string host, int port, ConnectCallback callback)
 
 void TcpConnection::disconnect()
 {
+	DEBUG_LOG("---- disconnect");
+
     doDisconnect(false);
 }
 

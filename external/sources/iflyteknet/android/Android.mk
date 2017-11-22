@@ -21,7 +21,7 @@ LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)
 LOCAL_EXPORT_C_INCLUDES += $(LOCAL_PATH)/../src/
 LOCAL_EXPORT_C_INCLUDES += $(LOCAL_PATH)/../src/boost/
 
-LOCAL_LDLIBS := -pthread -lz -L$(LOCAL_PATH)/prebuilt -lcrypto -lssl
+LOCAL_LDLIBS := -llog -pthread -lz -L$(LOCAL_PATH)/prebuilt -lcrypto -lssl
 
 LOCAL_CFLAGS := -DASIO_STANDALONE
 

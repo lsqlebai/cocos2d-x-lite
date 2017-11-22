@@ -12,7 +12,7 @@
 class JSB_GameLogic
 {
 public:
-	JSB_GameLogic()
+	JSB_GameLogic():_JSDelegate(nullptr)
 	{
 		
 	}
@@ -24,12 +24,16 @@ public:
 
 	void setJSDelegate(JS::HandleObject pJSDelegate)
 	{
-		_JSDelegate = pJSDelegate;
+		if (_JSDelegate) {
+			CC_SAFE_DELETE(_JSDelegate);
+		}
+		JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
+		_JSDelegate = new (std::nothrow) JS::PersistentRootedObject(cx, pJSDelegate);
 	}
 protected:
 private:
 
-	JS::PersistentRootedObject _JSDelegate;
+	JS::PersistentRootedObject *_JSDelegate;
 };
 
 JSClass  *js_cocos2dx_gamelogic_class;
@@ -42,7 +46,7 @@ USING_NS_CC;
 
 bool js_cocos2dx_gamelogic_addNode(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
-
+	
 	JS::CallArgs argv = JS::CallArgsFromVp(argc, vp);
 	JS::RootedObject obj(cx, argv.thisv().toObjectOrNull());
 
@@ -400,7 +404,7 @@ bool js_cocos2dx_gamelogic_constructor(JSContext *cx, uint32_t argc, JS::Value *
 
 	JS::RootedObject proto(cx, js_cocos2dx_gamelogic_prototype);
 	JS::RootedObject obj(cx, JS_NewObjectWithGivenProto(cx, js_cocos2dx_gamelogic_class, proto));
-
+	js_add_FinalizeHook(cx, obj, false);
 
 	GameLogic* cobj = new GameLogic();
 
@@ -447,12 +451,18 @@ void js_cocos2dx_gamelogic_finalize(JSFreeOp *fop, JSObject *obj) {
 #endif
 			jsb_remove_proxy(p);
 		}
+
+		ScriptingCore::getInstance()->setFinalizing(true);
+		
+		CC_SAFE_DELETE(cobj);
+		
+		ScriptingCore::getInstance()->setFinalizing(false);
 	}
 }
 
 void register_jsb_game_logic_native(JSContext* cx, JS::HandleObject global)
 {
-
+	
 	static const JSClassOps gameLogic_classOps = {
 		nullptr, nullptr, nullptr, nullptr,
 		nullptr, nullptr, nullptr,

@@ -29,6 +29,7 @@ class ZipHelper {
 
 public:
 
+	ZipHelper() :_JSDelegate(nullptr){}
 
 	typedef std::function<void(bool, string, string)> UnzipCallback;
 
@@ -184,11 +185,15 @@ public:
 
 	void setJSDelegate(JS::HandleObject pJSDelegate)
 	{
-		_JSDelegate = pJSDelegate;
+		if (_JSDelegate) {
+			CC_SAFE_DELETE(_JSDelegate);
+		}
+		JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
+		_JSDelegate = new (std::nothrow) JS::PersistentRootedObject(cx, pJSDelegate);
 	}
 public:
 
-	JS::PersistentRootedObject _JSDelegate;
+	JS::PersistentRootedObject *_JSDelegate;
 
 };
 
@@ -399,8 +404,13 @@ bool js_cocos2dx_extension_ZipHelper_unzipFileAsyn(JSContext *cx, uint32_t argc,
 					JS::RootedValue jsobjVal(cx, JS::ObjectOrNullValue(jsobj));
 					JS::HandleValueArray args(jsobjVal);
 
-					JS::RootedValue owner(cx, JS::ObjectOrNullValue(cobj->_JSDelegate));
-					ScriptingCore::getInstance()->executeFunctionWithOwner(owner, "onUnzipResult", args);
+					JS::RootedValue delegate(cx, JS::ObjectOrNullValue(cobj->_JSDelegate->get()));
+
+					if (delegate.isObject())
+					{
+						ScriptingCore::getInstance()->executeFunctionWithOwner(delegate, "onUnzipResult", args);
+					}
+					
 				});
 			});
 		}

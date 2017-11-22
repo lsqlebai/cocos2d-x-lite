@@ -11,18 +11,7 @@ public:
 
 };
 
-template<class T>
-static bool dummy_constructor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS_ReportError(cx, "Constructor for the requested class is not available, please refer to the API reference.");
-    return false;
-}
-
-static bool empty_constructor(JSContext *cx, uint32_t argc, jsval *vp) {
-    return false;
-}
-
-static bool js_is_native_obj(JSContext *cx, uint32_t argc, jsval *vp)
+static bool js_is_native_obj(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
     args.rval().setBoolean(true);
@@ -31,7 +20,7 @@ static bool js_is_native_obj(JSContext *cx, uint32_t argc, jsval *vp)
 JSClass  *jsb_PayListener_class;
 JSObject *jsb_PayListener_prototype;
 
-bool js_PayListener_addListener(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_PayListener_addListener(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
 	if (argc == 3) {
 		JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -49,53 +38,95 @@ bool js_PayListener_addListener(JSContext *cx, uint32_t argc, jsval *vp)
 		CallbackManager::getInstance()->addListener(type, obj, callbackName);
 		return true;
 	}
-	JS_ReportError(cx, "Wrong number of arguments");
+	JS_ReportErrorUTF8(cx, "Wrong number of arguments");
 	return false;
 }
 
 
 void js_register_PayListener(JSContext *cx, JS::HandleObject global) {
-    jsb_PayListener_class = (JSClass *)calloc(1, sizeof(JSClass));
-    jsb_PayListener_class->name = "PayListener";
-    jsb_PayListener_class->addProperty = JS_PropertyStub;
-    jsb_PayListener_class->delProperty = JS_DeletePropertyStub;
-    jsb_PayListener_class->getProperty = JS_PropertyStub;
-    jsb_PayListener_class->setProperty = JS_StrictPropertyStub;
-    jsb_PayListener_class->enumerate = JS_EnumerateStub;
-    jsb_PayListener_class->resolve = JS_ResolveStub;
-    jsb_PayListener_class->convert = JS_ConvertStub;
-    jsb_PayListener_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
-    static JSPropertySpec properties[] = {
-        JS_PS_END
-    };
 
-    static JSFunctionSpec funcs[] = {
-        JS_FS_END
-    };
+	static const JSClassOps PayListener_classOps = {
+		nullptr, nullptr, nullptr, nullptr,
+		nullptr, nullptr, nullptr,
+		nullptr,
+		nullptr, nullptr, nullptr, nullptr
+	};
 
-    static JSFunctionSpec st_funcs[] = {
-        JS_FN("addListener", js_PayListener_addListener, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FS_END
-    };
+	static JSClass PayListener_class = {
+		"PayListener",
+		JSCLASS_HAS_PRIVATE | JSCLASS_FOREGROUND_FINALIZE,
+		&PayListener_classOps
+	};
 
-    jsb_PayListener_prototype = JS_InitClass(
-        cx, global,
-        JS::NullPtr(),
-        jsb_PayListener_class,
-        dummy_constructor<PayListener>, 0, // no constructor
-        properties,
-        funcs,
-        NULL, // no static properties
-        st_funcs);
+	jsb_PayListener_class = &PayListener_class;
 
-    JS::RootedObject proto(cx, jsb_PayListener_prototype);
-    JS::RootedValue className(cx, std_string_to_jsval(cx, "PayListener"));
-    JS_SetProperty(cx, proto, "_className", className);
-    JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
-    JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
-    // add the proto and JSClass to the type->js info hash table
-    jsb_register_class<PayListener>(cx, jsb_PayListener_class, proto, JS::NullPtr());
+	static JSPropertySpec properties[] = {
+		JS_PS_END
+	};
+
+	static JSFunctionSpec funcs[] = {
+		JS_FS_END
+	};
+
+	static JSFunctionSpec st_funcs[] = {
+		JS_FN("addListener", js_PayListener_addListener, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FS_END
+	};
+
+	JS::RootedObject parent_proto(cx, nullptr);
+	jsb_PayListener_prototype = JS_InitClass(
+		cx, global,
+		parent_proto,
+		jsb_PayListener_class,
+		dummy_constructor<PayListener>, 0, // constructor
+		properties,
+		funcs,
+		nullptr, // no static properties
+		st_funcs);
+
+
+    //jsb_PayListener_class = (JSClass *)calloc(1, sizeof(JSClass));
+    //jsb_PayListener_class->name = "PayListener";
+    //jsb_PayListener_class->addProperty = JS_PropertyStub;
+    //jsb_PayListener_class->delProperty = JS_DeletePropertyStub;
+    //jsb_PayListener_class->getProperty = JS_PropertyStub;
+    //jsb_PayListener_class->setProperty = JS_StrictPropertyStub;
+    //jsb_PayListener_class->enumerate = JS_EnumerateStub;
+    //jsb_PayListener_class->resolve = JS_ResolveStub;
+    //jsb_PayListener_class->convert = JS_ConvertStub;
+    //jsb_PayListener_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+    //static JSPropertySpec properties[] = {
+    //    JS_PS_END
+    //};
+
+    //static JSFunctionSpec funcs[] = {
+    //    JS_FS_END
+    //};
+
+    //static JSFunctionSpec st_funcs[] = {
+    //    JS_FN("addListener", js_PayListener_addListener, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+    //    JS_FS_END
+    //};
+
+    //jsb_PayListener_prototype = JS_InitClass(
+    //    cx, global,
+    //    JS::NullPtr(),
+    //    jsb_PayListener_class,
+    //    dummy_constructor<PayListener>, 0, // no constructor
+    //    properties,
+    //    funcs,
+    //    NULL, // no static properties
+    //    st_funcs);
+
+    //JS::RootedObject proto(cx, jsb_PayListener_prototype);
+    //JS::RootedValue className(cx, std_string_to_jsval(cx, "PayListener"));
+    //JS_SetProperty(cx, proto, "_className", className);
+    //JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
+    //JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
+    //// add the proto and JSClass to the type->js info hash table
+    //jsb_register_class<PayListener>(cx, jsb_PayListener_class, proto, JS::NullPtr());
 }
 
 void register_all_pay_listener(JSContext* cx, JS::HandleObject obj) {

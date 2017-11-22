@@ -27,12 +27,16 @@ public:
 
 	void setJSDelegate(JS::HandleObject pJSDelegate)
 	{
-		_JSDelegate = pJSDelegate;
+		if (_JSDelegate) {
+			CC_SAFE_DELETE(_JSDelegate);
+		}
+		JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
+		_JSDelegate = new (std::nothrow) JS::PersistentRootedObject(cx, pJSDelegate);
 	}
 protected:
 public:
 
-	JS::PersistentRootedObject _JSDelegate;
+	JS::PersistentRootedObject *_JSDelegate;
 };
 
 
@@ -226,7 +230,7 @@ void register_jsb_umeng_native(JSContext* cx, JS::HandleObject global)
 		nullptr, nullptr, nullptr, nullptr
 	};
 	static JSClass umengnative_class = {
-		"GameLogicNative",
+		"UmengNative",
 		JSCLASS_HAS_PRIVATE | JSCLASS_FOREGROUND_FINALIZE,
 		&umengnative_classOps
 	};
