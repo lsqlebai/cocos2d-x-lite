@@ -102,6 +102,17 @@ public class AppActivity extends Cocos2dxActivity {
             System.setProperty("https.proxyHost", "202.99.114.28");
             System.setProperty("https.proxyPort", "10011");
         }
+		// 广东电信，设置代理
+		else if("018GDDX".equals(MainApplication.channel)) 
+		{
+			System.setProperty("http.proxySet", "true");    //设置使用网络代理
+            System.setProperty("http.proxyHost", "14.29.2.88");  //设置代理服务器地址
+            System.setProperty("http.proxyPort", "800");    //设置代理服务器端口号
+
+            // 针对https也开启代理
+            System.setProperty("https.proxyHost", "14.29.2.88");
+            System.setProperty("https.proxyPort", "800");
+		}
 
         ApkUtil.init(this);
         initInfo();
