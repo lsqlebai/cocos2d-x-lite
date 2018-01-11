@@ -1,4 +1,4 @@
-include ':libcocos2dx', ':commonPay', ':unipayforjs', ':unicomPay', ':CommonUtil', ':xiaowoPay', ':unipay', ':jiangsucmccPay', ':jiangxicmccPay'
+include ':libcocos2dx', ':commonPay', ':unipayforjs', ':unicomPay', ':CommonUtil', ':xiaowoPay', ':unipay', ':jiangsucmccPay', ':jiangxicmccPay', ':gddxPay'
 project(':libcocos2dx').projectDir = new File('E:/tools/game_engine/cocos2d-x-lite/cocos/platform/android/libcocos2dx')
 include ':LoG'
 project(':LoG').projectDir = new File(settingsDir, 'app')
