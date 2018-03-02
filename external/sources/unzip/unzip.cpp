@@ -68,10 +68,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-// modify by SULEI, enable crypt
-//#ifndef NOUNCRYPT
-//        #define NOUNCRYPT
-//#endif
+#ifndef NOUNCRYPT
+        #define NOUNCRYPT
+#endif
 
 #include "zlib.h"
 #include "unzip.h"
